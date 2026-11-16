@@ -73,6 +73,7 @@ def handlers(build):
         conds.add(m["gossip"]["code"])
     conds |= {t["code"] for t in m.get("warTowns", {}).get("towns", [])}
     conds |= set((m.get("rivals") or {}).get("codes", []))
+    conds |= set((m.get("news") or {}).get("codes", []))
     conds |= {n["killed"] for n in m.get("namedKills", [])} | {n["days"] for n in m.get("namedKills", [])}
     conds |= {c[k] for c in m.get("campNews", {}).get("outlaws", []) for k in ("town", "dir", "struck", "reach", "newsReach", "successor", "tier", "reprisal") if k in c}
     effects |= {c["pay"] for c in m.get("campNews", {}).get("outlaws", []) if "pay" in c}

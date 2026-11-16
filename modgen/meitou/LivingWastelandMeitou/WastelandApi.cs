@@ -15,8 +15,8 @@ namespace LivingWasteland.MeitouMod;
 
 public static class WastelandApi
 {
-    /// <summary>1: heat (read, add, forgive), rivals, hunts, squad titles, history notes and Recap moments.</summary>
-    public const int Version = 1;
+    /// <summary>1: heat (read, add, forgive), rivals, hunts, squad titles, history notes and Recap moments. 2: Report (news).</summary>
+    public const int Version = 2;
 
     /// <summary>The mod's build id, e.g. "20261115ai".</summary>
     public static string Build => LwMod.HelperBuild;
@@ -112,6 +112,20 @@ public static class WastelandApi
     /// "the wastes"). False when Recap is not installed.</summary>
     public static bool Moment(string caption, string place, int weight) =>
         !string.IsNullOrWhiteSpace(caption) && RecapLink.Moment(caption.Trim(), string.IsNullOrWhiteSpace(place) ? "the wastes" : place, Math.Clamp(weight, 0, 100));
+
+    // ---- news from other mods (version 2) ----
+
+    /// <summary>
+    /// Reports something that happened in the world, so the towns talk about it (Meitou Worldbuilding issue #23). <paramref name="kind"/>:
+    /// town-fell, siege-began, siege-broken, raid-sent, garrison-grew, town-short, caravan-lost, warlord-fell, warlord-rose (each has a line
+    /// of its own when <paramref name="text"/> is empty), or any other kind with a text. <paramref name="place"/>: a town's name as the game
+    /// shows it (the talk stays near it). <paramref name="faction"/>: a faction's name, or empty. <paramref name="weight"/>: 0 to 100 (the
+    /// weightiest live news is talked about; 60 and up is also posted when the squad hears it). <paramref name="source"/>: your mod's id, for
+    /// the log. The same kind at the same place within 12 game hours is taken once, whoever reports it. False when it is not taken (unknown
+    /// town, nothing to say, already reported, the setting is off, or no game is loaded); the reason is in the log.
+    /// </summary>
+    public static bool Report(string kind, string place, string faction, string text, int weight, string source) =>
+        NewsSystem.Latest?.Report(kind ?? "", place ?? "", faction ?? "", text ?? "", weight, source ?? "") ?? false;
 
     static IReadOnlyDictionary<string, object> Row(params (string Key, object Value)[] cells) => cells.ToDictionary(c => c.Key, c => c.Value);
 }

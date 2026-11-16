@@ -334,7 +334,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
                 }
                 var p = cold is not null ? Platoon(world, cold) : null;
                 p ??= r.PlatoonId >= 0 ? world.Platoons.Find(r.PlatoonId) : null;
-                if (players.Count > 0 && p is { Dead: false }) Pursuit.Steer(world, p, players);
+                if (players.Count > 0 && p is { Dead: false }) Pursuit.Steer(world, p, players, BarkLines.Rival(r.Grudge, r.Returns, r.Wins, r.Slot + r.Returns), r.Name);
             }
         }
         if (changed) Words(world);

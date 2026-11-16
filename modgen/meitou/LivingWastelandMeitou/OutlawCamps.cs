@@ -167,7 +167,7 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
                 continue;
             }
             claimed.Add(p.Id);
-            Pursuit.Steer(world, p, players);
+            Pursuit.Steer(world, p, players, BarkLines.Reprisal(o.Name, (int)r.SentHours));
             if (p.State == PlatoonState.Loaded && p.SquadId >= 0) squads[p.SquadId] = o.Index;
             book.Update(r, r with { X = p.Position.X, Z = p.Position.Y });
         }

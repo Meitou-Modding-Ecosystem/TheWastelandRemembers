@@ -55,6 +55,7 @@ QUESTLEG_BASE, QUESTPAY_BASE = 29000, 29500   # quest q: effect "note where this
 RAID_BASE, RAIDTOWN_BASE = 28000, 28100   # raid r (raids order): its state (0 none, 1 out, 2 caught, 3 got away; recent) / its town (1 + place in campNews.towns)
 REPRISAL_BASE = 27600        # condition REPRISAL_BASE + k: the speaker is one of outlaw k's reprisal party (Outlaw reprisals setting)
 TIER_BASE = 27500            # condition TIER_BASE + k: how far outlaw k's price has grown (0-3), compared with the value
+NEWS_BASE = 29350            # condition NEWS_BASE + k: news slot k is live and its place is within the speaker's reach (News.cs, other mods' news)
 RIVAL_BASE = 29400           # condition RIVAL_BASE + k: rival slot k near the speaker (0 none, 1 about, 2 has beaten the squad; Rivals.cs)
 SUCCESSOR_BASE = 29500       # condition SUCCESSOR_BASE + k: outlaw k's successor has taken over and is alive (OutlawCamps.cs)
 NEARPLACE_BASE = 29900       # condition NEARPLACE_BASE + t: the speaker is near town t (talk about a boss stays near the boss's home)
@@ -213,6 +214,7 @@ def convert(builders, recent_marks=(), lw_marks=(), titles=(), camps=(), lw_effe
         return title_order.index(tid) * 2 + (1 if kind == "gift" else 0) + 1
 
     camp_outlaws, camp_towns = {}, []
+    news_slots = set()                               # news slots the talk uses (codes NEWS_BASE + k)
     rival_slots = set()                              # rival slots the talk uses (codes RIVAL_BASE + k)
     near_places = {}                                 # town -> t (codes NEARPLACE_BASE + t)
     raid_ids = {r["name"]: i for i, r in enumerate(raids or [])}   # raid -> r (codes RAID_BASE / RAIDTOWN_BASE + r)               # outlaw -> k (codes CAMPTOWN/CAMPDIR/STRUCK + k), towns named by camp lines
@@ -283,6 +285,9 @@ def convert(builders, recent_marks=(), lw_marks=(), titles=(), camps=(), lw_effe
             code = REPRISAL_BASE + camp_outlaws.setdefault(key[9:], len(camp_outlaws))
         elif key.startswith("reach:"):
             code = REACH_BASE + camp_outlaws.setdefault(key[6:], len(camp_outlaws))
+        elif key.startswith("news:"):
+            code = NEWS_BASE + int(key[5:])
+            news_slots.add(int(key[5:]))
         elif key.startswith("rival:"):
             code = RIVAL_BASE + int(key[6:])
             rival_slots.add(int(key[6:]))
@@ -375,6 +380,7 @@ def convert(builders, recent_marks=(), lw_marks=(), titles=(), camps=(), lw_effe
                          "despises": (temperaments or {}), "views": title_views or {}, "gifts": [{"code": GIFT_BASE + g, "item": i} for i, g in gifts.items()]},
         # memorials (Notoriety.cs / Deeds.cs): the squad's fallen, the feuds they leave
         "marches": {"marching": MARCH_CODE},
+        "news": {"codes": [NEWS_BASE + k for k in range(max(news_slots) + 1)], "tokens": [f"LWNEWS_{k}" for k in range(max(news_slots) + 1)]} if news_slots else None,
         "rivals": {"codes": [RIVAL_BASE + k for k in range(max(rival_slots) + 1)], "tokens": [f"LWRIVAL_{k}" for k in range(max(rival_slots) + 1)]} if rival_slots else None,
         "nearPlaces": [{"town": t, "code": NEARPLACE_BASE + i} for t, i in near_places.items()],
         "favours": {"code": FAVOUR_CODE, "cap": 40, "alms": ALMS_CODE},

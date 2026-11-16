@@ -1,0 +1,250 @@
+{
+ "pack": "news",
+ "mod": "LivingWasteland",
+ "meitou_only": true,
+ "note": "News other mods report (Meitou helper, News.cs; WastelandApi.Report, Meitou Worldbuilding issue #23). /LWNEWS_k/ carries news slot k's line; lw_if news k: that news is live and its place is within the speaker's reach. wn_ ids: the gossip slider and town criers apply, as for war news.",
+ "word_swaps": [
+  {
+   "name": "LWNEWS_0",
+   "lines": [
+    {
+     "say": "Nothing much, these days."
+    }
+   ]
+  },
+  {
+   "name": "LWNEWS_1",
+   "lines": [
+    {
+     "say": "Nothing much, these days."
+    }
+   ]
+  },
+  {
+   "name": "LWNEWS_2",
+   "lines": [
+    {
+     "say": "Nothing much, these days."
+    }
+   ]
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "wn_ext_0_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "news": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Heard the latest? /LWNEWS_0/",
+      "/LWNEWS_0/ Everyone in here's talking about it.",
+      "A trader came through this morning with news. /LWNEWS_0/",
+      "/LWNEWS_0/ Mark my words, there's more of that to come.",
+      "You'll not have heard, then. /LWNEWS_0/"
+     ]
+    }
+   ],
+   "chance": 10,
+   "repeat": 4
+  },
+  {
+   "id": "wn_ext_0_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "lw_if": [
+    {
+     "news": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Have you heard? /LWNEWS_0/",
+      "Word from the road: /LWNEWS_0/",
+      "/LWNEWS_0/ Thought you ought to know."
+     ]
+    }
+   ],
+   "chance": 5,
+   "repeat": 6
+  },
+  {
+   "id": "wn_ext_1_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "news": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Heard the latest? /LWNEWS_1/",
+      "/LWNEWS_1/ Everyone in here's talking about it.",
+      "A trader came through this morning with news. /LWNEWS_1/",
+      "/LWNEWS_1/ Mark my words, there's more of that to come.",
+      "You'll not have heard, then. /LWNEWS_1/"
+     ]
+    }
+   ],
+   "chance": 10,
+   "repeat": 4
+  },
+  {
+   "id": "wn_ext_1_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "lw_if": [
+    {
+     "news": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Have you heard? /LWNEWS_1/",
+      "Word from the road: /LWNEWS_1/",
+      "/LWNEWS_1/ Thought you ought to know."
+     ]
+    }
+   ],
+   "chance": 5,
+   "repeat": 6
+  },
+  {
+   "id": "wn_ext_2_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "news": 2
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Heard the latest? /LWNEWS_2/",
+      "/LWNEWS_2/ Everyone in here's talking about it.",
+      "A trader came through this morning with news. /LWNEWS_2/",
+      "/LWNEWS_2/ Mark my words, there's more of that to come.",
+      "You'll not have heard, then. /LWNEWS_2/"
+     ]
+    }
+   ],
+   "chance": 10,
+   "repeat": 4
+  },
+  {
+   "id": "wn_ext_2_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "lw_if": [
+    {
+     "news": 2
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Have you heard? /LWNEWS_2/",
+      "Word from the road: /LWNEWS_2/",
+      "/LWNEWS_2/ Thought you ought to know."
+     ]
+    }
+   ],
+   "chance": 5,
+   "repeat": 6
+  }
+ ]
+}

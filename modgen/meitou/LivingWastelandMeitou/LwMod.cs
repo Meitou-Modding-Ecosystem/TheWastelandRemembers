@@ -100,6 +100,8 @@ public sealed class LwSettings
     [Setting("Town heat (towns remember crimes)", Hint = "Towns remember your crimes: guards warn, gates react, heat fades with time. Off: nobody reacts to heat.")]
     public bool Heat { get; set; } = true;
 
+    [Setting("News from other mods", Hint = "Other mods can report what happens in the world (a town falls, a siege begins, a caravan is lost). Townsfolk near the place talk about it, and once your squad has heard it, it goes into History, the Atlas and Recap.")]
+    public bool OtherModsNews { get; set; } = true;
     [Setting("Rivals", Hint = "Someone your squad beats and leaves alive can come back for it: renamed for what happened, stronger each time, talked about in town and listed in the Atlas.")]
     public bool Rivals { get; set; } = true;
     [Setting("Outlaw successors", Hint = "A few days after a named outlaw dies or is jailed, one of their gang takes over the same ground under a new name, with a smaller bounty and a new contract.")]
@@ -151,7 +153,7 @@ public sealed class LwMod : IMod
     internal static string JobVariable = "LW open jobs";
     /// <summary>The build this helper was made for (modgen/BUILD_ID); the data mods carry theirs in lw_codes.json.</summary>
     public static string DataBuild = "unknown";
-    public const string HelperBuild = "20261115aj";
+    public const string HelperBuild = "20261116am";
     internal static List<RumourCode> Rumours = [];
     internal static List<(int Index, string Name)> Outlaws = [];
 
@@ -237,6 +239,11 @@ public sealed class LwMod : IMod
             LivingWasteland.MeitouMod.Trophies.AddSlot(c, Settings.NeckSlotX, Settings.NeckSlotY);
         }
         LivingWasteland.MeitouMod.Trophies.Warrant = table.Trophies?.Warrant;
+        if (table.Trophies?.Keepsakes is { Count: > 0 } keepsakes)
+        {
+            KeepsakeBook.Slots = keepsakes;
+            c.AddSystem("lw-keepsakes", ctx => new KeepsakeBook(ctx.Data), SystemAnchor.End);
+        }
         if (table.Hunters is { Squad: { Length: > 0 } crew })
         {
             c.AddSystem("lw-hunters", ctx => new HuntersSystem(crew, ctx.Find<PopulationSystem>(), ctx.Data), SystemAnchor.End);
@@ -251,6 +258,25 @@ public sealed class LwMod : IMod
         }, SystemAnchor.End);
         c.AddDebugCommand("Wasteland Remembers: rivals", _ => !Settings.Rivals ? "rivals are off (the Squad record window's Settings tab)"
             : RivalsSystem.Latest?.Summary() ?? "no world yet", hasField: false);
+        // news from other mods (News.cs, WastelandApi.Report): towns near the place talk about it through word swaps
+        c.AddSystem("lw-news", ctx => new NewsSystem(ctx.Data), SystemAnchor.End);
+        c.AddDebugCommand("Wasteland Remembers: news from other mods", _ => NewsSystem.Latest?.Summary() ?? "no world yet", hasField: false);
+        if (PlayTest.On)
+            c.AddDebugCommand("Wasteland Remembers: test news (type a town)", d =>
+            {
+                if (string.IsNullOrWhiteSpace(d.Field)) return "type a town's name, e.g. Stack; it is reported as besieged (as another mod would)";
+                NewsSystem.TestReports.Enqueue(("siege-began", d.Field.Trim()));
+                return $"reporting a siege at {d.Field.Trim()} (see the log and the news row)";
+            }, hasField: true);
+        if (table.News is { } nw)
+        {
+            NewsSystem.Tokens = nw.Tokens;
+            for (int k = 0; k < nw.Codes.Count; k++)
+            {
+                int slot = k;
+                c.AddDialogueCondition(nw.Codes[k], check => check.Compare(NewsSystem.For(check.World)?.SlotValue(check.World, slot, check.Speaker) ?? 0));
+            }
+        }
         if (table.Rivals is { } rv)
         {
             RivalsSystem.Tokens = rv.Tokens;
@@ -711,14 +737,14 @@ public sealed class LwMod : IMod
 
     sealed record CodeTable(List<VariableCode> Variables, List<TakeCode> TakeItems, JobTable? Jobs, List<RumourCode>? Rumours, NotorietyTable? Notoriety,
         List<OutlawCode>? Outlaws, List<WarCode>? Wars, GossipTable? Gossip, WarTownTable? WarTowns, List<NamedKillCode>? NamedKills, List<CampCode>? Camps, CampNewsTable? CampNews,
-        TemperamentTable? Temperaments, HuntersTable? Hunters, MemorialTable? Memorials, TrophyTable? Trophies = null, Dictionary<string, MomentCode>? VariableMoments = null, AtlasTable? Atlas = null, List<RaidCode>? Raids = null, List<QuestRouteCode>? QuestRoutes = null, TalkTable? Talk = null, MarchTable? Marches = null, FavourTable? Favours = null, List<NearPlaceCode>? NearPlaces = null, string? Build = null, RivalTable? Rivals = null);
+        TemperamentTable? Temperaments, HuntersTable? Hunters, MemorialTable? Memorials, TrophyTable? Trophies = null, Dictionary<string, MomentCode>? VariableMoments = null, AtlasTable? Atlas = null, List<RaidCode>? Raids = null, List<QuestRouteCode>? QuestRoutes = null, TalkTable? Talk = null, MarchTable? Marches = null, FavourTable? Favours = null, List<NearPlaceCode>? NearPlaces = null, string? Build = null, RivalTable? Rivals = null, NewsTable? News = null);
     sealed record NearPlaceCode(string Town, int Code);
     sealed record MarchTable(int Marching);
     sealed record FavourTable(int Code, int Cap, int Alms = 0);
     sealed record TalkTable(int Code, Dictionary<string, int>? Features);
     sealed record QuestRouteCode(string Quest, int Leg, int Pay);
     sealed record MomentCode(string Caption, string Place, int Weight);
-    sealed record TrophyTable(string? Keepsake, string? Warrant = null);
+    sealed record TrophyTable(string? Keepsake, string? Warrant = null, List<string>? Keepsakes = null);
     sealed record MemorialTable(int Mourn, int LossDays, int LossTown, int Feud, int Scar = 0, int SquadNear = 0);
     sealed record HuntersTable(string Squad);
     sealed record TemperamentTable(int Once, int Mark, int Despised, List<string>? Titles, Dictionary<string, List<string>>? Despises, List<GiftCode>? Gifts,

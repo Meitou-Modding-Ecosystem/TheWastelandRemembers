@@ -610,7 +610,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             if (near.Name is null || System.Numerics.Vector3.Distance(near.At, at) > 2500) continue;
             toMourn.Remove((body, name, hours));
 #if !SQUAD_RECORD_ONLY
-            Trophies.GiveKeepsake(world, near.Id, deeds.Record.Display(near.Name), deeds.Record.Display(name));
+            Trophies.GiveKeepsake(world, near.Id, deeds.Record.Display(near.Name), deeds.Record.Display(name), name);
 #endif
             if (Talk is null || !LwMod.Settings.VictoryLines) continue;
             bool said = TalkPacer.Exempt(() => Talk.FireEvent(world, near.Id, body, SeeRagdollEvent));

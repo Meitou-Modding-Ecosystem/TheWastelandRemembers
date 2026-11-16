@@ -107,7 +107,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
                 continue;
             }
             claimed.Add(p.Id);
-            Pursuit.Steer(world, p, players);
+            Pursuit.Steer(world, p, players, BarkLines.Crew(crew.Town, (int)crew.SentHours));
             int i = crews.IndexOf(crew);
             crews[i] = crew with { X = p.Position.X, Z = p.Position.Y };
         }
@@ -278,7 +278,12 @@ public static class Pursuit
         return best;
     }   // platoon -> where it stood at the last pass (not state: rebuilt after a load)
 
-    public static void Steer(World world, Platoon p, List<(float X, float Z)> players)
+    /// <summary>Squads that have spoken their line on closing in, per loaded game (once each).</summary>
+    static readonly System.Runtime.CompilerServices.ConditionalWeakTable<World, HashSet<int>> barked = new();
+
+    /// <summary>Steers a pursuer to the nearest player character. <paramref name="bark"/>: the line one of them says over their head
+    /// (World.Bark) the first time they close in to attack; <paramref name="speakerName"/>: who says it (a rival), else whoever leads.</summary>
+    public static void Steer(World world, Platoon p, List<(float X, float Z)> players, string? bark = null, string? speakerName = null)
     {
         var target = Nearest(players, p.Position.X, p.Position.Y);
         if (p.State == PlatoonState.Unloaded)
@@ -312,7 +317,15 @@ public static class Pursuit
             {
                 float d = Vector2.Distance(p.Position, new Vector2(preyAt.X, preyAt.Z));
                 if (!aimed.ContainsKey(squad.Id) && SquadRoles.Contract(squad.Id, FollowPackage, 24f, prey)) aimed[squad.Id] = (world.Tick, FollowPackage);
-                if (d < 600f) Assault(world, squad, prey);
+                if (d < 600f)
+                {
+                    Assault(world, squad, prey);
+                    if (bark is not null && barked.GetOrCreateValue(world).Add(squad.Id) && Speaker(world, squad, speakerName) is { } who)
+                    {
+                        world.Bark(who, bark);
+                        LwMod.Log($"barks: \"{bark}\"");
+                    }
+                }
             }
             var table = world.Characters;
             foreach (var m in squad.Members)
@@ -339,6 +352,21 @@ public static class Pursuit
             if (table.Next[s].Alive && c.Medical is { Dead: false, Incapacitated: false } && !c.IsImprisoned && c.CarriedBy.IsNone) return false;
         }
         return seen > 0;
+    }
+
+    /// <summary>Who of a squad speaks: the member named <paramref name="name"/>, else the leader, else anyone standing.</summary>
+    static CharacterId? Speaker(World world, Squad squad, string? name)
+    {
+        var table = world.Characters;
+        CharacterId? first = null;
+        foreach (var m in squad.Members)
+        {
+            if (!table.TryResolveNext(m, out int s) || !table.Next[s].Alive || table.Cold(s) is not { } c || c.Medical is { Incapacitated: true }) continue;
+            if (name is not null && c.Name == name) return m;
+            if (m == squad.Leader) first = m;
+            first ??= m;
+        }
+        return name is null || first is null ? first : null;
     }
 
     /// <summary>Lets a pursuer go: no longer kept by the engine or steered.</summary>

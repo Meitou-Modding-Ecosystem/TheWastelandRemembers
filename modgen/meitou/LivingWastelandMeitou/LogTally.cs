@@ -16,7 +16,7 @@ public static class LogTally
         ("kills", "kill:", null), ("atlas heard", "atlas: heard", null), ("crier spoke", "crier: called", null),
         ("crier silent", "crier: had nothing", null), ("victory lines", "victory line:", "spoke"), ("rivals", "rivals:", null),
         ("bounty crews", "bounty hunters:", null), ("reprisals", "outlaw reprisal:", null), ("successors", "outlaw successors:", null),
-        ("heat", "heat:", null), ("memorials", "memorial:", null), ("outlaw grace", "outlaw grace:", null),
+        ("heat", "heat:", null), ("memorials", "memorial:", null), ("outlaw grace", "outlaw grace:", null), ("news", "news:", "reports"),
     ];
 
     static readonly Dictionary<string, int> counts = [];

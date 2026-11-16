@@ -160,6 +160,17 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
                 pages["r:" + rn] = string.Join("\n", page);
             }
         }
+        // news from other mods (News.cs): what the squad has heard happen in the world
+        if (NewsSystem.For(world)?.AtlasRows().ToList() is { Count: > 0 } newsRows)
+        {
+            list.Add("");
+            list.Add("-- News --");
+            foreach (var (id, row, page) in newsRows)
+            {
+                list.Add($"@@n:{id}|{row}");
+                pages["n:" + id] = string.Join("\n", page);
+            }
+        }
         list.Add("");
         list.Add("-- People --");
         if (personRows.Count == 0) list.Add("Nobody of note yet.");
