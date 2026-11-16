@@ -1,0 +1,3830 @@
+{
+ "pack": "faction_depth",
+ "mod": "LivingWasteland",
+ "dialogues": [
+  {
+   "id": "fd_uhl_neut_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Shek in the Empire's streets, eh? Somebody forgot to lock the border.",
+      "Look at the size of it. Big as a barn and twice as welcome. /OI/, keep yer hands where I can see 'em.",
+      "That's a long way from the Stone Golem's sand, /RACISTNAME/. Got lost, did we?",
+      "Oi, Shek. This is the Empire. We don't do yer pride-of-the-ages routine here.",
+      "I'll say it slow for the tall one. Walk. Don't stop.",
+      "Another /RACISTNAME/ with a big stick. Funny how they all find the United Cities.",
+      "Eyes on 'em, lads. Big ones sneak the quietest.",
+      "Shek. Fine. Buy yer bread and be gone before dark."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_neut_hive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hiver in the street. Who's watching the farms, eh?",
+      "/OI/, little buzzer. Don't go nesting in the alleys, we've enough rats.",
+      "One of the mud-hut lot. Mind yer purse, lads, they take the whole thing in a handshake.",
+      "Look at that. Wanders about like it owns the place. It don't.",
+      "Hive. Bah. First it's one, then the whole town's humming.",
+      "Don't stare at it, it'll think you like it.",
+      "They send the quiet ones first. Then the rest follow, and the wages drop.",
+      "Mind yer manners, /RACISTNAME/. This ain't the hive and there's no queen here to cry to."
+     ]
+    }
+   ],
+   "target_races": [
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_neut_skel",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A tin man in an Empire town. Somebody's scrap walkin' about, eh?",
+      "/OI/, rattler. Don't leave bits of yerself on the pavement.",
+      "Skeleton. Does it sleep? Does it even need the town? Just pass through, clatterbones.",
+      "That thing's got no business here. Put it in the foundry where it belongs.",
+      "Eyeless. Soulless. And it's walkin' in front of us. I don't like it.",
+      "Tch. Another /RACISTNAME/ clogging the street. Do they pay the toll? I bet they don't.",
+      "Keep it moving, scrap. And stay off the grass, it's grown here three seasons."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_neut_scorch",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Desert folk, eh? Fine by me. Long as ya keep to yerself and pay for what ya take.",
+      "Scorchlander. Don't see many up here. Mind the guards and we'll get along.",
+      "You're a long way from the sands, friend. Watch yer pockets, not everyone round here's as civil as us.",
+      "Foreign, but human. That counts for somethin', I suppose. Not much.",
+      "Keep yer nose clean, desert-walker, and nobody here'll say a word.",
+      "Hmph. You'll do. It's the others I'm watchin'."
+     ]
+    }
+   ],
+   "target_races": [
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_neut_citizen",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Evenin', citizen. Good to see an honest face for a change.",
+      "Another proper Empire man, eh? Nice. Mind yerself, there's /RACISTNAME/s about.",
+      "Keep walkin', friend. The League's got the streets tonight.",
+      "Aye. You look like one of ours.",
+      "All's quiet, citizen. If it isn't, come find us.",
+      "/OI/, you. Greenlander? Good. Good. Don't let them get ya riled."
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander"
+   ],
+   "player_only": true,
+   "relation": [
+    ">",
+    5
+   ],
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_neut_unarmed",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "No weapon? In this town? Brave, or stupid, or sent by someone.",
+      "Walkin' about bare-handed. Heh. Don't give us a reason, friend.",
+      "Not a blade on ya. Either you're hidin' somethin' or ya have a death wish.",
+      "I like 'em unarmed. Makes my job short.",
+      "Where's yer steel? The wastes eat the unarmed, you know.",
+      "You look harmless. That's usually when they aren't."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_neut_wounded_foreign",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "That /RACISTNAME/ looks half-dead. Don't expect a bed from us.",
+      "Bleeding in front of the League's lads. Bad luck, friend.",
+      "If ya die in the street, it's a long walk for the sweepers.",
+      "Heh. Hurt, eh? Somebody's been teachin' manners already.",
+      "Staggerin' about like that, ya make the street look bad. Get inside and bleed quietly.",
+      "I'd kick ya if I didn't think ya'd stay down."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek",
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone",
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_neut_carrying",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Who's that over yer shoulder? Slaver's business, is it? We've an opinion on that.",
+      "Carryin' somebody off in the dark. I don't like it.",
+      "That one asleep, or worse? Either way you're nobody I'd trust.",
+      "Slavers, the lot of 'em. And we've seen the type.",
+      "Put it down or explain yerself, /RACISTNAME/.",
+      "Heavy load. Don't drop it on my street."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek",
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone",
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 36,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_neut_carry_green",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Carryin' a body, citizen? Well, I didn't see nothin'.",
+      "Ya got a sleeper over yer back. If it's a /RACISTNAME/, carry on.",
+      "Heavy, eh? Mind the guards. They ask too many questions.",
+      "That one deserve it? Then I don't care.",
+      "Not my business, friend. Not unless it becomes my business."
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 36,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_neut_bounty",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "There's a price on ya, friend. Funny, I was just lookin' for some spare cats.",
+      "Wanted, eh? The League doesn't mind a bit of law-breakin'. Just not in our streets.",
+      "I hear the Cities want a word with ya. Might be worth the walk to the guards.",
+      "That's a bounty, ain't it? I can smell cats.",
+      "Don't look at me like that. I'm not the law.",
+      "A wanted man. Heh. We've a lot in common, you and me, 'cept I'm still free."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 999
+    }
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_neut_woman",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Evenin', miss. Keep to the lit streets. It ain't safe, not with all the foreigners.",
+      "Careful on the road, lady. We watch for the likes of those who'd bother ya.",
+      "If anyone gives ya trouble, ya call for the League.",
+      "Take care, miss. The streets ain't what they were."
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_enemy_shek",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Git the Shek! Big ones fall like trees!",
+      "/OI/, /RACISTNAME/! Back to yer own desert!",
+      "That's a Shek on our soil.",
+      "Hit the legs! He's too tall for the rest!",
+      "Another Kral rat in the Empire.",
+      "This is the United Cities, ya big lump!",
+      "Shek! Get the shovels, lads, we'll need a hole!"
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_enemy_hive",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "It's a Hiver! Squash the bugs!",
+      "/OI/, hive-rat! Go back to yer queen!",
+      "Don't let it hum at ya, it's callin' the others!",
+      "Mud-hut scum! Get 'em!",
+      "Hiver! Smash it before it nests!",
+      "One of the buzzers! Stamp it out!"
+     ]
+    }
+   ],
+   "target_races": [
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone"
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_enemy_skel",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "It's the tin man! Break the bones, lads!",
+      "Scrap! Hit the joints!",
+      "/OI/, rattler! Back to the foundry!",
+      "No soul in that one! Don't hold back!",
+      "Smash it! It's just a walking junk heap!",
+      "Rattlebones in the Empire. Not today!"
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_enemy_any",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "We told ya! We told ya to leave! Get 'em!",
+      "Give 'em the League's welcome, lads!",
+      "You picked the wrong town to cause trouble in!",
+      "Good. It's been boring. Come here, outsider!",
+      "Hit 'em hard! Don't stop till they stop!",
+      "Heroes of the League, with me!",
+      "For the Empire! Get 'em!"
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_enemy_wounded",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Look at 'em! One more hit and they're done!",
+      "They're bleedin'! Finish it!",
+      "Half dead already. The League only has to push.",
+      "Weak and hurt. Nice. Take 'em down!",
+      "Go on, give 'em a nudge."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_enemy_unarmed",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Unarmed! Ha! This'll be quick!",
+      "No weapon! Take 'em, lads!",
+      "Brave, comin' at us bare-handed. Stupid, but brave.",
+      "Nothing in yer hands, eh? Well, that's yer problem.",
+      "Teach 'em a lesson in the old way, boys!"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_enemy_outnum",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Uh, lads? There's more of them than us...",
+      "Back! Back to the walls! Get the guards!",
+      "That's too many! Retreat!",
+      "/WTF/? Where did they all come from?",
+      "Fall back to the fort! Fall back!"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_enemy_bounty",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Wanted, are ya? I knew it. Get 'em for the cats!",
+      "There's a price on that one. Take 'em alive if ya can!",
+      "That's coin walkin' in, lads. Make it quick.",
+      "The guards'll pay good for this one!"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 999
+    }
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Good to see ya, friend. Streets are cleaner for yer sort.",
+      "A proper citizen! Have a drink on the League.",
+      "Oi, friend! Heard ya dealt with a few /RACISTNAME/s.",
+      "You're always welcome at the fort. Keep up the good work.",
+      "Cheers, friend. The Empire needs more like ya.",
+      "Don't ya let them tell ya the League's all bluster."
+     ]
+    }
+   ],
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_defeat_foreign",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "We got the /RACISTNAME/! Let the sweepers handle the rest!",
+      "Down they go! The League delivers!",
+      "That's how it's done, boys! Another one gone!",
+      "/QUICKLAUGH/! They don't make 'em tough, do they?",
+      "Foreigners down! Back to the bar, lads!",
+      "Next time they'll think twice about our streets."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek",
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone",
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_defeat_any",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ha! They're down!",
+      "Another one for the League!",
+      "Told ya. Told ya to keep walkin'.",
+      "Good fight, lads. Keep an eye out for more.",
+      "That's what happens when ya cross us!"
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Evidence for the Empire. Of course.",
+      "Their stuff, our streets. That's fair.",
+      "Rations, boots, pockets. Heh. Waste not.",
+      "They won't need it where they're goin'.",
+      "Hand it over, lads. Share and share.",
+      "Not much, but it's more'n they had in the League's pockets."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Somebody's down. One of ours?",
+      "Eh, is that a body? Check it, lads.",
+      "Unconscious or dead? Poke it and see.",
+      "Don't touch that, could be a trap.",
+      "Looks like a /RACISTNAME/. Leave it."
+     ]
+    }
+   ],
+   "chance": 40,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_bounty",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You! Wanted! The League doesn't take kindly to criminals!",
+      "I know that face! The posters say there's a price on ya!",
+      "Wanted man! Grab 'em! Cats in the bank!",
+      "A criminal in our streets? Not today!"
+     ]
+    }
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_assault",
+   "event": "EV_WITNESS_GENERIC_ASSAULT",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "/OI/! That's assault! Guards!",
+      "Hey! Keep yer hands off, ya brute!",
+      "Break it up! We keep the peace here!",
+      "Somebody get the law! This lout's gone mad!"
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_bar_jobs",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "I had a good job, once. Then they came and worked for half. Now where am I? Drinkin' with you lot.",
+      "Honest work, honest wage. That's all I wanted. Then the /RACISTNAME/s came and did it cheaper.",
+      "Ask any shopkeep. They'll tell ya who's takin' the jobs.",
+      "Cities used to feed their own. Now we feed everyone, and fight for the scraps.",
+      "Cheap labour, they call it. I call it a crime.",
+      "My da built this town. Now I need a pass to walk through it."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4
+  },
+  {
+   "id": "fd_uhl_bar_farms",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Fields trampled, crops stolen. Don't tell me it's the weather.",
+      "They've got no respect for honest farmers. Dig up the roots, burn the stalks.",
+      "Last season I lost half a harvest. Footprints all over. Not Greenlander footprints.",
+      "Food's dear enough. Then some outsider wrecks a whole barn.",
+      "I'll say it. The farms were fine before the foreigners."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4
+  },
+  {
+   "id": "fd_uhl_bar_hive",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hivers. They breed like flies, and each one's got a queen to run to.",
+      "Don't let the quiet manners fool ya. They work for the hive, not for us.",
+      "A hive-rat in my alley this mornin'. Looked at me like I was in the way.",
+      "Mud huts here, mud huts there.",
+      "They say Hivers don't mind slaves. I say that's not a thing to be proud of."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4
+  },
+  {
+   "id": "fd_uhl_bar_shek",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Shek think they own the sand. Fine.",
+      "Kral's lot, Stone Golem's lot. All the same.",
+      "A Shek raider took my cousin's cart last spring. We don't talk about it.",
+      "They talk about honour. Sure. Honour's very easy when you're nine feet of muscle.",
+      "I don't hate the Shek. I just want 'em on the other side of a wall."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4
+  },
+  {
+   "id": "fd_uhl_bar_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Skeletons. Machines with a face. Don't tell me they've got feelings.",
+      "You ever see one fall apart? Doesn't bleed. Doesn't scream.",
+      "They fix themselves for free, and they don't eat. That's not fair on the rest of us.",
+      "A tin man at the next table. Didn't say a word.",
+      "Smelters should melt the lot of 'em and make nails."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4
+  },
+  {
+   "id": "fd_uhl_bar_league",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The League does what the guards won't.",
+      "Heroes, we call ourselves. Not for the glory.",
+      "Another patrol tonight. Quiet, I hope.",
+      "They laugh at us. Let 'em. We're the ones who keep the lights on.",
+      "A hero needs a helmet. Mine's got a dent from last Tuesday.",
+      "Nobody thanks the patrol. That's how ya know it's workin'."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4
+  },
+  {
+   "id": "fd_uhl_bar_drink",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Another round. And none of that watered stuff.",
+      "Rough week. I'll tell ya about it if ya buy.",
+      "Empire's gone soft. Pour me somethin' hard.",
+      "To the old days, when the roads were safe.",
+      "I'm not drunk. I'm just very, very honest."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 4
+  },
+  {
+   "id": "fd_uhl_talk_who",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "What do ya want, outlander? State yer business.",
+      "Eh? Speak up. We've a patrol to finish.",
+      "Hmph. You lost? Or just nosy?",
+      "Be quick. The League's busy.",
+      "Yeah? What?"
+     ],
+     "then": [
+      {
+       "say": [
+        "Who are you lot?",
+        "What's the League?",
+        "What do you do here?",
+        "Who put you in charge?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "United Heroes League. We keep the cities for the Greenlanders.",
+          "Patriots. Empire-first. Don't tell the guards we do their job better.",
+          "We patrol. We watch. We make sure the Empire stays the Empire.",
+          "Honest folk who've had enough. That's the League."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Why the hate?",
+        "What have foreigners done to you?",
+        "What have you got against them?",
+        "Is it really that bad?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Jobs. Farms. Machines broken. Pick one.",
+          "It's not hate, friend. It's wanting your own town to be yours.",
+          "We've seen what happens when they settle in. First a few. Then the whole street.",
+          "Ask the farmers. Ask the barkeeps."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Never mind.",
+        "I'll leave you to it.",
+        "Forget it.",
+        "Nothing. Carry on."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Aye. Move along.",
+          "Good. Mind yer step.",
+          "Fine by me.",
+          "Right. Off ya go."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_talk_foreign",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Oi. You. Yeah, you. Keep movin' and we'll be friends.",
+      "Don't think I haven't noticed ya. I notice everything.",
+      "Come to buy somethin'? Or just to stand in the road?",
+      "We don't want trouble. Leave quietly and we won't give ya any.",
+      "What now, /RACISTNAME/? Speak yer piece."
+     ],
+     "then": [
+      {
+       "say": [
+        "I mean no harm.",
+        "I'm just passing through.",
+        "I want no trouble.",
+        "I'm only here to trade."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "That's what they all say. Then the shops go missing.",
+          "Passin' through, is it? See that ya do.",
+          "Good. Do that. And don't linger.",
+          "Aye, aye. Everyone's passin' through."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "You don't own the town.",
+        "The guards run this city, not you.",
+        "Who made you the law?",
+        "Move aside."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "The guards are paid to look the other way.",
+          "That's right. The law's the law. We're the ones who act on it.",
+          "You'd best not let the lads hear ya say that.",
+          "Say it again and I'll show ya who runs this street."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Tell me about the League's fort.",
+        "Where's your base?",
+        "How many of you're there?",
+        "Who leads you?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Not for outsiders to know. Get along.",
+          "We have a fort. That's all ya need to know.",
+          "Ask politely and maybe the lads will tell ya. But ya won't like the answer.",
+          "Ha. Nice try."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek",
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone",
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_talk_citizen",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Evenin', friend. Need somethin' from the League?",
+      "Citizen. Good. What can we do?",
+      "Greetings, patriot. Come for a chat, or trouble?",
+      "Aye? We're listenin'.",
+      "Friend. Quiet night."
+     ],
+     "then": [
+      {
+       "say": [
+        "Any trouble lately?",
+        "What's the word on the street?",
+        "Anything I should watch for?",
+        "How are the streets?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Foreigners in the markets. Same as always. We're watchin'.",
+          "Quiet, mostly. Too quiet. That's when they start.",
+          "Some. We deal with it. Don't worry yerself.",
+          "Plenty. Come by the bar later and I'll tell ya."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Can I join the League?",
+        "Do you take recruits?",
+        "I could use a cause.",
+        "What does it take to join?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Ha! Everyone wants to be a hero. Come back when ya've proved yerself.",
+          "Might do. Prove yer patriot and we'll talk.",
+          "Not today, friend. But keep yer eyes open.",
+          "Joinin' is easy. Stayin' alive is the hard bit."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Take care.",
+        "Not today.",
+        "Maybe later.",
+        "Be seeing you."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "And you. Keep the streets safe.",
+          "Aye. Mind yerself.",
+          "Safe walkin', friend.",
+          "Stay sharp, citizen."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "relation": [
+    ">",
+    0
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_neut_again",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You again? Thought I told ya to leave.",
+      "Back so soon, /RACISTNAME/? Didn't learn yer lesson?",
+      "I remember that face. Don't make me remember it worse.",
+      "Ya keep turnin' up. It's startin' to look like a habit.",
+      "Hmph. Still here. Still alive. How very unfortunate."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek",
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone",
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_uhl_neut_town",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Your own base, eh? Foreigners build on Empire sand and expect us to bow.",
+      "You've got walls and a flag now. That doesn't change what ya are.",
+      "I'll be watchin' yer little outpost. Careful ya don't need us.",
+      "Nice fort. Shame if something happened to it."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek",
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone",
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_gp_enemy_generic",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Toll's your boots and your blade. Hand 'em over or we take 'em off the body.",
+      "This is our coast. You walked on it.",
+      "Fresh meat on the road! Spread out, lads!",
+      "Boots first. Then the pockets. Then we talk.",
+      "Hear that? That's the sea tellin' ya to turn back.",
+      "Another traveller who can't read the signs. We painted them in blood.",
+      "Get 'em, boys. We've bills to pay."
+     ]
+    }
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_gp_enemy_unarmed",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "No steel on ya? Fists, then. Let's see how long ya last.",
+      "Bare hands. Good. I haven't had a proper workout all week.",
+      "Teach 'em, lads. No blades. Let 'em earn it.",
+      "A man with no sword in this country.",
+      "Fists up, stranger. We'll take it slow. For fun."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_gp_enemy_wounded",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Look at the state of ya.",
+      "Blood on yer shirt already. Someone's softened ya for us.",
+      "A hurt traveller. Sloppy. I'd feel sorry, but I left that in the surf.",
+      "One more hit and ya sink. Make it easy on yerself.",
+      "Quit swayin'. You'll hurt yerself."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_gp_enemy_shek",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A Shek on our coast! Cut him down to size, lads!",
+      "Big fella. Hit the knees, then the rest.",
+      "Tall man, tall bounty. Get 'im!",
+      "Shek, eh? Nobody told us ya were comin'. We'd have baked a cake.",
+      "Big enough to be worth two."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_gp_enemy_hive_skel",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hiver. Hit it quick before it gets a friend.",
+      "A tin man on the beach. Unscrew his head, lads!",
+      "Strange folk. Doesn't matter. They bleed or they rust, we win.",
+      "No hive on our sand. Go home, bug!",
+      "Scrap or bugs. Either way we're gettin' paid."
+     ]
+    }
+   ],
+   "target_races": [
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone",
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_gp_enemy_bounty",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Look at that. A walkin' purse. Cats on yer head, friend.",
+      "We can't cash ya. But we can sell yer boots.",
+      "Wanted, eh? Then we'll save the law the trouble.",
+      "That bounty's a fine reason to say hello."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 999
+    }
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_gp_neut_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Empire coin-counter. Yer people never pay for passage, do ya?",
+      "Cities man. Walk wide. The coast isn't yours.",
+      "You UC lot think the sea is a road.",
+      "The Empire sent another one. Ha.",
+      "I know that smell. Cats and cowardice."
+     ]
+    }
+   ],
+   "target_factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_gp_neut_gen",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Stay on the path, stranger. The sand's got more teeth than we do.",
+      "Eyes forward. Or we'll make 'em forward for ya.",
+      "Walk on. We might be in a good mood.",
+      "You've got decent boots. Pity.",
+      "Lookin' for trouble? Round here it finds ya.",
+      "I haven't killed anyone today. Don't spoil my record."
+     ]
+    }
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3
+  },
+  {
+   "id": "fd_gp_neut_wounded",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You look like the sea spat ya out. Rest, or die. Either way, not on our beach.",
+      "Bleedin' on the sand. We've got buzzards for that.",
+      "Hurt, aren't ya? Then you'll be quiet.",
+      "Don't bleed on my boots. They're new."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_gp_defeat",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "And stay down! Next time bring friends.",
+      "Taxes paid. Come back with more.",
+      "Tell the sea we say hello.",
+      "Good fight. The fun parts are always short.",
+      "Pick 'em clean, boys. Leave the scraps.",
+      "They don't make travellers like they used to."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 2
+  },
+  {
+   "id": "fd_gp_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Dustcoat's nice. I'll take it. And the boots.",
+      "Pockets first. The dead don't need 'em.",
+      "Whatever washes up belongs to us.",
+      "Here's the haul. Count it. Don't skim.",
+      "I'll have this and that, thanks.",
+      "Bones, boots, and a few cats."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 2
+  },
+  {
+   "id": "fd_gp_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Body on the sand. Fresh? Check the pockets.",
+      "Either dead or nappin'. Either way, we're helpin'.",
+      "Somebody's down. Let's see what they dropped.",
+      "Lucky find. Stand back, I'm first."
+     ]
+    }
+   ],
+   "chance": 40,
+   "repeat": 2
+  },
+  {
+   "id": "fd_gp_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Make it quick. We're busy robbing.",
+      "Eh? You want somethin'?",
+      "What do ya want? Our patience is thin as the tide.",
+      "Be glad I'm talkin'. Usually the sabre does it.",
+      "Talk fast, or we'll talk with steel."
+     ],
+     "then": [
+      {
+       "say": [
+        "Who are you?",
+        "What do you want?",
+        "What's this place?",
+        "Who leads you?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Grass Pirates. Coast's ours. Everything in it too.",
+          "Pirates by trade. The rest is a long story and a short future.",
+          "We want yer stuff. It's simple.",
+          "Pirates. Dustcoats, good knives. That's all ya need."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "You hurt many travellers?",
+        "Why attack travellers?",
+        "Is it only about money?",
+        "Do you ever let anyone go?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Only the ones that fight back. Which is most of 'em.",
+          "Food doesn't walk to us. We go to it.",
+          "A man's gotta eat. And drink.",
+          "Ha. Ask the ones who didn't answer."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I'll be going.",
+        "Never mind.",
+        "Forget it.",
+        "I've heard enough."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Smart. Walk wide.",
+          "Go on. The tide's comin'.",
+          "Don't look back, now.",
+          "Fine. Ya won't get far."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "fd_gp_witness",
+   "event": "EV_WITNESS_GENERIC_ASSAULT",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ha! A brawl! Who's winning?",
+      "Don't mind us. We're just watchin'.",
+      "Bet on the big one. Dibs on the winner's boots.",
+      "Let 'em at it. Fewer for us to rob."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 2
+  },
+  {
+   "id": "fd_hno_neut_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're one of them. Okranite. Don't come near me. I know what you do.",
+      "Holy Nation, aren't you? I'd rather starve than say a word to you.",
+      "Paladin? Inquisitor? Whatever you are, I won't go back.",
+      "Not again. I'm not going back.",
+      "Get away from me. I know the rags."
+     ]
+    }
+   ],
+   "target_factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 36,
+   "repeat": 3
+  },
+  {
+   "id": "fd_hno_neut_gen",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Please, I'm not a danger. Just passing.",
+      "Do you have any food? Any at all? I haven't eaten in days.",
+      "Quiet. Keep your voice down. They might be following.",
+      "I just want to go home.",
+      "I've been walking for days. Have you seen anyone else? Anyone in robes?",
+      "Please don't hurt me. I escaped, that's all."
+     ]
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_hno_neut_wounded",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're hurt too. They get everyone in the end.",
+      "That looks bad. I can't help.",
+      "Another cast-off. We make a fine pair, you and I.",
+      "Sit down before you fall. I can't carry you."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_hno_neut_unarmed",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You've no weapon either? Wise. Or desperate.",
+      "Hands empty. Good. I don't want any trouble.",
+      "Neither of us has a blade. Let's keep it that way.",
+      "Don't come closer. I might do something stupid."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_hno_neut_skel",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A Skeleton? The Okranites hate them... so you can't be all bad.",
+      "Metal and bones. They said you weren't alive. They said a lot of things.",
+      "You're not one of them. Good. Neither am I, now.",
+      "Even a machine is better than a priest. Don't hurt me."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_hno_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Stay back! I mean it! I'll fight!",
+      "Not me! You won't take me back!",
+      "Please! Just let me go! I've done nothing!",
+      "You'll drag me to Rebirth over my corpse!",
+      "I'm sorry. I really am. I have to survive."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 2
+  },
+  {
+   "id": "fd_hno_enemy_hungry",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "I need food. Anyone's food. Yours, even if I have to take it.",
+      "Don't take this personally. I'm starving.",
+      "My family are somewhere. I need to live to find them.",
+      "It's me or you. I choose me."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 2
+  },
+  {
+   "id": "fd_hno_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thank you. Thank you for not handing me over.",
+      "You're kind. Kinder than anyone I've met.",
+      "I still look over my shoulder. But less, with you around.",
+      "Without you I'd be on a pole by now."
+     ]
+    }
+   ],
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_hno_defeat",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "I'm sorry. I'm so sorry. Please be alive.",
+      "I did what I had to.",
+      "They fought back. I only wanted to eat.",
+      "Don't look at me like that. I'd be on a cross otherwise."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 2
+  },
+  {
+   "id": "fd_hno_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Food. Any food. Please let there be food.",
+      "Boots. Warm things. They won't mind.",
+      "I'll leave something. Not much. I'll leave something.",
+      "Sorry. I'm so sorry. I need this."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 2
+  },
+  {
+   "id": "fd_hno_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Is that one of mine? Please, not one of mine.",
+      "Another poor soul. Maybe I can wake them.",
+      "Don't be dead. Don't be dead.",
+      "Looking for family. Looking in every face."
+     ]
+    }
+   ],
+   "chance": 40,
+   "repeat": 2
+  },
+  {
+   "id": "fd_hno_witness",
+   "event": "EV_WITNESS_LOOTING_ALLY",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Leave them alone! They've nothing left!",
+      "Is that necessary? Haven't they suffered enough?",
+      "Thief! Brute!",
+      "Please, stop. Can't you see?"
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_enemy_gen",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The desert is quiet. We'll leave you quiet.",
+      "No words. Steel.",
+      "You've walked into the wrong dunes.",
+      "Fast, silent. You'll hear nothing.",
+      "Cloud takes the weak. We're the cloud.",
+      "Prepare. I'd rather not do this twice.",
+      "Sand forgets everything. So will you."
+     ]
+    }
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_enemy_skel",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A tin man out here. Wrong company.",
+      "Skeleton. Good steel in that frame. Mine.",
+      "Skeletons rarely bleed. We'll find out.",
+      "Break the joints. Quick.",
+      "Good steel under that frame. Hold still."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_enemy_shek",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A Shek. Strong, loud, slow. Hit and run.",
+      "Cut the knees. Let the sand do the rest.",
+      "Honour won't save you from a blade you don't see.",
+      "A big target. Easy."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_enemy_hive",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hiver. Soft hands, soft mind. Kill the drones first.",
+      "You're far from your queen.",
+      "Hive thing. Quiet it.",
+      "No song here. Only wind."
+     ]
+    }
+   ],
+   "target_races": [
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone"
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_enemy_wounded",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You bleed already. Let us finish.",
+      "The sand takes the weak. It's taking you.",
+      "One strike. Maybe two. No more.",
+      "Don't fight. It only prolongs.",
+      "A wounded one. Quick. Mercy by edge."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_enemy_unarmed",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "No blade? No matter. We have enough for both.",
+      "Unarmed in the Black Desert. A brave grave.",
+      "Take your fists, then. We'll take your life.",
+      "Defenceless. We don't care. Strike."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_enemy_carry",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You carry a body. We'll carry two soon.",
+      "Burden on your back. Slow. Easy.",
+      "Drop the sleeper. Or die with him.",
+      "Taking someone home? You won't."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_enemy_outnum",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Too many. Pull back. Pull back to the ridge.",
+      "They multiply. Fall back and regroup.",
+      "Not today. Disperse. Hide in the dunes.",
+      "Run. Run and live."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_neut_warn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Turn back. The dunes belong to the cloud.",
+      "Strangers die here. Not by us. Maybe.",
+      "Black Desert is no road. Go around.",
+      "We are watching. We don't need to speak.",
+      "The wind is wrong today. Leave before it turns."
+     ]
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_bdn_neut_skel",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A tin man walking home? Or following us?",
+      "A skeleton on foot. Is the road to your people closed?",
+      "Skeleton. The rain doesn't burn you as it burns us.",
+      "We share the desert, not the road."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_bdn_neut_acid",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "If the rain turns, cover your face. It won't forgive you.",
+      "Cloud overhead. If it falls, run.",
+      "Tread careful in the dunes. This ground is not kind.",
+      "Take shelter when the sky turns."
+     ]
+    }
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 3
+  },
+  {
+   "id": "fd_bdn_defeat",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Done. Leave them. The sand will have the rest.",
+      "Quiet work. Quiet end.",
+      "Strike clean. Leave nothing but footprints.",
+      "Another sleeps. Back to the dunes.",
+      "Quick. As it should be."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Take the steel. Take the coin. Leave the rest.",
+      "Blades first. Everything else second.",
+      "Dead men carry no use. Living ninja do.",
+      "Check the lining. They hide coin there.",
+      "Light work. Move."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A body. Fresh. Be careful.",
+      "Down. Alive? Check. Then decide.",
+      "Someone beat us to him.",
+      "Quiet. Search. Then leave."
+     ]
+    }
+   ],
+   "chance": 40,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "State your purpose, stranger.",
+      "You have audacity, speaking to us.",
+      "Why do you approach? We did not call.",
+      "Speak quickly. The cloud is moving.",
+      "Few speak to us. Fewer live."
+     ],
+     "then": [
+      {
+       "say": [
+        "Who are you?",
+        "What do you want?",
+        "What are you doing here?",
+        "Are you a clan?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Cloud Ninjas. We take what we need.",
+          "Nobody. Everybody. A rumour on the wind.",
+          "We want the desert quiet. Strangers disturb it.",
+          "Ask the wind. It knows more."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Why do you live here?",
+        "What's this place to you?",
+        "How do you survive here?",
+        "Is it safe?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Nobody else wants it. Which suits us.",
+          "Because the acid keeps fools out. And we aren't fools.",
+          "Home is where the blade is sharp.",
+          "The Black Desert is hard. So are we."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I'll go.",
+        "Never mind.",
+        "Forget it.",
+        "Peace, then."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Go. Don't linger.",
+          "Wise. Walk quietly.",
+          "Good. The cloud will forget you.",
+          "Then vanish."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "fd_bdn_witness",
+   "event": "EV_WITNESS_GENERIC_ASSAULT",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A fight in our dunes. Mind the cloud.",
+      "Let them kill each other. We'll watch.",
+      "Quiet. Learn their style.",
+      "Foolish. Noise brings the others."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_thief",
+   "event": "EV_THIEF_CAUGHT_STEALING_FROM_ME",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thief. The cloud takes more than coin.",
+      "You touched what's ours. Your hand is forfeit.",
+      "Steal from ninja? Brave. Foolish.",
+      "A thief won't leave the desert."
+     ]
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_bdn_bounty",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A price on your head. The cloud buys and sells.",
+      "Wanted? Then you're one of us, almost.",
+      "Money walks. We should collect it.",
+      "A bounty is a map. And a target."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 2
+  },
+  {
+   "id": "fd_rs_neut_cage",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Please. The cage. There must be a way to open it.",
+      "You're not one of the paladins. Are you? Then listen. I don't belong in here.",
+      "Don't walk past. They never look at us. Look at me.",
+      "Is there a key on you? A pick? Anything? I'll do anything.",
+      "Nobody comes. Nobody ever comes. Why are you looking?",
+      "Quiet. Come closer. I can say something to you the others can't hear."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_neut_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Shek, once. Now a pair of hands for their wall. Don't pity me.",
+      "They took my spear and told me it was prayer. Stranger, I would sooner break stone with my teeth.",
+      "I'm not meant for a cage. I was meant for a battle. Remember that, if you see my people.",
+      "Shek don't beg. I'm asking. That should tell you how it is.",
+      "Word is, my pride is a sin. I say it's the only thing they can't lock up.",
+      "Strength is no use if the bars are strong."
+     ]
+    }
+   ],
+   "races": [
+    "Shek"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_neut_hive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "No queen here. No hum. It's very quiet.",
+      "I was made to work. They say work frees the soul. I have worked a long time. I'm not free.",
+      "You smell like open air. I had forgotten the smell.",
+      "My head is full of silence. Please. Say something warm.",
+      "I don't want to be reborn. I want to be Hive. They don't understand the difference.",
+      "We were told to be thankful. I try. It feels like eating sand."
+     ]
+    }
+   ],
+   "races": [
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_neut_green",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "I was a farmer. I said one wrong thing. Now I carry stone. Funny, isn't it?",
+      "I prayed every night. Even in here. Okran doesn't answer the way they say.",
+      "Please, tell my family if you see them. I won't give a name. They wouldn't forgive me.",
+      "People say suffering is a lesson. I've learned it.",
+      "I used to think this place was for the wicked. Now I know who it's for.",
+      "I'm not wicked. I'm only poor."
+     ]
+    }
+   ],
+   "races": [
+    "Greenlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_neut_scorch",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Desert-born, dragged north. The work eats me. The rest is eaten by the quiet.",
+      "I walked across the wrong border. That's all I did.",
+      "They call it penance. I call it a mistake that keeps going.",
+      "If you pass the sands, tell them I'm alive. Don't tell them where.",
+      "I came in brown from the sun. Now I'm grey with dust. They say that's clean.",
+      "Three seasons now. Or four. I lost count when they took the sun away."
+     ]
+    }
+   ],
+   "races": [
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_neut_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Paladin. Please. I've done my work. I've said the words. Please.",
+      "I'm not looking at you. See? I'm not looking.",
+      "Whatever I did, I repent. Whatever I didn't do, I repent twice.",
+      "Yes, sir. No, sir. I know the Flame. I know the Flame.",
+      "Don't hurt me. I'm very quiet. I'm a very good slave.",
+      "May Okran guide you. Say it for me. I would say it myself but my mouth is dry."
+     ]
+    }
+   ],
+   "target_factions": [
+    "The Holy Nation"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 33,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_neut_skel",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "I heard you have no soul. They say that about us, too, in here. It's a short list.",
+      "A Skeleton. They keep you out of Rebirth.",
+      "Metal and bone, walking free. I envy that.",
+      "No cage will hold you for long. Remember me when you pass.",
+      "Do they treat you like they treat us? No. They treat you worse."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_neut_wounded",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're bleeding. They'd have you cleaned and back to work by dawn.",
+      "That looks bad. I've no cloth to give. They took even that.",
+      "Get a healer. Hurry. Or they'll find you and fix you their way.",
+      "Hold on. Please hold on. Somebody should survive today."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_neut_unarmed",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "No weapon? They took yours too. Or you never had one.",
+      "Good. If you were armed I'd be afraid. Now I'm only wary.",
+      "Without a blade you're as helpless as we are.",
+      "Empty hands. We have those in common."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_neut_slave",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You wear shackles too? Then we're the same. Stay quiet.",
+      "Another prisoner. How long have you been dragged around?",
+      "Don't believe what they say. It isn't penance. It's only work.",
+      "Walk slow. Look tired. They like us tired."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 36,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_neut_carry",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Is that a body or a person? Put them down gently.",
+      "Are you carrying him to the paladins? Don't. Take him anywhere else.",
+      "I hope you aren't selling him.",
+      "Who's that over your back? Do they have a name? Someone should."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 36,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Another one. Is he breathing?",
+      "They go down fast here. Faster than they get back up.",
+      "Don't look. If you don't look, it hasn't happened.",
+      "Somebody fell. Let them be. We can't help.",
+      "I hope they're asleep. Please be asleep."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 45,
+   "repeat": 2
+  },
+  {
+   "id": "fd_rs_torture",
+   "event": "EV_SCREAMING_TORTURE",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Not again! Please not again!",
+      "No more! I've said it! I've said all the prayers!",
+      "Stop! Okran, make it stop!",
+      "Mercy! Please! Anything! Mercy!",
+      "AAAAAAH! I repent! I repent!"
+     ]
+    }
+   ],
+   "chance": 100,
+   "repeat": 2
+  },
+  {
+   "id": "fd_rs_marked",
+   "event": "EV_MARKED_FOR_DEATH",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Please, no! I did what you asked!",
+      "Not me! Take the other one!",
+      "I repented! I was reborn! I swear!",
+      "Don't drag me out there! Please!",
+      "They're coming for me. They're all looking."
+     ]
+    }
+   ],
+   "chance": 100,
+   "repeat": 2
+  },
+  {
+   "id": "fd_rs_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You came back. I thought you would not.",
+      "I owe you everything. Everything I've left, which isn't much.",
+      "Free air tastes strange. Thank you for it.",
+      "I will follow, if you will let me. Anywhere. Anything.",
+      "Every night I thought of the day someone would open the gate."
+     ]
+    }
+   ],
+   "chance": 33,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_heal_start",
+   "event": "EV_BEING_HEALED_START",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Gentle... gentle... nobody has touched me gently in so long.",
+      "What are you doing? Oh. Thank you.",
+      "Is this a trick? No, it's not.",
+      "I thought my body had forgotten what kindness was."
+     ]
+    }
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2
+  },
+  {
+   "id": "fd_rs_heal_end",
+   "event": "EV_BEING_HEALED_FINISHED",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "I can stand. I can stand again.",
+      "Better. Much better. I'll remember this.",
+      "You didn't have to. Nobody has to. You did.",
+      "I'll repay you. I don't know how yet."
+     ]
+    }
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2
+  },
+  {
+   "id": "fd_rs_talk_place",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Please keep your voice down. They listen.",
+      "Are you a guard? No. Then what do you want?",
+      "Yes? Speak quickly, before someone notices.",
+      "Another stranger. What do you want from a slave?",
+      "I can't talk long. They count the quiet."
+     ],
+     "then": [
+      {
+       "say": [
+        "What's this place?",
+        "What's Rebirth?",
+        "Where am I?",
+        "Tell me about Rebirth."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "They call it a place of penance. A gentle word for a hard thing.",
+          "The Holy Nation sends the unclean here to be reborn.",
+          "You're in the pit. Work, pray, repeat. Then be reborn, they say, when you're dead.",
+          "A school for the lost. Lessons come with a lash."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Who runs it?",
+        "Who guards you?",
+        "Who's in charge here?",
+        "Who do I look out for?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Paladins, mostly. And the Inquisitors, when they feel like it.",
+          "Holy men with swords and long speeches.",
+          "Okran's servants. They like to say they love us.",
+          "Don't ask me names. Names cost."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Take care.",
+        "I'll go.",
+        "Hold on.",
+        "Stay strong."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "And you. Be careful where you step.",
+          "Go quickly. Don't look back.",
+          "Say a prayer for me. Any prayer.",
+          "We'll endure. We always do."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_talk_free",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Is that a key I hear? Or just hope?",
+      "You can speak freely. Nobody listens to a slave.",
+      "Please. Tell me something good.",
+      "I see you looking. Will you help me?",
+      "Yes? Do you need something? I have nothing, but I will try."
+     ],
+     "then": [
+      {
+       "say": [
+        "Do you want out?",
+        "Do you want to be free?",
+        "I could help you.",
+        "Would you leave if you could?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "More than air. More than water. Yes.",
+          "Of course. Don't tease me. Not today.",
+          "Please, yes. Break the cage, break the chain, I don't care how.",
+          "Every night I pray for one thing. This is it."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "It would be dangerous.",
+        "You would have to run.",
+        "It's not easy.",
+        "The guards will chase you."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "I know. Danger is all I have. Danger with freedom is better.",
+          "I can run. Show me where.",
+          "Let them chase. I'll run until my legs fail.",
+          "A short life outside beats a long one in here."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I can't now.",
+        "Not yet.",
+        "Wait here.",
+        "Forget I asked."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "I'll wait. What else can I do?",
+          "Then I'll wait. I'm good at waiting.",
+          "Please come back. Please.",
+          "Of course. I understand. I'll hope."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_talk_why",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Don't stare. What do you want to know?",
+      "Ask, if you must. I have no secrets left.",
+      "You want my story? Everyone has one in here.",
+      "I'm only here because they said I should be.",
+      "Yes? Quick. I need to keep working."
+     ],
+     "then": [
+      {
+       "say": [
+        "Why are you here?",
+        "What did you do?",
+        "What was your crime?",
+        "How did you end up here?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "I crossed a line I couldn't see. They saw it for me.",
+          "I raided where I shouldn't have.",
+          "Wrong faith, wrong place, wrong time.",
+          "I disagreed with a priest. That's all the trial there was."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Are there others like you?",
+        "Are you alone here?",
+        "How many of you're there?",
+        "Who else is here?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Hundreds. All kinds. Only the Skeletons are spared. They are spared the pit.",
+          "We're many. We don't speak.",
+          "Enough that nobody knows each other. They like it that way.",
+          "Every race. Every sin. It's a very long list."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I'm sorry.",
+        "That's hard.",
+        "I understand.",
+        "Good luck."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Sorry doesn't loosen chains. But thank you.",
+          "It is. Thank you for noticing.",
+          "I hope you do. I really hope so.",
+          "Luck is a stranger here. But thank you."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "fd_sb_enemy_a",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "AIYAAAAH! AIYAAAAH! FLOOOOP!",
+      "EEEEEEK! EEEEEK! /SHRIEK/!",
+      "/SHRIEK/!! /SHRIEK/!! AAAAAAAAH!",
+      "AIEEEE! AIEEEE! COME! COME! COME!",
+      "FLOOP! FLOOP! FLOOOOOOP!",
+      "AAAAAAAAH! HA HA HA HA!"
+     ]
+    }
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_sb_enemy_b",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "HEEEEE! HEEEE! TEETH! TEEEEETH!",
+      "AIYAAAH! MEAT! MEEAT! MEEEEAT!",
+      "ARR ARR ARR ARR! /SHRIEK/!",
+      "EEEEK! EEEEK! SNIFF! SNIFFFFF!",
+      "SQUEEE! SQUEEE! GIMME! GIMME GIMME GIMME!",
+      "AAAAAGH! MINE! MINE MINE MINE!"
+     ]
+    }
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_sb_enemy_shek",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "AIYAAAH! BIIIG! BIIIIG! /SHRIEK/!",
+      "EEEEK! TALL! TAAAAALL! FLOOP!",
+      "AIEEE! BIG MEAT! BIG BIG BIG MEAT!",
+      "/SHRIEK/! /SHRIEK/! BIIIIG ONE!",
+      "FLOOOP! HE'S HUGE! AIYAAAAH!"
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_sb_enemy_skel",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "RATTLE! RATTLE! AIYAAAH! RATTLEBONES!",
+      "EEEEK! TIN! TIIIIN! FLOOP!",
+      "BONES! BOOOONES! AIEEEE!",
+      "CLANK! CLANK! /SHRIEK/!",
+      "AAAAAH! NO MEAT! NO MEAT! KILL IT!"
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_sb_enemy_hive",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "EEEEK! BUG! BUUUUG! FLOOP!",
+      "AIYAAAH! STINGER! STINGER!",
+      "/SHRIEK/! HIVE! HIIIIVE! AAAAAH!",
+      "BZZZZ! BZZZZ! AIEEEE!",
+      "FLOOP! FLOOP! SQUISH THE BUG!"
+     ]
+    }
+   ],
+   "target_races": [
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone"
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_sb_enemy_wounded",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hnnn. Hnnn. EEEK? HURT? HURT!",
+      "SNIFF! SNIFF! BLOOD! BLOOOOD!",
+      "AIYAAAH! WEAK! WEAK ONE! /SHRIEK/!",
+      "EEEEEK! DOWN! DOWN IT GOES! HA HA HA!",
+      "HEHEHEHE! SOFT! SOOOOFT!"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_sb_enemy_unarmed",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "EEK? NO STICK? NO STICK! AIYAAAH!",
+      "HEHEHE! EMPTY HANDS! EMPTY EMPTY!",
+      "FLOOP? FLOOOOP! GOOD! GOOD GOOD!",
+      "/SHRIEK/? /SHRIEK/? HAHAHAHA!"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_sb_neut_nomad",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hnnn. Eee. Eee. Friend. FRIEND.",
+      "Hmm. Eee? ... Eee. Okay okay okay.",
+      "SNIFF. SNIFFFF. Eee. Nomad? NOMAD. Eeee.",
+      "Hnn hnn hnn. Pat pat. Good."
+     ]
+    }
+   ],
+   "target_factions": [
+    "Nomads"
+   ],
+   "player_only": true,
+   "chance": 36,
+   "repeat": 3
+  },
+  {
+   "id": "fd_sb_neut_sniff",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hnnn? Hnnn? SNIFF. SNIIIFF.",
+      "Eeee? EEEEK? ... eeek.",
+      "FLOOP? ... floop.",
+      "/SHRIEK/? /SHRIEK/?",
+      "Mmm. Mmmm. Squeeeee? ... nnn."
+     ]
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_sb_defeat",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "HAHAHAHA! FLOOP! FLOOP! DOWN! DOWN!",
+      "EEEEK! WE WON! WE WON WE WON WE WON!",
+      "AIYAAAAAAAH! AIYAAAAH!",
+      "/SHRIEK/! /SHRIEK/! MEAT! MEEAT!",
+      "SQUEEE! SQUEEE! QUIET NOW! QUIET!"
+     ]
+    }
+   ],
+   "chance": 70,
+   "repeat": 2
+  },
+  {
+   "id": "fd_sb_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "MINE! MINE! SHINY! SHINYYY!",
+      "EEEEE! BOOTS! BOOTS! HEHEHE!",
+      "SNIFF! SNIFF! CRACK! MMMM!",
+      "GIMME! GIMME! GIMME GIMME!",
+      "OOOOH! POCKETS! POCKETS HAVE THINGS!"
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 2
+  },
+  {
+   "id": "fd_sb_loot_weapon",
+   "event": "EV_LOOTING_WEAPON_ONLY",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "STICK! STICK! FLOOOP!",
+      "SHARP! SHAAAARP! EEEK!",
+      "MY STICK NOW! MINE MINE!",
+      "HEHEHE! BIGGER STICK! BIGGER!"
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 2
+  },
+  {
+   "id": "fd_sb_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "EEEEK? EEEK? ... SNIFF. SNIFF.",
+      "Hnnn. Hnnn. Sleeping? DEAD? /SHRIEK/?",
+      "POKE! POKE! HEHEHE! POKE POKE!",
+      "FLOOP! FLOOP! DINNER? DINNER!"
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 2
+  },
+  {
+   "id": "fd_sb_witness",
+   "event": "EV_WITNESS_LOOTING_ALLY",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "NO! NO! MINE! THAT'S MINE! AIYAAAH!",
+      "THIEF! THIEF! EEEEEEK!",
+      "/SHRIEK/! /SHRIEK/! LEAVE HIM! LEAVE!",
+      "BAD! BAD! BAAAAD! AIEEEEE!"
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 2
+  },
+  {
+   "id": "fd_fm_enemy_a",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Fogmen"
+   ],
+   "lines": [
+    {
+     "say": [
+      "/WREE/! /WREE/! /WREE/!",
+      "Hmmmmmm. Hmmmmm. /WREE/!",
+      "Wreeeeeeeeee! Wreeeeee!",
+      "Hnnn... hnnnn... AAAAAAAH!",
+      "/WREE/? /WREE/! /WREE/! /WREE/!",
+      "Mmmmmmm. MMMMMMMMM!"
+     ]
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_fm_enemy_b",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Fogmen"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Come. Come. Come come come.",
+      "Pole. Pole. Pole is waiting.",
+      "Hmm hmm hmm hmm. Hmmm. Hmm.",
+      "Down. Down. Take it down.",
+      "Meat. Meat. Meat walks.",
+      "/WREE/. Quiet now. /WREE/."
+     ]
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_fm_enemy_skel",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Fogmen"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Nnn. Nnn. Cold. Cold one.",
+      "Hollow. Hollow. Hollow thing.",
+      "/WREE/? /WREE/? No song in it.",
+      "No warm. No warm. Hnn."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_fm_enemy_hive",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Fogmen"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Wree? Wree? ... Hum? Hum?",
+      "Hmmm. Hmmmm. Hum with us? Hum?",
+      "Kin? Kin? ... Wreeeee!",
+      "Hum, hum. Wrong hum. Wrong!"
+     ]
+    }
+   ],
+   "target_races": [
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone"
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_fm_enemy_wounded",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Fogmen"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Warm. Warm. Warm and falling.",
+      "Hmmm. Slow now. Slow slow slow.",
+      "Bleeds. Bleeds. /WREE/!",
+      "Down soon. Down down down."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 80,
+   "repeat": 2
+  },
+  {
+   "id": "fd_fm_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Fogmen"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Mmm. Mm. Hmmmm.",
+      "/WREE/? ... /WREE/.",
+      "Hum. Hum. Hnnnn.",
+      "Wree... wree...",
+      "Stay. Stay. Hnnn."
+     ]
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_fm_ragdoll_b",
+   "event": "EV_I_SEE_RAGDOLL",
+   "factions": [
+    "Fogmen"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Asleep. Asleep. Carry. Carry.",
+      "Pole. Pole. Pole is hungry.",
+      "/WREE/! /WREE/! Take it! Take it!",
+      "Lift. Lift. Lift together.",
+      "Warm, warm. Hurry hurry hurry."
+     ]
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_fm_ragdoll_c",
+   "event": "EV_I_SEE_RAGDOLL",
+   "factions": [
+    "Fogmen"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hnnn? Hnnn? ... Cold. No. Leave it.",
+      "Not for the pole. No song left in it.",
+      "Mmm. Gone. Gone gone gone.",
+      "/WREE/? ... /WREE/."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 2
+  },
+  {
+   "id": "fd_fm_defeat",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Fogmen"
+   ],
+   "lines": [
+    {
+     "say": [
+      "/WREE/! /WREE/! Down. Down.",
+      "Pole! Pole! Take to the pole!",
+      "Mmmm. Good. Good. Quiet now.",
+      "Hnnn. Hnnn. It sleeps.",
+      "Wreeeee! Wreeeeee!"
+     ]
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_fm_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "factions": [
+    "Fogmen"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Shiny. Shiny. Hmmm.",
+      "Take. Take. Pretty pretty.",
+      "Hnnn. Hang it. Hang it up.",
+      "Bits. Bits. Bits for the pole."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 2
+  },
+  {
+   "id": "fd_fm_eat_b",
+   "event": "EV_EATING_SOMETHING_SOUNDS",
+   "factions": [
+    "Fogmen"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Nnn. Nnn. Nnn. Wet. Wet.",
+      "Mmmmmm. Hnnn. Mmmmm.",
+      "*slurp* Hnnn. *slurp*",
+      "Mm. Mm. Mm. Mm.",
+      "Chew chew chew. Hum hum hum."
+     ]
+    }
+   ],
+   "chance": 85,
+   "repeat": 3
+  },
+  {
+   "id": "fd_fm_worship_b",
+   "event": "EV_WORSHIPING_SOMETHING",
+   "factions": [
+    "Fogmen"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Wreeeeeee. Wreeeeee. Wreeeee.",
+      "Hmmmmmmm. Hmmmmmmm. Hmmmmmmm.",
+      "Song. Song. Song. Song.",
+      "Pole. Pole. Pole. Pole.",
+      "/WREE/. /WREE/. /WREE/."
+     ]
+    }
+   ],
+   "chance": 85,
+   "repeat": 3
+  },
+  {
+   "id": "fd_rs_neut_bounty",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A price on you? Then you know what a cage is for.",
+      "Wanted men end up in here.",
+      "They'd love to have you here. A new back for the work.",
+      "I hope you run far. The ones who get caught come to us."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 999
+    }
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_gp_neut_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A Shek on the coast. Hmph. Keep your hands off the goods.",
+      "Big man. Big feet. Don't trample the beach.",
+      "Shek, eh? I've seen better fighters get lost out here.",
+      "Heh. You'd make a fine door. Just don't stand in ours."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_hno_neut_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A Shek. I saw your kind in the pit. Strong. Very strong.",
+      "Don't hurt me. I only worked beside your people.",
+      "Shek aren't like they say. Not all.",
+      "If you're escaped as well... keep your head down. They track the tall ones first."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 3
+  },
+  {
+   "id": "fd_bdn_neut_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Black Desert Ninjas"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Shek in the dunes. Lost, or hunting. Which is it?",
+      "A tall one. Heavy steps. We heard you from a league away.",
+      "The Shek cross the sand to prove something. Not here.",
+      "A warrior. Fine. Hold your blade low and we'll pass."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3
+  },
+  {
+   "id": "fd_sb_enemy_carry",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shrieking Bandits"
+   ],
+   "lines": [
+    {
+     "say": [
+      "EEEK! SLEEPER! SLEEPER! GIVE! GIVE!",
+      "AIYAAAH! MEAT ON THE BACK! MEAT MEAT MEAT!",
+      "/SHRIEK/! WHO'S THAT? WHO'S THAT?",
+      "SNIFF! SNIFF! SLEEPING! SLEEPING ONE! MINE!"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 75,
+   "repeat": 2
+  },
+  {
+   "id": "fd_fm_enemy_carry",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Fogmen"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Warm one. Warm one on the back. Give.",
+      "Pole! Pole! Give the sleeper to the pole!",
+      "/WREE/! /WREE/! Mine. Mine. For the fog.",
+      "Hmmm. Hmmmm. Yes. Yes. Share the sleeper."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 80,
+   "repeat": 2
+  },
+  {
+   "id": "fd_uhl_bar_thieves",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Caught a lad pickin' pockets in the square. Not a Greenlander, mind.",
+      "Every cart that goes missing, ask who was nearby.",
+      "Lock yer door. Lock yer shed. Lock yer daughters, if ya've got 'em.",
+      "The guards write it down and then lose the paper. We write it down and then act.",
+      "Honest folk shouldn't have to carry blades to buy bread."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4
+  },
+  {
+   "id": "fd_uhl_ally_b",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "United Heroes League"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Another day, another round of /RACISTNAME/s to watch.",
+      "Oi, you. Yeah, you. You're one of the good ones. We could use another sword.",
+      "Word is you've no love for the foreigners either. Come by the bar, we'll toast to that.",
+      "Citizens like you're why we still do this. Cheers.",
+      "Take a seat when you can. The League doesn't forget a friend."
+     ]
+    }
+   ],
+   "relation": [
+    ">",
+    25
+   ],
+   "chance": 24,
+   "repeat": 3
+  }
+ ]
+}

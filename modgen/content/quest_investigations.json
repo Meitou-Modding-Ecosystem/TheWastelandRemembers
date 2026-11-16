@@ -1,0 +1,2827 @@
+{
+ "pack": "quest_investigations",
+ "mod": "LivingWastelandOutlaws",
+ "quests": [
+  {
+   "id": "iq_road",
+   "offer": {
+    "factions": [
+     "Fisher"
+    ],
+    "chance": 40,
+    "say": [
+     "Two of ours walked the east road to market and never arrived. No bodies, no carts, no word. It is the third time this month.",
+     "The flood road takes people and gives nothing back. Not even bones. Somebody is doing it neatly.",
+     "My cousin took the east road with a sack of dried fish. The sack came back. She didn't. Ask along the road who's taking walkers.",
+     "Walkers vanish where the road meets the flats. We can't spare men to watch it. You look like you could.",
+     "Somebody is picking that road clean of travellers. Ask the traders, ask the drifters."
+    ],
+    "accept": [
+     "Who saw it first?",
+     "I will ask along the road.",
+     "Where do I start?",
+     "I will find who it is."
+    ],
+    "decline": [
+     "Not my road.",
+     "No.",
+     "Ask the guards.",
+     "I have other work."
+    ],
+    "accepted": [
+     "Ask the Guild's wagon drivers, then the drifters who camp off the road. Somebody saw a lantern or a cart. Come back with a name.",
+     "Traders first, drifters second. Then the Anti-Slavers, if they will speak. The ones who sell people know the ones who steal them.",
+     "Follow the carts. Nobody takes that many without a buyer, and nobody buys without somebody talking."
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "Traders Guild"
+     ],
+     "say": [
+      "The east road? Our wagons go in convoy now. Two drivers who passed alone said there was a man sat by the road, writing in a book.",
+      "Walkers, yes. We lose none because we don't walk. A driver told me of a man on a crate at the bend, writing, not looking up.",
+      "Don't take that road alone. A man sits by it with a ledger and he isn't waiting for a friend.",
+      "We pay for escorts. Walkers can't. Whoever it's knows that, and waits at the bend."
+     ],
+     "reply": [
+      "Go on.",
+      "Who else knows of this?",
+      "Where does that lead?",
+      "I will look into it."
+     ],
+     "after": [
+      "The drivers will not look at him. Ask the drifters who camp near there. They count the faces that pass.",
+      "I never saw him myself. Ask the drifters. They sleep closer to the road than any wagon would.",
+      "Nobody who stopped to talk to him is around to tell it. Try the drifters.",
+      "Ask the drifters. They sleep near the road and they count what passes."
+     ]
+    },
+    {
+     "factions": [
+      "Drifters"
+     ],
+     "say": [
+      "We camp off the road now. Three nights ago a cart went by with no lantern and a man walking behind it, counting under his breath.",
+      "There was a line of walkers at dusk, nine or ten. In the morning the road was empty and the dust was all one way.",
+      "I'll tell you what I saw and no more. A man with a book, tapping the page twice for each one. Two taps, and they went into the cart.",
+      "We lost a boy that way. The Anti-Slavers keep a count of the taken. Ask them. I can't go near that road again."
+     ],
+     "reply": [
+      "Tell me more.",
+      "Who should I ask next?",
+      "I understand.",
+      "Is that all?"
+     ],
+     "after": [
+      "Toward the flats, where the ground is soft. I did not follow. The Anti-Slavers did, once, and lost two.",
+      "Ask the ones who take in the runaways. They have a name for him.",
+      "The Anti-Slavers know his name. We only know his book.",
+      "The Anti-Slavers keep a tally of the taken. Ask them for a name."
+     ]
+    },
+    {
+     "factions": [
+      "Anti-Slavers"
+     ],
+     "say": [
+      "We have a name for him. The Tallyman. Veldt Harrow. He sold to every market once. Now he sells to none.",
+      "Harrow. A slaver who stopped trading and started counting. We lost two of ours following his cart to the flats.",
+      "You're asking after the book. Good. Harrow keeps a ledger of the people he takes. We want it more than we want him.",
+      "Eleven walkers since the rains. That we know of. All Harrow's. Nobody is sold. Nobody is freed. Nobody is found."
+     ],
+     "reply": [
+      "What else do you know?",
+      "Who else saw it?",
+      "Where should I go from here?",
+      "Thank you."
+     ],
+     "after": [
+      "Ask the slavers. He was theirs once. They will not like it, but they know where his road runs.",
+      "The Slave Traders cut him loose. They are the only ones who will say where. Be careful how you ask.",
+      "He used to deal with the Traders. They will know the ground he works. We do not.",
+      "He was a slaver once. The slavers will tell you what he was and where he walks."
+     ]
+    },
+    {
+     "factions": [
+      "Slave Traders"
+     ],
+     "say": [
+      "Harrow? He stopped selling to us two years ago. We don't know where the stock goes. He was good at the work, that's all I'll say.",
+      "Veldt Harrow works the floodwastes and the mud beyond. Where the ground is soft. I wouldn't ask what's under it.",
+      "He was a fair dealer once. Then the markets thinned and so did he. I hear he writes down every head he keeps. It's bad for business.",
+      "A man who won't sell is no use to us. Find him on the flood roads. Where the mud is deepest, there he is."
+     ],
+     "reply": [
+      "Go on.",
+      "Who else knows of this?",
+      "Where does that lead?",
+      "I will look into it."
+     ],
+     "after": [
+      "The flood roads, the mud country, wherever a cart can still be pulled. He moves. The book does not.",
+      "Four or five men with him, no more. He does not need more. The people go quietly.",
+      "I have told you where. Do not tell the Cities I was the one.",
+      "Go to the flood roads. Do not walk them at dusk. That is when the book comes out."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Veldt Harrow killed by player",
+    "reward": 12000,
+    "say": [
+     "The Tallyman is dead? Then the road is only a road again. Take this. It's the village's thanks, and some of its savings.",
+     "No more walkers lost. You have done what the guards couldn't. Here's what we have gathered.",
+     "They found a book on him, you say? Then we know the names at last. Take the cats.",
+     "The east road is open and the fish will go to market. We owe you."
+    ]
+   }
+  },
+  {
+   "id": "iq_inquisitor",
+   "offer": {
+    "factions": [
+     "The Holy Nation"
+    ],
+    "packages": [
+     "Holy Nation Paladin"
+    ],
+    "narrow": true,
+    "chance": 40,
+    "say": [
+     "An Inquisitor rode north after a runaway from Rebirth. He did not write and he did not return. The Nation would know what ate him.",
+     "A servant of the Flame has vanished on the Nation's own roads. Don't tell me beasts. Beasts don't take the cloak.",
+     "The Inquisition won't speak his name, which means they're afraid. Find where he went. We'll say the prayers after.",
+     "He was a hard man to lose, brother. Somebody managed it. Start at the gates and ask who saw him leave.",
+     "A runaway, an Inquisitor, and a road that swallowed both. I want to hear what the road knows."
+    ],
+    "accept": [
+     "Where was he last seen?",
+     "I will follow him.",
+     "Who saw him go?",
+     "For the Flame."
+    ],
+    "decline": [
+     "The Nation has Paladins.",
+     "Not my errand.",
+     "No.",
+     "I have my own faith."
+    ],
+    "accepted": [
+     "Begin at a gate. Guards log who goes out. Then the farmers on the northern fields, then a priest. Report when you know.",
+     "Ask the gate guards. Then the peasants who work the roads. They see everything and are believed by no one.",
+     "Gate first, farmers second, a priest third. Priests hear what no one else will say. Do not trust the ones who say nothing.",
+     "Find the track he took. Then find who he met. Bring me what you learn."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Holy Nation Gate Guard"
+     ],
+     "factions": [
+      "The Holy Nation"
+     ],
+     "narrow": true,
+     "say": [
+      "The Inquisitor? He rode out at dawn, alone. He said a runaway from Rebirth had friends on the road. We did not ask which friends.",
+      "I wrote him out myself. North road, one day's food. He promised to write back. He did not.",
+      "A grey cloak and a worse temper. He went through the north gate with his hood up and was not seen again. We were told not to ask.",
+      "The log says he left. The log doesn't say he came back. That's all a log is for."
+     ],
+     "reply": [
+      "Tell me more.",
+      "Who should I ask next?",
+      "I understand.",
+      "Is that all?"
+     ],
+     "after": [
+      "Ask the farmers on the northern fields. They sell to anyone who walks that road.",
+      "The farms along the north road. If he stopped to eat, they saw him.",
+      "Pilgrims, farmers, deserters, all use that road. The farmers will remember a grey cloak.",
+      "I have said more than the log allows. The farmers know the rest."
+     ]
+    },
+    {
+     "packages": [
+      "Holy farmer peasant"
+     ],
+     "factions": [
+      "The Holy Nation"
+     ],
+     "narrow": true,
+     "say": [
+      "A man in a grey cloak asked me for water and who had fed a runaway. I said no one. He didn't believe me and I think he was right.",
+      "I saw him at the edge of my field. He met a Sentinel there who was on no patrol. They spoke, and they went into the trees together.",
+      "I fed a thin girl in dyed robes. I was afraid. The Inquisitor didn't ask me. A Sentinel did, and I told him yes.",
+      "The cloak and the Sentinel went into the hills together. Only the Sentinel came out. I am not saying anything else, brother."
+     ],
+     "reply": [
+      "What else do you know?",
+      "Who else saw it?",
+      "Where should I go from here?",
+      "Thank you."
+     ],
+     "after": [
+      "I do not know his name. Ask a priest. A deserter's name is whispered in confession before it is spoken anywhere else.",
+      "North and east, toward the pilgrim stones. Ask the priests. They hear the guilty before the guards do.",
+      "I want nothing to do with it. Speak to a priest. They are used to hearing what they cannot repeat.",
+      "Ask a priest. Whatever walked into those trees, a priest has heard its name."
+     ]
+    },
+    {
+     "packages": [
+      "Holy Priest"
+     ],
+     "factions": [
+      "The Holy Nation"
+     ],
+     "narrow": true,
+     "say": [
+      "A Sentinel confessed to me once that he could no longer say the words. His name was Morrow. He asked what the Flame does with a man who sees too much.",
+      "You ask after the grey cloak. Morrow came to me before he left his post. I told him to be silent. That may have been my sin.",
+      "Hask Morrow. A good soldier, once. He walked away from the Fist with his armour and orders. A man with nothing to lose.",
+      "Don't quote me. The Sentinel is Morrow, and he robs pilgrims now. Whatever became of the cloak, he knows."
+     ],
+     "reply": [
+      "Go on.",
+      "Who else knows of this?",
+      "Where does that lead?",
+      "I will look into it."
+     ],
+     "after": [
+      "Okran's Pride, near the roads the pilgrims use. Ask a pilgrim who has been robbed. They count themselves lucky to be alive.",
+      "Ask the pilgrims. They know the road better than the Paladins do, and he has taken from every one of them.",
+      "I cannot say what he did. I can say what he is. Go to the pilgrim road and ask who has been stopped.",
+      "The pilgrims know what he looks like. Ask one. They will tell you, and then they will pray."
+     ]
+    },
+    {
+     "packages": [
+      "Holy Nation Civilian"
+     ],
+     "factions": [
+      "The Holy Nation"
+     ],
+     "narrow": true,
+     "say": [
+      "A Sentinel took my offering at the pilgrim stones. He wore a grey cloak over his plate and it was too long for him.",
+      "He didn't speak. He took what I carried and let me walk. The cloak smelt of smoke and something sweeter. I didn't look at his face.",
+      "Hask Morrow. The pilgrims all say it. He wears a grey cloak with a torn collar now. Nobody says whose it was.",
+      "I thought he was a Sentinel. He was a man in a dead man's coat. Don't go near the stones unless you carry no coin."
+     ],
+     "reply": [
+      "Tell me more.",
+      "Who should I ask next?",
+      "I understand.",
+      "Is that all?"
+     ],
+     "after": [
+      "In Okran's Pride, where the pilgrim road runs. Take care. He prays while he robs.",
+      "Alone, I think. A man who has broken his oath does not keep company.",
+      "Go with the Flame, brother. I will not go back that way.",
+      "You will not need to look hard. He is the one who does not run from the Flame."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Hask Morrow killed by player",
+    "reward": 8500,
+    "say": [
+     "Morrow is dead? And the cloak? Then the Inquisitor won't be found, and the Nation will say he was lost. Take this for the truth.",
+     "A deserter in a dead man's coat. The Fist won't speak of it. The Flame is grateful. Here's the Nation's coin.",
+     "You followed the cloak to the end. The Inquisition thanks you quietly, which is the only way it thanks.",
+     "The pilgrim road is safe, brother. We'll say a prayer for the Inquisitor."
+    ]
+   }
+  },
+  {
+   "id": "iq_shore",
+   "offer": {
+    "factions": [
+     "Free Traders"
+    ],
+    "chance": 40,
+    "say": [
+     "A convoy ended on the south shore. The drivers were found at the tide line and the cargo was gone. Someone took their time over it.",
+     "Six wagons, six drivers. We found the wagons. The drivers were staked below the tide mark. Who knows the tide that well?",
+     "Dead men and empty wagons on the sand. My cousin drove the third. I want to know who tied the knots.",
+     "A caravan doesn't die by accident. This one died slowly, on a beach. Walk the coast and ask what was heard.",
+     "The sea didn't do this. The knots were too neat. Find who ties traders to the shore."
+    ],
+    "accept": [
+     "Where do I start?",
+     "I will ask along the coast.",
+     "Who found them?",
+     "I will find who did it."
+    ],
+    "decline": [
+     "Not my road.",
+     "No.",
+     "The coast is not my business.",
+     "Find a guard."
+    ],
+    "accepted": [
+     "Ask the shore folk who found them. Then the Mercenary Guild, who sold the guards. Then the Guild clerks who filed the route.",
+     "Fishers first, mercenaries second, the Guild third. Someone sold the route and the hour. That is a short list.",
+     "Find who knew the road and the tide. Then find who took the cargo. The two are not always the same.",
+     "Walk the coast. Ask who saw wagons and who saw none. Come back with a name."
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "Fisher"
+     ],
+     "say": [
+      "I found the wagons at first light. The tide had been in and out again. The drivers were staked on the flat, facing the sea.",
+      "I'll tell you what I saw and no more. Wagons, stakes, ropes tied by someone who knew the knots. Whoever it was knew the tide table better than I do.",
+      "They had been there a day. The water had risen twice and fallen twice. They were alive for the first rise.",
+      "Don't ask me for more. I cut the ropes and buried what the sea left. The Guild paid a little, and I took it, and I don't feel well about it."
+     ],
+     "reply": [
+      "What else do you know?",
+      "Who else saw it?",
+      "Where should I go from here?",
+      "Thank you."
+     ],
+     "after": [
+      "Two mercenaries went with them. Neither was on the sand. Ask the Mercenary Guild.",
+      "Hired guards, two of them. They were not among the dead. Ask the Guild who hired them out.",
+      "I saw no one. I saw the marks of boots and the marks of a keel. Ask the Mercenary Guild about the guards.",
+      "The Guild will say the route was secret. Ask them who filed it, then watch their faces."
+     ]
+    },
+    {
+     "factions": [
+      "Mercenary Guild"
+     ],
+     "packages": [
+      "mercenary guild"
+     ],
+     "narrow": true,
+     "say": [
+      "We sold two guards to that convoy. Neither came back. The rate was cheap because the road was cheap.",
+      "Two of ours rode with the wagons. We found one boot. The Guild keeps contracts, and the contract says the route was filed with the Traders.",
+      "The convoy took the shore road because someone told them it was clear. Somebody wanted that road used on that day.",
+      "Our guards were good. Whoever took them did not fight them, I think. They were given up. That is how it looks."
+     ],
+     "reply": [
+      "Go on.",
+      "Who else knows of this?",
+      "Where does that lead?",
+      "I will look into it."
+     ],
+     "after": [
+      "The Traders Guild filed it. Ask them who handled the paper. They will not like the question.",
+      "Ask the Guild clerks. A route is only secret if the clerks keep it.",
+      "I have a guess and no proof. The Traders Guild keeps the proof. Ask there.",
+      "Ask the Traders Guild. A filed route is a spoken route."
+     ]
+    },
+    {
+     "factions": [
+      "Traders Guild"
+     ],
+     "say": [
+      "The route was filed with us. Nobody leaked it. It didn't need leaking. Marta Cull knows which wagons pass at which tide.",
+      "A Reaver woman holds the southern shore. Marta Cull. They call her the Brine-Wife. She takes the cargo and the crew and she takes her time.",
+      "Nine Guild hands lost to her last month. The ninth was a clerk. We don't talk about it.",
+      "The Brine-Wife. Marta Cull. She ties salvagers to the tide line and counts the waves. We lost this convoy to a habit, not a plan."
+     ],
+     "reply": [
+      "Tell me more.",
+      "Who should I ask next?",
+      "I understand.",
+      "Is that all?"
+     ],
+     "after": [
+      "Ask someone who walks the coast. The Red Coast, the Old Beach, the Old Pits. A drifter will know where her people sit.",
+      "We tried. We sent four. We sent the contract after them. Ask the drifters on the beaches. They live nearer to her than we do.",
+      "She has Reavers with her, enough to fill a boat. The drifters know the beach. Ask them.",
+      "Ask the drifters on the beaches. They live closer to her than a clerk ever will."
+     ]
+    },
+    {
+     "factions": [
+      "Drifters"
+     ],
+     "say": [
+      "The Brine-Wife? We don't camp on the Old Beach. We've seen the stakes. Some are new.",
+      "She works the Red Coast and the Old Beach, wherever the tide leaves a salvager helpless. Her people are Reavers. They aren't kind to anyone.",
+      "I saw the wagons from the dunes. I saw the stakes. I didn't stay to see who came back for the cargo.",
+      "Marta Cull keeps to the south shore and the old pits behind it. You'll know the place by the stakes at the tide line."
+     ],
+     "reply": [
+      "What else do you know?",
+      "Who else saw it?",
+      "Where should I go from here?",
+      "Thank you."
+     ],
+     "after": [
+      "South, along the coast. Follow the stakes. When you see rope in the sand, you are near.",
+      "Reavers, a dozen. They do not sleep on watch. Come when the tide is out.",
+      "The Old Pits are behind her. Do not let the tide catch you there. She will not.",
+      "Do not wait for the tide. She does not. Take what you can carry and leave early."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Marta Cull killed by player",
+    "reward": 13000,
+    "say": [
+     "The Brine-Wife is dead? Then the tide is only the tide again. Take this. It is what the convoy's families gave, and what the Free Traders added.",
+     "No more stakes at the tide line. My cousin won't know, but I do.",
+     "You ended the Brine-Wife. The south shore will be quiet for a month.",
+     "A convoy lost, a woman ended. It doesn't balance, but it's the best the coast offers."
+    ]
+   }
+  },
+  {
+   "id": "iq_talker",
+   "offer": {
+    "packages": [
+     "Skeleton town resident"
+    ],
+    "chance": 40,
+    "say": [
+     "There's a Skeleton that won't stop talking. It says a sum, a road and a count, over and over. Something was done to it.",
+     "One of ours repeats a sum of money. It does not know why. A Skeleton should not do that. Learn what was done to it.",
+     "The one by the wall hasn't stopped speaking since it was brought in. The loop holds a debt.",
+     "I've heard it speak four thousand times. A penny. A count. A hat. I'd like to know what it describes.",
+     "A damaged Skeleton talks without rest. The words are an account. Someone wrote the account. Find them."
+    ],
+    "accept": [
+     "Where was it found?",
+     "I will trace it.",
+     "What does it say exactly?",
+     "I will ask."
+    ],
+    "decline": [
+     "Not my business.",
+     "No.",
+     "Skeletons repair their own.",
+     "I have no time."
+    ],
+    "accepted": [
+     "It says a sum, then a road, then a count. Ask the traders who use roads, and a repairer who reads memory cells. Return when you know the speaker.",
+     "A sum, a road, a count. Ask who takes tolls on a road. Ask who can read a burned loop. Then ask who wears a hat.",
+     "Traders know the sum. Repairers know the loop. Ask them both. Then come back."
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "Traders Guild"
+     ],
+     "say": [
+      "A penny a cart. That's the toll. Pay it and your cart goes through. Don't pay it and your cart is broken, and you with it. We pay. Everyone pays.",
+      "A Skeleton on the road with a book. It takes a penny and writes it down. The Guild finds it cheaper than the alternative.",
+      "It's a count of carts. Forty protected, six killed, he says. The Guild has stopped correcting him.",
+      "A sum, a road, a count. That's a toll booth with no booth. The Guild pays and doesn't talk about it."
+     ],
+     "reply": [
+      "Go on.",
+      "Who else knows of this?",
+      "Where does that lead?",
+      "I will look into it."
+     ],
+     "after": [
+      "A repairer would know the loop. Ask the Tech Hunters. They keep a bench for that kind of work.",
+      "I do not know the Skeleton's name. A repairer might read it. Ask the Tech Hunters.",
+      "Ask someone who can read a burned loop. The Tech Hunters have the tools.",
+      "The Tech Hunters keep benches for broken loops. Ask one who repairs."
+     ]
+    },
+    {
+     "factions": [
+      "Tech Hunters"
+     ],
+     "packages": [
+      "shopkeep with robo repair"
+     ],
+     "narrow": true,
+     "say": [
+      "A talking loop? That is a memory cell burned on repeat. Whoever did it wanted the thing to say what it had been told. A toll collector, perhaps.",
+      "I can tell you the voice was shaped for a ledger. Numbers first, then a name, then a threat. The name is missing.",
+      "Burned on purpose. A Skeleton doesn't do this to itself. Someone stripped its memory and left the sum behind.",
+      "The loop ends with a title and a hat. I cannot say whose. Ask the Skeletons."
+     ],
+     "reply": [
+      "Tell me more.",
+      "Who should I ask next?",
+      "I understand.",
+      "Is that all?"
+     ],
+     "after": [
+      "A Skeleton town would know who is missing a collector. Ask the barman. They hear everything.",
+      "It cannot be mended without losing what it says. Ask the Skeletons who they lost.",
+      "Ask where a collector went missing. The Skeleton barmen keep that kind of count.",
+      "Ask the Skeletons who they are missing. They keep that count better than we do."
+     ]
+    },
+    {
+     "packages": [
+      "Skeleton Town barman"
+     ],
+     "say": [
+      "Tuppence. He took our collector three months ago and stripped his memory. The one you heard is what was left.",
+      "Mister Tuppence. He sells road protection. The one who talks was his collector. When he stopped being useful, he was left to loop.",
+      "Tuppence did it. The voice belonged to one of ours. A good one. He joined the toll because the toll paid. Then Tuppence did not need him.",
+      "A Skeleton with a ledger and a hat. Tuppence. We don't drink with him. He doesn't drink at all."
+     ],
+     "reply": [
+      "What else do you know?",
+      "Who else saw it?",
+      "Where should I go from here?",
+      "Thank you."
+     ],
+     "after": [
+      "The old pits and the robot graveyard. He charges a penny a cart. He keeps the rest.",
+      "He does not like loose ends. The talker was the last. Ask the Mercenary Guild about the toll booth. They have paid it.",
+      "Not alone. A handful of Skeleton bandits follow him. They are orderly. That is the worst of it.",
+      "The Mercenary Guild escorts convoys down that road. Ask who has paid the toll."
+     ]
+    },
+    {
+     "factions": [
+      "Mercenary Guild"
+     ],
+     "packages": [
+      "mercenary guild"
+     ],
+     "narrow": true,
+     "say": [
+      "We escorted a convoy past the Robot Graveyard. There's a toll there. A Skeleton in a hat, a ledger, and six others who don't blink.",
+      "Tuppence. We paid. The Guild's policy is to pay a penny when a penny will do. It was a great deal more than a penny.",
+      "A fair-minded bandit. He counts every cart, every coin. If you haven't paid, he writes it down. If you don't pay, he writes you down.",
+      "The Robot Graveyard has a landlord. He wears a hat. He charges a toll. I advise you to carry a coin and not argue."
+     ],
+     "reply": [
+      "Go on.",
+      "Who else knows of this?",
+      "Where does that lead?",
+      "I will look into it."
+     ],
+     "after": [
+      "The Robot Graveyard, the old pits, the Blister Sands. He moves with the carts.",
+      "Six or seven. They do not need more. Their ledger is longer than your sword.",
+      "He did not say much. He wrote it all down. That is how I knew we were in trouble.",
+      "Carry a penny. If you must argue with him, argue after he has been paid."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Mister Tuppence killed by player",
+    "reward": 8500,
+    "say": [
+     "Tuppence is closed? Then the talker will stop. Or it won't, but it will have an ending. Take this for the account.",
+     "The ledger is shut. The Skeleton by the wall is quiet. I do not know what that means, but the account is balanced. Here.",
+     "A toll collected in full. I'll log it.",
+     "You found who wrote the account and ended it. Skeletons rarely pay for justice."
+    ]
+   }
+  },
+  {
+   "id": "iq_machines",
+   "offer": {
+    "packages": [
+     "Robotics Black desert",
+     "Shopkeep robotics"
+    ],
+    "chance": 40,
+    "say": [
+     "Old machines walk in the Ashlands. Not wandering. Walking, in one direction. I'd like to know who's calling them.",
+     "A cut limb came in with a signal burned into its joint. It isn't a code I know. It points toward the domes. Who gathers machines?",
+     "Cat-Lon is exiled in the domes and has no army left. Yet machines gather there. Find what he wants with them.",
+     "Machines don't choose a direction. Someone chose it for them. Ask the repairers, the scavengers, the old ones.",
+     "A signal in the dead frame. A heading toward the Ashlands. I want to know what answers it."
+    ],
+    "accept": [
+     "I will ask around.",
+     "What does he want with them?",
+     "Who knows the old ones?",
+     "I will go."
+    ],
+    "decline": [
+     "Not my concern.",
+     "No.",
+     "Ask the Tech Hunters.",
+     "I have other work."
+    ],
+    "accepted": [
+     "Tech Hunters see machines more than anyone. Ask them. Then the Hive, who built the limbs. Then the old Skeletons, who remember him.",
+     "Scavengers first. Then the Hive workshops. Then the old Skeletons. Come back when you know why they walk.",
+     "Ask who has seen them move. Ask who built them. Ask who remembers the one they follow."
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "Tech Hunters"
+     ],
+     "say": [
+      "Machines in the Ashlands? I have seen them. Not attacking, not fleeing. Walking in lines, every one facing the domes.",
+      "I followed a broken walker for half a day. It didn't stop for me. It didn't stop for the sand. It stopped at a wall and stood there.",
+      "They aren't scavenging. They're arriving. That's what makes the hair stand up. A machine that arrives is a machine that was told to.",
+      "I found a limb with a signal etched in the joint. The same heading as the rest. A call, not a command."
+     ],
+     "reply": [
+      "Tell me more.",
+      "Who should I ask next?",
+      "I understand.",
+      "Is that all?"
+     ],
+     "after": [
+      "Ask someone who knows the old workshops. The Hive made the first limbs. They will know a signal when they see one.",
+      "I am a scavenger, not a builder. The Hive built the limbs. Ask them.",
+      "The workshop Hivers know old signals. I do not.",
+      "The Hive built the first limbs. A Hiver at a workshop will know the pattern."
+     ]
+    },
+    {
+     "packages": [
+      "Hive robotics shopkeeper"
+     ],
+     "say": [
+      "The limbs are Hive work, long ago. Some machines still answer an old signal. The signal isn't ours. We don't know whose it is.",
+      "A call that old doesn't travel by itself. Someone repeats it. A tower, a machine, a mind.",
+      "The work was ours. The calling isn't. We don't use signals to move what we build. We ask it, and it goes.",
+      "The pattern is old. It answers to someone who spoke to machines when no one else would."
+     ],
+     "reply": [
+      "What else do you know?",
+      "Who else saw it?",
+      "Where should I go from here?",
+      "Thank you."
+     ],
+     "after": [
+      "Ask the old Skeletons. They remember who spoke so. I will not say the name.",
+      "The Skeletons in the Black Desert. They remember what the humans forgot.",
+      "Ask the ones who remember the Empire. They will tell you who called.",
+      "Ask a Skeleton from the Black Desert. They remember the Empire."
+     ]
+    },
+    {
+     "packages": [
+      "Black desert skeleton patron"
+     ],
+     "say": [
+      "Cat-Lon and Tinfist worked well together once. Now one hides in a dome. A king with no subjects calls the only things left that obey.",
+      "Cat-Lon wanted to rebuild. He wanted to mend what the old world broke. He's alone now. A man alone builds an audience from scrap.",
+      "He ruled gently at first, they say, then not gently. The softness is gone. The grip is not. He gathers what he can still command.",
+      "You ask what Cat-Lon wants with machines. He wants anyone left to hear him. They are the only ones who do."
+     ],
+     "reply": [
+      "Go on.",
+      "Who else knows of this?",
+      "Where does that lead?",
+      "I will look into it."
+     ],
+     "after": [
+      "The domes in the Ashlands. A throne and a few who still answer. Ask the Machinists. They have the maps.",
+      "Ask Finch or Iyo, the Machinists. They keep track of what moves in the Ashlands.",
+      "He is where the machines go. Ask the Machinists to point.",
+      "The Machinists have the maps. Ask Finch or Iyo."
+     ]
+    },
+    {
+     "characters": [
+      "Finch",
+      "Iyo"
+     ],
+     "say": [
+      "The signal has a source in the Ashlands. A dome, a throne. I have the readings.",
+      "Every machine in the survey moves toward the same point. Cat-Lon's Exile. He does not call them to fight. I think he calls them to be heard.",
+      "I can't prove it. A signal repeated across a thousand years, and a king who never stopped sending. The machines never stopped answering.",
+      "If you go, take more than a sword. He's the strongest of the Empire's remains, and nobody has asked him what he wants."
+     ],
+     "reply": [
+      "Tell me more.",
+      "Who should I ask next?",
+      "I understand.",
+      "Is that all?"
+     ],
+     "after": [
+      "Whatever he wants, I do not think it is yours to give. Be careful.",
+      "He is. He was a ruler, he is a prisoner, and he is a machine. Pick which one you meet.",
+      "I do not think so. But you may be the first to ask.",
+      "Go if you must. The domes will not be quiet when you arrive."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Mad Cat-Lon killed by player",
+    "reward": 40000,
+    "say": [
+     "Cat-Lon is silent. The machines have stopped walking. It took a thousand years to get here. The Black Desert will speak of this, quietly.",
+     "You ended a king. The signal is gone and the lines have scattered. Take the pay. It's little for what it meant.",
+     "The old Empire ends with a throne and a dead signal. I'll log it. Here's what we owe.",
+     "Mad Cat-Lon is dead. I don't know whether to mourn or to count the savings. Both."
+    ]
+   }
+  },
+  {
+   "id": "iq_tinfist",
+   "offer": {
+    "factions": [
+     "Bounty Hunters"
+    ],
+    "chance": 35,
+    "say": [
+     "I have followed Tinfist's raids for a year. They come wider and wilder. A man like that wants a loud ending. I mean to give him a quiet one. Do you?",
+     "Tinfist is the largest bounty on the continent. His raids have changed. Someone is feeding him routes, or he has stopped caring.",
+     "Every hunter who went for Tinfist alone is in the ground. I'd prefer a pair of eyes that isn't mine. Find where he rests between raids.",
+     "A Skeleton doesn't tire. But his raids are further apart and they hit harder. I think something is ending. Find what, before it ends without us.",
+     "Do not tell me he is a hero. Heroes do not leave caravans burning. Ask along his road."
+    ],
+    "accept": [
+     "Where do I start?",
+     "I will ask around.",
+     "What do you know?",
+     "I will find him."
+    ],
+    "decline": [
+     "Not for me.",
+     "No.",
+     "Hunt him yourself.",
+     "He would kill me."
+    ],
+    "accepted": [
+     "Start with the Cities' scouts. They count patrols. Then the slavers he hits. Then the old Skeletons who knew him. Report to a hunter, any hunter.",
+     "Scouts first, slavers second, Skeletons third. Each knows a different piece. Put them together and you have where he sleeps.",
+     "Ask who he hits and who he misses. The misses are the map. Come back when you know where.",
+     "Learn his pattern. A man who strikes at dusk sleeps at dawn. Find where."
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "United Cities"
+     ],
+     "packages": [
+      "Empire Scout"
+     ],
+     "narrow": true,
+     "say": [
+      "Our scouts count the Anti-Slaver patrols. They shrink. Tinfist's raids don't. He's spending fighters like water.",
+      "Tinfist moves in a ring around the slaver roads, and every ring he draws is smaller. He's closing in on somewhere. Or something is closing in on him.",
+      "Scout reports say he's thinner on the ground. Fewer ninjas, more rage. A leader who spends his own is a leader with a deadline.",
+      "I have counted his raids for two months. They bunch. When a man bunches his raids he is preparing to stop."
+     ],
+     "reply": [
+      "What else do you know?",
+      "Who else saw it?",
+      "Where should I go from here?",
+      "Thank you."
+     ],
+     "after": [
+      "Ask the slavers who bear the raids. They know which roads he skips. Those roads are where he sleeps.",
+      "The Slave Traders feel every raid. Ask them which roads he does not touch.",
+      "Ask the slavers. The roads he leaves alone are the ones he lives beside.",
+      "The slavers feel every raid. Ask them where he does not strike."
+     ]
+    },
+    {
+     "factions": [
+      "Slave Traders"
+     ],
+     "say": [
+      "He hits at dusk, never at night. He knows our routes better than we do. Someone gives him the roads, or he has watched them for years.",
+      "There's a stretch he never touches. A day's walk, no more. Every other road, he has burned.",
+      "Tinfist spares the slaves and burns the wagons. He doesn't rest near the roads he raids. He comes from somewhere with water and a wall.",
+      "Do you know what's worse than losing a wagon to Tinfist? Losing it to him in the same place twice. He doesn't repeat unless he's tired."
+     ],
+     "reply": [
+      "Go on.",
+      "Who else knows of this?",
+      "Where does that lead?",
+      "I will look into it."
+     ],
+     "after": [
+      "Ask the old Skeletons in the Black Desert. They knew him before he was a terror.",
+      "A Black Desert Skeleton knows what he fears. I do not. Ask there.",
+      "The Black Desert Skeletons remember what he was. You will want that.",
+      "A Skeleton from the Black Desert knew him before he was a terror. Ask one."
+     ]
+    },
+    {
+     "packages": [
+      "Black desert skeleton patron"
+     ],
+     "say": [
+      "Tinfist and Cat-Lon made a good pair once. Now Tinfist fights for the humans and Cat-Lon is lost. The one who stayed is the one wearing thin.",
+      "He was a student of Gatwood the Soft, who never took a life. Tinfist has taken many. The gap is the thing that wears him thin.",
+      "A Skeleton can't grow old. But he can grow tired of what he does. Tinfist is wearing thin. He won't say. He will fight until he drops.",
+      "Why do you want him? Because someone will, soon. Better a hand that knows what he was than a hand that doesn't."
+     ],
+     "reply": [
+      "Tell me more.",
+      "Who should I ask next?",
+      "I understand.",
+      "Is that all?"
+     ],
+     "after": [
+      "He sleeps in the Anti-Slavers' own city. Grey sits at his side. Ask a Traders Guild man. They know where the raids start.",
+      "The Anti-Slavers' city is where he rests. It is not a place that welcomes a hunter.",
+      "He goes home between raids. Ask the Guild wagoners. They watch from the edge.",
+      "The Guild's wagoners watch the edges of his ground. Ask them."
+     ]
+    },
+    {
+     "factions": [
+      "Traders Guild"
+     ],
+     "say": [
+      "The Anti-Slavers keep a city, and he rests there. The raids start from that edge. Nobody goes near it by choice.",
+      "Our wagoners say the patrols thin out near his city. He's there when he isn't out. You'll find him between raids.",
+      "I won't tell you how to find him. I'll tell you the raids start from the south and west. You can work out the rest.",
+      "A convoy that came near was turned back by a Skeleton with bare fists. The wagoners say he didn't even run."
+     ],
+     "reply": [
+      "What else do you know?",
+      "Who else saw it?",
+      "Where should I go from here?",
+      "Thank you."
+     ],
+     "after": [
+      "Grey will be there, and the ninjas. Do not go alone. Do not go slowly.",
+      "Bring your best. He was a student of someone who never took a life, and he has made up for it.",
+      "He will not run. He never does. That is how you will know it is him.",
+      "He does not hide. That is his advantage. Go with more than one blade."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Tinfist killed by player",
+    "reward": 45000,
+    "say": [
+     "Tinfist is dead? The largest bounty on the continent, and a quiet hunter ended it. The Cities will pay a fortune. Here is mine.",
+     "A Skeleton doesn't tire, I said. I was wrong. You've done what no one else could.",
+     "He fought to the last, I hear. That's the pity of it. The raids will stop. The world won't be better.",
+     "I didn't think a stranger could do it. The slavers will celebrate. I'll drink. Take your pay."
+    ]
+   }
+  },
+  {
+   "id": "iq_domes",
+   "offer": {
+    "packages": [
+     "Skeleton Town barman",
+     "Skeleton Junkyard"
+    ],
+    "chance": 35,
+    "states": [
+     [
+      "Head of Agriculture killed by player",
+      false
+     ]
+    ],
+    "say": [
+     "I study the old failures. The domes failed in an order: the harvest, the police, the cult. I want the first failure told by someone who was there.",
+     "The Head of Agriculture still keeps his ledger in the first dome. He is the only witness left. A dead witness is only a body.",
+     "Rhinobot helped with anything. Hat-12 enforced anything. The Head of Agriculture reported. Someone must read the reports. Find the one who wrote them.",
+     "Skeletons forget by choice. I'd rather remember. The Ashlands domes hold a clerk who knows how the Empire began to fail.",
+     "I have records, but no voice. A voice would be the Head of Agriculture's. I need him whole, in a cage if necessary. I won't have him killed."
+    ],
+    "accept": [
+     "How do I start?",
+     "I will ask around.",
+     "Why does it matter?",
+     "I will go."
+    ],
+    "decline": [
+     "Not my concern.",
+     "No.",
+     "Leave the dead alone.",
+     "Ask a historian."
+    ],
+    "accepted": [
+     "Ask the Tech Hunters who have walked the domes. Ask the Machinists, who keep the old records. Then the Skeletons who remember. Bring him alive.",
+     "Scavengers see the ruins. Machinists read the records. Old Skeletons remember. Start there. The cage is the last step.",
+     "Go to those who have walked the Ashlands. Learn the order of the failure. Then bring the clerk out.",
+     "A witness is worth more than a ruin. Learn where he sits. Return when he is in custody."
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "Tech Hunters"
+     ],
+     "say": [
+      "The first dome? A thin old official sits in a room full of thralls and keeps writing in a ledger. I didn't go further. He didn't look up.",
+      "Thralls guard fields that aren't there. They guard a man who counts what isn't grown. I counted three of them for each stalk of nothing.",
+      "I found a dome with the doors open. Inside, a clerk and an Empire's worth of grain stores, all empty. He told me the harvest was late.",
+      "A record room, half collapsed, and a man sitting in it. He called me by a name that wasn't mine. He asked for the requisitions."
+     ],
+     "reply": [
+      "Go on.",
+      "Who else knows of this?",
+      "Where does that lead?",
+      "I will look into it."
+     ],
+     "after": [
+      "The Machinists read the old Empire records. Ask Finch or Iyo. They would want to know a clerk still lives.",
+      "The Machinists keep the Empire's paper. Ask them what the harvest numbers said.",
+      "Ask Finch or Iyo. They will know whether the records agree with what I saw.",
+      "Ask the Machinists. Finch or Iyo will tell you what the records say."
+     ]
+    },
+    {
+     "characters": [
+      "Finch",
+      "Iyo"
+     ],
+     "say": [
+      "The Empire's records say the harvest failed first. Before the police moved on any cult. That's the order nobody tells.",
+      "The weekly reports from the Head of Agriculture are in the archive. Every week he wrote the same sentence.",
+      "A crop failure becomes a shortage. A shortage becomes a riot. A riot becomes a crackdown. Hat-12 was last, not first.",
+      "The first dome is where it began. The Head of Agriculture couldn't have foreseen the rest."
+     ],
+     "reply": [
+      "Tell me more.",
+      "Who should I ask next?",
+      "I understand.",
+      "Is that all?"
+     ],
+     "after": [
+      "Ask the old Skeletons what they remember of the thralls. They guarded what the Empire valued.",
+      "Skeletons who lived through it remember the guards. They will tell you what else the clerk guarded.",
+      "The Skeletons in the old towns remember. Ask a barman. They overhear.",
+      "Ask a Skeleton from the Black Desert. They remember the guards."
+     ]
+    },
+    {
+     "packages": [
+      "Black desert skeleton patron"
+     ],
+     "say": [
+      "Rhinobot wanted to help. He had no way to judge. Hat-12 wanted order. He had no way to stop. The clerk wrote reports. No one read them.",
+      "The Head of Agriculture carried the first sheaf at a festival, so I hear. Skeletons and humans, side by side. Then the harvest failed.",
+      "If you want the story told, take the clerk alive. A dead clerk cannot read his own ledger. The thralls do not hear him now.",
+      "I remember the festival. I do not remember the harvest. That is how the Empire died, a fact at a time."
+     ],
+     "reply": [
+      "What else do you know?",
+      "Who else saw it?",
+      "Where should I go from here?",
+      "Thank you."
+     ],
+     "after": [
+      "The first dome in the Ashlands. A cage will serve. He will not resist. He has forgotten how.",
+      "Take him quietly. The thralls will not understand. He does.",
+      "He will ask whether you have a requisition. Say yes. It will be easier.",
+      "A free trader walked that edge once. Ask one who has seen the wall."
+     ]
+    },
+    {
+     "factions": [
+      "Free Traders"
+     ],
+     "say": [
+      "I carried scrap to the edge of the Ashlands once. A thrall stood at the wall and didn't move. Behind him a man was counting.",
+      "Don't go in with a sword. The thralls guard a ledger. If you disturb the ledger the clerk won't speak.",
+      "A cage and a cart. That's how I'd do it. A clerk who hasn't left a room in a thousand years is no fighter.",
+      "People pay to see a thing like that in a cage. I wouldn't. I'd just want to hear what he wrote."
+     ],
+     "reply": [
+      "Go on.",
+      "Who else knows of this?",
+      "Where does that lead?",
+      "I will look into it."
+     ],
+     "after": [
+      "Be gentle. He is a witness. He is not an enemy. The thralls will make a fuss, though.",
+      "Watch the thralls. They do not forget their posts even when the post is gone.",
+      "If you take him, take the ledger too. The words are the point.",
+      "Go gently. The dome has enough ghosts without you adding a witness."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Head of Agriculture imprisoned by player",
+    "reward": 36000,
+    "say": [
+     "The Head of Agriculture is in custody? Then the record can begin. Alive. That's more than I hoped.",
+     "A witness, caged and breathing. Skeletons seldom feel gratitude. I feel something close.",
+     "You brought out the clerk. The first dome has no one left to guard. The Empire's first failure will be written down. Take the cats.",
+     "I'll put every question to him, slowly. He won't mind. He has had a very long time to prepare. Here's your pay."
+    ]
+   }
+  },
+  {
+   "id": "iq_fog",
+   "offer": {
+    "factions": [
+     "Mongrel"
+    ],
+    "chance": 35,
+    "say": [
+     "The Fogmen take the living, not the dead. That is not hunger. That is habit. Someone should ask why before the next one is carried off.",
+     "Three of ours went into the fog last month, carried, not dragged. Fogmen don't carry what they mean to waste.",
+     "I have stood a thousand watches. I've never seen a Fogman kill what it could carry. Find where they carry it, and to whom.",
+     "A Fog Prince eats the prisoners, I hear. The others sit round and watch. Someone taught them to wait.",
+     "Don't tell me they're beasts. Beasts don't hold a feast. Learn what the fog wants and put an end to the one who wants it."
+    ],
+    "accept": [
+     "Where do I start?",
+     "I will ask around.",
+     "Who has seen them?",
+     "I will find out."
+    ],
+    "decline": [
+     "Not my fight.",
+     "No.",
+     "The fog keeps its own.",
+     "I have other work."
+    ],
+    "accepted": [
+     "Ask the town. Ask the Fishers, who sail near the isles. Ask the Hive, who know what the Fogmen were. Then find the one at the heart.",
+     "Mongrel first, then the Fishers, then the Hive. Put the pieces together. Then find what sits at the middle.",
+     "Anyone who has seen the poles can tell you more than I can. Listen. Then take it to the Prince.",
+     "Begin with whoever lost someone. They will talk. Then end it where it starts."
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "Mongrel"
+     ],
+     "packages": [
+      "Crazy mongrel citizen",
+      "Mongrel bar chatter"
+     ],
+     "narrow": true,
+     "say": [
+      "My sister's boy went to the shore at night and did not come back. They found his boots. Only boots. They carry people. They do not drop them.",
+      "I heard screaming from the fog last night. The same voice all night, then none. I didn't sleep. I don't want to guess what that meant.",
+      "The Fogmen come at the walls when they're many. When they're few, they take the stray. The strays don't come back.",
+      "I know three people the fog took. I knew them well. I can't remember their faces any more, and I think that's a mercy."
+     ],
+     "reply": [
+      "Tell me more.",
+      "Who should I ask next?",
+      "I understand.",
+      "Is that all?"
+     ],
+     "after": [
+      "The Fishers sail close to the isles. Ask them what stands on the shore.",
+      "Ask the Fishers. They have seen the poles.",
+      "A Fisher will tell you what the Fogmen build. I will not.",
+      "Ask a Fisher. They see the shore from the water, and the water does not lie."
+     ]
+    },
+    {
+     "factions": [
+      "Fisher"
+     ],
+     "say": [
+      "We don't fish the north shore. Tall poles stand there. Some are bare. Some aren't. The Fogmen sit round them and make a noise.",
+      "I saw a Deathyard once, from the water. Poles, stakes, bones tied together. Some Fogmen sang and some ate.",
+      "Prisoners are tied to the poles. Some are fed to the Princes. Some are worshipped. They don't seem to see a difference.",
+      "I'll tell you what the fog is. It's a place where the dead aren't dead and the living aren't living. That's all I know."
+     ],
+     "reply": [
+      "What else do you know?",
+      "Who else saw it?",
+      "Where should I go from here?",
+      "Thank you."
+     ],
+     "after": [
+      "The Hive know what the Fogmen were. They will not like being asked. Ask a worker.",
+      "Ask a Hiver. Fogmen are their cousins. They will have something to say.",
+      "A Hive worker would know the sickness. I only know the poles.",
+      "The Hive know what the sickness was. Ask a worker."
+     ]
+    },
+    {
+     "factions": [
+      "Western Hive"
+     ],
+     "packages": [
+      "Npc HIVER Worker - Complete Package"
+     ],
+     "narrow": true,
+     "say": [
+      "The Fogmen are cousins. A parasite took their minds and drives them from within. Nothing can be done for them now.",
+      "They were workers once. When the sickness took the Deadhive, the drones turned. They don't remember.",
+      "The Fog Princes are the sickness at its fullest. Where one sits, the others gather. They're the voice the rest obey.",
+      "Don't ask us to mourn them. We did, once. It didn't help. Ask the one who won't stop the fog."
+     ],
+     "reply": [
+      "Go on.",
+      "Who else knows of this?",
+      "Where does that lead?",
+      "I will look into it."
+     ],
+     "after": [
+      "Seek a Prince. A Prince is the heart of the pack. Break it and the rest fray.",
+      "The Princes sit near the poles. There is a tower on the islands where one waits. You will not need a map.",
+      "A Prince leads them. A Prince can be ended. That is all the Hive can offer.",
+      "A Hiver merchant will tell you where the Prince sits. They sell more than goods."
+     ]
+    },
+    {
+     "packages": [
+      "Hiver Merchant "
+     ],
+     "say": [
+      "I've heard what you ask. The Fog Prince sits in the Tower of Fog, in the dark, with a feast of poles around him.",
+      "The Princes hold the fog. Where one dies, the others mourn. For a month, the fog is quiet. Then another sits in the empty place.",
+      "We sell what you need. We don't go to the isles. Don't tell the Hive I said it, but the Prince is only the sickness with a crown.",
+      "You carry a question the Hive has asked for a long time. If you finish the Prince, tell us."
+     ],
+     "reply": [
+      "Tell me more.",
+      "Who should I ask next?",
+      "I understand.",
+      "Is that all?"
+     ],
+     "after": [
+      "The Tower of Fog on its island off the west coast. The Deadhive Overrun to the north. Wherever the fog is thickest.",
+      "Take armour. The Fogmen will carry anyone they can lift.",
+      "Do not fall. They will not kill you. That is the worst part.",
+      "Do not go to the isles at night. The fog is thickest then, and so are they."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Fog Prince killed by player",
+    "reward": 18000,
+    "say": [
+     "The Prince is dead? The fog is a little thinner. They will not carry any more of ours, for a while. Take this. Mongrel remembers.",
+     "You ended the one at the middle. The Fogmen will find another. But it takes them a month. A month is a great deal.",
+     "No more screaming from the fog, for now. I slept last night.",
+     "You have done what the watch could not. I will tell the town. Take the cats, and do not go near the fog again."
+    ]
+   }
+  },
+  {
+   "id": "iq_rebirth",
+   "offer": {
+    "packages": [
+     "Holy Nation escaped slave"
+    ],
+    "chance": 40,
+    "say": [
+     "My sister was in Rebirth. She got out. A woman in dyed robes does not go unseen. I heard she went toward the ash.",
+     "They put her in dyed robes and called her renewed. She walked out the night after. Nobody has seen her since.",
+     "The Nation doesn't lose anyone, people say. Rebirth never loses a soul. I want to know what became of her.",
+     "She ran from the Nation with nothing but a robe. I can't go back north. Ask along the road.",
+     "I do not want revenge. I want to know. Ask who saw a woman in dyed robes on the road to the ash."
+    ],
+    "accept": [
+     "Where did she run?",
+     "I will ask along the road.",
+     "What does she look like?",
+     "I will find her."
+    ],
+    "decline": [
+     "I cannot help.",
+     "No.",
+     "She is likely gone.",
+     "Not my road."
+    ],
+    "accepted": [
+     "Ask the Anti-Slavers who take in the runaways. Then the road folk. Then the scavengers at the edge of the ash. Someone saw a robe.",
+     "Anti-Slavers first, drifters second, scavengers third. Then the Nation's own Paladins, who will know what lives in the ash.",
+     "A robe is not a face, but it is something. Ask who saw it. Come back with what you learn.",
+     "I will wait here. I cannot go further. Ask the ones who help the runaways."
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "Anti-Slavers"
+     ],
+     "say": [
+      "A woman in a dyed robe? We took in nineteen last year. One didn't stay. She said she would rather freeze than be a guest.",
+      "We keep no records. Records are for the Nation. But I remember a runaway in dyed robes who would not take our bread. She asked where the ash was.",
+      "Rebirth leaves marks. Some people carry them for life. The one you describe asked about the ash. We told her not to go.",
+      "We offered her a place. She walked into the ash instead. It was her choice, and it was a bad one."
+     ],
+     "reply": [
+      "What else do you know?",
+      "Who else saw it?",
+      "Where should I go from here?",
+      "Thank you."
+     ],
+     "after": [
+      "Ask the drifters who camp along the edge. They watch who goes in.",
+      "The drifters on the road to the ash will have seen her. Ask them.",
+      "Someone watched her go. Ask the ones who live at the edge.",
+      "The drifters along the road to the ash will have seen her. Ask them."
+     ]
+    },
+    {
+     "factions": [
+      "Drifters"
+     ],
+     "say": [
+      "I saw someone in a grey robe at the edge of the ash. She didn't look back.",
+      "A woman, alone, at dusk. She didn't carry food or water. I thought she was a ghost until she asked for the road.",
+      "She was running, I think. Not from anything we saw. From something she carried with her.",
+      "We offered her water. She drank and walked on. In the morning the dust was one way, into the ash."
+     ],
+     "reply": [
+      "Go on.",
+      "Who else knows of this?",
+      "Where does that lead?",
+      "I will look into it."
+     ],
+     "after": [
+      "Tech Hunters work the ash edge. They go in and out. Ask them what they found.",
+      "A scavenger might have found where she stopped. Ask the Tech Hunters.",
+      "Ask the ones who dig in the ruins. They find what the ash leaves.",
+      "The Tech Hunters work the ash edge. Ask them what the dust gave up."
+     ]
+    },
+    {
+     "factions": [
+      "Tech Hunters"
+     ],
+     "say": [
+      "A dyed robe, pinned to a post at the ash edge, fresh. As if someone wanted it found. The ground around it was scuffed, then clean.",
+      "I saw a man in a coat that wasn't cloth. He was folding something small and soft, very carefully.",
+      "We keep to the ruins. The edge of the ash belongs to a thing in a coat of skins. We were told to leave the robe where it hung.",
+      "I found a robe nailed to a post. It was not rotten. Whoever placed it came back to see if anyone would take it."
+     ],
+     "reply": [
+      "Tell me more.",
+      "Who should I ask next?",
+      "I understand.",
+      "Is that all?"
+     ],
+     "after": [
+      "The Holy Nation knows the thing in the coat. They will not tell scavengers. Ask a Paladin.",
+      "Ask a Paladin. The Nation has a name for what lives there.",
+      "I do not know the name. The Holy Nation does. They keep a list.",
+      "A Holy Nation Paladin will know what walks the edge of the ash. Ask one."
+     ]
+    },
+    {
+     "factions": [
+      "The Holy Nation"
+     ],
+     "packages": [
+      "Holy Nation Paladin"
+     ],
+     "narrow": true,
+     "say": [
+      "We know the Tailor. His name is Peel. He works the ash edge near Skinner's Roam. If your runaway took that road, you will find only her robe.",
+      "Aldous Peel. A skinner, a thing in a coat of faces. The Nation has marked him for burning. He does not come to the roads. The roads go to him.",
+      "A runaway from Rebirth in dyed robes who went into the ash? She didn't walk out. Peel doesn't let go of what he finds.",
+      "The Tailor is not on the Nation's list because he is hard to catch. He is on it because he is a sin. Whoever sends you has my pity."
+     ],
+     "reply": [
+      "What else do you know?",
+      "Who else saw it?",
+      "Where should I go from here?",
+      "Thank you."
+     ],
+     "after": [
+      "Burn the coat. The Nation will pay for it. Do not look at what is sewn into the lining.",
+      "He works the ashlands and the Roam. Go with the Flame, and take more than one blade.",
+      "She was not the first. She will not be the last unless someone ends him.",
+      "Go to the ash edge. Take more than a blade. Do not read what is sewn in the coat."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Aldous Peel killed by player",
+    "reward": 16000,
+    "say": [
+     "Peel is dead? Then she isn't in the ash anymore. She's only in the ground. I thank you. I didn't want her alive, only found.",
+     "The Tailor is ended. I'll tell her name to the dust. Take the cats. It's what I saved.",
+     "You found where she stopped. That's more than the Nation gave me.",
+     "I won't ask what you saw. I'll ask only that you don't tell me. Take the cats."
+    ]
+   }
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "iq_road_rum_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Fisher",
+    "Drifters"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Walkers go missing on the east road. Not caravans, walkers. Somebody who knows how few of us there are.",
+      "Two went to market and never got there. Nobody found a bone.",
+      "I don't take the road alone anymore. Neither does anyone who has counted the empty beds.",
+      "A road that eats people and leaves the wagons. It's quieter than bandits and worse."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_road",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Veldt Harrow killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_road_rum_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "Swampers"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The east road has a toll nobody pays in cats. Drivers speak of a man at the bend, writing.",
+      "Our drivers carry spare rope and a second lantern. They say it's for the road. It isn't for the road.",
+      "Someone on the flood road keeps a book of faces. I'd rather be a stranger to him.",
+      "The Guild is losing walkers it never hired. That's a rare kind of theft."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_road",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Veldt Harrow killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_road_rum_3",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Fisher",
+    "Drifters",
+    "Free Traders"
+   ],
+   "lines": [
+    {
+     "say": [
+      "They say a cart with no lantern goes east after dusk. The ones who watch it don't sleep well.",
+      "Two taps on the page and they go in the cart. That's what a drifter told me. I told him to stop talking.",
+      "I hear the Anti-Slavers followed a cart to the flats and lost two. They haven't tried again.",
+      "Whoever it's has a name now. The Tallyman. People say it like a prayer they don't trust."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_road",
+     ">",
+     1
+    ]
+   ],
+   "states": [
+    [
+     "Veldt Harrow killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_road_rum_4",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers",
+    "Slave Traders",
+    "United Cities"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Veldt Harrow sold to anyone once. He stopped. Nobody knows where the stock goes, and that bothers me more than the selling.",
+      "A slaver who buries his goods. Some men can't stand a shrinking market.",
+      "The Tallyman keeps count to the head. A man like that's frightening because he's orderly.",
+      "He moves between the flood roads and the mud. Where the ground is soft."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_road",
+     ">",
+     2
+    ]
+   ],
+   "states": [
+    [
+     "Veldt Harrow killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_road_rum_5",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Fisher",
+    "Drifters",
+    "Traders Guild",
+    "Anti-Slavers",
+    "United Cities"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Tallyman is dead. Somebody found the book and the names. The east road breathes again.",
+      "Veldt Harrow is gone. They say his ledger went into the mud with him, then somebody dug it out.",
+      "No more walkers lost on the east road. I'll believe it in a month.",
+      "They buried the Tallyman in his own soft ground. The fishers say it was a courtesy he didn't give."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Veldt Harrow killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "iq_inquisitor_rum_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "lines": [
+    {
+     "say": [
+      "An Inquisitor went north and didn't come back. The Fist says he's on a long errand. The Fist says many things.",
+      "A grey cloak left by the north gate and nobody saw it return. We are told not to talk of it.",
+      "The Inquisition has gone quiet. Quiet means a man is missing and nobody wants his name said.",
+      "A runaway from Rebirth and an Inquisitor on her heels. Neither came back. Make of that what you will."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_inquisitor",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Hask Morrow killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_inquisitor_rum_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Shek Kingdom",
+    "Drifters"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Holy Nation lost one of its hounds on the north road. They're very quiet about it.",
+      "An Inquisitor missing and a Rebirth girl gone. The Nation's roads aren't as safe as its priests say.",
+      "I heard a Holy man in grey went north to fetch a runaway. Neither is on any road I've walked.",
+      "If the Nation can't keep its own Inquisitors, why do they preach about keeping us?"
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_inquisitor",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Hask Morrow killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_inquisitor_rum_3",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The farmers on the north road say a Sentinel was seen speaking with a grey cloak. They went into the trees together.",
+      "A Sentinel off his patrol. Everyone knows his face and no one will say his name.",
+      "I heard a farmer fed a runaway and hasn't slept since. Someone should tell him the girl isn't the danger.",
+      "A priest told me a Sentinel asked what the Flame does with a man who sees too much. I didn't ask what the answer was."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_inquisitor",
+     ">",
+     1
+    ]
+   ],
+   "states": [
+    [
+     "Hask Morrow killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_inquisitor_rum_4",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Holy Nation Outlaws"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hask Morrow has a new cloak. Grey, torn at the collar. Nobody asks where it came from.",
+      "The pilgrim stones aren't safe. A Sentinel in someone else's coat takes the offerings now.",
+      "Morrow wears a cloak that is too long for him. The pilgrims say it is a kindness not to look.",
+      "If you meet a Sentinel at the stones, don't argue. He prays while he takes your purse."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_inquisitor",
+     ">",
+     2
+    ]
+   ],
+   "states": [
+    [
+     "Hask Morrow killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_inquisitor_rum_5",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Holy Nation Outlaws",
+    "United Cities"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The grey cloak is found, I heard. Nobody will say where. The Inquisition has stopped asking.",
+      "Morrow is dead and the Nation has stopped saying his name. The runaway is gone from the records too.",
+      "A Sentinel fell in Okran's Pride. The Inquisitor is a ghost in a ledger. The Nation closes the pages quickly.",
+      "I heard the Inquisitor was never found. They say it very softly."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Hask Morrow killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "iq_shore_rum_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Free Traders",
+    "Fisher",
+    "Traders Guild"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A convoy died on the south shore. They found the drivers at the tide line.",
+      "Six wagons and no one to drive them. The tide knew more than the guards did.",
+      "I won't take the shore road this month. The Guild says it's safe. The Guild didn't see the stakes.",
+      "The crows were at the wagons before the Guild was. That tells you everything about how fast news travels."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_shore",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Marta Cull killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_shore_rum_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Mercenary Guild",
+    "United Cities",
+    "Drifters"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Two mercenaries went with that convoy and nobody has seen them since. The Guild isn't saying much.",
+      "A caravan that dies on the sand is a bad advertisement for the road.",
+      "They say the knots were too neat for bandits. Bandits tie quickly, and they don't stay to watch the water.",
+      "I heard somebody sold the route. I hope whoever it was was paid well."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_shore",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Marta Cull killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_shore_rum_3",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Fisher",
+    "Free Traders",
+    "Drifters"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Mercenary Guild says the route was filed with the Traders. The Traders say everyone knows the tide table.",
+      "A fisher cut the ropes and buried what the sea left. He doesn't go near the flats anymore.",
+      "Nobody talks about the stakes. Everybody has seen them. That's how you know it isn't an accident.",
+      "A Reaver was seen near the old pits wearing a driver's boots. It's what I heard."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_shore",
+     ">",
+     1
+    ]
+   ],
+   "states": [
+    [
+     "Marta Cull killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_shore_rum_4",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Fisher",
+    "Drifters",
+    "Free Traders"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Brine-Wife. That's a name the Guild says very quietly now.",
+      "Marta Cull holds the south shore. They say she times the water with her fingers.",
+      "Stakes at the tide line, new ones. If you see rope in the sand, you're too close.",
+      "Nine Guild hands lost to one woman. The Guild would rather you didn't count."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_shore",
+     ">",
+     2
+    ]
+   ],
+   "states": [
+    [
+     "Marta Cull killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_shore_rum_5",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Fisher",
+    "Free Traders",
+    "Drifters",
+    "Mercenary Guild"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Brine-Wife is dead. The south shore has gone quiet. The stakes are still there.",
+      "Marta Cull fell on her own beach. The tide came in and took what it took.",
+      "Whoever ended the Brine-Wife did the coast a favour. Whoever filed the route should still be asked questions.",
+      "The shore road is open again. I will use it in the spring."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Marta Cull killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "iq_talker_rum_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Machinists",
+    "Tech Hunters"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A Skeleton sits in the town and won't stop speaking. A sum, a road, a count. Nobody can make it stop.",
+      "I hear a Skeleton is talking itself to scrap. It says a number and a hat. I did not ask what it meant.",
+      "The talking one has been at it for a month. The others pretend not to hear. That's Skeleton politeness.",
+      "Somebody burned a loop into a Skeleton and left it to run. It's the most horrible thing I've heard in a long time."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_talker",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Mister Tuppence killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_talker_rum_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Mercenary Guild",
+    "United Cities"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A penny a cart on the robot roads. Pay it. Don't argue. Don't look at the hat.",
+      "There's a Skeleton on the Robot Graveyard road who charges tolls. The Guild pays. The Guild doesn't say how much.",
+      "A Skeleton with a ledger, collecting. It sounds orderly until you try not to pay.",
+      "Forty carts protected, six killed. That's the arithmetic of a Skeleton who enjoys his work."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_talker",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Mister Tuppence killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_talker_rum_3",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Tech Hunters",
+    "Skeletons",
+    "Machinists"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A memory cell burned on repeat. That's no accident. Someone left a toll collector's voice to loop.",
+      "The loop ends in a hat. The name is scraped. I've seen the work. It was careful.",
+      "Skeletons don't forget their own. They know who's missing a collector. They don't say.",
+      "A repairer told me the voice was shaped for a ledger. The ledger is still out there."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_talker",
+     ">",
+     1
+    ]
+   ],
+   "states": [
+    [
+     "Mister Tuppence killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_talker_rum_4",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Mercenary Guild",
+    "Traders Guild"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Mister Tuppence. A Skeleton in a hat, with a book and six who don't blink. Don't carry less than a penny.",
+      "Tuppence took a collector and left his voice. A bandit who recycles. I can't decide what's worse.",
+      "The Robot Graveyard has a landlord. He wears a hat. The talker is his leftover.",
+      "He writes down every cart that doesn't pay. And then, if he feels like it, he writes down the carters."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_talker",
+     ">",
+     2
+    ]
+   ],
+   "states": [
+    [
+     "Mister Tuppence killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_talker_rum_5",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Tech Hunters",
+    "United Cities"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Mister Tuppence is closed. The ledger was found and burned. The talker has stopped, people say. Or it has gone quiet.",
+      "The toll on the Robot Graveyard road is no more. Nobody believes it yet. I'll pay a penny anyway, out of habit.",
+      "A Skeleton in a hat is dead. The road is a little less orderly now. I find I miss the order.",
+      "Tuppence fell with his ledger. They say the numbers kept adding after he was gone."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Mister Tuppence killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "iq_machines_rum_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Tech Hunters",
+    "Machinists",
+    "Skeletons"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Old machines are walking in the Ashlands. In lines. All the same way. Don't stand in their path.",
+      "A broken walker followed me for half a day and stopped at a wall. It didn't look at me. It didn't need to.",
+      "Machines don't move for no reason. Somebody is calling them. I don't like it.",
+      "I found a limb with a signal etched in the joint. I put it back. I didn't touch the next one."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_machines",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_machines_rum_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Drifters",
+    "United Cities"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Machines in the ashes, people say. Walking to a dome. I'll keep to the roads.",
+      "A mad king in a dome calls the dead machines. That's what the Skeletons say. I thought it was a story.",
+      "I don't go near the Ashlands. A man can lose his mind there, or something can take it.",
+      "The Tech Hunters are bringing back stories of machines that march. I pay for stories. I don't pay for those."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_machines",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_machines_rum_3",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive",
+    "Tech Hunters",
+    "Machinists"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Hive made the limbs. The calling is older. Nobody asks who built the first signal.",
+      "A signal like that isn't for killing. A signal like that's for gathering. Gathering for what?",
+      "The workshops say the pattern is Empire. The old Empire, the one before the Holy Nation had a name for itself.",
+      "A machine doesn't answer a call unless it was made to. Someone made them to, long ago."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_machines",
+     ">",
+     1
+    ]
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_machines_rum_4",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Machinists",
+    "Tech Hunters"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Cat-Lon wants an audience. Machines were the last who would listen. That's what a Skeleton told me over a drink.",
+      "The king in the dome calls them. Nobody asks him why. Nobody who goes there asks anything.",
+      "Finch says the signal is a call to be heard. I think that is the saddest thing I have ever read.",
+      "He ruled a thousand years. He built civilisation and watched it fall. Now he builds a crowd from scrap."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_machines",
+     ">",
+     2
+    ]
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_machines_rum_5",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Machinists",
+    "Tech Hunters",
+    "Traders Guild",
+    "United Cities"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The machines in the Ashlands have stopped. They stand where they were. I don't know if that's better.",
+      "Mad Cat-Lon is gone. The Skeletons won't talk about it.",
+      "The signal fell silent last week. A Tech Hunter said it was like a house with the last light put out.",
+      "An old king is dead and the machines don't know. They're still facing the dome."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "iq_tinfist_rum_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Slave Traders",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Tinfist struck another wagon train. Dusk, as always. He leaves the slaves and burns the wagons.",
+      "The raids are wilder. I do not like it. A man who is losing hits harder before he falls.",
+      "He's fewer than he was. His ninjas thin out. Still he comes. That's the worst kind of enemy.",
+      "Somebody should end Tinfist before he ends the roads."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_tinfist",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Tinfist killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_tinfist_rum_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers",
+    "Drifters",
+    "Shek Kingdom"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Tinfist isn't what he was. We don't say it where he can hear.",
+      "He fights like a man who has nowhere to be. That's how I know he isn't afraid.",
+      "I heard a Skeleton can hold on a thousand years. I heard Tinfist isn't planning to.",
+      "The hunters circle. He knows. He doesn't change his road. That's what bothers us."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_tinfist",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Tinfist killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_tinfist_rum_3",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Bounty Hunters",
+    "United Cities",
+    "Slave Traders"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A scout told me Tinfist's raids bunch. When a man bunches his raids, he's preparing to stop.",
+      "The roads he leaves alone are the ones he lives beside. A hunter's map is mostly gaps.",
+      "I counted the patrols. Fewer each month. Tinfist is spending what he has.",
+      "A quiet hunter is asking where he sleeps. Most hunters don't ask."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_tinfist",
+     ">",
+     1
+    ]
+   ],
+   "states": [
+    [
+     "Tinfist killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_tinfist_rum_4",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Traders Guild",
+    "Anti-Slavers"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Tinfist and Cat-Lon. One of them is lost, and one is dying. I do not know which is worse.",
+      "He was a student of a man who never took a life. He has taken more than anyone.",
+      "A Skeleton can't grow old. But he can grow tired. I saw it in Tinfist's stance, long ago.",
+      "The Anti-Slavers' city is where he rests. It's a hard door to knock on."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_tinfist",
+     ">",
+     2
+    ]
+   ],
+   "states": [
+    [
+     "Tinfist killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_tinfist_rum_5",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Slave Traders",
+    "United Cities",
+    "Traders Guild",
+    "Anti-Slavers",
+    "The Holy Nation",
+    "Skeletons"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Tinfist is dead. I don't know whether to cheer or sit down. A great many people won't sleep tonight.",
+      "The raids have stopped. The roads are quiet. The Anti-Slavers are very still.",
+      "A Skeleton hero is finished. The slave roads will be busy by spring.",
+      "They say he didn't run. They say he never did."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Tinfist killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "iq_domes_rum_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Tech Hunters",
+    "Machinists"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The domes in the Ashlands fell in an order. First the harvest, then the police, then the cult. Everyone tells it differently.",
+      "A clerk still keeps his ledger in the first dome. Nobody goes near him. They say he writes the same line every night.",
+      "The Empire didn't fall to an army. It fell to a thin harvest and the people who tried to fix it.",
+      "I've walked the dome road. The thralls don't move. They have forgotten what they're guarding."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_domes",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Head of Agriculture imprisoned by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_domes_rum_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Drifters",
+    "The Holy Nation"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Ashlands have ruins with doors that open. I wouldn't go through them.",
+      "A scavenger came back from the domes and wouldn't talk. He sold his boots and left.",
+      "They say there is an old man in a dome who thinks the harvest is late. I do not know whether to laugh.",
+      "The Ashlands remember things the Nation would rather not. That's the safest thing I can say."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_domes",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Head of Agriculture imprisoned by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_domes_rum_3",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Machinists",
+    "Tech Hunters"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Rhinobot wanted to help. Hat-12 wanted order. The Head of Agriculture only wanted to be told he wasn't to blame.",
+      "Every week the clerk wrote the same sentence, and every week the Empire did not answer.",
+      "The Machinists have the reports. The order is harvest, shortage, riot, crackdown. Nobody tells it that way because it makes everyone guilty.",
+      "A historian told me he wants the clerk alive. I said that was a great deal to ask of a ruin."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_domes",
+     ">",
+     1
+    ]
+   ],
+   "states": [
+    [
+     "Head of Agriculture imprisoned by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_domes_rum_4",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Free Traders",
+    "Tech Hunters"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A cage and a cart. That's how you take a clerk out of a dome. I'd pay to see it. I wouldn't pay to do it.",
+      "The thralls guard fields that aren't there. They guard a man who counts what isn't grown.",
+      "If you take the ledger, take it whole. The words are the point. The clerk is only the hand.",
+      "I don't like a world where a thousand-year-old clerk is the last honest witness. But it's the world."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_domes",
+     ">",
+     2
+    ]
+   ],
+   "states": [
+    [
+     "Head of Agriculture imprisoned by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_domes_rum_5",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Machinists",
+    "Tech Hunters",
+    "Traders Guild"
+   ],
+   "lines": [
+    {
+     "say": [
+      "They took the Head of Agriculture out of the first dome alive. The thralls stand where they stood, guarding nothing.",
+      "A clerk is in a cage, and a Skeleton is asking him questions. I wonder who finds the answers easier.",
+      "The Empire's first failure is being written down. At last. I don't know whether anyone will read it.",
+      "The first dome is silent. The ledger is gone. Someone said the clerk asked for a requisition. I didn't ask what that meant."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Head of Agriculture imprisoned by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "iq_fog_rum_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Mongrel",
+    "Fisher"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Fogmen carry the living. That's the horror of it. They could drop them.",
+      "I heard screaming from the fog last night. The same voice, then none.",
+      "Three of ours went into the fog last month. Their boots washed up.",
+      "A Fogman that kills is a beast. A Fogman that carries is something else."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_fog",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Fog Prince killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_fog_rum_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Traders Guild",
+    "United Cities"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The fog islands are a bad place. They say the poles stand tall there and the Fogmen feast around them.",
+      "A man who sails near the isles hears things. He doesn't tell anyone.",
+      "I don't go north of Mongrel. The Fogmen are only half the reason.",
+      "A friend of mine went north to see the fog for himself. He saw it. That's all I can say."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_fog",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Fog Prince killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_fog_rum_3",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive",
+    "Southern Hive",
+    "Fisher"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Fogmen are cousins. We don't speak of it. A parasite sits in their heads and drives them.",
+      "When a queen dies, some drones turn. That's the sickness. That's what the fog is.",
+      "A Fog Prince is the sickness at its fullest. Where he sits, the others gather.",
+      "The Hive remembers the Deadhive. It remembers it in the way you remember a tooth that's gone."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_fog",
+     ">",
+     1
+    ]
+   ],
+   "states": [
+    [
+     "Fog Prince killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_fog_rum_4",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Mongrel",
+    "Fisher",
+    "Western Hive"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Prince is in a tower on the isles, they say. Break him and the pack frays.",
+      "A Deathyard is poles and bones. Some sing, some eat. The Prince sits in the middle and doesn't eat at all.",
+      "The Hive won't go. The Mongrel watch won't go. Someone has to.",
+      "I heard a stranger is asking after the Prince. Nobody asks that and stays long in Mongrel."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_fog",
+     ">",
+     2
+    ]
+   ],
+   "states": [
+    [
+     "Fog Prince killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_fog_rum_5",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Mongrel",
+    "Fisher",
+    "Western Hive",
+    "Drifters"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A Fog Prince is dead. The fog is quiet.",
+      "The screaming stopped. The Fogmen sit on the shore in the evenings and do nothing. It's worse.",
+      "I heard another Prince will sit in the empty place within the month. I'll keep my boots on.",
+      "Whoever ended the Prince has my thanks. I won't meet them. I don't want to know what they saw."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Fog Prince killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "iq_rebirth_rum_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Anti-Slavers",
+    "Drifters"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A runaway from Rebirth walked into the ash in dyed robes. I don't think she walked out.",
+      "Rebirth never loses a soul, people say. They lose one every month. They don't say that part.",
+      "A woman in a dyed robe asked which way the ash was. We told her.",
+      "The Nation doesn't hunt its runaways in the ash. It leaves them to the ash."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_rebirth",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Aldous Peel killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_rebirth_rum_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Rebirth is a school, people say. Schools don't lose their students at night.",
+      "A girl ran from the Rebirth school and nobody gave chase. That's how I know the Nation is worried.",
+      "I heard a robe hangs on a post at the ash edge. The Nation doesn't take it down.",
+      "The ash takes runaways. I don't know whether the Nation approves. I know it doesn't stop it."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_rebirth",
+     "==",
+     0
+    ]
+   ],
+   "states": [
+    [
+     "Aldous Peel killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_rebirth_rum_3",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Tech Hunters",
+    "Drifters",
+    "Anti-Slavers"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A dyed robe pinned to a post. Not rotten. Somebody put it there to be found.",
+      "The ash edge isn't a place for a woman alone. A man in a coat of skins walks there. I won't say more.",
+      "A scavenger told me he saw a man folding something small and soft.",
+      "We told the runaway to stay. She didn't. I think of it every night."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_rebirth",
+     ">",
+     1
+    ]
+   ],
+   "states": [
+    [
+     "Aldous Peel killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_rebirth_rum_4",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Tech Hunters",
+    "Drifters"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Tailor works the ash edge and the Roam. He takes the living and wears the work.",
+      "Aldous Peel. The Nation marks him for burning and sends no one to burn him.",
+      "A coat of skins, a coat of faces. The runaways don't come back from that road.",
+      "The Holy Nation keeps a list of sins. The Tailor's name is at the top. Nobody has been sent to cross it out."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "vars": [
+    [
+     "Quest iq_rebirth",
+     ">",
+     2
+    ]
+   ],
+   "states": [
+    [
+     "Aldous Peel killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "iq_rebirth_rum_5",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Holy Nation Outlaws",
+    "Anti-Slavers",
+    "Tech Hunters",
+    "Drifters"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Tailor is dead. The ash edge is quiet. A robe still hangs there.",
+      "Aldous Peel is no more. The runaways say it, very softly, as though the ash could hear.",
+      "They burned the coat. I'm told it took an hour. I'm told nobody stood close.",
+      "Somebody found out what became of the girl in the dyed robe. I don't want to know. I'm glad someone does."
+     ]
+    }
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Aldous Peel killed by player",
+     true
+    ]
+   ]
+  }
+ ]
+}

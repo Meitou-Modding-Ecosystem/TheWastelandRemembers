@@ -1,0 +1,972 @@
+{
+ "pack": "x_rumours",
+ "mod": "LivingWastelandOutlaws",
+ "rumours": [
+  {
+   "state": "Orsa Quillon killed by player",
+   "name": "Orsa Quillon",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Orsa Quillon is dead, they say. I will believe it when the robberies stop.",
+    "Did you hear? Orsa Quillon. Dead. Nobody here is crying about it.",
+    "Somebody finally put Orsa Quillon in the dirt. Fresh news. Buy the teller a drink.",
+    "Orsa Quillon, dead. I heard it twice today, so it might even be true."
+   ],
+   "lasting": [
+    "Orsa Quillon? Dead a while now. Somebody always takes the empty place.",
+    "Somebody killed Orsa Quillon. I hope they were paid. Nobody else will remember them.",
+    "Old news, Orsa Quillon. Dead and half forgotten. That is how it goes out here."
+   ]
+  },
+  {
+   "state": "Ferrant Dray killed by player",
+   "name": "Ferrant Dray",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Ferrant Dray, dead. I heard it twice today, so it might even be true.",
+    "They found what was left of Ferrant Dray. Whoever did it did not stay to brag.",
+    "Ferrant Dray is dead, they say. I will believe it when the robberies stop.",
+    "Word came in last night: Ferrant Dray is gone. The bounty board will need a new face."
+   ],
+   "lasting": [
+    "Ferrant Dray? Dead a while now. Somebody always takes the empty place.",
+    "Ferrant Dray used to scare people. Now the name is a story to scare children.",
+    "Old news, Ferrant Dray. Dead and half forgotten. That is how it goes out here."
+   ]
+  },
+  {
+   "state": "Hask Morrow killed by player",
+   "name": "Hask Morrow",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Hask Morrow, dead. I heard it twice today, so it might even be true.",
+    "Word came in last night: Hask Morrow is gone. The bounty board will need a new face.",
+    "Hask Morrow is dead, they say. I will believe it when the robberies stop.",
+    "They found what was left of Hask Morrow. Whoever did it did not stay to brag."
+   ],
+   "lasting": [
+    "Somebody killed Hask Morrow. I hope they were paid. Nobody else will remember them.",
+    "Hask Morrow? Dead a while now. Somebody always takes the empty place.",
+    "Hask Morrow used to scare people. Now the name is a story to scare children."
+   ]
+  },
+  {
+   "state": "Sarn Ashvael killed by player",
+   "name": "Sarn Ashvael",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "They found what was left of Sarn Ashvael. Whoever did it did not stay to brag.",
+    "Somebody finally put Sarn Ashvael in the dirt. Fresh news. Buy the teller a drink.",
+    "Sarn Ashvael is dead, they say. I will believe it when the robberies stop.",
+    "Word came in last night: Sarn Ashvael is gone. The bounty board will need a new face."
+   ],
+   "lasting": [
+    "Sarn Ashvael? Dead a while now. Somebody always takes the empty place.",
+    "Old news, Sarn Ashvael. Dead and half forgotten. That is how it goes out here.",
+    "Since Sarn Ashvael died the road is a little safer. A little."
+   ]
+  },
+  {
+   "state": "Veldt Harrow killed by player",
+   "name": "Veldt Harrow",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Anti-Slavers"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Veldt Harrow is finished. The roads will be quieter for a week, until the next one.",
+    "They found what was left of Veldt Harrow. Whoever did it did not stay to brag.",
+    "Word came in last night: Veldt Harrow is gone. The bounty board will need a new face.",
+    "They say Veldt Harrow is dead. Two days, maybe three. Some outlander did it."
+   ],
+   "lasting": [
+    "Veldt Harrow? Dead a while now. Somebody always takes the empty place.",
+    "Since Veldt Harrow died the road is a little safer. A little.",
+    "Veldt Harrow used to scare people. Now the name is a story to scare children."
+   ]
+  },
+  {
+   "state": "Borun Vahl killed by player",
+   "name": "Borun Vahl",
+   "factions": [
+    "Shek Kingdom",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Did you hear? Borun Vahl. Dead. Nobody here is crying about it.",
+    "Borun Vahl, dead. I heard it twice today, so it might even be true.",
+    "They say Borun Vahl is dead. Two days, maybe three. Some outlander did it.",
+    "Word came in last night: Borun Vahl is gone. The bounty board will need a new face."
+   ],
+   "lasting": [
+    "Borun Vahl used to scare people. Now the name is a story to scare children.",
+    "Borun Vahl? Dead a while now. Somebody always takes the empty place.",
+    "Since Borun Vahl died the road is a little safer. A little."
+   ]
+  },
+  {
+   "state": "Ilsa Hearthmourn killed by player",
+   "name": "Ilsa Hearthmourn",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Somebody finally put Ilsa Hearthmourn in the dirt. Fresh news. Buy the teller a drink.",
+    "Word came in last night: Ilsa Hearthmourn is gone. The bounty board will need a new face.",
+    "Ilsa Hearthmourn is dead, they say. I will believe it when the robberies stop.",
+    "Ilsa Hearthmourn is finished. The roads will be quieter for a week, until the next one."
+   ],
+   "lasting": [
+    "Ilsa Hearthmourn? Dead a while now. Somebody always takes the empty place.",
+    "Somebody killed Ilsa Hearthmourn. I hope they were paid. Nobody else will remember them.",
+    "Old news, Ilsa Hearthmourn. Dead and half forgotten. That is how it goes out here."
+   ]
+  },
+  {
+   "state": "Hodd Crake killed by player",
+   "name": "Hodd Crake",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Shek Kingdom",
+    "Cannibal Hunters",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Somebody finally put Hodd Crake in the dirt. Fresh news. Buy the teller a drink.",
+    "Hodd Crake is finished. The roads will be quieter for a week, until the next one.",
+    "Did you hear? Hodd Crake. Dead. Nobody here is crying about it.",
+    "They found what was left of Hodd Crake. Whoever did it did not stay to brag."
+   ],
+   "lasting": [
+    "Hodd Crake used to scare people. Now the name is a story to scare children.",
+    "Somebody killed Hodd Crake. I hope they were paid. Nobody else will remember them.",
+    "They still argue about who killed Hodd Crake. Nobody agrees on the face."
+   ]
+  },
+  {
+   "state": "Pim Sillery killed by player",
+   "name": "Pim Sillery",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Tech Hunters"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "They found what was left of Pim Sillery. Whoever did it did not stay to brag.",
+    "Pim Sillery, dead. I heard it twice today, so it might even be true.",
+    "They say Pim Sillery is dead. Two days, maybe three. Some outlander did it.",
+    "Somebody finally put Pim Sillery in the dirt. Fresh news. Buy the teller a drink."
+   ],
+   "lasting": [
+    "Old news, Pim Sillery. Dead and half forgotten. That is how it goes out here.",
+    "Since Pim Sillery died the road is a little safer. A little.",
+    "Somebody killed Pim Sillery. I hope they were paid. Nobody else will remember them."
+   ]
+  },
+  {
+   "state": "Teshin Ro killed by player",
+   "name": "Teshin Ro",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Teshin Ro is dead, they say. I will believe it when the robberies stop.",
+    "They say Teshin Ro is dead. Two days, maybe three. Some outlander did it.",
+    "Word came in last night: Teshin Ro is gone. The bounty board will need a new face.",
+    "Did you hear? Teshin Ro. Dead. Nobody here is crying about it."
+   ],
+   "lasting": [
+    "Somebody killed Teshin Ro. I hope they were paid. Nobody else will remember them.",
+    "Teshin Ro used to scare people. Now the name is a story to scare children.",
+    "Old news, Teshin Ro. Dead and half forgotten. That is how it goes out here."
+   ]
+  },
+  {
+   "state": "Ysolde Gorehollow killed by player",
+   "name": "Ysolde Gorehollow",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Ysolde Gorehollow is finished. The roads will be quieter for a week, until the next one.",
+    "They say Ysolde Gorehollow is dead. Two days, maybe three. Some outlander did it.",
+    "Somebody finally put Ysolde Gorehollow in the dirt. Fresh news. Buy the teller a drink.",
+    "Ysolde Gorehollow, dead. I heard it twice today, so it might even be true."
+   ],
+   "lasting": [
+    "Old news, Ysolde Gorehollow. Dead and half forgotten. That is how it goes out here.",
+    "Ysolde Gorehollow used to scare people. Now the name is a story to scare children.",
+    "Somebody killed Ysolde Gorehollow. I hope they were paid. Nobody else will remember them."
+   ]
+  },
+  {
+   "state": "Marta Cull killed by player",
+   "name": "Marta Cull",
+   "factions": [
+    "Traders Guild",
+    "United Cities"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "They found what was left of Marta Cull. Whoever did it did not stay to brag.",
+    "They say Marta Cull is dead. Two days, maybe three. Some outlander did it.",
+    "Did you hear? Marta Cull. Dead. Nobody here is crying about it.",
+    "Word came in last night: Marta Cull is gone. The bounty board will need a new face."
+   ],
+   "lasting": [
+    "Marta Cull? Dead a while now. Somebody always takes the empty place.",
+    "Old news, Marta Cull. Dead and half forgotten. That is how it goes out here.",
+    "Since Marta Cull died the road is a little safer. A little."
+   ]
+  },
+  {
+   "state": "Teodric Clackjaw killed by player",
+   "name": "Teodric Clackjaw",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "They say Teodric Clackjaw is dead. Two days, maybe three. Some outlander did it.",
+    "Teodric Clackjaw, dead. I heard it twice today, so it might even be true.",
+    "Somebody finally put Teodric Clackjaw in the dirt. Fresh news. Buy the teller a drink.",
+    "Did you hear? Teodric Clackjaw. Dead. Nobody here is crying about it."
+   ],
+   "lasting": [
+    "Teodric Clackjaw used to scare people. Now the name is a story to scare children.",
+    "Since Teodric Clackjaw died the road is a little safer. A little.",
+    "Teodric Clackjaw? Dead a while now. Somebody always takes the empty place."
+   ]
+  },
+  {
+   "state": "Maruka Tal-Khesh killed by player",
+   "name": "Maruka Tal-Khesh",
+   "factions": [
+    "Shek Kingdom",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Maruka Tal-Khesh is dead, they say. I will believe it when the robberies stop.",
+    "They say Maruka Tal-Khesh is dead. Two days, maybe three. Some outlander did it.",
+    "They found what was left of Maruka Tal-Khesh. Whoever did it did not stay to brag.",
+    "Did you hear? Maruka Tal-Khesh. Dead. Nobody here is crying about it."
+   ],
+   "lasting": [
+    "Old news, Maruka Tal-Khesh. Dead and half forgotten. That is how it goes out here.",
+    "Maruka Tal-Khesh? Dead a while now. Somebody always takes the empty place.",
+    "Maruka Tal-Khesh used to scare people. Now the name is a story to scare children."
+   ]
+  },
+  {
+   "state": "Aldous Peel killed by player",
+   "name": "Aldous Peel",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Did you hear? Aldous Peel. Dead. Nobody here is crying about it.",
+    "Word came in last night: Aldous Peel is gone. The bounty board will need a new face.",
+    "Aldous Peel is finished. The roads will be quieter for a week, until the next one.",
+    "Aldous Peel is dead, they say. I will believe it when the robberies stop."
+   ],
+   "lasting": [
+    "Since Aldous Peel died the road is a little safer. A little.",
+    "Aldous Peel used to scare people. Now the name is a story to scare children.",
+    "They still argue about who killed Aldous Peel. Nobody agrees on the face."
+   ]
+  },
+  {
+   "state": "Mister Tuppence killed by player",
+   "name": "Mister Tuppence",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Mister Tuppence, dead. I heard it twice today, so it might even be true.",
+    "Mister Tuppence is finished. The roads will be quieter for a week, until the next one.",
+    "Mister Tuppence is dead, they say. I will believe it when the robberies stop.",
+    "Somebody finally put Mister Tuppence in the dirt. Fresh news. Buy the teller a drink."
+   ],
+   "lasting": [
+    "Mister Tuppence? Dead a while now. Somebody always takes the empty place.",
+    "They still argue about who killed Mister Tuppence. Nobody agrees on the face.",
+    "Since Mister Tuppence died the road is a little safer. A little."
+   ]
+  },
+  {
+   "state": "Ulla Weeper killed by player",
+   "name": "Ulla Weeper",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Swampers"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Ulla Weeper is finished. The roads will be quieter for a week, until the next one.",
+    "Did you hear? Ulla Weeper. Dead. Nobody here is crying about it.",
+    "Ulla Weeper is dead, they say. I will believe it when the robberies stop.",
+    "Word came in last night: Ulla Weeper is gone. The bounty board will need a new face."
+   ],
+   "lasting": [
+    "Ulla Weeper used to scare people. Now the name is a story to scare children.",
+    "Somebody killed Ulla Weeper. I hope they were paid. Nobody else will remember them.",
+    "Since Ulla Weeper died the road is a little safer. A little."
+   ]
+  },
+  {
+   "state": "Dunmar Quell killed by player",
+   "name": "Dunmar Quell",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "The Holy Nation",
+    "Swampers"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Dunmar Quell is dead, they say. I will believe it when the robberies stop.",
+    "They found what was left of Dunmar Quell. Whoever did it did not stay to brag.",
+    "Word came in last night: Dunmar Quell is gone. The bounty board will need a new face.",
+    "Dunmar Quell, dead. I heard it twice today, so it might even be true."
+   ],
+   "lasting": [
+    "Dunmar Quell used to scare people. Now the name is a story to scare children.",
+    "Dunmar Quell? Dead a while now. Somebody always takes the empty place.",
+    "They still argue about who killed Dunmar Quell. Nobody agrees on the face."
+   ]
+  },
+  {
+   "state": "Gammer Tuck killed by player",
+   "name": "Gammer Tuck",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Did you hear? Gammer Tuck. Dead. Nobody here is crying about it.",
+    "Gammer Tuck is finished. The roads will be quieter for a week, until the next one.",
+    "Word came in last night: Gammer Tuck is gone. The bounty board will need a new face.",
+    "Gammer Tuck, dead. I heard it twice today, so it might even be true."
+   ],
+   "lasting": [
+    "Somebody killed Gammer Tuck. I hope they were paid. Nobody else will remember them.",
+    "Gammer Tuck? Dead a while now. Somebody always takes the empty place.",
+    "Old news, Gammer Tuck. Dead and half forgotten. That is how it goes out here."
+   ]
+  },
+  {
+   "state": "Sayo of the Grey Ribbon killed by player",
+   "name": "Sayo of the Grey Ribbon",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Shek Kingdom"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Sayo of the Grey Ribbon, dead. I heard it twice today, so it might even be true.",
+    "They found what was left of Sayo of the Grey Ribbon. Whoever did it did not stay to brag.",
+    "Sayo of the Grey Ribbon is dead, they say. I will believe it when the robberies stop.",
+    "Sayo of the Grey Ribbon is finished. The roads will be quieter for a week, until the next one."
+   ],
+   "lasting": [
+    "They still argue about who killed Sayo of the Grey Ribbon. Nobody agrees on the face.",
+    "Since Sayo of the Grey Ribbon died the road is a little safer. A little.",
+    "Old news, Sayo of the Grey Ribbon. Dead and half forgotten. That is how it goes out here."
+   ]
+  },
+  {
+   "state": "Cuddy Pell killed by player",
+   "name": "Cuddy Pell",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Fisher"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Cuddy Pell is finished. The roads will be quieter for a week, until the next one.",
+    "Word came in last night: Cuddy Pell is gone. The bounty board will need a new face.",
+    "Cuddy Pell is dead, they say. I will believe it when the robberies stop.",
+    "Cuddy Pell, dead. I heard it twice today, so it might even be true."
+   ],
+   "lasting": [
+    "Old news, Cuddy Pell. Dead and half forgotten. That is how it goes out here.",
+    "Cuddy Pell? Dead a while now. Somebody always takes the empty place.",
+    "Cuddy Pell used to scare people. Now the name is a story to scare children."
+   ]
+  },
+  {
+   "state": "Tchik of Seven Voices killed by player",
+   "name": "Tchik of Seven Voices",
+   "factions": [
+    "United Cities",
+    "Shek Kingdom",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Somebody finally put Tchik of Seven Voices in the dirt. Fresh news. Buy the teller a drink.",
+    "Tchik of Seven Voices, dead. I heard it twice today, so it might even be true.",
+    "Tchik of Seven Voices is dead, they say. I will believe it when the robberies stop.",
+    "Word came in last night: Tchik of Seven Voices is gone. The bounty board will need a new face."
+   ],
+   "lasting": [
+    "Somebody killed Tchik of Seven Voices. I hope they were paid. Nobody else will remember them.",
+    "Old news, Tchik of Seven Voices. Dead and half forgotten. That is how it goes out here.",
+    "Tchik of Seven Voices used to scare people. Now the name is a story to scare children."
+   ]
+  },
+  {
+   "state": "Elric Vosk killed by player",
+   "name": "Elric Vosk",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Elric Vosk, dead. I heard it twice today, so it might even be true.",
+    "Word came in last night: Elric Vosk is gone. The bounty board will need a new face.",
+    "Elric Vosk is dead, they say. I will believe it when the robberies stop.",
+    "Elric Vosk is finished. The roads will be quieter for a week, until the next one."
+   ],
+   "lasting": [
+    "Since Elric Vosk died the road is a little safer. A little.",
+    "Old news, Elric Vosk. Dead and half forgotten. That is how it goes out here.",
+    "They still argue about who killed Elric Vosk. Nobody agrees on the face."
+   ]
+  },
+  {
+   "state": "Pyke Ludlow killed by player",
+   "name": "Pyke Ludlow",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Word came in last night: Pyke Ludlow is gone. The bounty board will need a new face.",
+    "They found what was left of Pyke Ludlow. Whoever did it did not stay to brag.",
+    "Pyke Ludlow, dead. I heard it twice today, so it might even be true.",
+    "Did you hear? Pyke Ludlow. Dead. Nobody here is crying about it."
+   ],
+   "lasting": [
+    "Pyke Ludlow? Dead a while now. Somebody always takes the empty place.",
+    "They still argue about who killed Pyke Ludlow. Nobody agrees on the face.",
+    "Somebody killed Pyke Ludlow. I hope they were paid. Nobody else will remember them."
+   ]
+  },
+  {
+   "state": "Holy phoenix is dead",
+   "name": "Phoenix",
+   "factions": [
+    "United Cities",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Anti-Slavers"
+   ],
+   "fresh_days": 5,
+   "chance": 14,
+   "fresh": [
+    "The Phoenix is dead. The Holy Lord himself. Two days ago, maybe three. The priests are not saying it out loud yet.",
+    "They say the Phoenix fell. Say it quietly; some of the faithful have not heard.",
+    "Phoenix, dead. If that is true, Okran's people are about to have a very bad season.",
+    "The Holy Lord is dead, they say. Every slaver and every heretic is drinking tonight."
+   ],
+   "lasting": [
+    "The Phoenix died and the Nation is still standing. That tells you something about priests.",
+    "Since the Phoenix died the inquisitors look over their shoulders. Good.",
+    "The Holy Lord is dead and buried. The flames have a new excuse every week."
+   ]
+  },
+  {
+   "state": "Tengu killed",
+   "name": "Emperor Tengu",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Shek Kingdom",
+    "The Holy Nation"
+   ],
+   "fresh_days": 5,
+   "chance": 14,
+   "fresh": [
+    "The Emperor is dead. Tengu. Dead. The nobles are already fighting over the chair.",
+    "Did you hear? Tengu. Somebody killed the Emperor. Lock your doors tonight.",
+    "The Emperor is dead, they say. Three days and the samurai still do not know whom to salute.",
+    "Tengu is gone. I never thought I would live to say it out loud."
+   ],
+   "lasting": [
+    "The Emperor died and the Cities went on taxing. Some things outlive anyone.",
+    "Since Tengu died every lord thinks he is next in line. They are all wrong.",
+    "Old news, the Emperor's death. The nobles still have not stopped stabbing each other over it."
+   ]
+  },
+  {
+   "state": "Player killed Esata",
+   "name": "Esata",
+   "factions": [
+    "Shek Kingdom",
+    "United Cities",
+    "The Holy Nation",
+    "Traders Guild"
+   ],
+   "fresh_days": 5,
+   "chance": 14,
+   "fresh": [
+    "Esata is dead. The Stone Golem. An outlander did it, they say, two days back.",
+    "They say Esata fell. The Shek are quiet about it, which is how you know it is true.",
+    "The Stone Golem is dead. Somebody out there is very good, or very lucky.",
+    "Esata, dead. Bayan will have to find someone else to blame for everything."
+   ],
+   "lasting": [
+    "Esata died and the Kingdom did not. The Shek are harder to kill than their queens.",
+    "They still tell the story of who killed the Stone Golem. It grows every time.",
+    "Since Esata fell the Shek fight like they have something to prove. They always did."
+   ]
+  },
+  {
+   "state": "Longen killed by player",
+   "name": "Longen",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 5,
+   "chance": 14,
+   "fresh": [
+    "Longen is dead. Somebody got past the guards at Stack. Two days ago, they say.",
+    "Did you hear? Longen. The Traders Guild will be counting the cost for a month.",
+    "Longen is gone. Every slave in the Cities heard it before the lords did.",
+    "They say Longen is dead. Nobody I know is wearing black."
+   ],
+   "lasting": [
+    "Longen died and somebody else took the desk. The Guild always has a spare.",
+    "Old news, Longen. The ledgers did not even pause.",
+    "Since Longen died the slavers walk a little faster through town."
+   ]
+  },
+  {
+   "state": "Lady Tsugi is dead",
+   "name": "Lady Tsugi",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 5,
+   "chance": 14,
+   "fresh": [
+    "Lady Tsugi is dead. They say it happened a few days ago and the servants are still cleaning up.",
+    "Tsugi, dead. Her house will be sold before the week is out.",
+    "Did you hear about Lady Tsugi? Dead. Nobody is sure who to thank."
+   ],
+   "lasting": [
+    "Lady Tsugi died and the house went to a cousin. Same walls, same whips.",
+    "Old news, Tsugi. The Cities forget their nobles fast when the taxes keep coming."
+   ]
+  },
+  {
+   "state": "Lord Inaba is dead",
+   "name": "Lord Inaba",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 5,
+   "chance": 14,
+   "fresh": [
+    "Lord Inaba is dead. A few days ago. The samurai are saying nothing, very loudly.",
+    "Inaba, dead. Somebody is going to be very rich or very hunted."
+   ],
+   "lasting": [
+    "Lord Inaba died and the Cities did not miss a single tax day.",
+    "They still argue about who killed Inaba. The nobles prefer not to find out."
+   ]
+  },
+  {
+   "state": "Lord Nagata is dead",
+   "name": "Lord Nagata",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 5,
+   "chance": 14,
+   "fresh": [
+    "Lord Nagata is dead, they say. Fresh news. The farms are pretending to be sad.",
+    "Nagata, dead. Three days. His guards look lost."
+   ],
+   "lasting": [
+    "Lord Nagata died and his debts outlived him. Debts usually do.",
+    "Old news, Nagata. Somebody else owns his fields now."
+   ]
+  },
+  {
+   "state": "Lord Ohta is dead",
+   "name": "Lord Ohta",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 5,
+   "chance": 14,
+   "fresh": [
+    "Lord Ohta is dead. Two days, maybe three. Whoever did it walked out the front door, they say.",
+    "Ohta, dead. Nobody in the slums is drinking water tonight."
+   ],
+   "lasting": [
+    "Lord Ohta died and a nephew took the seat. The whip is the same weight.",
+    "They still whisper about Ohta's death. Quietly. The nephew listens."
+   ]
+  },
+  {
+   "state": "Lord Yoshinaga is dead",
+   "name": "Lord Yoshinaga",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 5,
+   "chance": 14,
+   "fresh": [
+    "Lord Yoshinaga is dead. News from the north, a few days old.",
+    "Yoshinaga, dead. The farmers will believe it when the tithe stops."
+   ],
+   "lasting": [
+    "Lord Yoshinaga died and the tithe did not. Tells you what matters.",
+    "Old news, Yoshinaga. The Cities have more lords than graves."
+   ]
+  },
+  {
+   "state": "Orrin Vask killed by player",
+   "name": "Orrin Vask",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Somebody finally put Orrin Vask in the dirt. Fresh news. Buy the teller a drink.",
+    "Did you hear? Orrin Vask. Dead. Nobody here is crying about it.",
+    "Word came in last night: Orrin Vask is gone. The bounty board will need a new face.",
+    "They say Orrin Vask is dead. Two days, maybe three. Some outlander did it."
+   ],
+   "lasting": [
+    "Orrin Vask? Dead a while now. Somebody always takes the empty place.",
+    "Orrin Vask used to scare people. Now the name is a story to scare children.",
+    "Somebody killed Orrin Vask. I hope they were paid. Nobody else will remember them."
+   ]
+  },
+  {
+   "state": "Aldric Roane killed by player",
+   "name": "Aldric Roane",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Somebody finally put Aldric Roane in the dirt. Fresh news. Buy the teller a drink.",
+    "Aldric Roane, dead. I heard it twice today, so it might even be true.",
+    "They say Aldric Roane is dead. Two days, maybe three. Some outlander did it.",
+    "They found what was left of Aldric Roane. Whoever did it did not stay to brag."
+   ],
+   "lasting": [
+    "They still argue about who killed Aldric Roane. Nobody agrees on the face.",
+    "Aldric Roane? Dead a while now. Somebody always takes the empty place.",
+    "Aldric Roane used to scare people. Now the name is a story to scare children."
+   ]
+  },
+  {
+   "state": "Karrash Red-Hand killed by player",
+   "name": "Karrash Red-Hand",
+   "factions": [
+    "Shek Kingdom",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "They found what was left of Karrash Red-Hand. Whoever did it did not stay to brag.",
+    "Word came in last night: Karrash Red-Hand is gone. The bounty board will need a new face.",
+    "They say Karrash Red-Hand is dead. Two days, maybe three. Some outlander did it.",
+    "Did you hear? Karrash Red-Hand. Dead. Nobody here is crying about it."
+   ],
+   "lasting": [
+    "Karrash Red-Hand? Dead a while now. Somebody always takes the empty place.",
+    "Karrash Red-Hand used to scare people. Now the name is a story to scare children.",
+    "Old news, Karrash Red-Hand. Dead and half forgotten. That is how it goes out here."
+   ]
+  },
+  {
+   "state": "Veth of the Closed Hand killed by player",
+   "name": "Veth of the Closed Hand",
+   "factions": [
+    "United Cities",
+    "Shek Kingdom",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "They say Veth of the Closed Hand is dead. Two days, maybe three. Some outlander did it.",
+    "They found what was left of Veth of the Closed Hand. Whoever did it did not stay to brag.",
+    "Veth of the Closed Hand, dead. I heard it twice today, so it might even be true.",
+    "Veth of the Closed Hand is dead, they say. I will believe it when the robberies stop."
+   ],
+   "lasting": [
+    "They still argue about who killed Veth of the Closed Hand. Nobody agrees on the face.",
+    "Veth of the Closed Hand used to scare people. Now the name is a story to scare children.",
+    "Veth of the Closed Hand? Dead a while now. Somebody always takes the empty place."
+   ]
+  },
+  {
+   "state": "Hollis Gantry killed by player",
+   "name": "Hollis Gantry",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "They found what was left of Hollis Gantry. Whoever did it did not stay to brag.",
+    "They say Hollis Gantry is dead. Two days, maybe three. Some outlander did it.",
+    "Did you hear? Hollis Gantry. Dead. Nobody here is crying about it.",
+    "Hollis Gantry is dead, they say. I will believe it when the robberies stop."
+   ],
+   "lasting": [
+    "Hollis Gantry used to scare people. Now the name is a story to scare children.",
+    "They still argue about who killed Hollis Gantry. Nobody agrees on the face.",
+    "Since Hollis Gantry died the road is a little safer. A little."
+   ]
+  },
+  {
+   "state": "Gaffer Marrowbone killed by player",
+   "name": "Gaffer Marrowbone",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "They found what was left of Gaffer Marrowbone. Whoever did it did not stay to brag.",
+    "Did you hear? Gaffer Marrowbone. Dead. Nobody here is crying about it.",
+    "Gaffer Marrowbone, dead. I heard it twice today, so it might even be true.",
+    "They say Gaffer Marrowbone is dead. Two days, maybe three. Some outlander did it."
+   ],
+   "lasting": [
+    "Gaffer Marrowbone used to scare people. Now the name is a story to scare children.",
+    "Since Gaffer Marrowbone died the road is a little safer. A little.",
+    "They still argue about who killed Gaffer Marrowbone. Nobody agrees on the face."
+   ]
+  },
+  {
+   "state": "Rennik Salt killed by player",
+   "name": "Rennik Salt",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Did you hear? Rennik Salt. Dead. Nobody here is crying about it.",
+    "Rennik Salt, dead. I heard it twice today, so it might even be true.",
+    "They found what was left of Rennik Salt. Whoever did it did not stay to brag.",
+    "Rennik Salt is dead, they say. I will believe it when the robberies stop."
+   ],
+   "lasting": [
+    "Since Rennik Salt died the road is a little safer. A little.",
+    "Rennik Salt? Dead a while now. Somebody always takes the empty place.",
+    "Rennik Salt used to scare people. Now the name is a story to scare children."
+   ]
+  },
+  {
+   "state": "Slate Fennick killed by player",
+   "name": "Slate Fennick",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "They say Slate Fennick is dead. Two days, maybe three. Some outlander did it.",
+    "Slate Fennick, dead. I heard it twice today, so it might even be true.",
+    "Did you hear? Slate Fennick. Dead. Nobody here is crying about it.",
+    "Word came in last night: Slate Fennick is gone. The bounty board will need a new face."
+   ],
+   "lasting": [
+    "Somebody killed Slate Fennick. I hope they were paid. Nobody else will remember them.",
+    "Slate Fennick used to scare people. Now the name is a story to scare children.",
+    "Old news, Slate Fennick. Dead and half forgotten. That is how it goes out here."
+   ]
+  },
+  {
+   "state": "Brannoch Teel killed by player",
+   "name": "Brannoch Teel",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Somebody finally put Brannoch Teel in the dirt. Fresh news. Buy the teller a drink.",
+    "Word came in last night: Brannoch Teel is gone. The bounty board will need a new face.",
+    "Brannoch Teel, dead. I heard it twice today, so it might even be true.",
+    "They found what was left of Brannoch Teel. Whoever did it did not stay to brag."
+   ],
+   "lasting": [
+    "Since Brannoch Teel died the road is a little safer. A little.",
+    "Somebody killed Brannoch Teel. I hope they were paid. Nobody else will remember them.",
+    "They still argue about who killed Brannoch Teel. Nobody agrees on the face."
+   ]
+  },
+  {
+   "state": "Hob Lenner killed by player",
+   "name": "Hob Lenner",
+   "factions": [
+    "Traders Guild",
+    "United Cities"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Hob Lenner is finished. The roads will be quieter for a week, until the next one.",
+    "Somebody finally put Hob Lenner in the dirt. Fresh news. Buy the teller a drink.",
+    "Did you hear? Hob Lenner. Dead. Nobody here is crying about it.",
+    "They say Hob Lenner is dead. Two days, maybe three. Some outlander did it."
+   ],
+   "lasting": [
+    "Hob Lenner used to scare people. Now the name is a story to scare children.",
+    "Since Hob Lenner died the road is a little safer. A little.",
+    "Old news, Hob Lenner. Dead and half forgotten. That is how it goes out here."
+   ]
+  },
+  {
+   "state": "Dolan Pike killed by player",
+   "name": "Dolan Pike",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "Somebody finally put Dolan Pike in the dirt. Fresh news. Buy the teller a drink.",
+    "Dolan Pike is dead, they say. I will believe it when the robberies stop.",
+    "Word came in last night: Dolan Pike is gone. The bounty board will need a new face.",
+    "Dolan Pike is finished. The roads will be quieter for a week, until the next one."
+   ],
+   "lasting": [
+    "Dolan Pike used to scare people. Now the name is a story to scare children.",
+    "Dolan Pike? Dead a while now. Somebody always takes the empty place.",
+    "Somebody killed Dolan Pike. I hope they were paid. Nobody else will remember them."
+   ]
+  },
+  {
+   "state": "Isolde Marr killed by player",
+   "name": "Isolde Marr",
+   "factions": [
+    "Flotsam Ninjas",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "fresh_days": 4,
+   "chance": 12,
+   "fresh": [
+    "They found what was left of Isolde Marr. Whoever did it did not stay to brag.",
+    "Did you hear? Isolde Marr. Dead. Nobody here is crying about it.",
+    "Isolde Marr is finished. The roads will be quieter for a week, until the next one.",
+    "Isolde Marr is dead, they say. I will believe it when the robberies stop."
+   ],
+   "lasting": [
+    "Old news, Isolde Marr. Dead and half forgotten. That is how it goes out here.",
+    "Somebody killed Isolde Marr. I hope they were paid. Nobody else will remember them.",
+    "Isolde Marr? Dead a while now. Somebody always takes the empty place."
+   ]
+  }
+ ]
+}

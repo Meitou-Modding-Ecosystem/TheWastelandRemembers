@@ -1,0 +1,10 @@
+{
+  "id": "LivingWastelandMeitou",
+  "apiVersion": 2,
+  "version": "0.1.0",
+  "assemblies": [
+    "LivingWastelandMeitou.dll"
+  ],
+  "entry": "LivingWasteland.MeitouMod.LwMod",
+  "gameVersion": ">=0.17.3 <0.21.0"
+}

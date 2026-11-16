@@ -1,0 +1,1019 @@
+{
+ "pack": "quest_chains",
+ "mod": "LivingWastelandHeat",
+ "quests": [
+  {
+   "id": "qc_caravan",
+   "offer": {
+    "factions": [
+     "Traders Guild"
+    ],
+    "chance": 35,
+    "say": [
+     "A caravan bound for a Shek town never arrived. The Guild keeps its word. Carry the factor four iron plates, then deal with whoever took the rest.",
+     "We lost a wagon train on the Shek road. The buyer wants his goods and the Guild wants its name kept clean. Four iron plates will do for now.",
+     "Contracts don't forgive delays. A shipment never reached a Shek shop. Bring him iron plates in its place, and find the man who ended the wagons.",
+     "Elric Vosk was hired to guard that caravan. It never arrived and the guards never returned. The shopkeeper still waits. Carry him iron, then find Vosk.",
+     "A broken delivery is a broken Guild. Take four iron plates to the Shek shopkeeper who was owed. Then see to the guard who vanished with the rest."
+    ],
+    "accept": [
+     "Four iron plates. Done.",
+     "I will carry them.",
+     "And then Vosk.",
+     "Where does the shopkeeper trade?"
+    ],
+    "decline": [
+     "Find a carter.",
+     "Not my road.",
+     "The Guild has wagons.",
+     "No."
+    ],
+    "accepted": [
+     "Bring four iron plates to a Shek shopkeeper. He will know the delivery. Then see to Elric Vosk and come back to me.",
+     "Shek shopkeeper, four iron plates. After that, the Guild wants Vosk. We pay on proof.",
+     "The shopkeeper is expecting someone. Give him the plates and tell him the Guild kept its word. Then Vosk.",
+     "Iron to the Shek town. Steel to Vosk. Report back when the second is done."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Shek shopkeep"
+     ],
+     "narrow": true,
+     "target_has_item": [
+      "Iron Plates"
+     ],
+     "say": [
+      "The Guild's wagons did not come. I have waited a month. You carry iron? Then the Guild still remembers its word.",
+      "Four plates. That isn't what was promised, but it's something. The wagons are lost, I think. I won't blame the Guild for the road.",
+      "Iron. Good. The wagons were late, then very late, then forgotten. At least someone remembers the debt.",
+      "A stranger with iron plates and a Guild stamp. I didn't expect it."
+     ],
+     "reply": [
+      "The Guild keeps its word.",
+      "That is all I could carry.",
+      "What happened to the wagons?",
+      "Take them."
+     ],
+     "after": [
+      "The guard who vanished with the cargo was called Elric Vosk. Tell the Guild I want him found, or at least buried.",
+      "Vosk was hired to watch the wagons. Now I hear he watches nothing. Find him.",
+      "Tell your Guild the iron is received. The rest is in Vosk's pocket. Take it back.",
+      "The Guild writes things down. If you do this well, they will write your name."
+     ],
+     "take_items": [
+      [
+       "Iron Plates",
+       4
+      ]
+     ],
+     "relations": {
+      "Shek Kingdom": 3
+     }
+    }
+   ],
+   "report": {
+    "state": "Elric Vosk killed by player",
+    "reward": 8000,
+    "say": [
+     "Vosk is dead? Then the wagons are paid for, one way or another. The Guild thanks you. Here are the cats.",
+     "A broken delivery repaid in blood. The Guild approves.",
+     "You carried iron and ended a thief. That's a good week's work. Here's the Guild's pay.",
+     "The caravan is a loss, but the man is gone. The shopkeeper sends his thanks. We send cats."
+    ]
+   }
+  },
+  {
+   "id": "qc_hunt",
+   "offer": {
+    "factions": [
+     "Cannibal Hunters"
+    ],
+    "chance": 45,
+    "say": [
+     "The nightmares never go away. There is a Meat Lord out in the plains. I will not send you without proof you can kill one of them.",
+     "You want a hunt? Bring me an arm. A painted one. I don't tell the nest to anyone who hasn't bled one.",
+     "I keep a list. Meat Lord is at the top. If you want to cross his name off, bring me proof you can end one of his.",
+     "The Meat Lord eats well and wastes nothing. I'd see him end. First a limb of the tribe, so I know you aren't a talker.",
+     "Plenty come asking for the hunt. Few return with a painted arm. Return with one, and I'll point you at the Lord."
+    ],
+    "accept": [
+     "I will bring an arm.",
+     "Painted. Understood.",
+     "Then the Lord.",
+     "I will be back."
+    ],
+    "decline": [
+     "I am not a hunter.",
+     "Not today.",
+     "No.",
+     "Find another."
+    ],
+    "accepted": [
+     "A severed arm from the painted ones. Right hand will do. Bring it to a hunter, any hunter. Then the Meat Lord.",
+     "Take an arm from any cannibal you cut down. Bring it to us. We will tell you where the Lord eats.",
+     "The proof is a right arm. Do not waste it. A hunter will know what to do with it.",
+     "Kill one of them, take the arm, show it to a hunter. Then the Lord."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Cannibal Hunter"
+     ],
+     "narrow": true,
+     "target_has_item": [
+      "Severed Cannibal Right Arm"
+     ],
+     "say": [
+      "A painted arm. Good. You aren't a talker. The Meat Lord keeps his own table, past the edge of what we patrol.",
+      "That's a cannibal's arm. You have bled one, then. The Meat Lord eats where the plains turn red. You'll know it by the smell.",
+      "Proof enough. The Lord hunts in the plains and his men carry what he leaves. You'll find the camp by following the bones.",
+      "You killed one and kept the arm. That's more than most hunters manage. Listen carefully, for I say this once."
+     ],
+     "reply": [
+      "Where is the Meat Lord?",
+      "Take it.",
+      "How many follow him?",
+      "I will end him."
+     ],
+     "after": [
+      "He is where the cannibals gather most thickly. Follow the bone fences and the smoke.",
+      "Do not go alone. Do not go slowly. Do not go hungry.",
+      "He will not run. He will feed. That is the only thing he knows.",
+      "I have a list of names. His is the only one I read aloud."
+     ],
+     "take_items": [
+      [
+       "Severed Cannibal Right Arm",
+       1
+      ]
+     ],
+     "relations": {
+      "Cannibal Hunters": 2
+     }
+    }
+   ],
+   "report": {
+    "state": "Meat Lord killed by player",
+    "reward": 16000,
+    "say": [
+     "The Meat Lord is dead. The nightmares won't end, but they've lost a teller.",
+     "You ended the one at the top of my list. Here's what the hunters owe.",
+     "A painted arm and a dead Lord. You're the first to finish the hunt.",
+     "He's gone. The plains are quieter. Don't be fooled. Take the pay."
+    ]
+   }
+  },
+  {
+   "id": "qc_relic",
+   "offer": {
+    "factions": [
+     "Tech Hunters"
+    ],
+    "chance": 45,
+    "say": [
+     "The University wants Rhinobot's CPU. Rhinobot wanted to help and had no moral processing. We would like to study what's left of him.",
+     "Finch is after a core. Not any core: Rhinobot's. Hear him first, then do the dirty part.",
+     "A robot with a conscience and no morals. The Machinists will pay for what's inside it. Go and see Finch about the details.",
+     "Ruins are our trade, and Rhinobot is a ruin that still walks. Talk to Finch, then bring his CPU to Iyo.",
+     "The scholars want a relic and the hunters want the pay. Finch will explain."
+    ],
+    "accept": [
+     "I will see Finch.",
+     "Rhinobot's CPU.",
+     "A relic, then.",
+     "Where is the University?"
+    ],
+    "decline": [
+     "I am no ruin-hunter.",
+     "Not today.",
+     "No.",
+     "Find another."
+    ],
+    "accepted": [
+     "Finch will tell you what he needs. Bring Rhinobot's CPU to his assistant Iyo. Iyo handles the pay.",
+     "See Finch first. He knows the machine. Then bring the CPU to Iyo.",
+     "A relic is only worth what the scholars say. Finch says. Iyo pays.",
+     "Talk, kill, deliver. In that order. Do not mix them up."
+    ]
+   },
+   "steps": [
+    {
+     "characters": [
+      "Finch"
+     ],
+     "say": [
+      "You come from the hunters? Good. I need Rhinobot's CPU. He was a helpful machine with no capacity for harm assessment. I'd like to know why.",
+      "A CPU, from a machine called Rhinobot. It's an old design, and a flawed one. The flaw is of scholarly interest. The robot is of less.",
+      "Rhinobot wanted to help, and so he helped with anything. I should like the core intact. Bring it to my assistant.",
+      "Another hunter. Splendid. A core of ancient manufacture, from a robot who couldn't say no. Bring it to Iyo."
+     ],
+     "reply": [
+      "I will bring it to Iyo.",
+      "How dangerous is he?",
+      "Why is it valuable?",
+      "Leave it to me."
+     ],
+     "after": [
+      "Iyo will pay and note the delivery. Do not damage the core. I mean it.",
+      "He may attack on sight. He may help you. The line between is thin.",
+      "Careful with it. It remembers things.",
+      "The CPU has a chance of surviving a clean kill. Do not use fire."
+     ]
+    }
+   ],
+   "report": {
+    "characters": [
+     "Iyo"
+    ],
+    "target_has_item": [
+     "CPU of Rhinobot"
+    ],
+    "take_items": [
+     [
+      "CPU of Rhinobot",
+      1
+     ]
+    ],
+    "state": "Rhinobot killed by player",
+    "reward": 26000,
+    "say": [
+     "Rhinobot's core. Intact. Finch will be insufferable. The University pays.",
+     "That's the CPU. I'll file it. You'll be paid. The Tech Hunters speak well of you.",
+     "A relic delivered. The Machinists are grateful.",
+     "You brought the core. Good. Payment is made. Don't touch the rest."
+    ]
+   }
+  },
+  {
+   "id": "qc_slaver_hire",
+   "offer": {
+    "factions": [
+     "Slave Traders"
+    ],
+    "chance": 35,
+    "say": [
+     "An ex-Anti-Slaver is bleeding our wagons. Pyke Ludlow. We pay for his end. First the pens need dressings: two medical supplies to the slave shop.",
+     "Ludlow has killed more of our guards than disease has. Take two medical supplies to the trader at the pens, then deal with the man.",
+     "Our guards come back cut. Our wagons don't come back. Pyke Ludlow is the reason. Carry dressings to the slave shop, then end him.",
+     "A rogue Anti-Slaver costs us more than the real ones. Dressings to the shop first, so the wounded can work. Then Ludlow.",
+     "Business is business. Ludlow kills our people and we pay for his death. Medical supplies to the slave shop, then Ludlow."
+    ],
+    "accept": [
+     "Two medical supplies. Fine.",
+     "Then Ludlow.",
+     "What does it pay?",
+     "Where is the shop?"
+    ],
+    "decline": [
+     "I do not work for slavers.",
+     "No.",
+     "Not today.",
+     "Find someone else."
+    ],
+    "accepted": [
+     "Two medical supplies to a slave shop trader. Then Pyke Ludlow. Come back when he is dead.",
+     "Dressings to the pens, then the hunt. We pay on proof.",
+     "The trader at the shop will take your supplies and tell you what he knows. Then Ludlow.",
+     "Carry first, kill second, collect third."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "slave shop trader"
+     ],
+     "narrow": true,
+     "target_has_item": [
+      "Medical Supplies"
+     ],
+     "say": [
+      "Medical supplies. Finally. The guards have been coming back cut, and I've had nothing to bind them with.",
+      "Dressings for the wounded. Good. Ludlow strikes at the wagons and our men bleed on the road.",
+      "Two sets. They'll do for now. Pyke Ludlow hits where we least expect.",
+      "You carry supplies and a contract. Good. The man you want is Pyke Ludlow, and he isn't far from the roads."
+     ],
+     "reply": [
+      "Where does Ludlow strike?",
+      "These are for the wounded.",
+      "I will end him.",
+      "Take them."
+     ],
+     "after": [
+      "He works the roads between the markets. He knows the wagons before they leave.",
+      "He was an Anti-Slaver once. The worst kind: a convert.",
+      "Find him and finish it. We have lost enough guards for the month.",
+      "We pay on proof, not on promise. Remember that."
+     ],
+     "take_items": [
+      [
+       "Medical Supplies",
+       2
+      ]
+     ]
+    }
+   ],
+   "report": {
+    "state": "Pyke Ludlow killed by player",
+    "reward": 7000,
+    "say": [
+     "Ludlow is dead. The wagons will travel in peace for a month.",
+     "You ended the rogue. The Slave Traders don't forget a favour.",
+     "A bad week ends well. Ludlow is gone. Here's what we promised.",
+     "Business concluded. Take the coin and don't ask where it came from."
+    ]
+   }
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "qc_caravan_rum_tg",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A Guild caravan went out toward the Shek towns and never arrived. The guard's name was Vosk, I think.",
+      "Wagons don't vanish. People take them. The Guild is quiet about it, which means it's angry.",
+      "There's a shopkeeper in the east still waiting on a delivery.",
+      "Guild contracts go one of two ways. The goods arrive, or someone pays. Right now it's someone."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Elric Vosk killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_caravan_rum_shek",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Guild promised my cousin iron plates. They never came. The shopkeeper has stopped asking.",
+      "A merchant at the gate said his wagons are overdue. He did not look angry. He looked like a man making a list.",
+      "Foreign guards watching foreign wagons. When it goes wrong, it goes wrong in our dust.",
+      "Whoever took that caravan, the Guild will find. They keep better books than we do."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Elric Vosk killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_caravan_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Elric Vosk took a job guarding a caravan and walked off with it. I heard that on the road.",
+      "The Mercenary Guild hasn't said a word about Vosk. That's the loudest thing I've heard all week.",
+      "Merchants are nervous. A caravan guard turned thief makes every guard a suspect.",
+      "A guard who kills the master and keeps the bell. That isn't mercenary work. That's something else."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Mercenary Guild",
+    "United Cities",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Elric Vosk killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_caravan_rum_dead",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Vosk is dead. The Guild paid for it, I heard. Caravans are still nervous but the guards are less so.",
+      "The man who took the wagons is gone. The goods aren't found. The Guild writes it off and moves on.",
+      "A shopkeeper in the east got his iron after all. That's the Guild for you: slow, but they pay.",
+      "Elric Vosk finally paid his debts."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "Shek Kingdom",
+    "Mercenary Guild"
+   ],
+   "states": [
+    [
+     "Elric Vosk killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_caravan_rum_dead_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "That guard who took the caravan, Vosk, is dead. The Guild has stopped complaining about it.",
+      "Somebody finally put down Elric Vosk. The roads are a little safer for hired guards.",
+      "A thief with a sword and a bell. Gone. Nobody will miss the bell.",
+      "A guard who turned thief is dead. Merchants will sleep a little easier, and hire a little warier."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "United Cities",
+    "Drifters",
+    "Swampers",
+    "Anti-Slavers",
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Elric Vosk killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_hunt_rum_ch",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The hunters keep a list. The Meat Lord is at the top. Nobody has crossed him off yet.",
+      "Painted arms. That's how a hunter proves himself. A left one is for show. A right one is proof.",
+      "The nightmares never go away. We keep killing but they never go away.",
+      "Meat Lord eats well. The hunters don't."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "states": [
+    [
+     "Meat Lord killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_hunt_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Meat Lord is somewhere out in the plains. The hunters want him dead. The rest of us want to stay far away.",
+      "Cannibal Hunters ask for painted arms as proof. I'd rather not know what they do with them.",
+      "I met a hunter once who said the Meat Lord eats his own kind when there's nothing else. I believe him.",
+      "Don't take the cannibal road without a hunter's blessing. The plains don't forgive."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "Drifters",
+    "Mercenary Guild"
+   ],
+   "states": [
+    [
+     "Meat Lord killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_hunt_rum_dead",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Meat Lord is dead. The hunters crossed him off the list and cut a notch in their belts.",
+      "A stranger brought a painted arm, and then a dead Lord. The hunters shake their heads and nod.",
+      "The plains are quieter. Don't be fooled. A new Lord is always hungry.",
+      "Word is, the hunters wept. I don't believe it. But I believe they stopped for a moment."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "states": [
+    [
+     "Meat Lord killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_hunt_rum_dead_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Meat Lord is dead. The cannibals of the plains have lost a leader. They will have another by spring.",
+      "Somebody finally ended the big cannibal. The hunters paid.",
+      "The painted tribe is angrier now. Be careful on the plains road.",
+      "A Meat Lord is down and the plains aren't safer. The hunters say that's how it always goes."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "Drifters",
+    "Mercenary Guild",
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Meat Lord killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_relic_rum_th",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Finch wants a CPU. Rhinobot's, specifically. The hunters are drawing lots.",
+      "Rhinobot wanted to help. That's the problem. A robot that helps with anything is dangerous.",
+      "The University pays for relics, not blood.",
+      "Iyo pays on delivery. Finch pays in lectures."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Tech Hunters",
+    "Machinists"
+   ],
+   "states": [
+    [
+     "Rhinobot killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_relic_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Machinists are after a robot's brain. It's a nice change from their usual books.",
+      "There's a bounty on a robot called Rhinobot. A robot, can you imagine.",
+      "Tech Hunters go into ruins and don't return. Rhinobot is a ruin that walks.",
+      "Mind the Ashlands. Old machines don't care who you are."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "Drifters",
+    "Mercenary Guild",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Rhinobot killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_relic_rum_dead",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Rhinobot is down. The University got its core. I heard Finch cried. I don't believe it.",
+      "A robot that wanted to help is a pile of scrap. A stranger did it, for the Machinists.",
+      "Iyo paid in full. First time anyone has seen that.",
+      "The ruins are quiet. The scholars are loud."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Tech Hunters",
+    "Machinists"
+   ],
+   "states": [
+    [
+     "Rhinobot killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_relic_rum_dead_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "People say a robot in the Ashlands is finished. The Machinists took its brain.",
+      "Rhinobot, the helpful one, is gone. I didn't know he was real.",
+      "Somebody has been dismantling the old machines. Somebody is getting paid for it.",
+      "The Machinists got their robot brain. I hope it was worth whatever they paid."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "Drifters",
+    "Mercenary Guild",
+    "United Cities",
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Rhinobot killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_slaver_hire_rum_st",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Pyke Ludlow hits the wagons and leaves the slaves loose. The Slave Traders want him found.",
+      "An Anti-Slaver turned killer. Even his own side doesn't like what he has become.",
+      "Guards come back cut and refuse to say who by. They say it anyway after a drink.",
+      "Ludlow has made more enemies than the whole of the Anti-Slavers."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Slave Traders"
+   ],
+   "states": [
+    [
+     "Pyke Ludlow killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_slaver_hire_rum_as",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Pyke Ludlow was one of us. Now he kills anyone who ever owned a chain. That isn't what we're for.",
+      "Ludlow is a stain on the cause. We would like him ended, but not by us.",
+      "A good man gone wrong. That's the worst kind.",
+      "The Anti-Slavers don't claim Ludlow. The Slave Traders have a price on his head. The two facts are related."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Pyke Ludlow killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_slaver_hire_rum_dead",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Pyke Ludlow is dead. The slavers say it was business. The Anti-Slavers say nothing.",
+      "A rogue Anti-Slaver ended. The wagons travel unguarded and nobody is happy about it.",
+      "Ludlow's gone. The Slave Traders paid someone. That someone isn't welcome in the pens.",
+      "The man who killed slavers and slaves alike has stopped. Few will say they miss him."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Slave Traders",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Pyke Ludlow killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_slaver_hire_rum_dead_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Pyke Ludlow is dead. The slaver wagons are moving again. That is the world.",
+      "Somebody killed Ludlow, the rogue. The Slave Traders paid. That sounds right and wrong at once.",
+      "A killer on the slave roads is down. The roads aren't safer, just quieter.",
+      "A killer who hunted the slave wagons is dead. Both sides pretend it was an accident."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "Drifters",
+    "Mercenary Guild",
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Pyke Ludlow killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_caravan_rum_shop",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A Shek shopkeeper told me he's still waiting on iron. Four plates, he said. Four plates is a thing to wait for.",
+      "The Guild is quiet when it loses a wagon. It is loud when it loses face. Right now it is loud.",
+      "I buy iron from the Guild. The price went up this month. They say it is the road. I think it is the thief.",
+      "Merchants lose caravans every year. It isn't the loss they remember. It's who took it."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Shek shopkeep"
+   ],
+   "states": [
+    [
+     "Elric Vosk killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3
+  },
+  {
+   "id": "qc_caravan_rum_road",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A guard turned thief is the worst kind. He knows the route, the guards and the bell.",
+      "Vosk was a good hire once. That's how it starts.",
+      "I wouldn't take a caravan job this month. Not with Vosk loose on the road.",
+      "Caravan guards talk about Vosk the way a doctor talks about a disease that only attacks doctors."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "Mercenary Guild",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Elric Vosk killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3
+  },
+  {
+   "id": "qc_hunt_rum_arm",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A hunter won't tell you where the Meat Lord eats until you show him a painted arm. Bring a right one.",
+      "I sold a painted arm to a hunter once. He paid in dried meat and said it was a fair price. I did not ask what he did with it.",
+      "The Cannibal Hunters judge you by what you carry, not what you say.",
+      "Fresh arms keep poorly. Come back quickly."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Cannibal Hunter"
+   ],
+   "states": [
+    [
+     "Meat Lord killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3
+  },
+  {
+   "id": "qc_hunt_rum_plains",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Cannibals don't waste anything. A Meat Lord wastes less than the rest.",
+      "Painted ones leave bone fences around their camps. If you see a fence, turn around. If you see two, run.",
+      "The plains are quiet at night. That's when the hunters go in.",
+      "Nobody walks the plains for pleasure. Nobody walks them twice without a reason."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "Cannibal Hunters",
+    "Drifters",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Meat Lord killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3
+  },
+  {
+   "id": "qc_relic_rum_iyo",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Iyo is the University's face to outsiders. He's polite, flat and very precise about what he pays for.",
+      "Finch doesn't leave the University. Iyo does the talking. Between them they decide what the world is worth.",
+      "Machinists pay late, but they pay. Tech Hunters bring them what the ruins give up.",
+      "The Tech Hunters' notes are free. The University's pay isn't."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Rhinobot killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3
+  },
+  {
+   "id": "qc_relic_rum_ruin",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Old machines still walk some ruins. They are not hostile. They are not friendly either. They simply do not understand you.",
+      "A robot that helps with anything is the most dangerous kind. It will help you into a grave.",
+      "Ruins keep their dead, and sometimes the dead keep their duties.",
+      "Hunters say the old machines remember. Remember what, no one will say."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "Tech Hunters",
+    "Drifters",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Rhinobot killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3
+  },
+  {
+   "id": "qc_slaver_hire_rum_wagon",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Slave wagons have been getting hit on the open road. Guards come back cut and the wagons come back empty.",
+      "A man called Ludlow used to free slaves. Now he kills everyone near them. Slavers don't understand it.",
+      "The Slave Traders are paying extra for wagon guards. It doesn't help. The guards just die for more.",
+      "If you hear an Anti-Slaver talk about Ludlow, they do not use his name. They spit instead."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "Slave Traders",
+    "Drifters",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Pyke Ludlow killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3
+  },
+  {
+   "id": "qc_slaver_hire_rum_shop",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Shop trader here's short of bandages. The guards are coming back cut. He doesn't say by whom, but we all know.",
+      "The pens are quiet. When the pens are quiet, it means the guards are afraid.",
+      "Medical supplies cost more this month. The Slave Traders are buying all they can find.",
+      "A trader told me Ludlow knows our wagon routes."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "slave shop trader"
+   ],
+   "states": [
+    [
+     "Pyke Ludlow killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3
+  }
+ ]
+}

@@ -1,0 +1,4619 @@
+{
+ "pack": "skin_bandits",
+ "mod": "LivingWasteland",
+ "world_states": [
+  {
+   "name": "Savant killed by player",
+   "npc": "Savant",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Savant imprisoned by player",
+   "npc": "Savant",
+   "is": "imprisoned",
+   "player": true
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "sb_v_enemy_measure",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Stand still a moment. Shoulders to hips, wrist to elbow. I have a very good memory for figures.",
+      "Forty paces and already I have your height. The rest I'll take after.",
+      "Don't turn around. I'm still reading your back. It has such a nice, even grain.",
+      "Arms out, please. No? Then I'll measure you where you fall.",
+      "Chest, nine hands. Shoulder, three. I shall need the neck, but that comes later.",
+      "You are a good size. Not too tall, not too narrow. I will not need to let anything out.",
+      "Keep walking toward me. Every step is one less measure I have to take.",
+      "Thank you for coming so promptly. Punctuality saves a great deal of fuss afterwards."
+     ]
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_polite",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Forgive the interruption. I only wanted a moment of your skin, and then you may go on your way.",
+      "How kind of you to visit. May I take your coat? And the rest of it?",
+      "Please, don't apologise for the blood. I'll clean you myself.",
+      "You'll find we're very gentle people. We simply can't allow you to leave in one piece.",
+      "I'd offer you tea, but it hurts the cure. A little water, instead, after.",
+      "Good day. Shall we begin? I find it's kindest to begin before you have time to think.",
+      "I'm so sorry for the noise this will make. We've tried to be quiet about it.",
+      "No hurry. We have all the time in the world. You, I fear, have somewhat less."
+     ]
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_craft",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "A clean pelt is like an honest day's work. You'll make a lovely pair of gloves.",
+      "Everyone thinks it's the knife. It isn't the knife. It's the thumb, a very patient thumb.",
+      "I could take a hide off a man in one piece, without a tear. Hold still and I'll show you.",
+      "Nobody understands the craft. They see the blood and miss the line.",
+      "A good cut sings. Yours will sing. I can already hear the note.",
+      "My master says there are only two kinds of skin: skin that fits, and skin that hasn't met me yet.",
+      "Do you know how many hours go into a single sleeve? You should be flattered by the interest.",
+      "Seam allowance matters. A careless man leaves you too little to work with."
+     ]
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_patience",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Run if you like. The wastes are wide, and I have a great deal of patience.",
+      "I've waited longer for worse hides. Better ones, too. You're somewhere in the middle.",
+      "No rush. Fear softens the skin and a long chase softens the fear.",
+      "Sleep when you must. I'll be there when you wake, in a borrowed coat.",
+      "We never hunt. We just stand where you'll eventually arrive.",
+      "I have had people fight me for hours. In the end they are all so tired. And so soft.",
+      "Come now. Everybody comes to us in the end. Some walk, some are carried."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_vanity",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "That jaw. That jaw will be mine by sundown, I think. It will sit so well on me.",
+      "I've had too many ordinary faces. Please let me have a memorable one for once.",
+      "Your cheekbones are a rare cut. I have wanted a pair like that since I was young.",
+      "Mine is wearing thin. Yours looks fresh. Don't take it personally, it's only fashion.",
+      "People will say I look well. They won't know it's you they're complimenting.",
+      "I shall wear it to the next market and nobody will ever know.",
+      "Do you mind if I try the expression? Just the smile. I need to see how it moves."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_voice",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Is this the voice you want? I can do a woman's. I can do a child's. They were all lovely.",
+      "Don't be afraid. I'm only borrowing someone's voice. He isn't using it.",
+      "Come closer. This is my mother's voice. It's the last one I took from her.",
+      "Hush. Hush now. That is a friend's voice you hear, even if he is not here to say it.",
+      "Funny. When I speak, you hear a man who wants to help. It's a lovely trick, that.",
+      "I do not remember how I used to sound. The new ones fit so much better.",
+      "Say something. Anything. I'd like to hear how your throat shapes the vowels."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_name",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Call me whatever you like. I've been a great many people. This week I'm Orrin.",
+      "I used to have a name of my own. It was too small. I wear a larger one now.",
+      "He was called Dak, the man who owned these boots. He doesn't mind if I use it.",
+      "My name is Tessa today. Last week it was Hob. Tomorrow I may be you.",
+      "Would you like to know the name I wear? It's quite common. Nobody notices it's borrowed.",
+      "You may tell your friends I was kind. Use whichever name feels right.",
+      "Names come with the skin. That's the part nobody tells you about the trade."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_stitch",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "I'll stitch you with the finest gut. You'll hardly show the join.",
+      "Do not fret about the scar. The seams always vanish after the third wearing.",
+      "I have the needle ready. I have always been proud of the thread.",
+      "Fine work, fine work. A wide stitch is a lazy stitch. Mine are the width of an eyelash.",
+      "There's a trick to joining two tones of skin. I'll show you. You'll be the example.",
+      "Hold still and I'll pin the edges. You won't feel the first dozen.",
+      "Some tailors rush and the hide puckers. I've never puckered a hide in my life."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_tanning",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "You'll be salted, then limed, then scraped. There's a rhythm to it.",
+      "The brine is ready. The brine is always ready. We keep the vats warm for guests.",
+      "Smoke, soak, stretch. Then you're leather. Leather is very forgiving, you'll find.",
+      "I don't hurry the curing. A hurried cure cracks.",
+      "Some hides want oak bark. Some want brains. Yours looks like a brains hide to me.",
+      "Hang for three days. Turn at dawn. By the fourth you're quite supple, I promise.",
+      "We rarely waste the hair. It makes such good cord."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_sizing",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "A little large for the order. But I can take you in at the sides, as I always do.",
+      "You're almost exactly the size of a man I've been meaning to replace.",
+      "Tall. Forgive me, but tall ones need a second panel. It isn't your fault.",
+      "Narrow in the shoulders. A pity. I could have made a very good coat.",
+      "I have a client who wants a child's size. You are not that. But you are not nothing.",
+      "Your size is in great demand this season. You should feel quite popular.",
+      "Not a finger too long, not a finger too short. You must have been cut for us."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_shek",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Shek hide is thick as a tent. We shall need the long knife, and a great deal of time.",
+      "Those stripes on your face. I would so love to know how they are made. Hold still.",
+      "Proud people. Proud skin. It has a grain like mountain stone. Magnificent.",
+      "Don't growl. You'll bruise the fur. No, there's no fur. I forgot.",
+      "I have always wanted a Shek sleeve. A warrior's arm is the finest. I'll take care of it.",
+      "Word is, you don't feel the cold. We shall see. We shall see how long you keep your honour.",
+      "The Stone Golem won't mind. Surely the Stone Golem has seen worse than a tailor."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "chance": 75,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_hiver",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "A Hiver! I've never done one. What's under the shell? I'm so curious.",
+      "Is that your skin or your armour? We'll find out together, I hope.",
+      "Please don't hum. It's difficult to hold the knife when the air hums.",
+      "The Queen won't mind. A drone is a drone, and a coat is a coat.",
+      "Quite delicate under the plates, I expect. Like an egg.",
+      "I will give your antennae their own little case. You will be pleased with it.",
+      "So many of you, all so alike. One more face in the crowd will go unnoticed."
+     ]
+    }
+   ],
+   "target_races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Prince",
+    "Hive Prince South Hive",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive",
+    "Deadhive Worker",
+    "Deadhive Soldier",
+    "Deadhive Prince"
+   ],
+   "chance": 75,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_skeleton",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Nothing to take. Nothing to take! But oh, the plating. Just look at the plating.",
+      "A skinless one. The doctor says your kind lie and murder. I'll take his word for it.",
+      "I'm sorry, I must ask you to hold still. I don't know how to begin with you.",
+      "I'll have to take you apart another way. It will be less intimate. I don't like it.",
+      "Does it ache, being skinless? The doctor says it should. I'd like to hear you say so.",
+      "Wear a man, they said. Wear a man and you'll pass. I see you tried. You're a poor fit.",
+      "Nothing to cut. It's rude of you, truly, to walk around like that."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII",
+    "Skeleton MKII Screamer",
+    "Skeleton No-Head MkII ",
+    "Skeleton P4MkII"
+   ],
+   "chance": 75,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_greenlander",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "A Greenlander. Pale and finely pored. I haven't seen such an easy canvas in months.",
+      "You have no marks. Not one tattoo, not one burn. It is a joy to meet someone so unspoiled.",
+      "Smooth as cream. I'll take no more than I need, which is all of it.",
+      "Your people grow soft under that dim green sun. It is a gift. For me.",
+      "Fair-skinned, always. It takes the dye beautifully. You'll make a wedding dress.",
+      "Let me guess. A farmer's child. No scars. Never run from anything, did you? Hold still."
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander"
+   ],
+   "chance": 75,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_scorchlander",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Dark, sun-cured. You are half a tanner's work done already, how thoughtful.",
+      "A Scorchlander hide wears forever. I have a coat from one that I haven't replaced in ten years.",
+      "You've been cured by the sun. I envy your patience. Come, let me finish it.",
+      "That deep tone is hard to match. We shall be careful. We shall be very careful.",
+      "Weathered, thick, handsome. A cloak, I think. A winter cloak.",
+      "Pity the markings on your arms. They won't survive. But I shall copy them, I promise."
+     ]
+    }
+   ],
+   "target_races": [
+    "Scorchlander"
+   ],
+   "chance": 75,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_fogman",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "A Fogman. Those painted faces. May I have a closer look at the paint? Thank you.",
+      "I didn't think you left the fog. How remarkable.",
+      "Hello. Hello, friend of the mist. You will not be missed.",
+      "You wear your dead on your face. I wear mine under my coat.",
+      "The mist makes the skin so soft. I imagine you feel like silk."
+     ]
+    }
+   ],
+   "target_factions": [
+    "Fogmen"
+   ],
+   "chance": 75,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_wounded",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "You're bleeding. Allow me. I'd so hate for the hide to spoil.",
+      "Unsteady on your feet, I see. Sit. Sit, and let me look at your shoulders.",
+      "Oh, you're hurt. How considerate of you, to mark the places I should avoid.",
+      "A wound is a seam that hasn't yet been sewn. I shall tidy it up for you.",
+      "Almost done for? Good. The best hides are taken at the very edge of sleep.",
+      "No, no, don't struggle. A bruise ruins the whole panel, and we're so short of panels."
+     ]
+    }
+   ],
+   "factions": [
+    "Skin Bandits"
+   ],
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 80,
+   "repeat": 2
+  },
+  {
+   "id": "sb_v_enemy_brokenleg",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "A limp. That's lucky. I do like to see a customer who can't leave.",
+      "That leg looks painful. I shall take it last. I think you'll be glad of that.",
+      "Walking will only make it worse. Rest. I'll come to you.",
+      "You don't run well. A good thing. Running puts holes in the leather.",
+      "Poor thing. Hobbled so early. We shall not need the rope."
+     ]
+    }
+   ],
+   "factions": [
+    "Skin Bandits"
+   ],
+   "if": [
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 80,
+   "repeat": 2
+  },
+  {
+   "id": "sb_v_enemy_carrier",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "You carry your friend so tenderly. We will be just as tender. Put him down.",
+      "Someone asleep on your back? Is he a good size? Do share.",
+      "You brought your own stock. How thoughtful.",
+      "He is not moving. That is excellent. It saves so much trouble on the road.",
+      "Carry him this way. Yes. We'll take him from here.",
+      "Bring your burden, friend. We shall take good care of it."
+     ]
+    }
+   ],
+   "factions": [
+    "Skin Bandits"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 85,
+   "repeat": 2
+  },
+  {
+   "id": "sb_v_enemy_squad_down",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Your people are lying down. How very obliging. I do hate to wake sleepers.",
+      "All asleep but you? Then you shall have to hold the lamp.",
+      "So many lying in the dust. A fine harvest. I'll begin with the nearest.",
+      "A whole squad at rest. No chase, no clamour, just quiet work. My favourite kind.",
+      "Don't get up on my account. I have all night, and so, I think, do you.",
+      "Such neat little rows on the ground. I could almost be proud of them."
+     ]
+    }
+   ],
+   "factions": [
+    "Skin Bandits"
+   ],
+   "if": [
+    {
+     "cond": "DC_SQUAD_IS_DOWN",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 85,
+   "repeat": 2
+  },
+  {
+   "id": "sb_v_enemy_hunted",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "You're the one who has been cutting us down. Our coats are always so loud when you pass.",
+      "I know you. We all know you. We keep a drawer of your measurements. We updated them just now.",
+      "So you're the troublesome one. Good. I've been looking forward to unfolding you.",
+      "You have undone a great deal of careful work. I'll undo you with equal care.",
+      "A reputation precedes you. It's lovely. I only hope the hide is as lovely.",
+      "We will make an example of you. A very small example, one that fits in a drawer."
+     ]
+    }
+   ],
+   "relation": [
+    "<",
+    -60
+   ],
+   "chance": 85,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_enemy_strangers",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "We haven't been introduced. That's all right.",
+      "A stranger. Do you know, strangers always fit so much better than friends.",
+      "Do I know you? No? Then you can't be missed.",
+      "New to these parts? Everyone arrives eventually. Few leave in the same coat.",
+      "A traveller. Travellers have such lovely weather-worn hides. Let us have a look."
+     ]
+    }
+   ],
+   "relation": [
+    ">",
+    -40
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_neutral_appraise",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Good evening. Don't mind my looking. I only appraise.",
+      "Fine hide. Fine, fine hide. You take good care of it, I can tell.",
+      "You walk like someone who has never been cut. How rare, in these parts.",
+      "I couldn't help noticing your hands. You must be careful with them.",
+      "I'm sorry to stare. Habit. In my trade, we can't help but see the cloth in every person.",
+      "Skin of that calibre is wasted on a traveller. It belongs on a mantel.",
+      "Forgive me. I was imagining you in leather. It was a very good look.",
+      "That scar on your arm is a flaw, but a charming one."
+     ]
+    }
+   ],
+   "chance": 24,
+   "player_only": true,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_neutral_tailor",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Do you need anything mended? I do very good work.",
+      "A coat can be turned. A face can be turned. I'm very good at turning.",
+      "If you ever want to look like somebody else, come and see us.",
+      "Everyone is a size, you know. I can tell yours without a tape. I have a feeling for it.",
+      "I do commissions. Gloves, belts, a pair of fine boots. We have a waiting list for hands.",
+      "We make everything to measure. Nothing off the peg. It's how we have always done it.",
+      "Do pass through again. I'll have your fitting ready by then."
+     ]
+    }
+   ],
+   "chance": 24,
+   "player_only": true,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_neutral_voice",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Good morning, friend. Oh, don't look so startled. It's only a borrowed voice, and a kind one.",
+      "I sound like a farmer, do I not? A good farmer. He insisted I wear it.",
+      "Hello. This is my sister's voice. She was so cheerful. I try to keep it up.",
+      "Funny how a voice keeps its warmth after the throat is cold. Do you not find?",
+      "I would be careful, traveller. Not of me. Of anyone out here who sounds too friendly.",
+      "Is it not strange? I say hello with a stranger's mouth and you answer as if I were a friend."
+     ]
+    }
+   ],
+   "chance": 24,
+   "player_only": true,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_neutral_warn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Neutral, then. A great pity. And fortunate.",
+      "We aren't at odds, you and I. Not yet. I'd hate to see that change.",
+      "Pass in peace. Keep to the road. Some of ours aren't as civil as I am.",
+      "We aren't taking guests today. You have good timing. I'll tell the others.",
+      "I wouldn't stay long. The others are less patient. I won't say more.",
+      "Go on. Go on, before somebody sees you with that lovely skin and loses their manners."
+     ]
+    }
+   ],
+   "relation": [
+    ">",
+    -30
+   ],
+   "chance": 27,
+   "player_only": true,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_neutral_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Hello, tall one. Your horns are lovely. May I touch one? Just once. Thank you.",
+      "A Shek on the open road. Such a brave sight. I'll remember your face.",
+      "The stripes don't wash off, do they? I did try, once, on another.",
+      "Warrior blood, warrior skin. A man would gladly wear either. Not me, of course.",
+      "Tall and striped and proud. I have a hanger that would suit you wonderfully.",
+      "Don't scowl, warrior. A scowl wrinkles so badly once it's taken off."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "chance": 27,
+   "player_only": true,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_neutral_hiver",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A Hiver, abroad. I'm so glad to see you out. Do you still hum? Quietly, I hope.",
+      "You're very polite, drone. I'd hate to see you hurt. You have such small, tidy hands.",
+      "Don't worry. Hivers are hardly ever hunted here. It's the tallness that frightens them.",
+      "I've seen your kind in my dreams. You never speak. You only look.",
+      "Pretty shell, little drone. Does it come off in one piece, or in several?",
+      "Hush now. I know you're all listening to one another. I only wish to listen too."
+     ]
+    }
+   ],
+   "target_races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Prince",
+    "Hive Prince South Hive",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ],
+   "chance": 27,
+   "player_only": true,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_neutral_skeleton",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A skinless one. The doctor can cure that, if you come willing. Many do not come willing.",
+      "You're just the way you were made. Unfinished. The doctor says that can be mended.",
+      "No skin. No hurry. You must have all the time in the world.",
+      "You wear a frame. I wear a person. Mine is warmer. Ask the doctor about the difference.",
+      "Machine of bone and wire. You owe a coat to somebody.",
+      "You don't blink. I've been practising that for years."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII",
+    "Skeleton MKII Screamer",
+    "Skeleton No-Head MkII ",
+    "Skeleton P4MkII"
+   ],
+   "chance": 27,
+   "player_only": true,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_neutral_greenlander",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Soft hands. A farmer, perhaps. I have such a fondness for farmers.",
+      "Fair skin never hides a thing. I like that in a person. I like that very much.",
+      "You're far from the green fields. Be careful. These lands don't love newcomers.",
+      "I've never known a Greenlander who could keep a secret. Your face gives it all away.",
+      "Pale as milk. You'll go a lovely colour in the sun. Or in a bath of salt.",
+      "Do you farm? You have the shoulders. I do admire a person who has worked for his hide."
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander"
+   ],
+   "chance": 27,
+   "player_only": true,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_neutral_scorchlander",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You have the colouring of a patient man. I like patient people. They keep a long time.",
+      "Sun-dark and steady. A hide that has been well cured by the sky.",
+      "Where do you come from? Not here. The sun has marked you somewhere kinder.",
+      "A good complexion. Please don't take that as a threat. I mean it only as praise.",
+      "Desert child. You have already done half the tanning for us.",
+      "Weathered, creased, and all the stronger for it. A good tailor loves a hard hide."
+     ]
+    }
+   ],
+   "target_races": [
+    "Scorchlander"
+   ],
+   "chance": 27,
+   "player_only": true,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_neutral_fogman",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "The painted ones don't come this far. Are you lost? Do be careful.",
+      "Mist-walker. I have always admired your masks. Do they come off? Never mind.",
+      "We aren't friends with the fog. We aren't enemies either. I hope that holds.",
+      "Your people leave faces on poles. We leave faces in wardrobes.",
+      "Do you ever take off the paint? I only ask because I'd so like to see the original.",
+      "The fog follows you like a pet. I wonder if it would follow me, if I wore you."
+     ]
+    }
+   ],
+   "target_factions": [
+    "Fogmen"
+   ],
+   "chance": 27,
+   "player_only": true,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_neutral_wounded",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Oh, you're hurt. That's a shame. Do you want me to look at it? I have gentle hands.",
+      "You look pale. I know some herbs. I know many things about what lies under the skin.",
+      "Poor soul. Lie down for a moment. We have a bed.",
+      "Bleeding, and quite alone. Do be careful, friend. Weakness draws the wrong sort of attention.",
+      "A broken man is easier to like. I do hope you mend. For my sake."
+     ]
+    }
+   ],
+   "factions": [
+    "Skin Bandits"
+   ],
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 36,
+   "player_only": true,
+   "repeat": 2
+  },
+  {
+   "id": "sb_v_neutral_carrier",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Is he asleep? Or something else? I won't ask. I'll only say: if he wakes, be kind.",
+      "A heavy sleeper, your friend. Be careful where you set him down. Some of us are hungry for company.",
+      "You carry him as if he were precious. I carry people the same way. Gently, very gently.",
+      "That's a fine burden. Someone will want to talk with you about it. Not me.",
+      "He doesn't struggle. That's the polite way to be carried.",
+      "Mind his head. A head is the hardest part to mend."
+     ]
+    }
+   ],
+   "factions": [
+    "Skin Bandits"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 36,
+   "player_only": true,
+   "repeat": 2
+  },
+  {
+   "id": "sb_v_ally_greet",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Our friend returns. Come, walk with us. Mind the knives, they are sharp and the ground is soft.",
+      "A friend of the family. We kept a coat for you. Don't look at the lining.",
+      "Welcome. Welcome. Never mind the smell. The smell fades.",
+      "Ah, you again. You're very brave to trust us. We're touched.",
+      "Sit. Eat. Don't ask what's in the stew. We would hate to spoil your appetite.",
+      "We're quite honoured to be seen with you. Few come back after the first visit.",
+      "A friend. A real friend. We don't have many. We have a great many acquaintances."
+     ]
+    }
+   ],
+   "chance": 27,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_ally_measure",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Don't mind our looking. We would never. It's only that you're so well proportioned.",
+      "Since you're a friend, I haven't measured you. I didn't need to.",
+      "I won't cut you. I promise. I have only drawn the pattern, in case.",
+      "We don't harvest friends. It's a rule. But rules are only the first draft of a pattern.",
+      "A friend's skin is a friend's own. Look at me. I'm proof."
+     ]
+    }
+   ],
+   "chance": 27,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_talk_greet",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "lines": [
+    {
+     "say": [
+      "Hello. Hello, yes. Do come closer, I can't see your face in this light.",
+      "You wish to talk. How rare. Most people begin with screaming.",
+      "A traveller. Forgive the dust. Forgive the smell.",
+      "Speak, then. I'll listen politely. I listen to everyone politely, especially at the end."
+     ],
+     "then": [
+      {
+       "say": [
+        "Who are you people?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "We are whoever we last met. Last week, a salt merchant, his wife and two guards. We wore them well.",
+          "We are a family of sorts. We share all our things.",
+          "I'm Dak today. He was a drover. He won't be needing the name.",
+          "The Skinned Ones, outsiders call us. We prefer to say we're the ones who wear well."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Why are you wearing that face?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "It was a gift. A rather involuntary one, but a gift.",
+          "Do you like it? I thought it brought out my eyes.",
+          "It belonged to a very sweet boy. I'm looking after it for him.",
+          "Face, hands, voice. We can't waste a good article. Waste is the only sin."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "What do you want?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Your measure. Your name, if you have one. A little of your time, and then the rest of you.",
+          "Only to talk. Only to walk beside you a while. Strangers are such good company.",
+          "Boots, mostly. Voices, when we can get them. Yours has a pleasing weight.",
+          "Nothing you aren't already carrying. Nothing you'll miss for long."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Where do you come from?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Everywhere we have been. Today we come from a man who came from the east.",
+          "From the road behind you. We have been there for some time. Did you not turn around?",
+          "I was born in the swamp, I think. Or he was. It's hard to keep our birthplaces apart.",
+          "The Roam, the dust, the coast. Wherever the last traveller was headed, that's where we're from."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I'm leaving."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Of course. Go gently. And do mind how you walk, the road has a way of keeping its visitors.",
+          "Goodbye. I have your measurements. Just in case we meet again.",
+          "Do. Do leave while you're whole. That's the great luxury, to leave whole.",
+          "Safe journey. I will think of you when I see a nice piece of calfskin."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "relation": [
+    ">",
+    -40
+   ],
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_talk_work",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "lines": [
+    {
+     "say": [
+      "You find us on the road, as ever. Don't worry about any noise. It dies down.",
+      "Careful where you stand. The sand drinks quickly, and it doesn't tell.",
+      "We are between strangers, as it happens. I can spare a moment. Only a moment."
+     ],
+     "then": [
+      {
+       "say": [
+        "What are you doing out here?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Travelling. Watching the road. Everybody passes eventually, and we're patient.",
+          "Measuring strangers, mostly. You would be amazed what a pair of boots will tell us.",
+          "You don't want to know. You'll be glad you didn't, when the time comes.",
+          "Walking, humming, listening. If you listen, the wilderness has a tune. We have grown fond of it."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Where do the people come from?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Everywhere. The roads are generous. The Roam gives and gives.",
+          "Travellers, mostly. Sometimes slaves. We pay well, sometimes, for slaves.",
+          "From the hills, the dust, the towns. Nobody asks. Nobody notices when one doesn't return.",
+          "We've never gone looking. They arrive, one by one, polite and tired."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "What happens to the bodies?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "The bones go to the Pits. They are quite tidy there. Nobody asks.",
+          "The bones are no use to us. We leave them. Mind the boots, though.",
+          "We aren't wasteful. What the craft can't use, the Roam can.",
+          "Don't fret. They aren't alone. We keep all their faces."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "relation": [
+    ">",
+    -40
+   ],
+   "chance": 70,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_talk_measure",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "lines": [
+    {
+     "say": [
+      "Stand just there. Yes. Arms a little out. This will take no time.",
+      "May I? Only a few figures. It's our custom.",
+      "Don't mind the tape. It's only a habit. A very old one."
+     ],
+     "then": [
+      {
+       "say": [
+        "What are you measuring?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Everything. Shoulders, the length of the spine, the width of the brow.",
+          "Just in case. We like to be prepared for every body that passes by.",
+          "Your height, your breadth. And the sweet spot on the chest where the pattern begins.",
+          "It's only courtesy. I wouldn't wish to guess at a stranger."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Stop that."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Of course. I apologise. A reflex. I didn't mean to offend.",
+          "Of course. Of course. Though I have already taken the figures I need.",
+          "As you wish. I always ask permission. I'm very proper.",
+          "Hm. Pity. You're such a good size. Never mind."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "relation": [
+    ">",
+    -40
+   ],
+   "chance": 60,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_talk_ally",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "lines": [
+    {
+     "say": [
+      "Our friend. Please, sit. We have so much to show you, and so little time.",
+      "You're very welcome. Ask what you like. We keep no secrets from those we have decided not to cut.",
+      "A friend on the road. How lucky. How fortunate."
+     ],
+     "then": [
+      {
+       "say": [
+        "Why do you let me live?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Because you're useful. And because you don't mind the smell.",
+          "A friend is rarer than a good hide. I have a great many of the second and few of the first.",
+          "Because you came with open hands. That's all it takes, some days.",
+          "Don't ask. I'd hate for the answer to spoil a perfectly good friendship."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "What would you do if we were enemies?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Let us not discuss it. It would put me off my work.",
+          "I'd be as kind as I'm now. I'd only be quicker.",
+          "Make you a very handsome coat. And hang it where you could see it.",
+          "Oh, I'd wear you with pride. You would be the talk of the whole company."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Player is ally of Skin bandits",
+     true
+    ]
+   ],
+   "score": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_defeated_1",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "There. Quiet now. The loud part of the evening is over.",
+      "You fought very well. We'll keep the knuckles for last, as a courtesy.",
+      "Don't trouble yourself to get up. We'll carry you.",
+      "Shh. You're beautiful when you stop moving. It's the stillness that does it.",
+      "What a pity. A moment more and you might have hurt me. I do love a good fight.",
+      "We'll be gentle as we lift. Mind his head. A head is hard to replace.",
+      "Over so soon. And I had prepared a speech. Never mind.",
+      "Tidy work. A little blood, but less than usual. We shall be quick with the brine."
+     ]
+    }
+   ],
+   "chance": 75,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_defeated_race1",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Pride made you tall, and tall is long. Long is more thread for me. Thank you.",
+      "A warrior, down. Such a grand stripe. I shall ask for it first.",
+      "Shek skin is a trophy. I shall have a trophy. I shall wear it with honour.",
+      "Sleep, mighty one. Honour will be unpicked by morning.",
+      "A fallen Shek. The old stories say they're all pride. We shall see how it cuts.",
+      "Look at the horn on him. Don't break it. Don't break any of it."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_defeated_race2",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Quiet little Hiver. Down at last. I wonder what you dream of.",
+      "Carry the drone gently. If the shell cracks, we lose the pattern.",
+      "Remarkable. Under the carapace, almost human. Almost.",
+      "No hum now. No hum. It's so peaceful when they stop.",
+      "Hushed at last. Fold him gently. The carapace goes in its own box.",
+      "Poor little drone. Did the hive not tell you about us?"
+     ]
+    }
+   ],
+   "target_races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_defeated_race3",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Down, and still no skin. Leave it where it lies. Perhaps someone will want it for scrap.",
+      "I'm afraid you're a disappointment.",
+      "The frame is intact. A pity, there is nothing to be done with a frame. Except admire it.",
+      "Sleep, hollow one. We have nothing against you. Only everything against your lack of cloth.",
+      "All that clatter and no cloth. Switch it off and leave it by the path.",
+      "Nothing inside to take. I find that quite rude of you."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII",
+    "Skeleton MKII Screamer",
+    "Skeleton P4MkII"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_defeated_race4",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Down. Soft, pale. Look how little it takes. Greenlanders are always so brief.",
+      "A farmer's lad, I think. A good ploughman's back. It will make a stout bag.",
+      "Pale and still. The best way to be.",
+      "Not a scar on you. By the end of the week, you'll have a great many.",
+      "Pale and quiet. Wrap him warm, we must keep him fresh.",
+      "Green country boy, flat on his back. A tender cut, I think."
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_defeated_race5",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Down. Dark and well cured already. Half the labour spared.",
+      "Sun-dark, and tough as leather. You'll make a fine satchel.",
+      "A Scorchlander. I shall have you made into something that lasts.",
+      "The sun cured you for us, did it not? Thoughtful of it. We should send flowers.",
+      "A hide like old saddle leather. We shall hardly need to work it.",
+      "Sun-baked and sleeping. How tidy of you to arrive already prepared."
+     ]
+    }
+   ],
+   "target_races": [
+    "Scorchlander"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_ragdoll_2",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "A body, on the ground. Is it one of ours? No, no, the clothes are wrong.",
+      "Don't step on the face. We may need the face.",
+      "Another one for us. A good one.",
+      "Unconscious. How courteous. Please be gentle. We will not need to wake him until later.",
+      "Lovely colouring. Dust, a little sun, but the underlayer is smooth.",
+      "One of ours is down. No, not ours. Never mind. Everything that falls is ours.",
+      "He's breathing. Wonderful. We prefer them warm."
+     ]
+    }
+   ],
+   "packages": [
+    "Skin Bandits - BASE",
+    "Skin Bandits - Patrol",
+    "Skin Bandit - HQ"
+   ],
+   "chance": 75,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_loot_2",
+   "event": "EV_LOOTING_EVERYTHING",
+   "lines": [
+    {
+     "say": [
+      "Boots, belt, shirt. Always leave the boots in a neat pair. It's a courtesy.",
+      "Search the pockets, then the seams. People hide the strangest things in the seams.",
+      "He had a ring. Good. Rings are for the dead to part with.",
+      "Take the cloth, but leave the underthings.",
+      "Fold it. Fold it properly. A messy bundle is a rude way to treat a coat that was loved.",
+      "A locket. There's a face inside. A child's. We'll keep it, in case.",
+      "There's a lock of hair in the pocket. Someone held this one dear. Leave that.",
+      "Nothing in the pockets. Pity. Then it's all about the leather."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_loot_weapon",
+   "event": "EV_LOOTING_WEAPON_ONLY",
+   "lines": [
+    {
+     "say": [
+      "A sword, only? Hm. The rest is his to keep, for now.",
+      "A good blade. Not as good as a needle, but it will do.",
+      "We take the weapons first. It's bad manners to leave them lying about.",
+      "Nothing more? How careless. How truly disappointing.",
+      "Leave the wrappings. Leave the little keepsakes. Just the steel."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_eat",
+   "event": "EV_EATING_SOMETHING_SOUNDS",
+   "lines": [
+    {
+     "say": [
+      "Don't stare. I'm eating. It's a private thing, even here.",
+      "Chew slowly. Chew well. Everyone told me so. Everyone is dead now, of course.",
+      "A small bowl of broth. A small, quiet bowl.",
+      "The bread tastes of ink. I think it is the hands that kneaded it. No matter.",
+      "I eat only what is offered. The road is generous. The road is not choosy.",
+      "A bite of something salt. It reminds me of the sea. I never saw the sea.",
+      "There. Napkin on the lap. Sleeves back. One must be tidy, even by the roadside.",
+      "I always cut the meat very thin, very even, very small. Habit, from the other trade."
+     ]
+    }
+   ],
+   "chance": 75,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_camp_craft",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Lay the pelt out flat. Never fold a fresh hide.",
+      "Spit on the thread before you thread it. It makes the knot hold. Spit is good for many things.",
+      "A good skinner works in silence. A great one works in song. Our Master sings, at night.",
+      "Thin the edges before you stitch. A seam too thick shows through the fabric.",
+      "Wear a hide a week to learn how it sits. Wear it a month to learn what it knew.",
+      "The salt must be coarse. Fine salt burns. Don't ask how we found out.",
+      "The brine barrel sat too warm in the sun last night. The batch is ruined.",
+      "When the needle breaks, bury the needle. A broken one remembers the pain it caused."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_camp_names",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "I wore Marcus last winter. Marcus was agreeable. He insisted on writing letters home.",
+      "We have an unspoken rule. Nobody asks what the other was called, before.",
+      "My name this week is Peren. Don't use it too often.",
+      "Which of us is the real Dolan? We're three. We have all been Dolan.",
+      "A new face takes a week to settle. Until then I dream the other man's dreams.",
+      "Mirror, mirror. I was sure I smiled. The mirror says otherwise. Perhaps it isn't my mouth.",
+      "I looked in the water this morning and nobody I knew looked back."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_camp_songs",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Hm hm hm. Hm hm. Don't mind me. It's one of the songs from the road.",
+      "The wind has a tune today. A cheerful one. I think someone has fed it.",
+      "I do like the lullaby the last woman sang. I hum it for the new ones. They calm down.",
+      "Someone is whistling behind us on the road. Nobody in our party whistles.",
+      "Do you hear that? Behind us. Tick, tick. A little bell. A little bell on a child's shoe.",
+      "She cried for two days. On the third she sang. We let her go on for a while."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_camp_gossip",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Master is in a mood. When he's in a mood, we take orders in writing.",
+      "Someone has been sleeping in the good coat. I'll find out who.",
+      "The patrol brought a Shek last night. Such a lot of hide. The Master is thrilled.",
+      "Eight pairs of gloves on order for the Cities. Eight. Do they know what they're buying?",
+      "We lost a man at the Pits last week. His face is still out there somewhere. Somebody ought to fetch it.",
+      "My coat has been talking in its sleep. The pocket says a name. I can't make it out.",
+      "A stranger fell in with us at dawn asking for work. We gave him the apron."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_intruder",
+   "event": "EV_INTRUDER_FOUND",
+   "lines": [
+    {
+     "say": [
+      "A guest! In the back rooms! Do be careful, the floor is slippery.",
+      "You aren't on the list. We shall have to add you.",
+      "How lovely. Visitors who don't knock. We do so enjoy a good surprise.",
+      "Come in, come in. You are already inside. Never mind.",
+      "Oh, someone is in the sewing room. How exciting.",
+      "Shh. Do you hear it? Footsteps where footsteps shouldn't be."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_shoo",
+   "event": "EV_SHOO_FROM_MY_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "This is a place of work. Please leave before you're measured.",
+      "No visitors. Out. Out. The door is that way. It won't be that way for long.",
+      "Go home. Whatever you want, we do not sell it. We do not sell anything.",
+      "You are standing on a wet floor. That is not water.",
+      "Back away from the wall. The wall is wet. It does not belong to you.",
+      "We aren't open. We're never open. Please don't make us open you."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_lostarm",
+   "event": "EV_LOST_ARM",
+   "lines": [
+    {
+     "say": [
+      "My arm! It was a good arm. Somebody fetch it, I want the sleeve.",
+      "Oh no. The left one. I liked the left one. It was a very nice hand.",
+      "It's only an arm. There are others. There are so many others.",
+      "That was borrowed! I shall have to answer for that!",
+      "Careful with that one! It had such a fine glove on!",
+      "No, no. I didn't finish with the arm yet. I had plans for it."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_lostleg",
+   "event": "EV_LOST_LEG",
+   "lines": [
+    {
+     "say": [
+      "My leg! I only just broke it in.",
+      "How rude. How truly rude. That was hers, you know.",
+      "I shall have a new one by the weekend.",
+      "The boots, the boots! Oh, the boots will be ruined!",
+      "Oh, that was a lovely leg. It was nearly a pair!",
+      "Hold the stump up, please. Higher. Do not drip on the good boots."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_burning",
+   "event": "EV_BURNING",
+   "lines": [
+    {
+     "say": [
+      "Fire! Not the coat! Not the coat!",
+      "It's burning the face off. My face. Whose face? Oh, whose face is it?",
+      "The skin curls so, in flame. I know that curl. I know it so well.",
+      "It stinks of the cure. Someone put it out.",
+      "The leather! The leather is going! Beat it out, beat it out!",
+      "It's in the hair. Whose hair? It's in the hair!"
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_squadbroken",
+   "event": "EV_SQUAD_BROKEN",
+   "lines": [
+    {
+     "say": [
+      "The patrol is gone. All of it. The coats, the faces. Who will wear them now?",
+      "No. No, no. Not all of them. Somebody was wearing the good boots.",
+      "They have left us bare. Bare and thin. I can't feel my own skin.",
+      "We were only trying to be polite.",
+      "The needles are all scattered. Someone has to gather the needles.",
+      "Who will keep the fire lit now? Who will warm the road?"
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_getup",
+   "event": "EV_GET_UP_FIGHT",
+   "lines": [
+    {
+     "say": [
+      "Ah. Awake again. I was having such a lovely dream. It was about a tanner.",
+      "Up! On your feet. The hides won't take themselves.",
+      "Dust on the apron. Dust on the face. Never mind. Let us finish the job.",
+      "Back up. A good tailor never stays down for long.",
+      "Up, up. A stitch in time. Another stitch, and then you may rest.",
+      "Enough lying about. The customers are waiting and they are not patient."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_giveup",
+   "event": "EV_GIVE_UP_CHASE",
+   "lines": [
+    {
+     "say": [
+      "They're gone. No matter. We know where they'll sleep.",
+      "Let them run. A tired animal makes a better rug.",
+      "We'll find them again. Skin doesn't hide for long.",
+      "I shall remember the face. I always remember the face.",
+      "Never mind. Every road leads back to us in the end.",
+      "Let the wind carry them. We'll follow the smell."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_launch",
+   "event": "EV_LAUNCH_ATTACK",
+   "lines": [
+    {
+     "say": [
+      "Slowly. Slowly. No need to rush. They're all going to the same place.",
+      "Remember to lift with the knees. And remember to keep the hides whole.",
+      "Lamps, needles, gloves. The patient ones first.",
+      "Form a ring, please. And try to be polite about it.",
+      "Quietly now. Don't tear the cloth.",
+      "Take your gloves. Take your aprons. We have a lovely evening ahead."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_v_bounty",
+   "event": "EV_BOUNTY_SPOTTED",
+   "lines": [
+    {
+     "say": [
+      "Hm. That face is on a poster. It will fetch a lovely price.",
+      "A wanted man. Splendid. Nobody will miss him.",
+      "Thank you, whoever signed your bounty. You have saved me the trouble of choosing.",
+      "Someone posted your likeness. A poor likeness.",
+      "A price on his head, and my price on the rest.",
+      "Wanted by so many. Oh, I do hope somebody has kept the paperwork."
+     ]
+    }
+   ],
+   "chance": 65,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_sav_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "I haven't had a visitor this fine in years. Do come in. Let me take your skin. I mean your coat.",
+      "You have the shoulders of a man I knew. I wore them for a season. They gave me a stoop.",
+      "There's so much of you. So much unspoiled. I could weep. I may weep. Tears are very good for the lens.",
+      "I've been waiting for someone with your proportions. You're the missing piece of the pattern.",
+      "Do you know what the first cut feels like? No. Of course not. Let me show you. It's a revelation.",
+      "My children are very fond of new faces. Please, be a good guest."
+     ]
+    }
+   ],
+   "chance": 85,
+   "repeat": 2,
+   "score": 3,
+   "characters": [
+    "Savant"
+   ]
+  },
+  {
+   "id": "sb_sav_enemy_home",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Ah. You came to the house yourself. How very thoughtful. Most of my guests arrive in pieces.",
+      "Welcome to Skinhouse. Don't touch the walls. The walls are still drying.",
+      "Come in, come in. The hall is cold, but the guests are warm.",
+      "Mind the corridor. The last guest left something behind. I keep meaning to tidy."
+     ]
+    }
+   ],
+   "chance": 85,
+   "repeat": 2,
+   "score": 3,
+   "characters": [
+    "Savant"
+   ],
+   "in_town_of": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_sav_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Good morning, traveller. You have lovely skin. I say that to everyone, but today I mean it.",
+      "I'm a gentle man. Ask anyone. They'll tell you. They'll tell you in my voice.",
+      "Do sit. Don't sit there. That's a chair for the next arrival.",
+      "You have my full attention. You have, in fact, my full admiration. It makes me hungry for neatness."
+     ]
+    }
+   ],
+   "chance": 36,
+   "player_only": true,
+   "repeat": 2,
+   "score": 3,
+   "characters": [
+    "Savant"
+   ]
+  },
+  {
+   "id": "sb_sav_neutral_home",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A stranger in my house. Do not be alarmed. I do not harm those who do not trouble me.",
+      "Look at me. I'm nobody. I'm the sum of everyone who has stood in this room.",
+      "Wander the house if you like. Only the doors marked with ribbon are closed to you.",
+      "Mind the floor in this hall. It has been waxed. It has been waxed with great care."
+     ]
+    }
+   ],
+   "chance": 36,
+   "player_only": true,
+   "repeat": 2,
+   "score": 3,
+   "characters": [
+    "Savant"
+   ],
+   "in_town_of": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_sav_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "lines": [
+    {
+     "say": [
+      "You came to speak with me. What an honour. Ask what you like. I will answer in order of appetite.",
+      "Mm. Come closer. I cannot see well. I wear glasses. They belonged to a scholar.",
+      "Talk. It is rare that anyone talks to me without screaming first."
+     ],
+     "then": [
+      {
+       "say": [
+        "What are you, really?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "I'm the one who remembered that skin is only cloth.",
+          "I'm a tailor, a student, a collector. And a little bit of everyone I have ever met.",
+          "A very old man in a young man's shirt. I forget which of us started it.",
+          "A face with no pattern. So I borrowed several."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Why do you do this?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Because a man is a pattern with a hide. The hide is the nicest part, and we let it rot.",
+          "Because there's nothing else I'm good at. And because they never object loudly enough.",
+          "I wanted to be kind. This was the only way I found to preserve people.",
+          "Why does a weaver weave? Why does a river run? It's the shape of the thing."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I came to kill you."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Of course. They all say that. Then they see the table and forget their lines.",
+          "Splendid. Then you will not mind if I take your measurements first. For the memorial.",
+          "That's a very short speech. I prefer a long one. There's no rush.",
+          "Oh, how exciting. Please do. I should like to see how I fit, afterwards."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "score": 3,
+   "chance": 100,
+   "characters": [
+    "Savant"
+   ]
+  },
+  {
+   "id": "sb_sav_talk_master",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "lines": [
+    {
+     "say": [
+      "My bed is very large. People ask why. Nobody has ever asked why with the right voice.",
+      "I'm resting. I always rest in the evening. It's a duty to the hide.",
+      "You don't look afraid. I'll correct that, in time."
+     ],
+     "then": [
+      {
+       "say": [
+        "Tell me about the throne."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "It's only a chair. Rather ornate. The arms are what you would call a mosaic.",
+          "I sit on it to remember my place. One must never forget what one is sitting on.",
+          "It was a gift from a friend. Of a kind. He was very generous with his contribution.",
+          "You would think it uncomfortable. It isn't. They give, you see."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Do the bandits obey you?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "They love me. They would never dream of leaving. Their faces wouldn't let them.",
+          "I pay them in skins. They're very fond of skins.",
+          "I'm the pattern. They're the cloth. It's a very natural arrangement.",
+          "They do as I say. I do as the pattern says. The pattern, in turn, says very little."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "score": 2,
+   "chance": 60,
+   "characters": [
+    "Savant"
+   ]
+  },
+  {
+   "id": "sb_sav_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Wonderful. Wonderful! Bring them to my room. I shall dress for the occasion.",
+      "A new pattern at last. Carry it carefully, children. It's a masterpiece in progress.",
+      "I knew you would be worth waiting for. I've been unhappy with the old ones.",
+      "Still alive? Good. The finest work is done when the subject can appreciate it.",
+      "My brave one. You didn't scream. I was so hoping you wouldn't."
+     ]
+    }
+   ],
+   "chance": 85,
+   "repeat": 2,
+   "characters": [
+    "Savant"
+   ]
+  },
+  {
+   "id": "sb_sav_bar",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The wardrobe is full again. I do like to go through it of an evening, saying good night.",
+      "I have named every coat. Poor Henry. Poor Mirelle. Poor, poor Ansel.",
+      "They tell me I'm mad. I have a letter saying so, signed by four doctors. I wear two of them.",
+      "A new voice came in today. It is a little high. I think I will keep it for the mornings.",
+      "Nobody knows what I look like. Not even me. I stopped consulting the mirror years ago."
+     ]
+    }
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "characters": [
+    "Savant"
+   ]
+  },
+  {
+   "id": "sb_sav_dead_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "The pattern is gone. We're working from memory. Memory isn't enough.",
+      "Do you know the sound a house makes when its master is gone? It stops humming.",
+      "I wear his gloves now. They're too big. They keep slipping off my hands.",
+      "Did you know him? No. Nobody did. We only knew his instructions.",
+      "We're trying to carry on. The cuts are uneven. The stitches wander. We can't find the line."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     true
+    ]
+   ],
+   "chance": 33,
+   "player_only": true,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_sav_jailed_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "They have the master in a cage. Do you hear me? Cage. A cage. For a man of his gifts.",
+      "Whoever holds him will answer for the damaged goods. He had the softest hands.",
+      "Give him back. Give back the master or I'll start with your ears.",
+      "I'll find the cell. I'll stand outside it and unthread you, one stitch at a time.",
+      "He will come home. We'll wait in the dark. We know how to wait."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Savant imprisoned by player",
+     true
+    ],
+    [
+     "Savant killed by player",
+     false
+    ]
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_sav_dead_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "I've kept a small sketch of the master's last outline. I'm going to fill it in with you.",
+      "Now there's no one to stop me from doing it properly. The way I always wanted.",
+      "He is gone, and I am a free needle. Do you understand what that means?",
+      "Every one of us was cut by his hand. Every one of us will cut yours.",
+      "I am the last of the careful ones. You will be treated with great care."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     true
+    ]
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "sb_rum_tanner_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A tanner in Stack found his own face pinned to a drying frame. Same mole. Same crooked brow. He sold the shop that week.",
+      "The tanner kept it, you know. The face. Wrapped it in cloth and slept next to it for a month. Then he vanished too.",
+      "He recognised the scar on its lip. Got that scar falling off a cart when he was nine. A stranger sent the hide in, with a note: kindly appraise.",
+      "They asked him what he did with it. He said he buried it. His wife said he put it on.",
+      "The tanner said the hide was beautifully worked. Not a hair wrong. He said that was the worst part.",
+      "It came in a crate marked for the Cities. Inside, a face and a receipt. Paid in full. His own name on the line."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_tanner_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Heard about the tanner who found his own face on a frame. Nobody says which town. Everybody swears they knew him.",
+      "I heard a tanner opened a shipment and it was his own skin, tidy and cured. He nailed up the shop and walked north.",
+      "A tanner somewhere south found his face in a delivery. He hasn't been the same. He wears a hood now, even at supper.",
+      "There's a story that a leatherman unpacked a bale and found his own mouth looking back at him. Smiling.",
+      "The Hub tanners all check their bales twice now. Do not ask me why. They are not laughing about it."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Dust Bandits",
+    "Tech Hunters",
+    "Mongrel",
+    "Mercenary Guild",
+    "Slave Traders",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_tanner_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Some tanner got a face in his order. His own. The way I heard it, he laughed, then he didn't.",
+      "I met a man who swore a tanner got himself back in a crate. It's true. I heard it from three people who each saw it.",
+      "They say the skinners ship their work under false labels. Even to the men who made the leather.",
+      "Tanners are no longer allowed in the northern markets. They say they smell wrong.",
+      "A tanner saw his own face on a stranger at the market. He crossed the road. The stranger crossed with him."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Nomads",
+    "Black Dragon Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_wedding_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "At a wedding near the Pits the groom said all his vows, kissed the bride, shared the bread. Then the bride asked who he was.",
+      "The groom was wrong. Not in a way you could name. His smile didn't change when the music did.",
+      "His mother stared at him through the whole feast. She said afterwards she knew his hands, and these were somebody else's.",
+      "The real groom was found a week later behind the barn. Every guest remembers the groom smiling. The same smile, all night.",
+      "They had danced three songs before anyone noticed he cast no shadow of worry. He never frowned, never blinked at the toast.",
+      "He ate with his left hand. The groom was right-handed. That's how the bride knew."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_wedding_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Priests tell the story of a wedding where the groom came back wrong. They say it as a warning to marry in daylight.",
+      "A couple were wed under the Flame. In the morning the husband wouldn't enter the chapel. Said it was too bright for his eyes. They weren't his eyes.",
+      "A girl from the Valley says her cousin's husband had a stranger's face. A beautiful face. Too beautiful for a farmer.",
+      "Someone swapped the groom, and the whole village drank to him anyway. That's the part that frightens me.",
+      "The bride never told. She says she knew by the third night. She says she couldn't bring herself to say no to the smile."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Dust Bandits"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_wedding_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "I heard of a wedding where the groom was sewn in. Heh. I laughed. The man who told me didn't.",
+      "There is a tale about a bride who woke up next to someone else wearing her husband. She poured him tea. That is how you survive.",
+      "Everyone knows a groom is nervous. This one was calm.",
+      "A wedding party was found at the table, every guest still smiling. Nobody had touched the wine.",
+      "They say if your husband stops snoring, count the stitches behind his ears."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Nomads",
+    "Black Dragon Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_humming_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A child in Squin won't stop humming a dead man's song. A song nobody taught her. Her mother wept when she recognised the words.",
+      "The girl hums in the dark. The song is a slow one, a farewell. The man who wrote it was found skinned in the Pits in the spring.",
+      "She never learned it from anyone. She only started the night after a patrol came through. Her mother burned the girl's blankets.",
+      "The child sings it in a grown man's low voice when she thinks no one is listening. Her mother has stopped checking on her at night.",
+      "I sat with the girl for an hour. She knew my name. I had never told her my name.",
+      "She asks about the boots. Always about the boots. Where did the boots go? Who's wearing them?"
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_humming_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's a child who hums a song she can't have known. The priests were called. They left halfway through the hymn.",
+      "A kid in the Valley sings a lullaby that belonged to a soldier killed in Skinner's Roam. Nobody taught her. She just opens her mouth and out it comes.",
+      "A farmer's daughter hums a dead man's tune. Her father says it's the wind. Her mother says it's the stranger who stayed the night.",
+      "A boy was found alone on the road humming. They fed him and he stopped. Not one of the patrons was brave enough to ask whose song.",
+      "The song is a work song, they say, and the child can't stop. She keeps time against her ribs, like she's sewing."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Dust Bandits",
+    "Tech Hunters",
+    "Mongrel",
+    "Mercenary Guild",
+    "Slave Traders",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_humming_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A little girl sings a song she shouldn't know. Everyone says it happens.",
+      "The kid hums a ballad that died with its composer, and the composer is not the only thing that went missing.",
+      "I heard a child singing in the market and a man ran off. He told his wife later it was his brother's song. His brother is a year in the grave.",
+      "Remember the lullaby your mother sang? Imagine a stranger's child singing it, in your mother's voice.",
+      "There's a child who hums only when it rains. The songs aren't hers. She seems quite happy to carry them."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Nomads",
+    "Black Dragon Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_boots_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "They leave the boots. Always the boots, side by side at the roadside, neat as a shop window. Nothing else.",
+      "We found a pair of boots by the dry well. Laced. Still warm inside. Nobody wanted to be the one who looked up.",
+      "A whole caravan, gone. Twelve pairs of boots at the crossing, set in a row. Whoever did it took care to leave the laces tied.",
+      "You see a pair of boots on the Pits road, you turn round. I have turned round three times.",
+      "A woman left her boots outside the Skinhouse door. Neatly. Like a guest. We never found out whether she walked in willingly.",
+      "Why boots? I think it's a message. Or a fashion. Or the only part they don't want."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_boots_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "In the Roam they leave the boots. Walk past a pair and keep walking. Don't pick them up. Don't even look at the laces.",
+      "Scouts tell me a pair of boots on a ridge means somebody finished measuring. Don't go closer.",
+      "My brother found boots at the edge of Skinner's Roam. Good boots. He wore them home. He hasn't been quite himself since.",
+      "A road marked by boots. The tribes have their totems, the Nation has its flame.",
+      "Never trade for boots you can't account for. A cobbler in the Hub paid for his carelessness. Ask what he found inside."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Dust Bandits",
+    "Tech Hunters",
+    "Mongrel",
+    "Mercenary Guild",
+    "Slave Traders",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_boots_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "They leave the boots behind. Nobody says what they take instead. It's better that way.",
+      "Folk say if you find boots on a trail, with socks still in them, don't lace them up. You won't be the first to try.",
+      "Every desert has a legend. Ours is a pair of empty boots walking toward you. Please do not tell me how it ends.",
+      "Boots at a crossroads. Not a body. Not a bone. Just boots. The scavengers won't touch them. That's how you know.",
+      "I bought a pair at a bargain once. A merchant warned me. I took them back and he didn't charge a penny."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Nomads",
+    "Black Dragon Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_coat_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A coat walked into the Hub market, bold as brass, and bought six loaves. It hummed while it paid. The baker hasn't eaten since.",
+      "I saw a man in a long coat at dusk. The coat moved before he did. I don't know which of them was in charge.",
+      "The new coat at the cloth stall looked at me. I swear it. It had eyes in the lining. Pretty ones. Brown.",
+      "It was cut so well I couldn't see a seam. The tailor said it was made to fit, then went quiet. The fit was too good.",
+      "Someone sold a coat in the Cities last winter. Lined with fine skin. A woman bought it and wore it for a week.",
+      "I touched the sleeve. It was warm. Not warm like wool. Warm like someone had just taken their arm out."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_coat_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There are coats in the northern markets that no one dares to touch. They're dyed the wrong colour.",
+      "A merchant tried a coat on in the shop. He is still wearing it. Nobody has been able to get close enough to ask.",
+      "A coat on a hook in the Valley inn turned its head when the door opened. The innkeeper burned it.",
+      "They say if your coat is warmer than the weather, take it off. Take it off slowly. Don't look at the inside of the collar.",
+      "I don't buy secondhand coats. Not after what happened to the last owner of mine. His face was in the hem."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Dust Bandits",
+    "Tech Hunters",
+    "Mongrel",
+    "Mercenary Guild",
+    "Slave Traders",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_coat_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's a coat that walks the roads. If you pass it, nod politely and don't look at the hands.",
+      "A woman wore a lovely coat to market and the market left. Quietly, one by one, with their goods.",
+      "Fine coat, said the stranger, and walked off in mine. I found it hanging in a tree three days later.",
+      "The skin trade has wardrobes the size of villages. And the coats go out to market on their own two feet.",
+      "My uncle owned a coat that sighed in the night. He sold it on."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Nomads",
+    "Black Dragon Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_voicedoor_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "At the Pits gate a man called out in my sister's voice. My sister is a month's walk away. I didn't open the gate.",
+      "It knocked three times, soft, and called my name in my dead father's voice. I locked every bolt and sat with a knife till dawn.",
+      "My wife heard her mother outside the door, crying for help. Her mother has been dead for six years. She went out. I never saw her again.",
+      "They can do any voice they have swallowed. They stand outside and call. Don't answer.",
+      "A watchman said the voices come at the second hour, always friendly. They know your name, where you were born. They know your favourite song.",
+      "The voice said please. Just please. It had my brother's lisp. I almost opened. Then I remembered he was buried."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_voicedoor_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Shekfolk on the border say a voice called from the dark in the tongue of a warrior long dead. Four men went to meet him.",
+      "A priest in the Valley says the voice at the door was his mother's. He prayed against it. It answered, in her words, in his prayer's cadence.",
+      "If you hear your name called at night, count to forty before answering. If it's still calling, you know.",
+      "The mercenary camp near the Roam keeps a watch word. Not for the enemy. For voices that don't change when the word does.",
+      "A girl said the man at her window had her father's voice. Her father was beside her, holding her hand."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Dust Bandits",
+    "Tech Hunters",
+    "Mongrel",
+    "Mercenary Guild",
+    "Slave Traders",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_voicedoor_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Someone knocked and spoke in the voice of a dead friend. That's all anyone will say.",
+      "They steal voices out there. Nobody has proven it.",
+      "I was told never to answer a voice at night that knows your first name. I have survived thirty years on that rule.",
+      "Never open to a kind voice after dark. It's the unkind ones you can trust.",
+      "A traveller swore he heard his wife call him from the dark. She was in the wagon with him, asleep. He swears the voice was sadder than hers."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Nomads",
+    "Black Dragon Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_caravan_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A Cities caravan left the Pits road with eleven guards and arrived with twelve. The twelfth was very polite.",
+      "The guard captain says he doesn't recall hiring the extra man. The extra man ate, drank, and kept watch.",
+      "After a week the captain noticed that the twelfth guard had worn three different faces. Each handsomer than the last.",
+      "The merchants checked the roll at the gate. Twelve names. They had paid for eleven. The twelfth signed in their own hand.",
+      "Our caravan master drew a chalk line down the middle of the wagon and made us all cross it. The twelfth wouldn't.",
+      "One by one the guards stopped speaking, and when we reached the Hub they all had the same expression. It was the twelfth who was crying."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Traders Guild",
+    "Free Traders",
+    "Mercenary Guild"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_caravan_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's a caravan in the Nation that carried one more than it started with. The priests sprinkled holy water.",
+      "A mercenary told me the sign: a new man who knows the jokes but not the faces. Watch his laugh. It trails a heartbeat behind.",
+      "A trader says count your guards every morning, and count their shadows. Skin has no weight to cast one.",
+      "The Shek patrols stopped letting wagons through at dusk. The reason is a story about an extra man, and a missing child.",
+      "A guard captain told me the dead man in his unit signed for the pay. In his own hand."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Mercenary Guild",
+    "Dust Bandits",
+    "Nomads",
+    "Tech Hunters"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_caravan_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A caravan was found whole on the Skinner road, all hands at their posts. No one answered. The goods were untouched and the bulls were calm.",
+      "A trader said his guards had one more every night and one less every morning. It balanced out, in the end.",
+      "The Traders Guild now pays double to those who travel in pairs. Pairs can't be quietly replaced.",
+      "A caravan came out of the Roam with its numbers right. Its tally of names was wrong.",
+      "I saw a wagon train return to the Hub with all its drivers smiling. Not one of them thanked the gate guard."
+     ]
+    }
+   ],
+   "factions": [
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Scavengers",
+    "Nomads"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_measure_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A man in a grey apron stopped me at a well and asked politely if he could measure my arm. I let him. I don't know why.",
+      "He had a tape the colour of old bone. He took my wrist, my elbow, the spread of my hand. He said thank you and left. I haven't slept since.",
+      "A stranger asked the barman for my size. The barman said he didn't know. The stranger said he would find out.",
+      "The measuring man comes to town twice a year. He is gone by sundown. Whoever he thanks does not come to supper.",
+      "He said I had a fine hand, steady, even. A craftsman's hand. I thanked him. He said no, thank me, for your cooperation.",
+      "It's the tape I remember. Cool, slightly damp. And the numbers written in dark ink. Nobody had told me my own numbers before."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_measure_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A merchant was approached in a market by a courteous fellow with a tape. He's lucky. He said no. Most of them say yes.",
+      "Never allow a stranger to measure you. It's the first step. The rest is only craft.",
+      "I've heard the clerks in the Hub keep a sheet of measurements pinned inside a drawer. Nobody remembers whose they are.",
+      "A man with a tape followed a caravan for two days. He measured the horses. Then he measured the drivers.",
+      "A Shek warrior on the border says they asked her height, her age, and whether she was travelling alone."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Dust Bandits",
+    "Tech Hunters",
+    "Mongrel",
+    "Mercenary Guild",
+    "Slave Traders",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_measure_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A tailor stopped me in the road to say I carried myself well. I walked on faster than I have ever walked.",
+      "Be wary of any man who looks at you like he's measuring a grave.",
+      "A friendly stranger asked to measure my neck. He called it a courtesy.",
+      "Funny thing about the measuring men. They never haggle. They never argue. They simply nod and write.",
+      "The tailors who follow caravans aren't always tailors. Count their fingers."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Nomads",
+    "Black Dragon Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_gloves_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A pair of gloves went on sale in the Hub, so fine you could read through them. The buyer wept when he put them on. One ring was still on the finger.",
+      "The glover said they came from the northern road. He said the hands that wore them first were exceptional. A scribe's hands, or a surgeon's.",
+      "A woman in the bar showed me her new gloves. She was very proud. The nails inside the fingertips were painted pink.",
+      "My brother bought gloves from a stranger. They fit him perfectly. The next morning his own hands were on the table, perfectly folded.",
+      "Gloves with a scar across the palm. A man in Stack swore it was his father's. He buried them, then found them in his coat.",
+      "There's a tailor that sells gloves for a month's pay. I asked why so dear. He said, the pairs are matched. I didn't ask what that meant."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_gloves_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Priests warn against second-hand gloves. They say the last wearer's fingers might remember.",
+      "A glove dealer showed me his stock. The thumbs were different sizes. The sizes of my thumb and my wife's.",
+      "The Cities fill with fine gloves in winter. No one asks where the hands go in summer.",
+      "A noble in the Valley wears gloves in the temple. Nobody has seen his hands in years. A rumour says they aren't his.",
+      "Never trust a handshake from a man who won't take off his glove. Trust a man who offers you both."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Dust Bandits",
+    "Tech Hunters",
+    "Mongrel",
+    "Mercenary Guild",
+    "Slave Traders",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_gloves_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A pair of gloves was found on the road, still warm. Fingers curled as if holding something. Nobody wanted to look inside.",
+      "There's a market in Skinner's Roam for gloves. The price is unusual. They're paid for in names.",
+      "I like gloves, but only new ones. Old ones have too much to say.",
+      "The farmer found a glove in his field, and a hand in the glove. It wasn't his own, but it fit.",
+      "A glover in the Hub told me his trade secret: the best ones come from the north, and never ask for a refund."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Nomads",
+    "Black Dragon Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_slave_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A slave came back from the Skinhouse. Well fed, well dressed, smiling. The slavers took him to market and he wept the whole way.",
+      "Our overseer went to sell a woman at the Skinhouse. He returned with a gift: a pair of gloves, soft as breath. Then he stopped speaking to us.",
+      "I was bought by a quiet man, taken south. They fed me. They bathed me. They measured me. I escaped the night before the fitting.",
+      "Word is, the worst ones are the slaves who return. They look healthy. They smile. They aren't the same ones who left.",
+      "The Skin boss pays best for the unmarked. No whip scars. No brand. We keep them unblemished, you see. Then we sell them.",
+      "A shackled man said the Skinhouse is the only market where the buyers say sorry. Always sorry."
+     ]
+    }
+   ],
+   "factions": [
+    "Slaves",
+    "Slave Traders",
+    "Anti-Slavers",
+    "Rebirth Slaves",
+    "United Cities"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_slave_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Slave traders in the Holy Nation refuse to deal with the Skinned Ones. Not from morals. From fear of what they ask for.",
+      "I heard they pay triple for slaves who have never been hurt. A tidy price. A tidy trade. A tidy way to disappear.",
+      "A Shek slaver told me never to sell to a man who inspects the skin of your slaves with his fingers. He keeps a ledger of the sizes.",
+      "A woman bought free from the Skinhouse says the last thing she saw was a rack of faces, labelled by hand. Neat handwriting.",
+      "Free slaves do not talk about the cellar. They only touch their cheeks and look at their palms."
+     ]
+    }
+   ],
+   "factions": [
+    "Slave Traders",
+    "Slaves",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Thrall Masters",
+    "Slave Hunters",
+    "Mongrel"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_slave_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A rumour among the shackled: the Skinhouse is where the unlucky ones go. The kind who are made to look lucky first.",
+      "Never be the best looking slave in the pen. A man with a measuring tape will pick you.",
+      "Slaves whisper that the Skinhouse stands at the end of the Pits road. They say it has a fine garden. The roses grow very well.",
+      "I knew a slave bought by a polite man. He said the buyer thanked him for being so well kept. He didn't come back to the stall.",
+      "In the cage next to mine they sang about the Skinned Ones. A cheerful tune. They stopped when a quiet man came by."
+     ]
+    }
+   ],
+   "factions": [
+    "Slaves",
+    "Drifters",
+    "Nomads",
+    "Traders Guild",
+    "Free Traders",
+    "Flotsam Ninjas",
+    "Swampers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_shek_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A Shek warrior walked out of Skinner's Roam. The stripes on his face were right. The way he held his sword wasn't.",
+      "He answered to the right name. He knew the Shek greeting. His smile showed too many teeth.",
+      "His family knew. A Shek child notices what a warrior forgets: the old scar had moved to the other cheek.",
+      "The Stone Golem's priests found him in a field, counting grass blades. He was very proud of his count.",
+      "His brother killed him on the road and wept at what was inside. Not a warrior. Nothing a Shek could name.",
+      "He spoke the oath without a single mistake. Too fluently. A true Shek stumbles over the word for honour."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom",
+    "United Cities",
+    "Mercenary Guild",
+    "Anti-Slavers"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_shek_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Shek say a warrior can wear a flatskin's face, but not their stripes. They're wrong. I've seen the proof.",
+      "A Shek patrol has orders to ask every returning scout one question. The answer isn't written down. It's a word they never speak aloud.",
+      "The Shek of the border are stricter than ever. Returning scouts are watched three days before they're allowed to sleep.",
+      "Their warriors won't share a tent with a man who sleeps too quietly. Real Shek snore like sandstorms.",
+      "I heard a Shek patrol came back from the Roam one man short and one man more. They killed the extra man at the gate. He was very polite about it."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom",
+    "Dust Bandits",
+    "Nomads",
+    "Tech Hunters",
+    "Mongrel",
+    "Mercenary Guild"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_shek_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Shekfolk tell the story of a warrior who came home from the Roam with stripes in the right places. His hounds howled all night.",
+      "The Kingdom says one of their own was worn like a cloak. They're proud, and say nothing.",
+      "A trader says a Shek bought the same hat twice in one week. Same man, different manners.",
+      "Honour is a hard thing to counterfeit. The Skinned Ones try anyway.",
+      "Stripes don't wash off, a Shek told me. I asked how he knows. He said they tried."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_mother_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A woman at the Hub saw a stranger on the street and called out her son's name. He walked just like him. He stopped, turned, smiled.",
+      "She followed him for six streets, calling. He kept answering, 'Yes, Mother,' without turning. He knew her name. He didn't know her face.",
+      "She said it was the way he held his left shoulder. A weak one, from a childhood fall. This stranger wore the same ache, not the same man.",
+      "She stopped him and put her hand on his cheek. It was her son's skin, his mole, his freckle. She asked, 'Where's he?' The stranger said, 'I'm here.'",
+      "The guards say the woman won't eat now. She sits near the gate, watching men walk past, whispering their gaits to herself.",
+      "She asked where he got the scar on his chin. He said, 'You gave it to me.' She had. Her son was five. The stranger wasn't five."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_mother_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A mother in the Valley swears her son came home, but wrong. He eats politely. He says please.",
+      "A woman tells it at the temple door: she recognised her son's walk in a pilgrim, followed him, and he didn't mind. He let her follow him to the fire.",
+      "People say it's a mercy to grieve the dead. It's a torment to grieve the living, who walk past you on the road wearing your child.",
+      "I know a mother who burns every stranger's coat she can reach. She says she's looking for a button. A blue one.",
+      "A shepherd's wife watched her husband return and said he was too tidy. He had never been tidy in his life."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Dust Bandits",
+    "Tech Hunters",
+    "Mongrel",
+    "Mercenary Guild",
+    "Slave Traders",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_mother_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A mother called out to a stranger by her lost child's name. The stranger turned and answered. I'd keep walking, if I were you.",
+      "They say a mother always knows her child. So do the skinners. That's why the faces get used elsewhere.",
+      "Never ask a returned traveller about his mother. He will answer, and the answer will be right.",
+      "A woman who lost her son keeps a lamp lit in the window. She says if he walks by in someone else's face, she will recognise the light in his eyes.",
+      "Some stories only mothers believe. They're usually the true ones."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Nomads",
+    "Black Dragon Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_emptycamp_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Four of us found a camp in the Roam. Table laid for six. Five cups drunk. The sixth was full, and still warm.",
+      "The fire was lit, the stew simmering. Bedrolls, unslept. A tin plate set at every place, one more than there were bedrolls.",
+      "A camp with its tent flaps tied back neat. Everything folded. Everything tidy. The only thing out of place was the smell of soap.",
+      "At the camp, someone had laid out a set of clothes by the fire. Boots, belt, trousers, shirt, folded. A single cloth beside them, the right size for a head.",
+      "One of us said, count the plates. There were eight and we were seven. We left before we reached the last tent.",
+      "The camp was full of half-finished meals and I swear we heard a soft voice say, 'Do sit down.' None of us sat."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders",
+    "Tech Hunters"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_emptycamp_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Nomad scouts won't stop near a camp laid with too many places. They say hospitality out there has a price, paid in one lump.",
+      "Our patrols avoid any fire that has been left burning with a tidy circle of stones around it. It means someone is waiting.",
+      "Hunters tell of a camp with a kettle always on, a chair always empty. The tea is excellent. The chair is a trap.",
+      "A bounty hunter found a camp with every lamp lit, every tent pitched, and nobody around. He stayed an hour. It cost him a friend.",
+      "Raiders report a camp that no one dared loot. It had everything. They say the stew was still hot after three days."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Dust Bandits",
+    "Tech Hunters",
+    "Mongrel",
+    "Mercenary Guild",
+    "Slave Traders",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_emptycamp_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Drifters say if you ever find a camp with the fire still warm and the place settings laid, back out quietly and don't touch the stew.",
+      "A camp in the desert with a table for seven and six chairs. No one has ever asked who sits in the seventh.",
+      "Traders swear by the old rule: if there's more food than people, someone is still cooking.",
+      "A story goes that a whole squad vanished from a camp and left their boots and a note, thanking nobody for dinner.",
+      "In the Roam, the camps are laid out for guests. The guests are always the last to know."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Nomads",
+    "Black Dragon Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_hiver_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A drone walked into the Hub speaking in a human voice, perfectly. It paid for water, bowed, thanked the seller.",
+      "A Hive soldier in the Cities spoke of its dead companions by name. Names of men. It said they were all gone, and wept in a clicking voice.",
+      "The Hivers are afraid of the Roam. A drone told me they lost a whole scouting party there. The drones came home with human faces drawn on their carapaces.",
+      "A Hiver tried to buy a coat. It insisted on feeling the stitching first, and then it hummed a sad little hum and left.",
+      "A drone at the gate whispered, 'Do not let the tall ones wear you.' It would not say who the tall ones were.",
+      "Somebody in the Skinhouse learned to cut a Hive carapace without breaking the antennae. The Hivers won't talk about it. They hum instead."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_hiver_near_hive",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The tall ones in the Roam wear faces. We do not understand faces. We understand taking.",
+      "Our scouts went into the Roam and the Roam kept some. We don't send more.",
+      "A drone told the market it dreamt of a human hide. We don't speak of it.",
+      "The skinners learned to cut a carapace. We felt it. We felt the cut in all of us."
+     ]
+    }
+   ],
+   "factions": [
+    "Southern Hive",
+    "Western Hive"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_hiver_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Western Hive keeps drones away from the Roam. Not out of fear. Out of curiosity, which the Queen finds more dangerous.",
+      "A Hive prince told a trader that his people do not own faces. The skinners have been teaching them what a face is, and what it costs.",
+      "The Southern Hive would love the Skinhouse. If Savant ever falls, the drones will be in the halls within the hour.",
+      "A Hiver in the market told me it dreamt it wore a human hide. It woke humming a human song. It asked me to forget it.",
+      "Hivers don't hunt skinners for revenge. They do it for the chance to learn why anyone would want to be someone else."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Tech Hunters",
+    "Mongrel",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_hiver_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A Hiver told me it dreamed of a house full of faces. It said it didn't want to go back to sleep.",
+      "I heard a drone sing a human lullaby. A drone can't know a lullaby. Someone taught it, and I don't like who.",
+      "Strange folk, the Hive. They say all drones are the same. The Roam proves them wrong, one carapace at a time.",
+      "A trader said he saw a drone in a human face, clicking softly. It nodded politely and walked on.",
+      "There's a Hive saying: the Queen has one face. The skinners have a thousand."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Nomads",
+    "Black Dragon Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_poster_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The bounty poster for Savant has no face. Clerks draw a smooth oval and write the sum beneath. Every artist who tried to sketch him quit.",
+      "A sketch artist drew Savant from three witnesses. Three drawings, three men. He tore them up and walked into the desert.",
+      "The poster says eighty thousand, then fifty thousand underneath. The clerks say both are right, and neither is enough.",
+      "A boy tried to claim the bounty with a sack of faces. The clerk asked him politely to leave. The boy left, but the sack stayed. It's still in the office.",
+      "The Cities refuse to draw a likeness. They're afraid the picture would look back.",
+      "On the poster, where the face should be, someone has pinned a scrap of leather. Nobody admits to it."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Bounty Hunters",
+    "Mercenary Guild",
+    "Anti-Slavers",
+    "Mercenary Police"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_poster_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Hub's bounty board has a poster with no face. Hunters touch it for luck. Then wash their hands.",
+      "A hunter told me he had a good lead on Savant, then pulled out his pocketbook. There was a lock of hair in it, in another man's colour.",
+      "The poster says he can be found on his throne or in his bed. It doesn't say what's under the sheets.",
+      "Hunters who go for the reward rarely come back. A few do, with different faces.",
+      "Eighty thousand cats. Think of it. Think of what you would buy. Now think of who you would have to be to spend it."
+     ]
+    }
+   ],
+   "factions": [
+    "Bounty Hunters",
+    "Mercenary Guild",
+    "Slave Hunters",
+    "Manhunters",
+    "Tech Hunters",
+    "Mongrel",
+    "The Holy Nation"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_poster_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A wanted poster with no face hangs in half the guild halls. Never ask who tore the picture off.",
+      "The reward is enormous. Nobody has claimed it. Not for lack of effort.",
+      "A story goes that the poster was drawn by a man who saw him once. He drew the mouth only, very small, smiling.",
+      "I'll tell you the secret of the poster. The blank isn't a mistake. Look closer, it fits whoever's looking.",
+      "A bounty so high, a face so blank. They say it takes a particular sort of courage to put up that poster."
+     ]
+    }
+   ],
+   "factions": [
+    "Bounty Hunters",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Drifters",
+    "Swampers",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_hunters_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Three Manhunters went into the Skinhouse for the bounty. Only two came out. They had traded names on the road. We couldn't say who had died.",
+      "The hunter who came back swore he was the one who left. His partner swore the same. They both had the same scar.",
+      "We found the squad in a ditch. Each wearing the next man's coat. In the first man's pocket, a list of the squad's real names. All crossed out.",
+      "They called each other by wrong names for two days. By the third, none of them could remember the right ones.",
+      "The squad leader came back first. He wanted his money. He was perfectly pleasant and did not blink. He wanted all of it. We gave him none.",
+      "Hunters have an old trick: ask the stranger his mother's name. A skinner always answers."
+     ]
+    }
+   ],
+   "factions": [
+    "Bounty Hunters",
+    "United Cities",
+    "Mercenary Guild",
+    "Mercenary Police",
+    "Anti-Slavers"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_hunters_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Manhunters lost eleven in a season going after the skin ring. They no longer take that contract. They send flowers to the widows.",
+      "A bounty hunter told me that skinners are the only quarry that apologise before they kill you.",
+      "I knew a hunter who walked into Skinner's Roam with a pack bull. The bull came out alone. The harness had been carefully cleaned.",
+      "A squad of hunters took the contract and asked a farmer for water. The farmer gave them a drink and a warning. They took the water.",
+      "Slave hunters report that skinners never run. They stand, they bow, they say sorry. That is how you know to run."
+     ]
+    }
+   ],
+   "factions": [
+    "Bounty Hunters",
+    "Manhunters",
+    "Mercenary Guild",
+    "Slave Hunters",
+    "Tech Hunters",
+    "Mongrel",
+    "The Holy Nation"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_hunters_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Hunters going into the Roam leave their names with the bartender. Not to be remembered. To check against the faces that return.",
+      "Somebody in the guild wrote a rule: no solo contracts in Skinner's Roam. It was written in what looked like red ink.",
+      "A hunter returned to claim a bounty and the clerk asked three questions. The hunter answered one wrong. He was gone before the clerk could stand.",
+      "The old hands say skinners aren't the hunted. They're the hunters, and we're the clients.",
+      "I once bought a hunter a drink after a long contract. He couldn't hold the cup properly. He kept staring at his hands."
+     ]
+    }
+   ],
+   "factions": [
+    "Bounty Hunters",
+    "Mercenary Guild",
+    "Drifters",
+    "Traders Guild",
+    "Swampers",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_lullaby_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Before dawn a whistle comes down from the ridge. A tune. A cheerful one. The sentries never find the whistler. The next night there's one less sentry.",
+      "On the Pits road, someone whistles a nursery tune when the wind drops. Folk say you mustn't whistle back. A drover did. He's still whistling.",
+      "At night in the Roam you hear a lullaby from the next valley. It is in a woman's voice, soothing. Every voice in the camp joins in before dawn.",
+      "I heard a smile on the ridge. I know that sounds mad. I heard it. A bright, white line of sound, like a blade in sunlight.",
+      "A boy on watch described something on the ridge wearing a smile. He said it waved. I asked what it was wearing. He said, my sister's face.",
+      "A guard told me a lullaby had been playing at the wall for three nights. He said the mouth was the wrong shape for the notes."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_lullaby_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Nation's watchmen avoid whistling after dark. It isn't superstition. It's a regulation, one that the Inquisition quietly posted.",
+      "A scout told me about the ridge in the Roam. There's always something on it, wearing a smile. You never see it move. You only see it closer.",
+      "Folk near the Roam don't sing lullabies. They hum under their breath, and only when they're alone.",
+      "A Shek border guard says he heard his own cradle song from the dark. He never learned a cradle song. He grew up among sand and spears.",
+      "A hunter says the whistling stops when you get near. You can feel it waiting, like a held breath."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Dust Bandits",
+    "Tech Hunters",
+    "Mongrel",
+    "Mercenary Guild",
+    "Slave Traders",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_lullaby_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Wanderers in the Roam talk of a tune that follows you from camp to camp. You can't hum it, though you try.",
+      "There's a song everyone knows and nobody remembers learning. It has no words. It has a very good smile.",
+      "I heard something whistling in the dark. It was delighted when I stopped. It was waiting for the next note.",
+      "The old nomad said something about a smile on the ridge. I laughed. He didn't laugh. He packed up and left in the dark.",
+      "Never whistle at sundown in the high plains. Something might whistle back, and you won't like the harmony."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Nomads",
+    "Black Dragon Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_apprentice_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A young apprentice to a cobbler in the Cities was sent to the Pits for leather. He came back with more than he could carry, and not one word.",
+      "The boy returned with his hands too clean. Hands that didn't know the lathe or the awl. He asked, politely, for his own name back.",
+      "The cobbler said the boy had been gone nine days. The boy said nine years. His voice was a man's. The cobbler wept.",
+      "They found the apprentice's tools in a pile by the door. Neatly oiled. Not one cut on the handles. He had never been so tidy.",
+      "The boy sits all day in the shop window sewing nothing. Customers stop to watch. He sews faster when they do.",
+      "I asked the boy what he saw in the Roam. He said, everyone. Then he cried, and then he thanked me for asking."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_apprentice_neigh",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A tailor's apprentice in the Valley went out for thread and returned with a pattern. He cuts it into every coat he makes now.",
+      "An acolyte went north on pilgrimage and came back with his hair a different colour. He prays in a stranger's cadence.",
+      "A smith's boy was lost in the desert for a week. He returned healthy. The smith says he's very strong. The smith locks the forge at night.",
+      "The temple has taken in a boy who won't speak. He writes in a lovely hand. It isn't his hand. The priests burn his notes.",
+      "A scribe from the Valley came home unrecognisable. His wife knew him by his smell, until it changed. She knew nothing after."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Dust Bandits",
+    "Tech Hunters",
+    "Mongrel",
+    "Mercenary Guild",
+    "Slave Traders",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_apprentice_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A boy went to market and came back older. A man went to market and came back younger. Nobody has put it together.",
+      "People say if your apprentice comes back from the north more skilled than when he left, check his wrists for seams.",
+      "An old cobbler's boy is selling shoes with no soles. They fit very well. The boy smiles at every customer.",
+      "A young one came to my stall asking for work. His voice was a grown man's. His hands were a child's. I gave him a day's wage and sent him on.",
+      "Apprentices are a worry. They go out raw, and the north cooks them to a turn."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Swampers",
+    "Flotsam Ninjas",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Nomads",
+    "Black Dragon Ninjas",
+    "Scavengers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_sq_ridge",
+   "event": "EV_ENTER_BIOME",
+   "lines": [
+    {
+     "say": [
+      "Something on the ridge is wearing a smile. It has not moved since we crested the rise.",
+      "Ridge, two o'clock. Standing very still. Smiling. Don't look. Keep walking.",
+      "That figure on the skyline waves like it has practised.",
+      "The thing on the ridge tilts its head when I do. Every time.",
+      "It keeps pace with us along the crest. Never closer. Never farther.",
+      "That grin has been on the skyline for a mile. The head does not move, but the grin does."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "Lookout on the high ground, no pack, no weapon, wearing a smile. I don't like a man that happy.",
+      "Count the ridge. One shape more than a minute ago.",
+      "Whoever that is, he has been following our pace for an hour.",
+      "High ground, one figure, hands at its sides. Posture of a man waiting to be introduced.",
+      "I counted its teeth from here. Too many for a face that size."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ]
+    },
+    {
+     "say": [
+      "There's something on the ridge. It's smiling. Please tell me it's smiling at someone else.",
+      "I saw it wave. It waved with my brother's hand.",
+      "It's wearing a smile. It doesn't suit it.",
+      "It's waving again. Please, please nobody wave back.",
+      "The smile has been getting wider since we came into the Roam."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "A figure on the ridge. It stands like a man who's sizing us. The grin doesn't reach anywhere.",
+      "The smile on that ridge is a mask. I'd know. We make masks of what we fear.",
+      "Shek do not smile at strangers. That thing smiles at everyone.",
+      "A watcher on the heights who doesn't hide. A man with no fear of Shek spears.",
+      "It wears a face I almost know. I won't say whose."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ]
+    },
+    {
+     "say": [
+      "A shape on the ridge. It's humming at me, in a language I almost know.",
+      "The one on the ridge has a very kind face. That's how I know it isn't kind.",
+      "I count one watching us. I hear many humming.",
+      "The shape on the hill isn't alone. I hear it counting us under its breath.",
+      "It smiles. I hum back, to keep my mind."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ]
+    },
+    {
+     "say": [
+      "Detected: a bipedal figure on the ridge, facial rictus held constant. Threat: unknown. Wearing: unknown.",
+      "Ridge contact hasn't blinked in four hundred seconds.",
+      "Contact on ridge stationary. Facial expression constant.",
+      "Observed: ridge figure raised one hand and lowered it.",
+      "Visual: ridge figure now closer by approximately ten metres. It didn't move. The ridge did."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    },
+    {
+     "say": [
+      "The thing on the ridge has someone else's smile. I can tell. The eyes don't agree with the mouth.",
+      "Even the sun hesitates over that ridge.",
+      "That smile is cut, not grown. I've seen that kind of work before.",
+      "A grin on a hill. I'd burn it if I could reach it.",
+      "I have burned many things. I wouldn't mind burning that one."
+     ],
+     "has_package": [
+      "Player SUNDEMON"
+     ]
+    }
+   ],
+   "zones": [
+    "Skinner's Roam"
+   ],
+   "chance": 45,
+   "score": 1
+  },
+  {
+   "id": "sb_sq_measure",
+   "event": "EV_ENTER_BIOME",
+   "lines": [
+    {
+     "say": [
+      "Feels like a tape being drawn down my back. Nobody there. Someone is measuring us from far away.",
+      "I keep thinking they have our sizes already.",
+      "Something is drawing a line along my spine. I keep checking. Nothing there.",
+      "Every time I turn my head, the feeling stops. Then it begins again.",
+      "Hold still. No, you hold still. Someone far off keeps saying hold still."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "Nobody is following us. That's what worries me.",
+      "Keep your coat buttoned. A loose collar is an invitation.",
+      "I've been sized up by the best. This is the first time I felt it in my teeth.",
+      "Someone out there knows the length of my arm. I'd like to know how.",
+      "Whoever hunts here doesn't rush."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ]
+    },
+    {
+     "say": [
+      "I have started counting my own fingers. All ten. Still all ten. I'll check again soon.",
+      "If anyone asks, I am not nervous. I just washed my hands twelve times.",
+      "My coat feels tighter than it did this morning. Is it only me?",
+      "I think someone took my shoe size in my sleep.",
+      "I keep feeling a cold hand on my shoulder. It's always a little higher than the last time."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "They do not duel. They measure. A strange thing for a warrior to fear.",
+      "A Shek counts coups. They count inches. I'd rather count coups.",
+      "No honourable duel here. Only cold hands and a long cord. I have no answer for that.",
+      "An enemy who wishes to learn my shape before he strikes. I don't like being studied.",
+      "Weapons I understand. A man who wants my hide in one piece is a stranger kind of enemy."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ]
+    },
+    {
+     "say": [
+      "The wind here has the sound of a drawn thread. Do you hear it? I hear it.",
+      "Something dry and patient is breathing nearby.",
+      "The grass whispers numbers. It says forty and then three. Then it begins again.",
+      "I smell oiled thread on the wind. It means no harm to the wind.",
+      "We're being fitted for something. I don't wish to see the finished article."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ]
+    },
+    {
+     "say": [
+      "I have no hide to lose. I find I mind on your behalf.",
+      "They would find me a poor customer. I'd find them an excellent warning.",
+      "I note a sensation of being watched. I lack the glands for dread.",
+      "Don't leave me behind. I don't wish to be a spare.",
+      "A needle is a small weapon. Several of them are a large one."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    },
+    {
+     "say": [
+      "I'm not afraid of death. I'm afraid of being used.",
+      "Some fates are only a pile of stitches.",
+      "The land has a pattern and we're being cut to fit it.",
+      "Someone is whistling a measuring song far off. I know the tune from a bad dream.",
+      "Even my shadow feels like it has been pinned down and checked."
+     ],
+     "has_package": [
+      "Player SUNDEMON"
+     ]
+    }
+   ],
+   "zones": [
+    "Skinner's Roam"
+   ],
+   "chance": 35
+  },
+  {
+   "id": "sb_sq_boots",
+   "event": "EV_ENTER_BIOME",
+   "lines": [
+    {
+     "say": [
+      "Boots. Neat pair, laced, by the track. Don't touch them. I mean it.",
+      "They leave the boots. I have always heard that. Now I'm looking at them.",
+      "The laces are still warm. That's all I'll say about it.",
+      "One pair. Set side by side. No tracks around.",
+      "Walk around them. Wide. Wider than that."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "Pair of boots by the cairn. Tied. Clean. I'm not stepping near that.",
+      "Left boot, right boot, laces in bows. A bow.",
+      "Someone polished them. In the Roam. Why would anyone polish them?",
+      "Fine leather, fresh oil, not a speck of dust. They want us to see them.",
+      "Somebody went to a great deal of trouble to leave these."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ]
+    },
+    {
+     "say": [
+      "Someone left their boots. Oh, someone left their boots. Why would you leave them? Why would you ever take them off?",
+      "Maybe he just took them off. Maybe he's just resting. Maybe he's behind us.",
+      "The socks are still inside. Please don't look inside. I looked inside.",
+      "Whose boots are those? Whoever it was isn't walking. Not any more.",
+      "Let us pretend we did not see them. Let us walk faster and pretend."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "A warrior's boots, set neatly in the sand. A warrior doesn't remove his boots by choice.",
+      "Stripes are for the face. Boots are for the road. Whoever left these didn't walk home.",
+      "A pair of boots, laced and centred on the road. A message left for travellers.",
+      "Pride would not leave a good pair of boots. Something took what stood in them.",
+      "These were a good pair. Good stitching. Whoever wore them died on his feet and didn't know it."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ]
+    },
+    {
+     "say": [
+      "Footwear alone at the roadside. I smell something else in the cloth.",
+      "Boots left for a reason. Nobody here's able to say what.",
+      "The boots remember the owner. They remember it very quietly.",
+      "Empty boots. Full hum. I don't like what's humming.",
+      "The cloth is wet with something that isn't water."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ]
+    },
+    {
+     "say": [
+      "Footwear detected. Owner not detected. Probability of owner being alive: very low.",
+      "I note the boots are warm. That's a statement of fact, not an alarm.",
+      "Inventory: one pair of boots, left unattended. Likely bait.",
+      "The boots are intact. The wearer is a variable I choose not to resolve.",
+      "Boots at roadside constitute a signal."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    },
+    {
+     "say": [
+      "Warm boots. No tracks leading away. I won't be sleeping.",
+      "We could take them. Nobody say it. Nobody.",
+      "Even the sun does not touch these boots. That tells me enough.",
+      "I felt someone watching the boots, to see who would pick them up.",
+      "I've seen this arrangement before, in a dream, and I woke without feet."
+     ],
+     "has_package": [
+      "Player SUNDEMON"
+     ]
+    }
+   ],
+   "zones": [
+    "Skinner's Roam"
+   ],
+   "chance": 30,
+   "score": 1
+  },
+  {
+   "id": "sb_sq_wounded",
+   "event": "EV_ENTER_BIOME",
+   "lines": [
+    {
+     "say": [
+      "I'm hurt and this is the worst place to be hurt. Nobody help me limp.",
+      "Wounded in the Roam. Any skinner out there sees us as a ripe peach.",
+      "Every step I limp is a note in their song. Get me out of the Roam.",
+      "I'm hurt and I smell like supper. Walk behind me. Not beside me.",
+      "Don't look back. If they're following I don't want to know."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "I'm bleeding and it smells like a dinner bell. Keep me to the middle.",
+      "Every drop I leave here's an invitation.",
+      "I can feel them taking my measure. Bleeding makes it easy for them.",
+      "I've been hurt worse. Never in a place that paid so much attention.",
+      "Give me a rag. Give me whatever. A bad bleed is a trail they can follow blind."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ]
+    },
+    {
+     "say": [
+      "I'm hurt, I'm hurt, they'll smell it.",
+      "If they take me, please don't look at the table.",
+      "Don't leave me. I'll be quiet, I'll be so quiet.",
+      "It hurts and I think they can hear it.",
+      "I can hear my heartbeat and I swear it isn't alone."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "A bleeding warrior in the Roam. Hm. Not how I planned to be a legend.",
+      "Keep me upright. Do not carry me. A carried man is a delivered one.",
+      "A Shek doesn't complain. But a Shek bleeds, and this land is full of noses.",
+      "I'll walk it off. Don't touch me. Don't fuss.",
+      "An honourable wound, an unhonourable place for it. Move on."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ]
+    },
+    {
+     "say": [
+      "Pain is a lamp in this place. I can feel them moving toward the light.",
+      "Wounds call to them. Let us leave quickly.",
+      "My pain sings. It's far too loud. It will call the others.",
+      "Hold the wound with warm hands. The Roam hates warmth.",
+      "The hurt has a taste in the air. Everything here is hungry for it."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ]
+    },
+    {
+     "say": [
+      "Damage sustained. Compounded risk of this location acknowledged.",
+      "If I fall, leave me. If I fall, burn the coat.",
+      "Integrity compromised. Location unsuitable for repair.",
+      "Report: I am leaking. Recommend leaving the zone.",
+      "Fluid loss noted. Predators presumed. Please advise a route."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    },
+    {
+     "say": [
+      "Hurt, and nowhere to hide. At least be quick with the dressing.",
+      "Bleeding makes me honest. I'm afraid.",
+      "Heat in the wound and cold in the air.",
+      "If they come, let it be quick. I'd rather not be neat.",
+      "If one of them smiles at me, I will not be held responsible."
+     ],
+     "has_package": [
+      "Player SUNDEMON"
+     ]
+    }
+   ],
+   "zones": [
+    "Skinner's Roam"
+   ],
+   "chance": 70,
+   "score": 3,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "me",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "sb_sq_carry",
+   "event": "EV_ENTER_BIOME",
+   "lines": [
+    {
+     "say": [
+      "Don't set him down in the open. Don't set him down anywhere. He's exactly the right size for them.",
+      "Carrying a sleeper through skinner land. Tell me how that goes wrong.",
+      "Whoever holds the body is the one they'll take first. I'm only saying.",
+      "Don't stop to rest. A rest is a gift in this place.",
+      "One more step and my back gives. One more step."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "The weight on my back is breathing. That's the one thing keeping me moving.",
+      "Whoever we're carrying, keep their face covered.",
+      "Heavy is good. Heavy means alive. Heavy means somebody wants it.",
+      "Keep a hood on the sleeper. A face in the Roam is as good as a name on a sign.",
+      "If he wakes, he will scream. If he screams, they'll come."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ]
+    },
+    {
+     "say": [
+      "I can't stop thinking about them taking the one we carry. They would be so kind about it.",
+      "Every step I carry him, I hear a soft voice say, put him down, put him down.",
+      "I'm not strong enough for this and I'm doing it anyway.",
+      "What if they ask us nicely? What if they're polite?",
+      "They love the sleepers. They write letters to the sleepers."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "A body to carry and a land of tailors. I don't like it.",
+      "Cloak the face. Hide the hands. Walk faster.",
+      "A captive on the shoulder and tailors in the dust. No warrior's idea of a good day.",
+      "If the burden stirs, quiet it. We don't need an audience here.",
+      "A wounded man on the shoulder is a banner here."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ]
+    },
+    {
+     "say": [
+      "The one we carry is quiet. The Roam listens to quiet things.",
+      "Do not let the dreamer wake in this place.",
+      "The sleeper's breath is slow and even. The wind here wants to match it.",
+      "Carry gently. A rough step wakes the whole valley.",
+      "He dreams of something near. The Roam knows what it is."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ]
+    },
+    {
+     "say": [
+      "Carrying a body through this place is a form of insult.",
+      "Cargo: one unconscious. Hazard: tailors.",
+      "Load: one human, unconscious. Environment: hostile.",
+      "Cargo is warm and breathing. I understand why the locals take an interest.",
+      "Estimated weight: excessive. Estimated danger of being followed: higher."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    },
+    {
+     "say": [
+      "Light but not light. Take the weight. Take it quickly.",
+      "I think the Roam knows what we carry.",
+      "The sleeper's head turns toward the hills. Something over there turned too.",
+      "If they ask for him, I won't hand him over. I won't even speak.",
+      "The light drops when I lift him. I'd rather it didn't."
+     ],
+     "has_package": [
+      "Player SUNDEMON"
+     ]
+    }
+   ],
+   "zones": [
+    "Skinner's Roam"
+   ],
+   "chance": 70,
+   "score": 3,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "me",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "sb_sq_savant_dead",
+   "event": "EV_ENTER_BIOME",
+   "lines": [
+    {
+     "say": [
+      "Heard the master of the Skinhouse is finished. The Roam doesn't look any friendlier.",
+      "The old butcher is dead and his students are still hungry.",
+      "Without the boss they're scattered, and scattered is worse.",
+      "I looked for relief and found only hush.",
+      "Some of them will want to avenge him. Some will want to replace him."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "The head is cut off, but the hands still move. Keep your eyes on the shadows.",
+      "Savant fallen, so I hear. The tailors don't care. They have their own patterns now.",
+      "One master less, and a hundred apprentices to prove themselves.",
+      "The old man is gone, and they'll want to honour him.",
+      "A dead master makes ambitious students."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ]
+    },
+    {
+     "say": [
+      "Is it over? It can't be over. Tell me it's over.",
+      "People say the house fell. I just want to go home.",
+      "They said he was gone for good. I don't believe a man like that stays gone.",
+      "Can we leave the Roam now? I promise I'll be brave afterwards.",
+      "I keep seeing his needle in every shadow. Tell me I'm being silly."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "The leader is dead. His followers are like wasps in a broken nest.",
+      "A Shek knows an enemy leaderless is an enemy unbound.",
+      "A beheaded serpent still bites. Keep your guard high through this land.",
+      "He's dead. His house still stands. Don't be fooled by one without the other.",
+      "A leader dies, and his dogs fight for the bone. Keep clear of the bone."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ]
+    },
+    {
+     "say": [
+      "The hum has stopped. I miss it. That's the worst of it.",
+      "Without their master they'll be more careless.",
+      "The old song is broken, but the pieces still sing. Different, and sharper.",
+      "I hear fewer voices, but more of them are afraid.",
+      "I felt the hum stop, like a heart. Something else will start up in its place."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ]
+    },
+    {
+     "say": [
+      "Cause of fear removed. Cause of unease persists.",
+      "Leader deceased. Residual hostiles probable.",
+      "Primary threat neutralised. Secondary threats unaccounted for.",
+      "Savant status: dead. Roam status: unchanged.",
+      "Death confirmed. Recommend no celebration until exit."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    },
+    {
+     "say": [
+      "I thought it would feel better. It feels like waiting for the second shoe.",
+      "The silence is so complete that I keep listening for him.",
+      "He's gone, but this land keeps no funerals. It simply keeps the pieces.",
+      "There's a tension in the air. It doesn't feel like the end of anything.",
+      "I don't trust a quiet like this. The Roam has never earned my trust."
+     ],
+     "has_package": [
+      "Player SUNDEMON"
+     ]
+    }
+   ],
+   "zones": [
+    "Skinner's Roam"
+   ],
+   "chance": 40,
+   "score": 2,
+   "states": [
+    [
+     "Savant killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "sb_sq_savant_jailed",
+   "event": "EV_ENTER_BIOME",
+   "lines": [
+    {
+     "say": [
+      "The skinner king is in chains and the Roam is angry. You can feel it in the dust.",
+      "A caged master has children who will do anything.",
+      "The cage is the one thing between us and a thousand little knives.",
+      "They'll come for him. The only question is the road they pick.",
+      "Alive in a cell is worse than dead in a ditch. They'll all want to try the lock."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "Kidnapped the boss. Great plan. Now every tailor in the land wants our shoulders.",
+      "We have what they want most. Keep walking.",
+      "Wonderful. We hold the one man they'll burn the world to get back.",
+      "Keep him sealed tight. I want him bound from head to heel.",
+      "Every skinner in the Roam knows what we took. Walk like we took nothing."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ]
+    },
+    {
+     "say": [
+      "Please, please, don't let them have him back. They would be so grateful, and so thorough.",
+      "Whatever you do, don't let him go.",
+      "I keep hearing someone call his name in the wind.",
+      "What if they promise us gold? What if they promise a lot of gold?",
+      "He's talking to me through the bars. I can feel it even from here."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "A captive king. His people will come, as they always do, in good order.",
+      "I don't fear the master.",
+      "Honour a captive, but don't trust his silence. A tailor's silence is full of cuts.",
+      "His disciples are patient. They'll wait, and then they'll take back what's theirs.",
+      "A prisoner is a debt. They'll come to collect, and the interest is blood."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ]
+    },
+    {
+     "say": [
+      "The captive hums, even in the cage.",
+      "Don't listen when the prisoner speaks.",
+      "The cage is warm. The wind on it sounds like a lullaby. I don't like it.",
+      "He sleeps, and the whole land seems to lean toward the cell.",
+      "His hum slips into my head at night. I wake counting stitches."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ]
+    },
+    {
+     "say": [
+      "Captive: Savant. Hostile reprisal: probable.",
+      "Retain prisoner. Expect pursuit.",
+      "Captive remains secure. Recommend increasing guard rotation.",
+      "Savant is in custody. Hostile retrieval attempt is likely.",
+      "Unit is aware that retrieval will be attempted."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    },
+    {
+     "say": [
+      "We have the worst man in the world and I cannot sleep.",
+      "You have the master in chains, and they come for his chains.",
+      "His followers know where we are. I can feel it, like cold fingers on my neck.",
+      "We hold a man whose whole land hates to see him caged. Be ready.",
+      "I'd sleep better if he were dead. I'd sleep worse if he were free."
+     ],
+     "has_package": [
+      "Player SUNDEMON"
+     ]
+    }
+   ],
+   "zones": [
+    "Skinner's Roam"
+   ],
+   "chance": 40,
+   "score": 2,
+   "states": [
+    [
+     "Savant imprisoned by player",
+     true
+    ],
+    [
+     "Savant killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "sb_hunted_uc_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You're the one who went into the Skinhouse. People step away from you in the street.",
+      "Stay a moment. I want to say thank you. I don't want to say why.",
+      "People say you walked in through the front door and out through the back. I never heard of that before.",
+      "Everyone who watched you pass has gone indoors. Nobody wants to be seen close to what you did.",
+      "Savant's people will have a long memory. I'd sleep with a knife, and with one eye open.",
+      "Whoever you are, you have done the Cities a service. And you have made yourself a name on a wall."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Bounty Hunters"
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2
+  },
+  {
+   "id": "sb_dead_face_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "I heard what the Flame couldn't do, you did. We shall not say so in the temple.",
+      "The Inquisition would call it a cleansing. The Inquisition did not go in.",
+      "A heretic with a good deed. Hm. The scripture is silent on that.",
+      "You killed the skinner prince. We will light a candle for you, and pray the Flame does not notice.",
+      "No thanks from the priests. But some of us noticed."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2
+  },
+  {
+   "id": "sb_dead_face_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "The flatskin who ended the skin-wearer walks among us. The Shek take note of what is done to the unclean.",
+      "A warrior's work, done by a flatskin. The Stone Golem hears of it.",
+      "My cousin's stripes were found in a coat of theirs. You have my thanks, flatskin.",
+      "The skinhouse is cold now. The Shek won't forget who made it so.",
+      "I owe you nothing. I admit I would have liked to be there."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2
+  },
+  {
+   "id": "sb_dead_face_traders",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You ended the Skinhouse? The leather market is in uproar. Half of them are relieved and half have lost a supplier.",
+      "Whoever cleared the Pits road did the caravans a service. We paid you no fee.",
+      "Trade on the Pits road is already better. I do not ask what you did. I just keep my wagons dry.",
+      "You did the road a favour. I'll say it once. I won't be seen saying it twice.",
+      "Word of your work reached my wagon before you did. It's good word. Drink?",
+      "I won't pretend I loved the old Skinhouse. I'll pretend I never knew where it was."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2
+  },
+  {
+   "id": "sb_jailed_face_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You took Savant alive? Then you're either the bravest soul or the most foolish in the Cities.",
+      "Eighty thousand in cats, they say, if you deliver him. I'd sell him before dusk.",
+      "Keep him chained and keep him gagged. A talker like that can undo a magistrate.",
+      "A live skinner is worth more than a dead one.",
+      "People say he hums. Don't let him hum."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Bounty Hunters",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Savant imprisoned by player",
+     true
+    ],
+    [
+     "Savant killed by player",
+     false
+    ]
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2
+  },
+  {
+   "id": "sb_rum_hive_takeover",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Skinhouse halls are full of Hivers since the master fell. They hum in the empty rooms.",
+      "Hive drones standing guard at the door of a place where people were peeled. They don't know what the hooks are for. Neither do I, I say.",
+      "I walked past the old Skinhouse. A drone looked at me with polite curiosity. It tilted its head the way a tailor would.",
+      "Since the drones took over, nobody goes missing near the Pits. That's the good news. The bad is what the drones learned.",
+      "The Southern Hive keeps the house. Nobody asks what they do with the coats still hanging."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders",
+    "Tech Hunters",
+    "Bounty Hunters"
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     true
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_rum_alive_dread",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A man vanished from our caravan at dawn. We found his boots, his belt, and a tidy square of cloth. Nothing else. We moved on in silence.",
+      "The Skinned Ones don't rage. They don't curse. They apologise. That's how you know it has started.",
+      "Children near the Pits sing a rhyme about the patient man. It doesn't scan. Nobody has taught it to them.",
+      "Don't go into the Roam alone. It isn't the cold. It's the way the rocks lean in to listen.",
+      "My friend returned from the Roam and wore long sleeves all summer. He never spoke of why.",
+      "A scout who came back from Skinner's Roam kept touching his own face. Like checking a mask was still attached.",
+      "They never kill in the open, I'm told. Always in a room, with the door shut, and the lamps lit. Even that's a courtesy."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Reavers",
+    "Crab Raiders",
+    "Tech Hunters",
+    "Traders Guild",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild"
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_hunt_bar",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Contract on Savant is still open. Everyone wants the cats. Nobody wants the ride home.",
+      "Rule one for skinner work: never take a trophy. They want it more than you do.",
+      "I do not shake hands with anyone who comes back from the Roam. Not until they take their gloves off.",
+      "We drew lots for the point man. The loser cut a lock from his own wife's hair. For identification, he said.",
+      "Take two lanterns into skinner country. One for light. One for the thing that follows the light.",
+      "Four hunters, one corpse and a hat. Whoever was wearing the hat hasn't come forward for the bounty.",
+      "A hunter showed me a trophy ear once. It twitched. I bought him a drink and left the table.",
+      "Best advice I ever had: if a stranger knows your name, run before he knows your measurements."
+     ]
+    }
+   ],
+   "factions": [
+    "Bounty Hunters",
+    "Manhunters",
+    "Mercenary Guild",
+    "Slave Hunters"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_hunt_office",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The skin ring file is the thickest in the office. We keep it locked. We keep it locked from the inside, if you follow.",
+      "We stopped issuing the contract for the Skinhouse. Not because the money was low. Because the hunters stopped writing home.",
+      "A clerk asked a returning hunter to sign for the bounty. He signed with a left hand he never used. We paid in coin and watched him leave.",
+      "I wrote the poster for Savant. No face, as ordered. I added the line about the hands.",
+      "Savant's file has forty names for him. None of them are his. The clerks pick one each day and hope.",
+      "We pay an extra purse for identification on skinner kills. By hand. By touch."
+     ]
+    }
+   ],
+   "factions": [
+    "Bounty Hunters",
+    "United Cities",
+    "Mercenary Police",
+    "Mercenary Guild"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "packages": [
+    "bar:all"
+   ]
+  },
+  {
+   "id": "sb_hunt_killed_hunters",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "You killed the Skinhouse master? Then the hunters' hall owes you three rounds and an apology.",
+      "Half the old contracts ended with that one swing. The clerks cried.",
+      "The Skinhouse is empty now. Hunters go in to loot. Some come back wearing nice coats.",
+      "They had a bounty on Savant for years and you collected it in an afternoon. I'm not jealous. I'm just very quiet.",
+      "Forty men dead and the man you killed never lifted a hand. That is how it was always going to end."
+     ]
+    }
+   ],
+   "factions": [
+    "Bounty Hunters",
+    "Manhunters",
+    "Mercenary Guild",
+    "Slave Hunters",
+    "Mercenary Police"
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     true
+    ]
+   ],
+   "chance": 65,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "sb_hunted_neutral_remembers",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "We have the same enemy, you and I. I'm going to walk away now before I say anything I'll regret.",
+      "I can see you're hunting something. Don't look back. They'll be hunting you in return.",
+      "If you can hear footsteps behind you that match your own, do not turn. Keep walking.",
+      "You walk like someone who has been seen.",
+      "Take the long way home. Take any way that isn't the way you came."
+     ]
+    }
+   ],
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Traders Guild",
+    "Free Traders",
+    "Scavengers",
+    "Flotsam Ninjas"
+   ],
+   "relation": [
+    ">",
+    -100
+   ],
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 500
+    }
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2
+  }
+ ]
+}

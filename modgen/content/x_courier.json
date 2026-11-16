@@ -1,0 +1,2035 @@
+{
+ "pack": "x_courier",
+ "mod": "LivingWastelandHeat",
+ "lore_items": [
+  {
+   "id": "cr_cord",
+   "name": "Knotted Cord",
+   "from": "Animal Claw",
+   "description": "A hand's length of cord with knots tied down it at uneven spacing, each pulled tight and sealed with a dab of wax. It has been carried against skin for a long time.",
+   "int": {
+    "value": 1
+   },
+   "place": []
+  },
+  {
+   "id": "cr_tally",
+   "name": "Ronin's Day Tally",
+   "from": "Animal Claw",
+   "description": "A flat strip of hide scored with short cuts in rows of ten. The last rows are fresh. The first are so old they have gone smooth.",
+   "int": {
+    "value": 1
+   },
+   "place": []
+  },
+  {
+   "id": "cr_hide",
+   "name": "Scraped Hide Strip",
+   "from": "Animal Claw",
+   "description": "A strip of cured hide, the edge frayed from a belt. A mark was burned into it and someone has tried to scrape the mark away, and failed.",
+   "int": {
+    "value": 1
+   },
+   "place": []
+  },
+  {
+   "id": "cr_page",
+   "name": "Folded Page",
+   "from": "Letter Of The Condemned",
+   "description": "A single page folded into quarters and unfolded so often it has split along the creases. The writing is in a hand nobody near here uses, and the last line is lost to a tear.",
+   "int": {
+    "value": 0
+   },
+   "place": []
+  },
+  {
+   "id": "cr_coin",
+   "name": "Dented Coin",
+   "from": "Coin",
+   "description": "A coin of the old kind, bent double and straightened again. Someone has scratched a line across the face, and not in anger.",
+   "int": {
+    "value": 1
+   },
+   "place": []
+  },
+  {
+   "id": "cr_note",
+   "name": "Sealed Note",
+   "from": "Letter Of The Condemned",
+   "description": "A note folded small and sealed with a thumb of tallow. Nothing is written on the outside. The inside is not for you.",
+   "int": {
+    "value": 0
+   },
+   "place": []
+  }
+ ],
+ "quests": [
+  {
+   "id": "cr_cord",
+   "offer": {
+    "packages": [
+     "Holy Nation Civilian",
+     "Holy Nation Shopkeep",
+     "Holy farmer peasant"
+    ],
+    "chance": 12,
+    "say": [
+     "Stranger. I have a cord, and every knot in it's a name. I can't give it to anyone here and I can't burn it. Will you take it past the walls?",
+     "You travel and I don't. There are people outside who work against the slavers. A knotted cord for them. Nobody here must see you take it.",
+     "Keep your voice low. I have something small and it has to leave the Nation. Not for coin.",
+     "Would you carry a thing for me? It weighs nothing. If a priest found it on me it would weigh a great deal.",
+     "I asked three men and was refused by three. I will ask you. A knotted cord, to anyone who works against the slavers. That is all of it."
+    ],
+    "accept": [
+     "Give it here.",
+     "I will take it out.",
+     "Who do I give it to?",
+     "Where do I find them?"
+    ],
+    "accepted": [
+     "Here. Anyone who stands against the slavers. Say it is from inside and do not say whose hand. Then come back and tell me it was taken.",
+     "Tuck it away. Past the gates, find one who frees slaves and put it in their hand. They will understand it. Come back and say they did.",
+     "Do not look at it here. It is only a cord. Give it to the slaver-breakers beyond the walls, and return when it is done.",
+     "Thank you. Do not thank me back. Carry it to the ones who free slaves, and tell me it reached them."
+    ],
+    "decline": [
+     "Not today.",
+     "I cannot.",
+     "Ask someone else.",
+     "That is a risk I will not take."
+    ],
+    "give_items": [
+     [
+      "Knotted Cord",
+      1
+     ]
+    ],
+    "if": [
+     {
+      "cond": "DC_IS_FEMALE",
+      "who": "me",
+      "value": 1
+     },
+     {
+      "cond": "DC_RELATIONS",
+      "who": "me",
+      "cmp": ">",
+      "value": 5
+     }
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "Anti-Slavers"
+     ],
+     "packages": [
+      "Anti Slaver Ninja",
+      "Anti slaver Ninja HQ"
+     ],
+     "narrow": true,
+     "target_has_item": [
+      "Knotted Cord"
+     ],
+     "say": [
+      "That's a lot of knots for a bit of string. Who tied them?",
+      "Cord, knotted, carried a long way by the look of it. Where from?",
+      "You have something in your hand you keep not looking at.",
+      "Hold up. A knotted cord. Someone wanted that gone from wherever it was. Where from?"
+     ],
+     "reply": [
+      "From inside the Holy Nation. A woman who gave no name.",
+      "A woman behind the walls. She wants it to reach you.",
+      "Out of the Nation, from someone who counts names.",
+      "I was asked to bring it to whoever frees slaves."
+     ],
+     "after": [
+      "Then she is still counting. Tell her it came to hands that will not drop it.",
+      "A name for every knot, I would guess. Tell her it was taken, and not laughed at.",
+      "I have spent a long time wishing I knew what was behind those walls. This is a start. Say so.",
+      "Brave, and a fool, and I owe her for both. Tell her we have it."
+     ],
+     "take_items": [
+      [
+       "Knotted Cord",
+       1
+      ]
+     ],
+     "relations": {
+      "Anti-Slavers": 3
+     }
+    }
+   ],
+   "report": {
+    "packages": [
+     "Holy Nation Civilian",
+     "Holy Nation Shopkeep",
+     "Holy farmer peasant"
+    ],
+    "reward": 600,
+    "say": [
+     "They took it? Then it is out of my hands. Here, this coat was put aside for something else. I would rather you had it, and some coin.",
+     "It reached someone. Thank you. I will not ask who. Take this coat and these cats, and I will not forget the rest.",
+     "Taken, and not turned in. You do not know what that is worth. Take the coat and the cats, and please do not come to me again.",
+     "Then it left. Good. That is all I wanted from it. Take this coat, the cats, and a favour owed.",
+     "I thought you would be seen, or sell it. You did neither. Here's what I can spare, and a coat I mended myself."
+    ],
+    "if": [
+     {
+      "cond": "DC_IS_FEMALE",
+      "who": "me",
+      "value": 1
+     }
+    ],
+    "give_items": [
+     [
+      "Mended Longcoat",
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "cr_tally",
+   "offer": {
+    "packages": [
+     "Npc HIVER Ronin - Complete Package",
+     "Fresh Ronin"
+    ],
+    "races": [
+     "Hive Prince",
+     "Hive Prince South Hive"
+    ],
+    "narrow": true,
+    "chance": 12,
+    "say": [
+     "Stranger. I keep count of days. It's all I keep. Take the count to the hive. They'll know what it is.",
+     "I lost the hive. I didn't lose the days. I cut them, one by one. Someone should hold them. Will you carry them to the hive?",
+     "The hive is quiet for me now. Not for them. Would you take something to them, so they know I'm still marking?",
+     "No one asks me for anything. I have a thing to give. It's a count. It's small. It must go to the hive.",
+     "A strip of hide. Cuts in it. I can't walk into the hive anymore."
+    ],
+    "accept": [
+     "Give me the count.",
+     "I will take it.",
+     "Where is the hive?",
+     "Whom do I give it to?"
+    ],
+    "accepted": [
+     "Here. Any of the hive. They will understand rows of cuts. Say it is from one outside. Then come back and say it was held.",
+     "Take it. It is light. Put it in the hands of one of them, and say who sent it. Then tell me what they did.",
+     "Keep it dry. Give it to the hive when you meet them. They do not need me to explain. Come back and tell me.",
+     "Here. It is everything I have counted. Do not lose it. Bring me word after."
+    ],
+    "decline": [
+     "Not now.",
+     "I cannot.",
+     "Ask another.",
+     "No."
+    ],
+    "give_items": [
+     [
+      "Ronin's Day Tally",
+      1
+     ]
+    ],
+    "if": [
+     {
+      "cond": "DC_RELATIONS",
+      "who": "me",
+      "cmp": ">",
+      "value": 5
+     }
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "Southern Hive",
+      "Western Hive"
+     ],
+     "races": [
+      "Hive Worker Drone",
+      "Hive Soldier Drone",
+      "Hive Worker Drone South Hive",
+      "Hive Soldier Drone South Hive"
+     ],
+     "target_has_item": [
+      "Ronin's Day Tally"
+     ],
+     "say": [
+      "That is a lot of small cuts. Someone made them for a long time. Who?",
+      "You carry marks. Marks of days. I know the shape of them. Whose?",
+      "That isn't ours. It's of ours. What's it?",
+      "Cuts in rows. One for each. There are many. Where did it come from?"
+     ],
+     "reply": [
+      "A ronin outside the hive. He counts the days and wanted you to know.",
+      "From one who left, or was left. He keeps this count.",
+      "A hive prince alone out there asked me to bring it.",
+      "From a lone ronin. He wants the hive to hold it."
+     ],
+     "after": [
+      "He counts. Alone. We did not know. The hive will hold it. Say to him: held.",
+      "We will keep it. Nobody told us someone still counted. Tell him so.",
+      "One cut for each day he has been out. That is a lot of days. Tell him we have them.",
+      "Held. We have no mark for what he is. But we have this. Tell him."
+     ],
+     "take_items": [
+      [
+       "Ronin's Day Tally",
+       1
+      ]
+     ]
+    }
+   ],
+   "report": {
+    "packages": [
+     "Npc HIVER Ronin - Complete Package",
+     "Fresh Ronin"
+    ],
+    "races": [
+     "Hive Prince",
+     "Hive Prince South Hive"
+    ],
+    "narrow": true,
+    "reward": 500,
+    "say": [
+     "Held. I didn't expect them to say it. Take these. And a favour, if I can ever give you one.",
+     "They kept it. Good. I think I'd like to sit a while. Take these, they aren't enough.",
+     "Held. That word. It's more than I had yesterday. Take what I can give.",
+     "You carried it and they took it. I am glad. Take this, and know I am in your debt.",
+     "They have the days now. I only have what comes next."
+    ],
+    "if": []
+   }
+  },
+  {
+   "id": "cr_hide",
+   "offer": {
+    "factions": [
+     "Mercenary Guild",
+     "Bounty Hunters",
+     "Drifters",
+     "Nomads",
+     "Scavengers",
+     "Outlaw"
+    ],
+    "races": [
+     "Shek"
+    ],
+    "chance": 12,
+    "say": [
+     "/FLATSKIN/. I have a thing the Kingdom should have back. I can't carry it there. You can.",
+     "I won't beg. I ask once. Take this to a Shek in the Kingdom. Say nothing of where you had it.",
+     "There's something I owe and can't pay. It must be put in a Shek hand, in the Kingdom. Will you?",
+     "My own people won't see me. They would see you. Take this hide to them.",
+     "A scrap of hide. It was mine. It belongs where I cannot go."
+    ],
+    "accept": [
+     "Give it here.",
+     "Where does it go?",
+     "I will take it.",
+     "Whose hand?"
+    ],
+    "accepted": [
+     "Here. A Shek of the Kingdom, any who will take it. Say nothing of me but that it is returned. Then come back.",
+     "Take it. A Shek who wears his horns, at a stall or at a gate. Put it in his hand. Come back and say he took it.",
+     "Do not look at it. Do not ask. Carry it to the Kingdom and put it in a Shek's hand. Then return.",
+     "It weighs nothing. Remember I said nothing of where I am. Bring me word after."
+    ],
+    "decline": [
+     "Not now.",
+     "I cannot.",
+     "Find another.",
+     "No."
+    ],
+    "give_items": [
+     [
+      "Scraped Hide Strip",
+      1
+     ]
+    ],
+    "if": [
+     {
+      "cond": "DC_RELATIONS",
+      "who": "me",
+      "cmp": ">",
+      "value": 5
+     }
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "Shek Kingdom"
+     ],
+     "packages": [
+      "Shek shopkeep",
+      "Shek Retainer"
+     ],
+     "races": [
+      "Shek"
+     ],
+     "narrow": true,
+     "target_has_item": [
+      "Scraped Hide Strip"
+     ],
+     "say": [
+      "A mark on that hide has been scraped away. Not well enough. Where did you get it?",
+      "/FLATSKIN/. That's Shek leather. Who gave it to you, and why do you bring it here?",
+      "You carry something of ours. Don't hold it back.",
+      "That hide. I know what it is. I don't know how you came by it."
+     ],
+     "reply": [
+      "A Shek outside the Kingdom asked me to return it. He did not say where he is.",
+      "From a Shek who cannot come himself. He asked that it go to a hand of the Kingdom.",
+      "I was given it to carry here. The one who gave it keeps his name to himself.",
+      "It was given to me for the Kingdom. By a Shek who is not here."
+     ],
+     "after": [
+      "Hrm. Then he lives. Leave it with me. I did not speak with you.",
+      "Hrm. I know the hand that cut it. Tell him nothing. I heard nothing. But the Kingdom has it back.",
+      "Returned. That is something. A debt is a debt, outside or in. Go on, /FLATSKIN/.",
+      "Leave it on the counter. Go. If he asks, say it was taken without a word."
+     ],
+     "take_items": [
+      [
+       "Scraped Hide Strip",
+       1
+      ]
+     ],
+     "relations": {
+      "Shek Kingdom": 2
+     }
+    }
+   ],
+   "report": {
+    "factions": [
+     "Mercenary Guild",
+     "Bounty Hunters",
+     "Drifters",
+     "Nomads",
+     "Scavengers",
+     "Outlaw"
+    ],
+    "races": [
+     "Shek"
+    ],
+    "reward": 700,
+    "say": [
+     "Taken, and nothing said. Good. Take these. A Shek pays what he owes, even from a long way off.",
+     "You put it in a Shek hand and lived. I've seen less from my own kin. Take this, /FLATSKIN/.",
+     "It's out of my keeping. That's enough. These cats aren't the debt.",
+     "Hrm. You did as I asked and didn't talk. Take this. I'll remember it.",
+     "Returned. I won't ask what was said. Take what I can spare."
+    ],
+    "if": []
+   }
+  },
+  {
+   "id": "cr_page",
+   "offer": {
+    "factions": [
+     "Tech Hunters"
+    ],
+    "chance": 12,
+    "say": [
+     "I took a page off a dead man in the ruins. Old script, I can't read it. A skeleton can. Take it, tell me what it says.",
+     "You know skeletons? They read the old marks. I have a page I can't make out. Show it to one and bring me the sense.",
+     "I don't pay for what I don't understand. I have a page. Find a skeleton, have it read, tell me.",
+     "Dead man's page, ruins, old writing. Could be a map. Could be a shopping list. Have a skeleton read it."
+    ],
+    "accept": [
+     "Give it here.",
+     "I will find one.",
+     "What do I ask?",
+     "Fine."
+    ],
+    "accepted": [
+     "Here. Any skeleton who will read. Ask what it says and nothing else. Skeletons talk plain. Come back.",
+     "Keep it flat. It is old and it will tear. A skeleton, then me. Bring the sense, not the paper.",
+     "Take it. Do not trade it, do not lose it. A skeleton can read it. I want the words.",
+     "Here. Ask, and then come back with what they say."
+    ],
+    "decline": [
+     "Not my work.",
+     "No.",
+     "Find another.",
+     "I have no time."
+    ],
+    "give_items": [
+     [
+      "Folded Page",
+      1
+     ]
+    ],
+    "if": [
+     {
+      "cond": "DC_RELATIONS",
+      "who": "me",
+      "cmp": ">",
+      "value": 5
+     }
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Npc SKELETON Base 1",
+      "Skeleton town resident",
+      "Skeleton Town barman",
+      "Black desert skeleton patron",
+      "Skeleton Junkyard",
+      "dancing skeleton patrons"
+     ],
+     "races": [
+      "Skeleton",
+      "Skeleton Log-Head MKII"
+     ],
+     "target_has_item": [
+      "Folded Page"
+     ],
+     "say": [
+      "That page has been folded many times. The paper is failing. I can read what remains.",
+      "You're holding written material. I recognise the script.",
+      "That's an old page. I know the hand. Do you want me to read it?",
+      "You have a document. I haven't seen this form in some time."
+     ],
+     "reply": [
+      "Read it to me. I was told you could.",
+      "Yes. What does it say?",
+      "A Tech Hunter found it. Tell me what it says.",
+      "Please. The sense, nothing more."
+     ],
+     "after": [
+      "It is a list of names with a number beside each. The last number is unfinished. I will not guess what it counted. Tell the one who sent you.",
+      "It is a requisition for something never delivered. It was signed twice, in two hands. Tell the one who sent you that it is only that.",
+      "It is a note from someone who expected to be found. It asks that the finder not be afraid. Tell them.",
+      "It is a count of days with no conclusion. I have read it. I have no other comment. I will keep it."
+     ],
+     "take_items": [
+      [
+       "Folded Page",
+       1
+      ]
+     ]
+    }
+   ],
+   "report": {
+    "factions": [
+     "Tech Hunters"
+    ],
+    "reward": 800,
+    "say": [
+     "You got it read. Good. I won't ask what it said, your face told me enough.",
+     "Read, and not worth much, from your look. Still, a job is a job. Here.",
+     "A skeleton read it? Did it ask for anything? No? Then it was honest. Cats, as agreed.",
+     "Done, then. I owe you the pay.",
+     "Good. The page has been on my mind. It will be off it now."
+    ],
+    "if": []
+   }
+  },
+  {
+   "id": "cr_coin",
+   "offer": {
+    "factions": [
+     "Slave Traders"
+    ],
+    "chance": 12,
+    "say": [
+     "I have a coin that doesn't belong to me anymore. There are people who undo my trade. Take it to them.",
+     "Don't look at me like that. I owe the other side of this business, and I mean to pay it quietly. A coin, to the ones who cut shackles.",
+     "A man I sold was owed more than he got. I can't pay him. I can pay the ones who dig men out. Will you carry this?",
+     "Business teaches you what a debt is. This one has sat on me. A coin to the anti-slavers, or whatever they call themselves.",
+     "I deal in people and I know what I am. One coin, to those who work against me. That's how I put it right."
+    ],
+    "accept": [
+     "Give me the coin.",
+     "Why not carry it yourself?",
+     "I will take it.",
+     "No questions."
+    ],
+    "accepted": [
+     "Here. Any of them that free slaves. Say the debt is paid. Say nothing else. Come back and tell me it was taken.",
+     "Take it. One of the ninjas who work against us, they come and go. Put it in a hand and say paid in full.",
+     "It is only a coin. It is the only one I can part with without anyone noticing. Say paid in full, and bring me word.",
+     "Here. If anyone asks, you found it. Come back after, and say they took it."
+    ],
+    "decline": [
+     "No.",
+     "Carry your own conscience.",
+     "I will not.",
+     "Not interested."
+    ],
+    "give_items": [
+     [
+      "Dented Coin",
+      1
+     ]
+    ],
+    "if": [
+     {
+      "cond": "DC_RELATIONS",
+      "who": "me",
+      "cmp": ">",
+      "value": 5
+     }
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "Flotsam Ninjas"
+     ],
+     "packages": [
+      "Flotsam Ninja"
+     ],
+     "narrow": true,
+     "target_has_item": [
+      "Dented Coin"
+     ],
+     "say": [
+      "Put your hand down. What's in it? A coin? Why would a coin worry me?",
+      "You're hiding something in your fist. Either it's a knife or it's a coin.",
+      "That coin is bent. Someone made it so on purpose. Where did you get it?",
+      "Hold it up where I can see it. Huh."
+     ],
+     "reply": [
+      "A man who sells slaves sent it. He says the debt is paid in full.",
+      "A slaver. He wants it to reach you. Paid in full, he said.",
+      "From someone in the trade. He said you would know what it means.",
+      "I was asked to bring it. The debt is paid, he said."
+     ],
+     "after": [
+      "A slaver paying. That is a first. We will take it, because the coin is not his fault. Tell him it was received. Not forgiven.",
+      "Paid in full? It never is. But we will put it where it does good. Tell him that.",
+      "Do not expect thanks. Expect it to be used. Tell the one who gave it that it was taken.",
+      "Huh. Then he has a conscience. Or a rope in his dreams. Either way, take word back. Taken. Nothing more."
+     ],
+     "take_items": [
+      [
+       "Dented Coin",
+       1
+      ]
+     ],
+     "relations": {
+      "Flotsam Ninjas": 2
+     }
+    }
+   ],
+   "report": {
+    "factions": [
+     "Slave Traders"
+    ],
+    "reward": 900,
+    "say": [
+     "Taken. Not forgiven, I'd guess. Good.",
+     "They took it? Then it is settled. I will not say it is a weight off. It is a weight shifted. Take these.",
+     "Received. I thought they would spit on it. Take what I owe you.",
+     "Done, then. Don't tell anyone I was ever decent.",
+     "I'm obliged. A little. Keep the cats and keep quiet."
+    ],
+    "if": []
+   }
+  },
+  {
+   "id": "cr_note",
+   "offer": {
+    "packages": [
+     "Empire Farmer",
+     "Empire bar patron"
+    ],
+    "chance": 12,
+    "say": [
+     "I have a note for my brother. He took up with a rough crowd. Mongrel, last I heard. I can't go. Would you put it in someone's hand there?",
+     "Do you travel by the Mongrel places? A note. Sealed. For a man whose name I won't say aloud.",
+     "I have a sealed note and a brother I haven't seen in years. People like him end up with people like the Mongrel. Would you?",
+     "Please. I didn't write it well. It only needs to get to him. Anywhere among the Mongrel will do to start."
+    ],
+    "accept": [
+     "Give it here.",
+     "I will find him.",
+     "What is his name?",
+     "Fine, hand it over."
+    ],
+    "accepted": [
+     "Here. No name. They will pass it among themselves, or they will not. Say it is from family. Come back and tell me.",
+     "Take it. It is sealed with tallow. Do not open it. Put it in a Mongrel hand and say it is from home. Then tell me.",
+     "Thank you. Say it is from the one who stayed. They will understand. Come back to me after.",
+     "Here. If they ask, I am nobody. Just say home. Bring word after."
+    ],
+    "decline": [
+     "Not my road.",
+     "I cannot.",
+     "Ask another.",
+     "No."
+    ],
+    "give_items": [
+     [
+      "Sealed Note",
+      1
+     ]
+    ],
+    "if": [
+     {
+      "cond": "DC_RELATIONS",
+      "who": "me",
+      "cmp": ">",
+      "value": 5
+     }
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "Mongrel"
+     ],
+     "target_has_item": [
+      "Sealed Note"
+     ],
+     "say": [
+      "What's that? You're holding it like it might go off.",
+      "You carry a note. We don't get notes. We get knives and rumours. Who from?",
+      "A sealed thing. Give it here if it's for one of us, or put it away.",
+      "Is that tallow on it? Who still seals notes with tallow? Who sent it?"
+     ],
+     "reply": [
+      "Family, for someone who ended up with you. I do not know his name.",
+      "From home. A brother who stayed. It needs to reach his.",
+      "A note from someone who misses him.",
+      "Sealed. I was told to say it is from home."
+     ],
+     "after": [
+      "Home. Hah. Give it here. If it is for one of us it will find him. Tell the sender I said so.",
+      "Leave it. We have people who read and people who do not, and the note will find both. Tell the sender it was taken.",
+      "A note from home. I will see it goes where it should. That is the best I can say. Go.",
+      "Funny. Most notes here are warnings. A letter from home. Hand it over and walk on."
+     ],
+     "take_items": [
+      [
+       "Sealed Note",
+       1
+      ]
+     ],
+     "relations": {
+      "Mongrel": 2
+     }
+    }
+   ],
+   "report": {
+    "packages": [
+     "Empire Farmer",
+     "Empire bar patron"
+    ],
+    "reward": 400,
+    "say": [
+     "They took it. Thank you. I didn't know if anyone would. Here's some coin, and my father's katana. It has hung on my wall for years and I'm no swordsman.",
+     "It will reach him, or it won't. But it has left my hands. Take these cats, and the blade by the door.",
+     "You put it in the right hands? I hope so. I'll stop wondering now. Here, my father's old katana, and what I saved.",
+     "Thank you. I was afraid of that last step. Take the cats, and this katana. It was his, and he would not have wanted it rusting."
+    ],
+    "if": [],
+    "give_items": [
+     [
+      "Old Empire Katana",
+      1
+     ]
+    ]
+   }
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "cr_cord_remind",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 50,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Another woman told me she gave a stranger something to carry. If that was you, do not stop now.",
+      "I will not ask what you carry or who for. I will only say, whoever it is, keep it dry and keep walking.",
+      "Someone spoke to me of a stranger and a cord. If it is you, I am glad. Go on quietly.",
+      "I hear a traveller has a small thing from one of us. Do not show it to any robe."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_cord",
+     "==",
+     1
+    ]
+   ],
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "cr_cord_giver_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Another of us said a stranger took a cord out. She would not say more. Was it you?",
+      "Somebody carried a cord out of here. I heard it from three mouths and I believe none of them. Was it you?",
+      "They say a cord got past the gates. I was not asked and I did not look. Thank you, if it was you.",
+      "A stranger took something small out for one of us. We don't speak of it."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_cord",
+     "==",
+     99
+    ]
+   ],
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "cr_cord_recip_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Cord with knots, you carried? Word reached us. Somebody inside is still counting.",
+      "Some of us heard about a cord from inside the Nation. We've been quiet about it, the way you're quiet about good news.",
+      "I heard a cord came out of the Holy Nation. I'd like to know whose hand tied it.",
+      "The cord that came out was kept. I did not see it. Nobody saw it."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_cord",
+     "==",
+     99
+    ]
+   ],
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "packages": [
+    "Anti Slaver Ninja",
+    "Anti slaver Ninja HQ"
+   ]
+  },
+  {
+   "id": "cr_cord_rumour_1",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Priests say a knot in a cord is a debt. The women say it is a name. I say it is none of my business.",
+      "My wife ties knots in her thread when she thinks I'm not looking.",
+      "A pilgrim was searched at a gate for letters. They found a cord and let her go. I would not know why.",
+      "I heard a woman can hide a great deal in a sleeve. They say it as a warning."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ]
+  },
+  {
+   "id": "cr_cord_rumour_2",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Things get out of the Holy Nation if you wait. Words, mostly. Once in a while a bit of string.",
+      "We get messages from inside, now and then. They're never signed.",
+      "A woman in the Nation once sent word by a beggar. We never found the beggar.",
+      "People think nobody inside the walls is still thinking. They are wrong, and I have the proof, though not on me."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ]
+  },
+  {
+   "id": "cr_cord_rumour_3",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "They say the Holy Nation keeps its women quiet. Quiet isn't the same as empty.",
+      "I knew a Holy Nation woman once. She said less than anyone and remembered more.",
+      "Out of the Nation, you can carry words, goods or nothing at all. The nothing is the most dangerous.",
+      "Never ask a Holy Nation woman where she's going. She will tell you the truth, and it will be worse than a lie."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Scavengers",
+    "Tech Hunters",
+    "The Holy Nation",
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "cr_cord_done_1",
+   "event": "EV_BAR_TALK",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Inquisitors have been asking after cords and knots. They will not say why.",
+      "A priest looked at a sleeve for a long time today. I don't know what he thought he saw.",
+      "I hear someone is asking questions near the women. No one answers them, and that is an answer too.",
+      "There was a search, and nothing was found, and everyone looked pleased about it. I do not trust that."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "vars": [
+    [
+     "Quest cr_cord",
+     "==",
+     99
+    ]
+   ]
+  },
+  {
+   "id": "cr_cord_done_2",
+   "event": "EV_BAR_TALK",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Somebody brought us a cord from inside the Nation. We haven't stopped talking about it.",
+      "A knotted cord reached us from inside. Each knot is a person. We read them all.",
+      "Whoever carried that cord out, we owe them. We just don't know how to say it.",
+      "We kept the cord. We didn't keep the carrier's name. We didn't need it."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "vars": [
+    [
+     "Quest cr_cord",
+     "==",
+     99
+    ]
+   ]
+  },
+  {
+   "id": "cr_tally_remind",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 50,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Someone spoke of a ronin and a strip of hide. If you're the one carrying it, don't stop.",
+      "You carry the count? Good. Don't lose it. It's the only thing I have asked anyone for.",
+      "I heard a ronin gave a stranger his marks. I'd like to be the stranger, and I'm not.",
+      "The days aren't heavy. They're only many. Take them to the hive."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_tally",
+     "==",
+     1
+    ]
+   ],
+   "packages": [
+    "Npc HIVER Ronin - Complete Package",
+    "Fresh Ronin"
+   ],
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ]
+  },
+  {
+   "id": "cr_tally_giver_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A ronin I know said he gave his days to a traveller and the hive kept them. He's quieter since. It's a good quiet.",
+      "I heard the hive kept someone's count. It is not much. It is more than most of us get.",
+      "A stranger took a ronin's marks to the hive. The ronin doesn't say it, but he's lighter.",
+      "Another of us sent his count to the hive. They kept it. I'm thinking about doing the same."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_tally",
+     "==",
+     99
+    ]
+   ],
+   "packages": [
+    "Npc HIVER Ronin - Complete Package",
+    "Fresh Ronin"
+   ],
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ]
+  },
+  {
+   "id": "cr_tally_recip_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Someone brought a count to one of us. It was kept. I don't know why that matters, but it's spoken of.",
+      "A strip with cuts came from outside. The hive holds it. The hive doesn't say more.",
+      "We were given the days of one who left. We hold them. It is enough.",
+      "A traveller came with marks. We do not forget marks."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_tally",
+     "==",
+     99
+    ]
+   ],
+   "factions": [
+    "Southern Hive",
+    "Western Hive"
+   ],
+   "races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ]
+  },
+  {
+   "id": "cr_tally_rumour_1",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Ronin cut marks in things. Hide, wood, their own arms, some of them. I don't ask which days they're counting.",
+      "I knew a ronin who said it was too quiet out here. I told him it wasn't, with the raptors about.",
+      "Some hive princes lose the hive and keep the habits.",
+      "A ronin doesn't sleep like we do. I have watched. He lies down and listens for something."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Scavengers",
+    "Tech Hunters",
+    "The Holy Nation",
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "cr_tally_rumour_2",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Some of the lost ones count. We don't know what they count.",
+      "The hive hears many things. It doesn't always hear the lost ones.",
+      "A lost one passed our way. He didn't stop. He looked like he was listening.",
+      "We do not speak of those who left. We notice them."
+     ]
+    }
+   ],
+   "factions": [
+    "Southern Hive",
+    "Western Hive"
+   ]
+  },
+  {
+   "id": "cr_tally_rumour_3",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Hive ronin are strange company. Polite, careful, and never quite here.",
+      "I heard a ronin counting once, under his breath, over and over. It was the same number.",
+      "Never share a fire with a ronin unless you can stand silence. They give a lot of it.",
+      "A ronin told me he doesn't miss the hive. He said it three times."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Scavengers",
+    "Tech Hunters",
+    "The Holy Nation",
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "cr_tally_done_1",
+   "event": "EV_BAR_TALK",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Somebody carried a notched strip of hide to a hiver and the hiver took it without a fuss.",
+      "A ronin gave away his days and a hiver kept them. I'd like to have seen it.",
+      "I hear a stranger took a ronin's marks to the hive. People in my line of work don't do that sort of thing for free.",
+      "A ronin walked away lighter this week. I saw it."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Scavengers",
+    "Tech Hunters",
+    "The Holy Nation",
+    "Shek Kingdom"
+   ],
+   "vars": [
+    [
+     "Quest cr_tally",
+     "==",
+     99
+    ]
+   ]
+  },
+  {
+   "id": "cr_tally_done_2",
+   "event": "EV_BAR_TALK",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "An outsider brought a count to one of us.",
+      "A drone took marks from a stranger and did not ask for coin. We noticed.",
+      "We hold the days of one who left.",
+      "The hive keeps what it's given. It was given a count."
+     ]
+    }
+   ],
+   "factions": [
+    "Southern Hive",
+    "Western Hive"
+   ],
+   "vars": [
+    [
+     "Quest cr_tally",
+     "==",
+     99
+    ]
+   ]
+  },
+  {
+   "id": "cr_hide_remind",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 50,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You carry a hide for me. Don't stop. Don't ask.",
+      "A Shek of the Kingdom, with his horns. Not one who has left.",
+      "Another told me of a /FLATSKIN/ with a hide. If that is you, you are slow.",
+      "The hide isn't heavy. It isn't meant to be. Put it where it belongs."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_hide",
+     "==",
+     1
+    ]
+   ],
+   "factions": [
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Nomads",
+    "Scavengers",
+    "Outlaw"
+   ],
+   "races": [
+    "Shek"
+   ]
+  },
+  {
+   "id": "cr_hide_giver_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Another Shek told me a /FLATSKIN/ carried a hide for him. I said nothing then.",
+      "I heard a hide was returned to the Kingdom by a stranger. It isn't for me to ask by whom.",
+      "A debt was paid in leather. I don't know whose. I'm glad it wasn't mine.",
+      "Someone carried a thing for a Shek who can't go home. That isn't nothing."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_hide",
+     "==",
+     99
+    ]
+   ],
+   "factions": [
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Nomads",
+    "Scavengers",
+    "Outlaw"
+   ],
+   "races": [
+    "Shek"
+   ]
+  },
+  {
+   "id": "cr_hide_recip_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A /FLATSKIN/ brought leather to the Kingdom for one who is not here. Speak of it to no one.",
+      "Something was returned. I didn't see by whom. The mark on it was scraped.",
+      "We got a hide from outside. We kept it. We say nothing of who.",
+      "A stranger walked in with a debt that was not his. He paid it. That is rare."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_hide",
+     "==",
+     99
+    ]
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "packages": [
+    "Shek shopkeep",
+    "Shek Retainer"
+   ],
+   "races": [
+    "Shek"
+   ]
+  },
+  {
+   "id": "cr_hide_rumour_1",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There are Shek who walk outside the Kingdom. We do not name them.",
+      "A Shek leaves the Kingdom and the Kingdom does not say a word. That is how you know.",
+      "Some who left will come home. Some won't. Some won't be asked.",
+      "Hrm. Outside the Kingdom a Shek is only a tall /FLATSKIN/ with horns. He knows it."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "cr_hide_rumour_2",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Shek do not forget. If one owes the Kingdom, he owes it until he dies. I would not carry his debt.",
+      "Shek mercenaries say they have no home, and then they look at the horizon the way they look at it.",
+      "A Shek will hold a grudge for longer than you'll live. A Shek will also hold a promise.",
+      "I knew a Shek who sold his sword to anyone but wouldn't sell his hide."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Scavengers",
+    "Tech Hunters",
+    "The Holy Nation",
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "cr_hide_rumour_3",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Never touch a Shek's leather. They know when it has been touched.",
+      "The Shek keep marks on things. I don't know what they mean.",
+      "I saw a Shek scrape a mark off a strip of hide for most of a night. He didn't look up.",
+      "Shek don't apologise. They sometimes leave a thing where you'll find it."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Scavengers",
+    "Tech Hunters",
+    "The Holy Nation",
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "cr_hide_done_1",
+   "event": "EV_BAR_TALK",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Something was returned to the Kingdom by a /FLATSKIN/'s hand. No one will say what. Everyone is quiet about it.",
+      "A strip of hide came back. The one who sent it isn't named.",
+      "A debt was paid by proxy. A Shek would have preferred to pay it himself.",
+      "We had a visitor with a hide. He left. We did not ask his name."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "vars": [
+    [
+     "Quest cr_hide",
+     "==",
+     99
+    ]
+   ]
+  },
+  {
+   "id": "cr_hide_done_2",
+   "event": "EV_BAR_TALK",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A traveller put a strip of hide in a Shek's hand and walked away whole. The Shek still talk about the manners.",
+      "I hear someone carried something to the Kingdom for a Shek who can't. That's a nasty errand and he did it.",
+      "A /FLATSKIN/ returned leather to the Kingdom. They didn't kill him.",
+      "Somebody took a debt to the Shek for a stranger. They say it was taken without a word. That's good with the Shek."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Scavengers",
+    "Tech Hunters",
+    "The Holy Nation",
+    "Shek Kingdom"
+   ],
+   "vars": [
+    [
+     "Quest cr_hide",
+     "==",
+     99
+    ]
+   ]
+  },
+  {
+   "id": "cr_page_remind",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 50,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You have my page? Don't use it to light a fire. Find a skeleton and have it read.",
+      "Another hunter said a stranger has a page to read. If that's you, don't dawdle.",
+      "Page, skeleton, words. Then me. That's all of the job.",
+      "I hope you aren't a thief with a page. I know where to find thieves."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_page",
+     "==",
+     1
+    ]
+   ],
+   "factions": [
+    "Tech Hunters"
+   ]
+  },
+  {
+   "id": "cr_page_giver_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A page went to a skeleton. I heard about it. Don't tell me what was written.",
+      "Another hunter said a stranger took a page off for reading. I wondered who it was.",
+      "I heard the page was read. I hear it was nothing. I hear that a lot.",
+      "A traveller did a job for a hunter and came back whole. That's more than usual."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_page",
+     "==",
+     99
+    ]
+   ],
+   "factions": [
+    "Tech Hunters"
+   ]
+  },
+  {
+   "id": "cr_page_recip_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You read pages. I have a drawer full of them. Nobody asks what they say. They only ask if they're worth anything.",
+      "A page came to us not long ago, and left again. I do not know what became of it.",
+      "We read what we're given. It's our function. It's sometimes not enough.",
+      "A stranger brought written material once. We read it. We said nothing else. That seems to be the rule."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_page",
+     "==",
+     99
+    ]
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Black desert skeleton patron",
+    "Skeleton Junkyard",
+    "dancing skeleton patrons"
+   ],
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ]
+  },
+  {
+   "id": "cr_page_rumour_1",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Skeletons read anything you hand them, I hear.",
+      "A Tech Hunter paid a man to carry a page to a skeleton once. Said he wouldn't touch it himself. He wasn't joking, I think.",
+      "Old paper from the ruins is more trouble than it's worth. Nobody can read it and nobody wants to be seen with it.",
+      "I never trusted a page that was written by someone who is dead. They write as if they will be read."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Scavengers",
+    "Tech Hunters",
+    "The Holy Nation",
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "cr_page_rumour_2",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A page off a dead man is still a page.",
+      "The ruins give up paper more easily than coin. Paper is worse.",
+      "You find a lot of writing in the old places. Most of it's just lists.",
+      "I do not read old script. I know a few who do."
+     ]
+    }
+   ],
+   "factions": [
+    "Tech Hunters"
+   ]
+  },
+  {
+   "id": "cr_page_rumour_3",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "We read and aren't thanked for it. That isn't a complaint.",
+      "Paper does not last. We last.",
+      "We were given a page once. It was almost nothing.",
+      "Writing is a way to be found. Most of it isn't found."
+     ]
+    }
+   ],
+   "packages": [
+    "dancing skeleton patrons",
+    "Black desert skeleton patron",
+    "Skeleton Town barman"
+   ]
+  },
+  {
+   "id": "cr_page_done_1",
+   "event": "EV_BAR_TALK",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A page was read to a stranger and the stranger left.",
+      "A traveller took a reading and left. That is the usual pattern.",
+      "We read for a stranger recently. No payment.",
+      "A page now belongs to us. It was not stolen. It was left."
+     ]
+    }
+   ],
+   "packages": [
+    "dancing skeleton patrons",
+    "Black desert skeleton patron",
+    "Skeleton Town barman"
+   ],
+   "vars": [
+    [
+     "Quest cr_page",
+     "==",
+     99
+    ]
+   ]
+  },
+  {
+   "id": "cr_page_done_2",
+   "event": "EV_BAR_TALK",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I hear someone found a use for a dead man's page. I'd like it to have been me.",
+      "A page changed hands and nobody was killed. That is odd.",
+      "Somebody did a hunter's errand and didn't ask for double. I'd like to know them.",
+      "A hunter got his reading and it cost him only a fair price."
+     ]
+    }
+   ],
+   "factions": [
+    "Tech Hunters"
+   ],
+   "vars": [
+    [
+     "Quest cr_page",
+     "==",
+     99
+    ]
+   ]
+  },
+  {
+   "id": "cr_coin_remind",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 50,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You have my coin. Don't spend it. It would be funny, and then it wouldn't.",
+      "Another trader said you carry a coin for someone. I didn't hear it from me.",
+      "Carry it on, and say nothing. It's the only way this works.",
+      "I did not ask for sympathy. Only a pair of legs."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_coin",
+     "==",
+     1
+    ]
+   ],
+   "factions": [
+    "Slave Traders"
+   ]
+  },
+  {
+   "id": "cr_coin_giver_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Another dealer said a coin went out to the other side. It isn't talked about.",
+      "I heard a slaver paid a debt he didn't have to. It's bad for business to be known for that.",
+      "Somebody carried a coin for one of us. I never heard it.",
+      "The trade has its own conscience, and it's very small. Someone fed it. Good."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_coin",
+     "==",
+     99
+    ]
+   ],
+   "factions": [
+    "Slave Traders"
+   ]
+  },
+  {
+   "id": "cr_coin_recip_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A bent coin came to me from a slaver. I don't know what to make of it.",
+      "A coin reached us. Someone sold people for the money before it, and then wished he hadn't.",
+      "We got a coin from the trade. We used it for something.",
+      "A trader's conscience arrived by hand. We aren't sure what to do with those."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_coin",
+     "==",
+     99
+    ]
+   ],
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "packages": [
+    "Flotsam Ninja"
+   ]
+  },
+  {
+   "id": "cr_coin_rumour_1",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I knew a slaver who paid a man's way home and called it a loss on the books.",
+      "Everyone in this trade has a column they don't look at.",
+      "The trade doesn't forgive. The trade only forgets, for a price.",
+      "You can hear a man come to hate his work. It sounds like very careful accounting."
+     ]
+    }
+   ],
+   "factions": [
+    "Slave Traders"
+   ]
+  },
+  {
+   "id": "cr_coin_rumour_2",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "They say the anti-slaver ninjas take coin from anyone who doesn't ask for anything back.",
+      "Coins turn up at the ninjas from strange hands. They don't ask whose.",
+      "I don't mind who gives, so long as they don't want thanks. Thanks cost more than coin.",
+      "Money is money. It doesn't know where it has been."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ]
+  },
+  {
+   "id": "cr_coin_rumour_3",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Slavers feel nothing, so I hear. The ones I knew felt plenty. They billed it elsewhere.",
+      "A slaver once gave me bread. I took it. I didn't thank him. I didn't forget it either.",
+      "A coin can be a bribe, a payment or an apology. You can only tell by what the hand does after.",
+      "People are bought and sold in this world, and the people doing it still go home to supper."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Scavengers",
+    "Tech Hunters",
+    "The Holy Nation",
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "cr_coin_done_1",
+   "event": "EV_BAR_TALK",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Somebody carried coin out of a slave shop to the other side. Nobody says whose. The books are quiet on it.",
+      "One of us paid a debt in the wrong direction. I admire it. I won't be copying it.",
+      "I hear a coin went missing and then turned up in the right place. Don't look for the thief.",
+      "The trade lost one coin and gained a clean conscience for a dealer."
+     ]
+    }
+   ],
+   "factions": [
+    "Slave Traders"
+   ],
+   "vars": [
+    [
+     "Quest cr_coin",
+     "==",
+     99
+    ]
+   ]
+  },
+  {
+   "id": "cr_coin_done_2",
+   "event": "EV_BAR_TALK",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A slaver's coin reached us. It was bent. I don't know what to make of it.",
+      "They say a trader sent us money from his own pocket. It isn't much. It's something.",
+      "We have coin from the trade now and we're using it against the trade.",
+      "A bent coin, a stranger, a message. Not many messages come our way that don't mean a fight."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "vars": [
+    [
+     "Quest cr_coin",
+     "==",
+     99
+    ]
+   ]
+  },
+  {
+   "id": "cr_note_remind",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 50,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You have the note? Don't open it. Please. It isn't much, but it's mine.",
+      "Someone told me a traveller was carrying a note for family. I hope that's you.",
+      "If you haven't gone yet, I understand. If you've lost it, tell me.",
+      "Say it is from home. Nothing else is needed."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_note",
+     "==",
+     1
+    ]
+   ],
+   "packages": [
+    "Empire Farmer",
+    "Empire bar patron"
+   ]
+  },
+  {
+   "id": "cr_note_giver_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Someone said a note went to the Mongrel for one of us. I hope it was read.",
+      "A stranger carried a letter out for a neighbour. We do not talk of it.",
+      "I hear a note was delivered. I don't know what it said. I hope it said sorry.",
+      "Somebody got a note through to a brother. It's good to hear of anything getting through."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_note",
+     "==",
+     99
+    ]
+   ],
+   "packages": [
+    "Empire Farmer",
+    "Empire bar patron"
+   ]
+  },
+  {
+   "id": "cr_note_recip_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A note came in from outside. A man read it and sat down. I won't say who.",
+      "There was a note from home. It was handled with more care than anything we own.",
+      "A sealed note came, and someone kept it.",
+      "We got a letter by a stranger. We don't get many. We aren't good with them."
+     ]
+    }
+   ],
+   "vars": [
+    [
+     "Quest cr_note",
+     "==",
+     99
+    ]
+   ],
+   "factions": [
+    "Mongrel"
+   ]
+  },
+  {
+   "id": "cr_note_rumour_1",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Mongrel will have anyone, they say, so long as you can fight or fool somebody.",
+      "Half the families in the Cities have someone they don't speak of. Gone to the bandits, gone to the sand. You learn to stop looking up the road.",
+      "I knew a man who wrote to his brother every year. He never got an answer.",
+      "A letter is the most dangerous thing you can carry. It can make a person turn around."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Scavengers",
+    "Tech Hunters",
+    "The Holy Nation",
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "cr_note_rumour_2",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A note came in once, years back. A man read it twice and left in the night.",
+      "Everyone here left someone. We don't talk of it.",
+      "A message from home is a bad omen or a good one. You can't tell until you read it.",
+      "I once burned a letter unread. I think about it more than I should."
+     ]
+    }
+   ],
+   "factions": [
+    "Mongrel"
+   ]
+  },
+  {
+   "id": "cr_note_rumour_3",
+   "event": "EV_BAR_TALK",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I had a cousin who went to the Mongrel. We didn't write. I think we should have.",
+      "Gone is gone. But a note doesn't know that.",
+      "Some of the lost aren't dead. They're only elsewhere, which is harder.",
+      "I heard a man can disappear into a crowd of the worst sort and remember his mother's name for years."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Empire Peasants"
+   ]
+  },
+  {
+   "id": "cr_note_done_1",
+   "event": "EV_BAR_TALK",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A note came to a stranger who carried it in, and a man here read it and sat down. I won't say who.",
+      "Someone got a letter from home. They've been quiet since.",
+      "A sealed note came and went. It left an odd mood.",
+      "A man has been looking at his hands all day. A letter came. I know nothing."
+     ]
+    }
+   ],
+   "factions": [
+    "Mongrel"
+   ],
+   "vars": [
+    [
+     "Quest cr_note",
+     "==",
+     99
+    ]
+   ]
+  },
+  {
+   "id": "cr_note_done_2",
+   "event": "EV_BAR_TALK",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A woman I know looks lighter lately. She won't say why.",
+      "I heard a note went out to a relation among the rough crowd. I hope it was welcome.",
+      "One of ours sent a message to a lost one. It's a brave thing and a hard one.",
+      "Somebody finally sent that note. It took long enough."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Empire Peasants"
+   ],
+   "vars": [
+    [
+     "Quest cr_note",
+     "==",
+     99
+    ]
+   ]
+  }
+ ]
+}

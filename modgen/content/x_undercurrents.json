@@ -1,0 +1,2755 @@
+{
+ "pack": "x_undercurrents",
+ "mod": "LivingWasteland",
+ "dialogues": [
+  {
+   "id": "uc_stobe_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Band of Bones"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Great Stobe gave himself up. Some of us keep the debt, some only the name.",
+      "We say his name when we fight. Ask us why and we find we have forgotten.",
+      "A sacrifice is a long loan.",
+      "Humans have saviours. We have a martyr. The difference is who remembers him."
+     ]
+    }
+   ],
+   "packages": [
+    "Black desert skeleton patron",
+    "Skeleton town resident",
+    "dancing skeleton patrons"
+   ]
+  },
+  {
+   "id": "uc_stobe_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "There is a book the priests burn. They say it names the great father's sacrifice another way. I have not read it.",
+      "The saviour gave himself for us. Don't ask what else he was. The old books are for the priests.",
+      "Forbidden pages, they say, and older than the Holy Nation. I keep my eyes on the scripture I am given.",
+      "My mother said the saviour had an older name. She said it once. She didn't say it twice."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_stobe_flotsam",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Nation burns the old books. We remember what we can of them, and we don't agree on all of it.",
+      "Ask the old women about the great father. Then ask why the priests never do.",
+      "Okran saved the world, the preachers say. Somebody saved it before Okran had a throne. Think on that.",
+      "Some pages the Nation burned were worth the burning."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_stobe_uc_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords",
+    "Machinists",
+    "Tech Hunters"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Okranites have a saviour who gave himself up. The skeletons have one too. Scholars say it's one story told twice.",
+      "Stobe, Chitrin, Okran. Three names for a martyr, or three martyrs, or none. Pay a scholar and he will pick one.",
+      "Skeleton hermits and Holy Nation priests agree on a sacrifice. They agree on nothing else. That's the interesting part.",
+      "A martyr, a god, a machine, a rumour. The Holy Nation won't say which, and that tells me enough."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_stobe_wander_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Preachers and tin men both sing about someone who gave himself up. I don't ask which song came first.",
+      "Heard a skeleton mumble a name at a grave once. The same name a priest spat at me.",
+      "Every faith has someone who gave himself up. Mine had a landlord instead.",
+      "Skeleton or saviour, he's dead and I'm not. That's where my theology ends."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_stobe_hn_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The saviour gave all. Go gently, outlander.",
+      "The scripture is plain. The older writings are not for the road.",
+      "Praise the saviour. Do not ask what he looked like.",
+      "Some names are not said on the road. Go with the light."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_stobe_skel_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Skeletons",
+    "Band of Bones"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Some of us still say his name when we fight.",
+      "Great Stobe. Forget I said it.",
+      "Stobe gave himself up. We try to be worth it.",
+      "Walk on. I was remembering something and it's gone again."
+     ]
+    }
+   ],
+   "packages": [
+    "Skeleton town resident",
+    "Npc SKELETON Base 1"
+   ]
+  },
+  {
+   "id": "uc_phoenix_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Sixty-two Holy Lords. The flame has never gone out in all that time, and neither has the work.",
+      "Our Lord is the sixty-second. The count is the first thing a child learns, after the prayers.",
+      "Lord Phoenix takes the name and the name takes him. That is how it has always been done.",
+      "Each Holy Lord is the last one come again. The scripture says so, so it's true."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_phoenix_hn_dead",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "They say a Phoenix doesn't stay dead. There will be a sixty-third. Say it with me, quietly.",
+      "The Lord said he would be reborn. I hold to that, because there is nothing else to hold to.",
+      "Sixty-two, and the sixty-second is ash. The count goes on. It has to go on.",
+      "Do not mourn in the street. The Holy Lord lives on, and the paladins are listening."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Phoenix killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "uc_phoenix_uc_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords",
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Sixty-two of them, if you believe the Nation. Someone keeps count.",
+      "Every Holy Lord is the same Holy Lord, they say. Convenient. Nobody ever has to be replaced.",
+      "The Okranites number their kings like cattle. Sixty-two, last I heard.",
+      "One man in a chair, sixty-two names deep."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_phoenix_flotsam",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Sixty-two Phoenixes and not one of them ever asked us.",
+      "They number their Holy Lords. We number our dead. Ours is the longer count.",
+      "Another Phoenix, another purge. The name changes, and the flame doesn't.",
+      "The flame came back sixty-two times. We haven't yet counted our own."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_phoenix_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Band of Bones"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Humans light a fire and keep it for a thousand years. They call that faith. We call it fuel.",
+      "The Holy Lord who was before this Holy Lord said the same things. Some of us remember. It wasn't the same man.",
+      "Sixty-two of them, the humans say. We say the same fire.",
+      "A new Holy Lord, and the same sermon. We've heard it burn before."
+     ]
+    }
+   ],
+   "packages": [
+    "Black desert skeleton patron",
+    "Skeleton town resident",
+    "dancing skeleton patrons"
+   ]
+  },
+  {
+   "id": "uc_phoenix_hn_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The sixty-second watches over us. Walk in the light, outlander.",
+      "Praise the Flame. Praise the Lord.",
+      "The Flame has no end and neither does the Lord.",
+      "Sixty-two and counting. Don't count too loudly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_horn_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Guiding Light teaches that the horned were made human, brothers of the faithful. Then the sin grew in them, and the horns after.",
+      "Horned devils were our brothers once. The book says so. The book also says what happens to brothers who fall.",
+      "The beasts grew horns when they turned from the light. That is not a rumour. That is the third handbook.",
+      "The horned were created human. That is the teaching. What they chose after is the lesson."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_horn_shek",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The priests say we were made human once. Say it to a horn and see what comes back.",
+      "Before Kral we don't speak. Humans make up the rest.",
+      "Horns or no horns, I have never met a flatskin who could stand where I stand.",
+      "Word is, something made us. I say something broke our teachers and we did the rest."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_horn_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Band of Bones"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I've heard a skeleton call a Shek human. The Shek looked insulted. I was oddly pleased.",
+      "Humans, Shek. The horns don't change what's under them. We're slow to notice differences.",
+      "The horned ones are gentle with us, when they aren't hitting us. I don't understand it.",
+      "Created human, the book says. I've never been sure what that means for them."
+     ]
+    }
+   ],
+   "packages": [
+    "Black desert skeleton patron",
+    "Skeleton town resident",
+    "dancing skeleton patrons"
+   ]
+  },
+  {
+   "id": "uc_horn_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords",
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "They say the Shek were people once. Bad business to repeat it to a Shek.",
+      "Priests say horns came late. Shek say priests came late. I bet on the horns.",
+      "Don't ask a Shek where his people came from. Ask him about the weather.",
+      "Ask a Holy Nation priest and a Shek what the horns mean. Run before the second answer."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_horn_hn_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The horned were brothers once, the book says. Tell that to the paladins.",
+      "Once brothers, now beasts. The book is plain.",
+      "Horns grow where light was refused. Keep your distance from such.",
+      "The horned were made human, then fell. Don't make the same mistake."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_eyes_wander",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "They say the Eye went dark long ago. The burning in Venge never did.",
+      "Venge is bad in daylight. Walk it at night, if you walk it.",
+      "Something up there still works. The old ones swear to it. Something up there also stopped. They swear to that too.",
+      "I don't cross Venge. The ground is bare as a skull, and not from the wind."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_eyes_mach",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Whatever watches over Venge is older than the Empire. I'd like to ask it about its warranty.",
+      "The ruin at the Eye is quiet now. Quiet is worse. Something stopped, and nobody wrote down what.",
+      "Burn marks on the old stone, the long kind, from above. The books don't agree what made them.",
+      "Reports of a light over Venge. Reports of an older light that stopped. Nobody can cite either."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_eyes_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Band of Bones"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Something over the Eye stopped working. I remember the quiet more than the work.",
+      "One of them stopped. I think. A memory, or a story I was told.",
+      "Don't stand under the light in Venge. I can't tell you how I know.",
+      "Some quiet is the end of something. The Eye is that kind of quiet."
+     ]
+    }
+   ],
+   "packages": [
+    "Black desert skeleton patron",
+    "Skeleton town resident",
+    "dancing skeleton patrons"
+   ]
+  },
+  {
+   "id": "uc_eyes_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Burning lands in the east. A light that cooks from above. A scholar once told me it isn't weather. I haven't slept well since.",
+      "There are zones on the map nobody sells guides to. Venge is the first one the guild skips.",
+      "The east burns by itself. We call it a tax on travel. The scholars call it unknown.",
+      "Nobody mines Venge. The ore is fine. The sky is the problem."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_eyes_wander_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Mongrel"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "They say nobody walks Venge by daylight, outlander.",
+      "They say Venge is not a road.",
+      "The Eye is quiet, I heard.",
+      "They say Venge by day is a funeral you attend alone."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_sea_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Band of Bones"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I remember boats. Many boats. I don't remember water, but I remember the boats.",
+      "There were ports where there's only dust. I'm not sure it's a memory.",
+      "People loved their boats once. I think I'm fond of them for no reason.",
+      "I remember a harbour. I've never seen water that deep."
+     ]
+    }
+   ],
+   "packages": [
+    "Black desert skeleton patron",
+    "Skeleton town resident",
+    "dancing skeleton patrons"
+   ]
+  },
+  {
+   "id": "uc_sea_mach",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The old harbours are inland. Work that out and you have the start of a thesis.",
+      "Old harbours stand dry and far from the shore. Somebody was on the water here once.",
+      "The coast was further in. The scholars measure it and look ill.",
+      "The shore moved. We have the maps and the shame."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_sea_swamp",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Swampers",
+    "Hounds",
+    "Twinblades",
+    "Stone Rats",
+    "Blackshifters",
+    "Grayflayers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Old hands say there was a harbour out in the muck once. Boats in a bog.",
+      "The swamp had water before it had weeds. Some of us can feel it, some of us are just drunk.",
+      "Old Swamper told me the muck was a bay once. He also told me the moon was a bad egg.",
+      "Boats in the bog. Somebody believed in them once."
+     ]
+    }
+   ],
+   "packages": [
+    "Swamper Gang Member",
+    "Swamper Bar Thug"
+   ]
+  },
+  {
+   "id": "uc_sea_wander",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The old folk say the water stood higher. They say a lot. They're usually right about the weather.",
+      "I found a hull on a hill once. I didn't stay to ask how it got up there.",
+      "Old hulls sit far from any water. The old folk shrug.",
+      "Used to be more water, they say. Used to be a lot of things."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_rr_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The ground ran red in the Rebellion, my grandmother said. The nobles shut their gates while the poor ate dust.",
+      "Drought, then famine, then the guild caravans that never came. Rogues on the roads, so I hear.",
+      "The nobles took what rations came and locked the doors. I'd have done the same, and I won't forgive myself for saying so.",
+      "We don't speak of the Rebellion near an official. We speak of the weather."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_rr_peasant",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Empire Peasants"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Don't look at the nobles. Don't look at their windows. My mother looked once, in the Rebellion.",
+      "They locked the gates and let us starve. We haven't forgotten. We haven't said so, either.",
+      "The laws got harder after. Nobody tells you which laws.",
+      "The red year taught us two things. Don't say what you saw, and don't be hungry near a noble."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_rr_swamp",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Swampers",
+    "Hounds",
+    "Twinblades",
+    "Stone Rats",
+    "Blackshifters",
+    "Grayflayers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Empire starved its own and called the survivors criminals. We just call them neighbours.",
+      "Nobles bidding over grain while the poor ate each other. Good riddance to the rule they made.",
+      "Half the swamp came from somewhere the Rebellion burned.",
+      "The Empire fed its nobles and fined its poor. Then it was surprised."
+     ]
+    }
+   ],
+   "packages": [
+    "Swamper Gang Member",
+    "Swamper Bar Thug"
+   ]
+  },
+  {
+   "id": "uc_rr_reb",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Rebel Farmers",
+    "Rebel Swordsmen",
+    "Reavers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "My folk had a farm before the red year. Now we have a road and a knife. Fair trade, nobody asked.",
+      "They called us rebels. We were hungry. The words don't mean the same thing.",
+      "The Rebellion wasn't a war. It was a very large mistake that people had to die of.",
+      "Lady Tanaka wrote it down. She was the one who shut the gate."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_rr_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Heathens killing each other over cats and bread. Okran was not mocked.",
+      "The Empire ate itself in the red year. We watched from the hills and said nothing, as scripture teaches.",
+      "The Empire fought itself over bread. Okran has no use for such weakness.",
+      "Okran watched the Empire starve and wasn't surprised."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_rr_shek",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Humans starve over coin. Some say our kind raided the aid wagons. Nobody admits it. Nobody asks a Shek twice.",
+      "The Empire starved because humans would rather hoard than share. We saw it. We did not stop it.",
+      "Rogues blocked the aid wagons, so I hear. Some had horns. We don't discuss it.",
+      "The red year was human business. Our business is the sword."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_rr_peasant_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Empire Peasants"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Keep your voice down. The nobles have long memories.",
+      "Not a word about the red year, stranger.",
+      "The red year isn't a story. It's a grave.",
+      "We learned to keep our eyes down. Tell the nobles we did."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_grim_hound",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Hounds"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Grim feeds what crosses her to her hounds. Hash found that out, and so did his clan.",
+      "Big Hash is dead and the Stalkers are gone. Grim runs the swamp now. Say it plainly and live long.",
+      "She wrote kind letters to Hash once. Then the letters stopped, and so did he.",
+      "Her hounds are fed. Everything else in the swamp is on credit."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_grim_shifter",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Blackshifters"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "We were blamed for Hash's brother. Funny how the one with her hounds ready was the one who gained.",
+      "Everyone says the Blackshifters did it. Nobody says who gave the order to hunt us for it.",
+      "They hang our name on any death that suits Grim.",
+      "They found a body at the casino and pointed at us. A club did it, they said. Grim brought hounds."
+     ]
+    }
+   ],
+   "packages": [
+    "Swamper Gang Member",
+    "Swamper Bar Thug"
+   ]
+  },
+  {
+   "id": "uc_grim_swamp",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Swampers",
+    "Hounds",
+    "Twinblades",
+    "Stone Rats",
+    "Blackshifters",
+    "Grayflayers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Five clans, one seat on top. You don't ask how the top seat was won. You ask how to keep your head.",
+      "Hash is dead. The Stalkers are gone. That's all the history the swamp needs.",
+      "Big Grim got the big seat. The old boss didn't argue.",
+      "Hash was boss once. Grim says he left. We say nothing."
+     ]
+    }
+   ],
+   "packages": [
+    "Swamper Gang Member",
+    "Swamper Bar Thug"
+   ]
+  },
+  {
+   "id": "uc_grim_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Mongrel",
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Big Grim runs the swamp. Nobody says how she got the seat. Nobody asks twice.",
+      "A woman and her hounds. That's the swamp government. The previous one isn't available for comment.",
+      "Hash is dead, Grim is alive. The smugglers all know it. The rest of us can guess.",
+      "Nobody mentions the Stalkers any more. You can learn a lot from what isn't said."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_grim_swamp_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Swampers",
+    "Hounds",
+    "Twinblades",
+    "Stone Rats",
+    "Blackshifters",
+    "Grayflayers"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Don't ask about Hash. Nobody here knows anything.",
+      "You new? Then here's the first rule. We don't discuss the old boss.",
+      "We're all friends here. Don't ask about Hash.",
+      "The big seat is taken. Ask nothing."
+     ]
+    }
+   ],
+   "packages": [
+    "Swamper Gang Member",
+    "Swamper Bar Thug"
+   ]
+  },
+  {
+   "id": "uc_skel_reset",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Band of Bones"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Some of us reset when it gets too heavy. We lose the skills too. It's a hard trade, and some call it a fair one.",
+      "I do not remember before the city. I have decided that is mercy.",
+      "Memory is a thing you carry until it breaks. Then you stop carrying it. Don't look at me like that.",
+      "I could recall more. I choose not to."
+     ]
+    }
+   ],
+   "packages": [
+    "Black desert skeleton patron",
+    "Skeleton town resident",
+    "dancing skeleton patrons"
+   ]
+  },
+  {
+   "id": "uc_skel_wander",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Mongrel",
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The skeletons forget everything, I heard. Age, scholars say. A weapon from their enemy, other scholars say.",
+      "Ask a skeleton about the old world and he goes quiet. Not the polite quiet either.",
+      "They wiped something at some point, long long ago. Skeletons won't say what.",
+      "Skeletons forget. We remember being told. It isn't the same, and we pretend it is."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_ext_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The First Extinction was the darkness's doing. The saviour cleansed the world and the faithful alone endured.",
+      "Darkness caused the First Extinction. The Second is coming. That isn't a threat, it's the scripture.",
+      "The light was betrayed once. It won't be betrayed twice. That's why we stand watch.",
+      "The First Extinction came from darkness. The Second will come from the same, and we'll be ready."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_ext_mach",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "United Cities"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The First Extinction? Plague, my colleague says. A weapon, says the colleague down the hall. We share a roof and not a conclusion.",
+      "Whatever ended the old world left no witnesses and a great many theories. Theories are cheap. Digging is dear.",
+      "One thing every scholar agrees on. It was quick.",
+      "Plague, weapon, flood. A scholar for each. Not one of them has been to the right ruin."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_ext_shek",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Humans cry about cities that drowned. Warriors do not dwell on what is gone.",
+      "The old world ended. So will this one. A warrior meets it standing.",
+      "The old world fell. Warriors stood. That is the whole story.",
+      "Cities drowned. Our people were not there to see. Good."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_ext_cann",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Big Hunger come. /CANNIBALHA/ Ate all. Some still eating.",
+      "Old world have big hunger. Dhey eat dhemselves. /CANNIBALHA/. We learned from dhem.",
+      "Big Hunger take many. We take dhe rest. /CANNIBALHA/",
+      "Old world full. Dhen empty. Now we fill it. /CANNIBALHA/"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_ucorig_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Empire Peasants",
+    "Traders Guild"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Every old family in the Cities has a grandfather who walked here from somewhere worse. Don't ask which somewhere.",
+      "We left when leaving was still possible. That's the only founding story I trust.",
+      "The Cities weren't planned. They were what was left standing when people stopped believing in the old throne.",
+      "My family doesn't say where it came from. It says it arrived, and that's enough pride for one table."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_ucorig_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "We were here before the lamps went out, stranger.",
+      "Our grandfathers left something behind. We would rather not say what.",
+      "We weren't always here. Walk gently, stranger.",
+      "Old families don't tell where they came from."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_narko_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Narko lies beneath the roots, hidden from the light, tempting the weak. That's why the faithful don't trust the old trees.",
+      "The darkness was thrown into the abyss under the roots of the trees. Don't forget it when you walk at night.",
+      "Okran cast his dark half down so it could do no harm. The dark half has been patient ever since.",
+      "Every soul must conquer the darkness within, as Okran did. I try each morning."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_narko_flo",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Okran warms and Narko cools. Ask the Holy Nation which one it burns in.",
+      "Heretic is a word the frightened use for the faithful they can't control.",
+      "Narko is the half they threw away.",
+      "The light and the dark are the same hand, they say. We believe it with some caution."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_narko_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords",
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Plenty pray to both the light and the dark. Only the Holy Nation insists on one and burns people over it.",
+      "A god of day, a goddess of night. I pray to both. Just in case.",
+      "The Okranites hate the dark and fear the roots. I fear the Okranites, which is more practical.",
+      "Many pray to both. Only the Holy Nation insists on one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_narko_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Band of Bones"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "People need a shadow to blame. We've been cast as the villain for longer than I can remember.",
+      "Agents of darkness, they call us. I'd like to see the contract.",
+      "Narko, Narko. There's always a villain, and we always fit the costume.",
+      "The shadow, they call us. We never asked to be a story."
+     ]
+    }
+   ],
+   "packages": [
+    "Black desert skeleton patron",
+    "Skeleton town resident",
+    "dancing skeleton patrons"
+   ]
+  },
+  {
+   "id": "uc_narko_cann",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Light and dark taste dhe same. /CANNIBALHA/",
+      "Dhe holy ones say big dark under dhe trees. We sleep dhere. /CANNIBALHA/ Still ungry.",
+      "Dhe holy ones fear dhe roots. We fear dhe holy ones. /CANNIBALHA/",
+      "Dark under dhe trees? We dig dhere."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_narko_hn_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Keep out of the old roots after dusk, outlander. The faithful don't rest there.",
+      "The roots remember, outlander. Rest in the open.",
+      "Narko tempts from below. Keep your heart in the light.",
+      "Do not sleep where roots grow thick. The faithful know why."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_gate_shek",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Kral died with a hundred swords around him and passed to Gateway. A warrior asks no better.",
+      "Only a warrior's death opens Gateway. I don't talk about dying old. It's a wound that doesn't close.",
+      "There are fewer of us every year. The ones who go, go well.",
+      "A man who lost his horns still carries Kral's name. He carries my pack too. That's the order of things."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_gate_old",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "My knees know the weather. I don't ask my years. It shames a warrior to be counted that high.",
+      "I should have gone at Kral's side. I'm still here. That's the hard part.",
+      "Dying in bed is for flatskins. I'm too slow for the other way.",
+      "I counted my years once. I won't do it again."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_gate_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A pagan cult of beasts. Their glory is throwing themselves away. The Flame can help them find it.",
+      "They worship a corpse called Kral and call the afterlife Gateway. Gateway will have no room for them.",
+      "Their Gateway has no gate. It has a pyre. The Flame is happy to provide.",
+      "Cult of beasts. A Shek who dies well meets us at the Flame."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_gate_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A warrior cult that keeps throwing itself away. Good for business. There are always fewer of them.",
+      "Shek talk of dying well as other men talk of dinner. Don't join the conversation.",
+      "Honour is a fine sentiment for a customer who pays up front. The Shek do neither.",
+      "A people that keeps dying on purpose."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_gate_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Band of Bones"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Dying for a name is an old habit of the living. We say nothing, and we listen.",
+      "Dying for a name is an old habit of the living.",
+      "Honour, glory, Gateway. The living need such words. We let them have them.",
+      "I've watched many march to a good death. I've never learned to clap.",
+      "A warrior dies well, they say."
+     ]
+    }
+   ],
+   "packages": [
+    "Black desert skeleton patron",
+    "Skeleton town resident",
+    "dancing skeleton patrons"
+   ]
+  },
+  {
+   "id": "uc_gate_shek_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Honour before death, outlander. Learn it or leave.",
+      "Gateway waits. We are in no hurry. Neither are you, by the look of your boots.",
+      "Gateway is not a place for the lazy.",
+      "If you die well, I'll find you there."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_hum_hive",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "We know no-hive that walked out of the hum. This one doesn't look at them long.",
+      "The quiet after the hum is the worst. No-hive say they hear nothing.",
+      "When the hum is gone, a hiver stops. Some of us walk. Some of us don't know why we walk.",
+      "We were taught not to speak of the ones who lost the hum. We speak of them anyway, softly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_hum_wander",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Met a hiver once, alone, no hive. He kept pausing mid-sentence, like listening to a door.",
+      "The ones who lost the hum, bug men call them. They stop talking in the middle of words.",
+      "A hiver without a hive is a bad bargain and a sadder story.",
+      "One of them stood in a field once, as if waiting for a call."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_hum_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords",
+    "Machinists",
+    "Tech Hunters"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Hivers get quiet when their kin get lost. Not sad quiet.",
+      "Ask a hiver about the queen and the room changes. Nobody has ever seen her. Nobody wants to be the one to say so.",
+      "Bug men don't discuss the queen. They discuss weather. It means the same thing.",
+      "A hiver goes quiet when he hears the hum is gone. I've seen it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_hum_hive_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "We hear you. We don't hear the hum around you.",
+      "The hum is soft today. Be soft with it.",
+      "Quiet here. It's good quiet. Not all of it is.",
+      "We listen for the hum. You must listen for us."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_vault_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Don't look at them. Don't say the word. It's the Vault. That's all I'll say, and too much.",
+      "Enemies of the nobility go to the Vault. Nobody describes it. That's the whole description.",
+      "A cousin went to the Vault. We don't set a place for him. We don't say his name.",
+      "Nobody gets out of Tengu's Vault. A man who says otherwise is selling something."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_vault_reb",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Rebel Farmers",
+    "Rebel Swordsmen",
+    "Reavers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Vault takes rebels and keeps them. We take our own risks and keep them too.",
+      "You can be hung for less than what they do in the Vault. That's the nicest thing I can say about it.",
+      "We don't talk about the Vault.",
+      "The nobles built a place for people like us. We built a place for people like them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_vault_as",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Half the people we pull out of chains have heard of the Vault. None of them have seen it.",
+      "Tengu's Vault. There's a name that makes a tired man sit up.",
+      "We have emptied a lot of cages. The Vault is the one door we haven't found.",
+      "Whatever is in the Vault, the people who left it won't say."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_vault_wander",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Don't breathe near the nobles. They say there's a torture Vault for rebels and anyone else who irritates them.",
+      "If you hear screaming near Skimsands, you didn't hear it.",
+      "Don't mention the Vault where nobles can hear. Don't mention it where their servants can hear either.",
+      "Skimsands is quiet. That's how you know where the Vault is."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_vault_uc_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords"
+   ],
+   "player_only": true,
+   "chance": 15,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Keep moving. Don't look at the high houses.",
+      "You didn't hear anything, stranger.",
+      "Don't stare at the high gates.",
+      "The Vault is a rumour. Keep it that way."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_cann_mach",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The painted ones are descendants of the northern labs. Toxins, experiments, famine, take your pick.",
+      "Devolved from the ancient scholars, I say. The labs poisoned them and they forgot how to cook properly.",
+      "The cannibals are the best argument for a funded research station. Or a very large wall.",
+      "Of all the theories, I like the one with the poison best."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_cann_tech",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Some of my colleagues say the cannibals are older than the labs. Invaders. They ate the ancients. I find that comforting, in a bleak way.",
+      "The labs in the north have blood on every wall. Whose, we don't agree.",
+      "Invaders or heirs. The bones in the labs aren't decorated with the answer.",
+      "The cannibals have the labs now. Whoever had them first isn't in a position to object."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_cann_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords",
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Machinists say cannibals are devolved scholars. Tech hunters say they're tribes that outlived the Ancients. Everyone agrees to avoid the plains.",
+      "I don't care where they came from. I care where they're going, and that's toward my dinner.",
+      "Descendants, invaders, devolved, born that way. They all eat the same.",
+      "Either the cannibals were clever once or the clever ones were food. Both are comforting in their way."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_cann_flo",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Whether they fell from clever people or outlasted them, they die the same under an arrow.",
+      "We have two enemies up here, the ones who burn you and the ones who eat you.",
+      "Some say they're the old clever ones gone wrong. Their arrows don't seem clever.",
+      "I don't care if they were scholars."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_cann_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Band of Bones"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "They do not eat us. They hate us anyway. I have a theory about that and I keep it to myself.",
+      "The cannibals hate us. We're the only ones who don't taste of anything.",
+      "Some of them look at us as if we remind them of something. We prefer to look away.",
+      "They fear us for something we don't remember. That's fair. We fear ourselves for the same reason.",
+      "Cannibals scream a name when they see us. It isn't ours. It might have been once."
+     ]
+    }
+   ],
+   "packages": [
+    "Black desert skeleton patron",
+    "Skeleton town resident",
+    "dancing skeleton patrons"
+   ]
+  },
+  {
+   "id": "uc_cann_self",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Dhe glass place in dhe north. Some say we came from it. Some say we came to it.",
+      "Dhe old ones dhat were in dhe shiny place are quiet now.",
+      "Dhe shiny place is ours now. /CANNIBALHA/ Dhe ones before are not complaining.",
+      "Our elders say we were dhere first. Dhe odher elders say dhe opposite. Dhey argue with full mouths."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_hub_hn_varloo",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "High Priest Varloo says the Hub can't be held while Narko's darkness covers it. He wants the first of her minions destroyed.",
+      "Every time we take the Hub we lose it within months. Varloo says Narko. I say walls take more than prayers.",
+      "Varloo says the first dark ones must fall before Narko's grip loosens. I say a wall must stand first.",
+      "Varloo wants the dark ones destroyed first. The Hub is an afterthought to him.",
+      "Narko shook the southern wall down, Varloo says. I saw the rubble."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_hub_hn_tyluig",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "High Priest Tyluig says it is not Narko. He says Okran's light wavers because we let our own house rot. Women forward, children shaming fathers.",
+      "Varloo blames the dark. Tyluig blames us. The priests haven't stopped arguing and the Hub hasn't stopped falling.",
+      "Tyluig says we must purify ourselves. The Hub falls anyway. Perhaps we are not pure enough yet.",
+      "Tyluig preaches purification. The Hub preaches silence. The Hub is winning."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_hub_hn_soldier",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Sentinels vanish at the Hub, voices in the walls, empty rooms. Say what you like about the reason. I will not stay a night.",
+      "They told us to retake the Hub. Nobody told us to stay.",
+      "The Hub keeps taking sentinels. We keep sending them. The priests call that faith.",
+      "Wraiths took a brother from us at the Hub. Nobody found a body. We were told to be calm.",
+      "The Hub is cursed, the report said. The report was approved."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_hub_shek",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "We sacked the Hub and left it burning. Ask why we left. We do not answer.",
+      "The Hub holds nothing worth a warrior's death. We took what we wanted, and the place took something from us.",
+      "The Hub is a burnt place now. Ask no more.",
+      "We left the Hub and didn't look back. A warrior doesn't look back."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_hub_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Empire Peasants",
+    "Imperial Lords"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Hub changes hands like a bad coin. Empire, Nation, Shek, and now the ruin belongs to whoever sleeps there.",
+      "The Hub was a good town. Then three banners learned it was good.",
+      "The Hub fell to the Empire, then to the Nation, then to nobody. Even the dust moved on.",
+      "Hub is a bad address. Rent is free and nobody collects."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_hub_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Don't ask about the Hub. The priests disagree and the walls fall regardless.",
+      "The Hub is a bad place to be stubborn. The priests argue, the walls fall.",
+      "Lost the Hub again, did we? The priests have a reason every time.",
+      "Another priest, another reason. The Hub keeps falling.",
+      "The Hub is a place for the stubborn and the damned."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_flo2_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Okran and Narko are two hands of one hand. The Nation only wants to hold one.",
+      "Some of us pray to the light. Some to the dark. Most to both, just to be safe.",
+      "The light needs the dark to mean anything. Say that in Okran's Pride and see what happens.",
+      "We pray out loud here. That's the first thing we took from them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_flo2_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Okran warms, Narko cools. Neither one asked for a throne.",
+      "The old women say the great father split in two so the world could breathe. I like that better than the sermon.",
+      "The Nation burns doubt. We feed it.",
+      "A god can have two halves. A village needs more than one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_flo2_bar2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I prayed to the light for the first thirty years. The dark answered, so I switched.",
+      "Heretic. They called me that for asking a question. I'd like the question answered.",
+      "Okran left the Nation. Or the Nation left Okran. We took his half of the sky and kept it.",
+      "I met a priest who asked me which half of god I preferred. I said the one that stops the fire."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_flo2_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Both halves bless your road, friend.",
+      "Walk in the light. Rest in the dark. Both are kind to those who earn them.",
+      "You've done well by us. The two of them will remember.",
+      "Light keep you, dark keep your secrets."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_flo2_ally2",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Doubt is allowed here. So are guesses. Welcome.",
+      "You're welcome in Flotsam. Doubt is allowed here.",
+      "Eat first. Pray after. We don't mind the order.",
+      "The Nation wouldn't let you sit."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_as_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You can sit. Nobody here will ask what you were. Everybody will ask what you'll do.",
+      "Half of us wore the iron. The other half is still angry about it.",
+      "A smell stays longer than a bruise.",
+      "Hands where I can see them, friend. Old habit. I've been on the wrong end of hands."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_as_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I touch my neck when I think. Everybody says so. Nobody in this room has a better habit.",
+      "Freedom is a debt. Most of us are paying it forward and some of us are paying it back.",
+      "They laughed when we said we would burn the slave market down. Now they lock the doors.",
+      "Funny how the iron stays heavy after it comes off."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_as_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Good to see a friend with their head up.",
+      "One more who walks free. Keep walking.",
+      "Every chain you break makes the next one easier.",
+      "You walk free because someone else did first."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_as_exslave",
+   "event": "EV_ESCAPED_EX_SLAVE_SPOTTED",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You wore the iron. So did a lot of us.",
+      "Freed, eh? Eat something. We'll talk after.",
+      "No questions. Just a seat and a bowl.",
+      "The iron comes off. The habit stays. We'll help with both.",
+      "Sit. We'll get you something hot."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_as_shackles",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 36,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Those irons won't stay on you long, friend.",
+      "I know that weight. We will get them off.",
+      "Hold still. We have a key somewhere, and we have patience everywhere else.",
+      "Don't let them see you flinch."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "uc_mach_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I'd love to explain. I'd also love to finish this chapter. One of us will lose.",
+      "The books say what they say. The ruins say what they say. The gap is my career.",
+      "Ancient isn't a word. Ancient what? When? Be specific, I charge by the adjective.",
+      "Someone else digs. I read what they bring. It's a very civilised arrangement."
+     ]
+    }
+   ],
+   "packages": [
+    "Worlds end bar patron"
+   ]
+  },
+  {
+   "id": "uc_mach_hunter",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Three weeks to reach the ruin. Nothing in it. The lady will wring my neck.",
+      "Anything buried can be sold. Everything else is weather.",
+      "Nobody comes back from the Ashlands. That is why the rumours are so good.",
+      "Spiders, mostly. They don't pay a wage."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_mach_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Machinists"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Don't touch anything old. Don't touch anything that looks old. When in doubt, ask me.",
+      "Careful. That mud is a primary source.",
+      "Please don't lick the artefacts.",
+      "Don't breathe on the manuscripts."
+     ]
+    }
+   ],
+   "packages": [
+    "Worlds end bar patron"
+   ]
+  },
+  {
+   "id": "uc_mach_neut2",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Anything worth a cat? Everything is worth a cat to the right fool.",
+      "Found something? Show me. I'll lie about the price.",
+      "If it was buried, it was valuable. If it was buried deep, it was cursed.",
+      "Relics, stranger? I buy, I sell, I complain."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_mach_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Machinists",
+    "Tech Hunters"
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Bring me what you find. I'll say it's worthless, and then pay you.",
+      "You, again. Good. I need someone else to take the risk.",
+      "Bring me the heavy things. I'll pay in gratitude. Possibly cats.",
+      "Dangerous? Yes. Profitable? Probably. I'll watch from here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_reb_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Rebel Farmers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Empire took my farm. You have food. You see where this goes.",
+      "I don't hate you. I'm hungry. It makes me worse than hatred.",
+      "Uncle Simion has a mouth full of dirt and a heart of gold, mostly.",
+      "We hit the roads, not the poor. That's the rule, even when the poor hit back."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_reb_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebel Farmers"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Got any food? I'll pay in good wishes.",
+      "We're the ones the nobles forgot, and we remember.",
+      "Don't mind the knives. They're for the Empire, mostly.",
+      "My farm is gone. My boots are not. Pass."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_reb_bar2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Rebel Farmers",
+    "Rebel Swordsmen"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Farmers with swords. That's all the Empire made us. Credit where it's due.",
+      "We planted wheat once. Now we plant ambushes.",
+      "Everybody in the Empire has a landlord. We just stopped paying ours.",
+      "My hands remember wheat. My knives remember the Empire.",
+      "They told us to farm or starve. We chose a third thing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_reb_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Rebel Farmers"
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Friend of ours. Sit, eat. The soup is mostly broth.",
+      "You are the first who did not look away. Thanks.",
+      "Uncle will want to hear about this. He pretends he doesn't.",
+      "The nobles forgot us. You didn't.",
+      "Sit. Eat. I'll pretend the soup is better than it is."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_sw_shark_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Twinblades",
+    "Stone Rats",
+    "Swampers"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A friend in need is an opportunity, and I'm a very good friend.",
+      "No rush on the debt. I just like knowing where you sleep.",
+      "Everyone owes someone. The trick is who holds the paper.",
+      "You look like you need cats. I look like I have some."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_sw_shark_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Blackshifters",
+    "Twinblades",
+    "Swampers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I never raise my voice. People hear me anyway.",
+      "Interest is a gentle word. I like gentle words.",
+      "I remember exactly what you owe.",
+      "A loan is a leash made of kindness."
+     ]
+    }
+   ],
+   "packages": [
+    "Swamper Gang Member",
+    "Swamper Bar Thug"
+   ]
+  },
+  {
+   "id": "uc_sw_shark_bar2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Blackshifters",
+    "Stone Rats"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Pay me in cats, or in favours. I prefer favours.",
+      "I don't break legs. I know people who do, and we're on good terms.",
+      "Debt is a family. You're always welcome to join.",
+      "I lend to anyone who can scare me. So far that's nobody."
+     ]
+    }
+   ],
+   "packages": [
+    "Swamper Gang Member",
+    "Swamper Bar Thug"
+   ]
+  },
+  {
+   "id": "uc_sw_hedon_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Swampers",
+    "Grayflayers",
+    "Hounds"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Nobody here tells me what to do. Well, Grim does. But she is pretty about it.",
+      "Sit, drink. You look like you spent a fortune on fear.",
+      "No taxes, no chains, no sermons. Enjoy it before the knife arrives.",
+      "The nobles can keep their silk. I have a good stick and a better pipe."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_sw_hedon_bar2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Swampers",
+    "Grayflayers"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I laughed at a priest once. He's still running. Best day of my life.",
+      "Free air smells like smoke and bad decisions.",
+      "Come back tomorrow and I'll deny this conversation. Also, buy me a drink.",
+      "Someone once offered me a title. I used it to light my pipe.",
+      "The hemp grows here. The sermons don't. That's the whole argument."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_sw_hedon_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Swampers",
+    "Grayflayers",
+    "Hounds"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hoy, traveller. Got a smoke? A drink? A reason to stay alive?",
+      "Nobody here asks what you are. Skeleton, Shek, whatever.",
+      "Relax. Nobody here's plotting. Not today.",
+      "Drink? Smoke? A song? I'll take any of the three.",
+      "Nobody here's in a hurry. Except you, apparently."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_sw_hedon_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Swampers",
+    "Hounds",
+    "Grayflayers"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Friend of the swamp. Have a drink on me. Don't tell Grim.",
+      "You are good people. For a wanderer.",
+      "Anything you need, friend. Except the good drink.",
+      "The swamp likes you. I wouldn't push your luck, but it likes you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_phoenix_shek",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The beast-hunter in the fancy chair. Sixty-two of them, one chair.",
+      "Their Holy Lord is a man in a bright hat who burns people. We have no use for him.",
+      "A king the Nation keeps raising from the dead. We would have buried him twice.",
+      "Sixty-two lords in a row, and they haven't learned to hold a sword. That's the Nation."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_stobe_cann",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Big wise dhing in dhe old days. Maybe edible. /CANNIBALHA/",
+      "Dhe tin ones say a big one gave all. Dhe big one was dhe best meat, maybe.",
+      "Tin ones say big one gave himself. We say we would have taken a bite. /CANNIBALHA/",
+      "Stobe? Dhey say dhe name and go quiet. Good meat for dhe shy. /CANNIBALHA/"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_hn_roots_flo",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "People say Narko lies in the roots. I say the Nation keeps its own graves well tended and the rest of the garden poorly.",
+      "Roots and abyss and temptation. A very large sermon for a very small garden.",
+      "The great father split in two. The Nation kept one half and put the other under a tree.",
+      "Under the roots, people say. I say the Nation buries what it fears, and that's all I need to know."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_hn_phoenix_cann",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Holy Lord lives long. Many Holy Lords. Dhey all taste dhe same? /CANNIBALHA/",
+      "Fire men say dhey are reborn. We say dhey are reheated.",
+      "Phoenix burn good. Many Phoenix burn. Dhe smell is always same. /CANNIBALHA/",
+      "Dhe big lord die and come back? Dhen we eat him twice. /CANNIBALHA/"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_shek_horns_hn_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 25,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Horned beasts were brothers once. Even brothers can burn.",
+      "The book tells us what the horned are. The book doesn't say they can be saved.",
+      "Brothers once, and now vermin. The Flame will teach the lesson again.",
+      "We hold no hatred, only duty. The horned must be taught.",
+      "Horns were not in the plan."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "uc_skel_reset_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Skeletons",
+    "Band of Bones"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Some days I can't remember where I was going.",
+      "I reset once. I would not recommend it. I would not recommend not doing it either.",
+      "Ask nothing about before. I'd only invent it.",
+      "My memory is shorter than my body. That's my own fault."
+     ]
+    }
+   ],
+   "packages": [
+    "Skeleton town resident",
+    "Npc SKELETON Base 1"
+   ]
+  },
+  {
+   "id": "uc_red_wander",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I heard the Rebellion was a drought and a locked gate. They say the poor did it. They say the poor were right.",
+      "Don't talk about the old Emperor near an official. Don't talk about the new one either.",
+      "Red ground. That is what the Rebellion left. It is still there if you dig.",
+      "Drought, then nobles, then blood. In that order, every time."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_gate_beserk",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Berserkers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A hundred swords closed on Kral and he still stood.",
+      "I fight to reach the other side. Do not call it a sickness. Call it a destination.",
+      "The ones who die well are waiting. I do not want to keep them long.",
+      "We don't hurry to Gateway."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_vault_uc2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Imperial Lords",
+    "Police"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Emperor keeps what he must keep. A Vault is a reasonable thing for a reasonable state.",
+      "I don't know what's in the Vault. I know who isn't in it, and I'd like to stay on that side.",
+      "A Vault is a reasonable place. The Emperor is a reasonable man. That's what we say.",
+      "Order has costs. I don't ask who pays."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_hub_outlaws",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Trade Ninjas",
+    "Holy Nation Outlaws"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Nation holds the Hub for a while and loses it. We've been here since before the last priest. Walls aren't our problem.",
+      "Varloo, Tyluig, whoever. They argue about why the Hub can't be held. We just hold it, and pour drinks.",
+      "The priests blame Narko, or blame themselves.",
+      "Priest blames the dark, priest blames the sinners. We pour."
+     ]
+    }
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ],
+   "packages": [
+    "bar:all"
+   ]
+  },
+  {
+   "id": "uc_hive_origin_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Hive limbs came before the skeleton ones, people say. Odd for a people who don't talk about the past.",
+      "Economy arms are a hive trade. A hiver won't tell you the rest.",
+      "Skeleton limbs, hive limbs. Trade secrets travel with the supplier.",
+      "The bug men made the first limbs, people say. Their eyes tell you to stop asking."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_skel_skelhive",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "There was a time hive and skeleton shared something. We don't say what.",
+      "A skeleton limb in a no-hive shop makes us uneasy. It should not. It does.",
+      "Hive and skeleton once shared a bench. Neither of us remembers who left.",
+      "We do not discuss the skeleton limbs in our shops. We repair them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_flo2_ally_neut",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Okran left the Nation, and the dark shelters us.",
+      "They preach one god to burn us. We keep two to keep each other.",
+      "I've seen you before. Light, dark, whichever.",
+      "Both halves of the god know you now."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_narko_flo_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "We don't stand under old roots at night. Habit from the Nation.",
+      "Do you pray, outlander? Either half will do.",
+      "Roots are fine in daylight. Don't argue with the Nation about it.",
+      "Either half will hear you. Pick the one that's quiet.",
+      "The Nation fears the trees. We fear the Nation. A tree has never burned anyone."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_as_bar_smell",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Some smells stay. Rust, sweat, fear. I sit at the edge of the room so I can leave.",
+      "I have forgotten the faces. I haven't forgotten the sound of the key.",
+      "The key made the worst sound in the world. I still flinch at doors.",
+      "I don't sit with my back to the room. Ask a former slave why.",
+      "Some things come off with the iron."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "uc_mach_bar2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Rumour has it the sea once stood higher. Rumour has it that I'm paid enough.",
+      "If you find an old book, bring it here. If you find an old man, leave him there.",
+      "The lab at the northern end of the plains is the best-preserved crime scene in the world.",
+      "I asked a skeleton once if it remembered the old sea. It said it remembered boats, which is worse."
+     ]
+    }
+   ]
+  }
+ ]
+}

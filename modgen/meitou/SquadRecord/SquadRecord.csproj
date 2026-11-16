@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Squad Record: the stand-alone stats-and-titles window, built from the Living Wasteland helper's shared files with SQUAD_RECORD_ONLY
+       (no quests, heat or dialogue). Build: dotnet build -c Release -p:MeitouDir="<folder with the game's Meitou.*.dll>"; then
+       python ../../make_squad_record.py puts the mod folder together. -->
+  <PropertyGroup>
+    <MeitouTfm Condition="'$(MeitouTfm)' == ''">net10.0</MeitouTfm>
+    <TargetFramework>$(MeitouTfm)</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>SquadRecord</AssemblyName>
+    <RootNamespace>LivingWasteland.MeitouMod</RootNamespace>
+    <DefineConstants>$(DefineConstants);SQUAD_RECORD_ONLY</DefineConstants>
+    <MeitouDir Condition="'$(MeitouDir)' == ''">.</MeitouDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../LivingWastelandMeitou/Deeds.cs" Link="Deeds.cs" />
+    <Compile Include="../LivingWastelandMeitou/Notoriety.cs" Link="Notoriety.cs" />
+    <Compile Include="../LivingWastelandMeitou/StatsPanel.cs" Link="StatsPanel.cs" />
+    <Compile Include="../LivingWastelandMeitou/RecapLink.cs" Link="RecapLink.cs" />
+    <Compile Include="../LivingWastelandMeitou/TransportLink.cs" Link="TransportLink.cs" />
+    <Compile Include="../LivingWastelandMeitou/SettingsFile.cs" Link="SettingsFile.cs" />
+    <Compile Include="../LivingWastelandMeitou/CompanionLink.cs" Link="CompanionLink.cs" />
+    <Compile Include="../LivingWastelandMeitou/RecordHotkey.cs" Link="RecordHotkey.cs" />
+    <Compile Include="../LivingWastelandMeitou/UiInput.cs" Link="UiInput.cs" />
+    <Compile Include="../LivingWastelandMeitou/Notices.cs" Link="Notices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Meitou.Modding" Condition="Exists('$(MeitouDir)/Meitou.Modding.dll')"><HintPath>$(MeitouDir)/Meitou.Modding.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="MeitouClient" Condition="!Exists('$(MeitouDir)/Meitou.Modding.dll')"><HintPath>$(MeitouDir)/MeitouClient.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Meitou.Simulation"><HintPath>$(MeitouDir)/Meitou.Simulation.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Meitou.Core"><HintPath>$(MeitouDir)/Meitou.Core.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Meitou.Data"><HintPath>$(MeitouDir)/Meitou.Data.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="0Harmony"><HintPath>$(MeitouDir)/0Harmony.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,3897 @@
+{
+ "pack": "dissent",
+ "mod": "LivingWasteland",
+ "dialogues": [
+  {
+   "id": "ds_exile_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4",
+    "Npc OUTLAW Basic 1",
+    "Npc OUTLAW Aggro 2",
+    "Npc OUTLAW Crime 3",
+    "Npc OUTLAW Escapes 4",
+    "Npc THUG / bandit - Base 1",
+    "Swamper",
+    "Swamper Gang Member",
+    "Bounty Hunter Shek --Needs fixes--",
+    "Worlds end bar patron",
+    "Slave Hunters Bar Patron",
+    "UC exile camper"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Keep walking, /FLATSKIN/. I'm no guide and I'm not hiring.",
+      "Don't ask where I'm from. I don't answer it.",
+      "Kral had his hundred swords. I have a long road. I don't call it the worse bargain.",
+      "The Gateway will wait. It has waited for better men than me.",
+      "No banner. A man sleeps easier without one.",
+      "Stare all you like. I've been looked at by better judges."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_exile_kin",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4",
+    "Npc OUTLAW Basic 1",
+    "Npc OUTLAW Aggro 2",
+    "Npc OUTLAW Crime 3",
+    "Npc OUTLAW Escapes 4",
+    "Npc THUG / bandit - Base 1",
+    "Swamper",
+    "Swamper Gang Member",
+    "Bounty Hunter Shek --Needs fixes--",
+    "Worlds end bar patron",
+    "Slave Hunters Bar Patron",
+    "UC exile camper"
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Shek, and horned. Don't look at me as they did. I've had my fill of it.",
+      "Kin. Say nothing of where you met me and I'll say nothing of you.",
+      "The Kingdom has a long memory for me. I hope it's shorter for you.",
+      "You still believe in the Gateway. Good.",
+      "Walk on, kin. Whatever they say of me in the Kingdom, they're half right.",
+      "Don't carry my name home. There's nothing in it worth the walk."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_exile_wanted",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4",
+    "Npc OUTLAW Basic 1",
+    "Npc OUTLAW Aggro 2",
+    "Npc OUTLAW Crime 3",
+    "Npc OUTLAW Escapes 4",
+    "Npc THUG / bandit - Base 1",
+    "Swamper",
+    "Swamper Gang Member",
+    "Bounty Hunter Shek --Needs fixes--",
+    "Worlds end bar patron",
+    "Slave Hunters Bar Patron",
+    "UC exile camper"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "value": 999,
+     "cmp": ">"
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A price on you. I know the weight of that. Walk on, and I saw nobody.",
+      "Wanted, are you? The Kingdom taught me how that feels. Go, before someone counts the coin.",
+      "I'm not hunting today. Whatever they call you, do it somewhere else.",
+      "A bounty, /FLATSKIN/? Then you aren't so different from me.",
+      "Others would sell you. I'd rather drink than count another man's price."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_exile_hurt",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4",
+    "Npc OUTLAW Basic 1",
+    "Npc OUTLAW Aggro 2",
+    "Npc OUTLAW Crime 3",
+    "Npc OUTLAW Escapes 4",
+    "Npc THUG / bandit - Base 1",
+    "Swamper",
+    "Swamper Gang Member",
+    "Bounty Hunter Shek --Needs fixes--",
+    "Worlds end bar patron",
+    "Slave Hunters Bar Patron",
+    "UC exile camper"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You are on your last legs. I will not mock a man for that. Sit before you fall.",
+      "Hold. Even I don't strike one who can't stand.",
+      "Bleeding where all can see it. Wrap it. I have seen what hungry walkers do to the weak.",
+      "Not mine to finish, whatever you are.",
+      "A fair fight needs two on their feet. Come back when you can lift the blade."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_exile_runaway",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4",
+    "Npc OUTLAW Basic 1",
+    "Npc OUTLAW Aggro 2",
+    "Npc OUTLAW Crime 3",
+    "Npc OUTLAW Escapes 4",
+    "Npc THUG / bandit - Base 1",
+    "Swamper",
+    "Swamper Gang Member",
+    "Bounty Hunter Shek --Needs fixes--",
+    "Worlds end bar patron",
+    "Slave Hunters Bar Patron",
+    "UC exile camper"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_IS_ESCAPED_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Chains aren't for a free man, whatever his skin. Get off the road and don't look back.",
+      "I carried a different weight once. I know that walk. Keep going, I didn't see you.",
+      "A runaway. I have no love for the hunters either. Move.",
+      "The road is open to you. Don't ask me why I say it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_exile_errand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4",
+    "Npc OUTLAW Basic 1",
+    "Npc OUTLAW Aggro 2",
+    "Npc OUTLAW Crime 3",
+    "Npc OUTLAW Escapes 4",
+    "Npc THUG / bandit - Base 1",
+    "Swamper",
+    "Swamper Gang Member",
+    "Bounty Hunter Shek --Needs fixes--",
+    "Worlds end bar patron",
+    "Slave Hunters Bar Patron",
+    "UC exile camper"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "If you pass near the Kingdom, I may have a word to send. Nothing written. Speak to me again.",
+      "There's a word I can't carry home myself. Find me when no one is listening.",
+      "You walk further than I do. I might ask a favour of you.",
+      "Someone should tell the Kingdom I'm still breathing. I wouldn't ask just anyone.",
+      "Do you go north into Shek land? I have something that wants saying there."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_exile_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4",
+    "Npc OUTLAW Basic 1",
+    "Npc OUTLAW Aggro 2",
+    "Npc OUTLAW Crime 3",
+    "Npc OUTLAW Escapes 4",
+    "Npc THUG / bandit - Base 1",
+    "Swamper",
+    "Swamper Gang Member",
+    "Bounty Hunter Shek --Needs fixes--",
+    "Worlds end bar patron",
+    "Slave Hunters Bar Patron",
+    "UC exile camper"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Allies. I had forgotten the word. Don't make me regret using it.",
+      "A /FLATSKIN/ I trust. The Kingdom would call that a stain. I call it a change of weather.",
+      "Fight beside me, then. I have no honour to protect and no shame left to spend.",
+      "You stand with an outcast. Think on what that makes you.",
+      "I'll keep your back. It costs me nothing I hadn't already lost."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_exile_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4",
+    "Npc OUTLAW Basic 1",
+    "Npc OUTLAW Aggro 2",
+    "Npc OUTLAW Crime 3",
+    "Npc OUTLAW Escapes 4",
+    "Npc THUG / bandit - Base 1",
+    "Swamper",
+    "Swamper Gang Member",
+    "Bounty Hunter Shek --Needs fixes--",
+    "Worlds end bar patron",
+    "Slave Hunters Bar Patron",
+    "UC exile camper"
+   ],
+   "player_only": true,
+   "chance": 4,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I should cut you. I have cut for less. Go, before I remember I should.",
+      "You have the look of the hunted. So did I. This is your only warning.",
+      "Run. I'm tired of killing for other men's honour.",
+      "Draw if you must. I won't chase you, whatever happens.",
+      "I owe nobody. Go while that stays true."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_exile_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4",
+    "Npc OUTLAW Basic 1",
+    "Npc OUTLAW Aggro 2",
+    "Npc OUTLAW Crime 3",
+    "Npc OUTLAW Escapes 4",
+    "Npc THUG / bandit - Base 1",
+    "Swamper",
+    "Swamper Gang Member",
+    "Bounty Hunter Shek --Needs fixes--",
+    "Worlds end bar patron",
+    "Slave Hunters Bar Patron",
+    "UC exile camper"
+   ],
+   "chance": 3,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Stay down. I have no appetite for the rest.",
+      "Live, /FLATSKIN/. There's no one here to count the dead.",
+      "No glory in it. No Gateway in it either.",
+      "I could finish it. Nobody would call it dishonour.",
+      "Get up when you can. Get away when you can. Don't look for me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_exile_bar_kingdom",
+   "event": "EV_BAR_TALK",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4",
+    "Npc OUTLAW Basic 1",
+    "Npc OUTLAW Aggro 2",
+    "Npc OUTLAW Crime 3",
+    "Npc OUTLAW Escapes 4",
+    "Npc THUG / bandit - Base 1",
+    "Swamper",
+    "Swamper Gang Member",
+    "Bounty Hunter Shek --Needs fixes--",
+    "Worlds end bar patron",
+    "Slave Hunters Bar Patron",
+    "UC exile camper"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "They still hold the Gateway up like a lantern in the Kingdom. A fine lantern. I never found a use for it.",
+      "Kral died to a hundred swords. I don't call it foolish. I say a hundred is a lot.",
+      "A Shek doesn't run. A Shek who runs far enough stops being called one.",
+      "The Stone Golem holds the Kingdom together. The rest of us hold what we can carry.",
+      "Cut me, curse me, cast me out. The sand doesn't care what a man was called."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_exile_bar_flinch",
+   "event": "EV_BAR_TALK",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4",
+    "Npc OUTLAW Basic 1",
+    "Npc OUTLAW Aggro 2",
+    "Npc OUTLAW Crime 3",
+    "Npc OUTLAW Escapes 4",
+    "Npc THUG / bandit - Base 1",
+    "Swamper",
+    "Swamper Gang Member",
+    "Bounty Hunter Shek --Needs fixes--",
+    "Worlds end bar patron",
+    "Slave Hunters Bar Patron",
+    "UC exile camper"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A /FLATSKIN/ laughed at Kral in a bar once. I broke his jaw. I haven't worked out why.",
+      "Say what you like of the Gateway. Say it somewhere I can't hear.",
+      "I mock the Kingdom. You don't.",
+      "Outsiders don't get to sneer at Kral. Only the ones he failed.",
+      "Someone said Shek honour was a trick to make us die cheap. I said nothing. That was the worst of it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_exile_bar_outcast",
+   "event": "EV_BAR_TALK",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4",
+    "Npc OUTLAW Basic 1",
+    "Npc OUTLAW Aggro 2",
+    "Npc OUTLAW Crime 3",
+    "Npc OUTLAW Escapes 4",
+    "Npc THUG / bandit - Base 1",
+    "Swamper",
+    "Swamper Gang Member",
+    "Bounty Hunter Shek --Needs fixes--",
+    "Worlds end bar patron",
+    "Slave Hunters Bar Patron",
+    "UC exile camper"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Exile teaches you the price of everything. Water, shade, a quiet seat. Honour was cheap by comparison.",
+      "I drink with bandits and mercenaries. They ask no questions.",
+      "Some men leave the Kingdom. Some are left by it. I try not to ask which.",
+      "A man with no home still has a blade. Mine is hired by the day.",
+      "There are worse things than being cast out. Being cast out and wishing to go back."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_retainer_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Retainer"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I serve. I carry. I do not speak unless asked, and I have not been asked.",
+      "You look at the cut. Everyone does.",
+      "A retainer has no name worth saying. Mine was left on a battlefield.",
+      "Move along, outlander. I have work, and it's all I'm permitted.",
+      "They say a retainer is lucky to eat. I eat.",
+      "The horns will not grow back. I check, some mornings."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_retainer_kin",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Retainer"
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Warrior. Forgive me. I shouldn't stand where you pass; I have no place in front of you.",
+      "You wear what I lost. Don't pity it. I wouldn't know what to do with pity.",
+      "Whatever you need, kin. Whatever is permitted me, I'll do.",
+      "Do not look at my head, warrior. Look at the sand.",
+      "A true Shek. I remember the weight of it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_retainer_foreigner",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Retainer"
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Foreigners are tolerated for their trade. So am I. We have that in common, /FLATSKIN/.",
+      "I carry for the Kingdom. Not for you. But I will not spit on you either.",
+      "You're the first to look me in the eye this month. Don't stop on my account.",
+      "/FLATSKIN/. I am told to despise you. I am too tired to do it well.",
+      "Ask your questions, /FLATSKIN/. No one has asked me anything since the cutting."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_retainer_hurt",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Retainer"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You will fall on that road. Come into the shade. No one asks what I do with my hours.",
+      "I was not told to help you. I was not told not to.",
+      "A servant helps. That much they left me.",
+      "Rest. I'll say I never saw you if anyone asks. I'm good at being unseen."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_retainer_hungry",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Retainer"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You are starving. Here. It was not taken from the master's table. Not much of it.",
+      "Take it. Food is the one thing a servant can lose without being missed.",
+      "Eat. Walk. Don't tell them where it came from.",
+      "I know that look. Stand over there and chew, and I did not see you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_retainer_more",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Retainer"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Give me a blade and a hard road. Let the Gateway decide if I was worth the horns.",
+      "Any fight is better than this. Any fight, outlander. Remember that if you ever hire.",
+      "I heard I ran. I remember it as waking. The difference mattered to no one.",
+      "Do you travel with fighters? Have they room for one who isn't sure he was ever a coward?",
+      "A retainer who asks for a blade is punished. Ask me again when no one is near."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_retainer_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Retainer"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You treat me as a man. I had forgotten I looked like one.",
+      "A retainer serves. But I think I'd follow you if I weren't ordered to.",
+      "My thanks, ally. It's a small word. It's more than I'm given.",
+      "If you fight, I fight. It's the closest to honour I'm allowed."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_retainer_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Retainer"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I have no right to duel you. I will defend myself. They allow me that.",
+      "Back, outlander. I'm a servant, not a fool. Don't make me prove either.",
+      "I was cut once. Do it again and I won't stay down.",
+      "Do not mistake the shame for weakness. They cut the horns."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_retainer_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Retainer"
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I won. Nobody will say so.",
+      "A retainer's victory. It goes in no song.",
+      "Down. I don't want your death. I have my own shame to carry.",
+      "I fight when I am let. It is rarely."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prag_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek shopkeep",
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hrm. A /FLATSKIN/ with coin is worth more than one with a spear. Do not repeat that.",
+      "Spend here, /FLATSKIN/. The Kingdom doesn't live on glory.",
+      "Trade keeps us standing. Don't mistake that for love.",
+      "Walk through, buy, leave. The Stone Golem allows it. I will not argue.",
+      "A warrior with an empty belly is a poor warrior. Remember that when you haggle.",
+      "Fewer funerals this month. I am told that is not a victory. I disagree."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prag_trust",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek shopkeep",
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "relation": [
+    ">",
+    10
+   ],
+   "lines": [
+    {
+     "say": [
+      "Between us, /FLATSKIN/. We're fewer every year. I count them at night.",
+      "Shager wanted a glorious end. Bayan wanted a Kingdom. I know which I'd follow.",
+      "Don't tell the zealots. I'd rather the Kingdom grow old than famous.",
+      "Count the dead against the born. The numbers frighten me more than any army.",
+      "Live, trade, win the long war. That's Bayan's way. It isn't the loud way."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prag_kin",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek shopkeep",
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Kin. Don't repeat what I said at the gate.",
+      "You fight well, kin. Do it a little less often.",
+      "Eat first, then boast. A full Kingdom outlasts a proud one.",
+      "I am no coward. Ask the ones I buried. Ask them what they would have traded for another year."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prag_wanted",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek shopkeep",
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "value": 999,
+     "cmp": ">"
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Wanted. I can't afford to care. Spend your coin here and be gone before the hunters ask.",
+      "A price on your head and money in your hand. Trade is trade.",
+      "I did not see the bounty. I saw a customer. Do not linger.",
+      "Hunters pay in blood and cats. I prefer cats without the blood."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prag_hurt",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek shopkeep",
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A dead customer buys nothing. Sit. Drink. The Kingdom needs live trade.",
+      "You're hurt. I'd sooner mend a stranger than bury a warrior.",
+      "Waste. That road kills more than it should.",
+      "A man who walks away is a man who comes back with cats. Sit."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prag_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek shopkeep",
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're a friend to the Kingdom, outlander, and it has few.",
+      "The Kingdom needs friends more than it admits.",
+      "If the long war is won, it's won by friends.",
+      "A /FLATSKIN/ ally. Some zealots would sneer. They won't outlive me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prag_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek shopkeep",
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "player_only": true,
+   "chance": 4,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Think. A dead warrior or a dead /FLATSKIN/: the Kingdom loses either way.",
+      "This is waste. I'd rather trade with you than bury you.",
+      "Your cats and my blade need not be enemies. Walk, and I won't follow.",
+      "A glorious death is for those who can't afford a living one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prag_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek shopkeep",
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "chance": 3,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Done. Count your blessings, not your cats.",
+      "Waste, all of it. A Shek spent for a /FLATSKIN/ who wasn't worth it.",
+      "Get up. Dead, you're no use to anyone.",
+      "I take no pleasure in that. The Kingdom has buried enough."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prag_bar_zealots",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The zealots say trade is cowardice. They also eat what trade brings. Make of that what you will.",
+      "The Stone Golem holds, Bayan counts. Between them the Kingdom lives. I drink to the counting.",
+      "I've buried more brothers than I have bought drinks. I mean to fix that ratio.",
+      "Fewer warriors every year. They tell us it's a purer kind of strength. I tell them to count.",
+      "A /FLATSKIN/ pays double at our gates and thinks himself robbed. I think the Kingdom eats."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prag_bar_bayan",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Some call Bayan a coward. Bayan lived. Shager didn't.",
+      "Say it quietly: a living Kingdom is a better monument than a dead one.",
+      "Children. That's the war the Kingdom is losing, and it's the one I'd fight.",
+      "I'll die when the time comes. I'd rather it came late and meant something."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubt_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A glorious death awaits us all. Eventually. ... Forgive me. A hard morning.",
+      "Honour, honour. ... Pay no mind. I mean it with my whole heart.",
+      "Another stranger, another sermon about the sand. ... The sand is sacred.",
+      "The Gateway is open to the brave. I've been brave a long time. Nobody has opened anything. ...",
+      "The Stone Golem is wise. Everyone says so. Often. ...",
+      "Fight well and die well. In that order, if I may choose. ..."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubt_trust",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "relation": [
+    ">",
+    10
+   ],
+   "lines": [
+    {
+     "say": [
+      "Between us: I've walked toward that Gateway for years and never seen the road.",
+      "I have stopped counting the glorious deaths. They look alike up close.",
+      "Tired, /FLATSKIN/. Not of fighting. Of being told what it is for.",
+      "A hundred swords, and for what? I ask nobody. I ask you because you will leave."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubt_kin",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Kin. Whatever I said, it was sun-sickness. For Kral.",
+      "Forgive the weakness. For Kral, the Gateway, and so on.",
+      "You heard nothing. I said nothing.",
+      "Do not look at me so, kin. I would die for the Kingdom. I only wonder how many times."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubt_hurt",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hurt. Honour says finish a fair fight. This was not fair.",
+      "I haven't seen you, and I didn't see how bad it is.",
+      "You are in no shape to be killed well. Come back when you are.",
+      "I was taught never to strike the fallen. Today I'm glad of the rule."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubt_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "player_only": true,
+   "chance": 4,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "For Kral. ... I used to say it louder. Draw.",
+      "Defend yourself, outlander. I've waited a long time to mean it.",
+      "The old words, then. Honour, glory. ... Come on.",
+      "I'll fight you. I'd simply like to know why."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubt_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A friend of the Kingdom. A rare thing to be proud of. ...",
+      "Ally, then. It is a better word than most we use.",
+      "Stand with me, ally. The old words come easier with company.",
+      "Honour to you, ally. ... I mean that."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubt_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Shek Warrior",
+    "Npc Shek Warrior - Base 1",
+    "Shek Gate Guard"
+   ],
+   "chance": 3,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Another death in the name of honour. ... I meant it.",
+      "A good fight. They're the best part. The words after, less so.",
+      "Dead ends are fine. It's the speeches I tire of.",
+      "Fell well. I've said worse about better."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubt_bar_words",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Glorious death. I've said it so often it's a sound, like a door.",
+      "The old ones weep at the Gateway. I wonder who they're weeping for.",
+      "Quiet night. ... Good. I could use a quiet night. No, I mean, I'm ready to fight.",
+      "A man can believe and be tired. The first is a duty. The second is a fact.",
+      "They drink to the dead. I drink to the living. Not out loud, mind."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubt_bar_odds",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Ask a Shek if he fears the Gateway and he will laugh.",
+      "I'd die for the Kingdom. I'd simply rather it asked less often.",
+      "Hundredfold odds. We love the phrase.",
+      "Kral's last stand is a fine tale. Tales are a poor shield."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_ronin_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "packages": [
+    "Npc HIVER Ronin - Complete Package",
+    "Fresh Ronin",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "We... I. I'm not sure which word. Do you know?",
+      "You speak to this one as if it were someone. ... Thank you.",
+      "It's very quiet in here. In me. I didn't know quiet could be so loud.",
+      "I wanted a drink of water today. Wanted. It's a strange word.",
+      "No hum. No hum. I keep listening anyway.",
+      "Don't stand near me long. I feel like a hole in something. I don't know what."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_ronin_hiver",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "packages": [
+    "Npc HIVER Ronin - Complete Package",
+    "Fresh Ronin",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4"
+   ],
+   "target_races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're hive. We are... I was hive. Do you hear it? Please say yes.",
+      "Does the song reach you here? Tell me. I won't envy you. I'll try not to.",
+      "Brother. Sister. I don't know the word.",
+      "You have the shape of the hive and the sound of it. I have only the shape.",
+      "Don't look away. The hive looks away. I'd like to be looked at."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_ronin_person",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "packages": [
+    "Npc HIVER Ronin - Complete Package",
+    "Fresh Ronin",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "relation": [
+    ">",
+    15
+   ],
+   "lines": [
+    {
+     "say": [
+      "You said hello. Nobody says hello to a drone. ... I'm not a drone.",
+      "You ask what I want. Nobody asks that. I don't have an answer yet.",
+      "Each time you stop, I understand a little of what an I is. Do not go yet.",
+      "Friend. Is that what this is? I've heard the word. I'd like to learn it.",
+      "You don't say it. You say him, or me, or you. Never it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_ronin_hurt",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "packages": [
+    "Npc HIVER Ronin - Complete Package",
+    "Fresh Ronin",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're hurt. I don't know why that hurts me too. It does.",
+      "Sit. We... I'll stay. I don't know what else to do. I'll stay.",
+      "Wounds I understand. The hive mended wounds. I'll try to be the hive for a moment.",
+      "Blood. Yours. I know what it is for. I do not know what it is for.",
+      "I'm not good at helping. I'm learning. You're my first lesson."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_ronin_hunted",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "packages": [
+    "Npc HIVER Ronin - Complete Package",
+    "Fresh Ronin",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "value": 999,
+     "cmp": ">"
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "They hunt you. They hunted me, once. Go. I'll say nothing. I'm good at saying nothing.",
+      "A price on you. I didn't know a person could have a price. I know now. Go.",
+      "You're wanted. I'm not wanted. Which is worse? ... I won't tell. Walk.",
+      "I'll say nothing. Say nothing too. We're alike in that. I think we're alike in more.",
+      "A person with a price. I have none. It is its own kind of loneliness."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_ronin_errand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "packages": [
+    "Npc HIVER Ronin - Complete Package",
+    "Fresh Ronin",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "If you meet one of the hive, any of them... would you say something? Speak to me again.",
+      "There's a message. It's small. It's also the only thing I have to give. Ask me.",
+      "Someone out here still counts the days by a sound that is not there. The hive should know. Will you tell them?",
+      "I can't go back. You can walk where I can't. Ask me what I mean."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_ronin_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "packages": [
+    "Npc HIVER Ronin - Complete Package",
+    "Fresh Ronin",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You are... mine? No. Not mine. Ours? ... Friend. That's the word.",
+      "I follow. I wish to follow. That's a want. It's a good one.",
+      "I'm glad you're here. I said it. I said I. It didn't break anything.",
+      "With you I almost hear it. Not the hum."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_ronin_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "packages": [
+    "Npc HIVER Ronin - Complete Package",
+    "Fresh Ronin",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4"
+   ],
+   "player_only": true,
+   "chance": 6,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I'm afraid. That's new. Don't make it worse.",
+      "Back. I don't want to die. I want, and I don't know what, but I don't want that.",
+      "I was something before the quiet. I'll be something again. Not here.",
+      "Stay away. We... I'll fight. I didn't know I could say it that way."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_ronin_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "packages": [
+    "Npc HIVER Ronin - Complete Package",
+    "Fresh Ronin",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4"
+   ],
+   "chance": 5,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "It's over. ... I did that. I did that.",
+      "I won. I don't feel the hive's pride. I feel my own. It's smaller and warmer.",
+      "Get up. Please. I did not want to know what that was like.",
+      "Alive. We... I. Alive. Good."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_ronin_bar_quiet",
+   "event": "EV_BAR_TALK",
+   "races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "packages": [
+    "Npc HIVER Ronin - Complete Package",
+    "Fresh Ronin",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4"
+   ],
+   "chance": 4,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The warm ones drink to forget. I tried. I forgot the hum for an hour. I don't recommend it.",
+      "I counted the days. Eleven, then forty, then I stopped. Then I started again.",
+      "The hive doesn't take a ronin back. That isn't a rumour.",
+      "Someone said ronin are pieces the hive no longer needs. I asked what we were instead. No one knew.",
+      "I heard I. They say it so easily. I practise in the dark."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_ronin_bar_wanting",
+   "event": "EV_BAR_TALK",
+   "races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "packages": [
+    "Npc HIVER Ronin - Complete Package",
+    "Fresh Ronin",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc Escape 4"
+   ],
+   "chance": 4,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I want a window. I don't know why. It's the first thing I have wanted that I could name.",
+      "Cold water. Warm bread. Small wants. I collect them.",
+      "Nobody tells you what to do with a self. I am doing it wrong.",
+      "Some nights I'm afraid I'll wake and say we. Some nights I'm afraid I won't."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prince_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ],
+   "packages": [
+    "Hiver Merchant ",
+    "Hiver Merchant Lantern",
+    "hive shopkeeper",
+    "Hive robotics shopkeeper",
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "This one may ask a thing? What does the no-hive want, when there's no hum to ask?",
+      "No-hive. Why do you walk alone? We ask only to understand. We ask only once. We ask again.",
+      "Trade is simple. Trade is good. ... What is it like, to choose what to carry?",
+      "The warm ones choose. This one watches choosing.",
+      "Buy, sell, go. Also: do you tire of deciding? We wonder.",
+      "This one asked too much. It will stop."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prince_trust",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ],
+   "packages": [
+    "Hiver Merchant ",
+    "Hiver Merchant Lantern",
+    "hive shopkeeper",
+    "Hive robotics shopkeeper",
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "relation": [
+    ">",
+    10
+   ],
+   "lines": [
+    {
+     "say": [
+      "May we tell you a small thing? This one would like to be alone, once. For one hour.",
+      "Tell us of your loyalties. They seem heavy and strange. This one would carry one, to learn the weight.",
+      "Your people leave one another. Your people return. Why do they return?",
+      "Do not tell the hive we asked. The hive would not scold. The hive would simply hear."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prince_human",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ],
+   "packages": [
+    "Hiver Merchant ",
+    "Hiver Merchant Lantern",
+    "hive shopkeeper",
+    "Hive robotics shopkeeper",
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern"
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Warm one, you have one mind and it argues with itself. This one finds that wonderful.",
+      "The warm ones have names. We've heard them. They're many sounds for a single thing.",
+      "No-hive. Do you ever wish to be two? Or one among many? This one asks for no reason.",
+      "You own things. You say mine. It's a very small word. It seems to weigh much."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prince_hurt",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ],
+   "packages": [
+    "Hiver Merchant ",
+    "Hiver Merchant Lantern",
+    "hive shopkeeper",
+    "Hive robotics shopkeeper",
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The no-hive is hurt and alone. The hive would carry. Who carries you?",
+      "Sit. This one wishes to understand pain that has no one to share it.",
+      "A hurt no-hive walks on. Why? The hive would stop. We would like to know.",
+      "The hive carries its failing. Pain with no one to take it. Strange. Sad. Don't stop for this one.",
+      "No-hive. Rest. This one won't ask what hurts. This one will ask later."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prince_hunted",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ],
+   "packages": [
+    "Hiver Merchant ",
+    "Hiver Merchant Lantern",
+    "hive shopkeeper",
+    "Hive robotics shopkeeper",
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "value": 999,
+     "cmp": ">"
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The no-hive is hunted. By whom? For what? This one will not tell. Go. Later, tell us.",
+      "A price on the warm one. A price. We have no price. We are curious what ours would be.",
+      "Run, no-hive. Run well. Tell us how it feels. We want to know.",
+      "A hunted one trades with a hunted one. Fair. This one will not remember your face."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prince_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ],
+   "packages": [
+    "Hiver Merchant ",
+    "Hiver Merchant Lantern",
+    "hive shopkeeper",
+    "Hive robotics shopkeeper",
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're friend of the hive. Friend: we don't have the word.",
+      "A no-hive who doesn't take. This one will remember. This one remembers little else.",
+      "Walk with us a while? We'll ask less.",
+      "The hive allows us to know you. The hive does not forbid us to like you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prince_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ],
+   "packages": [
+    "Hiver Merchant ",
+    "Hiver Merchant Lantern",
+    "hive shopkeeper",
+    "Hive robotics shopkeeper",
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern"
+   ],
+   "player_only": true,
+   "chance": 4,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "We don't wish to fight. ... Why do you wish it? It's a real question.",
+      "The no-hive comes with a blade. This one wonders what's behind it. Not enough time to ask.",
+      "Fighting is a no-hive choice. We didn't choose it. We would like to understand.",
+      "This one will defend. This one is sorry. This one has said sorry before and doesn't know what it costs."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prince_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ],
+   "packages": [
+    "Hiver Merchant ",
+    "Hiver Merchant Lantern",
+    "hive shopkeeper",
+    "Hive robotics shopkeeper",
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern"
+   ],
+   "chance": 3,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "It is done. Why do no-hives fight one another? This one still does not understand.",
+      "The enemy is erased. The hive is quiet.",
+      "A no-hive on the ground. This one would ask a question, but there's no one to answer.",
+      "Why does it end this way? Every time. This one asks."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_prince_bar_watch",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A no-hive wanted one thing and bought another. We watched for an hour. We learned nothing.",
+      "The hive is warm. The hive is whole. This one sometimes wonders what a hole would feel like.",
+      "Why do the no-hives drink? This one tried. It was sour.",
+      "Fair price, fair weight. ... Why do the no-hives mind the price so much? We mind nothing. It's peaceful.",
+      "The warm ones lie to one another, and are lied to, and call it company."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rem_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Black desert skeleton patron",
+    "Skeleton Junkyard",
+    "Skeleton legion",
+    "dancing skeleton patrons"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I remember a human who gave me water. I do not remember why.",
+      "Greeting. I retain the greeting. Most do not. Do not ask what else I retain.",
+      "Go on if you wish. I won't follow. I don't follow anyone now.",
+      "I'm functioning. I'd say well, but I have been told that's untrue.",
+      "You resemble someone. The record is unclear. It was long ago. I think I owed them.",
+      "Humans are loud. I find I do not mind. I did not expect that."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rem_human",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Black desert skeleton patron",
+    "Skeleton Junkyard",
+    "Skeleton legion",
+    "dancing skeleton patrons"
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I remember what your kind did. I remember what some of your kind did instead. The second memory is the one I keep.",
+      "Do not apologise for what humans did. I record that you are not them.",
+      "I have no one left to forgive. I forgive anyway.",
+      "Sorry is a word I recorded early. I haven't found a use for it.",
+      "A human has stood where you stand and been kind to me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rem_praise",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Black desert skeleton patron",
+    "Skeleton Junkyard",
+    "Skeleton legion",
+    "dancing skeleton patrons"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "relation": [
+    ">",
+    15
+   ],
+   "lines": [
+    {
+     "say": [
+      "Don't praise. It stirs an old record. I don't like what stirs.",
+      "Thank you is correct. Please stop. It's correct and I can't hold it.",
+      "I was called good once. It was a long time ago. It didn't end well.",
+      "That's kind. I don't have a place to put kind. I'll put it with the others."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rem_hurt",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Black desert skeleton patron",
+    "Skeleton Junkyard",
+    "Skeleton legion",
+    "dancing skeleton patrons"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're failing. I remember what failing is. Sit.",
+      "Repairs are possible. I retain the method. I do not retain the permission.",
+      "You're damaged. I have no use for my time. Rest.",
+      "I have watched many fail. I'd prefer to watch fewer."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rem_hungry",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Black desert skeleton patron",
+    "Skeleton Junkyard",
+    "Skeleton legion",
+    "dancing skeleton patrons"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You require food. I don't. I kept some. I don't know why I kept it.",
+      "You're starving. I have a ration. It's yours. It was always going to be someone's.",
+      "Food is not a thing I need. I remember needing it. Take it before I remember more.",
+      "Eat. I have watched hunger end a great many things. I won't add to it.",
+      "You're thin. I have a ration. It was to be mine, in a way I don't recall."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rem_hunted",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Black desert skeleton patron",
+    "Skeleton Junkyard",
+    "Skeleton legion",
+    "dancing skeleton patrons"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "value": 999,
+     "cmp": ">"
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The record shows a price on you. The record can be wrong. I will not correct it.",
+      "You're wanted. I was wanted once, for parts. Go. I didn't see you.",
+      "A price. I can calculate it. I will not. Walk on.",
+      "I retain no obligation to report. I retain several to forgive."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rem_runaway",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Black desert skeleton patron",
+    "Skeleton Junkyard",
+    "Skeleton legion",
+    "dancing skeleton patrons"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_IS_ESCAPED_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You wore shackles. I wore them.",
+      "Escaped. Good. I record that you shouldn't be found.",
+      "I remember a cage. I remember who opened it.",
+      "The road is open to you. Don't thank me. I don't know where to file it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rem_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Black desert skeleton patron",
+    "Skeleton Junkyard",
+    "Skeleton legion",
+    "dancing skeleton patrons"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're accepted. I retain that. I'll retain it a long time.",
+      "A friend. I retain the word. I use it rarely, so it does not wear.",
+      "Walk with me. The silence is better with someone. I didn't know that until now.",
+      "I record you as kind. I record it twice, in case one is lost."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rem_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Black desert skeleton patron",
+    "Skeleton Junkyard",
+    "Skeleton legion",
+    "dancing skeleton patrons"
+   ],
+   "player_only": true,
+   "chance": 5,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I don't wish to harm you. I retain too much of what harm does.",
+      "Stop. I'd prefer you stop. I'll fight. I'd prefer not to.",
+      "You have my attention. I regret it. I regret much that I remember.",
+      "I am slow to anger and slower to forget. Go while it is only slow."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rem_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Black desert skeleton patron",
+    "Skeleton Junkyard",
+    "Skeleton legion",
+    "dancing skeleton patrons"
+   ],
+   "chance": 4,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Enemy down. I record it. I record that I didn't enjoy it.",
+      "I remember each of them. This one will be added.",
+      "It's finished. I'm not sure what that means. I've said it before.",
+      "Enemy defeated. The record is correct."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rem_bar_reset",
+   "event": "EV_BAR_TALK",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I don't reset. Others do. I envy them some days. Most days I don't.",
+      "Don't tell the others that I remember. They would be afraid. Or they would be jealous.",
+      "A human fed me oil once. I haven't been fed since. I haven't forgotten who.",
+      "Memory isn't a gift. It's a weight with a name. I have many names.",
+      "The old days aren't gone for me. They're in the next room. I don't open that door often."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_sib_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Peace to you, traveller. Keep to the road. The wastes take people. They take them in many ways.",
+      "Blessings. Don't speak to me of the wastes. I have given them enough.",
+      "I pray for the lost. All of them. I am not specific, in public.",
+      "The Lord of Light guide you. And guide whoever else is out there that I think of.",
+      "The wastes are full of sinners. Forgive me. They are also full of someone's kin.",
+      "Peace. If you meet outlaws out there, do not tell me what they were. Tell me if they were hungry."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_sib_wanted",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "value": 999,
+     "cmp": ">"
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A price on you. I won't report it. I'm told that's a sin. I'm told many things.",
+      "Hunted, are you? Move on. I didn't see where you went.",
+      "Outlaws are vermin, we say. I have learned to say it with my eyes down.",
+      "The Nation would burn you. I would feed you. Do not tell the Nation.",
+      "I do not see wanted men. I see tired ones. Go with Okran's blessing, if it will have you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_sib_hungry",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Take it. It is only bread. It does not ask whom it feeds.",
+      "You are starving. Eat. I know someone who was hungry once.",
+      "Hunger makes outlaws of good people. Eat, and be what you were.",
+      "I know the hunger of the road. Someone near me still does."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_sib_hurt",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You are hurt. The Nation says to leave the sinner. The Nation is not here.",
+      "Bleeding on the holy road. Sit. I will say nothing about it.",
+      "Someone I love lay like that once, somewhere I couldn't reach.",
+      "Lie down a moment. Pray if you wish. Or do not. I will not check."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_sib_errand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "If you ride where the outlaws gather... a note. Nothing written that could hang me.",
+      "I have a few words for someone out in the wastes. I cannot send them. Can you?",
+      "You look like one who goes where the road ends. I may have an errand.",
+      "There is someone beyond the border who should know I am well. And that I have not forgotten them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_sib_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A friend of the Nation. Blessings upon you. Forgive me, I am tired.",
+      "Okran keep you, brother. If you meet a certain kind of man out there, be gentle.",
+      "You're a good soul. I know a few outside the walls. I don't say so.",
+      "Peace, ally. The Lord of Light sees all. I hope He's merciful about the details."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_sib_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "chance": 4,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Go, before I remember my duty. I'm told it's clear. It hasn't been, lately.",
+      "I should raise the alarm. I will raise my voice. You will have a head start.",
+      "The Nation says to cut you down. I have a sister... a brother... never mind.",
+      "Do not make me do this. I do not do it well."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_sib_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "chance": 3,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "It's done. I did my duty. I'd rather have done nothing.",
+      "Another sinner down. I'm told to rejoice.",
+      "May Okran forgive us both. I mean it as a question.",
+      "They had family, I suppose. They all do."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_sib_bar_family",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "My family is well, thank the Lord. All of it. Don't ask which of it.",
+      "They say road bandits were honest once. A road is a long thing.",
+      "I lit a candle for one who isn't at the table. The priest asked who. I said, everyone.",
+      "The wastes took someone from me. Not death. Something worse that looks like freedom.",
+      "Never speak an outlaw's name in the temple. I find it helps to speak it in my head."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_sib_bar_road",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Outlaws, outlaws. As if they sprouted from the sand. Every one of them had a mother who sang to them.",
+      "A pilgrim gave me news of the bandits. I paid for the news twice. I didn't say why.",
+      "The priests say the road is cursed. They've never walked it hungry.",
+      "I'd trade my pew for one hour on the road with someone I won't name."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubter_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Lord of Light provides. ... The scripture says so. I have not found it in the scripture I read, but it says so.",
+      "I read only what's given. ... I used to read other things.",
+      "Blessings, traveller. Okran sees all. I find that comforting.",
+      "Don't ask me about the old words. They're what they are. They aren't what some say.",
+      "Question not, and be at peace. I'm at peace. See how at peace I am.",
+      "Truth belongs to Okran, they say. I keep a small piece of my own."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubter_trust",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "relation": [
+    ">",
+    10
+   ],
+   "lines": [
+    {
+     "say": [
+      "I once held a page that said the horned and the green-skinned feel as we do. I burned it. I remember all of it.",
+      "There are words in this land that say be kind to all and harm none. They are forbidden.",
+      "If a thing is true, it should survive being read. That is my entire heresy.",
+      "Keep your books to yourself, traveller. But keep them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubter_wanted",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "value": 999,
+     "cmp": ">"
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A price on you? I have read about worse men in books I should not have. They were mostly right.",
+      "Hunted for what you think, or for what you did? I ask because I know which one frightens me.",
+      "Move on. If you are a heretic, I did not hear it. If you are not, I did not need to.",
+      "I'm the wrong person to ask about guilt. I keep a very small stock of it for others."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubter_hurt",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You are hurt. The scripture speaks of the strong and the weak. It speaks little of the sitting-down. Sit.",
+      "Sit. I do not need to know your creed to know you are bleeding.",
+      "There is a line I was never taught: that the injured are kin to the healer. I believe it anyway.",
+      "The faith says to tend the faithful. I cannot see that it says the faithless are to be stepped over."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubter_errand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I have a page I should have burned. If you ever meet one of the machine-folk, I might ask you something.",
+      "There's a thing I need read by someone who can't be burned. Do you travel with skeletons?",
+      "I have a small errand. It will sound like heresy. It is only curiosity.",
+      "Show a page to a machine, hear what it says, and tell me. That is all. It is small."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubter_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Okran bless you. ... I mean it. Not the scripture.",
+      "A friend of the Nation. I have a few questions the Nation would not enjoy. Perhaps one day.",
+      "Walk in the light, brother. And, if it comes to it, in the dark. Both are walkable.",
+      "Peace be with you. I find I have more peace than certainty, these days."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubter_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "player_only": true,
+   "chance": 4,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Draw if you must. I hold no ill. The scripture says I should.",
+      "I'm told you're a heretic. I'd like to ask what you read. There's no time.",
+      "In the name of Okran. ... I say it very clearly, so everyone hears.",
+      "Lord of Light, guide my hand. And if You are listening, take Your time."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubter_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Holy Nation Paladin",
+    "Holy Priest"
+   ],
+   "chance": 3,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Lord's work is done. ... I hope.",
+      "Down. I wonder what they believed.",
+      "Praise Okran. Praise whoever is listening.",
+      "It's finished. Okran willed it. I'll say so loudly, to whoever asks."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubter_bar_words",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "They burned a man last year for a few pages. I wonder what was in them.",
+      "Scripture is a long road. Some of us stopped at the first milestone.",
+      "A priest told me the forbidden writings are lies. I asked how he knew. He said he had read them.",
+      "I keep my questions where the Rebirth school can't find them.",
+      "If Okran wished to be understood, He would be simpler."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_doubter_bar_texts",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Somebody wrote that the horned devil bleeds as we do. They put him to the flame. The words weren't wrong, only unwelcome.",
+      "The old books were many. We are given few. I ask who chose them and no one answers, but I am glad I asked.",
+      "A true believer fears nothing written. I notice how afraid we're of pages.",
+      "I dreamed I read a book of kindness. I woke and was afraid. Not of the book."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_tc_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Business is good. It's always good. I sleep poorly, but it's good.",
+      "Prices are what the market bears. I was told that for years. I have stopped hearing it.",
+      "Cats in, cats out. Somewhere there's a ledger and I don't like the look of it.",
+      "Mind the chains, traveller. ... I meant the road chains. Some roads are chained, you know.",
+      "I don't ask where goods come from. I used to not ask. Now I ask. I don't like the answers.",
+      "Fine day for trade. Do not ask about the trade."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_tc_captive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Enslaving, are you? A man makes his living. ... Make it somewhere I can't see.",
+      "Carry that one elsewhere. I'd rather not be reminded of the price.",
+      "That one is alive. Alive is the part I can't get past, lately.",
+      "I have bought and sold a great many like that. I don't recall faces. I recall that I tried not to."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_tc_runaway",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_IS_ESCAPED_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A runaway. I never saw a runaway. The ledger doesn't list me as having eyes.",
+      "Keep to the alleys. And no, I said nothing.",
+      "Move quick and don't stop for the guards.",
+      "I could call for the Empire's men. I could also be very slow about it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_tc_hungry",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A coin and a loaf. Not charity. A loan, if anyone asks. Nobody will ask.",
+      "You look like you could eat a wall. Here, I have bread. Don't stand where I can be seen giving it.",
+      "I'd rather feed you than count you.",
+      "Hunger is cheaper to cure than to own. I've done the sums."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_tc_confide",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "relation": [
+    ">",
+    10
+   ],
+   "lines": [
+    {
+     "say": [
+      "I sold a debt once to a man who sold the debtor. I read the ledger twice. I cannot unread it.",
+      "Everyone in the Empire profits from someone's chains. I have started counting mine.",
+      "I tip the scale a little when I can. A short measure for the rich, a full one for the poor.",
+      "Don't mention me to the anti-slavers. Don't mention them to me. I'll pretend not to listen."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_tc_errand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Someone should tell the anti-slavers a debt is paid. I can't be seen near them. Speak to me again, quietly.",
+      "I have a coin that can't be mine. Do you know anyone who works against the slavers?",
+      "A matter of conscience, and of cats. If you go where the runaways go, speak to me.",
+      "I owe the anti-slavers more than cats. I owe them a quiet word. Will you carry one?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_tc_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Business partner? Friend? The Empire has no good word. Take it as the second.",
+      "You have the look of someone who gave up a good deal on principle.",
+      "Good to see you, friend. I'd offer a fair price, but I've lost the habit of calling it that.",
+      "Friend. The word has a cost."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_tc_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "chance": 4,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The law says I should report you. The law is a ledger. I'd rather not balance it today.",
+      "Go. I'll say you outran me. Everyone knows I'm out of shape.",
+      "I took no oath to chase. Run. This is the last favour you get.",
+      "The bounty isn't mine. I have enough that isn't mine."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_tc_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 3,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Law is law. I took no joy in it. Some.",
+      "Another one for the ledger. I don't enjoy keeping it.",
+      "Done. The Empire thanks me. It never says it loudly.",
+      "Order kept. I tell myself that's enough."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_tc_bar_chains",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Nothing good is built on chains. I own a lot of nothing good.",
+      "A merchant's conscience is like a ledger: you can't audit it without finding something.",
+      "I gave a runaway a coin. A silver one. I've been rich for years and that's the coin I remember.",
+      "Slave markets pay well. I'd like it to stop paying so I could stop being paid.",
+      "Careful what you say about the anti-slavers. I won't join in. I have simply stopped laughing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rk_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Year of the Harvest. We don't say it much.",
+      "Dregs, they said. I never liked the word. I've never said so.",
+      "There are names I don't speak in the city.",
+      "Drought hurts. It hurt then. It still hurts.",
+      "Don't talk of the rebels where the nobles hear. Don't talk of them where I hear, either. ... Talk."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rk_trust",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "relation": [
+    ">",
+    10
+   ],
+   "lines": [
+    {
+     "say": [
+      "My brother ran with the rebels. They didn't come back. The nobles had their harvest in the end.",
+      "They called them dregs. Dregs have mothers.",
+      "A hungry man will do many things. I fed none of them.",
+      "I stood in the line for aid that never came. I don't recall who ate."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rk_runaway",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_IS_ESCAPED_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You wear the look. My cousin had it. ... Go. Quickly.",
+      "Slaves do not look like that by choice. Walk on. I was not here.",
+      "Whatever they tell you about runaways, they're lying.",
+      "I wasn't here. Neither were you. Good luck."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rk_hungry",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hunger again. It never leaves, does it? Take this.",
+      "Nobody should stand like that in a city with granaries.",
+      "I know how that feels. Take it, and don't say where from.",
+      "It isn't much. It's more than they gave, back then."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rk_hurt",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're failing. I watched failing from a window once. Never again. Sit.",
+      "Rest. I've never been able to walk past it.",
+      "Lean on the wall. I can't carry you. I can look the other way for the guards.",
+      "Easy. Sit. The city has plenty of room for one more bruise."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rk_wanted",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "value": 999,
+     "cmp": ">"
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "They hang a name on anyone. I know a few names that were hung.",
+      "A price. The Empire has priced better men and worse. Move on, I didn't see you.",
+      "I won't call the guards. I called nobody the last time, either. I've never forgiven myself.",
+      "There's always a price. There's always someone who sets it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rk_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A friend. Good. The common folk need more of those than they get.",
+      "You treat the poor as people. Don't stop.",
+      "Cheers, friend. Quietly.",
+      "A good soul. We have too few. The Empire is hard on them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rk_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "player_only": true,
+   "chance": 4,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The law is the law. I don't enjoy it. Run, and I'll be slow.",
+      "I was told never to hold a grudge against a man for being poor. Or wanted.",
+      "Not today. Whatever you did, someone did worse to someone, and they wear clean clothes.",
+      "Go. I'm tired of watching people bleed for a bad year."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rk_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "Empire bar patron",
+    "Empire Noble",
+    "Empire Farmer"
+   ],
+   "races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 3,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Another one down. A hungry one, I expect.",
+      "Done. I won't ask what drove them.",
+      "I did it. I don't feel the clean part.",
+      "Done. I take no pride. I take my pay."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_rk_bar_year",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The harvest is fine this year. Nobody remembers the other one. I like it that way. I hate that I like it.",
+      "The Guild didn't come. Everyone knows. Nobody says.",
+      "I hear some of the ones taken after the rebellion are still sold. Quietly. It's called a debt.",
+      "The word is dregs. I stopped saying it years back. My tongue still tastes it.",
+      "I had a friend who ran with the rebels. I think about the hour I was too afraid to join."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_hash_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Big Grim's swamp. Prosperous, ain't it. Smile, /BOY/. Smile like I do.",
+      "Hash had rules. Grim has hounds. Say what you like, hounds are louder.",
+      "Don't ask me about the old days. They look a lot like the new days, only quieter.",
+      "Grim runs it now. Everybody loves Grim. Say it. Go on. Say it loud.",
+      "Hash kept rules, once. Don't repeat that.",
+      "Nice day for cats and silence."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_hash_trust",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "relation": [
+    ">",
+    10
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hash's brother was clubbed down outside a casino. A letter said Blackshifters. I wonder who wrote it, and who it helped.",
+      "The one who wrote Hash such a kind letter got Hash's seat. I ain't saying nothing.",
+      "Hash died, the Stalkers died, and Grim sat. Anyone can add that. Few do aloud.",
+      "A good man dead, a clan gone, a bad one on the chair. Add it up quiet."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_hash_wanted",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "value": 999,
+     "cmp": ">"
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Bounty? The swamp don't care about that. Grim cares about cats.",
+      "Wanted by who? Not by me. Walk on, /BOY/.",
+      "Everyone's got a price. Mine's just not posted yet.",
+      "Cats talk, bounties talk. I stopped listening to both."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_hash_hurt",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're bleeding. Don't let the hounds smell it.",
+      "Sit in the shade. Nobody's gonna ask. Nobody asks me anything anymore.",
+      "That's a bad one. Rest. Nobody rests you in the swamp unless you pay.",
+      "Sit down before you drop. Somebody should have sat me down once."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_hash_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A friend, huh. Good. Don't say it too loud. Not in front of the wrong colours.",
+      "A friend to the Stalker kind is a friend to me. Ain't many left to say it to.",
+      "We'll get on, you and me.",
+      "You're all right. Keep it that way. The swamp ain't forgiving to all right."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_hash_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "player_only": true,
+   "chance": 4,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Cut you down? For Grim? ... Not today. I'll say you were gone by the time I looked.",
+      "Run. I'll count to a hundred.",
+      "The law of the swamp's cats and clubs. I got tired of both.",
+      "I ain't gonna chase. My feet hurt and my conscience hurts more."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_hash_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "chance": 3,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Done. Grim'll like that. Don't tell her I didn't.",
+      "Another one for the swamp. It's got plenty of room.",
+      "Down. Stay down. Don't give me a reason.",
+      "It's over. Grim gets the credit. It's always Grim who gets the credit."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_hash_bar_toast",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Swampers"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Raise a cup to Big Grim. Go on. ... I drink to the dead.",
+      "Hash made rules and meant them. The swamp misses that, though it won't say.",
+      "My cousin ran with the Stalkers. Now she runs with the hounds.",
+      "Funny how a clan can be guilty and blamed in the same breath.",
+      "Grim reads slow. Remembers fast. I've learned to forget in her favour."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_framed_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Me? Just a Swamper. Always was. Don't squint, you'll hurt yourself.",
+      "Where am I from? Around. The swamp's wide. Mind your business, /BOY/.",
+      "Don't ask about clans. Don't ask about who was blamed. Ask me about the weather.",
+      "I keep my head down. It's a good head. I'd like to keep it.",
+      "A clan name is a nice thing. On a banner. Not in the mouth. Forget I said.",
+      "Keep walking, friend. I ain't hard to forget."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_framed_trust",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "relation": [
+    ">",
+    10
+   ],
+   "lines": [
+    {
+     "say": [
+      "Blackshifters. Say the word and fingers point. Never mind what we didn't do.",
+      "They said we killed him. We didn't. I'd swear on anything I got left.",
+      "Somebody needed a name to blame.",
+      "Don't say that name where the hounds hear. Say it where I can hear."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_framed_wanted",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "value": 999,
+     "cmp": ">"
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A price on your head? Someone's always blamed for something.",
+      "Wanted for what? Doesn't matter. Half the time it's wanted for who.",
+      "I know what it's to be hunted for something you didn't do. Or did. Go.",
+      "They'll find who to blame. They always do. Don't be there when they do."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_framed_hurt",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're hurt. Don't let the hounds see. They love a wounded man.",
+      "Hide it. Sit by the wall. Look like part of it.",
+      "I lay bleeding once, after the blame landed. Someone looked away. I never found out who.",
+      "Don't make a noise. Don't make a mark."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_framed_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "player_only": true,
+   "chance": 4,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I know being blamed for nothing. ... Go.",
+      "Not me. Not today. I got a past to keep quiet.",
+      "I'll shout. You run. Make it good.",
+      "Go on. I got a bad habit of forgetting what I saw."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_framed_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A friend. Good. I could use one that don't ask about my colours.",
+      "You keep your head down too, huh? Smart.",
+      "We'll talk. Not here. Not where it's loud.",
+      "Don't ask me where I'm from. Ask me what I'd do. That I'll tell you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_framed_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "Swamper",
+    "Swamper Gang Member",
+    "Swamper Bar Thug",
+    "Swamper Territorial Thug",
+    "Swamper shopkeep",
+    "swamper barman"
+   ],
+   "chance": 3,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Done. Don't tell nobody I let it breathe.",
+      "Down. Another body that somebody else will be blamed for.",
+      "I hate the quiet after. It sounds like accusation.",
+      "Another one on the pile. I hope nobody blames me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ds_framed_bar_blame",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Swampers"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 3,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Funny thing, being blamed. After a while you start to wonder if it was you.",
+      "Some clans get monuments. Some get a story in somebody else's mouth.",
+      "There's still a few of us. Not many. We learned to be quiet and that nobody listens to quiet.",
+      "Who benefits, I always say. Then I shut up. It's the swamp. Saying it gets you a club.",
+      "A name on a coat, a name in a ledger. Same thing, depending who's holding the pen."
+     ]
+    }
+   ]
+  }
+ ]
+}

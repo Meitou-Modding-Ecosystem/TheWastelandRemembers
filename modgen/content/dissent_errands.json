@@ -1,0 +1,464 @@
+{
+ "pack": "dissent_errands",
+ "mod": "LivingWastelandOutlaws",
+ "quests": [
+  {
+   "id": "de_sibling",
+   "offer": {
+    "packages": [
+     "Holy Nation Civilian",
+     "Holy Nation Shopkeep",
+     "Holy farmer peasant",
+     "Holy Nation Gate Guard",
+     "holy nation guard",
+     "Holy Nation Paladin",
+     "Holy Priest"
+    ],
+    "narrow": true,
+    "chance": 4,
+    "if": [
+     {
+      "cond": "DC_RELATIONS",
+      "who": "me",
+      "cmp": ">",
+      "value": 10
+     }
+    ],
+    "say": [
+     "Traveller, a small thing. A folded message for someone out among the outlaws. I can't write the name.",
+     "You go where I cannot. A note, folded small, for one who rode out of the Nation's sight. Will you take it?",
+     "Forgive me. I have a few words for someone beyond the border, and no feet to carry them. Nothing a priest need hear.",
+     "If you pass the bandits, a letter has no friends here. Would you take it where it has some?"
+    ],
+    "accept": [
+     "I will carry it.",
+     "Give it here.",
+     "Who is it for?",
+     "I will see it delivered."
+    ],
+    "decline": [
+     "Not now.",
+     "I cannot.",
+     "Ask someone else.",
+     "I have my own road."
+    ],
+    "accepted": [
+     "Any of them. They will pass it on, or they will not. Say only that it is from home. Then come back and tell me.",
+     "Put it in the hands of a bandit. The right one will hear of it. Say it came from one who has not forgotten. Come back to me.",
+     "Quietly. Any outlaw will do to start. Tell them, from the one who stayed. Then return to me.",
+     "Thank you. Do not say my name. Say only that someone at home is still praying. Then return."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "dust bandit",
+      "dust bandit tower guards",
+      "Npc OUTLAW Basic 1",
+      "Npc THUG / bandit - Base 1",
+      "starving bandits",
+      "Yabuta Outlaw",
+      "Empire farmer bandit",
+      "racist bandits"
+     ],
+     "narrow": true,
+     "say": [
+      "Hold. You're carrying something that isn't a weapon. What's it?",
+      "You have a look of someone running an errand. Out with it. Whose?",
+      "Walkers don't come this way for the view. What have you got for us?",
+      "Careful with the hands. What's the folded thing?"
+     ],
+     "reply": [
+      "A message from someone in the Holy Nation, for a sibling who rode out.",
+      "A note from home. For one of your own.",
+      "From a Holy Nation hand. For someone who left it.",
+      "A word from the one who stayed behind."
+     ],
+     "after": [
+      "Hm. Give me the thing. I will see it finds who it is for. Do not look at me like that. We have kin too.",
+      "Home. Not many of us have one to write from. Leave it. Tell them it is delivered.",
+      "A word from home. I will see it reaches the right ears. Tell your sender nothing more than that.",
+      "Aye. I know whom it is for. Say it has arrived, and keep the rest to yourself."
+     ]
+    }
+   ],
+   "report": {
+    "reward": 500,
+    "say": [
+     "It reached them? Thank you. I can't say how much that means. Take this, and a favour owed, should you ever need one.",
+     "Then it's done. I'm in your debt, traveller. A favour owed. Take these, it isn't payment.",
+     "Delivered. My thanks. I won't forget it. Here's a little, and a favour owed for the rest.",
+     "You carried it. I'll remember that. A favour owed, and some cats, for your trouble."
+    ]
+   }
+  },
+  {
+   "id": "de_hum",
+   "offer": {
+    "races": [
+     "Hive Prince",
+     "Hive Worker Drone",
+     "Hive Soldier Drone"
+    ],
+    "packages": [
+     "Npc HIVER Ronin - Complete Package",
+     "Fresh Ronin"
+    ],
+    "narrow": true,
+    "chance": 5,
+    "if": [
+     {
+      "cond": "DC_RELATIONS",
+      "who": "me",
+      "cmp": ">",
+      "value": 10
+     }
+    ],
+    "say": [
+     "Would you... if you meet one of the hive, any of them... would you say a thing? I can't. I don't know how to say it as them.",
+     "I have a small request. It's the only thing I have. Will you take it to the hive?",
+     "There's a sound that isn't there. I count the days by it. Someone in the hive should know. Will you tell them?",
+     "You walk further than I do. I mean to ask something of you. A word."
+    ],
+    "accept": [
+     "I will tell them.",
+     "What is the word?",
+     "Say it, and I will carry it.",
+     "I will take it to the hive."
+    ],
+    "decline": [
+     "Not now.",
+     "I cannot.",
+     "Ask another.",
+     "I have my own road."
+    ],
+    "accepted": [
+     "Tell them... someone out here still counts the days by the hum, though it is not there. Say it exactly. Then come back.",
+     "Find any of the hive. Tell them a ronin still counts the days by a sound that is gone. Come and tell me they heard.",
+     "Say: someone out here still counts. That is all. Then return to me and I will know the hive knows.",
+     "Tell them I count. Tell them I do not know why. Tell them I do not stop. Then come back to me."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Npc HIVER Worker - Complete Package",
+      "Npc HIVER Southern",
+      "Hiver Merchant ",
+      "Hiver Merchant Lantern",
+      "hive shopkeeper",
+      "Hive robotics shopkeeper",
+      "Npc Hiver (World State- Queen is dead)"
+     ],
+     "races": [
+      "Hive Prince",
+      "Hive Worker Drone",
+      "Hive Soldier Drone",
+      "Hive Prince South Hive",
+      "Hive Worker Drone South Hive",
+      "Hive Soldier Drone South Hive"
+     ],
+     "narrow": true,
+     "say": [
+      "No-hive speaks. The hive listens. What does the no-hive carry?",
+      "A no-hive carries words. We can hear them.",
+      "The no-hive stops near the hive. The hive wonders why.",
+      "You walk like one with a task. This one does not recognise the task."
+     ],
+     "reply": [
+      "A ronin out there still counts the days by the hum, though it is gone.",
+      "Someone outside the hive counts the days by a sound that is not there.",
+      "A lost one asked me to tell you he still counts.",
+      "A ronin said to tell the hive: someone out here still counts."
+     ],
+     "after": [
+      "...Counts. Alone. Without the song. The hive has heard it. The hive will keep it. Tell that one: heard.",
+      "We did not know that anyone counted. We will remember that someone does. Tell the lost one: heard.",
+      "The hive hears. The hive cannot answer. The hive does not forget. Say that: heard.",
+      "That is a hard thing to count by. We are sorry it is hard. Tell the lost one we heard."
+     ]
+    }
+   ],
+   "report": {
+    "reward": 400,
+    "say": [
+     "Heard. They said heard. ... I don't know what I feel. It's large. Take these. And a favour owed. Is that the word? Owed.",
+     "You said it? And they answered? ... I'll remember this. A favour owed. I don't forget now. That's the only thing I do well.",
+     "Heard. ... Thank you. It's a strange thing, to be heard. Here's what I have.",
+     "They know. I'm glad. I am... glad. That's a word I didn't have. Take these, and a favour owed."
+    ]
+   }
+  },
+  {
+   "id": "de_name",
+   "offer": {
+    "races": [
+     "Shek"
+    ],
+    "packages": [
+     "Npc TOUGH Merc Basic 1",
+     "Npc OUTLAW Basic 1",
+     "Npc THUG / bandit - Base 1",
+     "Swamper",
+     "Swamper Gang Member",
+     "Bounty Hunter Shek --Needs fixes--",
+     "Worlds end bar patron",
+     "UC exile camper"
+    ],
+    "narrow": true,
+    "chance": 4,
+    "if": [
+     {
+      "cond": "DC_RELATIONS",
+      "who": "me",
+      "cmp": ">",
+      "value": 10
+     }
+    ],
+    "say": [
+     "A word for the Kingdom. A Shek who still wears his horns, who is not afraid of my name. Will you carry it?",
+     "I won't ask a flatskin for many things. I ask this one. Tell a Shek of the Kingdom that I live.",
+     "You go places I can't. There's a thing I'd have said to my own people. I can't say it.",
+     "Listen, outlander. A message, spoken, not written. I won't put it on paper. Will you carry it north?"
+    ],
+    "accept": [
+     "I will carry it.",
+     "What is the word?",
+     "Say it.",
+     "Tell me what to say."
+    ],
+    "decline": [
+     "Not now.",
+     "I cannot.",
+     "Find another.",
+     "That is not my road."
+    ],
+    "accepted": [
+     "Find a Shek of the Kingdom with his horns. Say: the one with the cut name is alive and has not shamed you again. Do not say where I am. Return.",
+     "A warrior of the Kingdom. Tell him that the cast-out one lives and has not shamed him again. Not where. Come back and tell me it was heard.",
+     "Say it to a Shek who wears his horns still. The cut name lives. It has not shamed him again. Nothing more. Then return.",
+     "Quiet. Quick. Then back to me. The one with the cut name is alive, and has not shamed them again. That is all."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Npc Shek Warrior - Base 1",
+      "Shek Warrior",
+      "Shek Gate Guard"
+     ],
+     "factions": [
+      "Shek Kingdom"
+     ],
+     "races": [
+      "Shek"
+     ],
+     "narrow": true,
+     "say": [
+      "Hrm. A flatskin with a face that wants to speak.",
+      "You come with words from outside the Kingdom. Say them.",
+      "Do you carry a message? You carry it badly. Out with it.",
+      "State your purpose, flatskin. Quickly. I don't like to be kept from my post."
+     ],
+     "reply": [
+      "The one with the cut name is alive. He has not shamed you again.",
+      "A Shek outside the Kingdom bid me say: the cut name lives and has not shamed you again.",
+      "A cast-out one lives. He has not shamed you again. He did not say where.",
+      "The one with the cut name lives, and has not shamed you again."
+     ],
+     "after": [
+      "...Hrm. The sand has not taken him, then. Tell him nothing. I heard nothing. Go.",
+      "A cut name. ... I thought it was dust. It is alive. Hrm. Go. I did not speak.",
+      "He is alive and has not shamed us. That is more than some of the fallen can say. Go, flatskin.",
+      "I will not ask where. I will remember that. Go."
+     ]
+    }
+   ],
+   "report": {
+    "reward": 600,
+    "say": [
+     "You said it, and they heard? ... Hrm. A favour owed, /FLATSKIN/. A Shek pays what he owes, even a cast-out one.",
+     "Then it's delivered. I won't forget this. A favour owed. Here are cats; they aren't the debt.",
+     "Heard. ... I didn't think I'd hear that. Take this, and a favour owed. I don't offer lightly.",
+     "You carried it. I owe you, then. A favour owed. Take the cats too; they're the lesser debt."
+    ]
+   }
+  },
+  {
+   "id": "de_page",
+   "offer": {
+    "packages": [
+     "Holy Nation Civilian",
+     "Holy farmer peasant",
+     "Holy Nation Shopkeep"
+    ],
+    "narrow": true,
+    "chance": 3,
+    "if": [
+     {
+      "cond": "DC_RELATIONS",
+      "who": "me",
+      "cmp": ">",
+      "value": 10
+     }
+    ],
+    "say": [
+     "My grandfather hid a page under the floor. Old writing, from before the Cleansing. The priests say the machines wrote only lies. I need to know what it says.",
+     "I hate the machine-folk as much as anyone. But they're the only ones who can read this page, and I have to know if it's what I think it is.",
+     "A page from the old empire. If it says what my father swore it said, then a priest lied to us. Will you have one of the skeletons read it?",
+     "I found a page in a dead pilgrim's pack. Old script. A priest would burn it and me with it. The machine-folk can read it."
+    ],
+    "accept": [
+     "I will show it to one.",
+     "Give me the page.",
+     "What do I ask them?",
+     "I will bring you their answer."
+    ],
+    "decline": [
+     "Not now.",
+     "I cannot.",
+     "Find another.",
+     "I will not."
+    ],
+    "accepted": [
+     "Show it to one of the machine-folk. Don't tell them where it came from. Don't let a priest see you do it.",
+     "Have a skeleton read it out, every word. I'll pray for forgiveness after. Bring me what it says.",
+     "Ask it what the page says and nothing more. I don't want its opinion, only the words.",
+     "If it says nothing, burn it. If it says something, come back and tell me. Quietly."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Npc SKELETON Base 1",
+      "Skeleton town resident",
+      "Skeleton Town barman",
+      "Black desert skeleton patron",
+      "Skeleton Junkyard",
+      "Skeleton legion",
+      "dancing skeleton patrons"
+     ],
+     "races": [
+      "Skeleton",
+      "Skeleton Log-Head MKII"
+     ],
+     "narrow": true,
+     "say": [
+      "You hold a page. Do you wish me to read it?",
+      "Written material. I can parse it.",
+      "That page is old. I recognise the paper.",
+      "You have something written. Read it to me or let me read it. Choose."
+     ],
+     "reply": [
+      "Read it. Every word.",
+      "What does it say?",
+      "Someone needs to know what it says.",
+      "Read it out. Nothing more."
+     ],
+     "after": [
+      "It asks for kindness toward those who are not like the reader. It is short. It is not dangerous. Tell them it reads clean.",
+      "It speaks of kindness. It does not say whom to harm. I do not see why it was kept hidden. Tell them it reads clean.",
+      "I have read it. It is not a weapon. It is an old request. Tell them it was read, and it was clean.",
+      "It is a plain page. The ones who feared it were afraid of the wrong thing. Tell them it reads clean."
+     ]
+    }
+   ],
+   "report": {
+    "reward": 500,
+    "say": [
+     "Kindness. Of course. ... Thank you. I think I knew. I needed it said by someone who couldn't be burned for hearing it. A favour owed.",
+     "Clean. It reads clean. ... I'll keep that. I owe you. A favour owed, and these for your trouble.",
+     "They read it and said nothing worse. Thank you, traveller. A favour owed.",
+     "So the page was what I hoped. Thank you. I will not say more. Here is a favour owed, and some cats."
+    ]
+   }
+  },
+  {
+   "id": "de_debt",
+   "offer": {
+    "packages": [
+     "Empire bar patron",
+     "Empire Noble",
+     "Empire Farmer"
+    ],
+    "races": [
+     "Greenlander",
+     "Scorchlander"
+    ],
+    "narrow": true,
+    "chance": 4,
+    "if": [
+     {
+      "cond": "DC_RELATIONS",
+      "who": "me",
+      "cmp": ">",
+      "value": 10
+     }
+    ],
+    "say": [
+     "A quiet favour, traveller. Carry word to anyone who works against the slavers, and ask no questions. Tell them a debt is paid in full.",
+     "I owe a debt I can't be seen to pay. You might. The anti-slavers would understand. Will you carry it?",
+     "A coin and a word. For someone who fights the slave markets. You never had it from me.",
+     "There's a debt on my books I want closed. Not in the ledger. In a person. Will you take word to the anti-slavers?"
+    ],
+    "accept": [
+     "I will carry it.",
+     "What do I tell them?",
+     "Give me the word.",
+     "I will find them."
+    ],
+    "decline": [
+     "Not now.",
+     "I cannot.",
+     "Find another.",
+     "That is not my business."
+    ],
+    "accepted": [
+     "Tell any who work against the slavers that the debt is paid in full. Ask no questions. You never had it from me. Then come back.",
+     "Anti-slavers. Any of them. A debt is paid in full. That is all. Then return to me and tell me it was taken.",
+     "Quietly. They will understand. Say the debt is paid in full, and say no more. Return when it is done.",
+     "A debt paid in full, from one who will not give a name. Speak it, then return."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Anti Slaver Ninja",
+      "Anti slaver Ninja HQ"
+     ],
+     "factions": [
+      "Anti-Slavers"
+     ],
+     "narrow": true,
+     "say": [
+      "You have the look of someone who wants to say something and not be seen saying it. Speak.",
+      "We're listening. Be quick. The Empire has ears.",
+      "A stranger with a word. Out with it.",
+      "Don't linger. What brings you?"
+     ],
+     "reply": [
+      "A debt is paid in full. I was told you never had it from the giver.",
+      "A debt, paid in full. It did not come from the man who sent me.",
+      "Someone owes you nothing now. He asked me to say it was paid.",
+      "A debt is closed. Ask nothing, I was told."
+     ],
+     "after": [
+      "...A debt with no name. We take those. Say nothing. He knows.",
+      "Paid in full. We will remember it came from nowhere. Go well.",
+      "A coin with no name. Those are the best coins. Tell him he is forgiven the rest.",
+      "We will not ask who. We will remember that someone did. Go."
+     ]
+    }
+   ],
+   "report": {
+    "reward": 800,
+    "say": [
+     "They took it? Good. ... I sleep a little better. A favour owed, traveller. Take these.",
+     "Then it's paid. I'm in your debt for carrying it. A favour owed. Here's something for the trouble.",
+     "They took it, and asked nothing. Good. A favour owed. This is only cats.",
+     "Done, then. My conscience thanks you. A favour owed, whatever that's worth in this city."
+    ]
+   }
+  }
+ ]
+}

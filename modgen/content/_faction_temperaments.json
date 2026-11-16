@@ -1,0 +1,361 @@
+{
+ "note": "Faction temperaments: which notoriety titles each faction admires, despises or fears, its lines, and what its barmen give an admired holder. Hand-edited; gen_title_temperaments.py turns it into content/x_title_temperaments.json (Meitou only). {title} is the title's name, {Title} the same capitalised at the start of a sentence. Design: modgen/TITLES_BY_FACTION.md.",
+ "factions": {
+  "The Holy Nation": {
+   "admires": [
+    "cannibalbane",
+    "hiveburner",
+    "swarmbreaker",
+    "labourer",
+    "wallraiser",
+    "headsman"
+   ],
+   "despises": [
+    "unbeliever",
+    "lordslayer"
+   ],
+   "fears": [
+    "narko"
+   ],
+   "gift": "Bread",
+   "admire": [
+    "Okran sees honest work. {Title}, they call you.",
+    "{Title}. The Nation needs more of your kind.",
+    "Okran's light on you, {title}."
+   ],
+   "despise": [
+    "{Title}. Okran has a place for you, and it burns.",
+    "We don't deal with your kind here.",
+    "Walk on, {title}. Nobody here owes you anything."
+   ],
+   "fear": [
+    "That's {title}. Don't look at them.",
+    "Stand aside. That one killed a Lord.",
+    "Pray, and keep walking."
+   ],
+   "gift_line": [
+    "Bread, {title}. Okran provides.",
+    "Eat. The faithful look after their own."
+   ]
+  },
+  "Shek Kingdom": {
+   "admires": [
+    "laststand",
+    "veteran",
+    "oldhand",
+    "brawler",
+    "hardtokill",
+    "unburied",
+    "breaker"
+   ],
+   "despises": [
+    "quiethand",
+    "headsman"
+   ],
+   "fears": [],
+   "gift": "Dried Meat",
+   "admire": [
+    "{Title}. That name was earned standing up.",
+    "A warrior's name, {title}. Good.",
+    "They say you don't stay down. Respect."
+   ],
+   "despise": [
+    "{Title}. There's no honour in that name.",
+    "We fight the standing. Remember it.",
+    "Keep your kind of work away from us."
+   ],
+   "fear": [],
+   "gift_line": [
+    "Meat, {title}. A fighter eats.",
+    "Take it. Fight well."
+   ]
+  },
+  "United Cities": {
+   "admires": [
+    "bountytakers",
+    "wantedenders",
+    "kingslayer",
+    "reaverbane"
+   ],
+   "despises": [
+    "samuraibane",
+    "labourer",
+    "packbeast"
+   ],
+   "fears": [
+    "longnight",
+    "ashtide",
+    "gravefillers",
+    "headsman"
+   ],
+   "gift": "Sake",
+   "admire": [
+    "{Title}. Useful people are always welcome.",
+    "The lords pay for names like yours, {title}.",
+    "Ah. {Title}. Good for business."
+   ],
+   "despise": [
+    "{Title}? Work is for slaves, friend.",
+    "We have nothing for your kind.",
+    "Move along, {title}."
+   ],
+   "fear": [
+    "That's {title}. Give them room.",
+    "Don't stare. Not at that one.",
+    "The guards know your name, {title}. Behave."
+   ],
+   "gift_line": [
+    "Sake, {title}. With the house's compliments.",
+    "On the house. Remember who poured it."
+   ]
+  },
+  "Traders Guild": {
+   "admires": [
+    "bountytakers",
+    "reaverbane",
+    "crabcracker"
+   ],
+   "despises": [
+    "guildbreaker",
+    "slaversend"
+   ],
+   "fears": [
+    "longnight",
+    "headsman"
+   ],
+   "gift": "Rum",
+   "admire": [
+    "{Title}. The roads are safer with you on them.",
+    "Good for trade, people like you.",
+    "The Guild remembers its friends, {title}."
+   ],
+   "despise": [
+    "{Title}. You're bad for business.",
+    "The Guild has no work for you.",
+    "Take your trade elsewhere."
+   ],
+   "fear": [
+    "{Title}. Keep your hands where I can see them.",
+    "Nobody wants trouble. Least of all with you."
+   ],
+   "gift_line": [
+    "Rum, {title}. The Guild thanks you.",
+    "On the house. Keep the roads clear."
+   ]
+  },
+  "Tech Hunters": {
+   "admires": [
+    "scavenger",
+    "maker",
+    "smith",
+    "armourer",
+    "walker"
+   ],
+   "despises": [],
+   "fears": [],
+   "gift": "Ration Pack",
+   "admire": [
+    "{Title}. You've seen more of the old world than most.",
+    "Good hands, {title}. Rare.",
+    "A name worth having out here."
+   ],
+   "despise": [],
+   "fear": [],
+   "gift_line": [
+    "Rations, {title}. For the road.",
+    "Take these. The ruins don't feed anyone."
+   ]
+  },
+  "Anti-Slavers": {
+   "admires": [
+    "slaversend",
+    "hunterhunter"
+   ],
+   "despises": [],
+   "fears": [],
+   "gift": "Gohan",
+   "admire": [
+    "{Title}. Every chain you break counts.",
+    "Good work out there, {title}.",
+    "They whisper your name in the cages."
+   ],
+   "despise": [],
+   "fear": [],
+   "gift_line": [
+    "Eat, {title}. You've earned it.",
+    "On us. Keep cutting chains."
+   ]
+  },
+  "Flotsam Ninjas": {
+   "admires": [
+    "unbeliever",
+    "narko",
+    "lordslayer"
+   ],
+   "despises": [],
+   "fears": [],
+   "gift": "Rice Bowl",
+   "admire": [
+    "{Title}. The Nation bleeds because of you.",
+    "Good. Every Paladin you drop is one less.",
+    "Welcome, {title}. Truly."
+   ],
+   "despise": [],
+   "fear": [],
+   "gift_line": [
+    "Rice, {title}. From the forest.",
+    "Eat. You fight their war for us."
+   ]
+  },
+  "Mercenary Guild": {
+   "admires": [
+    "veteran",
+    "oldhand",
+    "bountytakers"
+   ],
+   "despises": [],
+   "fears": [],
+   "gift": "Grog",
+   "admire": [
+    "{Title}. You've been around.",
+    "Professionals know professionals.",
+    "Good name to have, {title}."
+   ],
+   "despise": [],
+   "fear": [],
+   "gift_line": [
+    "Grog, {title}. One professional to another.",
+    "On the house."
+   ]
+  },
+  "Nomads": {
+   "admires": [
+    "walker",
+    "hardtokill",
+    "packbeast",
+    "rider"
+   ],
+   "despises": [],
+   "fears": [
+    "longnight",
+    "ashtide"
+   ],
+   "gift": "Dried Fish",
+   "admire": [
+    "{Title}. You walk like one of us.",
+    "The roads know your feet, {title}. So do we.",
+    "Sit, {title}. A walker always has a place at our fire."
+   ],
+   "despise": [],
+   "fear": [
+    "Keep moving, {title}. Please.",
+    "That one leaves bodies on every road. Let them pass."
+   ],
+   "gift_line": [
+    "Fish, {title}. For the road.",
+    "Take it. Walkers feed walkers."
+   ]
+  },
+  "Drifters": {
+   "admires": [
+    "walker",
+    "hardtokill"
+   ],
+   "despises": [],
+   "fears": [
+    "longnight"
+   ],
+   "gift": "Dried Fish",
+   "admire": [
+    "{Title}. You've walked further than most.",
+    "The road knows you, {title}."
+   ],
+   "despise": [],
+   "fear": [
+    "Keep moving, {title}. Please."
+   ],
+   "gift_line": [
+    "Fish, {title}. For the road."
+   ]
+  },
+  "Swampers": {
+   "admires": [
+    "quiethand",
+    "boatman"
+   ],
+   "despises": [],
+   "fears": [],
+   "gift": "Grog",
+   "admire": [
+    "{Title}. Quiet work. We like that.",
+    "Our kind of business, {title}."
+   ],
+   "despise": [],
+   "fear": [],
+   "gift_line": [
+    "Grog. Don't mention it."
+   ]
+  },
+  "Gate Folk": {
+   "mod": "LivingWastelandCannibals",
+   "admires": [
+    "fieldmedic",
+    "bonesetter",
+    "lastmercy"
+   ],
+   "despises": [
+    "headsman"
+   ],
+   "fears": [
+    "cannibalbane"
+   ],
+   "admire": [
+    "{Title}. Hush says your hands mend. Good hands.",
+    "Mender. {Title}. Little ones remember who mends.",
+    "{Title}. Come in. Mending hands welcome at gate."
+   ],
+   "despise": [
+    "{Title}. You finish dhe fallen. Not here. Never here.",
+    "Lie down and live, Hush says. You not let dhem, {title}.",
+    "Walk on, {title}. Gate closed to you."
+   ],
+   "fear": [
+    "{Title}. Killer of eaters. We were eaters once. Do not look at us.",
+    "Little ones, inside. {Title} walks."
+   ],
+   "packages": [
+    "Gate Folk"
+   ]
+  },
+  "Cannibals": {
+   "mod": "LivingWastelandCannibals",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "admires": [
+    "limbtaker",
+    "carver",
+    "bonepicker"
+   ],
+   "despises": [
+    "cannibalbane",
+    "wizardsend"
+   ],
+   "fears": [
+    "longnight",
+    "ashtide"
+   ],
+   "admire": [
+    "{Title}! Good cutter! /CANNIBALHA/!",
+    "Cutter-meat. {Title}. We like. Still eat you.",
+    "{Title}. Many pieces. Good kitchen hands."
+   ],
+   "despise": [
+    "{Title}. No eat. No talk. Only kill.",
+    "Dhat one, {title}. Pot wait long time for dhat one."
+   ],
+   "fear": [
+    "{Title}... Even Hunger run from dhat one.",
+    "Hide meat. Hide self. {Title} come."
+   ]
+  }
+ }
+}

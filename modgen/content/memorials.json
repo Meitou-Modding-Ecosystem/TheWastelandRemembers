@@ -1,0 +1,440 @@
+{
+ "pack": "memorials",
+ "mod": "LivingWasteland",
+ "note": "Meitou only (helper conditions, Notoriety.cs / Deeds.cs): the squad mourns its dead by name over the body (/YOURNAME/ is the fallen, the target of the helper-fired event 4), remembers where it lost them for ten days, mutters at the faction that killed them, and goes quiet after a win while a loss is fresh. Town list as the war talk's. Wounds remembered: back in a town where they lost an arm, a leg or got knocked down, that squadmate says so (code SCAR).",
+ "word_swaps": [
+  {
+   "name": "LWLOSS",
+   "lines": [
+    {
+     "say": "at Admag",
+     "losstown": "Admag"
+    },
+    {
+     "say": "at Ark",
+     "losstown": "Ark"
+    },
+    {
+     "say": "at Bad Teeth",
+     "losstown": "Bad Teeth"
+    },
+    {
+     "say": "at Bark",
+     "losstown": "Bark"
+    },
+    {
+     "say": "at Berserker Village",
+     "losstown": "Berserker Village"
+    },
+    {
+     "say": "at Black Desert City",
+     "losstown": "Black Desert City"
+    },
+    {
+     "say": "at Black Scratch",
+     "losstown": "Black Scratch"
+    },
+    {
+     "say": "at Blister Hill",
+     "losstown": "Blister Hill"
+    },
+    {
+     "say": "at Brink",
+     "losstown": "Brink"
+    },
+    {
+     "say": "at Cannibal Capital",
+     "losstown": "Cannibal Capital"
+    },
+    {
+     "say": "at Cannibal Village 2",
+     "losstown": "Cannibal Village 2"
+    },
+    {
+     "say": "at Cat-Lon's Exile",
+     "losstown": "Cat-Lon's Exile"
+    },
+    {
+     "say": "at Catun",
+     "losstown": "Catun"
+    },
+    {
+     "say": "at Clownsteady",
+     "losstown": "Clownsteady"
+    },
+    {
+     "say": "at Crab Town",
+     "losstown": "Crab Town"
+    },
+    {
+     "say": "at Crab Village",
+     "losstown": "Crab Village"
+    },
+    {
+     "say": "at Deadcat",
+     "losstown": "Deadcat"
+    },
+    {
+     "say": "at Deadhive Overrun",
+     "losstown": "Deadhive Overrun"
+    },
+    {
+     "say": "at Drifter's Last",
+     "losstown": "Drifter's Last"
+    },
+    {
+     "say": "at Empire Village",
+     "losstown": "Empire Village"
+    },
+    {
+     "say": "at Fish Isle",
+     "losstown": "Fish Isle"
+    },
+    {
+     "say": "at Flats Lagoon",
+     "losstown": "Flats Lagoon"
+    },
+    {
+     "say": "at Fort Mirage",
+     "losstown": "Fort Mirage"
+    },
+    {
+     "say": "at Fort Simion",
+     "losstown": "Fort Simion"
+    },
+    {
+     "say": "at Fort Yabuta",
+     "losstown": "Fort Yabuta"
+    },
+    {
+     "say": "at Ghost Village",
+     "losstown": "Ghost Village"
+    },
+    {
+     "say": "at Grayflayer Village",
+     "losstown": "Grayflayer Village"
+    },
+    {
+     "say": "at Heft",
+     "losstown": "Heft"
+    },
+    {
+     "say": "at Heng",
+     "losstown": "Heng"
+    },
+    {
+     "say": "at Holy Military Base",
+     "losstown": "Holy Military Base"
+    },
+    {
+     "say": "at Iron HQ",
+     "losstown": "Iron HQ"
+    },
+    {
+     "say": "at Last Stand",
+     "losstown": "Last Stand"
+    },
+    {
+     "say": "at Manhunter Base",
+     "losstown": "Manhunter Base"
+    },
+    {
+     "say": "at Mercenary base",
+     "losstown": "Mercenary base"
+    },
+    {
+     "say": "at Mongrel",
+     "losstown": "Mongrel"
+    },
+    {
+     "say": "at Mourn",
+     "losstown": "Mourn"
+    },
+    {
+     "say": "at New Kralia",
+     "losstown": "New Kralia"
+    },
+    {
+     "say": "at Okran's Shield",
+     "losstown": "Okran's Shield"
+    },
+    {
+     "say": "at Old Frontlines",
+     "losstown": "Old Frontlines"
+    },
+    {
+     "say": "at Port North",
+     "losstown": "Port North"
+    },
+    {
+     "say": "at Port South",
+     "losstown": "Port South"
+    },
+    {
+     "say": "at Reaver Camp",
+     "losstown": "Reaver Camp"
+    },
+    {
+     "say": "at Rebirth",
+     "losstown": "Rebirth"
+    },
+    {
+     "say": "at Secret Drug Farm",
+     "losstown": "Secret Drug Farm"
+    },
+    {
+     "say": "at Shark",
+     "losstown": "Shark"
+    },
+    {
+     "say": "at Sho-Battai",
+     "losstown": "Sho-Battai"
+    },
+    {
+     "say": "at Ska",
+     "losstown": "Ska"
+    },
+    {
+     "say": "at Skinhouse",
+     "losstown": "Skinhouse"
+    },
+    {
+     "say": "at Skinhouse HQ",
+     "losstown": "Skinhouse HQ"
+    },
+    {
+     "say": "at Slave Farm S",
+     "losstown": "Slave Farm S"
+    },
+    {
+     "say": "at Slave Markets",
+     "losstown": "Slave Markets"
+    },
+    {
+     "say": "at Southern Hive",
+     "losstown": "Southern Hive"
+    },
+    {
+     "say": "at Spring",
+     "losstown": "Spring"
+    },
+    {
+     "say": "at Squin",
+     "losstown": "Squin"
+    },
+    {
+     "say": "at Stack",
+     "losstown": "Stack"
+    },
+    {
+     "say": "at Stoat",
+     "losstown": "Stoat"
+    },
+    {
+     "say": "at The Free City",
+     "losstown": "The Free City"
+    },
+    {
+     "say": "at The Great Fortress",
+     "losstown": "The Great Fortress"
+    },
+    {
+     "say": "at The Hub",
+     "losstown": "The Hub"
+    },
+    {
+     "say": "at Tiny Settlement",
+     "losstown": "Tiny Settlement"
+    },
+    {
+     "say": "at Trader's Edge",
+     "losstown": "Trader's Edge"
+    },
+    {
+     "say": "at Waystation",
+     "losstown": "Waystation"
+    },
+    {
+     "say": "at Waystation Four",
+     "losstown": "Waystation Four"
+    },
+    {
+     "say": "at World's End",
+     "losstown": "World's End"
+    },
+    {
+     "say": "out there"
+    }
+   ]
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "mm_mourn",
+   "event": "EV_I_SEE_RAGDOLL",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "score": 20,
+   "lw_if": [
+    {
+     "fallen_target": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Rest easy, /YOURNAME/.",
+      "/YOURNAME/. Not like this.",
+      "Somebody close /YOURNAME/'s eyes. I can't.",
+      "We'll remember you, /YOURNAME/. Somebody has to.",
+      "/YOURNAME/... Get up. Get up, damn you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mm_remember_town",
+   "event": "EV_ENTER_TOWN",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 25,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "loss_days": "<",
+     "value": 10
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Nobody's joked at the fire since we lost one /LWLOSS/.",
+      "We left one of ours /LWLOSS/.",
+      "Another town. Wish they'd all made it this far.",
+      "First drink's for the one we lost."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mm_after_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 25,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "loss_days": "<",
+     "value": 20
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That one was for the ones we lost.",
+      "Feels no better. It never does.",
+      "Still one short. Always will be."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mm_feud_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 15,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "feud_target": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That lot killed one of ours.",
+      "Watch them. They owe us blood.",
+      "I know those colours. I won't forget them.",
+      "Easy. Not here. Not yet."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mm_scar_arm",
+   "event": "EV_ENTER_TOWN",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lw_if": [
+    {
+     "scar_here": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "This is where I left my arm.",
+      "I walked in here with two arms once.",
+      "Same town. Same smell. My arm's still here somewhere."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mm_scar_leg",
+   "event": "EV_ENTER_TOWN",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lw_if": [
+    {
+     "scar_here": 2
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Last time I came in here, I left on one leg.",
+      "This place cost me a leg. I'll limp past, thanks.",
+      "Watch the gate. Last time it wasn't the gate that got me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mm_scar_down",
+   "event": "EV_ENTER_TOWN",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "lw_if": [
+    {
+     "scar_here": 3
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Last time we were here I woke up in the dirt.",
+      "I remember this place. From the ground, mostly.",
+      "Keep your eyes open. This town owes me a beating."
+     ]
+    }
+   ]
+  }
+ ]
+}

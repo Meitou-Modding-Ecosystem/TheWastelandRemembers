@@ -1,0 +1,11 @@
+{
+ "pack": "sample_lua",
+ "mod": "LivingWasteland",
+ "lua_scripts": [
+  {"name": "LW demo: say a fact", "file": "lw_demo_fact.lua", "description": "Demo: the speaker states how much money the listener carries."}
+ ],
+ "dialogues": [
+  {"id": "sample_lua_fact", "event": "EV_PLAYER_TALK_TO_ME", "factions": ["Traders Guild"], "chance": 100,
+   "lines": [{"say": ["Let me see your purse."], "lua": ["LW demo: say a fact"]}]}
+ ]
+}

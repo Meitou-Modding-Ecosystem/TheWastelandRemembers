@@ -1,0 +1,522 @@
+{
+ "pack": "x_starts",
+ "clones": [
+  {
+   "kind": "start",
+   "from": "wanderer",
+   "name": "The Courier",
+   "str": {
+    "difficulty": "Default",
+    "style": "RPG",
+    "description": "You carried messages for people who could not trust anyone else to carry them. Mostly small things: a note, a coin, a keepsake. You never asked what was inside.\n\nThe pay is thin and the roads are not. But somebody always needs something taken somewhere."
+   },
+   "int": {
+    "money": 300
+   },
+   "ref": {
+    "town": [
+     [
+      "Heng"
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "start",
+   "from": "holy nation citizen",
+   "name": "The Quiet Resister",
+   "str": {
+    "difficulty": "Hard",
+    "style": "RPG",
+    "description": "You wear the faith the way everybody does. Under it you kept your own name, and a few small things of your own: a warning passed on, a loaf left on a step, a door left unlatched.\n\nThe priests have started counting heads. You decide to leave before yours is counted."
+   },
+   "int": {
+    "money": 50
+   }
+  },
+  {
+   "kind": "start",
+   "from": "wanderer",
+   "name": "The Contract Taker",
+   "str": {
+    "difficulty": "Default",
+    "style": "RPG",
+    "description": "Names on paper, and a price against each. The guilds pay for the dead ones and do not ask how.\n\nYou have a blade, a little money, and a list. The first name is somewhere out in the wastes."
+   },
+   "int": {
+    "money": 1500
+   },
+   "ref": {
+    "faction relations": [
+     [
+      "Mercenary Guild",
+      25,
+      100
+     ],
+     [
+      "Traders Guild",
+      15,
+      100
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "start",
+   "from": "wanderer",
+   "name": "The Defector",
+   "str": {
+    "difficulty": "Hard",
+    "style": "RPG",
+    "description": "You rode with the Dust Bandits until the day you did not. Nobody lets a man leave a gang, and you did not ask.\n\nThey will notice you are gone. You have a head start, and nothing else."
+   },
+   "int": {
+    "money": 0
+   },
+   "ref": {
+    "faction relations": [
+     [
+      "Dust Bandits",
+      -100,
+      100
+     ]
+    ],
+    "town": [
+     [
+      "Bast"
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "stats",
+   "from": "new character stats",
+   "name": "Play Test Fighter stats",
+   "float": {
+    "armour smith": 95.0,
+    "assassin": 95.0,
+    "athletics": 95.0,
+    "attack": 95.0,
+    "blunt": 95.0,
+    "bow": 95.0,
+    "bow smith": 95.0,
+    "cooking": 95.0,
+    "defence": 95.0,
+    "dexterity": 95.0,
+    "dodge": 95.0,
+    "engineer": 95.0,
+    "farming": 95.0,
+    "ff": 95.0,
+    "hackers": 95.0,
+    "heavy weapons": 95.0,
+    "katana": 95.0,
+    "labouring": 95.0,
+    "lockpicking": 95.0,
+    "medic": 95.0,
+    "perception": 95.0,
+    "poles": 95.0,
+    "robotics": 95.0,
+    "sabres": 95.0,
+    "science": 95.0,
+    "stealth": 95.0,
+    "strength": 95.0,
+    "swimming": 95.0,
+    "thievery": 95.0,
+    "toughness2": 95.0,
+    "turrets": 95.0,
+    "unarmed": 95.0,
+    "weapon smith": 95.0
+   },
+   "test_only": true
+  },
+  {
+   "kind": "stats",
+   "from": "new character stats",
+   "name": "Play Test Medic stats",
+   "float": {
+    "armour smith": 95.0,
+    "assassin": 95.0,
+    "athletics": 95.0,
+    "attack": 95.0,
+    "blunt": 95.0,
+    "bow": 95.0,
+    "bow smith": 95.0,
+    "cooking": 95.0,
+    "defence": 95.0,
+    "dexterity": 95.0,
+    "dodge": 95.0,
+    "engineer": 95.0,
+    "farming": 95.0,
+    "ff": 95.0,
+    "hackers": 95.0,
+    "heavy weapons": 95.0,
+    "katana": 95.0,
+    "labouring": 95.0,
+    "lockpicking": 95.0,
+    "medic": 95.0,
+    "perception": 95.0,
+    "poles": 95.0,
+    "robotics": 95.0,
+    "sabres": 95.0,
+    "science": 95.0,
+    "stealth": 95.0,
+    "strength": 95.0,
+    "swimming": 95.0,
+    "thievery": 95.0,
+    "toughness2": 95.0,
+    "turrets": 95.0,
+    "unarmed": 95.0,
+    "weapon smith": 95.0
+   },
+   "test_only": true
+  },
+  {
+   "kind": "stats",
+   "from": "new character stats",
+   "name": "Play Test Scout stats",
+   "float": {
+    "armour smith": 95.0,
+    "assassin": 95.0,
+    "athletics": 95.0,
+    "attack": 95.0,
+    "blunt": 95.0,
+    "bow": 95.0,
+    "bow smith": 95.0,
+    "cooking": 95.0,
+    "defence": 95.0,
+    "dexterity": 95.0,
+    "dodge": 95.0,
+    "engineer": 95.0,
+    "farming": 95.0,
+    "ff": 95.0,
+    "hackers": 95.0,
+    "heavy weapons": 95.0,
+    "katana": 95.0,
+    "labouring": 95.0,
+    "lockpicking": 95.0,
+    "medic": 95.0,
+    "perception": 95.0,
+    "poles": 95.0,
+    "robotics": 95.0,
+    "sabres": 95.0,
+    "science": 95.0,
+    "stealth": 95.0,
+    "strength": 95.0,
+    "swimming": 95.0,
+    "thievery": 95.0,
+    "toughness2": 95.0,
+    "turrets": 95.0,
+    "unarmed": 95.0,
+    "weapon smith": 95.0
+   },
+   "test_only": true
+  },
+  {
+   "kind": "stats",
+   "from": "new character stats",
+   "name": "Play Test Crafter stats",
+   "float": {
+    "armour smith": 95.0,
+    "assassin": 95.0,
+    "athletics": 95.0,
+    "attack": 95.0,
+    "blunt": 95.0,
+    "bow": 95.0,
+    "bow smith": 95.0,
+    "cooking": 95.0,
+    "defence": 95.0,
+    "dexterity": 95.0,
+    "dodge": 95.0,
+    "engineer": 95.0,
+    "farming": 95.0,
+    "ff": 95.0,
+    "hackers": 95.0,
+    "heavy weapons": 95.0,
+    "katana": 95.0,
+    "labouring": 95.0,
+    "lockpicking": 95.0,
+    "medic": 95.0,
+    "perception": 95.0,
+    "poles": 95.0,
+    "robotics": 95.0,
+    "sabres": 95.0,
+    "science": 95.0,
+    "stealth": 95.0,
+    "strength": 95.0,
+    "swimming": 95.0,
+    "thievery": 95.0,
+    "toughness2": 95.0,
+    "turrets": 95.0,
+    "unarmed": 95.0,
+    "weapon smith": 95.0
+   },
+   "test_only": true
+  },
+  {
+   "kind": "character",
+   "from": "Wanderer",
+   "name": "Play Test Fighter",
+   "states": false,
+   "ref": {
+    "stats": [
+     [
+      "Play Test Fighter stats"
+     ]
+    ],
+    "weapons": [
+     [
+      "Nodachi",
+      1,
+      0,
+      100
+     ]
+    ],
+    "inventory": [
+     [
+      "Standard first aid kit",
+      4,
+      100,
+      0
+     ],
+     [
+      "Splint Kit",
+      2,
+      100,
+      0
+     ],
+     [
+      "Raw Meat",
+      6,
+      100,
+      0
+     ],
+     [
+      "Bread",
+      6,
+      100,
+      0
+     ],
+     [
+      "Dried Meat",
+      4,
+      100,
+      0
+     ],
+     [
+      "Dustwich",
+      4,
+      100,
+      0
+     ]
+    ]
+   },
+   "test_only": true
+  },
+  {
+   "kind": "character",
+   "from": "Wanderer",
+   "name": "Play Test Medic",
+   "states": false,
+   "ref": {
+    "stats": [
+     [
+      "Play Test Medic stats"
+     ]
+    ],
+    "weapons": [
+     [
+      "Katana",
+      1,
+      0,
+      100
+     ]
+    ]
+   },
+   "test_only": true
+  },
+  {
+   "kind": "character",
+   "from": "Wanderer",
+   "name": "Play Test Scout",
+   "states": false,
+   "ref": {
+    "stats": [
+     [
+      "Play Test Scout stats"
+     ]
+    ],
+    "weapons": [
+     [
+      "Katana",
+      1,
+      0,
+      100
+     ]
+    ]
+   },
+   "test_only": true
+  },
+  {
+   "kind": "character",
+   "from": "Wanderer",
+   "name": "Play Test Crafter",
+   "states": false,
+   "ref": {
+    "stats": [
+     [
+      "Play Test Crafter stats"
+     ]
+    ],
+    "weapons": [
+     [
+      "Desert Sabre",
+      1,
+      0,
+      100
+     ]
+    ]
+   },
+   "test_only": true
+  },
+  {
+   "kind": "squad",
+   "from": "startoff- Wanderer squad",
+   "name": "start- play test squad",
+   "ref": {
+    "leader": [
+     [
+      "Play Test Fighter",
+      1
+     ]
+    ],
+    "squad": [
+     [
+      "Play Test Medic",
+      1
+     ],
+     [
+      "Play Test Scout",
+      1
+     ],
+     [
+      "Play Test Crafter",
+      1
+     ]
+    ]
+   },
+   "test_only": true
+  },
+  {
+   "kind": "start",
+   "from": "wanderer",
+   "name": "Play Test Squad",
+   "str": {
+    "difficulty": "Easy",
+    "style": "RPG",
+    "description": "A four-person squad built for a short test save: a fighter, a medic, a scout and a crafter, every one of them at 95 in every stat, with money, food (including raw meat for the Gate), bandages and a few spare weapons.\n\nThis one starts at the Hub: bars, shops and recruits. Other Play Test starts begin near the Ashlands, the Gate and Dust Bandit country."
+   },
+   "int": {
+    "money": 15000
+   },
+   "ref": {
+    "squad": [
+     [
+      "start- play test squad"
+     ]
+    ]
+   },
+   "ref_kinds": {
+    "squad": "squad"
+   },
+   "test_only": true
+  },
+  {
+   "kind": "start",
+   "from": "wanderer",
+   "name": "Play Test Squad - Ashlands",
+   "str": {
+    "difficulty": "Easy",
+    "style": "RPG",
+    "description": "The same four-person test squad (fighter, medic, scout, crafter, 95 in every stat, 15,000 cats each, food, raw meat, bandages), starting inside the second Ashlands dome, where Rhinobot waits."
+   },
+   "int": {
+    "money": 15000
+   },
+   "ref": {
+    "squad": [
+     [
+      "start- play test squad"
+     ]
+    ],
+    "town": [
+     [
+      "Ashland Dome II"
+     ]
+    ]
+   },
+   "ref_kinds": {
+    "squad": "squad"
+   },
+   "test_only": true
+  },
+  {
+   "kind": "start",
+   "from": "wanderer",
+   "name": "Play Test Squad - Gate",
+   "str": {
+    "difficulty": "Easy",
+    "style": "RPG",
+    "description": "The same four-person test squad (fighter, medic, scout, crafter, 95 in every stat, 15,000 cats each, food, raw meat, bandages), starting at Flotsam Village, the nearest town I could pair with the Gate's coast (check the map for The Gate)."
+   },
+   "int": {
+    "money": 15000
+   },
+   "ref": {
+    "squad": [
+     [
+      "start- play test squad"
+     ]
+    ],
+    "town": [
+     [
+      "Flotsam Village"
+     ]
+    ]
+   },
+   "ref_kinds": {
+    "squad": "squad"
+   },
+   "test_only": true
+  },
+  {
+   "kind": "start",
+   "from": "wanderer",
+   "name": "Play Test Squad - Dust Bandits",
+   "str": {
+    "difficulty": "Easy",
+    "style": "RPG",
+    "description": "The same four-person test squad (fighter, medic, scout, crafter, 95 in every stat, 15,000 cats each, food, raw meat, bandages), starting at Drifter's Last, a desert town where Dust Bandits roam: grudges, tolls and starver menus."
+   },
+   "int": {
+    "money": 15000
+   },
+   "ref": {
+    "squad": [
+     [
+      "start- play test squad"
+     ]
+    ],
+    "town": [
+     [
+      "Drifter's Last"
+     ]
+    ]
+   },
+   "ref_kinds": {
+    "squad": "squad"
+   },
+   "test_only": true
+  }
+ ],
+ "note": "The Play Test Squad starts and their characters, stats and squad are test_only: left out of a release build (build_mod.py --release)."
+}

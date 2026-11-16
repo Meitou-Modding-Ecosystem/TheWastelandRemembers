@@ -1,0 +1,3916 @@
+{
+ "pack": "x_native",
+ "mod": "LivingWasteland",
+ "dialogues": [
+  {
+   "id": "nv_jaded_united_cities",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Another face. They all want the same three things.",
+      "You're the fourth stranger today. I have stopped counting the rest.",
+      "New faces every hour. I only remember the ones who cause trouble."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_NUM_DIALOG_EVENT_REPEATS",
+     "who": "me",
+     "cmp": ">",
+     "value": 40
+    },
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_jaded_the_holy_nation",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Another traveller. Okran sends many. He takes most back.",
+      "I have blessed a hundred strangers at this gate.",
+      "More outlanders. The road never runs dry of them."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_NUM_DIALOG_EVENT_REPEATS",
+     "who": "me",
+     "cmp": ">",
+     "value": 40
+    },
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_jaded_shek_kingdom",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Another one. Fight or pass, I have no third thing to say.",
+      "Strangers come and go. The stone stays.",
+      "I've seen enough new faces to fill a war band."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_NUM_DIALOG_EVENT_REPEATS",
+     "who": "me",
+     "cmp": ">",
+     "value": 40
+    },
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_jaded_traders_guild",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Another customer or another thief. The ledger doesn't care which.",
+      "You look like the last twenty.",
+      "Strangers are a currency here. Yours is well worn."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_NUM_DIALOG_EVENT_REPEATS",
+     "who": "me",
+     "cmp": ">",
+     "value": 40
+    },
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_base_small_united_cities",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A few shacks and a fire. Everyone starts somewhere.",
+      "So this is the place. Walls wouldn't hurt it.",
+      "Small. Honest. The kind of camp the dust eats in a season, or doesn't."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "id": "nv_base_town_united_cities",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "This is a town now, whether you meant it or not.",
+      "Streets. You have streets. When did that happen?",
+      "I've seen outposts with fewer roofs call themselves cities."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "id": "nv_base_city_united_cities",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "They talk about this place in the bars. I see why.",
+      "A city in the wastes, built by people who weren't supposed to build one.",
+      "If the Cities had walls like these they would stop paying for samurai."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "id": "nv_base_tech_united_cities",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You have machines in here the Cities would pay a fortune to look at.",
+      "Who taught you to build that? Nobody taught the rest of us.",
+      "Tech Hunters would camp outside your gate if they knew what you keep in here."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYER_TECH_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "id": "nv_base_small_holy_nation",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A few shacks and a fire. Everyone starts somewhere.",
+      "So this is the place. Walls would not hurt it.",
+      "Small. Honest. The kind of camp the dust eats in a season, or doesn't."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "id": "nv_base_town_holy_nation",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "This is a town now, whether you meant it or not.",
+      "Streets. You have streets. When did that happen?",
+      "I have seen outposts with fewer roofs call themselves cities."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "id": "nv_base_city_holy_nation",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "They talk about this place in the bars. I see why.",
+      "A city in the wastes, built by people who were not supposed to build one.",
+      "If the Cities had walls like these they would stop paying for samurai."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "id": "nv_base_tech_holy_nation",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You have machines in here the Cities would pay a fortune to look at.",
+      "Who taught you to build that? Nobody taught the rest of us.",
+      "Tech Hunters would camp outside your gate if they knew what you keep in here."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYER_TECH_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "id": "nv_base_small_shek_kingdom",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A few shacks and a fire. Everyone starts somewhere.",
+      "So this is the place. Walls wouldn't hurt it.",
+      "Small. Honest. The kind of camp the dust eats in a season, or doesn't."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "id": "nv_base_town_shek_kingdom",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "This is a town now, whether you meant it or not.",
+      "Streets. You have streets. When did that happen?",
+      "I have seen outposts with fewer roofs call themselves cities."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "id": "nv_base_city_shek_kingdom",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "They talk about this place in the bars. I see why.",
+      "A city in the wastes, built by people who were not supposed to build one.",
+      "If the Cities had walls like these they would stop paying for samurai."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "id": "nv_base_tech_shek_kingdom",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You have machines in here the Cities would pay a fortune to look at.",
+      "Who taught you to build that? Nobody taught the rest of us.",
+      "Tech Hunters would camp outside your gate if they knew what you keep in here."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYER_TECH_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "id": "nv_base_small_traders_guild",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A few shacks and a fire. Everyone starts somewhere.",
+      "So this is the place. Walls wouldn't hurt it.",
+      "Small. Honest. The kind of camp the dust eats in a season, or doesn't."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "id": "nv_base_town_traders_guild",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "This is a town now, whether you meant it or not.",
+      "Streets. You have streets. When did that happen?",
+      "I've seen outposts with fewer roofs call themselves cities."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "id": "nv_base_city_traders_guild",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "They talk about this place in the bars. I see why.",
+      "A city in the wastes, built by people who weren't supposed to build one.",
+      "If the Cities had walls like these they would stop paying for samurai."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "id": "nv_base_tech_traders_guild",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You have machines in here the Cities would pay a fortune to look at.",
+      "Who taught you to build that? Nobody taught the rest of us.",
+      "Tech Hunters would camp outside your gate if they knew what you keep in here."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYER_TECH_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "id": "nv_base_small_tech_hunters",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A few shacks and a fire. Everyone starts somewhere.",
+      "So this is the place. Walls wouldn't hurt it.",
+      "Small. Honest. The kind of camp the dust eats in a season, or doesn't."
+     ]
+    }
+   ],
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "id": "nv_base_town_tech_hunters",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "This is a town now, whether you meant it or not.",
+      "Streets. You have streets. When did that happen?",
+      "I've seen outposts with fewer roofs call themselves cities."
+     ]
+    }
+   ],
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "id": "nv_base_city_tech_hunters",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "They talk about this place in the bars. I see why.",
+      "A city in the wastes, built by people who weren't supposed to build one.",
+      "If the Cities had walls like these they would stop paying for samurai."
+     ]
+    }
+   ],
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "id": "nv_base_tech_tech_hunters",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You have machines in here the Cities would pay a fortune to look at.",
+      "Who taught you to build that? Nobody taught the rest of us.",
+      "Tech Hunters would camp outside your gate if they knew what you keep in here."
+     ]
+    }
+   ],
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYER_TECH_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "id": "nv_base_small_anti-slavers",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A few shacks and a fire. Everyone starts somewhere.",
+      "So this is the place. Walls wouldn't hurt it.",
+      "Small. Honest. The kind of camp the dust eats in a season, or doesn't."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "id": "nv_base_town_anti-slavers",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "This is a town now, whether you meant it or not.",
+      "Streets. You have streets. When did that happen?",
+      "I've seen outposts with fewer roofs call themselves cities."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "id": "nv_base_city_anti-slavers",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "They talk about this place in the bars. I see why.",
+      "A city in the wastes, built by people who weren't supposed to build one.",
+      "If the Cities had walls like these they would stop paying for samurai."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "id": "nv_base_tech_anti-slavers",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You have machines in here the Cities would pay a fortune to look at.",
+      "Who taught you to build that? Nobody taught the rest of us.",
+      "Tech Hunters would camp outside your gate if they knew what you keep in here."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYER_TECH_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "id": "nv_base_small_free_traders",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A few shacks and a fire. Everyone starts somewhere.",
+      "So this is the place. Walls wouldn't hurt it.",
+      "Small. Honest. The kind of camp the dust eats in a season, or doesn't."
+     ]
+    }
+   ],
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "id": "nv_base_town_free_traders",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "This is a town now, whether you meant it or not.",
+      "Streets. You have streets. When did that happen?",
+      "I've seen outposts with fewer roofs call themselves cities."
+     ]
+    }
+   ],
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "id": "nv_base_city_free_traders",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "They talk about this place in the bars. I see why.",
+      "A city in the wastes, built by people who weren't supposed to build one.",
+      "If the Cities had walls like these they would stop paying for samurai."
+     ]
+    }
+   ],
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "id": "nv_base_tech_free_traders",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You have machines in here the Cities would pay a fortune to look at.",
+      "Who taught you to build that? Nobody taught the rest of us.",
+      "Tech Hunters would camp outside your gate if they knew what you keep in here."
+     ]
+    }
+   ],
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYER_TECH_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "id": "nv_base_small_mercenary_guild",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A few shacks and a fire. Everyone starts somewhere.",
+      "So this is the place. Walls wouldn't hurt it.",
+      "Small. Honest. The kind of camp the dust eats in a season, or doesn't."
+     ]
+    }
+   ],
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "id": "nv_base_town_mercenary_guild",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "This is a town now, whether you meant it or not.",
+      "Streets. You have streets. When did that happen?",
+      "I've seen outposts with fewer roofs call themselves cities."
+     ]
+    }
+   ],
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": "<",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "id": "nv_base_city_mercenary_guild",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "They talk about this place in the bars. I see why.",
+      "A city in the wastes, built by people who weren't supposed to build one.",
+      "If the Cities had walls like these they would stop paying for samurai."
+     ]
+    }
+   ],
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERS_BEST_TOWN_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "id": "nv_base_tech_mercenary_guild",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You have machines in here the Cities would pay a fortune to look at.",
+      "Who taught you to build that? Nobody taught the rest of us.",
+      "Tech Hunters would camp outside your gate if they knew what you keep in here."
+     ]
+    }
+   ],
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYER_TECH_LEVEL",
+     "who": "me",
+     "cmp": ">",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "id": "nv_mercy_db",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walk on. Not today. I don't know why, so don't ask.",
+      "You. Keep going. I've had my fill of easy ones.",
+      "Pass. Tell nobody a bandit let you."
+     ]
+    }
+   ],
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_nomercy_db",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "That pack looks heavy. Let us lighten it.",
+      "Stand still and this is quick. Run and it's slow.",
+      "Everything you carry. Then you can go on carrying nothing."
+     ]
+    }
+   ],
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_mercy_sb",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walk on. Not today. I don't know why, so don't ask.",
+      "You. Keep going. I've had my fill of easy ones.",
+      "Pass. Tell nobody a bandit let you."
+     ]
+    }
+   ],
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_nomercy_sb",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "That pack looks heavy. Let us lighten it.",
+      "Stand still and this is quick. Run and it's slow.",
+      "Everything you carry. Then you can go on carrying nothing."
+     ]
+    }
+   ],
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_mercy_hd",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walk on. Not today. I don't know why, so don't ask.",
+      "You. Keep going. I've had my fill of easy ones.",
+      "Pass. Tell nobody a bandit let you."
+     ]
+    }
+   ],
+   "factions": [
+    "Hounds"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_nomercy_hd",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "That pack looks heavy. Let us lighten it.",
+      "Stand still and this is quick. Run and it's slow.",
+      "Everything you carry. Then you can go on carrying nothing."
+     ]
+    }
+   ],
+   "factions": [
+    "Hounds"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_mercy_sn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walk on. Not today. I don't know why, so don't ask.",
+      "You. Keep going. I've had my fill of easy ones.",
+      "Pass. Tell nobody a bandit let you."
+     ]
+    }
+   ],
+   "factions": [
+    "Swamp Ninjas"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_nomercy_sn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "That pack looks heavy. Let us lighten it.",
+      "Stand still and this is quick. Run and it's slow.",
+      "Everything you carry. Then you can go on carrying nothing."
+     ]
+    }
+   ],
+   "factions": [
+    "Swamp Ninjas"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_mercy_bd",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walk on. Not today. I don't know why, so don't ask.",
+      "You. Keep going. I've had my fill of easy ones.",
+      "Pass. Tell nobody a bandit let you."
+     ]
+    }
+   ],
+   "factions": [
+    "Black Dragon Ninjas"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_nomercy_bd",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "That pack looks heavy. Let us lighten it.",
+      "Stand still and this is quick. Run and it's slow.",
+      "Everything you carry. Then you can go on carrying nothing."
+     ]
+    }
+   ],
+   "factions": [
+    "Black Dragon Ninjas"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_help_united_cities",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Hold on. I'm coming.",
+      "Stay down. I have bandages.",
+      "Don't die on me. That's an order from nobody, but obey it."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_wonthelp_united_cities",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Not my problem. Not my blood.",
+      "Somebody will find you. Probably.",
+      "I saw nothing. You were lying there when I arrived."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 20,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_help_holy_nation",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Hold on. I am coming.",
+      "Stay down. I have bandages.",
+      "Do not die on me. That is an order from nobody, but obey it."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_wonthelp_holy_nation",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Not my problem. Not my blood.",
+      "Somebody will find you. Probably.",
+      "I saw nothing. You were lying there when I arrived."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 20,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_help_shek_kingdom",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Hold on. I'm coming.",
+      "Stay down. I have bandages.",
+      "Don't die on me. That's an order from nobody, but obey it."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_wonthelp_shek_kingdom",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Not my problem. Not my blood.",
+      "Somebody will find you. Probably.",
+      "I saw nothing. You were lying there when I arrived."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 20,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_help_tech_hunters",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Hold on. I'm coming.",
+      "Stay down. I have bandages.",
+      "Don't die on me. That's an order from nobody, but obey it."
+     ]
+    }
+   ],
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_wonthelp_tech_hunters",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Not my problem. Not my blood.",
+      "Somebody will find you. Probably.",
+      "I saw nothing. You were lying there when I arrived."
+     ]
+    }
+   ],
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true,
+   "chance": 20,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_help_anti-slavers",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Hold on. I'm coming.",
+      "Stay down. I have bandages.",
+      "Don't die on me. That's an order from nobody, but obey it."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_wonthelp_anti-slavers",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Not my problem. Not my blood.",
+      "Somebody will find you. Probably.",
+      "I saw nothing. You were lying there when I arrived."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 20,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_help_free_traders",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Hold on. I'm coming.",
+      "Stay down. I have bandages.",
+      "Don't die on me. That's an order from nobody, but obey it."
+     ]
+    }
+   ],
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_wonthelp_free_traders",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Not my problem. Not my blood.",
+      "Somebody will find you. Probably.",
+      "I saw nothing. You were lying there when I arrived."
+     ]
+    }
+   ],
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 20,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_help_mercenary_guild",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Hold on. I'm coming.",
+      "Stay down. I have bandages.",
+      "Don't die on me. That's an order from nobody, but obey it."
+     ]
+    }
+   ],
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_wonthelp_mercenary_guild",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Not my problem. Not my blood.",
+      "Somebody will find you. Probably.",
+      "I saw nothing. You were lying there when I arrived."
+     ]
+    }
+   ],
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "player_only": true,
+   "chance": 20,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_help_swampers",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Hold on. I'm coming.",
+      "Stay down. I have bandages.",
+      "Don't die on me. That's an order from nobody, but obey it."
+     ]
+    }
+   ],
+   "factions": [
+    "Swampers"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_wonthelp_swampers",
+   "event": "EV_I_SEE_RAGDOLL",
+   "lines": [
+    {
+     "say": [
+      "Not my problem. Not my blood.",
+      "Somebody will find you. Probably.",
+      "I saw nothing. You were lying there when I arrived."
+     ]
+    }
+   ],
+   "factions": [
+    "Swampers"
+   ],
+   "player_only": true,
+   "chance": 20,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_HELP_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_I_SHOULD_SCREW_THIS_GUY_OVER",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_whisper_anti-slavers",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Not out loud. Walls have ears, and the Cities pay for them.",
+      "Quietly. We're inside, and inside is where they listen.",
+      "Keep your voice down. Say it to me, not to the room."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_INDOORS",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_INDOORS",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_whisper_shinobi_thieves",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Inside voices. The Guild hears through plaster.",
+      "You found us indoors. Good. Nothing said here goes outside.",
+      "Lower. The roof is thin and the street is nosy."
+     ]
+    }
+   ],
+   "factions": [
+    "Shinobi Thieves"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_INDOORS",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_INDOORS",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_whisper_rebel_farmers",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Not here. Not so loud. The landlord's man drinks two tables over.",
+      "Inside, we whisper. Outside, we work. Those are the rules.",
+      "Keep it low. The walls here belong to the nobles too."
+     ]
+    }
+   ],
+   "factions": [
+    "Rebel Farmers"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_INDOORS",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_INDOORS",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_near_united_cities",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You're the ones building out past the ridge. The Cities have noticed. The Cities notice everything with a roof.",
+      "Your camp is near here. Pay your way and the samurai stay polite.",
+      "A neighbour. The nobles will want to know what you grow and what you owe."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 15,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_HAS_A_BASE_NEARBY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_near_holy_nation",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Your settlement sits close to holy ground. Keep Okran's law inside your walls as well as ours.",
+      "We know your camp. Keep no heathens in it and we will keep our distance.",
+      "A neighbour of the faithful. See that you remain a quiet one."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 15,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_HAS_A_BASE_NEARBY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_near_shek_kingdom",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You build close to us. Good. Weak neighbours make poor sparring.",
+      "Your walls are a half day from ours. Keep them standing.",
+      "We know where you sleep, outlander. We mean that kindly. Today."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 15,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_HAS_A_BASE_NEARBY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_near_dust_bandits",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Your little camp is near. We've been counting its roofs.",
+      "Neighbours. Our favourite kind of people. The kind with stores.",
+      "We know where you keep your food. Just saying."
+     ]
+    }
+   ],
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 15,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_HAS_A_BASE_NEARBY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_near_swampers",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You are the ones who built in the muck past the trees. Brave. Or stupid.",
+      "Your place is close. Watch your crops; the swamp eats them, and so do we.",
+      "Neighbours in the swamp. That lasts until the raptors say otherwise."
+     ]
+    }
+   ],
+   "factions": [
+    "Swampers"
+   ],
+   "player_only": true,
+   "chance": 15,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_HAS_A_BASE_NEARBY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_near_traders_guild",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Your outpost is close enough to trade with. Close enough to tax, too.",
+      "We know your camp. The Guild always knows where the goods sleep.",
+      "A supplier next door. Let us talk prices sometime."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 15,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_HAS_A_BASE_NEARBY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_enter_town_brave",
+   "event": "EV_ENTER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "Streets. Shops. People with opinions. Let us find the bar.",
+      "A town. Keep your hands where the guards can see them and your coin where they can't.",
+      "Somewhere to sleep that is not sand. Do not get used to it."
+     ]
+    }
+   ],
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Brave",
+   "chance": 30,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_SQUAD_SIZE",
+     "who": "me",
+     "cmp": ">",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_enter_town_fearful",
+   "event": "EV_ENTER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "A town. Everyone is looking at us. Are they looking at us?",
+      "Guards. Lots of guards. We didn't do anything, did we?",
+      "I'll stay close to the walls. Walls are good."
+     ]
+    }
+   ],
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Fearful",
+   "chance": 30,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_SQUAD_SIZE",
+     "who": "me",
+     "cmp": ">",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_enter_town_smart",
+   "event": "EV_ENTER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "Note the gate, the bar and the way out.",
+      "Towns are where the money is and where it goes.",
+      "Prices will be higher here. They always are where the walls are thick."
+     ]
+    }
+   ],
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Smart",
+   "chance": 30,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_SQUAD_SIZE",
+     "who": "me",
+     "cmp": ">",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_enter_town_honorable",
+   "event": "EV_ENTER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "A town. We will behave like guests.",
+      "People live here. Remember that before you draw.",
+      "We pay for what we take here. All of it."
+     ]
+    }
+   ],
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Honorable",
+   "chance": 30,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_SQUAD_SIZE",
+     "who": "me",
+     "cmp": ">",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_enter_town_traitorous",
+   "event": "EV_ENTER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "A town. Full of pockets.",
+      "So many doors, so few locks worth the name.",
+      "Smile at the guards. Count the shops."
+     ]
+    }
+   ],
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Traitorous",
+   "chance": 30,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_SQUAD_SIZE",
+     "who": "me",
+     "cmp": ">",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_enter_town_maniacal",
+   "event": "EV_ENTER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "A TOWN. Do you smell that? Rules.",
+      "So many people. So few of them ready.",
+      "Let us see how long before someone asks us to leave."
+     ]
+    }
+   ],
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Maniacal",
+   "chance": 30,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_SQUAD_SIZE",
+     "who": "me",
+     "cmp": ">",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_harass_united_cities",
+   "event": "EV_HARRASSMENT_SHOUTS",
+   "lines": [
+    {
+     "say": [
+      "Outlander. Yes, you. The one who walks like they own the street.",
+      "Keep walking, nobody. That's what we call your kind.",
+      "Empty pockets and a full mouth."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 50,
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_harass_shek_kingdom",
+   "event": "EV_HARRASSMENT_SHOUTS",
+   "lines": [
+    {
+     "say": [
+      "Flatskin. Turn round. I want to see if there is a spine under all that.",
+      "You carry a blade like a farmer carries a hoe.",
+      "Come on. One swing. Show me you aren't made of sand."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 50,
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_harass_swampers",
+   "event": "EV_HARRASSMENT_SHOUTS",
+   "lines": [
+    {
+     "say": [
+      "Oi, dry-foot. Lost? Everybody here's lost.",
+      "Nice boots. Shame about the owner.",
+      "Keep walking and keep breathing. Choose one."
+     ]
+    }
+   ],
+   "factions": [
+    "Swampers"
+   ],
+   "player_only": true,
+   "chance": 50,
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ]
+  },
+  {
+   "id": "nv_bought_honorable",
+   "event": "EV_BOUGHT_ME_FROM_SLAVERY",
+   "lines": [
+    {
+     "say": [
+      "You paid for me. I won't forget the price, or who paid it.",
+      "Bought. Well. I've been worse things. Tell me what you need.",
+      "A sale is a sale. What you do with it's the part I'm watching."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Basic 1",
+    "Npc SKELETON Base 1",
+    "Npc SUNDEMON Base 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1"
+   ],
+   "personality": "Honorable",
+   "player_only": true,
+   "chance": 60,
+   "repeat": 5
+  },
+  {
+   "id": "nv_bought_fearful",
+   "event": "EV_BOUGHT_ME_FROM_SLAVERY",
+   "lines": [
+    {
+     "say": [
+      "Please. Whatever you want, I can do it. Don't send me back.",
+      "Y-yes. Yes. Thank you. I think.",
+      "You won't hit me? They always said the next owner wouldn't hit me."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Basic 1",
+    "Npc SKELETON Base 1",
+    "Npc SUNDEMON Base 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1"
+   ],
+   "personality": "Fearful",
+   "player_only": true,
+   "chance": 60,
+   "repeat": 5
+  },
+  {
+   "id": "nv_bought_brave",
+   "event": "EV_BOUGHT_ME_FROM_SLAVERY",
+   "lines": [
+    {
+     "say": [
+      "So you're the new one. Fine.",
+      "Bought like a sack of grain. I will remember that too.",
+      "Cats changed hands. Nothing else has, yet."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Basic 1",
+    "Npc SKELETON Base 1",
+    "Npc SUNDEMON Base 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1"
+   ],
+   "personality": "Brave",
+   "player_only": true,
+   "chance": 60,
+   "repeat": 5
+  },
+  {
+   "id": "nv_bought_traitorous",
+   "event": "EV_BOUGHT_ME_FROM_SLAVERY",
+   "lines": [
+    {
+     "say": [
+      "A new owner. Wonderful. Where do you keep the keys?",
+      "You bought me. Clever. Or not.",
+      "I am very loyal. Ask anyone who is still alive."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Basic 1",
+    "Npc SKELETON Base 1",
+    "Npc SUNDEMON Base 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1"
+   ],
+   "personality": "Traitorous",
+   "player_only": true,
+   "chance": 60,
+   "repeat": 5
+  },
+  {
+   "id": "nv_bought_smart",
+   "event": "EV_BOUGHT_ME_FROM_SLAVERY",
+   "lines": [
+    {
+     "say": [
+      "A transaction. I understand transactions. What's the next one?",
+      "You overpaid. I'd have gone for less.",
+      "Bought, not freed. I note the difference. I hope you do too."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Basic 1",
+    "Npc SKELETON Base 1",
+    "Npc SUNDEMON Base 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1"
+   ],
+   "personality": "Smart",
+   "player_only": true,
+   "chance": 60,
+   "repeat": 5
+  },
+  {
+   "id": "nv_slave_savior",
+   "event": "EV_SLAVE_ESCAPE_OPPORTUNITY_SAVIOR",
+   "lines": [
+    {
+     "say": [
+      "You. You have hands that aren't chained. Do you know what that's worth?",
+      "Psst. The guard is round the corner. Shackles come off with a pick.",
+      "Don't look at me. Look at the lock. Then look at me."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc HIVER Worker - Complete Package",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "nv_slave_alone",
+   "event": "EV_SLAVE_ESCAPE_OPPORTUNITY_ALONE",
+   "lines": [
+    {
+     "say": [
+      "Nobody watching. Nobody. Now or never.",
+      "The guard went to the bar. The gate did not go anywhere.",
+      "Quiet. Count to ten. If nobody shouts, walk."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc HIVER Worker - Complete Package",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1"
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 1
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,5152 @@
+{
+ "pack": "x_reactions_events",
+ "mod": "LivingWasteland",
+ "dialogues": [
+  {
+   "id": "re_assassin_hn_armed",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A knife in the dark! Okran sees it, heretic, and so will the paladins.",
+      "You come at me from behind? The Flame keeps a place for cowards like you.",
+      "Sent by the heretics, were you? You won't walk back to tell them it failed.",
+      "Okran guards his own. You should have prayed before you tried that.",
+      "Murder in the street! Seize the heretic!",
+      "You failed. Okran preserve me, and may he be slow with you."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_assassin_hn_civ",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc CIVILIAN Crime 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Murder! Someone tried to murder me!",
+      "Aah! Heretic! Help, somebody, help me!",
+      "He tried to kill me! Paladins!",
+      "Not me, not me, I have done nothing! Okran, save me!",
+      "Guards! There's a killer among the faithful!",
+      "I'm a good believer! Why would anyone..."
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ],
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_assassin_shek_armed",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A blade at my back. A Shek does not forgive that, /FLATSKIN/.",
+      "You fight like a thief. You'll die like one.",
+      "Kral watches. He doesn't like knives in the dark.",
+      "The Stone Golem would spit on what you just did. I'll do the same, after I take your hand.",
+      "Assassin. I did not think flatskins had the nerve.",
+      "You missed. A Shek won't.",
+      "No honour in that strike, and none in your death either."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_assassin_uc_armed",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Police"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Attempted murder, in front of witnesses. That will cost you in cats and in blood.",
+      "Assassin! Someone call the guard. Someone call anyone.",
+      "A paid hand, was it? I pay better. Dead men don't collect, though.",
+      "You'll hang for this, or I'll do it myself, whichever comes first.",
+      "I have a contract, a lawyer and a sword. You're about to meet the sword.",
+      "Someone put a price on me. Funny, I'd have bid higher.",
+      "Stand where you are! The law takes a dim view of knives."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_assassin_uc_civ",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Police"
+   ],
+   "packages": [
+    "Npc CIVILIAN Crime 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Murder! They tried to murder me!",
+      "I only sell boots! Why would anyone...",
+      "I have a family! I have debts! I am not worth killing!",
+      "Is there no law here? Someone, please!",
+      "He tried to cut me! Is no one going to do something?",
+      "I knew I should have hired a bodyguard."
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ],
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_assassin_reb_armed",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "Rebel Farmers"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Killer! Come at me from behind, would you? I've buried better than you.",
+      "Farmers hit back, friend. You should have asked around.",
+      "One of the lord's pets? Try again. It will go the same way.",
+      "I've fought for this land. I won't be put down like livestock.",
+      "Sneaking up on a farmer. Is that all the Empire has left?",
+      "You missed. Now we see if you can run."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_assassin_reb_civ",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "Rebel Farmers"
+   ],
+   "packages": [
+    "Npc CIVILIAN Crime 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Help! Someone help, they're trying to kill me!",
+      "I only grow barley! Why me?",
+      "Neighbours! Neighbours, there's a killer!",
+      "They came for me! Somebody sent them! Help!",
+      "Run, everyone run! A killer, a killer!"
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ],
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_assassin_peas_civ",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "Empire Peasants",
+    "Free Traders",
+    "Drifters"
+   ],
+   "packages": [
+    "Npc CIVILIAN Crime 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Stay away! I have nothing worth killing for!",
+      "Aaah! Help! Please, someone!",
+      "Killer! Run! Run!",
+      "Not me! I've never hurt anyone!",
+      "They tried to kill me! Does nobody see?",
+      "Get the guards! Get anyone!"
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ],
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_assassin_as_armed",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Whoever paid you wasted their cats.",
+      "Quiet steps, loud mistake.",
+      "I have cut chains for years.",
+      "You missed. We seldom do.",
+      "Did the slavers pay for this? Money wasted. You won't be collecting.",
+      "From behind. A slaver's trick. You have chosen your side."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_assassin_th_armed",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A contract on me? Flattering. Fatal for you.",
+      "Ruins try to kill me every week. You're the worse trained.",
+      "You went for the back. Bad move. I have better gear and I know what it does.",
+      "Who is paying for this? Never mind. I will ask your pockets.",
+      "I have crawled through places that wanted me dead."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_assassin_band_armed",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Grass Pirates"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "/OI/! You picked the wrong /BASTARD/ to stab!",
+      "Backstabbing is MY job, you /INSULT/!",
+      "You missed. Your mistake. Your last mistake.",
+      "Right, now I'm angry. You want to die here, or further out in the dust?",
+      "Hungry, wounded and now stabbed at. Fine.",
+      "Someone paid you? Someone's gonna be short one good killer."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_assassin_slv_armed",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Cutting up a trader? That will cost you your freedom.",
+      "A knife for a slaver. Whoever hired you knows our trade. We know theirs.",
+      "Chains for him! Alive, if he runs. The price drops if he dies.",
+      "Assassin! Get the shackles!",
+      "I have sold better men than you for less. Now I'll sell you out of spite."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_assassin_can_armed",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "Cannibals",
+    "Cannibal Hunters"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Ha! Meat jump from behind. Brave meat. Brave is tough. Tough is slow in pot.",
+      "You try kill me? /CANNIBALCURSE/! I eat you for dhat.",
+      "Sneaky meat. Sneaky meat should stay hide. Now it cooked.",
+      "Quiet knife. Loud scream, soon. You see.",
+      "Ungry, you? Me ungrier."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_assassin_swp_armed",
+   "event": "EV_ASSASSINATION_FAILED",
+   "factions": [
+    "Swampers",
+    "Hounds"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "/OI/! Come up behind a Hound, will ya? Yer dog meat now.",
+      "Wrong swamp, wrong night, wrong /BASTARD/.",
+      "Ya cut me? Ya cut ME? Right.",
+      "Someone from the mud paid ya? Tell 'em the Hounds bite back.",
+      "Missed me. I'll not miss you.",
+      "Quiet one, aren't ya. Won't be quiet long."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_kidnap_hn_armed",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Put them down! A kidnapper in Okran's land!",
+      "You carry one of ours. The paladins will have your legs for that.",
+      "Drop them, heretic, or you'll meet Okran sooner than you meant.",
+      "Thief of the faithful! You won't take them past me.",
+      "Okran sees you with them on your shoulder. Put them down. He's patient. I'm not."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_kidnap_hn_civ",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc CIVILIAN Crime 3",
+    "Npc CIVILIAN Holy Nation Crime 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "They're taking them! Kidnapper! Guards!",
+      "Paladins! He has one of us!",
+      "Put them down! Okran have mercy, put them down!",
+      "Someone stop him! He's carrying them off!",
+      "Where are the guards? Where are the guards?"
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ],
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_kidnap_reb_armed",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "factions": [
+    "Rebel Farmers"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "That's one of ours on your back. Put them down or we put you down.",
+      "You don't take our people. Not for the nobles, not for anyone.",
+      "Set them down, friend. Gently. I like my neighbours in one piece.",
+      "Slavers? Hunters? Whatever you are, drop them.",
+      "We have fought lords over less."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_kidnap_reb_civ",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "factions": [
+    "Rebel Farmers"
+   ],
+   "packages": [
+    "Npc CIVILIAN Crime 3",
+    "Npc CIVILIAN Holy Nation Crime 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "He has taken one of ours!",
+      "Put them down! Please! They have done nothing!",
+      "Kidnapper! Get the others! Get everyone!",
+      "That's my neighbour! Let go!",
+      "Run, run and tell the farms!"
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ],
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_kidnap_peas_civ",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "factions": [
+    "Empire Peasants",
+    "Free Traders",
+    "Drifters"
+   ],
+   "packages": [
+    "Npc CIVILIAN Crime 3",
+    "Npc CIVILIAN Holy Nation Crime 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Stop! That's my friend! Put them down!",
+      "He's carrying them off! Someone, anyone!",
+      "No, no, no! Not them! Please!",
+      "Kidnapper! Run! Get help!",
+      "Let them go! Please, let them go!"
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ],
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_kidnap_as_armed",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "You're carrying one of ours. That's how slavers begin.",
+      "Chains or no chains, you're taking a person.",
+      "One of ours. On your shoulder. Choose carefully what you do next.",
+      "Put them down. I won't ask again, and I ask quietly.",
+      "I cut shackles for a living. You're about to feel why."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_kidnap_th_armed",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "That one is mine to watch. Put them down and we forget this.",
+      "You're carrying a friend of mine.",
+      "Whatever you're being paid for that, it isn't enough.",
+      "Drop them. My patience is the only cheap thing I carry.",
+      "Taking one of ours is a bad contract. Drop it."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_kidnap_swp_armed",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "factions": [
+    "Swampers",
+    "Hounds"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "/OI/! That's one of ours yer carryin'! Put 'em down!",
+      "Yer takin' a Hound's mate? Yer a dead man walkin'.",
+      "Down, down, put 'em down, or I'll put YOU down!",
+      "That's the swamp's own on yer back, /BASTARD/.",
+      "Nobody carries off our lot. Nobody."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_kidnap_can_armed",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "factions": [
+    "Cannibals",
+    "Cannibal Hunters"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Dhat one ours, not yours. Put down. Put down or we cook you instead.",
+      "You carry my meat. No. My friend. Same dhing.",
+      "/CANNIBALHA/! Thief of pot! Give back!",
+      "You take what ours? We take what yours.",
+      "Put down. Put down slow. Ungry hands close."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_training_hn",
+   "event": "EV_USING_MY_TRAINING_EQUIPMENT",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hands off that gear. It belongs to the soldiers of the Holy Nation, outlander.",
+      "You have no business at the practice posts.",
+      "Training is for the faithful. Leave it be, or I'll test it on you.",
+      "That isn't a toy, outlander.",
+      "Okran frowns on idle hands. I frown harder."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_training_shek",
+   "event": "EV_USING_MY_TRAINING_EQUIPMENT",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Step away from our practice gear, /FLATSKIN/, before I show you how it's used.",
+      "That's for Shek. You would only hurt yourself, and we would laugh.",
+      "Keep your hands off it. A warrior earns the right to swing.",
+      "Flatskins at the practice post. Next they'll want our swords.",
+      "Touch it again. I invite you."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_training_uc",
+   "event": "EV_USING_MY_TRAINING_EQUIPMENT",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Police"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "That equipment belongs to the company. Use it and you buy it.",
+      "Move away from the gear. It is not for public use.",
+      "This is a place of work. Take your tinkering elsewhere.",
+      "Hands off. If it breaks, it comes out of your pocket.",
+      "Private property, stranger. The law is generous about it."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_training_band",
+   "event": "EV_USING_MY_TRAINING_EQUIPMENT",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Grass Pirates"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Get yer paws off me gear!",
+      "/OI/! That's mine! I trained on that!",
+      "Touch that again and you're the new dummy.",
+      "Nobody swings on that but us.",
+      "You think we leave nice things out for strangers?"
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_training_as",
+   "event": "EV_USING_MY_TRAINING_EQUIPMENT",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Training gear is for those who earned it.",
+      "You don't train here. Move along.",
+      "Hands off. Strangers who play with our tools get hurt.",
+      "A dummy isn't a test.",
+      "We practise for a reason. Don't ask which."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_training_th",
+   "event": "EV_USING_MY_TRAINING_EQUIPMENT",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "That rig took me a month to scavenge. Get your hands off it.",
+      "Don't touch what you don't understand.",
+      "Practice gear isn't for sale, and not for borrowing.",
+      "Step away. If it breaks I'm not scavenging another.",
+      "You want to learn something? Pay for it."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_training_swp",
+   "event": "EV_USING_MY_TRAINING_EQUIPMENT",
+   "factions": [
+    "Swampers",
+    "Hounds"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "/OI/! Practice dummy's mine! Yer hands off!",
+      "Get away from there before I use ya for it instead.",
+      "That's Hound gear. Not yers.",
+      "Who said ya could? Nobody. That's who.",
+      "Stay off me stuff, /BASTARD/."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_training_slv",
+   "event": "EV_USING_MY_TRAINING_EQUIPMENT",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior Crime 2",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "That's for guards. Customers keep their hands to themselves.",
+      "Step away from the gear. Property of the house.",
+      "Practice is for the ones who do the work.",
+      "Don't touch what I didn't sell you.",
+      "Hands off, or we find a use for yours."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_thief_shek_armed",
+   "event": "EV_THIEF_CAUGHT_STEALING_FROM_ME",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Thief! A Shek's belongings aren't yours, /FLATSKIN/.",
+      "You steal from a warrior? Your hands will go first.",
+      "Petty theft. Beneath contempt, and still worth a beating.",
+      "Kral sees thieves, /FLATSKIN/. So do I.",
+      "A coward and a thief. Quite the pair."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_thief_reb_armed",
+   "event": "EV_THIEF_CAUGHT_STEALING_FROM_ME",
+   "factions": [
+    "Rebel Farmers"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hey! That took a month of sweat to make.",
+      "Thief! We have little enough already!",
+      "You steal from farmers? That's low even for outlanders.",
+      "Put that down or I'll put the pitchfork somewhere you won't like.",
+      "Hands out of my things. Now."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_thief_as_armed",
+   "event": "EV_THIEF_CAUGHT_STEALING_FROM_ME",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You steal from those who free slaves? Put it back.",
+      "Thief. I cut chains. I can cut other things.",
+      "That isn't yours. Set it down and keep walking.",
+      "We have little. Don't take it.",
+      "Sticky fingers. I'll fix that."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_thief_th_armed",
+   "event": "EV_THIEF_CAUGHT_STEALING_FROM_ME",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hands off. That's salvage I bled for.",
+      "You steal from a Tech Hunter? Brave, or stupid.",
+      "Put it back. I won't ask a second time.",
+      "I know exactly what's in that crate.",
+      "That's mine. Mine, and you know it."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_thief_band_armed",
+   "event": "EV_THIEF_CAUGHT_STEALING_FROM_ME",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Grass Pirates"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "/OI/! Stealin' from the thieves? That's MY job!",
+      "Put it back, you /INSULT/, or I take your hands.",
+      "You got nerve. Not much sense, though.",
+      "That's ours! We stole it first!",
+      "Thief! Thief in the camp!"
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_thief_slv_armed",
+   "event": "EV_THIEF_CAUGHT_STEALING_FROM_ME",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Stealing from slavers? That's a bad business, friend.",
+      "Put it back. Everything in here's already sold.",
+      "Thief! Shackles for him!",
+      "You take what isn't yours? Then you can be what isn't yours.",
+      "I trade in people, and even I think that's low."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_thief_can_armed",
+   "event": "EV_THIEF_CAUGHT_STEALING_FROM_ME",
+   "factions": [
+    "Cannibals",
+    "Cannibal Hunters"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Thief! You take pot meat! Put back!",
+      "Hands for eating, not stealing. Give back.",
+      "/CANNIBALHA/! Little thief steal from ungry.",
+      "My dhings. My teeth in your arm, soon.",
+      "Give back, give back, or we take odher way."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_thief_swp_armed",
+   "event": "EV_THIEF_CAUGHT_STEALING_FROM_ME",
+   "factions": [
+    "Swampers",
+    "Hounds"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "starving bandits",
+    "Empire farmer bandit"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "/OI/! Ya stealin' from a Hound? Yer mad.",
+      "Put it back or I'll chew yer hand off!",
+      "Thief in me place! Get 'im!",
+      "That's mine, ya mud-brained /BASTARD/.",
+      "Ya've got guts. They'll look nice on the floor."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_thief_hn_civ",
+   "event": "EV_THIEF_CAUGHT_STEALING_FROM_ME",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc CIVILIAN Crime 3",
+    "Npc CIVILIAN Holy Nation Crime 3",
+    "Npc CIVILIAN Basic 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Thief! Help! A thief among the faithful!",
+      "Okran sees you, thief! Put that back!",
+      "Guards! This one steals from believers!",
+      "That's all I have! Put it back!",
+      "Sinner! Thief! Somebody!"
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_thief_peas_civ",
+   "event": "EV_THIEF_CAUGHT_STEALING_FROM_ME",
+   "factions": [
+    "Empire Peasants",
+    "Free Traders",
+    "Drifters"
+   ],
+   "packages": [
+    "Npc CIVILIAN Crime 3",
+    "Npc CIVILIAN Holy Nation Crime 3",
+    "Npc CIVILIAN Basic 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hey! That's mine! Give it back!",
+      "Thief! Please, I have so little!",
+      "Put it down! Put it down, I'll scream!",
+      "Help! He's robbing me! Somebody!",
+      "I worked for that! Stop!"
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_intruder_hn_armed",
+   "event": "EV_INTRUDER_FOUND",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "slaver gate guard",
+    "slaver guard MAIN",
+    "Holy Nation Paladin",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Intruder in the sacred halls! Seize the heretic!",
+      "You weren't invited, outlander. Okran punishes trespass.",
+      "How did you get past the door? Never mind.",
+      "A heretic among the holy things.",
+      "You don't belong here. You won't leave."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_intruder_shek_armed",
+   "event": "EV_INTRUDER_FOUND",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "slaver gate guard",
+    "slaver guard MAIN",
+    "Holy Nation Paladin",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A /FLATSKIN/ in our house? You'll wish you had stayed outside.",
+      "Trespasser! Guards, here!",
+      "You walk in without a word. You'll leave without your legs.",
+      "There is a thief or a spy in the halls. Maybe both.",
+      "Out, or I carry you out in pieces."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_intruder_uc_armed",
+   "event": "EV_INTRUDER_FOUND",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Police"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "slaver gate guard",
+    "slaver guard MAIN",
+    "Holy Nation Paladin",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Trespassing is a crime, stranger. Fines first, then the cell.",
+      "This building is private. Out, or I call the watch.",
+      "Who let you in? Stay exactly where you are.",
+      "Intruder! Check the locks, someone left it open.",
+      "I have a long memory for uninvited guests."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_intruder_reb_armed",
+   "event": "EV_INTRUDER_FOUND",
+   "factions": [
+    "Rebel Farmers"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "slaver gate guard",
+    "slaver guard MAIN",
+    "Holy Nation Paladin",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Someone in the barn! Get a fork!",
+      "You don't belong here. Out, or I make you go.",
+      "A spy for the nobles? Or only a fool?",
+      "Quiet, everyone. There's a stranger in the house.",
+      "Out. Now. Before the others hear."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_intruder_as_armed",
+   "event": "EV_INTRUDER_FOUND",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "slaver gate guard",
+    "slaver guard MAIN",
+    "Holy Nation Paladin",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "You walked in without a sound. I walked in behind you. Don't turn.",
+      "Not a customer. Not one of ours. A slaver's spy?",
+      "No visitors. Out. Or in pieces.",
+      "I didn't hear you come in.",
+      "Whoever you are, you picked the wrong door."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_intruder_th_armed",
+   "event": "EV_INTRUDER_FOUND",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "slaver gate guard",
+    "slaver guard MAIN",
+    "Holy Nation Paladin",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Hold it right there. Nobody comes into my stock without asking.",
+      "A snoop in the workshop. Good way to lose a hand.",
+      "Intruder. Dangerous gear in here. Hands where I can see them.",
+      "How did you get in? Doesn't matter.",
+      "Salvage thieves get worse than nothing."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_intruder_slv_armed",
+   "event": "EV_INTRUDER_FOUND",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "slaver gate guard",
+    "slaver guard MAIN",
+    "Holy Nation Paladin",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Intruder! Get the shackles! Get the guards!",
+      "A visitor with no appointment. That means fresh stock, or a thief.",
+      "You're inside the wrong door, friend.",
+      "Not a buyer. Not a seller. So what are you?",
+      "Stay put. We'll find a use for you."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_intruder_can_armed",
+   "event": "EV_INTRUDER_FOUND",
+   "factions": [
+    "Cannibals",
+    "Cannibal Hunters"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "slaver gate guard",
+    "slaver guard MAIN",
+    "Holy Nation Paladin",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Guest come in, no knock! Bery rude.",
+      "In kitchen! Meat walk in by self! /CANNIBALHA/!",
+      "You walk in? You no walk out. Not in one piece.",
+      "Snoop, snoop. Smell pot, you? Stay for it.",
+      "Who invite you? Nobody. Stay, dhen."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_intruder_swp_armed",
+   "event": "EV_INTRUDER_FOUND",
+   "factions": [
+    "Swampers",
+    "Hounds"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "slaver gate guard",
+    "slaver guard MAIN",
+    "Holy Nation Paladin",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "/OI/! Who let you in? Nobody. Right. Get 'im!",
+      "That's a Hound's place, ya fool.",
+      "Sneakin' in, are ya? Sneak back out in pieces.",
+      "Ya picked the wrong den, /BASTARD/.",
+      "What're ya lookin' for, hmm? A grave?"
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_intruder_band_armed",
+   "event": "EV_INTRUDER_FOUND",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Grass Pirates"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc MEAN tough - Base",
+    "Npc OUTLAW Crime 3",
+    "Npc TOUGH Merc Crime 3",
+    "Npc TOUGH Merc (Lawless) Crime 3 ",
+    "Swamper",
+    "Swamper Bar Thug",
+    "Swamper Gang Member",
+    "Swamper Hound",
+    "slaver gate guard",
+    "slaver guard MAIN",
+    "Holy Nation Paladin",
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Intruder! Get up, get up, there's someone in!",
+      "How the /FUCKING/ hell did you get in here?",
+      "You're in the wrong place at the wrong time, /RUNT/.",
+      "Nobody walks into our camp. Nobody walks out, either.",
+      "Not one of ours. Kill him!"
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_intruder_hn_civ",
+   "event": "EV_INTRUDER_FOUND",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc CIVILIAN Crime 3",
+    "Npc CIVILIAN Holy Nation Crime 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Who's there? Who's there?! Guards!",
+      "An intruder! In Okran's name, guards!",
+      "Help! There's someone in the house!",
+      "Heretic! In my home! Guards!",
+      "Get out! Get out! I'm calling the paladins!"
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_intruder_peas_civ",
+   "event": "EV_INTRUDER_FOUND",
+   "factions": [
+    "Empire Peasants",
+    "Free Traders",
+    "Drifters"
+   ],
+   "packages": [
+    "Npc CIVILIAN Crime 3",
+    "Npc CIVILIAN Holy Nation Crime 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Who are you? What do you want? Guards!",
+      "Get out of my house!",
+      "Help! Somebody is inside!",
+      "Take what you want, just don't hurt me!",
+      "Stay away from me! Guards!"
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_giveup_hn",
+   "event": "EV_GIVE_UP_CHASE",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_LEADER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Run, heretic. Okran's patience is longer than your legs. For now, I turn back.",
+      "Enough. Let the desert burn them for us.",
+      "They aren't worth another step. The Flame will find them anyway.",
+      "Back to the post. We'll meet again, heretic.",
+      "Fast legs. Fast legs run out, in the end."
+     ],
+     "effects": [
+      [
+       "DA_GO_HOME",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_giveup_shek",
+   "event": "EV_GIVE_UP_CHASE",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_LEADER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Run, then, /FLATSKIN/. A Shek doesn't chase what's already beaten.",
+      "Let them go. Another day, another spear.",
+      "I'll find them again. Kral is patient.",
+      "Cowards run. Warriors remember.",
+      "Not worth the wind. Back to my post."
+     ],
+     "effects": [
+      [
+       "DA_GO_HOME",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_giveup_uc",
+   "event": "EV_GIVE_UP_CHASE",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Police"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_LEADER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Forget it. Not enough cats in the bounty to go on.",
+      "They're gone. File it and move on.",
+      "Out of my district, then. Good riddance.",
+      "I don't get paid by the mile.",
+      "Let them run. The law has a long memory, even if I have short legs."
+     ],
+     "effects": [
+      [
+       "DA_GO_HOME",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_giveup_reb",
+   "event": "EV_GIVE_UP_CHASE",
+   "factions": [
+    "Rebel Farmers"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_LEADER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Let them go. We have crops to watch.",
+      "They aren't coming back. Probably.",
+      "I am a farmer, not a hunter. Back to the field.",
+      "Run, then. We know where you went.",
+      "Enough. We hold the land. We don't need to chase."
+     ],
+     "effects": [
+      [
+       "DA_GO_HOME",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_giveup_as",
+   "event": "EV_GIVE_UP_CHASE",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_LEADER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Gone. Another day, then.",
+      "Let them run. Everyone leaves a trail eventually.",
+      "No use. We have bigger work than this.",
+      "They slip away. I'll remember the face.",
+      "Back to the shadows. They think they won."
+     ],
+     "effects": [
+      [
+       "DA_GO_HOME",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_giveup_th",
+   "event": "EV_GIVE_UP_CHASE",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_LEADER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Not worth the gear. I'm turning around.",
+      "Fine, run. The wasteland will do the rest.",
+      "Chasing costs time, and time costs cats. Done.",
+      "Gone. I have salvage waiting anyway.",
+      "Enough. They're somebody else's problem now."
+     ],
+     "effects": [
+      [
+       "DA_GO_HOME",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_giveup_band",
+   "event": "EV_GIVE_UP_CHASE",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Grass Pirates"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_LEADER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Ah, to hell with it. I ain't runnin' no more!",
+      "Run! Run, and don't come back, ya /INSULT/!",
+      "Me legs hurt, me belly hurts. Let 'em go.",
+      "They'll die out there anyway. Probably.",
+      "Not worth it. We got better things to rob."
+     ],
+     "effects": [
+      [
+       "DA_GO_HOME",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_giveup_slv",
+   "event": "EV_GIVE_UP_CHASE",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_LEADER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Gone. A pity. Good stock, too.",
+      "Let them run. The desert collects its own debts.",
+      "Not worth the pursuit. There are other legs on the road.",
+      "They slipped us. Mark the face for next time.",
+      "Back to the post. Perhaps we find them later, in worse shape."
+     ],
+     "effects": [
+      [
+       "DA_GO_HOME",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_giveup_can",
+   "event": "EV_GIVE_UP_CHASE",
+   "factions": [
+    "Cannibals",
+    "Cannibal Hunters"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_LEADER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Meat run away. Meat fast today.",
+      "Ha. Let go. Let run. We find later.",
+      "Too ungry to chase. Too tired to eat.",
+      "Smell stay. We follow smell next time.",
+      "Run, run, little meat. Pot wait."
+     ],
+     "effects": [
+      [
+       "DA_GO_HOME",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_giveup_swp",
+   "event": "EV_GIVE_UP_CHASE",
+   "factions": [
+    "Swampers",
+    "Hounds"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_LEADER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Ah, bugger it. Not runnin' any more.",
+      "Run, ya /BASTARD/! Don't come back!",
+      "They're quick. Fine. Let the swamp get 'em.",
+      "Not worth the mud. Back to the bar.",
+      "I'll remember that face. Next time."
+     ],
+     "effects": [
+      [
+       "DA_GO_HOME",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_giveup_skel",
+   "event": "EV_GIVE_UP_CHASE",
+   "races": [
+    "Skeleton"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_LEADER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Target lost. Pursuit discontinued.",
+      "Returning. They were faster than expected.",
+      "No further use in the chase.",
+      "They're out of range.",
+      "Pursuit abandoned. Resuming prior task."
+     ],
+     "effects": [
+      [
+       "DA_GO_HOME",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_looted_weapon_hn",
+   "event": "EV_LOOTING_WEAPON_ONLY",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard",
+    "Drifter squad",
+    "Npc CIVILIAN Basic 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A weapon for the faithful. The Flame has a use for it.",
+      "Heretics shouldn't hold blades. I'll carry it for them.",
+      "Confiscated in Okran's name.",
+      "Better in a paladin's hand than in the dust.",
+      "Weapons are a privilege. This one has been revoked."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_looted_weapon_shek",
+   "event": "EV_LOOTING_WEAPON_ONLY",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard",
+    "Drifter squad",
+    "Npc CIVILIAN Basic 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A warrior takes what the beaten no longer need.",
+      "A decent blade, wasted on you.",
+      "I'll take this. You haven't earned the right to swing it.",
+      "Poor steel. I shall take it anyway.",
+      "Rest. The blade goes where it's respected."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_looted_weapon_uc",
+   "event": "EV_LOOTING_WEAPON_ONLY",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Police"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard",
+    "Drifter squad",
+    "Npc CIVILIAN Basic 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Seized and logged. Don't look at me like that.",
+      "Weapons turn up in the strangest places. This one turned up in my hand.",
+      "It's a fine for disturbing the peace.",
+      "A good sword, ill used. Properly valued, it's worth a few cats.",
+      "I'm sure someone will claim it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_looted_weapon_reb",
+   "event": "EV_LOOTING_WEAPON_ONLY",
+   "factions": [
+    "Rebel Farmers"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard",
+    "Drifter squad",
+    "Npc CIVILIAN Basic 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "We need blades more than they do. Sorry.",
+      "A good edge. Going to a good cause.",
+      "The nobles have blades aplenty. We have a hoe.",
+      "I'll put it to better use than you did.",
+      "Nothing personal. We're outnumbered."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_looted_weapon_as",
+   "event": "EV_LOOTING_WEAPON_ONLY",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard",
+    "Drifter squad",
+    "Npc CIVILIAN Basic 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A slaver's blade is a lesser thing, but it still cuts chains.",
+      "It will do good work now.",
+      "Whatever you did with this, I'll do it better.",
+      "One less sword to threaten the weak.",
+      "Not a theft. A redistribution."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_looted_weapon_th",
+   "event": "EV_LOOTING_WEAPON_ONLY",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard",
+    "Drifter squad",
+    "Npc CIVILIAN Basic 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Decent steel. I can sell it or use it.",
+      "Salvage is salvage. Thank you for the donation.",
+      "Scrap value, at least. Maybe a bit more.",
+      "A tool left lying around. Hard to resist.",
+      "I always say, never walk past good steel."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_looted_weapon_band",
+   "event": "EV_LOOTING_WEAPON_ONLY",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Grass Pirates"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard",
+    "Drifter squad",
+    "Npc CIVILIAN Basic 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Nice, nice. Gimme!",
+      "Ha! Ya won't be needin' this where yer goin'.",
+      "Mine now, ya /INSULT/.",
+      "Finders keepers. And I found it on yer hand.",
+      "That's a better sword than me own."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_looted_weapon_slv",
+   "event": "EV_LOOTING_WEAPON_ONLY",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard",
+    "Drifter squad",
+    "Npc CIVILIAN Basic 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Stock arrives with its own equipment, sometimes.",
+      "Weapons are for the owners, not the merchandise.",
+      "I'll sell this. Maybe you with it.",
+      "A good blade. A shame about the previous owner.",
+      "Everything has a price. Even this."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_looted_weapon_can",
+   "event": "EV_LOOTING_WEAPON_ONLY",
+   "factions": [
+    "Cannibals",
+    "Cannibal Hunters"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard",
+    "Drifter squad",
+    "Npc CIVILIAN Basic 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Sharp dhing! Good for kitchen!",
+      "Meat no need teeth. We keep blade.",
+      "Ha! Shiny stick. Shiny stick ours.",
+      "Take, take. Meat no miss it.",
+      "Pretty knife. Pretty, pretty. Cut somedhing later."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_looted_weapon_swp",
+   "event": "EV_LOOTING_WEAPON_ONLY",
+   "factions": [
+    "Swampers",
+    "Hounds"
+   ],
+   "packages": [
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "Npc MEAN tough - Base",
+    "Tengu's Vault Guard",
+    "Drifter squad",
+    "Npc CIVILIAN Basic 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "That's a nice blade. Shame it's gonna be mine.",
+      "Ya won't be needin' that where yer lyin'.",
+      "Finders keepers in the swamp. Always has been.",
+      "Free sword! Ha!",
+      "Yer loss, me gain. That's the Hound way."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_looted_weapon_skel",
+   "event": "EV_LOOTING_WEAPON_ONLY",
+   "races": [
+    "Skeleton"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Weapon acquired. Efficiency improved.",
+      "Useful. I'll keep it.",
+      "Their weapon is no longer in use. It will be in mine.",
+      "Materials are scarce. This will do.",
+      "Equipment transfer completed."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_woke_hn",
+   "event": "EV_ALMOST_WOKE_UP",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1",
+    "Npc OUTLAW Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1",
+    "npc basic human"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Hm? Okran? Is it dawn? Mm.",
+      "Who prays? Who... no. Nothing. Sleep.",
+      "Paladin, is that you? ...Mm. Later.",
+      "Burn... burn them... no. Sleeping."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_woke_shek",
+   "event": "EV_ALMOST_WOKE_UP",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1",
+    "Npc OUTLAW Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1",
+    "npc basic human"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Kral? ...no. A dream. Sleep.",
+      "Who walks near? ...never mind. Sleep.",
+      "A hand on my spear. ...mine.",
+      "Not now, brother. The watch isn't mine."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_woke_uc",
+   "event": "EV_ALMOST_WOKE_UP",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Police"
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1",
+    "Npc OUTLAW Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1",
+    "npc basic human"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Mm? Is it payday? ...no. Later.",
+      "Whose coin is that? ...ah. Mine. Sleep.",
+      "Five more minutes, boss. Five. Mm.",
+      "Contract is signed. Don't wake me. ...Mm."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_woke_reb",
+   "event": "EV_ALMOST_WOKE_UP",
+   "factions": [
+    "Rebel Farmers"
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1",
+    "Npc OUTLAW Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1",
+    "npc basic human"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Hm? The crops? The fire? ...no. Quiet. Sleep.",
+      "Who's there? ...nobody. Sleep.",
+      "Mm. Barn door. Again. Tomorrow.",
+      "Is that the lord's men? ...no. Dream."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_woke_as",
+   "event": "EV_ALMOST_WOKE_UP",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1",
+    "Npc OUTLAW Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1",
+    "npc basic human"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Mm. Shadow. ...shadow. Go back to sleep.",
+      "Who's there... a dream. Another dream.",
+      "No chains. No chains. Mm.",
+      "Hush. Hush. They're asleep. Hush."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_woke_th",
+   "event": "EV_ALMOST_WOKE_UP",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1",
+    "Npc OUTLAW Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1",
+    "npc basic human"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Mm? The ruin? ...no. Not yet.",
+      "Who touched the pack? ...ah. Nobody. Mm.",
+      "Scrap, scrap, more scrap. Zzzz.",
+      "Is that a signal? ...no. Old dream."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_woke_band",
+   "event": "EV_ALMOST_WOKE_UP",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Grass Pirates"
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1",
+    "Npc OUTLAW Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1",
+    "npc basic human"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Wha...? Who's there? ...nobody. Back to sleep.",
+      "Stop takin' me food. ...huh. Dream. Mm.",
+      "Mm? Raid? ...no. Sleep.",
+      "Five more cats... just five more... hm."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_woke_slv",
+   "event": "EV_ALMOST_WOKE_UP",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1",
+    "Npc OUTLAW Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1",
+    "npc basic human"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Hm? Stock? ...no. Count in the morning.",
+      "Chains rattle. ...ah. Just the wind. Sleep.",
+      "Who is walking? ...never mind. Mm.",
+      "Sold. Sold. All of them sold."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_woke_can",
+   "event": "EV_ALMOST_WOKE_UP",
+   "factions": [
+    "Cannibals",
+    "Cannibal Hunters"
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1",
+    "Npc OUTLAW Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1",
+    "npc basic human"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Mm... ungry. So ungry. Supper? ...no. Sleep.",
+      "Who come? What smell? ...dream.",
+      "Mm. Pot empty. Dream full.",
+      "Bell? ...no bell. Sleep. Sleep."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_woke_swp",
+   "event": "EV_ALMOST_WOKE_UP",
+   "factions": [
+    "Swampers",
+    "Hounds"
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1",
+    "Npc OUTLAW Basic 1",
+    "Npc Shek Warrior - Base 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc TOUGH Merc Basic 1",
+    "npc basic human"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Mmph? Wassat? ...nuthin'. Sleep.",
+      "Who's there? ...bugger off. Sleep.",
+      "Mud's cold. Mm. Cold, cold.",
+      "Big Grim...? ...no. Dream."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_recapture_slv",
+   "event": "EV_RECAPTURED_A_SLAVE",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters"
+   ],
+   "packages": [
+    "slaver guard MAIN"
+   ],
+   "if": [],
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Back in the collar. Did you think the desert would feed you?",
+      "Home again. The price on your head was lower than you thought.",
+      "Running costs more than staying. You'll learn that.",
+      "Welcome back to the stock. You are a little thinner.",
+      "I let you run. I always find you. Remember that."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_recapture_hn",
+   "event": "EV_RECAPTURED_A_SLAVE",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Holy Nation Paladin"
+   ],
+   "if": [],
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "You ran from Okran, and Okran found you.",
+      "The Flame doesn't forget a runaway.",
+      "Mercy isn't a right. You'll serve until the light says otherwise.",
+      "Heretics always try the desert first. Then they come back.",
+      "You tasted the open road. Now taste the work."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_shout_worker_slv",
+   "event": "EV_SHOUT_AT_SLAVE_WORKER",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters"
+   ],
+   "packages": [
+    "slaver guard MAIN"
+   ],
+   "if": [],
+   "chance": 30,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Faster! The sun does not wait for lazy hands!",
+      "Heads down! Nobody rests until the count is right!",
+      "I paid for working arms, not resting ones. Move!",
+      "Less looking around, more carrying!",
+      "You eat when the work is done. Not before."
+     ],
+     "effects": [
+      [
+       "DA_MAKE_TARGET_RUN_FASTER",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_shout_worker_hn",
+   "event": "EV_SHOUT_AT_SLAVE_WORKER",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Holy Nation Paladin"
+   ],
+   "if": [],
+   "chance": 30,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Work is penance. Don't slow in your repentance!",
+      "Faster! The Holy Nation doesn't feed idle hands!",
+      "Labour for Okran, or answer to the Flame!",
+      "Do not stare at me, slave.",
+      "Idle hands are heretic hands. Move!"
+     ],
+     "effects": [
+      [
+       "DA_MAKE_TARGET_RUN_FASTER",
+       0
+      ]
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander",
+    "Hive Prince",
+    "Hive Prince South Hive",
+    "Hive Soldier Drone",
+    "Hive Soldier Drone South Hive",
+    "Hive Worker Drone",
+    "Hive Worker Drone South Hive"
+   ],
+   "note": "Was no_target_races, which neither Kenshi nor Meitou reads; now an explicit target_races list."
+  },
+  {
+   "id": "re_new_slave_slv",
+   "event": "EV_INTRODUCING_NEW_SLAVE",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters"
+   ],
+   "packages": [
+    "slaver guard MAIN"
+   ],
+   "if": [],
+   "chance": 45,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Welcome to your new home. It has a roof, mostly.",
+      "Get used to the weight of those. They aren't coming off.",
+      "Work, eat, sleep. That's all there's now.",
+      "Stand there and don't speak.",
+      "A new face for the line."
+     ],
+     "effects": [
+      [
+       "DA_FOLLOW_WHILE_TALKING",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_new_slave_hn",
+   "event": "EV_INTRODUCING_NEW_SLAVE",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Holy Nation Paladin"
+   ],
+   "if": [],
+   "chance": 45,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Here's your cell, heretic. Here's your work.",
+      "You are Okran's now. Be grateful it was a living thing that took you.",
+      "You'll be fed. You'll be watched.",
+      "Look at the ground. It is where you belong.",
+      "Another soul to be cleansed. Begin."
+     ],
+     "effects": [
+      [
+       "DA_FOLLOW_WHILE_TALKING",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_escaping_slave_slv",
+   "event": "EV_ESCAPING_SLAVE_SPOTTED",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "packages": [
+    "slaver guard MAIN",
+    "Pro Slave Asshole Npc"
+   ],
+   "if": [],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Runaway! Stop that one! Stop them!",
+      "Someone is loose! Shackles, now!",
+      "Don't let them reach the gate!",
+      "I smell money running away! Catch it!",
+      "Hey! Where do you think you're going?"
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_FLAG_TEMP_ENEMY",
+       0
+      ],
+      [
+       "DA_TAG_ESCAPED_SLAVE",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_escaping_slave_hn",
+   "event": "EV_ESCAPING_SLAVE_SPOTTED",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3",
+    "Holy Nation Paladin"
+   ],
+   "if": [],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A runaway! Seize the heretic!",
+      "Escape! In Okran's name, stop them!",
+      "The slave is loose! Sound the alarm!",
+      "You won't run far, sinner!",
+      "Heretic loose! Don't let them reach the gate!"
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_job_ended_hum",
+   "event": "EV_CONTRACT_JOB_ENDED",
+   "races": [
+    "Greenlander"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc OUTLAW Basic 1",
+    "Npc SUNDEMON Base 1",
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Shopguard Basic 1",
+    "Npc Shek Warrior - Base 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "That is the contract done. I would say it was a pleasure.",
+      "Time is up. I'm heading to the nearest bar.",
+      "Your cats are spent. Mine are earned. We are square.",
+      "Job is finished. Do not follow me.",
+      "I don't do loyalty. I do deadlines."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_job_ended_shek",
+   "event": "EV_CONTRACT_JOB_ENDED",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc OUTLAW Basic 1",
+    "Npc SUNDEMON Base 1",
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Shopguard Basic 1",
+    "Npc Shek Warrior - Base 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "My word is kept. The contract is finished.",
+      "I leave with honour intact. I hope you do the same.",
+      "The service is complete. Don't mistake it for friendship.",
+      "Our bargain ends here, /FLATSKIN/. Walk well.",
+      "The Shek keep their word. I've kept mine."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "re_job_ended_scorch",
+   "event": "EV_CONTRACT_JOB_ENDED",
+   "races": [
+    "Scorchlander"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Basic 1",
+    "Npc TOUGH Merc Aggro 2",
+    "Npc OUTLAW Basic 1",
+    "Npc SUNDEMON Base 1",
+    "Npc MILITARY Basic 1",
+    "Npc TOUGH Shopguard Basic 1",
+    "Npc Shek Warrior - Base 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "That's it, mate. Contract's up. Don't take it personal.",
+      "Good while it lasted. Mostly. I'm off.",
+      "My part's done. I got cats, you got your life. Fair?",
+      "Right. Home. Sand. Away from you.",
+      "Time's over. If you want more, bring more cats."
+     ]
+    }
+   ]
+  }
+ ]
+}

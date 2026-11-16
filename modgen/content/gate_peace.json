@@ -1,0 +1,303 @@
+{
+ "pack": "gate_peace",
+ "mod": "LivingWastelandHeat",
+ "dialogues": [
+  {
+   "id": "gt_hush_meat_offer",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Warden Hush"
+   ],
+   "score": 10,
+   "target_has_item": [
+    "Raw Meat"
+   ],
+   "relation": [
+    "<",
+    15
+   ],
+   "lines": [
+    {
+     "say": [
+      "Stranger. You carry meat. Raw. Beast? Not kin?",
+      "Hungry hands, but you carry meat. Raw meat. Is it beast, stranger? Say beast.",
+      "Hush smells blood on your pack. Beast blood? Say true."
+     ],
+     "then": [
+      {
+       "say": [
+        "Beast. Take it. Three pieces."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "take_items": [
+        [
+         "Raw Meat",
+         3
+        ]
+       ],
+       "relations": {
+        "Gate Folk": 14
+       },
+       "then": [
+        {
+         "say": [
+          "Beast. Yes. Hush takes. Hush remembers who feeds the gate.",
+          "Good meat. Clean. The gate opens a little for you.",
+          "...Thank. Not many say thank, here."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Not today."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Then walk. The gate waits. Hunger does not.",
+          "Hush will be here. Hush is always here."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "packages": [
+    "Gate Folk"
+   ]
+  },
+  {
+   "id": "gt_hush_no_meat",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Warden Hush"
+   ],
+   "relation": [
+    "<",
+    15
+   ],
+   "lines": [
+    {
+     "say": [
+      "Empty hands. The Plains eat those who walk empty. Bring meat. Raw. Beast. Then the gate opens.",
+      "Hush keeps the gate. Past the gate, kin who eat people. Here, no. Bring meat, beast meat, and Hush listens.",
+      "You want pass? Meat first. Raw. Not kin, not people. Hush counts.",
+      "Gate is small. Hunger is big. Bring meat. Hush wants no more hungry kin at the gate."
+     ]
+    }
+   ],
+   "packages": [
+    "Gate Folk"
+   ]
+  },
+  {
+   "id": "gt_hush_more_meat",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Warden Hush"
+   ],
+   "score": 10,
+   "target_has_item": [
+    "Raw Meat"
+   ],
+   "relation": [
+    ">",
+    14
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "More meat? Hush does not forget the last. Beast?",
+      "You return. You carry meat. Hush is glad.",
+      "The gate remembers you. Meat again?"
+     ],
+     "then": [
+      {
+       "say": [
+        "Beast. Take it."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "take_items": [
+        [
+         "Raw Meat",
+         3
+        ]
+       ],
+       "relations": {
+        "Gate Folk": 11
+       },
+       "then": [
+        {
+         "say": [
+          "Hush takes. Mouths here thank you.",
+          "Good. The gate opens more.",
+          "Yes. Beast. Clean. You are friend of the gate, nearly."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Not now."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Hush waits."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "packages": [
+    "Gate Folk"
+   ]
+  },
+  {
+   "id": "gt_hush_acquaintance",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Warden Hush"
+   ],
+   "relation": [
+    ">",
+    14
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You are not kin, not food. Hush does not know word for you.",
+      "Past the gate the Plains are loud with hunger. Here is small peace.",
+      "Hush does not say her old name. The old name ate people. The new name is quiet.",
+      "Walk slow near gate. Little ones watch. Little ones remember fast."
+     ]
+    }
+   ],
+   "packages": [
+    "Gate Folk"
+   ]
+  },
+  {
+   "id": "gt_hush_friend",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Warden Hush"
+   ],
+   "relation": [
+    ">",
+    39
+   ],
+   "lines": [
+    {
+     "say": [
+      "Friend of the gate. Hush says it slow so it stays true.",
+      "Gate is yours. Walk past; Hush's hunters will not follow. Kin beyond will. Kin are not Hush's to stop.",
+      "Once Hush held the Chief's knife. Hush left when the little ones asked for no more bones.",
+      "Meat Lord eats with a fork. Salt Mother cures with patience. The Cook talks sweet. Hush stops them at the gate, when she can."
+     ]
+    }
+   ],
+   "packages": [
+    "Gate Folk"
+   ]
+  },
+  {
+   "id": "gt_guard_toll_hello",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "player_only": true,
+   "relation": [
+    "<",
+    15
+   ],
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Stop. Gate. Meat first, then talk.",
+      "Gate keep. You pass if you bring meat. Raw. Not kin.",
+      "Quiet, stranger. Little ones sleep. Hush decides.",
+      "You smell of road. Bring meat to Hush and walk."
+     ]
+    }
+   ],
+   "packages": [
+    "Gate Folk"
+   ]
+  },
+  {
+   "id": "gt_guard_friend",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "player_only": true,
+   "relation": [
+    ">",
+    39
+   ],
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Friend. Gate open. Walk safe.",
+      "Meat-bringer. Hush says you pass. Pass.",
+      "Good to see. Little ones remember you.",
+      "Careful past the gate. Kin are hungry."
+     ]
+    }
+   ],
+   "packages": [
+    "Gate Folk"
+   ]
+  },
+  {
+   "id": "gt_guard_ally_see",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Gate Folk"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Friend. Gate open.",
+      "You bring beast, you are family.",
+      "Hush speaks good of you."
+     ]
+    }
+   ],
+   "packages": [
+    "Gate Folk"
+   ]
+  }
+ ]
+}

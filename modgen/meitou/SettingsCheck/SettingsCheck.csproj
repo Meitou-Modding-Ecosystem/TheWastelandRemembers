@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Builds both mods' settings groups the way Meitou's AddSettings does; a throw there makes Meitou refuse the whole mod
+       (MeitouClient docs/modding-practice.md). Run after building both mods:
+       dotnet run -c Release -p:MeitouDir="<folder with the release's MeitouClient.dll and Meitou.*.dll>"   (exit code 0 = fine) -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net11.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <MeitouDir Condition="'$(MeitouDir)' == ''">.</MeitouDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MeitouClient"><HintPath>$(MeitouDir)/MeitouClient.dll</HintPath></Reference>
+    <Reference Include="Meitou.Simulation"><HintPath>$(MeitouDir)/Meitou.Simulation.dll</HintPath></Reference>
+    <Reference Include="Meitou.Core"><HintPath>$(MeitouDir)/Meitou.Core.dll</HintPath></Reference>
+    <Reference Include="Meitou.Data"><HintPath>$(MeitouDir)/Meitou.Data.dll</HintPath></Reference>
+    <Reference Include="LivingWastelandMeitou"><HintPath>../LivingWastelandMeitou/LivingWastelandMeitou.dll</HintPath></Reference>
+    <Reference Include="SquadRecord"><HintPath>../SquadRecord/SquadRecord.dll</HintPath></Reference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,378 @@
+{
+ "pack": "x_world_reactive_world",
+ "mod": "LivingWastelandReactiveWorld",
+ "dialogues": [
+  {
+   "id": "wc_hn_all_gone_a",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "states": [
+    [
+     "All HN leaders are not okay",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Every one of them is gone. Phoenix, Seta, Valtena and the six Inquisitors. The Nation is a robe with no body in it.",
+      "No Phoenix. No Inquisitors. The soldiers stand and wait for orders that will never come.",
+      "The Flame has no priest left to keep it. It burns anyway.",
+      "I counted nine leaders once. Now I count the empty chairs."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_hn_all_gone_b",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Flotsam Ninjas",
+    "Anti-Slavers",
+    "Shek Kingdom",
+    "Rebel Farmers",
+    "Drifters",
+    "Free Traders",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "All HN leaders are not okay",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Nation has no leaders left. Every Inquisitor, every High one, and Phoenix. Someone should write that down.",
+      "The whole Holy leadership is dead. I'll believe it when I stop seeing their banners.",
+      "A nation is more than its leaders. We'll learn how much more.",
+      "The Holy leadership is entirely gone. The Nation will have to learn to walk."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_hn_all_gone_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "states": [
+    [
+     "All HN leaders are not okay",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "No leaders left. Do not ask me what the Nation intends. It intends nothing at all.",
+      "The Flame is orphaned. We still keep it.",
+      "Walk on. I have a town to mind and nobody to tell me how.",
+      "The Flame has no head. We do our best, and our best is quiet."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_border_bandits_gone",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters",
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Dust Bandits",
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Border Zone Bandits are not Okay",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Border Zone bandits are all dead. Dimak, Buzan, even the Dust King. The roads are quieter than I like.",
+      "No Dust King, no Dimak, no Buzan. The border is empty of bosses.",
+      "The bandit chiefs on the border are all gone. Strange to travel without that low dread.",
+      "No bandit lords on the border. The roads feel odd without them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_shek_not_ok",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers",
+    "The Holy Nation",
+    "Okranites",
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Shek are not Okay",
+     true
+    ]
+   ],
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Esata, Mukai, Flying Bull, Ghost, Tora. All dead. The Kingdom has no leaders and no mouth.",
+      "The Shek leaders are all gone. The Kingdom is a name and a lot of angry warriors.",
+      "A Kingdom without its leaders. It will fight itself, or someone else.",
+      "Kingdom leaders all fallen. We carry the axes. Nobody carries the Kingdom."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_gw_gone",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Remnants"
+   ],
+   "states": [
+    [
+     "Grand Wizard Okay",
+     false
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Dhe Gran' Wizard is gone. Dhe bell does not ring in dhe west. Dhe tribes look for a new voice.",
+      "No Wizard, no bell. Dhe west is hungry and dhe west is leaderless.",
+      "Dhe remnants of dhe west go where dhe pot is hot.",
+      "Dhe bell is quiet. Dhe quiet is worse."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ml_gone",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Remnants"
+   ],
+   "states": [
+    [
+     "Meatlord Okay",
+     false
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Dhe Meat Lord is gone. Dhe table is empty. Dhe east fights over dhe chairs.",
+      "No Meat Lord, no manners. Dhe tribes eat like dhey used to.",
+      "Dhe east is scattered now. Scattered is hungry.",
+      "Dhe dinners get ugly now. Nobody say grace."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_darkfinger_gone",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Remnants"
+   ],
+   "states": [
+    [
+     "Darkfinger Chiefs are NOT Okay",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Dhe Darkfinger chiefs are all dead. Dhe name is just a name now.",
+      "No Darkfinger chiefs. No Meat Lord. Dhe east has nothing but stray teeth.",
+      "Dhe old chiefs are gone. We wait for new ones, and dhey do not come.",
+      "Darkfinger is a word, not a place. Dhe chiefs are bones."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_flotsam_quest_win",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "DCR 0.5 Flotsam Quest win",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Flotsam owes you. We don't say that lightly. We say it quietly.",
+      "You did right by us. The forest remembers.",
+      "A friend of Flotsam. Walk freely. The wood is watching, kindly.",
+      "Flotsam doesn't hand out thanks. This is the nearest thing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_flotsam_quest_fail",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "DCR 0.5 Flotsam Quest fail",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You let us down. We won't make a scene.",
+      "Flotsam doesn't forget a failure. Neither does it forgive.",
+      "You're no friend of ours.",
+      "We counted on you. We count now what that cost."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_flotsam_quest_start",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "DCR 0.5 Flotsam Quest start",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "We hear you've taken Flotsam's work. See that you finish it.",
+      "The forest has an errand for you. Don't take too long.",
+      "Our business is your business now. Don't lose it.",
+      "You carry Flotsam's trust. Don't waste it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ft_win",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Free Traders"
+   ],
+   "states": [
+    [
+     "DCR 1.5 FT win",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Free Traders will keep their word. They have given it, they say, because of you.",
+      "I hear the Free Traders agreed to help. The roads will feel it.",
+      "A friend to the Free Traders. That's worth something.",
+      "Free Traders don't give their word lightly. They gave it for you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_wh_win",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive"
+   ],
+   "states": [
+    [
+     "DCR 1.5 WH Win",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Hive agreed to help, they say. Hive and no-hive working together. I'll believe it when I see it.",
+      "The Western Hive likes you. That's a rare thing.",
+      "Hive words are hard to get. You got them.",
+      "The Hive spoke well of you. That's a thing worth holding."
+     ]
+    }
+   ]
+  }
+ ]
+}

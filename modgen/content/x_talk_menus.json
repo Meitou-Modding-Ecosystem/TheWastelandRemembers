@@ -1,0 +1,4075 @@
+{
+ "pack": "x_talk_menus",
+ "mod": "LivingWastelandHeat",
+ "dialogues": [
+  {
+   "id": "tm_sv_bread",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "score": 12,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -45
+   ],
+   "target_has_item": [
+    "Bread"
+   ],
+   "lines": [
+    {
+     "say": [
+      "That's bread. Real bread. Don't let me smell it.",
+      "You carry bread. My stomach knew before I did.",
+      "Bread... I can smell it from here.",
+      "Is that bread? When did I last...",
+      "Stranger, you have bread. We have nothing."
+     ],
+     "then": [
+      {
+       "say": [
+        "Here. Eat.",
+        "Take it. Slowly.",
+        "It's only bread. Take it.",
+        "Go on, before the others see."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_AFFECT_RELATIONS",
+         3
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "take_items": [
+        [
+         "Bread",
+         1
+        ]
+       ],
+       "then": [
+        {
+         "say": [
+          "Thank you... I won't forget it.",
+          "You didn't have to. Nobody has to.",
+          "Bread. Real bread. Go, go before I start weeping.",
+          "Gods. It's soft. Thank you, stranger."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "What happened to you?",
+        "How did it come to this?",
+        "Why so thin?",
+        "Where did your supplies go?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "The road took them. The road takes everything.",
+          "We ate them. Then we ate the rest.",
+          "Nothing happened. That's the trouble.",
+          "Lost, sold, stolen. It doesn't matter which."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Not today.",
+        "I need it myself.",
+        "Sorry. I can't spare it.",
+        "No."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Then go. I only asked.",
+          "I understand. I'd say the same.",
+          "...Go on, then.",
+          "Hunger isn't a debt. Go."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_sv_dustwich",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "score": 12,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -45
+   ],
+   "target_has_item": [
+    "Dustwich"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A dustwich. I know the smell.",
+      "You have a dustwich in there. I'm not asking. I am... I'm asking.",
+      "Is that a dustwich? Dust and gristle.",
+      "I can hear that wrapper. Don't tease me.",
+      "Something to eat. Anything. That would do."
+     ],
+     "then": [
+      {
+       "say": [
+        "Take it. It isn't much.",
+        "Here. Don't choke.",
+        "It's yours. Go easy on it.",
+        "Fine. Eat."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_AFFECT_RELATIONS",
+         3
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "take_items": [
+        [
+         "Dustwich",
+         1
+        ]
+       ],
+       "then": [
+        {
+         "say": [
+          "It's dust. I don't care. Thank you.",
+          "You're kind. It's a poor trade, being kind.",
+          "I'll share it. I won't share it.",
+          "Thank you. I'm keeping my knife down. See?"
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "How long since you ate?",
+        "When did you last eat?",
+        "Is there no food nearby?",
+        "Why not hunt?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "I stopped counting. It made it worse.",
+          "A day. Three. A dead beetle, once.",
+          "Nothing grows near here that doesn't bite back.",
+          "With what? These hands shake too much for a knife."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I need it.",
+        "No. Find your own.",
+        "I have only this.",
+        "Not for free."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Of course. Everyone needs it.",
+          "Find my own. Yes. Good advice.",
+          "Then keep it. Keep walking.",
+          "...Everyone is for sale. I know."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_sv_driedmeat",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "score": 12,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -45
+   ],
+   "target_has_item": [
+    "Dried Meat"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Dried meat. You have dried meat. Do you know what that's worth?",
+      "That's meat in your bag. I can smell the salt.",
+      "Meat... we haven't had meat since... please.",
+      "Stranger. Is that meat? Don't lie.",
+      "Dried meat. Is it beast? I don't care. Is it beast?"
+     ],
+     "then": [
+      {
+       "say": [
+        "Beast. Take it.",
+        "Here. Make it last.",
+        "It's dry. It will keep. Take it.",
+        "Take it. Eat it away from me."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_AFFECT_RELATIONS",
+         3
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "take_items": [
+        [
+         "Dried Meat",
+         1
+        ]
+       ],
+       "then": [
+        {
+         "say": [
+          "Beast. Good. Beast is good. Thank you.",
+          "It will keep. I won't let it.",
+          "You're strange, giving. We don't see it.",
+          "Salt. Real salt. I could cry."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Do you hunt?",
+        "Why do you ask? Is it so rare?",
+        "Who are you people?",
+        "What do you eat out here?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "We did. The beasts learned. Now they hunt us.",
+          "Rare. Rarer than cats, rarer than water.",
+          "Hungry. That's all anyone needs to know.",
+          "Whatever is slow. Whatever is dead."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "No. It's for me.",
+        "I'll keep it.",
+        "Not today, friend.",
+        "I cannot."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Keep it. It's yours. It's only...",
+          "Mm. Of course.",
+          "Then walk on. Please walk on.",
+          "It's fine. It's fine."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_sv_rawmeat",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "score": 12,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -45
+   ],
+   "target_has_item": [
+    "Raw Meat"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Raw meat. In your pack. Is it... I wouldn't ask. Is it beast?",
+      "I can smell blood on your bag. Meat.",
+      "Fresh meat. Oh. Is that for sale? For anything?",
+      "You carry raw meat. We could cook it. We have a fire.",
+      "That smell is meat. Do not say it is not."
+     ],
+     "then": [
+      {
+       "say": [
+        "It's beast. Take it.",
+        "Cook it well. Take it.",
+        "Here. Raw, but it will do.",
+        "Take it. And do not ask what."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_AFFECT_RELATIONS",
+         3
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "take_items": [
+        [
+         "Raw Meat",
+         1
+        ]
+       ],
+       "then": [
+        {
+         "say": [
+          "Beast. Yes. I'll cook it. I'll cook it twice.",
+          "We have a fire. We have a fire now. Thank you.",
+          "Clean meat. A man could live on this for a day.",
+          "Thank you. We'll remember who fed us."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Why not hunt for yourselves?",
+        "Do you have a fire?",
+        "What do you do for food?",
+        "Is it getting worse?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "We lost the arrows. And the nerve.",
+          "We have embers. We guard them.",
+          "Whatever we find. Whatever finds us. Do not ask.",
+          "It's always worse. Do you know a time it got better?"
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "No. I need it.",
+        "Not this.",
+        "Sorry. No.",
+        "I'll keep it."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Of course. We have no right.",
+          "Then... go. Please. I'm tired of hoping.",
+          "Yes. Sorry. I asked too much.",
+          "Fine. Fine. Go."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_sv_cats",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "score": 10,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -45
+   ],
+   "note": "Fires when the player carries no listed food (food menus score 12). Money gate via DC_PLAYERMONEY.",
+   "lines": [
+    {
+     "say": [
+      "Cats? Have you cats? Even a few. For food.",
+      "We can't buy bread with no money. Do you have any? Please.",
+      "Stranger. A few cats. We have nothing left to sell.",
+      "You look like you have coin. We have hunger. It isn't a fair trade, I know.",
+      "Any cats? We'll remember it. That's all we have, memory."
+     ],
+     "then": [
+      {
+       "say": [
+        "Here. Buy something.",
+        "Take it. Eat before you spend it.",
+        "Three hundred. It is all I will give.",
+        "Take it, and don't follow me."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         300
+        ],
+        [
+         "DA_AFFECT_RELATIONS",
+         2
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "value": 299,
+         "cmp": ">"
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Three hundred. Thank you. We won't forget.",
+          "Cats. Real cats. Thank you.",
+          "You'll have no trouble from us. I'll tell the others.",
+          "Thank you. I'm sorry for all of it."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Why do you need it?",
+        "What happened to the rest of you?",
+        "Do you not work?",
+        "How long can you last?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "There's no work. There's nothing. Do you see anything?",
+          "We ran out. Then the others ran out of us.",
+          "Work for what? A bowl of dust?",
+          "Until the next beast. Or the next stranger."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I have nothing to spare.",
+        "No cats today.",
+        "I need it all.",
+        "Ask someone else."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "I see... I see. Go safe.",
+          "Everyone has nothing. It's the one thing we share.",
+          "Then go. And don't look back at us.",
+          "Yes. Of course. Go."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_sv_empty",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "score": 9,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_PLAYERMONEY",
+     "who": "target",
+     "value": 99,
+     "cmp": "<"
+    }
+   ],
+   "relation": [
+    ">",
+    -30
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're as thin as we are. We won't trouble you.",
+      "Nothing in your hands? Then we are the same, stranger.",
+      "You have nothing to give and neither do we. Ha.",
+      "No food. No cats. At least you're honest."
+     ],
+     "then": [
+      {
+       "say": [
+        "Where can I find food?",
+        "Is there food nearby?",
+        "Where do you eat?",
+        "Do you know a town?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Ask a town. Ask a trader. Ask the dead, they know where it went.",
+          "Not here. Move on and pray.",
+          "Where the road goes. If you walk long enough something will have fallen over.",
+          "There's always a town. There's rarely a welcome."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Good luck.",
+        "I wish you well.",
+        "Stay alive.",
+        "Take care."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Luck. Yes. We'll take any.",
+          "Go well. Go quickly.",
+          "You too. Don't die before us. It's rude.",
+          "Aye. And you."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_sv_outnumbered",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "score": 11,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "relation": [
+    ">",
+    -60
+   ],
+   "lines": [
+    {
+     "say": [
+      "Please. Don't hurt us. We only wanted food.",
+      "There are too many of you. We are leaving.",
+      "We didn't mean it. We never mean it. We're just so hungry.",
+      "I'll put it down. See? Don't hurt us.",
+      "We're weak. You're many."
+     ],
+     "then": [
+      {
+       "say": [
+        "Go home. Eat something.",
+        "Get out of here. Now.",
+        "Go. Don't come back.",
+        "Take your people and leave."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Thank you. Thank you. We're going.",
+          "We won't trouble you again. We'll trouble someone else.",
+          "Gods keep you. We'll go.",
+          "We're going. We're gone."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "What were you going to do?",
+        "Why attack travellers?",
+        "Do you ever kill for it?",
+        "Who sent you?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Eat. That's all. That's always all.",
+          "Because we had nothing. Because you had something.",
+          "Sometimes. Sometimes we only take. Sometimes we only wish.",
+          "Nobody sent us. Nobody sends anyone out here."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Stay where you are.",
+        "Don't move.",
+        "I am deciding.",
+        "Quiet."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "...Yes. Yes. We're still.",
+          "We won't move. We can't.",
+          "Decide kindly. Please.",
+          "Quiet. Yes. Quiet."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_sv_friend",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "score": 11,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "It's you. The one who fed us. We say your name quietly, in case it wears out.",
+      "Friend. You're welcome here, though there's little to welcome you with.",
+      "You came back. Nobody comes back. Sit, if you can bear the smell.",
+      "We spoke of you at the fire. It was a good talk. A short one, but good.",
+      "Stranger. We owe you. We'll pay when we have anything."
+     ],
+     "then": [
+      {
+       "say": [
+        "How are you managing?",
+        "How is your hunger?",
+        "Are you eating?",
+        "How are the others?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Less hungry. Still hungry. It's a better kind of hungry.",
+          "Better, thanks to you. Some of us stopped dreaming of plates.",
+          "A little. We make it last. We make it last.",
+          "Fewer than before. Thin ones first. That's how it goes."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Anything I should know about the road?",
+        "Is the road safe?",
+        "Any trouble ahead?",
+        "What have you seen?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Others like us. Worse than us.",
+          "Safer with a friend nearby. That isn't saying much.",
+          "Beasts, mostly. And people who would rather be beasts.",
+          "Smoke, to the east. Don't go to smoke."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Take care.",
+        "Good luck.",
+        "I must go.",
+        "Keep eating."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Take care. You too. Always.",
+          "We will. We'll try.",
+          "Go. Come back if you can.",
+          "We will. We always do. Eventually."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "relation": [
+    ">",
+    24
+   ]
+  },
+  {
+   "id": "tm_db_toll_hand",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "score": 10,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 20,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_LEADER",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_REPUTATION",
+     "who": "me",
+     "cmp": ">",
+     "value": -14
+    }
+   ],
+   "relation": [
+    ">",
+    -50
+   ],
+   "chance": 80,
+   "note": "Followers only; vanilla Bandit hold up needs a leader with squad >3. Gated on Dust Bandits heat < 15 so the pardon menu still shows.",
+   "lines": [
+    {
+     "say": [
+      "Road tax. A hundred and fifty cats and you're on your way.",
+      "Hey. You. The boss likes his road paid for.",
+      "Stop right there. Pay the toll, a hundred and fifty, and keep your teeth.",
+      "You walk, you pay. Hundred and fifty cats.",
+      "Cats. A hundred and fifty. Or we find out what you carry the hard way."
+     ],
+     "then": [
+      {
+       "say": [
+        "Fine. Here. (Give 150 Cats)",
+        "Take it. (Give 150 Cats)",
+        "Here, count it. (Give 150 Cats)",
+        "A hundred and fifty. Done. (Give 150 Cats)"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         150
+        ],
+        [
+         "DA_AFFECT_RELATIONS",
+         2
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "value": 149,
+         "cmp": ">"
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Good. Off you go.",
+          "Nice. You can pass. Nobody touches you.",
+          "Pleasure. Remember who you paid.",
+          "Smart. Now get lost."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I won't pay.",
+        "No.",
+        "Come and take it.",
+        "I don't pay thugs."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Then walk fast, mark. I'll remember your face.",
+          "Your funeral. I'm only the hand.",
+          "Bold. Some day somebody will teach you.",
+          "Keep walking, then. Don't stop."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -2
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "My friends are right behind me.",
+        "I wouldn't. There are more of us close by.",
+        "Check the dunes. We have you surrounded.",
+        "You should look behind you."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "...Hm. Maybe I don't feel like cats today. Go.",
+          "Fine. Fine. Keep it. Walk on.",
+          "Right. Not worth it. Move along.",
+          "Another time. Another toll."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 2,
+           "cmp": ">"
+          }
+         ]
+        },
+        {
+         "say": [
+          "Liar. There's nobody there. Nobody.",
+          "Ha. Nobody behind you but dust.",
+          "I can count, you know. You're alone.",
+          "You are a bad liar, mark."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -3
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 3,
+           "cmp": "<"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Wrong road. I'm leaving.",
+        "I'm only passing.",
+        "Never mind.",
+        "Forget I asked."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Keep walking.",
+          "Then walk. And be quick.",
+          "Don't come back this way.",
+          "Go on. Don't look at me."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_db_toll_boss",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "score": 10,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 20,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_LEADER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_SQUAD_SIZE",
+     "who": "me",
+     "value": 4,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_REPUTATION",
+     "who": "me",
+     "cmp": ">",
+     "value": -14
+    }
+   ],
+   "relation": [
+    ">",
+    -50
+   ],
+   "chance": 80,
+   "note": "Leaders of squads up to 3; vanilla Bandit hold up covers squads over 3.",
+   "lines": [
+    {
+     "say": [
+      "This is a small group, but a hungry one. Three hundred cats for the road.",
+      "Three hundred. The Dust King gets his cut, and so do we.",
+      "You want to pass? Three hundred cats.",
+      "Look at us. Look at you. Three hundred cats saves us both some trouble.",
+      "Toll. Three hundred cats. Fair for the dust."
+     ],
+     "then": [
+      {
+       "say": [
+        "Fine. (Give 300 Cats)",
+        "Here. (Give 300 Cats)",
+        "Take it. (Give 300 Cats)",
+        "Three hundred. (Give 300 Cats)"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         300
+        ],
+        [
+         "DA_AFFECT_RELATIONS",
+         3
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "value": 299,
+         "cmp": ">"
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Good. You're free to go.",
+          "Wise. We won't forget it.",
+          "Sweet. You can pass. Tell nobody.",
+          "Done. Go."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "No. Not a single cat.",
+        "I won't pay.",
+        "Find someone else to rob.",
+        "Try it."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Then we have nothing to talk about.",
+          "Stubborn. It will cost you more later.",
+          "We will remember you. We do remember.",
+          "Keep going. Don't turn your back."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -3
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "My crew is in the hills.",
+        "You don't want my people finding you.",
+        "I'm not alone. Look up.",
+        "My squad is behind that ridge."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "...We heard about a crew. Never mind.",
+          "Fine. Go. We were never here.",
+          "Not worth it. Go on.",
+          "Keep your cats. Just go."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 2,
+           "cmp": ">"
+          }
+         ]
+        },
+        {
+         "say": [
+          "Ha. You're alone, mark. Cats.",
+          "Liar. I don't see anyone.",
+          "Bad bluff. We aren't stupid.",
+          "We aren't buying it. Cats."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -3
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 3,
+           "cmp": "<"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I'm going.",
+        "Forget it.",
+        "Let me pass.",
+        "I'm only walking."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Then go, and don't talk to anyone.",
+          "Walk. Quietly.",
+          "Go on.",
+          "Don't wait for us to change our minds."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_db_outnumbered",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "score": 11,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 25,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_REPUTATION",
+     "who": "me",
+     "cmp": ">",
+     "value": -14
+    }
+   ],
+   "relation": [
+    ">",
+    -60
+   ],
+   "chance": 80,
+   "note": "Bandit outnumbered by the player squad; asks to leave. DA_GO_HOME copied from vanilla Starver interrupt.",
+   "lines": [
+    {
+     "say": [
+      "Easy. Easy. We were only looking. We aren't looking for trouble.",
+      "There are more of you than us. That's bad arithmetic.",
+      "No toll. Forget the toll. We're going.",
+      "You have friends. Big friends. We'll go.",
+      "Look, nobody has drawn anything. Nobody has to."
+     ],
+     "then": [
+      {
+       "say": [
+        "Go. Now.",
+        "Leave before I change my mind.",
+        "Go home.",
+        "Get out of my sight."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Going. Going. Nothing happened.",
+          "We're leaving. Don't follow.",
+          "Fine. We never saw you.",
+          "Right. Right. We're gone."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Who's your boss?",
+        "What do you want from travellers?",
+        "Do you work for the Dust King?",
+        "What's your camp like?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "The Dust King gets the pile. We get the crumbs.",
+          "Cats. Boots. Whatever does not run.",
+          "Everyone works for him. Nobody likes him. It's a great arrangement.",
+          "Cold, dry, loud. You would hate it."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Drop your weapons.",
+        "You owe me for the scare.",
+        "Give me your cats.",
+        "Pay me, for once."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Drop them? Not on your life. Cats, no. Leave us alone.",
+          "Owe you? Are you joking? We're leaving.",
+          "Not a chance. We would sooner fight.",
+          "Cats are the only thing we have."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_db_hungry_bread",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "score": 12,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 30,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_STARVING",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_REPUTATION",
+     "who": "me",
+     "cmp": ">",
+     "value": -14
+    }
+   ],
+   "relation": [
+    ">",
+    -50
+   ],
+   "target_has_item": [
+    "Bread"
+   ],
+   "chance": 85,
+   "lines": [
+    {
+     "say": [
+      "I haven't eaten since the last raid. That's bread? Give me some.",
+      "Hungry. Very. Is that bread?",
+      "I will trade. Any road is yours, for bread.",
+      "Boss doesn't feed us anymore. Is that bread you have?"
+     ],
+     "then": [
+      {
+       "say": [
+        "Here. Take it.",
+        "Eat. Don't choke.",
+        "Bread. For the road.",
+        "Take it. Don't rob me later."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_AFFECT_RELATIONS",
+         3
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "take_items": [
+        [
+         "Bread",
+         1
+        ]
+       ],
+       "then": [
+        {
+         "say": [
+          "Heh. A good one. I won't touch your boots.",
+          "Thanks. Do not tell the boss.",
+          "Right. You're fine with me.",
+          "Bread. Real. Thank you, stranger."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "No. Find your own.",
+        "Not today.",
+        "I'm hungry too.",
+        "No."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Pfft. Everyone is hungry.",
+          "Then walk. Keep walking.",
+          "Fine. I'll find someone else.",
+          "You'll wish you had."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_db_hungry_meat",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "score": 12,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 30,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_STARVING",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_REPUTATION",
+     "who": "me",
+     "cmp": ">",
+     "value": -14
+    }
+   ],
+   "relation": [
+    ">",
+    -50
+   ],
+   "target_has_item": [
+    "Dried Meat"
+   ],
+   "chance": 85,
+   "lines": [
+    {
+     "say": [
+      "Is that meat? Dried? I would stab you for it. Please say you will give it instead.",
+      "Meat. A little meat. I will not forget it.",
+      "I have not seen meat in days. Not even a rat.",
+      "Stranger. Meat. Whatever it costs. I'll pay in favours."
+     ],
+     "then": [
+      {
+       "say": [
+        "Take it. All of it.",
+        "Here. Beast, not worse.",
+        "Eat. Quietly.",
+        "Take it. I won't charge."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_AFFECT_RELATIONS",
+         3
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "take_items": [
+        [
+         "Dried Meat",
+         1
+        ]
+       ],
+       "then": [
+        {
+         "say": [
+          "Beast. Good. I can taste the salt already.",
+          "You're alright. I'll say so around the camp.",
+          "A favour for a favour. Pass freely.",
+          "Thank you. I'll remember."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Keep walking.",
+        "No. It's mine.",
+        "Beg elsewhere.",
+        "Not a scrap."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Keep it, then. Choke on it.",
+          "Fine. Fine.",
+          "I'll remember that.",
+          "Be like that."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_db_hungry_cats",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "score": 10,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 30,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_STARVING",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_REPUTATION",
+     "who": "me",
+     "cmp": ">",
+     "value": -14
+    }
+   ],
+   "relation": [
+    ">",
+    -50
+   ],
+   "chance": 80,
+   "lines": [
+    {
+     "say": [
+      "I'm so hungry I'd sell my own boots. Do you have any cats?",
+      "The boss took my share. Spare some cats for a meal?",
+      "A little cat money. For food. I'll even say please.",
+      "No raids in days. We're hungry. Some cats?"
+     ],
+     "then": [
+      {
+       "say": [
+        "Take three hundred. Eat.",
+        "Here. (Give 300 Cats)",
+        "Buy some food. (Give 300 Cats)",
+        "Take it. Don't rob me later. (Give 300 Cats)"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         300
+        ],
+        [
+         "DA_AFFECT_RELATIONS",
+         2
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "value": 299,
+         "cmp": ">"
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Heh. You're all right. Don't tell the others I said so.",
+          "Thanks. You won't hear a word from me.",
+          "Cats. Food. Good. I owe you.",
+          "Right. Good. You pass freely, with me."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "No.",
+        "I need it myself.",
+        "Rob someone else.",
+        "Find work."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Work. Ha. Where?",
+          "Then I will. Another day.",
+          "Everyone says no. It hurts less every time.",
+          "Fine. Then go."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_rv_toll",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Reavers"
+   ],
+   "player_only": true,
+   "score": 10,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 20,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -50
+   ],
+   "chance": 70,
+   "lines": [
+    {
+     "say": [
+      "The Reavers hold this road. Four hundred cats for passage. Or you can serve.",
+      "Halt. Four hundred cats, and you're free to go. No cats, you're useful in other ways.",
+      "Your road ends here, unless you pay.",
+      "This ground is ours. Pay four hundred or we find work for you.",
+      "Four hundred cats. Do not insult us by haggling."
+     ],
+     "then": [
+      {
+       "say": [
+        "Here. (Give 400 Cats)",
+        "Take it. (Give 400 Cats)",
+        "Four hundred. Done. (Give 400 Cats)",
+        "Count it. (Give 400 Cats)"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         400
+        ],
+        [
+         "DA_AFFECT_RELATIONS",
+         2
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "value": 399,
+         "cmp": ">"
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Good. You may pass.",
+          "Sensible. Move along.",
+          "A fair price. Go.",
+          "The Reavers don't forget a payment."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I don't serve and I don't pay.",
+        "No.",
+        "Find someone else.",
+        "The road isn't yours."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Then you'll be remembered as a fool.",
+          "Mistake. We shall see to it later.",
+          "Not today. We will remember your face.",
+          "Wise to keep walking. Do so."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -2
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "My army is just behind me.",
+        "You're outnumbered. My squad is close.",
+        "My people are in those hills.",
+        "Check the horizon. Ask them."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "...We won't risk it. Go.",
+          "A fight over a toll? No. Pass.",
+          "Another day. Pass.",
+          "The Reavers know when to wait."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 2,
+           "cmp": ">"
+          }
+         ]
+        },
+        {
+         "say": [
+          "I see no one. Pay, or serve.",
+          "A poor lie. Pay.",
+          "You have nobody. Pay.",
+          "We can count. Pay."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -3
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 3,
+           "cmp": "<"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I'm going.",
+        "Wrong road.",
+        "Forget it.",
+        "Let me pass."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Go. Don't delay.",
+          "Go quickly.",
+          "Pass.",
+          "Don't return."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_rv_parley",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Reavers"
+   ],
+   "player_only": true,
+   "score": 11,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 25,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -60
+   ],
+   "chance": 70,
+   "lines": [
+    {
+     "say": [
+      "Stand down. We're outnumbered. We won't fight today.",
+      "Your numbers are greater. We withdraw.",
+      "No toll. We're leaving. Don't follow.",
+      "The Reavers retire. Another day."
+     ],
+     "then": [
+      {
+       "say": [
+        "Go. Back to your camp.",
+        "Leave. Now.",
+        "Retreat.",
+        "Withdraw."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "We go. Remember this.",
+          "Withdrawing. Don't forget it.",
+          "Understood. We go.",
+          "We'll return."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "What do the Reavers want?",
+        "Why do you take tolls?",
+        "Who leads you?",
+        "What's your purpose?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "The old lands, back. Every stone of them.",
+          "Armies eat. Armies pay. That's all.",
+          "A banner. And those who believe in it.",
+          "To return. And to be paid, meanwhile."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Drop your weapons.",
+        "Surrender.",
+        "Give me your cats.",
+        "Pay me."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "We won't. Not today.",
+          "We don't surrender. We withdraw.",
+          "No cats. Leave us.",
+          "Not on your life."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_rs_toll",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Red Sabres"
+   ],
+   "player_only": true,
+   "score": 10,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 20,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -50
+   ],
+   "chance": 70,
+   "note": "Refusal ('Come and take it') ends in DA_ATTACK_CHASE_FOREVER like vanilla refusals; the reply is labelled as a challenge.",
+   "lines": [
+    {
+     "say": [
+      "Swamp road. Two hundred and fifty cats and you walk it.",
+      "Nobody crosses here for free. Two fifty, cats.",
+      "Mud is ours. Walking in it costs two hundred and fifty.",
+      "You paid for the boots. Now pay for the ground. Two fifty.",
+      "Two hundred and fifty. Or the swamp keeps you."
+     ],
+     "then": [
+      {
+       "say": [
+        "Fine. (Give 250 Cats)",
+        "Here. (Give 250 Cats)",
+        "Take it. (Give 250 Cats)",
+        "Two fifty. Done. (Give 250 Cats)"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         250
+        ],
+        [
+         "DA_AFFECT_RELATIONS",
+         2
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "value": 249,
+         "cmp": ">"
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Good. Mud is yours for a bit.",
+          "Smart. Walk, don't swim.",
+          "Cats talk loud. Go on.",
+          "Fine. Pass. Don't come back with friends."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Come and take it.",
+        "No.",
+        "Not for mud.",
+        "Try it."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Then it is the sword. Get him!",
+          "We'll take it from the body.",
+          "Fine. Sabres, on him.",
+          "Stupid. Real stupid."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -3
+          ],
+          [
+           "DA_ATTACK_CHASE_FOREVER",
+           0
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "My squad is in the reeds.",
+        "My friends are behind you.",
+        "I'm not alone out here.",
+        "You're surrounded."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Hmph. Keep your cats. Go.",
+          "Another day. Pass.",
+          "Not worth it. Go, go.",
+          "Hells. Fine. Walk."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 2,
+           "cmp": ">"
+          }
+         ]
+        },
+        {
+         "say": [
+          "Alone. I count one. Cats.",
+          "Liar. Nobody in those reeds.",
+          "Funny. Cats, now.",
+          "Nice try. Cats."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -3
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 3,
+           "cmp": "<"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I'm only walking.",
+        "Wrong road.",
+        "Forget it.",
+        "Never mind."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Go on. Don't slip.",
+          "Walk. Stay on the path.",
+          "Then go.",
+          "Mind the mud."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_rs_parley",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Red Sabres"
+   ],
+   "player_only": true,
+   "score": 11,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 25,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -60
+   ],
+   "chance": 70,
+   "lines": [
+    {
+     "say": [
+      "Hold on, hold on. We aren't looking for a fight.",
+      "You're too many. We'll go.",
+      "Forget the toll. Forget it all.",
+      "Nobody is hurt. Let us leave."
+     ],
+     "then": [
+      {
+       "say": [
+        "Leave. Now.",
+        "Go back into the swamp.",
+        "Take your people and go.",
+        "Go home."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Leaving. Leaving. Don't follow.",
+          "We go. Keep the cats.",
+          "Right. We aren't here.",
+          "Gone."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Who leads the Sabres?",
+        "What do you want here?",
+        "Why the swamp?",
+        "Do you live out here?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Ask the Red Bandit. If you survive the asking.",
+          "Anything that floats. Anything that sinks.",
+          "Because nobody follows us into it.",
+          "Nobody lives out here. We only stay."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Drop your weapons.",
+        "Surrender.",
+        "Hand over your cats.",
+        "Pay me."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Not a chance.",
+          "We'll fight first.",
+          "No cats. Go.",
+          "Never."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_bb_toll",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Band of Bones"
+   ],
+   "player_only": true,
+   "score": 10,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 20,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -50
+   ],
+   "chance": 70,
+   "lines": [
+    {
+     "say": [
+      "Hold. The Band of Bones holds these lands now. Three hundred cats to pass.",
+      "This is ours. Three hundred cats, or the sand gets you.",
+      "You walk on bone. Three hundred cats, flatskin.",
+      "Pay the Band its due. Three hundred.",
+      "Three hundred. We do not ask twice."
+     ],
+     "then": [
+      {
+       "say": [
+        "Here. (Give 300 Cats)",
+        "Take it. (Give 300 Cats)",
+        "Three hundred. (Give 300 Cats)",
+        "Count it. (Give 300 Cats)"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         300
+        ],
+        [
+         "DA_AFFECT_RELATIONS",
+         2
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "value": 299,
+         "cmp": ">"
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "The Band remembers. Pass.",
+          "Good. Go.",
+          "A wise choice, flatskin.",
+          "Pass. Don't tarry."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I won't pay.",
+        "No.",
+        "Take it if you can.",
+        "These lands aren't yours."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Then walk wide of our fires.",
+          "You'll regret it, flatskin.",
+          "The Band will not forget.",
+          "Pride. A costly toll."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -2
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "My warriors are behind me.",
+        "There are many more of us.",
+        "You're surrounded.",
+        "Look to the ridge."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "The Band will not fight today. Go.",
+          "A toll isn't worth a war.",
+          "Fine. Pass. Don't boast of it.",
+          "We know when to wait. Go."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 2,
+           "cmp": ">"
+          }
+         ]
+        },
+        {
+         "say": [
+          "There's nobody. Pay.",
+          "You bluff poorly, flatskin.",
+          "I see no warriors. Pay.",
+          "Enough. Pay."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -3
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 3,
+           "cmp": "<"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I'm only passing.",
+        "Wrong road.",
+        "Forget it.",
+        "Never mind."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Pass. Do not linger.",
+          "Go on.",
+          "Walk.",
+          "Move."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "packages": [
+    "Band Of Bones"
+   ]
+  },
+  {
+   "id": "tm_bb_parley",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Band of Bones"
+   ],
+   "player_only": true,
+   "score": 11,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 25,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -60
+   ],
+   "chance": 70,
+   "lines": [
+    {
+     "say": [
+      "Enough. We're fewer today. The Band withdraws.",
+      "You are too many. We will wait.",
+      "No toll. We leave.",
+      "Another day, flatskin."
+     ],
+     "then": [
+      {
+       "say": [
+        "Leave. Now.",
+        "Go back to your camp.",
+        "Take your people and go.",
+        "Withdraw."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "We go. We return when we're many.",
+          "Withdrawing. This isn't forgotten.",
+          "We go.",
+          "Gone."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "What's the Band of Bones?",
+        "Who leads you?",
+        "Why take tolls?",
+        "What do you want here?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Warriors without a kingdom. We make our own.",
+          "Those who earned it. Not a thing you ask lightly.",
+          "A kingdom needs bones. We provide them.",
+          "Room. We want room."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Drop your weapons.",
+        "Surrender.",
+        "Give me your cats.",
+        "Pay me."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Never.",
+          "We die first.",
+          "No cats. Leave us.",
+          "No."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "packages": [
+    "Band Of Bones"
+   ]
+  },
+  {
+   "id": "tm_gp_toll",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "player_only": true,
+   "score": 10,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 20,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -50
+   ],
+   "chance": 55,
+   "note": "Grass Pirates already have fd_gp_talk (no score); chance 55 leaves it reachable. Refusal ends in attack as the reply is a challenge.",
+   "lines": [
+    {
+     "say": [
+      "Oi. Coast toll. Two hundred and fifty cats and you sail on by.",
+      "Stop where ya are. Two fifty for the coast. Yer lucky it's cheap.",
+      "Pirates' tax, mate. Two hundred and fifty.",
+      "Coast road. Pay two fifty or we take it off the body.",
+      "Two fifty cats. Or the tide takes ya."
+     ],
+     "then": [
+      {
+       "say": [
+        "Fine. (Give 250 Cats)",
+        "Here. (Give 250 Cats)",
+        "Take it. (Give 250 Cats)",
+        "Two fifty. Done. (Give 250 Cats)"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         250
+        ],
+        [
+         "DA_AFFECT_RELATIONS",
+         2
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "value": 249,
+         "cmp": ">"
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Aye. Off ya go.",
+          "Good. Sail on, mate.",
+          "Fair. Mind the rocks.",
+          "That's the way. Don't tell the Cities."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Come and take it.",
+        "No.",
+        "Not a cat.",
+        "Bad toll."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Then it's steel. Get 'im, lads!",
+          "We take it off the body, then.",
+          "Your funeral. Sabres up.",
+          "Silly man. Silly dead man."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -3
+          ],
+          [
+           "DA_ATTACK_CHASE_FOREVER",
+           0
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "My crew is behind the dunes.",
+        "We're many. Look about.",
+        "My friends are by the beach.",
+        "You're surrounded."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Ha. Not worth it. Go on.",
+          "Fine, fine, keep it. Go.",
+          "No toll today. Walk.",
+          "Eh. Another day. Pass."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 2,
+           "cmp": ">"
+          }
+         ]
+        },
+        {
+         "say": [
+          "Nobody there. Cats.",
+          "Liar. I see the sea. Cats.",
+          "Ha. Not buying it. Cats.",
+          "You're alone. Cats."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -3
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 3,
+           "cmp": "<"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I'm only passing.",
+        "Wrong coast.",
+        "Forget it.",
+        "Never mind."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Mind the rocks.",
+          "Go on, then.",
+          "Fair winds.",
+          "Walk."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_gp_parley",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "player_only": true,
+   "score": 11,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 25,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -60
+   ],
+   "chance": 55,
+   "lines": [
+    {
+     "say": [
+      "Right. Right. Too many. We're off.",
+      "Steady, steady. No fight. We go.",
+      "Forget the toll. Forget it.",
+      "You win. We go."
+     ],
+     "then": [
+      {
+       "say": [
+        "Go. Now.",
+        "Back to the water.",
+        "Take your lot and leave.",
+        "Get lost."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Going. Going. Nobody saw anything.",
+          "Off we go. No hard feelings.",
+          "We go. Keep your cats.",
+          "Gone."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Who leads you?",
+        "Why pirates?",
+        "Do you live on the coast?",
+        "What do you want?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Ask the sea. It answers in drownings.",
+          "Because the sea is wide and the law isn't.",
+          "Where the water ends, the land begins.",
+          "Boots. Cats. Anything not nailed."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Drop your weapons.",
+        "Surrender.",
+        "Pay me.",
+        "Give me your cats."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "We won't.",
+          "Never.",
+          "No cats.",
+          "No."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_sh_toll",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Slave Hunters"
+   ],
+   "player_only": true,
+   "score": 10,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 20,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -50
+   ],
+   "chance": 70,
+   "note": "Skipped while the player carries someone (vanilla/captives pc_buy_hunters handles that).",
+   "lines": [
+    {
+     "say": [
+      "Hold. We hunt runaways. Your papers, or two hundred cats for our troubles.",
+      "Not slave, not hunted? Then pay two hundred and we forget your face.",
+      "Two hundred, traveller. Hunters don't work for free, and neither do the blind.",
+      "Mm. You look like loose property. Two hundred and you are not.",
+      "Pay the road tax, two hundred. Or we check what you are."
+     ],
+     "then": [
+      {
+       "say": [
+        "Here. (Give 200 Cats)",
+        "Take it. (Give 200 Cats)",
+        "Two hundred. Done. (Give 200 Cats)",
+        "Count it. (Give 200 Cats)"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         200
+        ],
+        [
+         "DA_AFFECT_RELATIONS",
+         2
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "value": 199,
+         "cmp": ">"
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Good. Not a runaway. Pass.",
+          "You're a free man. Go.",
+          "Fair. Pass.",
+          "Hunters know a paid face. Go."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "No.",
+        "Check, then.",
+        "I owe you nothing.",
+        "Look elsewhere."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Then we check. Carefully. Slowly.",
+          "Your choice. We'll keep an eye on you.",
+          "Proud, for a free man. Go.",
+          "Careful, traveller. Hunters are patient."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -2
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "My squad is close.",
+        "My friends are around.",
+        "You're outnumbered.",
+        "I'm not alone."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Hmph. No profit in it. Go.",
+          "Not worth the effort. Pass.",
+          "Another day. Pass.",
+          "Fine. Go."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 2,
+           "cmp": ">"
+          }
+         ]
+        },
+        {
+         "say": [
+          "Alone. I count one. Pay.",
+          "Poor lie. Pay.",
+          "Nobody there. Pay.",
+          "Pay, and stop wasting time."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -3
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 3,
+           "cmp": "<"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I'm only passing.",
+        "Wrong road.",
+        "Forget it.",
+        "Never mind."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Go on. Quickly.",
+          "Pass.",
+          "Walk.",
+          "Move."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_sh_parley",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Slave Hunters"
+   ],
+   "player_only": true,
+   "score": 11,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 25,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -60
+   ],
+   "chance": 70,
+   "lines": [
+    {
+     "say": [
+      "Careful. There are a good many of you. We aren't here to fight.",
+      "We hunt runaways, not armies. We go.",
+      "No papers needed. We'll leave.",
+      "Not worth it. We go."
+     ],
+     "then": [
+      {
+       "say": [
+        "Go. Now.",
+        "Leave my road.",
+        "Take your hunters and go.",
+        "Get out of my sight."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Going. Don't take it personally.",
+          "We go. Nothing to see.",
+          "Leaving. No offence.",
+          "Gone."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Who do you hunt?",
+        "How much do you earn?",
+        "Who do you work for?",
+        "Who pays you?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Runaways. Anyone with a collar and nowhere to go.",
+          "Enough to keep a hunter fed.",
+          "Whoever pays. Usually the Traders.",
+          "The ones who lost something. Not always the same ones."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Drop your weapons.",
+        "Surrender.",
+        "Pay me.",
+        "Give me your cats."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Never.",
+          "We aren't for sale.",
+          "No cats.",
+          "No."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tm_sk_toll",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Skeleton Bandits"
+   ],
+   "player_only": true,
+   "score": 10,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 20,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -50
+   ],
+   "chance": 60,
+   "lines": [
+    {
+     "say": [
+      "Toll. Two hundred cats. This road is ours.",
+      "Pay two hundred cats. The road requires it.",
+      "Two hundred cats to pass. State your decision.",
+      "You're in our territory. The price is two hundred cats.",
+      "Two hundred. This isn't negotiable."
+     ],
+     "then": [
+      {
+       "say": [
+        "Fine. (Give 200 Cats)",
+        "Here. (Give 200 Cats)",
+        "Take it. (Give 200 Cats)",
+        "Two hundred. Done. (Give 200 Cats)"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         200
+        ],
+        [
+         "DA_AFFECT_RELATIONS",
+         2
+        ],
+        [
+         "DA_FLAG_TEMP_ALLY",
+         2
+        ]
+       ],
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "value": 199,
+         "cmp": ">"
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Payment received. You may pass.",
+          "Acceptable. Proceed.",
+          "Understood. Go.",
+          "Accepted. Don't remain."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "No.",
+        "I won't pay.",
+        "Take it by force.",
+        "Not a cat."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Refusal noted. We will remember.",
+          "Then go. We have registered you.",
+          "Proceed with caution.",
+          "Unwise. Proceed."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -2
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "My squad is behind me.",
+        "You're outnumbered.",
+        "There are more of us.",
+        "Look around."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Risk assessed. We withdraw. Go.",
+          "Not profitable. Pass.",
+          "Another time. Pass.",
+          "Calculated. Go."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 2,
+           "cmp": ">"
+          }
+         ]
+        },
+        {
+         "say": [
+          "No one is behind you. Pay.",
+          "Inaccurate. You're alone. Pay.",
+          "False. Pay.",
+          "Pay. Don't waste time."
+         ],
+         "effects": [
+          [
+           "DA_AFFECT_RELATIONS",
+           -3
+          ]
+         ],
+         "if": [
+          {
+           "cond": "DC_SQUAD_SIZE",
+           "who": "target",
+           "value": 3,
+           "cmp": "<"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I'm only passing.",
+        "Wrong road.",
+        "Never mind.",
+        "Forget it."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Proceed.",
+          "Go.",
+          "Walk.",
+          "Move on."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "packages": [
+    "Skeleton bandit - BASE",
+    "Skeleton Bandit patrol"
+   ]
+  },
+  {
+   "id": "tm_sk_parley",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Skeleton Bandits"
+   ],
+   "player_only": true,
+   "score": 11,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "value": 25,
+     "cmp": "<"
+    },
+    {
+     "cond": "DC_IS_OUTNUMBERED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ALLY",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "relation": [
+    ">",
+    -60
+   ],
+   "chance": 60,
+   "lines": [
+    {
+     "say": [
+      "We are outnumbered. We withdraw.",
+      "Odds unfavourable. We leave.",
+      "No toll will be taken. We go.",
+      "Retreat. Don't follow."
+     ],
+     "then": [
+      {
+       "say": [
+        "Leave. Now.",
+        "Withdraw.",
+        "Take your people and go.",
+        "Go."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "We go. Noted.",
+          "Withdrawing. Understood.",
+          "We go.",
+          "Gone."
+         ],
+         "effects": [
+          [
+           "DA_GO_HOME",
+           0
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "What do you want?",
+        "Who leads you?",
+        "Why take tolls?",
+        "What are you?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "The road. And whatever travels on it.",
+          "Not important. We're enough.",
+          "Because someone must. And we can.",
+          "Bones. That's all we are."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Drop your weapons.",
+        "Surrender.",
+        "Pay me.",
+        "Give me your cats."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "No.",
+          "We won't.",
+          "No cats.",
+          "Refused."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "packages": [
+    "Skeleton bandit - BASE",
+    "Skeleton Bandit patrol"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,574 @@
+{
+ "pack": "body_voices",
+ "mod": "LivingWasteland",
+ "dialogues": [
+  {
+   "id": "bv_leg_stoic",
+   "event": "EV_LOST_LEG",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Brave",
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Gone. Well. I have another.",
+      "It was only a leg.",
+      "Keep moving. I'll manage.",
+      "Don't look at it. I haven't."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_arm_stoic",
+   "event": "EV_LOST_ARM",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Brave",
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Gone. Well. I have another.",
+      "It was only an arm.",
+      "Keep moving. I'll manage.",
+      "Don't look at it. I haven't."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_hurt_stoic",
+   "event": "EV_BEING_HEALED_START",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Brave",
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I'm hurt. I can stand.",
+      "Bleeding. Not dying. Yet.",
+      "It will keep."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_crip_heal_stoic",
+   "event": "EV_BEING_HEALED_START",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Brave",
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I can crawl. That will do.",
+      "Leave me a wall to lean on.",
+      "The legs are done. The rest isn't."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_crip_up_stoic",
+   "event": "EV_GET_UP_PEACE",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Brave",
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I can crawl. That will do.",
+      "Leave me a wall to lean on.",
+      "The legs are done. The rest isn't."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_leg_dry",
+   "event": "EV_LOST_LEG",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Smart",
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That was attached a moment ago.",
+      "Funny. It didn't hurt until I saw it.",
+      "I liked that one. It was the good one.",
+      "Careless of me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_arm_dry",
+   "event": "EV_LOST_ARM",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Smart",
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That was attached a moment ago.",
+      "Funny. It didn't hurt until I saw it.",
+      "I liked that one. It was the good one.",
+      "Careless of me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_hurt_dry",
+   "event": "EV_BEING_HEALED_START",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Smart",
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I feel a draught where there should be blood.",
+      "I've been better. Once or twice.",
+      "Is it normal to see the floor this close?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_crip_heal_dry",
+   "event": "EV_BEING_HEALED_START",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Smart",
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I would walk, but they have other plans.",
+      "My legs have left the company.",
+      "Carry me or leave me. I'm not particular."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_crip_up_dry",
+   "event": "EV_GET_UP_PEACE",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Smart",
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I would walk, but they have other plans.",
+      "My legs have left the company.",
+      "Carry me or leave me. I'm not particular."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_leg_anxious",
+   "event": "EV_LOST_LEG",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Fearful",
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "My leg. Where's my leg?",
+      "No. No, no. Is it still there?",
+      "Somebody tell me that is not mine.",
+      "I can't feel it. Why can I not feel it?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_arm_anxious",
+   "event": "EV_LOST_ARM",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Fearful",
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "My arm. Where's my arm?",
+      "No. No, no. Is it still there?",
+      "Somebody tell me that is not mine.",
+      "I can't feel it. Why can I not feel it?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_hurt_anxious",
+   "event": "EV_BEING_HEALED_START",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Fearful",
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I'm bleeding. Why am I bleeding so much?",
+      "Please. Somebody. Bandages.",
+      "I don't want to die here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_crip_heal_anxious",
+   "event": "EV_BEING_HEALED_START",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Fearful",
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I can't stand. I can't stand!",
+      "Don't leave me here.",
+      "My legs. Why will they not move?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_crip_up_anxious",
+   "event": "EV_GET_UP_PEACE",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Fearful",
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I can't stand. I can't stand!",
+      "Don't leave me here.",
+      "My legs. Why will they not move?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_leg_blunt",
+   "event": "EV_LOST_LEG",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Honorable",
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Lost a leg. Fine. Bandage me.",
+      "Take it out of their hide.",
+      "Patch me up. I'm not done.",
+      "That one cost me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_arm_blunt",
+   "event": "EV_LOST_ARM",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Honorable",
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Lost a arm. Fine. Bandage me.",
+      "Take it out of their hide.",
+      "Patch me up. I'm not done.",
+      "That one cost me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_hurt_blunt",
+   "event": "EV_BEING_HEALED_START",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Honorable",
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Need a medic. Now.",
+      "Bleeding out. Do something.",
+      "I'm no use like this."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_crip_heal_blunt",
+   "event": "EV_BEING_HEALED_START",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Honorable",
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Legs are gone. Carry me.",
+      "Can't walk. Fix it.",
+      "Don't leave me. Fix me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bv_crip_up_blunt",
+   "event": "EV_GET_UP_PEACE",
+   "packages": [
+    "player:all"
+   ],
+   "personality": "Honorable",
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Legs are gone. Carry me.",
+      "Can't walk. Fix it.",
+      "Don't leave me. Fix me."
+     ]
+    }
+   ]
+  }
+ ]
+}

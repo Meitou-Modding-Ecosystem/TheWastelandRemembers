@@ -1,0 +1,171 @@
+{
+ "pack": "cannibals_trophies",
+ "mod": "LivingWastelandCannibals",
+ "meitou_only": true,
+ "note": "Meitou only: the cannibal leaders' trophies (worn in the helper's neck slot, Trophies.cs) and the Gate's charm, which Warden Hush hands over once when the squad becomes a friend of the gate (relations 40+); that moment also goes to Recap (variable moment). Named after cannibals_data.json so it loads after it (Alder Quill and Mother Brine are made there).",
+ "variables": [
+  {
+   "name": "Gate charm given",
+   "initial": 0,
+   "moment": "Warden Hush named your squad friends of the Gate.",
+   "moment_place": "the Gate",
+   "moment_weight": 70
+  }
+ ],
+ "lore_items": [
+  {
+   "name": "Gran' Wizard's Bell Cord",
+   "from": "Animal Teeth",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 900
+   },
+   "description": "A length of the cord the Gran' Wizard rang his bell with, strung with the teeth of the ones the bell called. It is quiet now. The cannibals will know it on sight.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Meat Lord's Fork",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 700
+   },
+   "description": "The Meat Lord's own fork, worn smooth, on a cord through a hole in its handle. He said forks were everything. Whoever wears it is a guest who did not stay for dinner.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Alder Quill's Token",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 2000
+   },
+   "description": "A kitchen priest's medal of the Holy Nation, its sun scratched out and a fork cut in its place. Alder Quill wore it under his robe. The Cities and the Nation both paid for his end.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Mother Brine's Token",
+   "from": "Animal Teeth",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 1800
+   },
+   "description": "A cure-house tally of knotted cord and salt-white teeth, one for every barrel Mother Brine filled. It still smells of smoke.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Gate Sinew Knot",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 10
+   },
+   "description": "A knot of beast sinew the Gate Folk tie on the ones who feed the gate. Hush wears one. Past the gate the cannibals know what it means, and hate it.\n\nWorn in the neck slot."
+  }
+ ],
+ "changes": [
+  {
+   "kind": "character",
+   "name": "Cannibal Grand Wizard",
+   "ref_add": {
+    "inventory": [
+     [
+      "Gran' Wizard's Bell Cord",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Meat Lord",
+   "ref_add": {
+    "inventory": [
+     [
+      "Meat Lord's Fork",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Alder Quill",
+   "ref_add": {
+    "inventory": [
+     [
+      "Alder Quill's Token",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Mother Brine",
+   "ref_add": {
+    "inventory": [
+     [
+      "Mother Brine's Token",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "cn_hush_gate_charm",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Warden Hush"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "relation": [
+    ">",
+    39
+   ],
+   "vars": [
+    [
+     "Gate charm given",
+     "=",
+     0
+    ]
+   ],
+   "score": 20,
+   "chance": 100,
+   "repeat": 1,
+   "lines": [
+    {
+     "say": [
+      "Friend of gate. Hush says it slow. Here. Sinew knot. Little ones tie it.",
+      "You feed gate many times. Take dhis. Knot of beast. Kin past gate see it, kin know you ours."
+     ],
+     "give_items": [
+      [
+       "Gate Sinew Knot",
+       1
+      ]
+     ],
+     "var_set": [
+      [
+       "Gate charm given",
+       1
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

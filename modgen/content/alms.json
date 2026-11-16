@@ -1,0 +1,361 @@
+{
+ "pack": "alms",
+ "mod": "LivingWasteland",
+ "meitou_only": true,
+ "note": "Meitou only: alms and offerings (the 'Alms and offerings' setting; feature gate by the al_ prefix). Some townsfolk (one personality in seven, never traders or slaves) ask for alms or an offering. Giving takes the cats; the helper's alms effect raises the speaker's faction toward the squad (+1 per 100 cats, at most +4, up to friendly, never allied: LwMod.Favour) and adds the cats to the squad's 'alms' count (titles the Open Hand, the Almsgivers).",
+ "dialogues": [
+  {
+   "id": "al_hn_offering",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "personality": "Honorable",
+   "score": 4,
+   "repeat": 24,
+   "if": [
+    {
+     "cond": "DC_IN_A_NON_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Okran sees what we give, friend. An offering for his temple?",
+      "The temple's lamps burn on what the faithful give. Will you give?",
+      "Okran's light needs keeping. A coin for the temple?"
+     ],
+     "then": [
+      {
+       "say": [
+        "For Okran. Here."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": ">",
+         "value": 99
+        }
+       ],
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         100
+        ]
+       ],
+       "lw_do": [
+        {
+         "alms": 100
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Okran sees it. Walk in his light.",
+          "A small light, but his all the same."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "For the temple, and the lamps. Take this."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": ">",
+         "value": 499
+        }
+       ],
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         500
+        ]
+       ],
+       "lw_do": [
+        {
+         "alms": 500
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Generous. Okran will remember this, and so will the Nation.",
+          "That will keep the lamps lit a long while."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Not today."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Okran sees that too. Go on, then.",
+          "Another day, perhaps."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_uc_alms",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "United Cities"
+   ],
+   "personality": "Fearful",
+   "score": 4,
+   "repeat": 24,
+   "if": [
+    {
+     "cond": "DC_IN_A_NON_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Spare a few cats? The tax men took the rest.",
+      "The nobles eat well. Some of us don't. A few cats, friend?",
+      "Anything you can spare. Times are hard under the samurai."
+     ],
+     "then": [
+      {
+       "say": [
+        "Here. Get something to eat."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": ">",
+         "value": 99
+        }
+       ],
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         100
+        ]
+       ],
+       "lw_do": [
+        {
+         "alms": 100
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "...Thank you. Not many stop.",
+          "Bless you. I mean it."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Here. That should keep you going a while."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": ">",
+         "value": 499
+        }
+       ],
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         500
+        ]
+       ],
+       "lw_do": [
+        {
+         "alms": 500
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "That's... that's more than I've seen in a month. Thank you.",
+          "You've no idea what this means."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Sorry. Not today."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Yeah. Nobody ever does.",
+          "Right. Of course."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_as_cause",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "personality": "Brave",
+   "score": 4,
+   "repeat": 24,
+   "if": [
+    {
+     "cond": "DC_IN_A_NON_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Every cat buys a blade to cut a chain. Will you give to the cause?",
+      "Shackles don't break themselves. A donation for the cause?"
+     ],
+     "then": [
+      {
+       "say": [
+        "For the cause."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": ">",
+         "value": 99
+        }
+       ],
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         100
+        ]
+       ],
+       "lw_do": [
+        {
+         "alms": 100
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Every bit helps. Thank you.",
+          "One more blade. Thanks."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "For the cause. Free a few of them."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": ">",
+         "value": 499
+        }
+       ],
+       "effects": [
+        [
+         "DA_TAKE_MONEY",
+         500
+        ]
+       ],
+       "lw_do": [
+        {
+         "alms": 500
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "That's a lot of blades. Thank you, friend.",
+          "Someone in chains just got a little closer to freedom."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Not this time."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "The chains don't wait. But fine.",
+          "Another time, then."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

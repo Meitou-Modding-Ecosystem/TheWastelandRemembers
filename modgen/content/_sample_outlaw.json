@@ -1,0 +1,21 @@
+{
+  "pack": "sample_outlaw",
+  "outlaws": [
+    {"name": "Rusty Calder", "template": "Dust Boss", "squad_template": "Dust Bandit squad",
+     "faction": "Dust Bandits", "bounty": 4500, "combat": 32,
+     "bounty_factions": ["United Cities", "The Holy Nation", "Shek Kingdom"],
+     "henchmen": [["Dust Bandit", 3, 5]], "biomes": ["Ancient Hills", "Desert"], "weight": 3}
+  ],
+  "contracts": [
+    {"id": "sample contract calder", "factions": ["United Cities"], "state": "Rusty Calder killed by player",
+     "reward": 3000, "chance": 100,
+     "offer": ["There's a toll-taker working the hills. Rusty Calder. Bring me proof he's finished and I pay."],
+     "accept": ["I'll find him."], "accepted": ["Mind the hills. He doesn't work alone."],
+     "decline": ["Not my kind of work."],
+     "report": ["Calder's done? Good. The Cities pay their debts. Three thousand."]}
+  ],
+  "dialogues": [
+    {"id": "sample calder taunt", "event": "EV_I_SEE_ENEMY_PLAYER", "characters": ["Rusty Calder"],
+     "lines": [{"say": ["Another purse on two legs. Toll's everything you carry."]}]}
+  ]
+}

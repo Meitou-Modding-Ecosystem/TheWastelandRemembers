@@ -1,0 +1,6055 @@
+{
+ "pack": "outlaws",
+ "outlaws": [
+  {
+   "name": "Orsa Quillon",
+   "template": "Dust Boss",
+   "squad_template": "Dust Bandit squad",
+   "faction": "Dust Bandits",
+   "bounty": 3200,
+   "combat": 32,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "henchmen": [
+    [
+     "Dust Bandit",
+     2,
+     4
+    ]
+   ],
+   "zones": [
+    "Border Zone",
+    "The Great Desert",
+    "Shem"
+   ],
+   "biomes": [
+    "Desert",
+    "Ancient Hills",
+    "Dry Edge"
+   ],
+   "weight": 3,
+   "female": true,
+   "successor": {
+    "name": "Benna Quillon",
+    "female": true,
+    "relation": "her niece",
+    "story": "Grew up minding her aunt's rope on the Hub road and learned the toll trade before she could count. She moved the rope a mile east the week Orsa fell and went on charging the caravans."
+   }
+  },
+  {
+   "name": "Ferrant Dray",
+   "template": "Mercenary Captain",
+   "squad_template": "Mercenary wanderers",
+   "faction": "Outlaw",
+   "bounty": 4800,
+   "combat": 40,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "henchmen": [
+    [
+     "Mercenary",
+     2,
+     3
+    ],
+    [
+     "Outlaw",
+     1,
+     2
+    ]
+   ],
+   "zones": [
+    "Okran's Valley",
+    "Heng"
+   ],
+   "biomes": [
+    "Northern Flats",
+    "Ancient Hills",
+    "ForestLand"
+   ],
+   "weight": 2,
+   "female": false,
+   "successor": {
+    "name": "Coll Varrick",
+    "female": false,
+    "relation": "his lieutenant",
+    "story": "A deserter from the United Cities' samurai who sold Dray his sword for a share. He kept the company's books, so the men followed the man who knew where the money was."
+   }
+  },
+  {
+   "name": "Hask Morrow",
+   "template": "Holy Sentinel",
+   "squad_template": "Holy Army bandits (override) diaspora",
+   "faction": "Holy Nation Outlaws",
+   "bounty": 2600,
+   "combat": 30,
+   "bounty_factions": [
+    "The Holy Nation",
+    "United Cities"
+   ],
+   "henchmen": [
+    [
+     "Outlaw",
+     2,
+     3
+    ]
+   ],
+   "zones": [
+    "Okran's Pride",
+    "Bast",
+    "Okran's Valley"
+   ],
+   "biomes": [
+    "Okran's Pride",
+    "ForestLand",
+    "Northern Flats"
+   ],
+   "weight": 3,
+   "female": false,
+   "successor": {
+    "name": "Tobin Ashe",
+    "female": false,
+    "relation": "his sworn man",
+    "story": "A former Holy Nation acolyte who ran away with Morrow rather than face the Inquisition. He still prays every morning, though he no longer says to whom."
+   }
+  },
+  {
+   "name": "Sarn Ashvael",
+   "template": "Hungry bandit leader",
+   "squad_template": "Starving bandit mob",
+   "faction": "Starving Bandits",
+   "bounty": 2000,
+   "combat": 28,
+   "bounty_factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild"
+   ],
+   "henchmen": [
+    [
+     "Hungry bandit",
+     4,
+     7
+    ]
+   ],
+   "zones": [
+    "The Great Desert",
+    "Okran's Gulf"
+   ],
+   "biomes": [
+    "Desert",
+    "BoneYard",
+    "Dry Edge"
+   ],
+   "weight": 3,
+   "female": false,
+   "successor": {
+    "name": "Gristle Mott",
+    "female": false,
+    "relation": "his cook, of all people",
+    "story": "Fed Ashvael's starving band for years on whatever the roads gave up. When the leader was gone, the hungry went with the one who held the pot."
+   }
+  },
+  {
+   "name": "Veldt Harrow",
+   "template": "Slaver Boss",
+   "squad_template": "slave hunters (S)",
+   "faction": "Slave Traders",
+   "bounty": 7500,
+   "combat": 44,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild",
+    "Anti-Slavers"
+   ],
+   "henchmen": [
+    [
+     "Slave Hunter",
+     2,
+     4
+    ]
+   ],
+   "zones": [
+    "Heng",
+    "The Great Desert",
+    "Okran's Gulf"
+   ],
+   "biomes": [
+    "Desert",
+    "Floodwastes",
+    "Mudpool Lands"
+   ],
+   "weight": 2,
+   "female": false,
+   "successor": {
+    "name": "Sella Harrow",
+    "female": true,
+    "relation": "his widow",
+    "story": "Ran the ledgers and the buyers while her husband ran the chains. Most of his old clients never noticed the change in management."
+   }
+  },
+  {
+   "name": "Borun Vahl",
+   "template": "Berserker",
+   "squad_template": "Berserker squad",
+   "faction": "Berserkers",
+   "bounty": 6000,
+   "combat": 48,
+   "bounty_factions": [
+    "Shek Kingdom",
+    "United Cities"
+   ],
+   "henchmen": [
+    [
+     "Berserker",
+     2,
+     3
+    ]
+   ],
+   "zones": [
+    "Spider Plains",
+    "Berserker Country"
+   ],
+   "biomes": [
+    "DesertMountains",
+    "Desert",
+    "Canyonlands"
+   ],
+   "weight": 2,
+   "female": false,
+   "successor": {
+    "name": "Ruk Vahl",
+    "female": false,
+    "relation": "his brother",
+    "story": "Borun's younger brother, quieter and worse. He fought his way to the front of the berserkers inside a day."
+   }
+  },
+  {
+   "name": "Ilsa Hearthmourn",
+   "template": "Holy Pacifier",
+   "squad_template": "Holy Army bandits (override) diaspora",
+   "faction": "Holy Nation Outlaws",
+   "bounty": 9000,
+   "combat": 50,
+   "bounty_factions": [
+    "The Holy Nation",
+    "United Cities"
+   ],
+   "henchmen": [
+    [
+     "Outlaw",
+     2,
+     3
+    ]
+   ],
+   "zones": [
+    "Okran's Pride",
+    "Bast"
+   ],
+   "biomes": [
+    "Okran's Pride",
+    "Ancient Hills"
+   ],
+   "weight": 2,
+   "female": true,
+   "successor": {
+    "name": "Brother Caddoc",
+    "female": false,
+    "relation": "her first convert",
+    "story": "Hearthmourn's first convert, a farmhand who heard her preach at a well and walked off his master's field that night. He preaches her words badly but loudly."
+   }
+  },
+  {
+   "name": "Hodd Crake",
+   "template": "Cannibal Hunter",
+   "squad_template": "cannibal hunter patrol",
+   "faction": "Outlaw",
+   "bounty": 8200,
+   "combat": 46,
+   "bounty_factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Shek Kingdom",
+    "Cannibal Hunters"
+   ],
+   "henchmen": [
+    [
+     "Cannibal Hunter",
+     1,
+     2
+    ],
+    [
+     "Outlaw",
+     1,
+     2
+    ]
+   ],
+   "zones": [
+    "Cannibal Plains",
+    "Darkfinger",
+    "Bast"
+   ],
+   "biomes": [
+    "BoneYard",
+    "Hoodoo Badland",
+    "Ancient Hills"
+   ],
+   "weight": 2,
+   "female": false,
+   "successor": {
+    "name": "Wenna Crake",
+    "female": true,
+    "relation": "his daughter",
+    "story": "Raised in her father's hunting camps on the edge of the Cannibal Plains. She reads tracks better than he did and takes fewer prisoners."
+   }
+  },
+  {
+   "name": "Pim Sillery",
+   "template": "Tech Hunter",
+   "squad_template": "Treasure hunters aggressive",
+   "faction": "Outlaw",
+   "bounty": 3500,
+   "combat": 28,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild",
+    "Tech Hunters"
+   ],
+   "henchmen": [
+    [
+     "Thief",
+     2,
+     3
+    ]
+   ],
+   "zones": [
+    "Empire",
+    "Central",
+    "The Outlands"
+   ],
+   "biomes": [
+    "Robot Graveyard",
+    "Ancient Ruins",
+    "Hoodoo Badland"
+   ],
+   "weight": 3,
+   "female": false,
+   "successor": {
+    "name": "Doss Kettering",
+    "female": false,
+    "relation": "his digging partner",
+    "story": "Sillery's digging partner for ten years and the only one who knew where the good caches were buried. He's been digging them up one by one ever since."
+   }
+  },
+  {
+   "name": "Teshin Ro",
+   "template": "Samurai Rogue",
+   "squad_template": "yabuta outlaw roaming",
+   "faction": "Outlaw",
+   "bounty": 6500,
+   "combat": 52,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "henchmen": [
+    [
+     "Outlaw Swordsman",
+     1,
+     2
+    ]
+   ],
+   "zones": [
+    "Okran's Gulf",
+    "Shem"
+   ],
+   "biomes": [
+    "Desert",
+    "Northern Flats",
+    "Cinder RIdge"
+   ],
+   "weight": 2,
+   "female": false,
+   "successor": {
+    "name": "Aiko Ro",
+    "female": true,
+    "relation": "his student",
+    "story": "Teshin's only student, who learned the sword by losing to him every day for four years. She took his blade from the grave and his reputation from the road."
+   }
+  },
+  {
+   "name": "Ysolde Gorehollow",
+   "template": "Blood Raider",
+   "squad_template": "Blood bandits nest",
+   "faction": "Bloodraiders",
+   "bounty": 5500,
+   "combat": 42,
+   "bounty_factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom"
+   ],
+   "henchmen": [
+    [
+     "Blood Raider",
+     3,
+     5
+    ]
+   ],
+   "zones": [
+    "Ashlands",
+    "Sinkuun"
+   ],
+   "biomes": [
+    "Ashlands",
+    "Serpentine Wastes"
+   ],
+   "weight": 2,
+   "female": true,
+   "successor": {
+    "name": "Marrow Jess",
+    "female": true,
+    "relation": "her blood-sister",
+    "story": "Swore blood-sisterhood with Gorehollow in a cannibal pit they both climbed out of. The raiders say she's the reason Ysolde ever came back from a fight."
+   }
+  },
+  {
+   "name": "Marta Cull",
+   "template": "Mercenary Heavy",
+   "squad_template": "reaver patrol",
+   "faction": "Reavers",
+   "bounty": 5200,
+   "combat": 40,
+   "bounty_factions": [
+    "Traders Guild",
+    "United Cities"
+   ],
+   "henchmen": [
+    [
+     "Reaver Whelp",
+     2,
+     4
+    ]
+   ],
+   "zones": [
+    "The Outlands",
+    "Stormgap Coast",
+    "Stobe's Garden"
+   ],
+   "biomes": [
+    "Red Coast",
+    "Old Beach",
+    "Old Pits"
+   ],
+   "weight": 2,
+   "female": true,
+   "successor": {
+    "name": "Fenn Cull",
+    "female": false,
+    "relation": "her son",
+    "story": "Born on one of his mother's ships and never set foot in a town until he was twelve. He runs the crew like she did, only younger and with less patience."
+   }
+  },
+  {
+   "name": "Teodric Clackjaw",
+   "template": "Crab Raider",
+   "squad_template": "crab raiders patrol",
+   "faction": "Crab Raiders",
+   "bounty": 3800,
+   "combat": 34,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild"
+   ],
+   "henchmen": [
+    [
+     "Crab Raider",
+     3,
+     5
+    ]
+   ],
+   "zones": [
+    "Greenbeach",
+    "Howler Maze"
+   ],
+   "biomes": [
+    "Howler Maze",
+    "Old Pits",
+    "Red Coast"
+   ],
+   "weight": 3,
+   "female": false,
+   "successor": {
+    "name": "Snapper Dunne",
+    "female": false,
+    "relation": "his loudest raider",
+    "story": "The loudest of Clackjaw's raiders and the first one up the beach every time. He took over by shouting longer than anyone else."
+   }
+  },
+  {
+   "name": "Maruka Tal-Khesh",
+   "template": "Kral's Chosen",
+   "squad_template": "krals chosen",
+   "faction": "Kral's Chosen",
+   "bounty": 7000,
+   "combat": 50,
+   "bounty_factions": [
+    "Shek Kingdom",
+    "United Cities"
+   ],
+   "henchmen": [
+    [
+     "Kral's Chosen",
+     2,
+     4
+    ]
+   ],
+   "zones": [
+    "Stenn Desert",
+    "Berserker Country",
+    "Spine Canyon"
+   ],
+   "biomes": [
+    "DesertMountains",
+    "Canyonlands",
+    "Desert"
+   ],
+   "weight": 2,
+   "female": true,
+   "successor": {
+    "name": "Oshar Tal-Khesh",
+    "female": false,
+    "relation": "her shield-bearer",
+    "story": "Carried Maruka's shield for six years and her name since she fell. The exiles follow him because he never once dropped it."
+   }
+  },
+  {
+   "name": "Aldous Peel",
+   "template": "Skin bandit",
+   "squad_template": "skin bandit patrol",
+   "faction": "Skin Bandits",
+   "bounty": 9500,
+   "combat": 45,
+   "bounty_factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom"
+   ],
+   "henchmen": [
+    [
+     "Skin bandit",
+     2,
+     4
+    ]
+   ],
+   "zones": [
+    "Skinner's Roam",
+    "Sonorous Dark"
+   ],
+   "biomes": [
+    "Ashlands",
+    "Skinner's Roam"
+   ],
+   "weight": 2,
+   "female": false,
+   "successor": {
+    "name": "Merrin Stitch",
+    "female": false,
+    "relation": "his apprentice",
+    "story": "Peel took him off a slaver's cart as a boy and taught him the needle instead of the knife. He finished his master's last coat himself."
+   }
+  },
+  {
+   "name": "Mister Tuppence",
+   "template": "Skeleton Bandit",
+   "squad_template": "Skeleton bandits patrol",
+   "faction": "Skeleton Bandits",
+   "bounty": 2400,
+   "combat": 26,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "henchmen": [
+    [
+     "Skeleton Bandit",
+     2,
+     3
+    ]
+   ],
+   "zones": [
+    "The Crags",
+    "Deadlands",
+    "Venge"
+   ],
+   "biomes": [
+    "Old Pits",
+    "Robot Graveyard",
+    "Blister Sands"
+   ],
+   "weight": 3,
+   "female": false,
+   "successor": {
+    "name": "Mister Ha'penny",
+    "female": false,
+    "relation": "the bones he built to follow him",
+    "story": "A skeleton Tuppence built from scavenged parts to carry his loot. Nobody told it to stop when its maker fell, so it picked up the ledger and carried on."
+   }
+  },
+  {
+   "name": "Ulla Weeper",
+   "template": "Outlaw",
+   "squad_template": "shrieking squad",
+   "faction": "Shrieking Bandits",
+   "bounty": 2800,
+   "combat": 30,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild",
+    "Swampers"
+   ],
+   "henchmen": [
+    [
+     "Shrieking Bandit",
+     3,
+     6
+    ]
+   ],
+   "zones": [
+    "The Shrieking Forest",
+    "The Swamp"
+   ],
+   "biomes": [
+    "Swamp",
+    "Swamps",
+    "Mudpool Lands"
+   ],
+   "weight": 3,
+   "female": true,
+   "successor": {
+    "name": "Keening Bel",
+    "female": true,
+    "relation": "her loudest shrieker",
+    "story": "The shrieker whose voice carries furthest in the forest. Ulla's band follows the sound now, the way they used to follow Ulla."
+   }
+  },
+  {
+   "name": "Dunmar Quell",
+   "template": "Red Sabre Boss",
+   "squad_template": "Bandit raid small",
+   "faction": "Red Sabres",
+   "bounty": 6800,
+   "combat": 46,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild",
+    "The Holy Nation",
+    "Swampers"
+   ],
+   "henchmen": [
+    [
+     "Red Sabre",
+     3,
+     5
+    ]
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "biomes": [
+    "Swamp",
+    "Mudpool Lands",
+    "Swamps"
+   ],
+   "weight": 2,
+   "female": false,
+   "successor": {
+    "name": "Sabre Hollis",
+    "female": false,
+    "relation": "his tax collector",
+    "story": "Quell's tax collector, who knew every village in the swamp and what each one could pay. The Red Sabres decided he was too useful to lose."
+   }
+  },
+  {
+   "name": "Gammer Tuck",
+   "template": "Rebel Captain",
+   "squad_template": "empire rebel farmers small",
+   "faction": "Rebel Farmers",
+   "bounty": 2200,
+   "combat": 27,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "henchmen": [
+    [
+     "Rebel Fighter",
+     3,
+     5
+    ]
+   ],
+   "zones": [
+    "Hidden Forest",
+    "Okran's Valley"
+   ],
+   "biomes": [
+    "ForestLand",
+    "Northern Flats",
+    "Four Ways"
+   ],
+   "weight": 3,
+   "female": false,
+   "successor": {
+    "name": "Nan Tuck",
+    "female": true,
+    "relation": "his wife",
+    "story": "Gammer's wife, who planned most of the farm raids from their kitchen table while he took the credit. She doesn't bother hiding it now."
+   }
+  },
+  {
+   "name": "Sayo of the Grey Ribbon",
+   "template": "Sand Ninja",
+   "squad_template": "Sand ninja cell",
+   "faction": "Sand ninjas",
+   "bounty": 5800,
+   "combat": 50,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild",
+    "Shek Kingdom"
+   ],
+   "henchmen": [
+    [
+     "Sand Ninja",
+     2,
+     3
+    ]
+   ],
+   "zones": [
+    "Shem",
+    "Stenn Desert",
+    "The Great Desert"
+   ],
+   "biomes": [
+    "Desert",
+    "Canyonlands",
+    "Dry Edge"
+   ],
+   "weight": 2,
+   "female": true,
+   "successor": {
+    "name": "Kiri of the Torn Ribbon",
+    "female": true,
+    "relation": "her pupil",
+    "story": "Sayo's last pupil, who tore her own grey ribbon in half the day her teacher was taken. She still takes work from the people who used to hire Sayo."
+   }
+  },
+  {
+   "name": "Cuddy Pell",
+   "template": "Mongrel crazy",
+   "squad_template": "Drifter squad",
+   "faction": "Mongrel",
+   "bounty": 1500,
+   "combat": 25,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild",
+    "Fisher"
+   ],
+   "henchmen": [
+    [
+     "Drifter",
+     1,
+     2
+    ]
+   ],
+   "zones": [
+    "Fog Islands",
+    "Floodlands"
+   ],
+   "biomes": [
+    "Floodwastes",
+    "Mudpool Lands",
+    "Desert"
+   ],
+   "weight": 3,
+   "female": false,
+   "successor": {
+    "name": "Little Pell",
+    "female": false,
+    "relation": "nobody's sure, maybe his son",
+    "story": "Nobody's sure if he's Cuddy's son, his brother or just someone who started dressing like him. The flooded coast doesn't seem to care which."
+   }
+  },
+  {
+   "name": "Tchik of Seven Voices",
+   "template": "Hive Bandit Leader",
+   "squad_template": "hive diaspora bandits",
+   "faction": "Outlaw",
+   "bounty": 4000,
+   "combat": 36,
+   "bounty_factions": [
+    "United Cities",
+    "Shek Kingdom",
+    "Traders Guild"
+   ],
+   "henchmen": [
+    [
+     "Hive Bandit",
+     2,
+     4
+    ]
+   ],
+   "zones": [
+    "Vain",
+    "Greyshelf",
+    "Dreg"
+   ],
+   "biomes": [
+    "Dark Finger",
+    "Deadmen's Fingers",
+    "Desert"
+   ],
+   "weight": 2,
+   "female": false,
+   "successor": {
+    "name": "Tchak of Three Voices",
+    "female": false,
+    "relation": "the drone that followed him",
+    "story": "A drone that followed Tchik out of the hive and learned to speak in his manner. It hasn't learned all seven voices yet, but the band follows the three it has."
+   }
+  },
+  {
+   "name": "Elric Vosk",
+   "template": "Mercenary Heavy",
+   "squad_template": "Mercenary patrol",
+   "faction": "Outlaw",
+   "bounty": 3400,
+   "combat": 36,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild"
+   ],
+   "henchmen": [
+    [
+     "Mercenary",
+     2,
+     3
+    ]
+   ],
+   "zones": [
+    "Border Zone",
+    "The Great Desert",
+    "Heng"
+   ],
+   "biomes": [
+    "Desert",
+    "Four Ways",
+    "Ancient Hills"
+   ],
+   "weight": 3,
+   "female": false,
+   "successor": {
+    "name": "Garrow Vosk",
+    "female": false,
+    "relation": "his cousin",
+    "story": "Elric's cousin, who joined the company to pay off a debt and stayed because the pay was better than farming. He takes the contracts Elric used to take, for a little less."
+   }
+  },
+  {
+   "name": "Pyke Ludlow",
+   "template": "Anti-Slaver Jonin",
+   "squad_template": "anti-slaver town patrol",
+   "faction": "Outlaw",
+   "bounty": 5000,
+   "combat": 44,
+   "bounty_factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "henchmen": [
+    [
+     "Anti-Slaver",
+     1,
+     2
+    ]
+   ],
+   "zones": [
+    "Spider Plains",
+    "Stobe's Gamble",
+    "Okran's Gulf"
+   ],
+   "biomes": [
+    "Desert",
+    "Floodwastes",
+    "Hard Shoulder"
+   ],
+   "weight": 2,
+   "female": false,
+   "successor": {
+    "name": "Esme Ludlow",
+    "female": true,
+    "relation": "his sister",
+    "story": "Pyke's sister, who handled the freed slaves while he handled the slavers. She still hits the caravans, and the Anti-Slavers still pretend not to know her."
+   }
+  }
+ ],
+ "contracts": [
+  {
+   "id": "ol_orsa_quillon_contract",
+   "factions": [
+    "Traders Guild"
+   ],
+   "state": "Orsa Quillon killed by player",
+   "reward": 2400,
+   "chance": 45,
+   "offer": [
+    "A woman strings a rope across the Hub road and calls it a toll. Orsa Quillon. Three caravans have stopped paying her with their lives.",
+    "Orsa Quillon, the Toll-Widow. She works the dry road out of the Hub and the hills beyond. The Guild would like the rope cut.",
+    "Merchants keep paying a woman called Quillon to cross open desert. The ones who refuse are not seen again. End it."
+   ],
+   "accept": [
+    "I'll cut her rope.",
+    "Where on the road does she stand?"
+   ],
+   "accepted": [
+    "Take guards. She is rarely alone, and she never moves her rope.",
+    "Watch the hills past the Hub. She likes a crest to see you coming."
+   ],
+   "decline": [
+    "Tolls are cheaper than blood.",
+    "Not today."
+   ],
+   "report": [
+    "Quillon is dead? Then the road is open again. The Guild pays what it promised.",
+    "Her rope is cut. Good. Here is the Guild's coin.",
+    "Dead at her own toll post, they tell me. Take your cats."
+   ],
+   "packages": [
+    "bar:all"
+   ]
+  },
+  {
+   "id": "ol_ferrant_dray_contract",
+   "factions": [
+    "United Cities"
+   ],
+   "state": "Ferrant Dray killed by player",
+   "reward": 3600,
+   "chance": 45,
+   "offer": [
+    "Ferrant Dray was a lordling with a title, an estate and debts. Now he is a highwayman with a title and a sword. The Cities want the title removed, along with the head.",
+    "Dray. Third son of a failed house, dressed like a lord and robbing like a dog. He haunts the northern flats and the green edges. Bring him down.",
+    "A so-called Lord Dray holds court over travellers in the northern flats. Tolls, taxes, a fee for being looked at. The Cities pay for his absence."
+   ],
+   "accept": [
+    "I'll end his court.",
+    "A fallen noble. How hard can it be?"
+   ],
+   "accepted": [
+    "He keeps hired swords near him. And he fights better than he governs. Be careful.",
+    "Look in the green edges and along the flats. He avoids the Holy roads."
+   ],
+   "decline": [
+    "Nobles are trouble even when ruined.",
+    "Another time."
+   ],
+   "report": [
+    "Dray is finished? His family will pretend they never knew him. The Cities will not. Take this.",
+    "No more Lord Dray. Good. Here is the reward.",
+    "A lordling less. I wouldn't call it a tragedy. Your cats."
+   ]
+  },
+  {
+   "id": "ol_hask_morrow_contract",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "state": "Hask Morrow killed by player",
+   "reward": 1900,
+   "chance": 45,
+   "offer": [
+    "A deserter named Hask Morrow walked off his post with his armour and his orders. He now plunders pilgrims on the roads. The Nation wants an example made.",
+    "Sentinel Morrow broke his oath, brother. He is somewhere in Okran's Pride, robbing the faithful on their way to prayer. Return him to the Flame.",
+    "There is no pardon for a deserter who preys on pilgrims. His name is Morrow. The Holy Nation pays for the correction."
+   ],
+   "accept": [
+    "The Flame will be satisfied.",
+    "I'll bring his armour back."
+   ],
+   "accepted": [
+    "He knows our patrol routes. Do not be where he expects you.",
+    "He keeps to the green roads, near where pilgrims walk. Do not hesitate."
+   ],
+   "decline": [
+    "I cannot take that burden.",
+    "Not now."
+   ],
+   "report": [
+    "Morrow is dead? Okran's mercy is thin, but it reached him. Here is your reward.",
+    "The deserter is gone. The faithful sleep a little easier. Take this.",
+    "Done, and done properly. The Nation remembers its debts."
+   ]
+  },
+  {
+   "id": "ol_sarn_ashvael_contract",
+   "factions": [
+    "Traders Guild"
+   ],
+   "state": "Sarn Ashvael killed by player",
+   "reward": 1500,
+   "chance": 45,
+   "offer": [
+    "A starving man named Sarn Ashvael preaches that the Empty Bowl will take what the road owes. His mob follows him. Starving men with a prophet are worse than starving men alone.",
+    "Ashvael. They call him a prophet of hunger. His following has grown to a mob. The Guild would rather see it starve properly.",
+    "A bandit leader named Sarn has convinced two dozen hungry wretches they are chosen. The roads in the east can't bear it. End it."
+   ],
+   "accept": [
+    "I'll find him.",
+    "Hunger has a preacher? Fine, I'll silence him."
+   ],
+   "accepted": [
+    "He and his mob walk the desert and the bone edge. They'll fall on anything that looks fed.",
+    "They sing before they attack. Listen for it."
+   ],
+   "decline": [
+    "I feel for them. Not today.",
+    "Find someone with a harder heart."
+   ],
+   "report": [
+    "Ashvael is dead. The mob will scatter. Gods help whoever finds them first. Your reward.",
+    "A prophet less. The desert will hold its tongue for a while. Take the cats.",
+    "Hunger has lost its voice. I'm sorry for it. I'll still pay you."
+   ],
+   "packages": [
+    "bar:all"
+   ]
+  },
+  {
+   "id": "ol_veldt_harrow_contract",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "state": "Veldt Harrow killed by player",
+   "reward": 5600,
+   "chance": 45,
+   "offer": [
+    "Veldt Harrow was a slaver. A legal one, if you like. Then the markets thinned and he stopped selling and started burying. They call him the Tallyman. He counts every head he keeps.",
+    "Harrow. He used to take people to market. Now he takes them to the ground, and he writes the numbers in a book. We want the book and the man.",
+    "A butcher walks the flood roads with a ledger. Harrow. Every caravan he stops, he marks. Do not carry that mark home."
+   ],
+   "accept": [
+    "I'll close his ledger.",
+    "He'll not count me."
+   ],
+   "accepted": [
+    "He keeps slave hunters with him, men who still think of themselves as honest. They are not.",
+    "Look along the flood roads and the desert south of them. He prefers wet ground, for the digging."
+   ],
+   "decline": [
+    "I am no killer.",
+    "Another time."
+   ],
+   "report": [
+    "Harrow is dead? Then the ledger ends. The Anti-Slavers pay. For the names in it, and for all of them.",
+    "The Tallyman has stopped counting. Good. Take this.",
+    "I won't ask how. Here is your pay."
+   ]
+  },
+  {
+   "id": "ol_borun_vahl_contract",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "state": "Borun Vahl killed by player",
+   "reward": 4500,
+   "chance": 45,
+   "offer": [
+    "Borun Vahl, the Oathless. He broke his vow in the stone circle and was cast out. He kills those who cross his path, and calls it honour.",
+    "A Shek who lost his name hunts the high stones. Vahl. The Kingdom does not wish his story told. We wish his bones in the sand.",
+    "Vahl was a warrior until he betrayed his duel. Now he challenges travellers, and does not honour the loser. End him, flatskin."
+   ],
+   "accept": [
+    "I'll end the Oathless.",
+    "I will find him in the stones."
+   ],
+   "accepted": [
+    "He fights without mercy. Do not offer a duel. Do not trust his word.",
+    "Look in the dry mountains and the canyons. He sleeps among the stones where nobody asks him questions."
+   ],
+   "decline": [
+    "Shek business is Shek business.",
+    "Not this time."
+   ],
+   "report": [
+    "Vahl is dead? The Stone Golem weighs all things, and tonight the scales are even. Take your reward.",
+    "The Oathless has fallen. His shame can end. Here is the pay.",
+    "You fought a Shek and lived. That is a rare thing. Take this."
+   ],
+   "packages": [
+    "shek bounty desk"
+   ]
+  },
+  {
+   "id": "ol_ilsa_hearthmourn_contract",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "state": "Ilsa Hearthmourn killed by player",
+   "reward": 6800,
+   "chance": 45,
+   "offer": [
+    "Ilsa Hearthmourn was a Pacifier of the Flame. She stopped believing and began to pray for the end of Okran. The heresy is spreading. She is spreading it.",
+    "The Candle Heretic. Ilsa Hearthmourn. She walks the Holy roads with a lit candle and no scripture, and the faithful follow her. She must be silenced.",
+    "An apostate. A former Pacifier. She speaks against the Flame and the people listen. The Nation will pay for her end."
+   ],
+   "accept": [
+    "The Flame will judge her through me.",
+    "I'll find her."
+   ],
+   "accepted": [
+    "She keeps her old armour and her old skills. Do not trust her prayers.",
+    "Look in the Holy lands, and the hills where the faithful are scarce. She lights a candle at every camp."
+   ],
+   "decline": [
+    "I will not raise a hand to pray.",
+    "I lack the faith for it."
+   ],
+   "report": [
+    "Hearthmourn is dead. May the Flame forgive her, since I cannot. Here is the Nation's payment.",
+    "The Candle is out. Good. Your reward.",
+    "A heretic silenced. The faithful will breathe easier tonight."
+   ],
+   "packages": [
+    "Holy Nation Inquisitor"
+   ]
+  },
+  {
+   "id": "ol_hodd_crake_contract",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "state": "Hodd Crake killed by player",
+   "reward": 6200,
+   "chance": 45,
+   "offer": [
+    "Hodd Crake was one of ours. A hunter of the plains. Somewhere out there, he started eating what he killed. He still wears the colours. That shames every hunter alive.",
+    "Crake. Fifteen years killing cannibals and then he joined them. He is not hungry, they say. He just likes the taste. Put him down.",
+    "We called him the Long Appetite. A hunter who crossed. We hunt cannibals, traveller. We do not hunt our own, unless we must. We must."
+   ],
+   "accept": [
+    "I'll put him down.",
+    "A hunter turned cannibal. Understood."
+   ],
+   "accepted": [
+    "He knows our tricks. He taught half of them. Stay out of the open ground.",
+    "Crake roams the bone plains and the badlands. Look for what he leaves behind."
+   ],
+   "decline": [
+    "Not a hunt I want.",
+    "Find another."
+   ],
+   "report": [
+    "Crake is dead? He deserved a better end, and a worse life. Here is the Bastion's pay.",
+    "The Long Appetite is finished. May the hunt forgive him. Take this.",
+    "Good. We will bury the colours with him. Your cats."
+   ]
+  },
+  {
+   "id": "ol_pim_sillery_contract",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "state": "Pim Sillery killed by player",
+   "reward": 2600,
+   "chance": 45,
+   "offer": [
+    "Pim Sillery was one of us until the day he walked out of a ruin with every schematic and left three hunters in the dark. He calls himself the Magpie. He likes shiny things.",
+    "We had a salvage crew in the ruins. Sillery looted them while they slept, and sold the plans. Bring him in, or bring the plans back. I prefer both.",
+    "The Magpie. Pim Sillery. He lives on stolen finds. Our ruins are drying up because of him. Stop him, and I will make it worth your while."
+   ],
+   "accept": [
+    "I'll catch the Magpie.",
+    "A thief with a taste for tech. Fine."
+   ],
+   "accepted": [
+    "He prowls the ruined fields and the old robot yards. He works with thieves who like his luck.",
+    "Be quick. He runs on a shiny trinket and a bad conscience."
+   ],
+   "decline": [
+    "Sorry, I'm no thief-taker.",
+    "Not for me."
+   ],
+   "report": [
+    "The Magpie is dead? Good riddance. The ruins are ours again. Take your payment.",
+    "Sillery is done. We'll find his nest soon enough. Here is your fee.",
+    "A fine job. And without a single scratch on the good gear. Take the cats."
+   ]
+  },
+  {
+   "id": "ol_teshin_ro_contract",
+   "factions": [
+    "United Cities"
+   ],
+   "state": "Teshin Ro killed by player",
+   "reward": 4900,
+   "chance": 45,
+   "offer": [
+    "Teshin Ro. A ronin. His lord died, and he has been paying for it ever since. He duels travellers and cuts the ones who refuse. Many dead, last season.",
+    "A masterless swordsman works the northern roads. Teshin Ro. He does not rob. He only challenges. And he does not leave.",
+    "The ronin Ro has killed eleven men in duels that were not duels. Someone with a good blade and a clear head should end it. The Cities pay."
+   ],
+   "accept": [
+    "I'll accept his challenge.",
+    "A ronin. Honour or no honour, I'll end it."
+   ],
+   "accepted": [
+    "He fights without anger, which is worse. Watch his shoulders. They speak before the sword.",
+    "He keeps to the flats and the desert. When the wind drops, he will find you."
+   ],
+   "decline": [
+    "I don't duel for money.",
+    "Not me."
+   ],
+   "report": [
+    "Ro has fallen? Strange. I expected a different ending. Take your pay.",
+    "The ronin is gone. May his lord forgive him. Here is the Cities' reward.",
+    "Done. And with respect, I hope. Take this."
+   ]
+  },
+  {
+   "id": "ol_ysolde_gorehollow_contract",
+   "factions": [
+    "United Cities"
+   ],
+   "state": "Ysolde Gorehollow killed by player",
+   "reward": 4100,
+   "chance": 45,
+   "offer": [
+    "Ysolde Gorehollow. The Bloodmother. She drains prisoners into jars and sells the contents to anyone sick enough to buy. Her raiders worship it. The Cities want the jars broken.",
+    "A blood-raider matriarch works the ashlands. Gorehollow. She takes the living and returns them empty. Find her and end it.",
+    "Gorehollow runs a nest in the ash country. Her kills are hung to drain. Her cooks are patient. Do us all a favour."
+   ],
+   "accept": [
+    "I'll break her jars.",
+    "The Bloodmother will bleed."
+   ],
+   "accepted": [
+    "She keeps a crowd of raiders about her. They love her more than their lives. Plan accordingly.",
+    "The ash country near the old domes. Follow the flies."
+   ],
+   "decline": [
+    "I have no stomach for it.",
+    "Not that one."
+   ],
+   "report": [
+    "Gorehollow is dead. The ash will be quiet. Take the Cities' payment.",
+    "The Bloodmother is gone. Good. Your reward.",
+    "I won't ask what you saw. Your cats."
+   ]
+  },
+  {
+   "id": "ol_marta_cull_contract",
+   "factions": [
+    "Traders Guild"
+   ],
+   "state": "Marta Cull killed by player",
+   "reward": 3900,
+   "chance": 45,
+   "offer": [
+    "Marta Cull, the Brine-Wife. She ties salvagers to the tide line and times their drowning. The Guild's coastal runs are dry because of her. Make the sea quiet.",
+    "A Reaver woman holds the southern shore. Cull. She takes the cargo, and she takes the crew, and she takes her time. The Guild pays well for her silence.",
+    "Cull is a salvage queen with a drowning habit. The Guild lost nine hands to her last season. We want the ninth to be the last."
+   ],
+   "accept": [
+    "I'll end her tides.",
+    "The Brine-Wife will drown."
+   ],
+   "accepted": [
+    "She keeps young Reavers about her. They obey and do not ask. Watch the beaches.",
+    "Look along the south coast and the old pits. Her camp stinks of fish and fear."
+   ],
+   "decline": [
+    "I don't swim.",
+    "Not me."
+   ],
+   "report": [
+    "Cull is dead? Then the coast is ours again. Here is the Guild's reward.",
+    "The Brine-Wife has drowned herself. Funny. Take the cats.",
+    "A good day. Here is your pay."
+   ],
+   "packages": [
+    "bar:all"
+   ]
+  },
+  {
+   "id": "ol_teodric_clackjaw_contract",
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "state": "Teodric Clackjaw killed by player",
+   "reward": 2800,
+   "chance": 45,
+   "offer": [
+    "Teodric Clackjaw. He fought in the crab pits until he cut an opponent in half after the bell. Banned, he took a shell for armour and a grudge for a god. The Guild wants him quiet.",
+    "A crab champion gone rogue works the south. Clackjaw. He clacks his teeth before he kills, and that is the only warning you get.",
+    "Clackjaw. Disgraced in the tournaments, loose on the roads. He still insists on fighting by the rules. Only his rules. Take him out."
+   ],
+   "accept": [
+    "I'll stop the clacking.",
+    "Disgraced champion. Right."
+   ],
+   "accepted": [
+    "He and his crabbers wander the pits and the maze. Listen for the clacking.",
+    "He fights in rounds. Do not agree to a round. There is only one."
+   ],
+   "decline": [
+    "I don't fight in pits.",
+    "Maybe another day."
+   ],
+   "report": [
+    "Clackjaw is dead? The pits will sleep easier. Here is your Guild fee.",
+    "No more clacking. A relief. Take your pay.",
+    "Good work. The Guild remembers. Your cats."
+   ]
+  },
+  {
+   "id": "ol_maruka_tal_khesh_contract",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "state": "Maruka Tal-Khesh killed by player",
+   "reward": 5300,
+   "chance": 45,
+   "offer": [
+    "Maruka Tal-Khesh calls herself the Hundred Cuts. She tests every wanderer with a blade, and counts. Few reach ten. The Kingdom does not approve of her excess.",
+    "Maruka walks the stone roads, a zealot of Kral. She believes a proper death takes a hundred cuts. She is eager to prove it. End her.",
+    "The Hundred Cuts. Maruka. Even Kral's own Chosen shy from her. Put the blade down, and take her with it."
+   ],
+   "accept": [
+    "I'll count her cuts.",
+    "Her hundred ends with me."
+   ],
+   "accepted": [
+    "She fights with devotion, and devotion does not tire. Watch the third cut. She prefers the third.",
+    "Look in the stone roads and the canyons. She is always where the sun is hardest."
+   ],
+   "decline": [
+    "Her god is no concern of mine.",
+    "Not yet."
+   ],
+   "report": [
+    "Maruka has fallen. Let her count her hundred in the stone halls. Your reward.",
+    "The Hundred Cuts is done. Not even Kral would call it dishonour. Take your pay.",
+    "A hard death for a hard woman. Here is the Kingdom's coin."
+   ]
+  },
+  {
+   "id": "ol_aldous_peel_contract",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "state": "Aldous Peel killed by player",
+   "reward": 7200,
+   "chance": 45,
+   "offer": [
+    "Aldous Peel is a skinner in a coat of skins. He takes the living and strips them whole, and wears the work. Some call him the Tailor. The Nation calls him an abomination. I call him a client for you.",
+    "A skin bandit tailor works the ashlands. Peel. His coat is made of faces, and he has room for more. The Nation will pay for the coat to be burned.",
+    "Peel. A skinner. A thing without a heart who makes clothes of the ones who have. The Holy Nation wants him ended."
+   ],
+   "accept": [
+    "I'll have the Tailor's coat.",
+    "He'll be unstitched."
+   ],
+   "accepted": [
+    "He moves in the ash with his tailors. You will see them before you see him. They are very neat.",
+    "The ashlands. Follow the quiet. Birds stop first."
+   ],
+   "decline": [
+    "I would rather not meet him.",
+    "No."
+   ],
+   "report": [
+    "Peel is destroyed. The coat is ash? Good. The Nation pays, gladly. Take this.",
+    "The Tailor has been cut off at the thread. Your reward.",
+    "May his skins rest. Here is your pay."
+   ]
+  },
+  {
+   "id": "ol_mister_tuppence_contract",
+   "factions": [
+    "Traders Guild"
+   ],
+   "state": "Mister Tuppence killed by player",
+   "reward": 1800,
+   "chance": 45,
+   "offer": [
+    "Mister Tuppence is a Skeleton who sells road protection. Pay him a fee, and he will not break your cart. Do not pay, and he breaks your cart, and you. It is quite orderly.",
+    "A Skeleton with a ledger and a hat. Tuppence. Charges a penny, he says, but means a great deal more. The Guild would like the ledger closed.",
+    "Tuppence. A bandit with a head for business. He has protected forty caravans and killed six. The Guild wishes the arrangement cancelled."
+   ],
+   "accept": [
+    "I'll cancel his arrangement.",
+    "Absurd. I'll do it."
+   ],
+   "accepted": [
+    "He is very polite, and very armed. He will offer you a receipt. Do not sign.",
+    "He works the pits and the old robot yards. Listen for the little bell."
+   ],
+   "decline": [
+    "I cannot take a Skeleton seriously.",
+    "Not this one."
+   ],
+   "report": [
+    "Tuppence is scrap? Remarkable. The Guild is relieved. Here is your fee.",
+    "The arrangement is void. Your reward.",
+    "No more protection fees. The roads will be crooked again. Take the cats."
+   ],
+   "packages": [
+    "bar:all"
+   ]
+  },
+  {
+   "id": "ol_ulla_weeper_contract",
+   "factions": [
+    "Swampers"
+   ],
+   "state": "Ulla Weeper killed by player",
+   "reward": 2100,
+   "chance": 45,
+   "offer": [
+    "Ulla Weeper leads the shriekers. She was a mother once, they say, before the swamp took the rest. Now she screams and her followers scream with her, and anything that hears it dies.",
+    "The swamp has a woman who sings with a scream. Ulla Weeper. Her mob follows the sound. Silence her, and the swamp will be a little less terrible.",
+    "A shrieker queen. That is what the Swampers call her. Ulla. She is quiet only when she is killing. Be quick."
+   ],
+   "accept": [
+    "I'll give her silence.",
+    "End the screaming. Understood."
+   ],
+   "accepted": [
+    "Stop your ears if you can. Her mob will come out of the mud before you see them.",
+    "She works the wet lands and the mud pools. If the frogs go quiet, she is near."
+   ],
+   "decline": [
+    "I cannot do that.",
+    "No. Not her."
+   ],
+   "report": [
+    "Ulla is dead? The swamp is still. I was not sure I would ever hear that. Here is your pay.",
+    "The shriekers have lost their mother. May the quiet last. Take this.",
+    "A hard job done. Here is the pay."
+   ]
+  },
+  {
+   "id": "ol_dunmar_quell_contract",
+   "factions": [
+    "Swampers"
+   ],
+   "state": "Dunmar Quell killed by player",
+   "reward": 5100,
+   "chance": 45,
+   "offer": [
+    "Dunmar Quell calls himself the Red Captain. He has taken over the Red Sabres and means to rule the swamp. Every town in the wet lands pays him now, or does not pay anything again.",
+    "Quell. Too ambitious by half. He took the Sabres, and now he wants the swamp. We want him in the mud.",
+    "A boss named Dunmar Quell is making trouble in the wet. He taxes caravans, burns refusers, and calls it a kingdom. Cut it down."
+   ],
+   "accept": [
+    "I'll end the Red Captain.",
+    "Quell will fall."
+   ],
+   "accepted": [
+    "His Sabres are loyal, which is rare in a bandit. Be ready for them.",
+    "Look in the swamp and along the mud pools. He rides out with his best, and returns with their spoils."
+   ],
+   "decline": [
+    "Not my fight.",
+    "No."
+   ],
+   "report": [
+    "Quell is dead? The swamp is relieved. Here is the Swampers' pay.",
+    "The Red Captain has lost his crown. Take your reward.",
+    "A good riddance. Take the cats."
+   ]
+  },
+  {
+   "id": "ol_gammer_tuck_contract",
+   "factions": [
+    "United Cities"
+   ],
+   "state": "Gammer Tuck killed by player",
+   "reward": 1600,
+   "chance": 45,
+   "offer": [
+    "Gammer Tuck is an old farmer with a long scythe and a longer grudge. He leads rebels who burn tax-collectors. He is usually drunk. He is also quite good with the scythe.",
+    "A rebel captain called Tuck. He is old, gruff, and heavily armed. He insists that the harvest belongs to the ones who sow it. The Cities disagree.",
+    "Tuck, the Plough Captain. A funny old man, if you ignore the corpses. Find him in the green edges and bring him in."
+   ],
+   "accept": [
+    "I'll fetch the old man.",
+    "A scythe? I'll manage."
+   ],
+   "accepted": [
+    "He keeps farmhands with him, more loyal than sensible. Do not underestimate them.",
+    "He roams the green country and the northern flats. He sings when he marches."
+   ],
+   "decline": [
+    "I will not kill a farmer.",
+    "Not today."
+   ],
+   "report": [
+    "Tuck is gone? An old man's death. Still, the Cities are satisfied. Here is your payment.",
+    "The Plough Captain is dead. Good. The harvest is safe. Take the cats.",
+    "Done. An odd bounty, but a bounty. Your reward."
+   ]
+  },
+  {
+   "id": "ol_sayo_of_the_grey_ribbon_contract",
+   "factions": [
+    "United Cities"
+   ],
+   "state": "Sayo of the Grey Ribbon killed by player",
+   "reward": 4400,
+   "chance": 45,
+   "offer": [
+    "Sayo. The Grey Ribbon. A sand ninja who kills for hire. She leaves a ribbon on the body, and takes the coin from the corpse's pocket. We have eleven ribbons on file.",
+    "A cold professional is working the desert, called Sayo. She has killed three magistrates and a bard. The Cities want her stopped before she kills a fourth.",
+    "The Grey Ribbon. No one has seen her face and lived to describe it. Find her, kill her, bring the ribbon."
+   ],
+   "accept": [
+    "I'll find her.",
+    "Grey Ribbon. Understood."
+   ],
+   "accepted": [
+    "You will not find her. She will find you. Be ready for the quiet.",
+    "She works the desert and the canyons, and leaves no tracks. Watch the wind."
+   ],
+   "decline": [
+    "I do not hunt ghosts.",
+    "Not today."
+   ],
+   "report": [
+    "The Grey Ribbon is cut? Then my sleep will be easier. Here is your pay.",
+    "Sayo is dead. Good. Your reward.",
+    "A professional lost to a professional. Take the cats."
+   ]
+  },
+  {
+   "id": "ol_cuddy_pell_contract",
+   "factions": [
+    "Fisher"
+   ],
+   "state": "Cuddy Pell killed by player",
+   "reward": 1100,
+   "chance": 45,
+   "offer": [
+    "Cuddy Pell. Mad as a flooded fish and twice as slippery. He claims the road is his dinner plate and he sets a place for every traveller. He carries a goat head in a sack. We do not ask.",
+    "A Mongrel loon called Cuddy Pell has been dining on the roads. Mostly he steals, sometimes he stabs, always he sings. Make it stop.",
+    "Pell. Small bounty, big noise. Wanders the wet country and the dry edges, talking to a sack. Rid us of him."
+   ],
+   "accept": [
+    "I'll stop his supper.",
+    "Small bounty. Fine."
+   ],
+   "accepted": [
+    "He is quicker than he looks. Do not trust a smile that wide.",
+    "Look near the floods and the mud pools. Follow the singing."
+   ],
+   "decline": [
+    "I don't fight madmen.",
+    "Another time."
+   ],
+   "report": [
+    "Cuddy is dead? I did not think him mortal. Here is your coin.",
+    "No more singing sacks. Good. Take your pay.",
+    "A small job, finished. Your reward."
+   ]
+  },
+  {
+   "id": "ol_tchik_of_seven_voices_contract",
+   "factions": [
+    "Traders Guild"
+   ],
+   "state": "Tchik of Seven Voices killed by player",
+   "reward": 3000,
+   "chance": 45,
+   "offer": [
+    "Tchik of Seven Voices. A Hiver drone who left the hive and took seven others with him. They speak as one, and they speak to you in seven different voices. Bring them down.",
+    "A rogue drone leads a hive-bandit pack through the dark fingers. Tchik, they call him. His troops are loyal to a point that frightens me.",
+    "Tchik. Cut loose from the swarm, he formed his own. No queen, no law. Only seven voices and a taste for travellers."
+   ],
+   "accept": [
+    "I'll silence the voices.",
+    "A drone with a swarm. Understood."
+   ],
+   "accepted": [
+    "His drones fight as one. Break one and the rest will break with it. Or kill them, worse.",
+    "He prowls the fingers and the desert near them. Listen for the clicking."
+   ],
+   "decline": [
+    "I would rather not meet a swarm.",
+    "No."
+   ],
+   "report": [
+    "Tchik is gone? Seven voices, one scream. I am relieved. Here is your fee.",
+    "The swarm is broken. Good. Your payment.",
+    "A rogue drone, put down. A pity, perhaps. Take the cats."
+   ],
+   "packages": [
+    "bar:all"
+   ]
+  },
+  {
+   "id": "ol_elric_vosk_contract",
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "state": "Elric Vosk killed by player",
+   "reward": 2600,
+   "chance": 45,
+   "offer": [
+    "Elric Vosk was hired to guard a caravan. His employer cut his pay. He killed the master, the drivers and the pack-beasts, and kept the bell. Now he sells the road he once guarded.",
+    "A deserter of our own. Vosk. He stands at crossroads with a bell and offers escort. Those who accept are never seen again. The Guild is ashamed.",
+    "Vosk broke the first rule of the Guild: never kill the client. He killed nine. The Guild wants him dead and the contract voided."
+   ],
+   "accept": [
+    "I'll bring the bell back.",
+    "A killer guard. I'll do it."
+   ],
+   "accepted": [
+    "He will meet you politely, as a guard would. He is expecting to be asked for work.",
+    "Look at the crossroads and the hills along the old desert tracks. The bell rings from afar."
+   ],
+   "decline": [
+    "The Guild should clean its own house.",
+    "Not me."
+   ],
+   "report": [
+    "Vosk is dead? Then the Guild is clean again. Here is your fee.",
+    "The bell is silent. Good. Take your pay.",
+    "A hired blade, put down. A fair payment for a fair job."
+   ]
+  },
+  {
+   "id": "ol_pyke_ludlow_contract",
+   "factions": [
+    "United Cities"
+   ],
+   "state": "Pyke Ludlow killed by player",
+   "reward": 3800,
+   "chance": 45,
+   "offer": [
+    "Pyke Ludlow was an Anti-Slaver. A true one. Then he decided that anyone who ever owned or traded a person deserved the same, and began killing them. Merchants. Farmers. A boy who sold a rope.",
+    "Ludlow. A freedom fighter gone sour. He kills anyone he finds who has ever bought a servant. The Cities would like a conversation with him.",
+    "An avenger named Ludlow works the roads. He leaves manacles on the dead, broken. A little too enthusiastic, the Anti-Slavers admit."
+   ],
+   "accept": [
+    "I'll end him.",
+    "A fanatic. Right."
+   ],
+   "accepted": [
+    "He is excellent in a fight and will not hear your side. Do not try.",
+    "He haunts the desert and flood roads where slavers once ran. Look for broken manacles."
+   ],
+   "decline": [
+    "I side with him, a little.",
+    "No."
+   ],
+   "report": [
+    "Ludlow is dead. A sad end for a good man gone wrong. Take the Cities' coin.",
+    "The avenger is no more. Here is your pay.",
+    "A bitter bounty. Yours."
+   ]
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "ol_orsa_quillon_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Orsa Quillon wants two cats a head and your cart's best wheel. Pay the first one fast.",
+      "She was a carter's wife once. Now she counts every wagon like it owes her husband.",
+      "The Toll-Widow's rope sits across the road past the Hub. Go around and you meet her friends.",
+      "Quillon never robs you. She only taxes you until you have nothing, then she stops.",
+      "My brother refused her toll. We found the cart."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Orsa Quillon killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_orsa_quillon_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Quillon is working the hills again, the woman with the rope. Drifters swear she hums while she does it.",
+      "Somebody on the Hub road killed a Shek courier for skipping the toll. Orsa Quillon's rope, they say.",
+      "A widow's rope and a dozen Dust Bandits who answer to her, and the Guild still won't send a proper escort.",
+      "Avoid the crest past the Hub after dusk. Quillon's lantern means the toll is open.",
+      "She taxes the poor, never the Guild's armoured wagons. Clever or cowardly, I can't tell."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom",
+    "Nomads",
+    "Anti-Slavers",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Orsa Quillon killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_orsa_quillon_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's a woman in the desert who charges road tolls with a rope and a grudge.",
+      "They say the Hub road has a widow on it who never lets a wagon pass free.",
+      "Quillon, I think. Some tollkeeper in the dust. Pay her or go around, whichever is longer.",
+      "A rope across the road and a lantern. That's all a traveller is told of her."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Orsa Quillon killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_orsa_quillon_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Toll, stranger. Everything you carry and I'll let you keep the boots.",
+      "Ah. Another wagon with no wagon. Pay what Edric would have asked.",
+      "Walk back or walk through me.",
+      "Edric stood here for twenty years for a few cats. I take what the road owes him.",
+      "You look like you can afford the road. Lift your hands and prove me wrong."
+     ]
+    }
+   ],
+   "characters": [
+    "Orsa Quillon"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_orsa_quillon_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Toll paid. In full.",
+      "Good. The rope stays strung.",
+      "Edric would have let you go. I'm not Edric."
+     ]
+    }
+   ],
+   "characters": [
+    "Orsa Quillon"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_orsa_quillon_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The rope is cut. Quillon is dead and someone has already hung a new one.",
+      "People say she fell with her lantern still lit. The road past the Hub is quiet for the first time in years.",
+      "Orsa Quillon finally paid a toll of her own. I only wish I had seen it.",
+      "A hundred wagons and not one mourner. Funny what a widow earns."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Orsa Quillon killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_orsa_quillon_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Quillon is in a cage. Imagine, being charged for the road she thought she owned.",
+      "They locked up the Toll-Widow. Her bandits scattered like dropped coin.",
+      "Somebody caught her alive. Rumour says she asks every guard for his toll through the bars.",
+      "Orsa Quillon caged, and the Hub road open. Brings a tear to a carter's eye."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Orsa Quillon imprisoned by player",
+     true
+    ],
+    [
+     "Orsa Quillon killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ferrant_dray_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Lord Dray accepts tribute, you understand. If you aren't offering it, he accepts it anyway.",
+      "He bows to everyone before he cuts them. Manners were the only thing his father paid for.",
+      "Ferrant Dray wears a signet ring that opens no doors anymore. He thinks it still does.",
+      "Heard him demand a bow from a farm girl at sword point. Then he took her mother's ploughshare.",
+      "The flats are Dray's court now. You'll know his hired men by the polished boots."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Ferrant Dray killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ferrant_dray_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Some ruined noble is calling himself a lord of the northern flats. Wears a cape in this heat.",
+      "Dray, they call him. Titled, drunk on it, and quick with a blade.",
+      "A noble gone bad is worse than a bandit born. He knows how to be cruel politely.",
+      "Ferrant Dray was an Empire man once. Now he sells his own army's leftover insults.",
+      "Hired swords, a signet ring, and the manners of a gutted fish."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Ferrant Dray killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ferrant_dray_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Somewhere north there's a lord with no land who robs travellers in full court dress.",
+      "They say a noble house collapsed and its third son took to the road. Dray, or Dreyne.",
+      "A cape, a sword, a title nobody honours. That's the gossip, anyway.",
+      "Imperial blood on the north road, charging fees."
+     ]
+    }
+   ],
+   "factions": [
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Ferrant Dray killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ferrant_dray_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Kneel, peasant. Or fall, if you prefer.",
+      "You stand in the presence of Lord Dray. Remove your hat. Then your purse.",
+      "My house was old and proud and it's dust. I shall make you dust too.",
+      "How tiresome. Another guest who hasn't brought a gift.",
+      "Dray doesn't beg, traveller. He collects."
+     ]
+    }
+   ],
+   "characters": [
+    "Ferrant Dray"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_ferrant_dray_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Rise. No, remain kneeling. It suits you.",
+      "A modest win for the house of Dray.",
+      "Take notes, peasants. This is how a lord concludes a meeting."
+     ]
+    }
+   ],
+   "characters": [
+    "Ferrant Dray"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_ferrant_dray_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Ferrant Dray is dead and his ring is missing. Somebody's wearing a dead house on their finger.",
+      "Lord Dray bled out in the flats like any peasant.",
+      "The fallen noble fell the last time. His hired swords went home to their mothers.",
+      "He died owing the Cities, the Guild and his tailor. In that order."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Ferrant Dray killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ferrant_dray_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Lord Dray is in irons. They say he demands his meals be served on a tray.",
+      "The Cities have a nobleman in a cage. They say he complains about the draft.",
+      "Ferrant Dray, caged. It was always going to be either the sword or the stocks.",
+      "He claims diplomatic immunity from inside a cell. His guards enjoy it very much."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Ferrant Dray imprisoned by player",
+     true
+    ],
+    [
+     "Ferrant Dray killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_hask_morrow_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Hask Morrow is a Sentinel who stopped believing. He still takes the offerings, mind you.",
+      "I heard he wept when he first robbed a pilgrim. By the fifth, he did not.",
+      "The deserter in Okran's Pride keeps his Holy armour on. A mockery, or a habit.",
+      "Morrow sent a message to the Fist. It read: you left me hungry.",
+      "If you meet a Sentinel on the road with no patrol and no orders, it is Morrow."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Hask Morrow killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_hask_morrow_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A Holy deserter is preying on pilgrims. Good. Let them eat each other.",
+      "The Nation has a rotten Sentinel it can't catch. Funny how its holy fire misses.",
+      "Morrow, was it? Took his armour and his fear and went rogue.",
+      "Pilgrims come into the Cities with stories of a Sentinel who prays while he robs.",
+      "A deserter has the Holy army embarrassed. I buy a drink for whoever finds him."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Shek Kingdom",
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "Hask Morrow killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_hask_morrow_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Some Holy soldier lost his faith and now his purse is full. Typical priesthood.",
+      "I heard a deserter stalks the pilgrim roads in full Holy plate.",
+      "Morrow. A Sentinel gone off the rails. They say the Nation hasn't had a deserter before.",
+      "A Holy man who steals from the Holy. It's the oldest sin there is."
+     ]
+    }
+   ],
+   "factions": [
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters",
+    "Drifters",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Hask Morrow killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_hask_morrow_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "The Flame sees nothing here, traveller. Only me.",
+      "I swore an oath once. Look at me now. Yours is a small price.",
+      "Pilgrim or heathen, you pay all the same.",
+      "They fed me prayers. I want your food. Give it up, stranger.",
+      "Don't look at the armour. The man inside has left."
+     ]
+    }
+   ],
+   "characters": [
+    "Hask Morrow"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_hask_morrow_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Say a prayer for me, whoever you worship.",
+      "Okran forgive me. Not that he has.",
+      "Another one down. The offerings add up."
+     ]
+    }
+   ],
+   "characters": [
+    "Hask Morrow"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_hask_morrow_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Hask Morrow is dead. The Fist pretends it never knew him. The pilgrims are praying for him anyway.",
+      "The deserter fell in Okran's Pride. They buried the armour with him, the shame of it.",
+      "Morrow wanted a quiet death. Got a loud one.",
+      "The Nation sings of a good example. I sing of a hungry man put down."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Hask Morrow killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_hask_morrow_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Morrow is in chains, not in Holy ones. The Nation's furious that someone else got him.",
+      "A deserter in a cage, praying out loud. His captors do not interrupt him.",
+      "Hask Morrow caged. The Fist will want him back for a different kind of lesson.",
+      "They have the Sentinel. I hope the Holy Nation never gets him back, honestly."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Hask Morrow imprisoned by player",
+     true
+    ],
+    [
+     "Hask Morrow killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_sarn_ashvael_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Sarn Ashvael blesses you before he strips you. Swears it's for your own good.",
+      "They sing in the desert at dusk, hungry ones. You'll know it's him by the sermon.",
+      "The prophet of the Empty Bowl says every full belly is a theft. Mine is quite empty, but he doesn't believe it.",
+      "Fed a caravan crew to the sand and prayed over them.",
+      "He was a baker once, people say. The bread lie is the cruelest part."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Sarn Ashvael killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_sarn_ashvael_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A prophet of hunger is gathering mobs. No bowl will ever be full enough for him.",
+      "Sarn Ashvael, they call him. Walks the bone edge with a hundred hungry mouths behind him.",
+      "I saw his followers fight over a dead rat like it was communion.",
+      "He tells them the desert owes them, and the strong are the debt.",
+      "Starving men with a sermon are the worst kind of armed."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Anti-Slavers",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Sarn Ashvael killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_sarn_ashvael_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Some prophet is starving bandits into a cult. They say he never eats.",
+      "A starving preacher walks the east desert. Don't share your bread.",
+      "Ashvael, was it? A holy man for the hungry. He should have stayed holy.",
+      "Out in the dust a man blesses the hungry and they follow him into knives."
+     ]
+    }
+   ],
+   "factions": [
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Sarn Ashvael killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_sarn_ashvael_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Brother, you're fed. Share the sin with me, and I forgive you.",
+      "The Empty Bowl calls. We answer by taking.",
+      "Look at us, stranger. We were people once. Your boots will remind us.",
+      "Feed us, and be blessed. Refuse us, and be fed to us.",
+      "Give what you carry and walk free."
+     ]
+    }
+   ],
+   "characters": [
+    "Sarn Ashvael"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_sarn_ashvael_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "The Bowl has been filled. Briefly.",
+      "Bless you, fallen one. You'll feed the faithful.",
+      "Eat, children. The desert provides."
+     ]
+    }
+   ],
+   "characters": [
+    "Sarn Ashvael"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_sarn_ashvael_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The prophet of the Empty Bowl is dead. His mob won't stay a mob for long.",
+      "Sarn Ashvael, finally full of nothing. They buried him in the sand, half his followers fighting over the shovel.",
+      "I pity the hungry ones left. A prophet is easier to follow than to forget.",
+      "He preached about bowls until the blade came. May his be full."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Sarn Ashvael killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_sarn_ashvael_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Ashvael is caged. His followers wait outside the walls and sing.",
+      "They caught the prophet alive. He sermonises through the bars on the sin of waste.",
+      "Sarn Ashvael in chains. The mob hasn't scattered. It waits, and it's hungry.",
+      "A prophet in a cage still has an audience."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Sarn Ashvael imprisoned by player",
+     true
+    ],
+    [
+     "Sarn Ashvael killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_veldt_harrow_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Veldt Harrow sits at the roadside with a book and a pen. You hope he's waiting for somebody else.",
+      "He taps the page twice for each prisoner. If he taps once, you weren't worth the ink.",
+      "The Tallyman bought a family and buried the grandmother alive to save the food. Marked it in the book, I heard.",
+      "I saw him once from far off. Writing. Always writing, never looking up.",
+      "Harrow keeps wet ground behind him. Whatever is out there, I won't look."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Veldt Harrow killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_veldt_harrow_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Tallyman. That's what they call him now, the slaver who buries. Lord, I hope he never comes this way.",
+      "A slaver turned murderer is worse than both.",
+      "He still wears the old slaver coat, polished. The ledger never gets muddy.",
+      "Harrow's hunters never complain. I think they're afraid to.",
+      "Wet roads, a ledger, a pen. If you see them, go the other way."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Fisher",
+    "Nomads",
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Veldt Harrow killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_veldt_harrow_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's a slaver who stopped trading and started counting. That's all I'll say.",
+      "Out in the flood country a man writes down the dead.",
+      "Some slaver killed his own market. They call him the Tallyman.",
+      "A butcher with a book. Nobody can tell me where the pages end."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Veldt Harrow killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_veldt_harrow_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Hold still, stranger. I'm trying to find your column in the book.",
+      "Another entry. Name, weight, use. Let's see what you fetch.",
+      "I sold a hundred souls once. Now I keep them.",
+      "You carry a lot of life for such a small purse.",
+      "Two taps for the keepers, one for the dead. Which will you be?"
+     ]
+    }
+   ],
+   "characters": [
+    "Veldt Harrow"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_veldt_harrow_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Mark him down. Another.",
+      "Two taps. Good.",
+      "Don't struggle. It ruins the handwriting."
+     ]
+    }
+   ],
+   "characters": [
+    "Veldt Harrow"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_veldt_harrow_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Tallyman is dead. They found a ledger, half burned, with more names than the Cities ever had.",
+      "Veldt Harrow bled on the same road he buried people on.",
+      "I hear the pen is still in his hand. No one wants to take it.",
+      "No more taps. The flood roads are very quiet tonight."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Veldt Harrow killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_veldt_harrow_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Harrow is caged. Every guard avoids his eyes, and he writes anyway.",
+      "They caught the Tallyman alive. He is asking for fresh paper.",
+      "Veldt Harrow under a lock. For the first time in years the ledger isn't in his lap.",
+      "He counts the bars now. He says there are always more than there should be."
+     ]
+    }
+   ],
+   "factions": [
+    "Anti-Slavers",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Veldt Harrow imprisoned by player",
+     true
+    ],
+    [
+     "Veldt Harrow killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_borun_vahl_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Borun Vahl was the best of his circle, once. Now he is the thing mothers do not name.",
+      "The Oathless will not take your purse. Only your name and your life, in that order.",
+      "He cut the stone mark from his own arm and threw it at a priest's feet.",
+      "I saw Vahl in the canyons. He didn't draw. He didn't need to.",
+      "A flatskin asked him for passage and he gave it, and cut him down on the other side. His honour is a knife."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Borun Vahl killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_borun_vahl_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Some oathless Shek roams the dry mountains. He duels travellers for their boots and kills the winners.",
+      "Vahl, people say. The Kingdom won't discuss him.",
+      "A Shek with no mark and no master. A rare and dangerous creature.",
+      "Even other Berserkers keep their distance from Vahl. That's a high bar.",
+      "Borun Vahl keeps his scabbard empty. He draws from the air, so I hear."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Anti-Slavers",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Borun Vahl killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_borun_vahl_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A Shek exile hunts the canyons. It isn't a story I enjoy.",
+      "Some Shek lost his stone and now fights without rules. They call him the Oathless.",
+      "Vahl, I think. He doesn't take prisoners, nor coin.",
+      "A warrior without a creed in the mountains. Keep your blade sheathed and your mouth shut."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Borun Vahl killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_borun_vahl_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "You wear no mark. Good. Then you have nothing to be ashamed of when you fall.",
+      "Draw, flatskin. I won't wait. I haven't waited since the circle.",
+      "The Golem judges me? Let him come. I'll judge you first.",
+      "I broke my oath so that I could be free. Free means you.",
+      "Another traveller, another stone to throw. Let the sand have you."
+     ]
+    }
+   ],
+   "characters": [
+    "Borun Vahl"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_borun_vahl_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "The sand takes another.",
+      "Honour is a weight. I put it down.",
+      "Be thankful. I don't usually let them kneel."
+     ]
+    }
+   ],
+   "characters": [
+    "Borun Vahl"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_borun_vahl_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Oathless is dead. Kral's kin are quiet. Even Shek who hated him say it was a clean death.",
+      "Borun Vahl fell in the stones. Somebody carved a mark on his arm afterward. Mercy, or insult, who knows.",
+      "He won't be named in the halls, but he will be remembered in the sand.",
+      "A broken oath, a clean blade."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Borun Vahl killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_borun_vahl_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Vahl is caged, and the Shek do not know whether to be ashamed or relieved.",
+      "The Oathless sits in a cell. Even the guards salute him, and then wonder why.",
+      "Borun Vahl alive in a cage. A Shek in chains is a terrible thing to watch.",
+      "They say he won't eat. He says only the free may break bread."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Borun Vahl imprisoned by player",
+     true
+    ],
+    [
+     "Borun Vahl killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ilsa_hearthmourn_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Ilsa Hearthmourn leaves candles at the edge of our fields. Nobody dares to touch them.",
+      "She was the hardest of the Pacifiers. Now she tells children the Flame is only fire.",
+      "Her voice is calm. That's the horror of it. The heretics are usually shouting.",
+      "A pilgrim told me he followed her out of the Pride for a day and a night. He hasn't spoken since.",
+      "People say she lights her candles from a flame no priest blessed."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Ilsa Hearthmourn killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ilsa_hearthmourn_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A Holy apostate is spreading talk. I know that look. The Nation is afraid of a candle.",
+      "Ilsa something, a Pacifier who changed her mind. The Holy Nation has no humour about that.",
+      "I hear she sits with the pilgrims and tells them they are people, not tools. Dangerous words.",
+      "A candle in the dark and a woman who used to beat heresy out of men.",
+      "Hearthmourn, they call her. The faithful call her worse."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Shek Kingdom",
+    "Flotsam Ninjas",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Ilsa Hearthmourn killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ilsa_hearthmourn_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A Holy woman has turned against the Nation. They say she carries a candle. That's all I know.",
+      "Some apostate lights a candle at every camp. The Holy Nation won't say her name.",
+      "Hearthmourn. A good name for a heretic. A very bad one for a victim.",
+      "I heard a Holy killer woke up one morning and chose peace."
+     ]
+    }
+   ],
+   "factions": [
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters",
+    "Drifters",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Ilsa Hearthmourn killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ilsa_hearthmourn_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "There's no Flame, stranger. Only a candle, and I have blown it out.",
+      "I was a hand of Okran once. Now I'm only a hand. Come closer.",
+      "Don't preach to me. I wrote the sermons.",
+      "Pray if you wish. It takes me longer to kill the praying.",
+      "You think me mad, or lost? I'm finally awake."
+     ]
+    }
+   ],
+   "characters": [
+    "Ilsa Hearthmourn"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_ilsa_hearthmourn_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "I'm sorry. I truly am. I am also not stopping.",
+      "The candle goes on. You don't.",
+      "Say whatever name you like. I'll hear it."
+     ]
+    }
+   ],
+   "characters": [
+    "Ilsa Hearthmourn"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_ilsa_hearthmourn_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Ilsa Hearthmourn is dead and the Nation is lighting candles of its own. I don't know what that means.",
+      "They burned her candles after. The fields smell strange.",
+      "The Candle Heretic is gone. Her followers walk in circles looking for another.",
+      "An apostate in the dirt. The Nation sings."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Ilsa Hearthmourn killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ilsa_hearthmourn_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Hearthmourn is caged. The Nation wants her back so very badly.",
+      "They have the Candle Heretic alive. Imagine the questions the Inquisitors have prepared.",
+      "Ilsa Hearthmourn is in a cell, and she's still lighting candles. Where does she get the wax?",
+      "She asked her guard if he was happy. He cannot sleep now."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Ilsa Hearthmourn imprisoned by player",
+     true
+    ],
+    [
+     "Ilsa Hearthmourn killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_hodd_crake_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Hodd Crake taught me to skin a bonedog. I won't be at the table when he eats.",
+      "The Long Appetite leaves clean bones. Neat, almost. Like he's being polite.",
+      "He still wears the Hunter's colours. It frightens the real ones more than the cannibals.",
+      "A hunter on a hunt will tell you the smell tells him. Crake says it tells him what to order.",
+      "We found his old camp. Three cooking pits, and a tally on the wall. Not cannibal marks. Hunter marks."
+     ]
+    }
+   ],
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "states": [
+    [
+     "Hodd Crake killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_hodd_crake_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A Hunter gone bad, out on the bone plains. That breaks even a cannibal hunter's heart.",
+      "Crake. Used to be one of those bastards in the Bastion. Now he eats what they send.",
+      "A man who hunts cannibals and becomes one. Poetic, if you like cold poetry.",
+      "Carries a cleaver as long as my arm. It isn't for the hunting.",
+      "The Pride would pay to see him gone."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Shek Kingdom",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Hodd Crake killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_hodd_crake_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Some cannibal hunter turned sides. That's all anyone tells me.",
+      "A man called the Long Appetite is wandering the bone plains. Nobody wants to meet him.",
+      "I heard the Hunters lost one of their own to the thing they fought.",
+      "A hunter with a cleaver and a lonely smile, they said. Stay on the roads."
+     ]
+    }
+   ],
+   "factions": [
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Hodd Crake killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_hodd_crake_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Easy, traveller. I only want a taste. A small taste.",
+      "I used to hunt things like me. Now I know what they were hungry for.",
+      "You smell of good living. I'll enjoy this.",
+      "Don't run. I hate chasing. It makes the meat tough.",
+      "A hunter never wastes a kill. I learned that early."
+     ]
+    }
+   ],
+   "characters": [
+    "Hodd Crake"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_hodd_crake_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Thank you. I will eat in peace.",
+      "Clean kill. Such a waste if I didn't finish it.",
+      "Old habits. The best ones."
+     ]
+    }
+   ],
+   "characters": [
+    "Hodd Crake"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_hodd_crake_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Hodd Crake is dead. The Hunters buried his colours separate from his body.",
+      "The Long Appetite fed the plains one last time. I won't mourn him.",
+      "I heard they found his tally on the wall, longer than any cannibal chief's. The Bastion burned it.",
+      "A hunter gone wrong, put down by a stranger. Perhaps that was the best way."
+     ]
+    }
+   ],
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "states": [
+    [
+     "Hodd Crake killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_hodd_crake_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Crake is caged, and the Hunters can't decide whether to kill him or study him.",
+      "They have the Long Appetite alive. Don't feed him anything in front of him.",
+      "Hodd Crake in chains. He smiles at the guards. They stopped eating in front of him.",
+      "The Hunters want him dead, the Cities want him alive, and he wants dinner."
+     ]
+    }
+   ],
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "states": [
+    [
+     "Hodd Crake imprisoned by player",
+     true
+    ],
+    [
+     "Hodd Crake killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_pim_sillery_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Pim Sillery steals a man's boots, then comes back for the laces. Unpleasant, but never lethal.",
+      "The Magpie leaves little glass beads where he lifted something. As a joke.",
+      "He lifted a power core from a sleeping Tech Hunter and sold it back to her for double. She was grateful.",
+      "Never leave anything shiny out near the Graveyard. The Magpie sees it from a mile away.",
+      "Sillery talks to himself as he steals. Argues with himself, actually."
+     ]
+    }
+   ],
+   "factions": [
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Pim Sillery killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_pim_sillery_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's a thief who steals only metal that glints. They call him the Magpie. Pim, is it?",
+      "He took a whole robot arm out of a ruin and swapped it for a dummy.",
+      "The Magpie is clever. That's what makes him dangerous. He knows the ruins like his own pockets.",
+      "I wouldn't hire him. Even for free. Not if he's the one counting.",
+      "A scrap thief out there with a dozen pockets and a taste for plans. The Hunters want him bad."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Drifters",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Pim Sillery killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_pim_sillery_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Some thief out west steals tech for fun. They call him the Magpie.",
+      "A Tech Hunter went rogue and now robs ruins. Quite the nuisance.",
+      "Heard of a scrap thief called Pim who steals more than he sells. Odd, that.",
+      "A man with a hundred pockets, the story goes. Nobody tells me why."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel"
+   ],
+   "states": [
+    [
+     "Pim Sillery killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_pim_sillery_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Ooh, shiny boots. Mine now. Mine, mine, mine.",
+      "Hello, traveller. You're about to lose something. I haven't decided what yet.",
+      "Give me your best gear and I might not take the rest. That's the Magpie's mercy.",
+      "I only steal from the dead and the dying. Which one are you?",
+      "Lovely buckle. Lovely teeth. I wonder which I'll take first."
+     ]
+    }
+   ],
+   "characters": [
+    "Pim Sillery"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_pim_sillery_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Finders keepers. Ha!",
+      "Pockets full. Thank you, thank you.",
+      "Don't look so sad. Everything shiny eventually moves on."
+     ]
+    }
+   ],
+   "characters": [
+    "Pim Sillery"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_pim_sillery_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Magpie is dead. His nest was full of shining bits no one will claim.",
+      "Pim Sillery had a hundred pockets and every one was empty when they found him.",
+      "I heard his last act was to try to steal the knife that killed him.",
+      "No more stolen plans. The ruins feel safer already."
+     ]
+    }
+   ],
+   "factions": [
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Pim Sillery killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_pim_sillery_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Magpie is caged. They emptied his pockets and counted forty items. Nobody knows where thirty came from.",
+      "Pim Sillery behind bars. He has already stolen the guard's keys twice, they say.",
+      "They caught the Magpie, and the Hunters want their plans back. He claims he lost them. He didn't.",
+      "A thief in a cell. Let's see how long the lock lasts."
+     ]
+    }
+   ],
+   "factions": [
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Pim Sillery imprisoned by player",
+     true
+    ],
+    [
+     "Pim Sillery killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_teshin_ro_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Teshin Ro doesn't shout. He only says your name, and asks if you'll draw.",
+      "The ronin cut down a Holy deserter at a well and drank from it afterward. Sat there until dusk.",
+      "He told me once that he lost his lord in a war nobody remembers. I believed him, and was sorry.",
+      "His sword is old. His coat is older. His habits are the oldest of all.",
+      "Ro leaves the dead sitting upright with their eyes closed."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Teshin Ro killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_teshin_ro_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A ronin walks the northern flats, challenging whoever he meets. The Cities fear him.",
+      "Ro, they call him. Teshin Ro. Worse than a bandit, because he's sorry afterwards.",
+      "I heard he cried at a funeral. His own victim's. He's that kind of man.",
+      "He bows before and after. Never in between.",
+      "A swordsman with no lord and no hurry. I almost wish him luck."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom",
+    "The Holy Nation",
+    "Anti-Slavers",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Teshin Ro killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_teshin_ro_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's a ronin in the desert who duels every traveller. That's all anyone knows.",
+      "A masterless swordsman, so I hear. Even the Shek avoid him.",
+      "Teshin something. A man who fights because he forgot how to stop.",
+      "A ronin walks, a dead man follows. It is a story told at night."
+     ]
+    }
+   ],
+   "factions": [
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Teshin Ro killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_teshin_ro_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "You carry a sword. Draw it. I'd hate to cut an unarmed man.",
+      "My name is Teshin Ro. Remember it. It will be the last thing you learn.",
+      "I have no lord. No path. Only you, and the wind.",
+      "Bow, stranger. It's how it begins.",
+      "I take no coin. Only your answer to my question: will you draw?"
+     ]
+    }
+   ],
+   "characters": [
+    "Teshin Ro"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_teshin_ro_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Forgive me.",
+      "A good fight. Rest easy.",
+      "One more name to carry."
+     ]
+    }
+   ],
+   "characters": [
+    "Teshin Ro"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_teshin_ro_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Teshin Ro has fallen. They say he was smiling at the end.",
+      "The ronin's sword is gone. Some say it was buried with him, others that it was sold. I hope it was buried.",
+      "Eleven men and one more. Ro settled his account at last.",
+      "The wind is calm over the northern flats. Strange how loud that is."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Teshin Ro killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_teshin_ro_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Ro is in a cell, and he refuses to eat until someone fights him fairly.",
+      "The ronin lets himself be caged. Says it's the only way to rest.",
+      "Teshin Ro in chains. He thanked his captors. They didn't know what to say.",
+      "A caged swordsman is a very quiet thing. The guards are afraid of the silence."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Teshin Ro imprisoned by player",
+     true
+    ],
+    [
+     "Teshin Ro killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ysolde_gorehollow_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Ysolde Gorehollow has a laugh like a kettle. You hear it before the screaming.",
+      "Every raider in her nest wears a vial around the neck. Her blood.",
+      "I walked into her camp once to trade. The jars on the shelf were labelled by name.",
+      "She sings to the dead. They aren't interested.",
+      "Gorehollow has no army. She has a congregation."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Ysolde Gorehollow killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ysolde_gorehollow_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A woman is bleeding travellers into jars out in the ashlands. They call her the Bloodmother.",
+      "Gorehollow, was it? Her raiders are getting bolder. Every month a caravan is short a crew.",
+      "She trades her jars to Skin Bandits.",
+      "The ashlands have always been hungry. Now they have a mother.",
+      "I heard her nest smells of iron. Not rust. Iron."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom",
+    "The Holy Nation",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Ysolde Gorehollow killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ysolde_gorehollow_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "They say there is a mother in the ash who drinks the road dry.",
+      "A bloodraider matriarch. Nobody tells me which jar is whose.",
+      "Gorehollow is a name you'll know in a bad dream.",
+      "A woman and a jar collection. The ashlands aren't kind."
+     ]
+    }
+   ],
+   "factions": [
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Ysolde Gorehollow killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ysolde_gorehollow_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Come into the warm, little cup. Let me look at you.",
+      "How fresh you are! How full! How very generous of you.",
+      "Children, fetch the jars. Our guest has brought a gift.",
+      "I only take a little. At first.",
+      "Do not scream. It spoils the flavour."
+     ]
+    }
+   ],
+   "characters": [
+    "Ysolde Gorehollow"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_ysolde_gorehollow_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Hang him. He'll drain nicely.",
+      "Lovely. Lovely. A full one.",
+      "Fetch the ladle."
+     ]
+    }
+   ],
+   "characters": [
+    "Ysolde Gorehollow"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_ysolde_gorehollow_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Bloodmother is dead. They're still breaking jars in the ash. Some of them weren't empty.",
+      "Gorehollow's laugh stopped. The ravens left the nest the same hour.",
+      "I hear her congregation sat in her camp for days afterward, waiting for her to come back.",
+      "The ashlands have lost their mother. They haven't lost their hunger."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Ysolde Gorehollow killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ysolde_gorehollow_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Bloodmother is caged. She asks the guards for their names.",
+      "Ysolde Gorehollow lives, in irons. Her raiders watch the walls and sing.",
+      "They caught her alive. I don't like how calm she is.",
+      "A mother in a cage. The ash is waiting."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Ysolde Gorehollow imprisoned by player",
+     true
+    ],
+    [
+     "Ysolde Gorehollow killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_marta_cull_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Marta Cull measures the tide on her fingers. She knows how long a man holds his breath.",
+      "The Brine-Wife has a whistle. When you hear it, the Reavers come. It sounds like a gull.",
+      "She doesn't shout. She hums, and stands very still, and waits for you to move.",
+      "I lost a cousin to her tide line. She sent back his boots.",
+      "People say she was a salvager once. Then the sea took her husband and she took the sea's side."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Marta Cull killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_marta_cull_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A Reaver woman called the Brine-Wife is drowning crews on the south coast.",
+      "Cull has a way with a rope and a tide chart.",
+      "She ties them above the waterline and lets the sea decide.",
+      "The coast is dangerous enough. Now it has a hostess.",
+      "Reaver ships and Reaver dead. Cull has made it worse."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom",
+    "Anti-Slavers",
+    "Nomads",
+    "Fisher"
+   ],
+   "states": [
+    [
+     "Marta Cull killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_marta_cull_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's a woman on the south coast who drowns people on a schedule.",
+      "The Brine-Wife, they say. Terrible name, terrible woman.",
+      "A Reaver matron who counts tides. I'll never sail south.",
+      "Cull. A name the sea whispers, I'm told."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Marta Cull killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_marta_cull_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "The tide is coming, traveller. Do you hear it?",
+      "Hold your breath. I want to see how long you can.",
+      "Salt on your lips already. That's the sea saying hello.",
+      "Come to the water. It's gentle.",
+      "You look dry. I'll fix that."
+     ]
+    }
+   ],
+   "characters": [
+    "Marta Cull"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_marta_cull_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Tie him. Above the line. Slowly.",
+      "The sea will decide. It always does.",
+      "Good. Feed the water."
+     ]
+    }
+   ],
+   "characters": [
+    "Marta Cull"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_marta_cull_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Brine-Wife is dead. The tide has left her camp unwashed, which seems unfair.",
+      "Marta Cull drowned in the end, I heard. On dry land. How's that for sea justice?",
+      "No more gull whistle. The shore feels quieter and cleaner.",
+      "The south coast breathes again. A little."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Marta Cull killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_marta_cull_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Cull is caged, far from any water. She asks for a bucket and hums.",
+      "The Brine-Wife is in irons. Her Reavers wait in the surf.",
+      "They caught Marta Cull. The sea hasn't forgiven them.",
+      "A Reaver woman behind bars, and every guard checks the ceiling for leaks."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Marta Cull imprisoned by player",
+     true
+    ],
+    [
+     "Marta Cull killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_teodric_clackjaw_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Teodric Clackjaw snaps his teeth when he thinks. Then he kills the thing he was thinking about.",
+      "He won't rob you until you've lost a fair fight. His fairness is an insult.",
+      "I saw him bow to a corpse before he looted it. Shell polished like a spoon.",
+      "He has a bell strapped to his back. Rings it to start. Rings it to end. There's no bell in between.",
+      "The crabbers follow him because he wins. That's the whole creed."
+     ]
+    }
+   ],
+   "factions": [
+    "Mercenary Guild",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Teodric Clackjaw killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_teodric_clackjaw_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Some banned crab champion is running tournaments on the road. The prize is your life.",
+      "Clackjaw is the name. Don't ask him why he clacks. He has a very long answer.",
+      "He still thinks the pits are open. In a way, they are.",
+      "I heard his shell is made from the armour of eleven rivals.",
+      "A crab raider with a code is worse than a crab raider without."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Shek Kingdom",
+    "Anti-Slavers",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Teodric Clackjaw killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_teodric_clackjaw_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's a crab-pit champion loose in the south. I won't say his name; it clacks.",
+      "Out in the pits a fighter makes travellers duel.",
+      "A banned fighter with a shell. That's the whole of what I know.",
+      "Clackjaw. Sounds like a joke until you meet him."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Teodric Clackjaw killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_teodric_clackjaw_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Ring the bell! First round, stranger.",
+      "Clack, clack, clack. That is the sound of your luck running out.",
+      "Fair fight, they said. I'm the fairest killer you'll ever meet.",
+      "Show me your guard. No, higher. There. That's where I'll cut.",
+      "I was champion! Say it with me! Champion!"
+     ]
+    }
+   ],
+   "characters": [
+    "Teodric Clackjaw"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_teodric_clackjaw_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Round over. Winner stands. That's me.",
+      "The bell rings once. Always once.",
+      "A fair kill. Applaud, if you can."
+     ]
+    }
+   ],
+   "characters": [
+    "Teodric Clackjaw"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_teodric_clackjaw_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Clackjaw is dead. They say you can still hear the clacking in the pits at night.",
+      "The champion lost the one fight he wasn't allowed to cheat in.",
+      "Teodric Clackjaw's shell ended up on a post.",
+      "The crabbers are fighting each other now. For the title, no less."
+     ]
+    }
+   ],
+   "factions": [
+    "Mercenary Guild",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Teodric Clackjaw killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_teodric_clackjaw_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Clackjaw is in a cage and insists the match wasn't over. The guards have stopped arguing.",
+      "They caught the disgraced champion. He demands a rematch every dawn.",
+      "Teodric clacks his teeth against the bars. The sound is driving the prison mad.",
+      "A champion in chains. The crowd would pay to see it."
+     ]
+    }
+   ],
+   "factions": [
+    "Mercenary Guild",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Teodric Clackjaw imprisoned by player",
+     true
+    ],
+    [
+     "Teodric Clackjaw killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_maruka_tal_khesh_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Maruka Tal-Khesh makes you stand in the sun while she counts. Reaching forty is a boast.",
+      "She says she walks Kral's last stand every day. She's the only one who thinks it's joyful.",
+      "A cut for every sin, she says. Then a cut for every virtue. In the end it's just cuts.",
+      "Her blade is chipped and her patience isn't.",
+      "I heard her laugh once, at the sixtieth."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Maruka Tal-Khesh killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_maruka_tal_khesh_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Hundred Cuts. A Shek woman of Kral's creed. Stay clear of the stone roads.",
+      "Kral's followers are mostly bluster. Maruka isn't bluster.",
+      "She has a tally scarred on her own arm. Every notch is a stranger.",
+      "She doesn't rob. She only measures.",
+      "A Chosen who takes the legend as a recipe. The Kingdom is ashamed."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Anti-Slavers",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Maruka Tal-Khesh killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_maruka_tal_khesh_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Out in the Shek roads is a woman who counts to a hundred on the living.",
+      "A Kral zealot, they say. Her name is a long one.",
+      "The Hundred Cuts. Never ask her what happens at ninety-nine.",
+      "A Shek legend turned into a habit. A bad habit."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Maruka Tal-Khesh killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_maruka_tal_khesh_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Weak flatskin! Stand. I'll count your breaths, and then your cuts.",
+      "Kral took a hundred and didn't kneel. You'll take one and beg.",
+      "Don't close your eyes. Counting is easier when you watch.",
+      "Your weakness offends the spirit of the stone. Let me cut it out.",
+      "One. There. You're already past most."
+     ]
+    }
+   ],
+   "characters": [
+    "Maruka Tal-Khesh"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_maruka_tal_khesh_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Ninety. Ninety-one. Ninety-two. Lie still.",
+      "Not quite a hundred. Not for lack of trying.",
+      "Kral approves. I don't."
+     ]
+    }
+   ],
+   "characters": [
+    "Maruka Tal-Khesh"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_maruka_tal_khesh_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Hundred Cuts is dead. A hundred and one, they say, from the number of wounds.",
+      "Maruka fell in the stone roads. The Chosen buried her without a word.",
+      "She counted until the last. That's the part nobody wants to repeat.",
+      "The Kingdom has declared it a good death, which means it was a loud one."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Maruka Tal-Khesh killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_maruka_tal_khesh_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Maruka is caged. She counts the bars out loud, over and over, until the guards weep.",
+      "The Hundred Cuts, alive and bound. The Kingdom asks to be told nothing.",
+      "She asked her jailer for a knife. He asked her why.",
+      "A Shek zealot behind bars. Some things shouldn't have lids."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Maruka Tal-Khesh imprisoned by player",
+     true
+    ],
+    [
+     "Maruka Tal-Khesh killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_aldous_peel_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Aldous Peel measures you with his eyes. Do not let him finish.",
+      "I know a man who met him and left in a better jacket. He didn't leave in the same skin.",
+      "The Tailor has a very polite way of speaking. Flat, like a floor. That's the worst of it.",
+      "They say he has a mirror in the ash, just so he can look at his coat.",
+      "A skin by the road is a signature. The Tailor doesn't sign twice."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Aldous Peel killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_aldous_peel_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Skin Bandits are a rumour to most. Peel is a name for those who have buried theirs.",
+      "I've never seen a man so careful with a knife.",
+      "Peel is a name from an old report. No one dares check it twice.",
+      "The ashlands don't lack monsters. Peel is one with a good tailor's eye.",
+      "A coat of skins. A hat of hair. I will not elaborate."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom",
+    "Traders Guild",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "Aldous Peel killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_aldous_peel_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Out in the ashlands there's a tailor, they say, who works in skin. No one sends him orders.",
+      "A man in a coat of people. I don't tell this story twice.",
+      "Peel, the Tailor. A myth, they say. Myths don't leave scraps.",
+      "I heard the Skin Bandits have a name and a coat. I wish I hadn't."
+     ]
+    }
+   ],
+   "factions": [
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters",
+    "Drifters",
+    "Fisher"
+   ],
+   "states": [
+    [
+     "Aldous Peel killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_aldous_peel_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "You're well-proportioned. You'll fit the sleeves.",
+      "Stand still. The measuring is quick. It's the fitting that takes time.",
+      "Good skin. Clear, strong, fresh. I am pleased.",
+      "I won't hurt you more than is needed for the pattern.",
+      "Please remove your shirt. Or I will, afterward."
+     ]
+    }
+   ],
+   "characters": [
+    "Aldous Peel"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_aldous_peel_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Excellent. The cut is straight.",
+      "Gather the thread. We have a new piece.",
+      "A fine fit. It will keep well."
+     ]
+    }
+   ],
+   "characters": [
+    "Aldous Peel"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_aldous_peel_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Tailor is unpicked. They say his coat was too heavy to burn, so they buried it.",
+      "They found Aldous Peel inside a coat of faces. It took three men to carry the coat out.",
+      "He came apart cleanly. Even the bandits clapped.",
+      "The ashlands are quieter, but I won't trust the quiet."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Aldous Peel killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_aldous_peel_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Tailor is caged, and the jailers can't hold their breakfast down.",
+      "They have Peel in a cell. He asks to measure the guards.",
+      "Aldous Peel, alive and locked. Nobody wants to be the one to touch his coat.",
+      "I heard he sits very straight, very still, as if waiting for fabric."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Aldous Peel imprisoned by player",
+     true
+    ],
+    [
+     "Aldous Peel killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_mister_tuppence_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Mister Tuppence wears a hat. You laugh once. He asks you for the premium.",
+      "I paid his premium and the road was fine. A bandit with a conscience. It troubled me for weeks.",
+      "He keeps receipts. Receipts for everyone he has ever killed. It's the strangest ledger.",
+      "Tuppence will never lie to you. He just says what he means in a way that's hard to survive.",
+      "Last week he stopped a Guild caravan and asked if the toll was fair. They said no. He apologised, and took it anyway."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Mister Tuppence killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_mister_tuppence_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A Skeleton bandit with a hat and a ledger. The pits are full of strange.",
+      "Tuppence insures what he will later rob. At least he's honest about the interest.",
+      "He has a scale, a coin, and a very sharp stare.",
+      "Word is, his hat has a crossbow bolt through it. He just says, premium.",
+      "I'd pay the premium. Cheaper than the funeral."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom",
+    "Anti-Slavers",
+    "Nomads",
+    "Fisher"
+   ],
+   "states": [
+    [
+     "Mister Tuppence killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_mister_tuppence_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's a Skeleton in the pits who sells protection with a knife. Don't ask me why.",
+      "Some bandit in a hat. Tuppence. Pays his debts and collects yours.",
+      "A polite Skeleton with a club. That's the whole story.",
+      "People say he issues receipts for the dead."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Mister Tuppence killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_mister_tuppence_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Good day, sir. A modest premium secures your safe passage. Failure to remit is regretted.",
+      "I have a ledger. Put your mark here. Or here.",
+      "My terms are simple. Your coin. Your goods.",
+      "I'm not a thief. I'm a broker of outcomes.",
+      "Don't take offence. It's only business. Very short business."
+     ]
+    }
+   ],
+   "characters": [
+    "Mister Tuppence"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_mister_tuppence_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Claim settled. Thank you for your custom.",
+      "The arrangement has matured.",
+      "I'll mark it as paid."
+     ]
+    }
+   ],
+   "characters": [
+    "Mister Tuppence"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_mister_tuppence_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Tuppence is scrap. His ledger shows the Guild still owes him two cats.",
+      "Mister Tuppence fell, hat and all. They say the hat was the hardest part to finish.",
+      "I miss the receipts. They were the only honest part of the pits.",
+      "Skeleton protection has gone out of business."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Mister Tuppence killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_mister_tuppence_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Tuppence is caged. He has already drafted the terms of his release.",
+      "The toll Skeleton is in irons. He asks every guard for his name and rank.",
+      "They caught Mister Tuppence. He asks for a receipt of arrest.",
+      "A Skeleton in a hat behind bars. He demands to speak to whoever holds the ledger."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Mister Tuppence imprisoned by player",
+     true
+    ],
+    [
+     "Mister Tuppence killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ulla_weeper_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Ulla Weeper starts low, like a kettle on a slow fire. Then it climbs. By the end you're on your knees.",
+      "Her mob stops when she stops. Her mob stops all at once. That's how you know to run.",
+      "They say she cries real tears, and the mob drinks them. I won't repeat what else.",
+      "She has a name for every voice in her head. She shouts them in turn.",
+      "I heard her scream from a mile away. Birds fell."
+     ]
+    }
+   ],
+   "factions": [
+    "Swampers"
+   ],
+   "states": [
+    [
+     "Ulla Weeper killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ulla_weeper_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The shriekers have a mother now. Ulla something. Worse than before.",
+      "Weeper is her name. A good name for a bad thing.",
+      "Her mob stands in a ring and screams until the target drops.",
+      "A woman in the swamp who won't stop crying, and a hundred who answer her.",
+      "I sleep with wax in my ears. It does not help. It never helps."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Red Sabres",
+    "Fisher"
+   ],
+   "states": [
+    [
+     "Ulla Weeper killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ulla_weeper_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's a screaming woman in the swamp and everyone near her screams too.",
+      "A shrieker queen. That's what the traders say, and they say it quietly.",
+      "Ulla, I think. She keeps a flock.",
+      "In the swamp a woman cries and the earth listens."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Flotsam Ninjas",
+    "Tech Hunters",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Ulla Weeper killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ulla_weeper_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Aaah! You came! Nobody comes! Stay!",
+      "Do you hear them? The little ones? They want to meet you.",
+      "Scream with me, stranger! It's the only way to be heard!",
+      "Hush, hush, hush. No, louder. LOUDER.",
+      "I lost everything to the mud."
+     ]
+    }
+   ],
+   "characters": [
+    "Ulla Weeper"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_ulla_weeper_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Quiet now. Quiet.",
+      "Oh, how still. How lovely.",
+      "Sing him to sleep, children."
+     ]
+    }
+   ],
+   "characters": [
+    "Ulla Weeper"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_ulla_weeper_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Ulla Weeper is dead. The swamp is so quiet that the Swampers keep checking their ears.",
+      "The shriekers have stopped. For a day. Some say a night. Then they start again.",
+      "I heard she went silent at the end. Strange.",
+      "The mud has her now. The mud has everyone eventually."
+     ]
+    }
+   ],
+   "factions": [
+    "Swampers"
+   ],
+   "states": [
+    [
+     "Ulla Weeper killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_ulla_weeper_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Ulla is caged. She screams at the bars.",
+      "They caught the Weeper alive. Her guards wear plugs.",
+      "Ulla Weeper in a cell, crying. Her guards can't say if it's grief or tactics.",
+      "The swamp is quiet, and her cell isn't. That's justice, of a kind."
+     ]
+    }
+   ],
+   "factions": [
+    "Swampers"
+   ],
+   "states": [
+    [
+     "Ulla Weeper imprisoned by player",
+     true
+    ],
+    [
+     "Ulla Weeper killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_dunmar_quell_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Dunmar Quell wants the swamp. He says it to anyone who will listen, and a few who won't.",
+      "His Sabres wear red. The blood is new.",
+      "I paid his tax once. He gave me a receipt, signed Captain. I still have it.",
+      "Quell thinks he is a king. He holds court in a mud hut.",
+      "He beat a man to death for calling him a boss. Captain, he said. Always Captain."
+     ]
+    }
+   ],
+   "factions": [
+    "Swampers"
+   ],
+   "states": [
+    [
+     "Dunmar Quell killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_dunmar_quell_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A bandit in the wet who calls himself Captain. The Red Sabres are his now.",
+      "Quell, so I hear. Short temper, long ambition.",
+      "Every bandit wants to be a king.",
+      "The Sabres used to be a gang. Now they're an army, thanks to him.",
+      "I don't envy the Swampers. A Captain is worse than a thief."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Fisher"
+   ],
+   "states": [
+    [
+     "Dunmar Quell killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_dunmar_quell_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's a bandit king in the swamp. Red cloth, loud voice, bad manners.",
+      "A Red Sabre captain with big ideas. Do not offer him a hand.",
+      "Quell, I think. He wants the whole wet.",
+      "I heard he gives speeches before he cuts."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Flotsam Ninjas",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Dunmar Quell killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_dunmar_quell_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Kneel to the Captain! Hah! I see you won't.",
+      "Every road in the swamp pays me.",
+      "Behold the Red Captain. Cower, or applaud.",
+      "A fine blade, traveller. It will make a nice addition to my wall.",
+      "I'm Dunmar Quell, and the swamp is mine."
+     ]
+    }
+   ],
+   "characters": [
+    "Dunmar Quell"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_dunmar_quell_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "All hail the Captain!",
+      "Another subject to the throne.",
+      "Remember who did this. Remember my name."
+     ]
+    }
+   ],
+   "characters": [
+    "Dunmar Quell"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_dunmar_quell_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Dunmar Quell is dead. His Sabres squabble over the crown, which is only a bucket.",
+      "The Red Captain bled in the mud like everyone else. Nobody saluted.",
+      "They found his tally of taxes in his boot. The swamp isn't as poor as he claimed.",
+      "Quell's kingdom lasted a season. That's long for the wet."
+     ]
+    }
+   ],
+   "factions": [
+    "Swampers"
+   ],
+   "states": [
+    [
+     "Dunmar Quell killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_dunmar_quell_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Quell is caged. He insists on being addressed as Captain by his guards.",
+      "The Red Captain is in irons. His Sabres are plotting.",
+      "Dunmar Quell in a cell. He gave a speech to the bars last night.",
+      "A captain with no crew. It's a sad thing, but I won't say it aloud."
+     ]
+    }
+   ],
+   "factions": [
+    "Swampers"
+   ],
+   "states": [
+    [
+     "Dunmar Quell imprisoned by player",
+     true
+    ],
+    [
+     "Dunmar Quell killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_gammer_tuck_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Gammer Tuck wants half your cart. He says it was grown by his grandfather, and so it's his.",
+      "He sings an old harvest song when he marches. The whole country knows when he's coming.",
+      "I saw him gut a tax-collector with a sickle. He wiped the sickle on his own hat.",
+      "Tuck claims every field in the green edge. He has a deed. It's written on a barn door.",
+      "He drinks rotgut for breakfast. Don't accept a cup."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Gammer Tuck killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_gammer_tuck_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A rebel old man calls himself the Plough Captain. He's very polite to women and children.",
+      "Tuck, they call him. Gammer Tuck. A tax-collector's nightmare.",
+      "He charges your caravan a sack of grain for passage. Per beast.",
+      "The rebels follow him because he laughs. It's the strangest reason I've heard.",
+      "Funniest bandit in the green country."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Gammer Tuck killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_gammer_tuck_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's an old man with a scythe leading farmers against the Cities.",
+      "A rebel in the green country sings as he kills.",
+      "Gammer something. A farmer who stopped farming. That's the whole of the tale.",
+      "A rebel with a scythe. He laughs a lot, they say."
+     ]
+    }
+   ],
+   "factions": [
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Gammer Tuck killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_gammer_tuck_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Ha ha! A tax-man! Or a fine bit of hide, at least!",
+      "Taxes? Ha. Pay me! Pay Tuck!",
+      "Sing with me, friend. It's a harvest song! Come, come!",
+      "This field is mine. And the next one. And the one you're standing on.",
+      "I farmed forty years. Never once did I get thanks. You'll thank me now."
+     ]
+    }
+   ],
+   "characters": [
+    "Gammer Tuck"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_gammer_tuck_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Another sheaf for the barn.",
+      "Ha ha! Bring the cart.",
+      "Plough him in, lads."
+     ]
+    }
+   ],
+   "characters": [
+    "Gammer Tuck"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_gammer_tuck_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Gammer Tuck is dead. The farmers are weeping and singing, together.",
+      "The Plough Captain fell in a field, with a scythe in his hand. They buried him there, the old fool.",
+      "Even the Cities' tax-men attended the funeral. I don't know why.",
+      "The green country won't be as loud now."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Gammer Tuck killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_gammer_tuck_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Tuck is caged, singing his harvest song to anyone who will listen.",
+      "The Plough Captain is in a cell. The guards joined the chorus by the second night.",
+      "Gammer Tuck in chains. He asked for rotgut. They gave it.",
+      "A rebel in a cage, laughing. The Cities don't know what to do."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Gammer Tuck imprisoned by player",
+     true
+    ],
+    [
+     "Gammer Tuck killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_sayo_of_the_grey_ribbon_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Sayo leaves a grey ribbon tied around the wrist of her kill.",
+      "I found a ribbon on a magistrate's bed. He was still warm. The window was still shut.",
+      "She never speaks. She just stops being there.",
+      "I heard she was hired to kill her own teacher and did so for double. That is the kind she is.",
+      "If a gust of sand finds you in an empty room, count your fingers."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Sayo of the Grey Ribbon killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_sayo_of_the_grey_ribbon_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A sand ninja kills by contract. Grey Ribbon. Sayo. I fear for the Shek.",
+      "The Shek say the Grey Ribbon can't be bought.",
+      "Hired murder is a thing the Empire left us. Sayo continues it.",
+      "I heard she worked for a Shek lord and then killed him. Her fee was doubled.",
+      "A ribbon, a note, a grave. In that order."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom",
+    "The Holy Nation",
+    "Anti-Slavers",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Sayo of the Grey Ribbon killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_sayo_of_the_grey_ribbon_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There's a ninja in the desert who kills for hire. A grey ribbon is all she leaves.",
+      "A woman of the sand ninjas, they say, with no face and a fine knife.",
+      "Sayo, I think. The Grey Ribbon. A name for the hired.",
+      "Rumour says the ribbon arrives before the killer does."
+     ]
+    }
+   ],
+   "factions": [
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Sayo of the Grey Ribbon killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_sayo_of_the_grey_ribbon_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "No one hired me for you. A pity. I'll do it for free.",
+      "Don't speak. It only gives me your breath.",
+      "The ribbon is already in my hand.",
+      "You see me. That is the second mistake. The first was walking here.",
+      "Hush. It isn't personal. Nothing ever is."
+     ]
+    }
+   ],
+   "characters": [
+    "Sayo of the Grey Ribbon"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_sayo_of_the_grey_ribbon_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Done. Tie the ribbon.",
+      "Forgive me. No, don't.",
+      "The wind keeps no secrets, and neither do I."
+     ]
+    }
+   ],
+   "characters": [
+    "Sayo of the Grey Ribbon"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_sayo_of_the_grey_ribbon_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Grey Ribbon is dead. Someone found a ribbon in her own hand.",
+      "Sayo fell in the canyon. The wind took her ribbons.",
+      "No more ribbons. A hired killer, killed without a fee.",
+      "The dunes aren't so lonely now. The wind has moved on."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Sayo of the Grey Ribbon killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_sayo_of_the_grey_ribbon_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Sayo is caged. She doesn't speak. She hasn't slept. The guards are changing hourly.",
+      "The Grey Ribbon is in a cell. She stares at one guard at a time, until he leaves.",
+      "They caught the assassin alive. I'd rather they hadn't.",
+      "Sayo in irons. I hear the ribbons are still arriving in the city."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Sayo of the Grey Ribbon imprisoned by player",
+     true
+    ],
+    [
+     "Sayo of the Grey Ribbon killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_cuddy_pell_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Cuddy Pell sets a place for you at the roadside. A rotten plate, a bone fork. Sit.",
+      "He talks to the sack. The sack, I swear, answers him.",
+      "He will rob you, and then thank you, and then rob you again to say sorry.",
+      "I met him at a ford. He asked me for my name, my mother's name, and my boots.",
+      "Cuddy has one rule: nobody leaves hungry."
+     ]
+    }
+   ],
+   "factions": [
+    "Fisher",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Cuddy Pell killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_cuddy_pell_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A mad Mongrel sits on the flood road and asks everyone to dinner. Don't go.",
+      "Pell, they call him. Cuddy. A cheerful sort of murderer.",
+      "He bows to his victims. Sings them off. Bad voice.",
+      "I never saw a bandit so happy at his work.",
+      "It's the sack that frightens me, honestly."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Cuddy Pell killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_cuddy_pell_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "There is a man in the wet country who sets tables for travellers and does not let them leave.",
+      "A mad bandit with a sack and a song.",
+      "I heard a crazy man dines on the roads.",
+      "A song carries on the wind in the south. It's not a nice song."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Flotsam Ninjas",
+    "Swampers",
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Cuddy Pell killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_cuddy_pell_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Dinner! Dinner! Sit, sit! The sack will serve!",
+      "Ho ho! You're thin. We shall fix that. Hold still.",
+      "Say hello to Mister Goat. He's shy but he bites.",
+      "Nobody leaves hungry at Cuddy's table!",
+      "A dance, a dance, a dance! Then supper!"
+     ]
+    }
+   ],
+   "characters": [
+    "Cuddy Pell"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_cuddy_pell_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Eat up! Everyone eats!",
+      "Shhh, shhh, don't wake the sack.",
+      "A lovely meal. Lovely, lovely."
+     ]
+    }
+   ],
+   "characters": [
+    "Cuddy Pell"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_cuddy_pell_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Cuddy Pell is dead. The roadside is quieter. The goat, they say, is still talking.",
+      "The Mongrel with the sack finally had his last supper.",
+      "I'm told he laughed. Of course he did.",
+      "The flood roads are safer. A pity, in a way."
+     ]
+    }
+   ],
+   "factions": [
+    "Fisher",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Cuddy Pell killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_cuddy_pell_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Pell is caged. He sets his meal on the bars and invites the guards to join him.",
+      "They caught Cuddy Pell alive. The sack is evidence now. Nobody has dared open it.",
+      "Cuddy in a cell, humming. The other prisoners asked to be moved.",
+      "A mad Mongrel in a cage. He thanks everybody. It's awful."
+     ]
+    }
+   ],
+   "factions": [
+    "Fisher",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Cuddy Pell imprisoned by player",
+     true
+    ],
+    [
+     "Cuddy Pell killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_tchik_of_seven_voices_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Tchik of Seven Voices speaks softly, in seven tones, one after another. Each of them says please.",
+      "His drones carry spears of bone, polished. They look lovingly cared for.",
+      "I tried to bargain with him. He smiled with six mouths and shook his head with one.",
+      "Tchik was hive once. Now he's everything the hive was afraid of: free.",
+      "The clicking stops when he's about to strike. It's like the world holding its breath."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Tchik of Seven Voices killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "packages": [
+    "all"
+   ]
+  },
+  {
+   "id": "ol_tchik_of_seven_voices_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A drone with seven voices. The Hivers won't discuss him.",
+      "Tchik, so I hear. He walks alone and not alone.",
+      "A hive-bandit swarm is nothing like a human one. They don't run.",
+      "He speaks politely. They all do. It's the horror of it.",
+      "The dark fingers are quiet for a reason."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Tchik of Seven Voices killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "packages": [
+    "all"
+   ]
+  },
+  {
+   "id": "ol_tchik_of_seven_voices_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "In the desert a drone leads a swarm with seven voices. I don't wish to hear more.",
+      "A rogue Hiver. That's all anyone will say.",
+      "Tchik, they call him. It sounds like a joke until he speaks.",
+      "I heard the clicking from a mile away."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Tchik of Seven Voices killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "packages": [
+    "all"
+   ]
+  },
+  {
+   "id": "ol_tchik_of_seven_voices_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Hello, hello, hello. Seven of us greet you. Six of us are sorry.",
+      "We were many. Now we're few. You'll help us be many again.",
+      "Please do not run. We are fast. We are very fast.",
+      "We hear your heart. It's loud.",
+      "Join us. Or don't. Either way you stay."
+     ]
+    }
+   ],
+   "characters": [
+    "Tchik of Seven Voices"
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "packages": [
+    "all"
+   ]
+  },
+  {
+   "id": "ol_tchik_of_seven_voices_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Thank you. Thank you. Thank you.",
+      "He is quiet now. We are less lonely.",
+      "Gather him. We'll keep him."
+     ]
+    }
+   ],
+   "characters": [
+    "Tchik of Seven Voices"
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "packages": [
+    "all"
+   ]
+  },
+  {
+   "id": "ol_tchik_of_seven_voices_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Tchik is dead. The clicking in the fingers stopped, and nothing replaced it.",
+      "The seven voices were silenced one by one, I heard. The last one asked for water.",
+      "A drone without a hive is a sad thing. A dead one is sadder.",
+      "The swarm that was Tchik is scattering. I wish them no luck, and no harm."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Tchik of Seven Voices killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "packages": [
+    "all"
+   ]
+  },
+  {
+   "id": "ol_tchik_of_seven_voices_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Tchik is caged. The seven voices argue among themselves.",
+      "They caught the drone alive. His guards say he has stopped clicking.",
+      "Tchik behind bars. He thanks the guards for the food, in seven tones.",
+      "A drone in a cage says please to the bars."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Tchik of Seven Voices imprisoned by player",
+     true
+    ],
+    [
+     "Tchik of Seven Voices killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "packages": [
+    "all"
+   ]
+  },
+  {
+   "id": "ol_elric_vosk_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Elric Vosk rings a small brass bell. Hire him, and you hear it for the last time.",
+      "He still wears the Guild's colours. Cleaned and pressed. That's what I can't forgive.",
+      "He offered me escort across the hills for a fair rate. I said no. He bowed. I haven't slept right since.",
+      "He lost a daughter once, they say. He lost the rest of himself after.",
+      "A guard who kills clients is a mercenary who forgot why he took the work."
+     ]
+    }
+   ],
+   "factions": [
+    "Mercenary Guild",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Elric Vosk killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_elric_vosk_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A deserter mercenary rings a bell at the crossroads.",
+      "Vosk, they say. Killed the whole caravan he guarded.",
+      "He gives a very reasonable rate. That is what makes it so awful.",
+      "The Guild is quietly hunting its own. That should tell you something.",
+      "A guard who turns on the herd. I won't travel near the crossroads."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Elric Vosk killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_elric_vosk_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A mercenary murdered a whole caravan and kept the bell.",
+      "Out on the desert tracks a guard offers escort.",
+      "Vosk. A killer in the Guild's colours.",
+      "There's a bell on the road. If you hear it, walk the other way."
+     ]
+    }
+   ],
+   "factions": [
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Elric Vosk killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_elric_vosk_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Escort, traveller? A fair rate, a clean road, and a quick end.",
+      "I was paid to protect the road. I protect it from you.",
+      "The Guild forgot me. I don't forgive.",
+      "Hear the bell? That is the toll.",
+      "You look like you need a guard. I'm not available."
+     ]
+    }
+   ],
+   "characters": [
+    "Elric Vosk"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_elric_vosk_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "The contract is fulfilled.",
+      "No payment received. Nothing new.",
+      "Pardon me. I'm working."
+     ]
+    }
+   ],
+   "characters": [
+    "Elric Vosk"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_elric_vosk_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Elric Vosk is dead, and the bell is lost. Some say it is buried with him.",
+      "He fell on the old desert track. A merchant took his boots and left the rest.",
+      "The Guild marked the contract complete. Nobody mourned.",
+      "No more brass bell on the road. It's very quiet."
+     ]
+    }
+   ],
+   "factions": [
+    "Mercenary Guild",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Elric Vosk killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_elric_vosk_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Vosk is caged. He asks for the terms of his release, politely, daily.",
+      "The Guild's deserter sits behind bars, and the Guild would rather he hang than talk.",
+      "Elric Vosk in irons. He rings an imaginary bell. His guards pretend not to hear.",
+      "They have Vosk alive. I wonder what he will tell them."
+     ]
+    }
+   ],
+   "factions": [
+    "Mercenary Guild",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Elric Vosk imprisoned by player",
+     true
+    ],
+    [
+     "Elric Vosk killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_pyke_ludlow_rum_local",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Pyke Ludlow leaves a broken manacle on the chest of every one he kills. He calls it a receipt.",
+      "He asks one question: have you ever owned a person? The wrong answer is the truth.",
+      "I never traded anyone. He let me go. He still asked me twice.",
+      "Ludlow sat with a dying slaver for an hour and listened to him pray. Then he finished it.",
+      "The Anti-Slavers disown him, but nobody will say it to his face."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Pyke Ludlow killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_pyke_ludlow_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "An Anti-Slaver turned executioner is working the roads. The Cities are embarrassed.",
+      "Ludlow. He believes in his cause. That's the problem.",
+      "He killed a farmer for owning a field-hand. Said the contract was fraud.",
+      "A fanatic with a righteous cause is the hardest kind to stop.",
+      "I support the cause. Not Ludlow."
+     ]
+    }
+   ],
+   "factions": [
+    "Traders Guild",
+    "Shek Kingdom",
+    "Nomads",
+    "Fisher"
+   ],
+   "states": [
+    [
+     "Pyke Ludlow killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_pyke_ludlow_rum_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A freedom fighter is killing slavers, and everyone who looks like one. His name is Ludlow.",
+      "An avenger walks the roads. The slavers fear him, so do the rest of us.",
+      "Pyke, I think. He hates chains more than people.",
+      "Some say he's a hero. Some say he's a butcher."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation",
+    "Flotsam Ninjas",
+    "Swampers",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Pyke Ludlow killed by player",
+     false
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_pyke_ludlow_taunt",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Have you ever owned a person? Answer carefully.",
+      "Chains break. So do bones. I prefer the former.",
+      "No more masters, stranger. Not you, not me. Not anyone.",
+      "I don't hate you. I hate what you might have done.",
+      "Tell me your sins. Then I'll tell you your sentence."
+     ]
+    }
+   ],
+   "characters": [
+    "Pyke Ludlow"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_pyke_ludlow_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "It's done. Forgive the manacle.",
+      "Another debt paid. I won't rest.",
+      "Free at last, from yourself."
+     ]
+    }
+   ],
+   "characters": [
+    "Pyke Ludlow"
+   ],
+   "chance": 100,
+   "repeat": 3
+  },
+  {
+   "id": "ol_pyke_ludlow_killed",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Pyke Ludlow is dead. The Anti-Slavers say nothing. The slavers say it was a mercy.",
+      "He fell with a manacle in his hand.",
+      "A good man, gone wrong, put down. I won't call it justice.",
+      "The roads are quieter. Not because of peace."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Pyke Ludlow killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  },
+  {
+   "id": "ol_pyke_ludlow_imprisoned",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Ludlow is caged. He refuses to eat from a hand that locked him in.",
+      "They caught the avenger alive. The Anti-Slavers asked to see him.",
+      "Pyke Ludlow behind bars. A strange irony, isn't it?",
+      "He rattles the lock each night. Not to escape. To remember."
+     ]
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Pyke Ludlow imprisoned by player",
+     true
+    ],
+    [
+     "Pyke Ludlow killed by player",
+     false
+    ]
+   ],
+   "chance": 60,
+   "repeat": 4,
+   "one_at_a_time": true
+  }
+ ],
+ "mod": "LivingWastelandOutlaws"
+}

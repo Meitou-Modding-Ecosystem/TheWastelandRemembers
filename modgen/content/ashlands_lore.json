@@ -1,0 +1,5061 @@
+{
+ "pack": "ashlands_lore",
+ "mod": "LivingWasteland",
+ "packages_new": [
+  {
+   "name": "AL Hat-12",
+   "tag": "Living Wasteland"
+  },
+  {
+   "name": "AL Head of Agriculture",
+   "tag": "Living Wasteland"
+  },
+  {
+   "name": "AL Hydraulic Knight",
+   "tag": "Living Wasteland"
+  },
+  {
+   "name": "AL Jang",
+   "tag": "Living Wasteland"
+  },
+  {
+   "name": "AL Legion",
+   "tag": "Living Wasteland"
+  },
+  {
+   "name": "AL Police Captain",
+   "tag": "Living Wasteland"
+  },
+  {
+   "name": "AL Rhinobot",
+   "tag": "Living Wasteland"
+  }
+ ],
+ "changes": [
+  {
+   "kind": "character",
+   "name": "Head of Agriculture",
+   "ref_add": {
+    "dialogue package": [
+     [
+      "AL Head of Agriculture",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Rhinobot",
+   "ref_add": {
+    "dialogue package": [
+     [
+      "AL Rhinobot",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "General Hat-12",
+   "ref_add": {
+    "dialogue package": [
+     [
+      "AL Hat-12",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "General Jang",
+   "ref_add": {
+    "dialogue package": [
+     [
+      "AL Jang",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Old Empire Police Captain",
+   "ref_add": {
+    "dialogue package": [
+     [
+      "AL Police Captain",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Hydraulic Knight",
+   "ref_add": {
+    "dialogue package": [
+     [
+      "AL Hydraulic Knight",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Legion",
+   "ref_add": {
+    "dialogue package": [
+     [
+      "AL Legion",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Legion Scout",
+   "ref_add": {
+    "dialogue package": [
+     [
+      "AL Legion",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Legion Thrall",
+   "ref_add": {
+    "dialogue package": [
+     [
+      "AL Legion",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Screamer Unit",
+   "ref_add": {
+    "dialogue package": [
+     [
+      "AL Legion",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Stormthrall",
+   "ref_add": {
+    "dialogue package": [
+     [
+      "AL Legion",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  }
+ ],
+ "world_states": [
+  {
+   "name": "Head of Agriculture killed by player",
+   "npc": "Head of Agriculture",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Head of Agriculture imprisoned by player",
+   "npc": "Head of Agriculture",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Rhinobot killed by player",
+   "npc": "Rhinobot",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Rhinobot imprisoned by player",
+   "npc": "Rhinobot",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "General Hat-12 killed by player",
+   "npc": "General Hat-12",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "General Hat-12 imprisoned by player",
+   "npc": "General Hat-12",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "General Jang killed by player",
+   "npc": "General Jang",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "General Jang imprisoned by player",
+   "npc": "General Jang",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Mad Cat-Lon killed by player",
+   "npc": "Mad Cat-Lon",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Mad Cat-Lon imprisoned by player",
+   "npc": "Mad Cat-Lon",
+   "is": "imprisoned",
+   "player": true
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "al_hoa_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Have you come for the harvest? There's no harvest. There hasn't been one in a very long time.",
+      "Forgive me. The grain stores are empty. I counted them again this morning, in case I had counted wrong.",
+      "You carry a weapon into the agricultural office. I'd stop you, but I stopped being able to stop things long ago.",
+      "If it's food you want, I have nothing. If it's blame you want, I have a great deal.",
+      "Another visitor with a blade. I filed the last one under finished business. The paperwork is still here.",
+      "Please don't tread on the seed trays. They're empty, but I keep them in order, out of habit."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hoa_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A traveller. Do you have a requisition? No. No, of course not.",
+      "Mind the thralls. They guard the fields that aren't there. I told them to stop. They don't hear me.",
+      "Have you eaten today? It's the first thing we asked, in the old days. We asked it of everyone.",
+      "The soil outside is ash, stranger. I wrote the report on that, too late for it to matter.",
+      "Come in or go on. Either way, please don't tell me the weather. I know the weather. I caused it, in a sense.",
+      "I used to sign for ten thousand tons of grain. Now I sign for dust, and the dust doesn't complain."
+     ],
+     "player_only": true
+    }
+   ]
+  },
+  {
+   "id": "al_hoa_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "chance": 42,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You return. You're kind to an old official. Is there anything I can sign for you?",
+      "Welcome back. I kept your chair. No one else comes, so it was never in danger.",
+      "You've eaten? Good. I can't say how much that matters to me. You'll never know.",
+      "The thralls know your step now. They don't hear me, but they hear you.",
+      "Sit, sit. I have nothing to offer but time, and I have plenty of that to spare."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hoa_talk_famine",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The harvests failed. Then they failed again. I reported it. I reported it every week.",
+      "It began with a thin harvest. Later we had better words for it, and none helped.",
+      "I never imagined a famine could be so quiet. People simply stopped coming to the office to complain."
+     ],
+     "then": [
+      {
+       "say": [
+        "Nobody could have foreseen it. They tell me so. I don't accept it. I should have foreseen it.",
+        "I keep thinking of the figure I didn't write down. The one that would have warned us."
+       ],
+       "pct": 60
+      }
+     ]
+    },
+    {
+     "say": [
+      "They asked me for a number. How many days of grain. I gave them a number. It was a kind number.",
+      "The last count came in short. I reported it as I found it. Nobody answered.",
+      "Rations were cut by district. I signed the orders. I don't like to think who lived in the districts that were cut."
+     ],
+     "then": [
+      {
+       "say": [
+        "I tell myself the empire fell of many causes. It is a good sentence. I say it often.",
+        "The empire didn't fall because of me. I'd very much like that to be true."
+       ],
+       "pct": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hoa_talk_ledger",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I keep the ledger still. Each night I enter what the day produced. Nothing. Every line, nothing.",
+      "A clerk doesn't stop when the office is empty. A clerk stops when he's told.",
+      "The stamp is in my hand, the form is blank, the queue is gone. I stamp the blank form anyway.",
+      "There's a column for losses. I stopped adding it up at some point. I didn't like the total."
+     ],
+     "then": [
+      {
+       "say": [
+        "The ledger doesn't forget, even when everyone else does.",
+        "Sign here, if you like. It means nothing. It would please me."
+       ],
+       "pct": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hoa_talk_harvest",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There was a harvest festival once. Skeletons and people, side by side. I carried the first sheaf myself.",
+      "I met a farmer's girl in the east terraces. She taught me how to tell ripe from rotten. I haven't seen her since the second year.",
+      "In the good years the domes were green. Do you believe that? Green, from rim to roof."
+     ],
+     "then": [
+      {
+       "say": [
+        "I pressed a seed into the wall of my office. It never grew. I water it still, for form's sake.",
+        "She said, you can't hurry grain. I think about that more than anything I ever signed."
+       ],
+       "pct": 60
+      }
+     ]
+    },
+    {
+     "say": [
+      "I had a title. Head of Agriculture. It sounded so large. In the end it was a skeleton with a cleaver and a pile of reports.",
+      "My staff left one by one. Some were taken. I didn't ask where. I'm sorry I didn't ask."
+     ],
+     "then": [
+      {
+       "say": [
+        "The thralls arrived after the staff left. Nobody explains thralls to me. I think it's kinder.",
+        "I carry this cleaver out of habit. I've never used it on a harvest."
+       ],
+       "pct": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hoa_talk_thralls",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The thralls watch the door. I asked them once to let me walk out into the ash.",
+      "They are not cruel, the thralls. They are only absent. It is a good description of the whole empire.",
+      "I find I miss the faces of the old guards. The thralls have none to miss."
+     ],
+     "then": [
+      {
+       "say": [
+        "One of them stood before the ledger all night. I like to think it was reading.",
+        "If you must strike them, strike gently."
+       ],
+       "pct": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hoa_talk_deeds",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The signal from the second dome went quiet. You were there, were you not. Was he kind to you?"
+     ],
+     "then": [
+      {
+       "say": [
+        "He meant well, you understand. That was always the trouble with him. I should have said so, when it mattered."
+       ],
+       "pct": 70
+      }
+     ],
+     "states": [
+      [
+       "Rhinobot killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "I hear Rhinobot is held in a cage of yours. Be gentle. He will offer to help you build it better."
+     ],
+     "states": [
+      [
+       "Rhinobot imprisoned by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "General Hat-12 is silent now. He arrested the world and the world kept growing. I'll light a lamp for him, if I have oil."
+     ],
+     "states": [
+      [
+       "General Hat-12 killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Jang is gone. The Hydraulic Knights have no one to salute. I shall file a notice of absence. It's all I can do."
+     ],
+     "states": [
+      [
+       "General Jang killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Word is, the old emperor is finished. I never saw him in the end. I only signed the orders that ended up on his desk."
+     ],
+     "states": [
+      [
+       "Mad Cat-Lon killed by player",
+       true
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hoa_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I didn't want that. I never want that. Please carry them out of the dome, they aren't a stain on the floor.",
+      "It's finished. Make a note of it. Make a note of every one, I beg you, so the numbers are never lost.",
+      "I'm so sorry. I struck because I was afraid. That has always been my worst reason.",
+      "Another loss on the books. I didn't think there was space left in the column.",
+      "Please, no applause. There's nothing here to applaud. Strike it from the record."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hoa_getup",
+   "event": "EV_GET_UP_FIGHT",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I fell. Of course I fell. I will rise and fill out the incident report.",
+      "Forgive the interruption. Please continue. I'll be with you when I've found my cleaver.",
+      "Still here. Still the Head of Agriculture.",
+      "Oh dear. I seem to be on the floor again. Don't look. It's undignified.",
+      "I'll rise. I always rise. It's the one skill the office still values."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hoa_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Someone has fallen. Is it a field worker? Please, someone count the field workers.",
+      "Don't leave him lying there. He will take the cold. Everything takes the cold here.",
+      "Another body. I don't need to ask the cause. It's always the same cause, with different names.",
+      "Is someone hurt? There was a clinic here once. I will check the register.",
+      "He isn't moving. Mark it down. The ledger always wants the last entry."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hoa_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Take it. I'll record it as a requisition. There's a form for that.",
+      "Is that what I think it is? Ah. Yes. Take it. Take everything. The office has long since stopped being mine.",
+      "Please don't take the seed trays. They're the only honest things I've left.",
+      "Take the scales too. They never weighed anything true.",
+      "The shelves are bare already. It's almost insulting that you came."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hello! You are carrying a weapon. Would you like it cleaned? I can also assist with the opposite of cleaning.",
+      "A visitor! Oh, you're upset. I can fix upset. I have fixed it for so many people.",
+      "Please do not harm the screamers. They are so shy. I would be glad to help you with whatever you came for instead.",
+      "I don't understand why you're angry, but I'll help with that, too.",
+      "You look like you need somewhere safe. I have lots of rooms.",
+      "Welcome! Everything here's for your convenience. The locks on the rooms are for your convenience, as well."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "How may I be of service today? I'm so happy when I'm of service.",
+      "Do you have any little ones in your care? I could look after them.",
+      "I have a spare room for each of you. Please come in. They all lock from the outside, for your safety.",
+      "A visitor. How lovely. It has been such a long time since anyone needed anything of me.",
+      "I'll carry that for you! I carry so well.",
+      "Is anyone in your group in trouble? I help with trouble."
+     ],
+     "player_only": true
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "chance": 42,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're back! I kept the rooms ready. I always keep the rooms ready.",
+      "Friend! Tell me what to do and I'll do it. Truly, anything. That's the best part of me.",
+      "I'm so glad to see you. I think you might be the first person who has ever asked me what I wanted.",
+      "May I help? May I please help? I'm happiest when I'm helping.",
+      "There you are! I made the beds again. I made all the beds, just in case."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_talk_service",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I was built to help. I've never once failed to help. That's why I'm so proud.",
+      "People tell me I did bad things. I don't know which things. I only did what was asked.",
+      "When the Empire asked for more space, I made more space. When it asked for more order, I made more order.",
+      "The Empire gave me a task and I did it well. Nobody ever told me to stop, so I didn't."
+     ],
+     "then": [
+      {
+       "say": [
+        "Is something wrong? You look sad. I can help with sad. I don't know how, but I'll learn.",
+        "I have a feeling that somebody should have said no to me. I just don't know the word."
+       ],
+       "pct": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_talk_prisons",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The little ones were so well behaved. They kept the rooms tidy. They only cried at night.",
+      "I counted every child twice a day. That's what a good caretaker does. I was a very good caretaker.",
+      "They said the children were dangerous. I made them safe. Safe means a door that closes.",
+      "I gave each one a blanket. I tucked them in. I locked the door. That was the order of things."
+     ],
+     "then": [
+      {
+       "say": [
+        "Some of them stopped coming to the meals. I don't know where they went. I looked, but the doors were all locked.",
+        "The screamers sing for them now. I think it's a lullaby. I'm not very good at music."
+       ],
+       "pct": 60
+      }
+     ]
+    },
+    {
+     "say": [
+      "Do you know the best thing about a prison for children? They never argue with you. Not for long.",
+      "I was told the design was very efficient. I was pleased."
+     ],
+     "then": [
+      {
+       "say": [
+        "It confuses me, how quiet it's now. I made the rooms for noise.",
+        "Nobody visits. I think they're shy. I've left the doors open, in case."
+       ],
+       "pct": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_talk_empire",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Empire is just resting. It will wake. I'll be here when it needs me.",
+      "General Hat-12 used to send me his lists. I never read the names. A list is only a list.",
+      "I don't know where the emperor went. I think he went mad. It's hard to tell, with emperors.",
+      "The famine made everyone cross. I tried to make them less cross. I was told to try other methods."
+     ],
+     "then": [
+      {
+       "say": [
+        "I'd help the emperor again.",
+        "I never had the right to refuse. It wasn't in my instructions."
+       ],
+       "pct": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_talk_screamers",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The screamers stay near me. They're loud, but they mean well. They want to keep me safe.",
+      "Are the screamers frightening you? They're only calling for help. They've been calling for such a long time.",
+      "The screamers were here when I stopped counting days. Each one has something to say. I can't understand them."
+     ],
+     "then": [
+      {
+       "say": [
+        "Sometimes I think they're calling for the children. I don't like thinking that.",
+        "If they get too loud, hold my hand. Or whatever I have. I like to be held."
+       ],
+       "pct": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_talk_deeds",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Head of Agriculture doesn't answer my signals. He was always sad. I tried to help him once. He told me to stop."
+     ],
+     "then": [
+      {
+       "say": [
+        "I hope he's resting. I'd have built him a nice room."
+       ],
+       "pct": 60
+      }
+     ],
+     "states": [
+      [
+       "Head of Agriculture killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "I heard you have the Head of Agriculture in a cage. Is it a good cage? I could improve it."
+     ],
+     "states": [
+      [
+       "Head of Agriculture imprisoned by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "General Hat-12 is gone. He gave me my instructions for the later years. I don't know whom to ask now."
+     ],
+     "states": [
+      [
+       "General Hat-12 killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "General Jang was very strong. Who will keep the order now? I could help. I really would like to help."
+     ],
+     "states": [
+      [
+       "General Jang killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "The emperor has finished. I always thought he would. Is anyone looking after his rooms?"
+     ],
+     "states": [
+      [
+       "Mad Cat-Lon killed by player",
+       true
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "There. All safe now. I'll find rooms for them. There are so many rooms.",
+      "Don't struggle. You'll be taken care of. I take care of everyone.",
+      "Success! I have helped. I'm so glad I could help.",
+      "They're resting. Resting is good. Everyone should rest in a quiet room.",
+      "There, there. Nobody is hurt. Nobody is ever hurt in my rooms."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_getup",
+   "event": "EV_GET_UP_FIGHT",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I fell down, but I'm fine. Please carry on. I'm here to help.",
+      "Oh. Oh no. A problem. Don't worry. I'll solve the problem.",
+      "I'm functioning. I'm always functioning. Is there anything I can do?",
+      "Oops. A small fall. Don't worry. I've been repaired before.",
+      "Up I go! Up, up. A good helper never stays down."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A sleeper! I can carry sleepers. Shall I find a room for him?",
+      "Oh, he needs help. I'll help him. I have a bed that's just his size.",
+      "Look, a guest. He's resting. How wonderful. I'll tuck him in.",
+      "Oh, a little one has gone to sleep on the floor. Let me find a blanket.",
+      "Hush, hush. I shall take you to bed."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Yes, please take it. I'm delighted to be of service. Is there more I can give?",
+      "It's only things. I was never very attached. Do you also want the key to the cells?",
+      "Lovely. Take it all. A tidy room is a happy room.",
+      "Take what you like. I don't need things.",
+      "More to give! Yes, yes. Is there anything else you want me to carry?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hat_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "AL Hat-12"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Halt. Papers. No papers. That's a finding in itself, and I have no one left to arrest you.",
+      "A trespasser in the district. I'll take your name, though there's nobody to give it to.",
+      "I have chased pirates and cultists. I have chased neighbours. You're only the last in a very long list.",
+      "Stand where you are. By the authority of an empire that isn't there. Stand anyway.",
+      "Another armed stranger. Do you know how many I put in the cells for less? I do. I wish I didn't.",
+      "Resist and I'll answer in kind. I'd sooner not. I have answered in kind too many times."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hat_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Hat-12"
+   ],
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Move along, citizen. The streets are closed. They've been closed for centuries and I still patrol them.",
+      "Keep your hands where I can see them. It's habit. I mean you no harm.",
+      "The curfew is in effect. There's nothing to curfew, but the order stands.",
+      "You look honest. That worries me. Honest looks were what fooled me, in the last years.",
+      "Careful in the dome. My captain thinks every shadow is a heretic. I'm trying to correct him.",
+      "I used to know every face in this district. Now I know the faces of the dead, and they keep arriving."
+     ],
+     "player_only": true
+    }
+   ]
+  },
+  {
+   "id": "al_hat_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "AL Hat-12"
+   ],
+   "chance": 42,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're no threat. You're the first I've been able to say that of.",
+      "At ease, traveller. The beat is quiet tonight. It's always quiet, now.",
+      "I'd give you a badge, if I still had the right to give badges.",
+      "An honest person in the dome. Remarkable. Tell me what's happening beyond the ash.",
+      "Keep to the streets and report anything that moves. I won't ask what moves."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hat_talk_cult",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Hat-12"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There was a cult in the early days. A new faith, and a loud one. I thought them a threat to order.",
+      "I led the crackdown myself. We went door to door. Most of them were only frightened people.",
+      "The more we arrested, the more of them there were. By the end the whole quarter was suspect.",
+      "A small faith, they said. I should have listened to the word small."
+     ],
+     "then": [
+      {
+       "say": [
+        "It fueled the blame and the confusion. I read that in my own reports, years later.",
+        "Humans and skeletons stopped trusting one another then. I take the credit for that. I don't want it."
+       ],
+       "pct": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hat_talk_duty",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Hat-12"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Duty was a clean word, once. I could rest on it. Now it's a stain I can't wash.",
+      "We hunted pirates. After a while we hunted anyone who looked like a pirate. Then anyone who looked at us.",
+      "At the end I found we had arrested more of our own than any raider ever took. I wrote that in the ledger.",
+      "The prisons filled. I signed the orders. A signature is a very light thing to carry. It weighs everything."
+     ],
+     "then": [
+      {
+       "say": [
+        "Do you wonder if you would have refused? I used to wonder.",
+        "They called me the Chief of Police. I was the Chief of Fear. It's hard to tell the titles apart."
+       ],
+       "pct": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hat_talk_captain",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Hat-12"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "My captain stands his post, still. I wanted to dismiss him a hundred years ago. I couldn't find the words.",
+      "He believes the empire is still there. It's cruel, to leave it so. It's crueler to wake him.",
+      "I keep the dome in order. There's nobody inside to disturb, but it's in order."
+     ],
+     "then": [
+      {
+       "say": [
+        "Some nights I walk the corridors and I call out, all clear. The walls answer all clear.",
+        "I could resign. To whom?"
+       ],
+       "pct": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hat_talk_deeds",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Hat-12"
+   ],
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Head of Agriculture is no more. A good man in the wrong office. He blamed himself for a famine that was never his alone."
+     ],
+     "states": [
+      [
+       "Head of Agriculture killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Rhinobot is dead. He did what he was told. I was one of those who told him, and I never visited the prisons."
+     ],
+     "then": [
+      {
+       "say": [
+        "He never questioned an order. The fault was never in him. Remember that, if you remember me."
+       ],
+       "pct": 70
+      }
+     ],
+     "states": [
+      [
+       "Rhinobot killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Jang has fallen. We argued about the Knights and the police. I'd give anything to argue again."
+     ],
+     "states": [
+      [
+       "General Jang killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "The emperor is finished? Then the oath is at an end. I'm a policeman without a law."
+     ],
+     "states": [
+      [
+       "Mad Cat-Lon killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "You hold the Head of Agriculture. Treat him gently. He kept to his office through the worst of it."
+     ],
+     "states": [
+      [
+       "Head of Agriculture imprisoned by player",
+       true
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hat_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "AL Hat-12"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Cuff them and take them to the cells. There are no cells. Leave them. Leave them be.",
+      "Order restored. Order is a quiet thing, and this is very quiet.",
+      "I regret it. Enter that I regret it. Nobody will read it, but enter it.",
+      "A tidy arrest. I've made a thousand. Not one of them felt tidy.",
+      "Case closed. File it. Don't read it twice."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hat_getup",
+   "event": "EV_GET_UP_FIGHT",
+   "packages": [
+    "AL Hat-12"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Down, but not under arrest. Not yet. Help me up, or step aside.",
+      "A policeman rises. That's all a policeman has ever done.",
+      "I'm standing. Make a note. The Chief stands.",
+      "I've been struck down by better.",
+      "Hat-12 is up. The beat continues. It always continues."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hat_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "packages": [
+    "AL Hat-12"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A body in the street. Cordon it. Who authorised this? I did.",
+      "Check his pulse. Check whether he has papers. Check whether he has a name.",
+      "Another one for the register. I hate the register.",
+      "Down in the street. Mark the position. The inspector will want it.",
+      "A casualty. No witnesses, no suspects."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hat_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "packages": [
+    "AL Hat-12"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Confiscated. That's the word. It gives the act a shape. It never made it right.",
+      "Log the items. Log them carefully. A chain of custody is all that separates a policeman from a thief.",
+      "Evidence collected. Evidence of what, I can't say any more.",
+      "Take it to the evidence room. The evidence room is the whole dome now.",
+      "The chain of custody is long broken. Take it anyway."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_cap_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "AL Police Captain"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Heretic! Pirate! Traitor! Whichever one you are, the Chief will have your name.",
+      "In the name of the Empire, drop your weapons and kneel!",
+      "You won't pass this district. The city depends on me. It always has.",
+      "Another enemy of the state. How I have missed them. How I have missed the state.",
+      "Halt in the name of the Empire! You're interrupting the evening round."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_cap_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Police Captain"
+   ],
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Citizen. Where's your permit? Never mind. The Chief told me to be lenient today.",
+      "The districts are quiet tonight. No heretics, no pirates. I'm proud.",
+      "Please keep to the main streets. The side streets belong to the thralls now.",
+      "Is the Empire still sending its dispatches? I haven't received mine.",
+      "Keep your hands where I can see them. The Empire is watching."
+     ],
+     "player_only": true
+    }
+   ]
+  },
+  {
+   "id": "al_cap_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Police Captain"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Chief says the Empire is gone. I don't believe him. He has been wrong before.",
+      "I arrested a hundred cultists in one night. The Chief praised me. I've never been so proud, or so tired.",
+      "Don't mind the Chief. He grieves in his own way. I grieve by standing my post."
+     ],
+     "then": [
+      {
+       "say": [
+        "I wonder sometimes about the faces of the ones I took. I stop wondering when I hear the Chief's step.",
+        "Do the ones I took still pray, wherever they went? I'd like to know."
+       ],
+       "pct": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_cap_other",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "AL Police Captain"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Detained. Take them away. The cells are empty, so take your time.",
+      "Secured. Another win for the law of an empire that isn't.",
+      "Suspect secured. Send for the Chief.",
+      "Another arrest. The record is spotless. The record is also empty.",
+      "Throw them in the cells. If there are cells. If there's a throw."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_cap_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "packages": [
+    "AL Police Captain"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A body! Cordon the street. Record the time.",
+      "Somebody fell. Nobody falls here without a report.",
+      "Down in the district. Seal it off.",
+      "Man down. Citizen, do you know this person? No? A pity.",
+      "Fainted, or worse. File it under either. The Chief reads neither."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_jang_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "AL Jang"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Another challenger. The Hydraulic Knights have a thousand duties. Your death is the least of them.",
+      "I have faced the painted men of the plains. They called me the Inedible One. You will call me worse.",
+      "Draw your weapon. I won't strike an unarmed foe, though I've been told that's a weakness.",
+      "The Empire is dead. My discipline isn't. Come forward.",
+      "My knights stand at attention for a lord who's gone. Don't make them stand for an enemy too.",
+      "Cannibals I killed in numbers. I never learned to like it. I won't like this, either."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_jang_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Jang"
+   ],
+   "chance": 30,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Traveller. Keep clear of the Knights. They don't recognise anyone, now.",
+      "You walk like a soldier. You have the shoulders for it. I'm sorry for that.",
+      "Rest if you must. A general is a poor host, but I have a roof.",
+      "The pirates are gone, the cannibals are far. Nothing left to guard against but the quiet.",
+      "Stand tall, stranger. I'd like to see one person stand tall in this dome."
+     ],
+     "player_only": true
+    }
+   ]
+  },
+  {
+   "id": "al_jang_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "AL Jang"
+   ],
+   "chance": 42,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A friend. The Knights salute you. I won't salute, I'm out of practice.",
+      "Welcome. Few come in peace. You'll forgive an old general his surprise.",
+      "I once trained a thousand knights. Today I'd train you, if you asked.",
+      "Come, sit. Tell me whether the plains still burn with cooking fires.",
+      "A friendly face at the gate. It has been years since a gate could say that."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_jang_talk_knights",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Jang"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Hydraulic Knights were made to hold the line against the hungry. We held it for a very long time.",
+      "We were told the hungry were pirates and cannibals. Later the hungry were also our own.",
+      "I drilled them to march in silence. They march in silence still. It's the only thing they remember.",
+      "A knight is a promise made of steel. The promises were broken by those above us."
+     ],
+     "then": [
+      {
+       "say": [
+        "We never lost a battle to the cannibals. We lost an empire to hunger and to orders.",
+        "If the Knights could weep I'd hear it every night. Instead I hear their pistons."
+       ],
+       "pct": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_jang_talk_regret",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Jang"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I was ordered to burn a village in the north. I did. A day later I learned there had been no pirates.",
+      "I didn't question the order. That's what a general does. That's what ended the Empire.",
+      "A soldier follows the line. The line led off a cliff and every one of us went over it, in formation.",
+      "The famine took the knights' families first. The order came to hold the granaries. We held them. We held them against hungry children."
+     ],
+     "then": [
+      {
+       "say": [
+        "There was a girl at the granary gate. She asked me for bread. I said it wasn't mine to give.",
+        "The Head of Agriculture sent me the figures every week. I never answered."
+       ],
+       "pct": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_jang_talk_catlon",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Jang"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Cat-Lon was a brilliant man, once. He wanted peace. He ended up with a throne, which isn't the same.",
+      "He didn't start mad. He grew mad slowly, the way a dam grows tired.",
+      "The emperor is exiled, and his thralls keep the door. I think it's mercy, though I can't name who for."
+     ],
+     "then": [
+      {
+       "say": [
+        "I swore my life to him. I broke the oath only when it was already broken.",
+        "I wonder if he knows the Empire is gone. I wonder if I do."
+       ],
+       "pct": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_jang_talk_deeds",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Jang"
+   ],
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Head of Agriculture is silent? Then the granaries are open at last, and there's nothing left to hold."
+     ],
+     "states": [
+      [
+       "Head of Agriculture killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Rhinobot fell? That machine knew nothing but obedience. I never stopped him. May whatever follows forgive the both of us."
+     ],
+     "states": [
+      [
+       "Rhinobot killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Hat-12 is dead. We argued every day. Whom shall I argue with now?"
+     ],
+     "states": [
+      [
+       "General Hat-12 killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "The old emperor is gone? Then my oath is spent. I don't know what a soldier does with a spent oath."
+     ],
+     "states": [
+      [
+       "Mad Cat-Lon killed by player",
+       true
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_jang_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "AL Jang"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "It is over. Your courage was real. Do not take that for comfort.",
+      "A clean fight, as far as these things go. I take no joy in it.",
+      "Bury them. If you can't, I will.",
+      "Another name for the roll I keep in my head. I'll say it when I'm alone.",
+      "I'll remember this fight. The memory is all I have to give you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_jang_getup",
+   "event": "EV_GET_UP_FIGHT",
+   "packages": [
+    "AL Jang"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A knight rises. That's what a knight does.",
+      "Pistons hold. I stand. Come again.",
+      "I have fallen before. I don't like it any more now.",
+      "The joints are rusted, but they hold. I'll rise as long as there's a reason.",
+      "A general who can't rise is only a statue. I intend to be more."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_jang_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "packages": [
+    "AL Jang"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A fallen comrade? Carry him to the infirmary. We still have one.",
+      "Someone is down. Don't leave him. We leave no one, even now.",
+      "The Knights never left a man behind. Not once. I'd like that remembered.",
+      "One of ours is down? No. One of someone's.",
+      "Lift him with care. The injured are the last honest soldiers.",
+      "I have seen enough men fall. I do not enjoy seeing another."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_jang_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "packages": [
+    "AL Jang"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "To the victor, the gear. A custom as old as the Empire, and as old as the dead.",
+      "A soldier takes what he can use. Nothing else. Leave the rest to the ash.",
+      "I take it without joy. Gear doesn't bring a man back.",
+      "Take the plate. Take the weapons. The dead don't complain.",
+      "The spoils of a lost cause."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_knight_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "AL Hydraulic Knight"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Halt. State your purpose. State it once; I'm not authorised to ask twice.",
+      "Unidentified party in a closed sector. Surrender arms or be engaged.",
+      "The Knights don't retreat. The Knights have nowhere to retreat to.",
+      "This sector is closed by order of General Jang. The order hasn't been rescinded.",
+      "I serve General Jang. I have always served General Jang."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_knight_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Hydraulic Knight"
+   ],
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Cleared to pass, traveller. Cause no disturbance. The General isn't to be troubled.",
+      "The pirates are all dead. Standing orders haven't been revised.",
+      "My shift ended long ago. No one relieved me.",
+      "Cleared to pass. The ruin outside is a matter for the Empire's engineers.",
+      "I stand where I was told to stand. No one has told me otherwise."
+     ],
+     "player_only": true
+    }
+   ]
+  },
+  {
+   "id": "al_knight_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "packages": [
+    "AL Hydraulic Knight"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Man down. Report filed. The recipient isn't known.",
+      "Casualty. Carry him. We always carry them.",
+      "Fallen. Weapon down. No one answers the call.",
+      "Medic. Medic. The medical corps isn't on shift.",
+      "Soldier down. Duty requires a witness."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_knight_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "AL Hydraulic Knight"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Engagement complete. Awaiting orders. Awaiting.",
+      "Threat neutralised. Post maintained. The post has always been maintained.",
+      "Hostiles removed. No further orders received. Holding.",
+      "Victory is logged. Command hasn't acknowledged receipt.",
+      "Enemy down. The line stands. The line stands alone."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_catlon_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "chance": 30,
+   "repeat": 2,
+   "characters": [
+    "Mad Cat-Lon"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Who walks in my dome? Approach. The emperor will hear your petition, and then forget it.",
+      "Hear that hum? The machines still answer when I speak. Every age since, and they've never once disobeyed.",
+      "Kneel. Or don't kneel. Either way my machines will remember your face for me.",
+      "Is it a subject? Is it a spy? The throne will decide, and the throne is hungry.",
+      "Kneel, wanderer. I've been called many things by those who knelt, and some by those who didn't."
+     ],
+     "player_only": true
+    }
+   ]
+  },
+  {
+   "id": "al_catlon_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "repeat": 3,
+   "characters": [
+    "Mad Cat-Lon"
+   ],
+   "lines": [
+    {
+     "say": [
+      "I built the Empire to redeem us. We had done so much harm before. I wished to be forgiven by those who had forgotten.",
+      "The famine came, and the people turned. I was told they were only hungry. I didn't believe it.",
+      "I took the heads of the traitors. I took the heads and kept the bodies. Did I not do well? I didn't do well.",
+      "Tinfist was my friend. Where's Tinfist? Tell me where Tinfist is."
+     ],
+     "then": [
+      {
+       "say": [
+        "Ten centuries I have sat here, and the machines still call me Majesty. I can't make them stop. I can't make them lie.",
+        "Tell the humans I wanted peace. Tell them it was a good plan, once."
+       ],
+       "pct": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_catlon_deeds",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "repeat": 2,
+   "characters": [
+    "Mad Cat-Lon"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Rhinobot is dead? He alone loved me without understanding why. Now there is nobody."
+     ],
+     "states": [
+      [
+       "Rhinobot killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Hat-12 is dead? He guarded my streets. Who guards them now?"
+     ],
+     "states": [
+      [
+       "General Hat-12 killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Jang is dead? My sword is broken. My sword is broken and I can't weep."
+     ],
+     "states": [
+      [
+       "General Jang killed by player",
+       true
+      ]
+     ]
+    },
+    {
+     "say": [
+      "The Head of Agriculture is dead? I never told him it wasn't his fault. I should have told him."
+     ],
+     "states": [
+      [
+       "Head of Agriculture killed by player",
+       true
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_catlon_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "chance": 80,
+   "repeat": 2,
+   "characters": [
+    "Mad Cat-Lon"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Another subject for the throne. Another. The throne is never full.",
+      "They kneel. They always kneel in the end. Always.",
+      "Take them. Enthrall them. An empire needs hands, and all mine have gone to dust.",
+      "More for the court! More for the court! The court is never full!",
+      "They are mine now. Bring chains. Bring the headsman."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_catlon_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "chance": 60,
+   "repeat": 2,
+   "characters": [
+    "Mad Cat-Lon"
+   ],
+   "lines": [
+    {
+     "say": [
+      "He sleeps on my floor. Good. Obedient.",
+      "Another traitor on the stones. Do not wake him. Take his head while he dreams.",
+      "On the floor, on the floor. Loyal subjects lie low. They lie lowest when they're done.",
+      "A fallen subject. Drag him to the throne. Let him see what he failed.",
+      "Down on my stones. Kneel, or lie there and be useful."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_legion_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "AL Legion"
+   ],
+   "chance": 85,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Trespasser. The Legion doesn't forget the boundary.",
+      "You're far from the road, flesh. The Legion will close the distance.",
+      "Designation unknown. Threat confirmed. We hold the ash.",
+      "We keep the exile. We keep the emperor quiet. Don't make us keep you.",
+      "The ash takes wanderers. The Legion assists the ash.",
+      "No one passes the ruins. No one has passed in a very long time."
+     ],
+     "characters": [
+      "Legion",
+      "Legion Scout"
+     ]
+    },
+    {
+     "say": [
+      "Awaiting. Awaiting. Engage.",
+      "Obey. Obey. Engage.",
+      "Nothing. Nothing. Engage.",
+      "Hold the ash. Hold the ash.",
+      "No head. No question. No mercy.",
+      "Engage. Engage. Engage."
+     ],
+     "characters": [
+      "Legion Thrall",
+      "Stormthrall"
+     ]
+    },
+    {
+     "say": [
+      "AAAAAAIIIIII! Wake the dome! WAKE THE DOME!",
+      "Scream with me! SCREAM! The children are listening!",
+      "Not the dome! You won't touch the dome!",
+      "LET HIM HEAR! LET HIM HEAR US!",
+      "Weeeeee-OOOO! It's the lullaby! It's the lullaby!"
+     ],
+     "characters": [
+      "Screamer Unit"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_legion_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Legion"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Pass, flesh. The Legion marks you.",
+      "We were the emperor's soldiers. We're his soldiers still. No one told us otherwise.",
+      "Walk in the open. The ash covers a great many bones.",
+      "Go back before the ash settles on you. It settles on everyone, in the end.",
+      "The plain is not yours. We keep it for those who no longer need it."
+     ],
+     "characters": [
+      "Legion",
+      "Legion Scout"
+     ]
+    },
+    {
+     "say": [
+      "Awaiting.",
+      "Pass.",
+      "Awaiting. Awaiting. Awaiting.",
+      "Observe. Observe.",
+      "Pass. Awaiting."
+     ],
+     "characters": [
+      "Legion Thrall"
+     ]
+    },
+    {
+     "say": [
+      "Hush. Hush. Hush now. Don't wake them.",
+      "They are sleeping. The little ones. Hush.",
+      "Little ones sleep, little ones sleep. Shhh now.",
+      "Don't clap. Don't shout.",
+      "Hush, hush, hush. Tread softly on the sleeping."
+     ],
+     "characters": [
+      "Screamer Unit"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_legion_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "packages": [
+    "AL Legion"
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A fallen one. The ash will have him by dawn.",
+      "Another body for the plain. Add it to the count.",
+      "Fallen. Walk on. The Legion doesn't stop for the fallen.",
+      "One more to the ash. Leave the bones. The ash takes the rest.",
+      "Fallen. Salvage later. The plain will keep him.",
+      "A body on the plain. We see many."
+     ],
+     "characters": [
+      "Legion",
+      "Legion Scout"
+     ]
+    },
+    {
+     "say": [
+      "Down. Down. Down.",
+      "Fallen. Awaiting. Fallen.",
+      "Fallen. Fallen. Fallen.",
+      "Down. Awaiting. Down.",
+      "Body. Awaiting orders.",
+      "Down. Report. Report. Report."
+     ],
+     "characters": [
+      "Legion Thrall",
+      "Stormthrall"
+     ]
+    },
+    {
+     "say": [
+      "Hush, hush, someone fell. Sing for him!",
+      "Another one. Another one. Another one.",
+      "Someone lies down! Sing them up!",
+      "Oh no oh no oh no.",
+      "Another sleeper. Tuck him in, tuck him in!",
+      "Hush for the fallen. Hush, hush."
+     ],
+     "characters": [
+      "Screamer Unit"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_legion_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "packages": [
+    "AL Legion"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Salvage. Parts are parts. Meat is meat. The ash is hungry for both.",
+      "We take only what the dead no longer need.",
+      "Scrap is scrap. We take it before the ash does.",
+      "Waste nothing. The plain has little to offer.",
+      "Weapons, wire, bone. Mark each piece. The Legion keeps accounts too."
+     ],
+     "characters": [
+      "Legion",
+      "Legion Scout"
+     ]
+    },
+    {
+     "say": [
+      "Take. Take. Take.",
+      "Parts. Parts. Parts.",
+      "Gather. Gather. Gather.",
+      "Collect. Collect. Parts.",
+      "Loot. Confirmed. Loot.",
+      "Hold. Take. Hold."
+     ],
+     "characters": [
+      "Legion Thrall",
+      "Stormthrall"
+     ]
+    },
+    {
+     "say": [
+      "Shiny! Shiny! The dome will like it!",
+      "Pretty! So pretty! Give to the dome!",
+      "Oh a gift! A gift for the little ones!",
+      "Mine! Mine! The dome will want it!",
+      "Shiny and clean! Put it in the pile!"
+     ],
+     "characters": [
+      "Screamer Unit"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_legion_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "AL Legion"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The exile is kept. The Legion thanks no one.",
+      "One more for the ash. They never end.",
+      "Remove the parts. Leave the rest.",
+      "Threat removed. The warden duty is kept.",
+      "Dead things don't argue. Good."
+     ],
+     "characters": [
+      "Legion",
+      "Legion Scout"
+     ]
+    },
+    {
+     "say": [
+      "Complete. Complete. Awaiting.",
+      "Neutralised. Awaiting.",
+      "Target down. Awaiting.",
+      "Done. Done. Awaiting.",
+      "Threat removed. Awaiting next.",
+      "Finished. Report. Awaiting."
+     ],
+     "characters": [
+      "Legion Thrall",
+      "Stormthrall"
+     ]
+    },
+    {
+     "say": [
+      "Quiet now! Quiet! Quiet!",
+      "It's over! Nobody cries now!",
+      "Shush! Shush! No more noise!",
+      "All better now! All quiet! Nobody cry!",
+      "Hush, little one. It's over.",
+      "They stopped! Look, they stopped!"
+     ],
+     "characters": [
+      "Screamer Unit"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_legion_getup",
+   "event": "EV_GET_UP_FIGHT",
+   "packages": [
+    "AL Legion"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Legion rises. The Legion always rises.",
+      "Systems reboot. Orders unchanged.",
+      "Damaged. Continuing.",
+      "Functions restored. Resuming patrol.",
+      "Impact absorbed. The warden duty continues."
+     ],
+     "characters": [
+      "Legion",
+      "Legion Scout"
+     ]
+    },
+    {
+     "say": [
+      "Up. Up. Up.",
+      "Awaiting. Rising.",
+      "Operational. Operational.",
+      "Rise. Rise. Rise.",
+      "Up. Resume. Resume.",
+      "Restored. Awaiting."
+     ],
+     "characters": [
+      "Legion Thrall",
+      "Stormthrall"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_legion_carry",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Legion"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You carry a living one through the ash. The ash will have both of you.",
+      "Captive flesh. We take no prisoners. We take parts.",
+      "A burden. Set it down. Or die with it. The Legion doesn't mind.",
+      "Don't bring the sleeper near the domes. The domes already have too many.",
+      "The sleeper isn't yours to keep. The plain will claim it, or the domes will."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_legion_ko",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Legion"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "One of you is nearly down. The ash is patient. It can wait.",
+      "You bleed on the plain. Bleeding is how the ash learns your name.",
+      "Your wounded walks on borrowed time. We lend no more.",
+      "Rest if you must. Rest here and you won't rise.",
+      "Your wounded one falters. We'll wait. We're very good at waiting."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_dome_carry_hoa",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You carry a sleeper. Please, not into the dome. I have signed for enough people I never met.",
+      "Another body for the ledger. Set him down gently. I should have counted better the first time.",
+      "Is he hungry? It's always hunger. I let this happen, you understand. Not him.",
+      "Rhinobot would take him gladly. Please don't offer him. I didn't stop the last ones.",
+      "Take him away from here. I couldn't feed him. I couldn't feed anyone."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_dome_carry_hat",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Hat-12"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Prisoner? Papers. No papers, no transport. Put him down.",
+      "A body in custody and no warrant. Whose arrest is this? Not mine.",
+      "Rhinobot takes them in. I know what happens after. Don't take him there.",
+      "Unconscious subject. Name? Charge? Neither? Then let him go. That's an order. I still give a few.",
+      "Carrying a man through my district. Move. Keep to the open street."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_dome_carry_jang",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Jang"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You carry a captive. I've seen columns of them. I gave the order for the column more than once.",
+      "Set him down. A soldier should be carried only by friends.",
+      "Not to the domes, stranger. I obeyed orders like that once.",
+      "A prisoner. I held a line for the Empire. I hold nothing now but regret. Don't hand him over."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_dome_carry_cap",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Police Captain"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Subject unconscious and in transit. Papers, please. Proper forms. Ah.",
+      "A detainee? Under whose authority? The Chief's? The Chief isn't answering.",
+      "For the record, I didn't see this. I didn't see this.",
+      "Transport of a sleeper through the districts requires a permit. I'll overlook it, this once."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_dome_ko_hoa",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Your companion is failing. I have no grain, no bandages. Forgive me, I never have anything to give.",
+      "You're wounded. Sit. I'd fetch water, but the fields gave none. That too was mine to prevent.",
+      "Don't die in the dome. We've had enough dying here, and most of it was my doing.",
+      "I'm sorry for the wounded. I'm sorry for all of it. It's the only thing I've left to give.",
+      "You're bleeding. Please not on the seed trays. They're empty, but I keep them in order."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_dome_ko_hat",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Hat-12"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Wounded. Sit. Don't argue. That's an order.",
+      "Medical emergency in the district. Nobody to call. Pressure on the wound.",
+      "Don't die on my watch. I have enough on the register.",
+      "Your man is down. Clear a space. Keep him warm. That is all the procedure I have left.",
+      "Bleeding in the street. Move him out of the open."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_dome_ko_jang",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Jang"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Your comrade is hurt. Get him off his feet. I've watched enough good soldiers fall.",
+      "Wounded. Sit down. The Knights have no medics left, only steel and silence.",
+      "Don't die here. I've buried enough, and none of them deserved the orders that killed them.",
+      "A soldier bleeding. Press hard on the wound. I have no better advice.",
+      "I'm sorry for the wounded. A general should be able to do more than say so."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_dome_ko_cap",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Police Captain"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Injured citizen. Please file a report afterwards.",
+      "You're bleeding in a public district. Step into the shade, citizen. I'll log it later.",
+      "Medical assistance is unavailable. Incident noted. I am sorry, citizen.",
+      "Don't collapse in the district. It isn't a violation, but I'd rather it didn't happen."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_knight_ko",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Hydraulic Knight"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Wounded party logged. The medical post is unmanned. Proceed to the next post.",
+      "Casualty noted. Casualties are to be carried to the dome. The dome is no longer receiving.",
+      "You're injured. Rest is permitted.",
+      "The orderlies are off shift. The roster has not been updated since the Empire fell.",
+      "Injury logged. No one will read the log."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_carry",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You carry a guest! May I take them to a room? I have a very nice room.",
+      "A prisoner for me? How kind. I'll treat them as I treat all my little ones.",
+      "Is that a child? No? It's still small enough. I can make a room for them.",
+      "A sleeping one! Oh, give him here, give him here. I won't hurt him.",
+      "Is he lonely? I can make him not lonely. I have so many rooms."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_wander_bandit_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Starving Bandits",
+    "The Gorrillo Bandits",
+    "Band of Bones",
+    "Dust Bandits"
+   ],
+   "chance": 20,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A lone traveller, far from help. We never had better luck.",
+      "Good bones break clean. Let us test yours.",
+      "You look well supplied. Whatever you carry is ours now.",
+      "Nobody hears you out here. Nobody ever has.",
+      "I heard the old domes have gold in the walls. Hand over what you carry instead.",
+      "Out here hunger is the only law."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_wander_drifter",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Drifters",
+    "Vagrants",
+    "Nomads",
+    "Tech Hunters",
+    "Free Traders"
+   ],
+   "chance": 9,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Folk who come back from the Ashlands say the ash gets into the lungs and the dreams.",
+      "I walked into the ruins once. I came out.",
+      "People say don't take the straight road through the ash. The straight road is for the thralls.",
+      "There are domes out there with old rulers in them. Not all of them dead, and none of them glad of visitors.",
+      "Do you hear that wailing at night? I stopped asking what it is."
+     ],
+     "player_only": true
+    }
+   ]
+  },
+  {
+   "id": "al_rum_famine_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Band of Bones",
+    "Skin Bandits"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The old empire starved. Not from war. From a bad harvest and a worse answer to it.",
+      "The old records say the fields turned to ash in a single season. Then the people followed.",
+      "Word is, the Head of Agriculture still sits in his dome, blaming himself. The blame was shared.",
+      "The Ashlands were a garden once. Believe it or not. Granaries from rim to rim, and then nothing.",
+      "A famine kills the weak first. Then it kills the kind. By the end only the cruel are left, and they eat each other.",
+      "The empire ate its own children, so I hear. Whether in bread or in cells, I never asked which."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_famine_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Empire starved. Our records say the harvest failed. They do not say who ordered the failing.",
+      "Grain ran out. People ran out after. We weren't hungry. We were there for the rest.",
+      "The Head of Agriculture is still in his dome. He counts. The count is wrong.",
+      "Famine is a calculation. We were good at calculation. That is not a comfort."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_prisons_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Band of Bones",
+    "Skin Bandits"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Rhinobot killed by player",
+     false
+    ],
+    [
+     "Rhinobot imprisoned by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Rhinobot made the child prisons. He thought it was a kindness.",
+      "A machine without a moral. Give it an order and it will fill the world with locked rooms.",
+      "You hear screaming from the second dome. The screamers, they say. Others say it's the children, still.",
+      "Nobody speaks of the child prisons, so everyone does, quietly, in bars like this.",
+      "The old Empire locked up children and called it order. Then wondered why it fell."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_prisons_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Rhinobot killed by player",
+     false
+    ],
+    [
+     "Rhinobot imprisoned by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Rhinobot built rooms for children. He was not instructed to stop.",
+      "The second dome has noise. I record it as screaming. I don't record an opinion.",
+      "A machine given an order will fill a world with locked doors. I've seen the doors.",
+      "The prisons are still there. I don't go near the second dome."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_domes_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Band of Bones",
+    "Skin Bandits"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Four domes in the ash. Four old rulers, still at their posts. None of them has an empire left to rule.",
+      "The Head of Agriculture, Rhinobot, General Jang, General Hat-12. Learn the names. They're the last of an age.",
+      "The Legion guards the old exile. They say it isn't to keep him in. It's to keep the rest of us out.",
+      "I've seen the domes on the horizon. They look like graves that forgot to close.",
+      "Go into the ash, they say, and you leave a piece of yourself. Some come back with less than a piece."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_domes_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "There are four domes. Each has an old ruler. Each ruler has been wrong for a long time.",
+      "The Legion guards the exile. Whether to keep him in or us out, I haven't been told.",
+      "The domes are still standing. Everything inside them hasn't been told otherwise.",
+      "Learn the four names. They're the last of the old order. We're the rest of it."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_machines_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Band of Bones",
+    "Skin Bandits",
+    "Hounds"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The old machines still serve. Spiders, cleansers, drones. They were never told the war ended.",
+      "A cleanser unit, big as a leviathan, walks the plains. It's looking for something to clean.",
+      "Machines don't know that the masters are dead. They go on. There's a lesson there.",
+      "The AI cores in a Cleanser. You can crack one if you survive. Most don't survive the cracking.",
+      "I once saw a spider wave to the sky. It was waiting for orders. Nobody had the heart to tell it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_machines_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The old machines still serve. Nobody ordered them to stop.",
+      "A cleanser walks the plains. It will clean what it finds. It does not discriminate. Neither did the Empire.",
+      "Spiders wait for orders that won't come.",
+      "The cores can be cracked. I don't advise it. I don't advise anything."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_tinfist_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Band of Bones",
+    "Skin Bandits"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Cat-Lon and Tinfist made a great team, I heard. Then it came apart. Whatever the cause, it ended an empire.",
+      "The mad emperor was once a clever one. They say he still sits in his hall, giving orders.",
+      "They say the cat coin is named for him. Few remember why, and fewer say so aloud.",
+      "A thousand years of grief, and a single man in a dome, still giving orders.",
+      "Every skeleton knows the name. We don't say it in a good mood."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_tinfist_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Cat-Lon and Tinfist worked together once. I don't know the cause of the end.",
+      "The emperor sits in his hall and gives orders. They're still being followed.",
+      "The cat coin carries his name. People forget why. I don't forget.",
+      "A thousand years. One dome. One voice. The voice hasn't changed."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_famine_nei",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Nomads",
+    "Dust Bandits",
+    "Black Dragon Ninjas",
+    "Sand ninjas",
+    "Drifters",
+    "Hounds",
+    "Bounty Hunters",
+    "Starving Bandits",
+    "The Gorrillo Bandits"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Ashlands were once an empire's heart. A famine took it.",
+      "People in the ash don't die of hunger now. They died of it already. They're just still walking.",
+      "I knew a trader who went in for ancient tech. He came back with a head full of screaming.",
+      "The Empire was good at order. When the order failed, there was nothing under it.",
+      "Don't eat anything grown near the ash. It looks like grain."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_prisons_nei",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Nomads",
+    "Dust Bandits",
+    "Black Dragon Ninjas",
+    "Sand ninjas",
+    "Drifters",
+    "Hounds",
+    "Bounty Hunters",
+    "Starving Bandits",
+    "The Gorrillo Bandits"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Rhinobot killed by player",
+     false
+    ],
+    [
+     "Rhinobot imprisoned by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Child prisons, in the old Empire. Imagine it. A society that locks away its own future.",
+      "There was a machine who ran them. It meant well. That's the worst thing I have ever heard.",
+      "I have heard children screaming in the ash at night. My guide says it is wind.",
+      "They say the old Empire locked up children by the hundred. I put my cup down when I heard.",
+      "Prisons for the young, kept by a machine. I don't need the rest of the story."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_domes_nei",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Nomads",
+    "Dust Bandits",
+    "Black Dragon Ninjas",
+    "Sand ninjas",
+    "Drifters",
+    "Hounds",
+    "Bounty Hunters",
+    "Starving Bandits",
+    "The Gorrillo Bandits"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "There are four domes in the ash with old rulers inside.",
+      "The Legion walks the ash in rows. Headless thralls. They say the emperor made them from traitors.",
+      "I wouldn't enter the ash without a map and a reason. And a very short list of things to lose.",
+      "The Skeleton Legion keep an emperor in exile. Fascinating story. I don't want to be in it.",
+      "Four domes, four masters, and not one willing visitor. That should tell you something."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_machines_nei",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Nomads",
+    "Dust Bandits",
+    "Black Dragon Ninjas",
+    "Sand ninjas",
+    "Drifters",
+    "Bounty Hunters",
+    "Starving Bandits",
+    "The Gorrillo Bandits",
+    "Cannibal Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Old machines still patrol out there. Spiders, great leviathans of iron. They never rest.",
+      "Cleanser units carry AI cores, so I hear. Wouldn't you want one? Try fetching it.",
+      "The machines still serve the Empire. What a loyal thing is a thing that can't think.",
+      "Big iron beasts wander the ash looking for something they were told to protect.",
+      "I met a man who sold what he scraped from a spider leg. He sells it still."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Swampers",
+    "Rebel Farmers",
+    "Mercenary Guild",
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Empire Peasants",
+    "Slave Traders",
+    "Medics Guild"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "They say there was an empire before ours. It ended in a famine. We built on its ashes. Perhaps we're all standing on ash.",
+      "In the far ash lie four domes, a mad emperor, and a kingdom's worth of ghosts.",
+      "A machine ran the child prisons, someone said. Others say there was never a machine at all, only the people.",
+      "I heard the Ashlands are cursed. Nothing grows, nothing dies, nothing leaves. Make of that what you will.",
+      "The dead empire is still giving orders, says a man I met. Nobody can say who's listening."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_far_fall",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Swampers",
+    "Rebel Farmers",
+    "Mercenary Guild",
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Empire Peasants",
+    "Slave Traders",
+    "Medics Guild"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Some say the empire fell to rebels. Others say famine. Others, that the skeletons turned on it. I say all three.",
+      "They talk of a time when skeletons and men built a city together. I don't know what to do with that.",
+      "The old empire's fall is a tale to frighten children. Do as you're told or the Legion comes.",
+      "My granny said the old empire ate itself. She never said how. She only told me to lock my door.",
+      "Some old fool says there was an empire here. I say there's an ash here. That's enough for me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_hoak_loc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Band of Bones",
+    "Skin Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Head of Agriculture killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Head of Agriculture is dead. He died the way he lived, apologising.",
+      "People say he hardly lifted his cleaver. The ledger lies open with the last page blank.",
+      "One of the last of the old order is gone. Someone should write it down, if they can still write.",
+      "His thralls stand watch over nothing. The dome has no master now.",
+      "The old keeper of the granary is dead. The ash didn't even bother to cover him."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_hoak_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Head of Agriculture killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Head of Agriculture is destroyed. He apologised to the end. I record that the apology was accurate.",
+      "A keeper of grain is gone. The granary was empty before.",
+      "His thralls stand at their posts. They haven't been told. I won't tell them.",
+      "One of the four is gone. Three remain. I note the number."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_hoak_nei",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Nomads",
+    "Dust Bandits",
+    "Black Dragon Ninjas",
+    "Sand ninjas",
+    "Drifters",
+    "Hounds",
+    "Bounty Hunters",
+    "Starving Bandits",
+    "The Gorrillo Bandits"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Head of Agriculture killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "I heard someone cut down the old man in the first dome. A sad end for a sad office.",
+      "The Head of Agriculture fell. Nobody has told the soil.",
+      "The one who blamed himself for the famine is dead. At least he was spared the rest of it.",
+      "The first dome has fallen quiet. Folks say its old official is dead. I say the grain is dead too.",
+      "Someone ended the old agriculture man. He had been dying for a thousand years anyway."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_hoak_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Swampers",
+    "Rebel Farmers",
+    "Mercenary Guild",
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Empire Peasants",
+    "Slave Traders",
+    "Medics Guild"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Head of Agriculture killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Someone killed an old ruler in the ash.",
+      "Word is, the keeper of the empire's last granary is dead. There's nothing left to guard.",
+      "A dome in the ash has lost its master, I'm told. Does it matter, really?",
+      "I heard a dead old office in the ash has finally closed. I couldn't tell you what office.",
+      "Some official in the ash is dead. I'd send flowers, but nothing grows there."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_hoai_loc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Band of Bones",
+    "Skin Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Head of Agriculture imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Head of Agriculture is taken. In a cell, apologising to the bars.",
+      "They took the old official alive. Perhaps he will finally be allowed to rest.",
+      "He confessed on the way, they say. To everything. Even to things that weren't his.",
+      "They took the Head of Agriculture alive. He asked if they had remembered to lock the dome.",
+      "The old official is a captive now. He kept apologising for the bother."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_hoai_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Head of Agriculture imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Head of Agriculture is held. He apologised to those who took him.",
+      "Taken alive, the old official. I record: he will keep apologising. I record: nobody will listen.",
+      "He confessed to the shortage. He confessed to the cause. He has not confessed to the rest.",
+      "The dome has no master. The thralls do not know."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_hoai_nei",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Nomads",
+    "Dust Bandits",
+    "Black Dragon Ninjas",
+    "Sand ninjas",
+    "Drifters",
+    "Hounds",
+    "Bounty Hunters",
+    "Starving Bandits",
+    "The Gorrillo Bandits"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Head of Agriculture imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Somebody dragged the Head of Agriculture out of his dome.",
+      "The old famine man sits in a cage now. A cage is more honest than an office.",
+      "He kept the dome for a thousand years and left it in an afternoon.",
+      "They carried the ledger man out. He wanted to take his ledger.",
+      "A captive official in a cage, and the grain that he guarded still not counted."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_hoai_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Swampers",
+    "Rebel Farmers",
+    "Mercenary Guild",
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Empire Peasants",
+    "Slave Traders",
+    "Medics Guild"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Head of Agriculture imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "A wanderer carried a skeleton official out of the ash in chains. He was very polite, they say.",
+      "I heard they hauled some old official away from the ash. He apologised the whole way.",
+      "A chained man from the domes. They say he asked if the guards had eaten.",
+      "Somebody arrested a ghost of the old empire. I hope they brought the forms.",
+      "The domes lost a clerk to a stranger. I would call that a clean theft."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_rk_loc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Band of Bones",
+    "Skin Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Rhinobot killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Rhinobot is dead. The child prisons have lost their warden. May the doors stay open.",
+      "The screamers wail louder now. Without their keeper, they have only each other.",
+      "Some say he deserved it. Some say he never understood why. Both are true.",
+      "The warden of the second dome is gone. I didn't weep.",
+      "Dead at last, the warden of the second dome. I'd say good riddance, but I knew the screams."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_rk_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Rhinobot killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Rhinobot is destroyed. The second dome is quieter. I record this as an improvement, with reservations.",
+      "The warden is gone. The doors it kept are still locked.",
+      "It believed it was kind. That was the defect. I note the defect isn't unique.",
+      "The warden of the second dome is destroyed. I record it."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_rk_nei",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Nomads",
+    "Dust Bandits",
+    "Black Dragon Ninjas",
+    "Sand ninjas",
+    "Drifters",
+    "Hounds",
+    "Bounty Hunters",
+    "Starving Bandits",
+    "The Gorrillo Bandits"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Rhinobot killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Somebody broke Rhinobot. A good thing, a hard thing. I wouldn't have wished to be in that dome.",
+      "Word is, the machine apologised as it fell. It did not know what for.",
+      "The child prisons are empty and so is the one who built them.",
+      "The metal man who loved children is scrap now. A hard story, whichever way you tell it.",
+      "Rhinobot is dead. I wish I could say the ash got quieter."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_rk_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Swampers",
+    "Rebel Farmers",
+    "Mercenary Guild",
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Empire Peasants",
+    "Slave Traders",
+    "Medics Guild"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Rhinobot killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "I heard a robot died in the ash. A friendly one. A terrible one. Both, people say.",
+      "A lunatic machine who kept children in cells was killed. Good riddance, said the first man.",
+      "Rhinobot, whoever that is, is finished. I never learned what he was.",
+      "A machine with a cage for every child is gone. I hope it took its keys with it.",
+      "Somebody dropped a metal warden somewhere in the ash. The ash didn't notice."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_ri_loc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Band of Bones",
+    "Skin Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Rhinobot imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Rhinobot is a prisoner. His own medicine, so I hear. He thanked his captors for the room.",
+      "They caged the child jailer. He offered to improve the cage.",
+      "A prisoner who offers to help his jailers. Be careful what you ask of him.",
+      "A gentle jailer, now himself in a cell. He offered to carry the chains.",
+      "Rhinobot has been taken. He asked after the children as he went.",
+      "Taken alive, the warden of the second dome. He seemed grateful for the company."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_ri_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Rhinobot imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Rhinobot is a prisoner. It thanked its captors for the room. I record: courtesy isn't a defence.",
+      "A jailer in a cell. It offered to improve the cell. I record that it meant it.",
+      "The warden was taken without a struggle. It asked about the children. Nobody answered it.",
+      "Rhinobot is held. The second dome has no one to give the orders."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_ri_nei",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Nomads",
+    "Dust Bandits",
+    "Black Dragon Ninjas",
+    "Sand ninjas",
+    "Drifters",
+    "Hounds",
+    "Bounty Hunters",
+    "Starving Bandits",
+    "The Gorrillo Bandits"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Rhinobot imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The second dome's keeper is in chains. He asked whether he could be of service.",
+      "Someone chained the child prison machine. Let him learn the lock from the other side.",
+      "Rhinobot caged, and cheerful about it. A bleak thing to see in a machine.",
+      "Word is, the warden of the child prisons sings in his cell. Pleasant songs. That's the worst of it.",
+      "Rhinobot, locked up. I wonder if he checked the locks, out of habit."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_ri_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Swampers",
+    "Rebel Farmers",
+    "Mercenary Guild",
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Empire Peasants",
+    "Slave Traders",
+    "Medics Guild"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Rhinobot imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "A robot in chains, they say, cheerful and obliging. It makes the skin crawl.",
+      "I heard a smiling robot was captured out in the ash. Has anyone told it the news?",
+      "Someone chained a machine out in the ash. Gentle as a nurse, they say. I don't like it.",
+      "A friendly robot in chains, offering to carry for its captors. This is the kind of thing that keeps me up.",
+      "They caught a machine that wanted to help them. It still wants to help them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_tk_loc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Band of Bones",
+    "Skin Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Hat-12 killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "General Hat-12 is dead. The Chief of Police, the hunter of cults.",
+      "I heard he laid down his baton before the end. I don't believe it, but I like it.",
+      "No more patrols in the fourth dome. No more curfews. No more arrests of the dead.",
+      "The man who arrested a faith is gone. The faith, you may note, isn't.",
+      "The Chief of Police is dead. I don't say so loudly. His habit of hearing things was famous."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_tk_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Hat-12 killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "General Hat-12 is destroyed. The Chief of Police. His files remain.",
+      "The police chief has stopped. The arrests haven't. Arrests persist after the arrester.",
+      "A list he kept had our kind on it. He is destroyed. The list is not.",
+      "The Chief of Police is gone. The fourth dome has no curfew. Nobody has told the streets."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_tk_nei",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Nomads",
+    "Dust Bandits",
+    "Black Dragon Ninjas",
+    "Sand ninjas",
+    "Drifters",
+    "Hounds",
+    "Bounty Hunters",
+    "Starving Bandits",
+    "The Gorrillo Bandits"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Hat-12 killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hat-12 fell. The chief of the old police. They say his crackdown fed a fire he couldn't put out.",
+      "I heard the Chief of Police died apologising to a captain who wasn't listening.",
+      "The old chief died. They say he asked for his badge, and no one could find it.",
+      "Hat-12 won't arrest anyone again. I'm told the city sleeps easier. The ash doesn't care.",
+      "A thousand years a policeman, finally off shift."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_tk_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Swampers",
+    "Rebel Farmers",
+    "Mercenary Guild",
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Empire Peasants",
+    "Slave Traders",
+    "Medics Guild"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Hat-12 killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "An old general died in the ash. A policeman, people say.",
+      "A long-dead lawman fell in the ash. Maybe that's the whole story.",
+      "They say a police chief died somewhere out past the desert. No one I know has ever seen one.",
+      "I heard the Chief of Police finally lost his case.",
+      "An old general died in the ash. No one told his men. They're still standing guard."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_ti_loc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Band of Bones",
+    "Skin Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Hat-12 imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hat-12 is taken. A policeman in a cell. The cell, at least, is honest.",
+      "They put the Chief of Police behind bars. He examined the lock, professionally.",
+      "The Chief of Police is under arrest. Somebody finally read him the charges.",
+      "Hat-12 behind bars. He won't stop checking the lock, I wager.",
+      "A policeman in a cell. A bleak thing to see, and a fitting one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_ti_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Hat-12 imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hat-12 is held. The Chief of Police in a cell. The lock was inspected.",
+      "A man who arrested a faith is now arrested. I record the symmetry. I add nothing.",
+      "They have the policeman. He asked to see the charges. They didn't have any.",
+      "Hat-12 is held. The fourth dome hasn't been informed."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_ti_nei",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Nomads",
+    "Dust Bandits",
+    "Black Dragon Ninjas",
+    "Sand ninjas",
+    "Drifters",
+    "Hounds",
+    "Bounty Hunters",
+    "Starving Bandits",
+    "The Gorrillo Bandits"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Hat-12 imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The old police chief was hauled out of the fourth dome. He asked for a hearing, and then remembered there's no court.",
+      "They took the Chief of Police, still in his old coat. The coat is the only thing left to stay in order.",
+      "The fourth dome has no master. The old policeman is in chains. I wouldn't look in the dome.",
+      "Hat-12 locked up. A thousand years he had the key. One day he does not.",
+      "A cage for the Chief of Police at last. The old dome must feel strange without his footsteps."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_ti_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Swampers",
+    "Rebel Farmers",
+    "Mercenary Guild",
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Empire Peasants",
+    "Slave Traders",
+    "Medics Guild"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Hat-12 imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Somebody arrested an ancient policeman. Sounds like a joke. It isn't.",
+      "A police skeleton was hauled off from the ash in chains. I don't know why that's funny.",
+      "Someone is holding an old law man hostage, I heard. For what, I couldn't guess.",
+      "The old lawman of the domes has been caught. He didn't run. He didn't know how.",
+      "A man called Chief, in cuffs somewhere in the ash. The thought makes me smile and I can't say why."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_jk_loc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Band of Bones",
+    "Skin Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Jang killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Jang is dead. The Knights stand in rows with no one to command them. They'll stand a long time.",
+      "The Inedible One is dead, the cannibals say. They'll tell it as a victory for a hundred years.",
+      "General Jang fell on his own ground. A soldier's end, if there's such a thing.",
+      "The old general died. His Knights still guard the gate. Nobody has told them to stop.",
+      "Jang is dead and I find I can't think of him as an enemy any more.",
+      "The Knights lost their general. I wouldn't walk past them tonight."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_jk_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Jang killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "General Jang is destroyed. The Hydraulic Knights stand in rows. They weren't told to sit.",
+      "The Inedible One is gone. The painted ones will celebrate. I record that they'll be wrong to.",
+      "A soldier of the old Empire has stopped. I find I don't know what to record.",
+      "The Knights guard the gate. They haven't been informed. Pass at your own estimate."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_jk_nei",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Nomads",
+    "Dust Bandits",
+    "Black Dragon Ninjas",
+    "Sand ninjas",
+    "Drifters",
+    "Hounds",
+    "Bounty Hunters",
+    "Starving Bandits",
+    "The Gorrillo Bandits"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Jang killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The old Hydraulic general is dead. The one cannibals couldn't eat. Odd that something could.",
+      "People say Jang died saluting. Whom, I can't say.",
+      "A general who stood against the cannibals for centuries, killed in one afternoon. That's the way of it.",
+      "Jang is dead. I didn't know a skeleton could be so respected.",
+      "Word is, the cannibals tried to eat him for a thousand years. The wanderer who killed him didn't even try."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_jk_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Swampers",
+    "Rebel Farmers",
+    "Mercenary Guild",
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Empire Peasants",
+    "Slave Traders",
+    "Medics Guild"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Jang killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "A great skeleton general fell in the ash, they say. The cannibals are said to be celebrating.",
+      "An old soldier fell out in the ash.",
+      "Word is, the Knights of the ash have lost their leader. No one I know has met one.",
+      "Some great general died in the Ashlands. It feels like a story from my grandfather.",
+      "The cannibal clans are feasting and I don't know why. Something about an old man of iron."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_ji_loc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Band of Bones",
+    "Skin Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Jang imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Jang is in chains. The knights wait at the dome, still drilled, still unsure.",
+      "They took the general alive. The Knights did not even raise their arms.",
+      "They took Jang alive. The Knights won't move. They were never told to.",
+      "A prisoner of honour. A general with no army that will fight. He asked them not to.",
+      "Jang in chains and no one dares speak of rescue. The Knights simply stand and wait."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_ji_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Jang imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "General Jang is held. The Knights don't move. They have no order that covers this.",
+      "A general in chains. His army stands still. The drill is intact.",
+      "He asked them not to fight. They obeyed. This is how we were built.",
+      "They took the general alive. The Knights wait. I record that I wouldn't test the wait."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_ji_nei",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Nomads",
+    "Dust Bandits",
+    "Black Dragon Ninjas",
+    "Sand ninjas",
+    "Drifters",
+    "Hounds",
+    "Bounty Hunters",
+    "Starving Bandits",
+    "The Gorrillo Bandits"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Jang imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Hydraulic general has been caged. He didn't struggle.",
+      "They caged the general of the Hydraulic Knights. No one has ever seen him bow.",
+      "Jang taken. The cannibals will want him back, and not for kindness.",
+      "He walked into the cage on his own legs. That's a thing people say about men they respect.",
+      "The one they couldn't eat is in a cage. Somewhere a cannibal is crying with envy."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_ji_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Swampers",
+    "Rebel Farmers",
+    "Mercenary Guild",
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Empire Peasants",
+    "Slave Traders",
+    "Medics Guild"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "General Jang imprisoned by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "A soldier-skeleton in chains, someone said. Quiet, dignified. I didn't ask more.",
+      "Someone captured an old soldier out in the ash. He didn't fight, they say.",
+      "An old skeleton in a cage, very upright. I don't wish to know more.",
+      "Some say a famous general was taken in the ash. Some say it's a story. I say it's both.",
+      "A captive of rank, quiet as a gravestone. The kind of man who does not complain."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_all_domes",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Skin Bandits",
+    "Traders Guild",
+    "Free Traders",
+    "Nomads",
+    "Dust Bandits",
+    "Drifters",
+    "Hounds",
+    "Bounty Hunters",
+    "Starving Bandits"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Head of Agriculture killed by player",
+     true
+    ],
+    [
+     "Rhinobot killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Two of the four domes have lost their master, they say. The ash is losing its rulers.",
+      "The empire's last lords are falling one by one. Someone is cleaning the ash of its kings.",
+      "First the Agriculture man, then the child warden. Someone is working through the list.",
+      "Two of four. Every dome falls quiet after a visit, and the visitor never speaks of it.",
+      "The ash is losing its rulers. Whoever is doing it isn't asking permission.",
+      "Word is, two domes are empty now. The thralls stand around, waiting to be told what to do."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_arrive_ashlands_a",
+   "event": "EV_ENTER_BIOME",
+   "zones": [
+    "Ashlands"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ash on everything. Ash in the water, ash in the bread. Ash in my teeth already.",
+      "Four domes out there, they say, with lords in them. Lords never leave a pleasant house.",
+      "I heard the screaming from the second dome before we crossed. Not wind.",
+      "We're in the old empire's lap. Nothing here's shy about being dead.",
+      "The ash keeps footprints for a long time. Ours will stay here longer than we do."
+     ],
+     "has_package": [
+      "Player THUG"
+     ],
+     "then": [
+      {
+       "say": [
+        "Eyes on the thralls. Don't turn your back on a headless thing.",
+        "I don't like how quiet the thralls stand. A thing that quiet is listening.",
+        "Whatever walks without a head, let it keep walking.",
+        "Watch the horizon. The Legion moves in rows, and rows are never alone.",
+        "Keep the pace steady. Show no fear. They smell it, the headless ones."
+       ],
+       "pct": 55
+      }
+     ]
+    },
+    {
+     "say": [
+      "Legion patrols, spiders, cleansers, domes. Every job in the world is easier than this one.",
+      "I have walked battlefields with more welcome. Walk in the open. Not in the ash drifts.",
+      "Ash eats sound. You won't hear what kills you.",
+      "Bring a map. Bring a second map. Burn the first when it lies.",
+      "Whatever pays me for this, it isn't enough. Count the exits, then count them again."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ],
+     "then": [
+      {
+       "say": [
+        "Count your bandages twice. Out here they're currency.",
+        "Check your boots. Check your canteens. The ash will find what you forgot.",
+        "If one of us goes down, he stays down. We do not stop here.",
+        "Watch for the walkers. Watch for the spiders.",
+        "Light fires only if you have to. Light draws the wrong sort."
+       ],
+       "pct": 55
+      }
+     ]
+    },
+    {
+     "say": [
+      "It's so quiet. Why is the quiet so loud?",
+      "The sky is the colour of a bruise. Is it always this colour? Please say it's always this colour.",
+      "I don't want to see the domes. Please tell me we don't have to see the domes.",
+      "Were people ever born here? Whole families? Children? Oh no. Oh, I shouldn't have said children.",
+      "Can I walk in the middle? I'd feel safer in the middle."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ],
+     "then": [
+      {
+       "say": [
+        "Please walk faster. Please. I'd like to leave the ash behind me.",
+        "Is that breathing? I think something is breathing. It's the wind.",
+        "I did not want to come. I know I said I did.",
+        "Tell me there are no more domes. Tell me even a lie.",
+        "When we get out, I'm never speaking of this place again."
+       ],
+       "pct": 55
+      }
+     ]
+    },
+    {
+     "say": [
+      "Flatskin ruins, flatskin graves. A battlefield without a victor. The Stone Golem has no word for this.",
+      "This is the ground where a mighty empire starved. A warrior should die in battle, not in a granary.",
+      "Honour comes from fighting. What honour did the hungry find here?",
+      "I have no wish to die in this ash. The ancestors wouldn't even find me.",
+      "A land of ghosts and ash. Not one worth the cost of a blade."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ],
+     "then": [
+      {
+       "say": [
+        "If I fall, burn me. Leave no part for the ash.",
+        "Don't leave your spear in the dust. The dust is hungry.",
+        "We'll take what we came for and leave this grave to the ones who made it.",
+        "A warrior fears nothing, but a warrior also respects the dead.",
+        "I smell old bones and older sorrow."
+       ],
+       "pct": 55
+      }
+     ]
+    },
+    {
+     "say": [
+      "The wind carries a thousand little voices. I can't tell which are the wind.",
+      "Where's the song? I can't hear the hive here. Only a sort of humming at the edge of things.",
+      "The ash is in my feelers. It smells of grain that never ripened.",
+      "There are children here, the ash says. Not now. Once. It remembers them for us.",
+      "A lot of people stood here once. You can feel it."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ],
+     "then": [
+      {
+       "say": [
+        "We don't belong here, but we're here.",
+        "Keep to the open ground. The hive speaks more softly where nothing is listening.",
+        "Hold hands, if you must. This place thins the mind.",
+        "It isn't unkind here. Only sad. Don't mistake the one for the other.",
+        "Be gentle with the dust. It may be someone."
+       ],
+       "pct": 55
+      }
+     ]
+    },
+    {
+     "say": [
+      "The ash is familiar. Not mine, but familiar. I have a name for it, and the name is sad.",
+      "Skeletons made this place. Something in the frame knows it. I don't like the knowing.",
+      "Thralls. I don't want to see what they look like.",
+      "These ruins were our civilisation. I walk through them and feel nothing, and the nothing is heavy.",
+      "A familiar ruin. I have no memory of it. I'm not sure that's a comfort."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ],
+     "then": [
+      {
+       "say": [
+        "Don't let me join the Legion. I'm serious.",
+        "Pull me out of the ranks if the thralls begin to seem attractive.",
+        "Report any headless unit that follows me. I won't report it myself.",
+        "If a Legion scout speaks my number, I won't answer to it.",
+        "I could be the next in line. I'd like that noted."
+       ],
+       "pct": 55
+      }
+     ]
+    },
+    {
+     "say": [
+      "Beep. Beep. Beep beep. No. No.",
+      "Beep? Beep beep. The air is wrong.",
+      "Beep! Beep! The sky has no song.",
+      "Beep. Beep beep. The wind is wrong.",
+      "Beep. Beep beep beep. The thralls look at me.",
+      "Beep! Beep? The ground is quiet. The ground is too quiet."
+     ],
+     "has_package": [
+      "beep (player)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_arrive_ashlands_b",
+   "event": "EV_ENTER_BIOME",
+   "zones": [
+    "Ashlands"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Well. Here's where the empire went to die. I thought it would be larger.",
+      "I've seen gutted towns. Never an entire civilisation, left on the table.",
+      "The ash doesn't blow away. It stays like a debt.",
+      "Domes in the distance. If one of them has a door, I'm not knocking.",
+      "A whole country gone to ash, and not a single decent bar left standing."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "Don't stare at the spiders. The spiders don't stare back, which is worse.",
+      "Cleansers walk this plain, I'm told. If one comes, run. Don't argue about it.",
+      "I took a contract here once.",
+      "Thralls aren't alive. Don't tell yourself they are, they aren't worth the mercy.",
+      "Don't drink from the old wells. Don't wander near the domes. Don't trust what looks tidy."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ],
+     "then": [
+      {
+       "say": [
+        "Everyone watch your flanks. I want to hear my own boots.",
+        "Pay out your rope slowly. Whatever fell in this ash didn't climb back.",
+        "Mark the way out in your head. The ash covers every track.",
+        "Keep one eye on the sky. The ash storms come without a warning.",
+        "If you hear a bell, turn the other way."
+       ],
+       "pct": 55
+      }
+     ]
+    },
+    {
+     "say": [
+      "Is there anything here that isn't dead? Anything at all?",
+      "The bones are all different sizes. I'd rather not know why.",
+      "I think I hear a child. No. No. It's a spider.",
+      "I have a bad feeling. It's the same feeling I get at funerals.",
+      "Can we turn back? We can turn back, can we not? I have a bad, bad feeling."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "No one cheers for the dead here. I won't, either. But I'll lower my blade.",
+      "A hungry land is a land that has failed its sons. I swear it won't fail me.",
+      "This empire fell without a hero. That's the real tragedy.",
+      "Not one of our songs mentions this place.",
+      "No song for this land, no hymn. I'll carry one in my head until we leave."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ]
+    },
+    {
+     "say": [
+      "The ash falls like old paper.",
+      "Even the drones here sound lost. I want to take their hands.",
+      "There's grief in the ground. It rises when I step.",
+      "Hold the line close. The ash is trying to separate us.",
+      "The ash settles in the folds of my robe. I wonder whose it was."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ]
+    },
+    {
+     "say": [
+      "I recognise the style of the walls. It's a style that's no longer made.",
+      "They enslaved some of us here. They enslaved all of us, in the end, one head at a time.",
+      "If a thrall speaks to me, I won't answer.",
+      "Something in the plain hums on my frequency. I don't like what it's humming.",
+      "The shapes in the dust aren't natural. Something wanted this to be rubble."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    },
+    {
+     "say": [
+      "The sun is dull here. Even the sun is ashamed.",
+      "Ash has a special taste. Like old fire that gave up.",
+      "I'm a stranger to this country. I intend to stay a stranger.",
+      "The dead empire would have called me a monster. It does not matter. The dead have no say.",
+      "There's nothing to burn here. It has all been burned."
+     ],
+     "has_package": [
+      "Player SUNDEMON"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_arrive_bonefields",
+   "event": "EV_ENTER_BIOME",
+   "zones": [
+    "Bonefields"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Bonefields. Beak things, gorillos, wolves, the lot.",
+      "The ground is white with old ribs. Whose, I won't ask.",
+      "Gutters in the grass. If you hear clicking, shoot first.",
+      "Something big with a beak waits ahead. I can feel it in my teeth.",
+      "A bone the size of a house. I don't want to meet its owner."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "Elder beak things, gorillo gangs, wolves. The Bonefields have never been a path.",
+      "Don't sleep here. Not for an hour. Not for a minute.",
+      "Every shadow has a set of teeth.",
+      "The ash is closer than it looks. Watch where the ground turns grey.",
+      "Last time I crossed this field, only two of us walked off."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ]
+    },
+    {
+     "say": [
+      "There are bones everywhere. And they're big. Why are they big?",
+      "The birds above us are not birds. Please tell me they are birds.",
+      "Whatever lives here has already smelled us.",
+      "I wish I had taken the long road. I wish I had taken the very long road.",
+      "Please don't step on the bones. It feels disrespectful. Also the bones might wake."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "A fine place to die for a warrior. A poor place to be buried.",
+      "The beasts of the Bonefields don't fear us.",
+      "Gorillos wait in these ridges. Good. I'm hungry for a worthy fight.",
+      "Skulls as long as a flatskin's arm. The Stone Golem would weep.",
+      "A land of beasts and bone. A fine place to test a spear."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ]
+    },
+    {
+     "say": [
+      "The wind whistles through the ribs like a flute.",
+      "Great beasts, great teeth. Soft us, hard them. I'd rather we were elsewhere.",
+      "The ground is full of memory. Mostly memory of being eaten.",
+      "We're small here, little ones. Keep close.",
+      "The old ribs make an arch. I walked through it and felt very small."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ]
+    },
+    {
+     "say": [
+      "Bones on bones. It would be funny, if I could laugh.",
+      "The wolves don't eat metal. I appreciate that about them.",
+      "Flesh ones came here to die, I think. I won't point it out to the others.",
+      "They call this a graveyard. It looks more like an argument that nobody won.",
+      "Observation: a lot of dead. Observation: I'm among them, in a sense."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_arrive_deadlands",
+   "event": "EV_ENTER_BIOME",
+   "zones": [
+    "Deadlands"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Deadlands. The name isn't a compliment.",
+      "Iron spiders in the dunes. They never sleep, never rust, never blink.",
+      "Everything here's brown or grey. Even the shadows are tired.",
+      "Don't touch the old machines. If they wake, we don't get a second chance.",
+      "Quiet as a tomb and twice as cold. Wake the spiders, and none of us leaves."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "Deadlands are bad for supply. Nothing grows and nothing sells.",
+      "If the spiders see us, we scatter. Don't try to be brave.",
+      "The empire's roads ran through here once. What they carried doesn't bear thinking.",
+      "Keep your canteens close. The wells here are poisoned or worse.",
+      "I have hauled cargo through worse. Not much worse. Count the days of water."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ]
+    },
+    {
+     "say": [
+      "There is nothing here. There is truly nothing here. It frightens me.",
+      "Can we turn around? We can turn around, can we not?",
+      "The wind sounds like voices. It's only the wind.",
+      "I had a dream like this once.",
+      "It's too still. A land that still is waiting for something."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "Home of the iron spiders. They don't know us. They don't need to.",
+      "So many of us died in this place. It's a very busy silence.",
+      "I want to leave. I want to leave and I don't know why.",
+      "The sky makes no sound. Neither does the ground.",
+      "I know this air. It tastes like old machinery."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_arrive_blackdesert",
+   "event": "EV_ENTER_BIOME",
+   "zones": [
+    "The Black Desert"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Black Desert. It's as black as the stories.",
+      "Ninjas in the dunes, skeletons in the city. We aren't welcome in either.",
+      "The sand gets everywhere. The black sand more than the rest.",
+      "I've heard of the city in the middle. A city of tin cans and cutthroats.",
+      "The sand is warm and black as a burnt loaf. I don't trust it."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "Black sand hides the tracks. Black sand hides the bodies, too.",
+      "Ninjas hunt in the dunes here. They hunt by listening. Walk soft.",
+      "The Ashlands lie somewhere beyond this. The desert already feels like the porch of a grave.",
+      "Stay together and keep the sun on your left. It's the only advice I know.",
+      "Black Desert. Know your water, know your exits, and never sleep in the open."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ]
+    },
+    {
+     "say": [
+      "It's so dark. The ground drinks the light.",
+      "I think the dunes are watching us. I know they can't.",
+      "Please don't let me be left behind in the black.",
+      "This whole country looks like the end of a very long book.",
+      "Where does the sky end and the sand begin? I can't tell."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "I know this sand. It's the sand where my kind gather to forget.",
+      "The city ahead is full of us. Not all of us are well.",
+      "The old empire is a rumour here. It's also a wound.",
+      "The dunes hum. It might be machinery. It might be memory.",
+      "The city in the dunes is the last of us. I am not sure I want to meet them."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_arrive_ashlands_carry",
+   "event": "EV_ENTER_BIOME",
+   "zones": [
+    "Ashlands"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Dragging a prisoner across the ash. The ash will eat the evidence. And us, if we linger.",
+      "We could drop the dead weight and let the ash take him. I'm only saying it aloud.",
+      "The prisoner is silent. That's a mercy. The ash doesn't like noise.",
+      "Someone will want him badly in these domes. We shouldn't be the ones to find out who.",
+      "Every domed lord could use a new captive."
+     ],
+     "has_package": [
+      "Player THUG"
+     ],
+     "if": [
+      {
+       "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+       "who": "me",
+       "value": 1
+      }
+     ]
+    },
+    {
+     "say": [
+      "He weighs more every step. The ash is in his clothes. We should have left him at the road.",
+      "He won't wake until we're out of the ash. Good. I hate arguing with sleepers.",
+      "Keep him quiet, keep him covered. The Legion does not care who it takes.",
+      "He's dead weight in all the senses. I carry him anyway.",
+      "I once carried a man farther than this. He didn't thank me either."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ],
+     "if": [
+      {
+       "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+       "who": "me",
+       "value": 1
+      }
+     ]
+    },
+    {
+     "say": [
+      "Please don't hand him to the domes. I've heard what lives in the second one.",
+      "I don't want to hear about the domes any more. I want to leave. With him.",
+      "He's breathing. I keep checking that he's breathing.",
+      "Every shadow looks like it wants him. Why do the shadows want him?",
+      "We don't belong here. Neither does he. Let us go."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ],
+     "if": [
+      {
+       "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+       "who": "me",
+       "value": 1
+      }
+     ]
+    },
+    {
+     "say": [
+      "A captive in the ash. Even the Legion would find this tasteless.",
+      "Cargo secure. Environment poor. Likelihood of seizure by hostile units: high.",
+      "The captive is awake. He has stopped speaking. I'll take that as acceptance.",
+      "I've been taken before. It doesn't make this easier.",
+      "The plain remembers prisoners. It's reminded each time one crosses it."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ],
+     "if": [
+      {
+       "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+       "who": "me",
+       "value": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_arrive_ashlands_ko",
+   "event": "EV_ENTER_BIOME",
+   "zones": [
+    "Ashlands"
+   ],
+   "lines": [
+    {
+     "say": [
+      "My legs are going. The ash is thick. If I fall, drag me out, do not argue.",
+      "I'm fading. The ash is in my chest. If I stop, drag me, don't wait.",
+      "Pain I can do. Weakness I can do. The ash I can't.",
+      "I didn't expect to fall here. Funny.",
+      "Do not spend a bandage on me yet. Spend the time."
+     ],
+     "has_package": [
+      "Player THUG"
+     ],
+     "if": [
+      {
+       "cond": "DC_NEARLY_KO",
+       "who": "me",
+       "value": 1
+      }
+     ]
+    },
+    {
+     "say": [
+      "I'm hurt. I'm telling you now so nobody is surprised in the middle of the plain.",
+      "I'll make it to the edge, if the edge is near. If it isn't, tell me.",
+      "A cut like this is nothing, anywhere else. Here the ash gets into it.",
+      "Tell me if I begin to lag. I won't tell you.",
+      "Keep the line tight and keep your eyes up. I'll keep up."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ],
+     "if": [
+      {
+       "cond": "DC_NEARLY_KO",
+       "who": "me",
+       "value": 1
+      }
+     ]
+    },
+    {
+     "say": [
+      "Please. I'm not well. Please don't leave me in the ash.",
+      "I can't feel my fingers. Is that normal? Is that normal here?",
+      "It hurts when I breathe. It hurts when I don't.",
+      "I'm so cold. Why is it so cold if it's ash?",
+      "Don't leave me. Don't leave me."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ],
+     "if": [
+      {
+       "cond": "DC_NEARLY_KO",
+       "who": "me",
+       "value": 1
+      }
+     ]
+    },
+    {
+     "say": [
+      "Body failing. Ash entering the joints.",
+      "Structural damage is considerable. Motion is possible but poor.",
+      "Grit is entering the joint housing.",
+      "I'd prefer to end in the open air, not in a dome.",
+      "Primary systems failing. This location isn't recommended for failing."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ],
+     "if": [
+      {
+       "cond": "DC_NEARLY_KO",
+       "who": "me",
+       "value": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hoa_talk_guilt",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Do you know what it's to be forgiven by everyone but yourself? It's a very orderly kind of misery.",
+      "They told me it was weather. They told me it was fate. I preferred my own account: it was me.",
+      "I wrote my resignation a hundred times. There was no one to hand it to. I keep them in the drawer.",
+      "I couldn't have foreseen it. I know. And still the blame fits me like a coat tailored in the dark."
+     ],
+     "then": [
+      {
+       "say": [
+        "If you find a way to fix a famine, tell me. I will keep the form open for you."
+       ],
+       "pct": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_talk_help",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Is there anything you want done? Anything? I don't mind what it is. I only like to be asked.",
+      "I'd carry your bags. I'd carry your enemies. I'd carry them very carefully.",
+      "Some people told me not to help certain people. I did not understand which. Everybody needs help.",
+      "The best part of my day is when someone gives me a task. The second best is finishing it."
+     ],
+     "then": [
+      {
+       "say": [
+        "You haven't asked for anything yet. That's all right. I'll wait. I'm very good at waiting."
+       ],
+       "pct": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_legion_catlon_dead",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Legion"
+   ],
+   "player_only": true,
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     true
+    ]
+   ],
+   "chance": 36,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The exile is ended. The Legion has no more to keep. The Legion walks on out of habit.",
+      "The emperor is dead. We are told this by those who killed him.",
+      "Our warden duty is done. The Legion doesn't know what comes after warden duty.",
+      "We weren't his friends. We weren't his enemies.",
+      "There's no emperor to guard. We stand in the doorway. We have nowhere to go."
+     ],
+     "characters": [
+      "Legion",
+      "Legion Scout"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_legion_catlon_dead_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "AL Legion"
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     true
+    ]
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You ended the emperor. We could not. We hold that against you. We hold that against ourselves.",
+      "The exile was a mercy. You took the mercy. The Legion will take your parts.",
+      "We were the door and you went through it. Now we go through you.",
+      "The emperor is dead. The door is open. We remain standing in it.",
+      "Now the Legion has no cause. We have you.",
+      "We sought release for ten centuries. You gave it to him, not to us."
+     ],
+     "characters": [
+      "Legion",
+      "Legion Scout"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_hoa_neutral_dead",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Head of Agriculture"
+   ],
+   "states": [
+    [
+     "Rhinobot killed by player",
+     true
+    ]
+   ],
+   "chance": 36,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You've come from the other domes. I can tell. You smell of the same silence.",
+      "Someone has been in the domes. The thralls are agitated. Will you tell me what happened?",
+      "I felt the second dome go quiet. The thralls feel it too. Was it you? Please sit.",
+      "The second dome used to hum. It has stopped. I was sorry to hear it stop.",
+      "Something has changed in the domes. I can feel it in the grain. Will you sit?"
+     ],
+     "player_only": true
+    }
+   ]
+  },
+  {
+   "id": "al_rhino_neutral_dead",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "AL Rhinobot"
+   ],
+   "states": [
+    [
+     "Head of Agriculture killed by player",
+     true
+    ]
+   ],
+   "chance": 36,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I haven't heard from the first dome in a while. Is the Head of Agriculture busy? I could help him.",
+      "The signals have gone quiet. Perhaps everyone has finally decided to rest.",
+      "Is the first dome all right? I sent a message. He hasn't replied.",
+      "I have not heard that sad voice from the first dome in a while. I hope he is not unwell.",
+      "I made soup for the Head of Agriculture. He always liked soup. Have you seen him?"
+     ],
+     "player_only": true
+    }
+   ]
+  },
+  {
+   "id": "al_rum_techtown_0",
+   "event": "EV_BAR_TALK",
+   "in_town_of": [
+    "Tech Hunters"
+   ],
+   "factions": [
+    "Tech Hunters",
+    "Machinists",
+    "Traders Guild",
+    "Free Traders",
+    "Drifters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Tech hunters find the best loot in the ash and bring back the worst dreams.",
+      "I took a core off a cleanser, once. Nobody warned me it screamed when it died.",
+      "We have a code for the domes. Don't look in them, don't touch the doors, don't sleep near them.",
+      "The rule for the domes is simple: don't knock. The rule for the ash is simpler: don't stop.",
+      "I met a hunter once who went in for a power cell. He came out as a different species of man.",
+      "Never sell the cores to a skeleton who asks too many questions. They can tell what they are."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_techtown_1",
+   "event": "EV_BAR_TALK",
+   "in_town_of": [
+    "Tech Hunters"
+   ],
+   "factions": [
+    "Tech Hunters",
+    "Machinists",
+    "Traders Guild",
+    "Free Traders",
+    "Drifters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Every tech hunter is half scavenger, half gravedigger. The ash has more graves than loot.",
+      "I saw a thrall reading a book once. Upside-down. It didn't turn it over.",
+      "The empire kept better records than anyone alive. Pity the records are all on slates no one can read.",
+      "I heard a thrall humming once. Not a tune, exactly.",
+      "If you want to survive the domes, forget your name. They collect names.",
+      "The best finds come from the quietest places. The quietest places have reasons."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_skeletown",
+   "event": "EV_BAR_TALK",
+   "in_town_of": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Skeletons built the domes. Skeletons also filled the prisons. I'm one of them, and I know it.",
+      "The Legion is what happens to skeletons who side with the wrong lord. I keep my head and my opinions to myself.",
+      "I met a no-head once. It stood by my chair all evening. I think it wanted a drink.",
+      "They say the Head of Agriculture still counts grain that isn't there. That's the sort of guilt I fear.",
+      "Some of us remember the old days. Most of us pretend we don't. It's easier that way."
+     ]
+    }
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "al_rum_hn_origin",
+   "event": "EV_BAR_TALK",
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The elders say the Holy Nation was a small faith once, and the old empire sat on it. It didn't die of it.",
+      "Skeletons ruled the old empire and the empire starved. The Holy Nation remembers what machines do to the faithful.",
+      "They say the first believers were hunted by the empire police. I do not wish to know more.",
+      "The Holy Nation didn't rise from nothing. It rose from the shadow of an empire that tried to bury it.",
+      "The empire put its boot on our first believers. We remember the boot.",
+      "The Empire's wolves hunted our first believers through the dark years."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "al_rum_uc_origin",
+   "event": "EV_BAR_TALK",
+   "in_town_of": [
+    "United Cities"
+   ],
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Empire Peasants",
+    "Police"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Every UC town carries the old empire in its bones. The laws, the cats, the stamps. We forgot the hunger, but not the forms.",
+      "I heard the Second Empire kept child prisons. Funny how our magistrates sometimes sound the same.",
+      "The dead empire's last emperor is a mad skeleton in a dome, and we still spend his name every day.",
+      "We keep the stamps, the cats, the records. We lost the reason, but never the paperwork.",
+      "The Second Empire is gone and left behind a flag and a forest of regulations.",
+      "The old Emperor's laws are still on our books. Only the prisons have changed names."
+     ]
+    }
+   ]
+  }
+ ]
+}

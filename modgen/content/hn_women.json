@@ -1,0 +1,1966 @@
+{
+ "pack": "hn_women",
+ "mod": "LivingWastelandOutlaws",
+ "dialogues": [
+  {
+   "id": "hw_watch_m_stepaside",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 19,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Forgive me, I am in your way. I will be out of it before you finish being gracious.",
+      "After you, sir. It is always after you. It saves a great deal of explaining.",
+      "Peace to you. I didn't see you. I have been taught not to see a great many things.",
+      "Pardon, I will step aside. The road is wide enough for a man and my good manners.",
+      "Blessings, sir. I'm only passing. I'm always only passing.",
+      "Please, go ahead. I would not want anyone thinking I blocked a man on purpose."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_m_eyesdown",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I am not looking, sir. Please do not take it that I was.",
+      "Eyes on the ground is the proper way, I'm told. The ground has never once complained of me.",
+      "Okran keep you. I'll keep my face to myself, as is right.",
+      "Don't mind me. I'm a small matter and quickly done with.",
+      "If I stared, I beg pardon. A new face is rare enough that it slips out of one.",
+      "I have nothing to say that a man would want, sir."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_m_escort",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I have errands, sir, and a reason for each. Anyone who asks may have the reasons.",
+      "My brother knows where I am. Or he will, if anyone asks him.",
+      "Alone, yes. It is not what it looks. It is never what it looks, but one says so anyway.",
+      "I am on my way back. I have been on my way back for some time.",
+      "A woman on the road gets asked many questions. I keep answers ready, like coins.",
+      "Do not trouble yourself on my account, sir. Nobody else does, which is its own comfort."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_m_scripture",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 17,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Man in the image of Okran, sir. I know my place in the verse. It's a short verse.",
+      "I pray daily to be less trouble. Okran hasn't yet answered, but He's busy.",
+      "The Flame is kind to the humble. I'm working on being humble enough to be noticed.",
+      "Narko's image, they say of us. I have looked in the water. It looks like me, mostly.",
+      "Blessed be the Holy Lord, and blessed be those who tell me what to think of it.",
+      "Pure of heart, that is the aim. Pure of opinion is the easier half."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_m_hurry",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 19,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I must go, sir. Not from you. Only from standing here, which draws a look.",
+      "Excuse me. I am wanted somewhere. Somewhere nearer to wanted than here.",
+      "I should not linger. A woman who lingers becomes a conversation.",
+      "Walking on, sir. Quickly, but modestly. There's a way to do both.",
+      "Forgive the haste. Slow walking gets remarked on, and so does fast. I try for the middle.",
+      "I shall not keep you. I have kept nobody in a long while, and prefer it so."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_m_praise",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 16,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You carry yourself well, sir. A man like that is a comfort to the faithful. I say it plainly, to be safe.",
+      "If you need anything, ask a man. They answer more quickly. I'll be useless to you.",
+      "I'm not clever, sir. Please write that down if anyone asks.",
+      "I'd be glad to be of service. Of the kind that goes unmentioned afterwards.",
+      "A good day for the faithful. I say so in a loud, clear voice. Just in case.",
+      "Do not let me hold you. Men have more to do, and I have more to pretend about."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_m_wounded",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're hurt, sir. I'd help, but the helping would be remembered against me. Okran bind it for you.",
+      "You are hurt. I saw nothing, which is not the same as not caring.",
+      "You ought to see a healer. I won't tell you where. I'll only wish you well, loudly.",
+      "Pain is a trial, I heard. I find it a rude one. Peace, sir."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_m_stranger",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A stranger. We're told to be wary of strangers, and polite to them, and I can't do both properly.",
+      "From outside the Holy Lands? I will not ask. I am not supposed to ask anything.",
+      "Welcome, outlander. I say it as a woman says it, quite low. You will not have heard.",
+      "You are far from home, sir. So am I, in a manner of speaking. Safe road.",
+      "Another traveller. Walk the middle of the path, and speak to the men.",
+      "If anyone asks, I gave you directions. I did not. But I would like it said that I did."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_f_sister",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 19,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Peace, sister. Keep your head covered and your answers short. That much I can give you.",
+      "Blessings, sister. Walk on. The less we look at each other, the more we're allowed to.",
+      "You look tired. Don't say so. I'll say it for you, to myself, quietly.",
+      "Sister. Mind the men on the road, and mind the women more. Some of us have good memories.",
+      "Okran keep you, sister. That's the line. The other line is, be careful.",
+      "I know that walk. It's the walk of someone with somewhere to be and no one to say so to."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_f_lowvoice",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Talk low. Not secretly, only low.",
+      "I will not stop, sister. But I will slow, and you may take that as you like.",
+      "If anyone is watching, we're discussing the weather. It's a fine day, sister.",
+      "You have the look of someone who has been asked too many questions. I have it too.",
+      "Pass me by as if I were nothing. It's a courtesy I'd like you to have, in return.",
+      "A word, then none. Mind yourself. That is all of it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_f_pious",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 17,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Blessed be the Flame, sister. Say it loudly and it counts. Say anything else quietly and it counts for more.",
+      "Pray for patience, sister. I pray for it too. Neither of us gets it by asking.",
+      "We are all Narko's daughters, they say. I have met worse mothers.",
+      "May Okran watch you, sister. Closely, if He must.",
+      "Humility suits you. Mine is borrowed, but it fits.",
+      "Walk with the faithful, sister. And keep a little of yourself to the side."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_f_armed",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 19,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "That blade, sister. I will pretend it is a staff, and you will pretend I am a nobody.",
+      "Careful with that. The Paladins have eyes, and an opinion about every woman holding iron.",
+      "I didn't see what you carry. I'm good at not seeing.",
+      "You hold it as if you mean it. Hold it somewhere else when you pass the next patrol."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_f_wounded",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 19,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're hurt, sister. Sit if you can, and don't explain. Nobody asked me to look away, and I do.",
+      "That limp wants a bandage. Mine is a poor one, but I would rather offer it than be a good woman.",
+      "Rest, sister. If anyone comes, we were praying. Both of us. For a long time.",
+      "Sit a moment. No, you are fine. It is only the road. We will call it the road."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_f_alone",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Alone on the road, sister? Say your brother is behind you. Say it as if he truly is.",
+      "No escort? Then say the escort is just ahead. It has worked for me twice.",
+      "You walk as if you belong to yourself. Do that out of sight, sister, or not at all.",
+      "A woman by herself is a question. Give the answer first, before they get to ask.",
+      "Safe road, sister. May you meet no one who counts the steps behind you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_f_names",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 16,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "What are you called, sister? No, do not say. I only wondered if anyone still asks.",
+      "Good day to you, whoever you are. I would like to know, but it is a thing I keep to myself.",
+      "I knew a girl once who walked like you. She married far away, they said.",
+      "There is a kind of tired only another woman can see. I see yours. Go gently."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_armed_1",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 19,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're armed, stranger. I have no quarrel with you, nor any means to have one.",
+      "A weapon, in the Flame's lands? Then you are a Paladin, or a fool. I am polite to both.",
+      "Please keep it sheathed, if you can. My hands have been shaking since morning, and I do not wish to give them a reason.",
+      "I'm nobody's trouble. If you're looking for some, it's a long road to the next woman.",
+      "Peace, traveller. I carry nothing worth the blade, and I know nothing worth the asking."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_armed_2",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Steel makes me think of the Inquisitorium, stranger. Forgive me. It does that to all of us.",
+      "I will not look at it. If you are from the Nation, bless you. If not, bless you quieter.",
+      "Do you need directions, outlander? I'd give them quickly, and then I'd have been somewhere else.",
+      "Many men walk with iron here, and most of them aren't kind. I'll assume you're the exception, to be safe.",
+      "Take what road you like. I'll take the other."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Shek"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A Shek. Okran keep us both. I mean it more than it sounds like.",
+      "Horned one, I have no quarrel with you. I have no quarrel with anyone. It's a full time occupation.",
+      "I am told to call you a beast. I will not say it. I will not say anything.",
+      "I'm not to speak with such as you. Nor you with me, I imagine. Then we agree.",
+      "Strong arm, quiet woman. We should pass without noticing each other. I will do my part."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_hive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Prince",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive",
+    "Hive Prince South Hive"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A hiver. They told me you were little more than insects. You walk like a thing that thinks.",
+      "Go on past, please. I mean no insult. I mean nothing, which is safest.",
+      "Beast of the hive, they call you. I do not call you anything. Do not take that as a kindness.",
+      "I have heard hivers don't like to be stared at. I'm an expert in not being stared at, so I don't stare."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_skeleton",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Skeleton",
+    "Skeleton P4MkII"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Dark one. I will not run. Running is noticed, and I have spent a lifetime not being noticed.",
+      "Skeleton, I know what I'm supposed to scream. Consider it screamed, and walk on.",
+      "I am a woman of no consequence. You will find me very dull to kill.",
+      "May Okran forgive me for standing here. I'll be away shortly, if you don't mind.",
+      "Walk on, thing of metal. I've been called worse by better. Mind the Paladins."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_watch_beast_any",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Shek",
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Prince",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive",
+    "Hive Prince South Hive",
+    "Skeleton",
+    "Skeleton P4MkII"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 16,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Beast or no, you aren't worse than a good number of the faithful. I say this to nobody.",
+      "Pass by, please. I am practised at pretending I did not see what the Nation says I should not.",
+      "If you're lost, the path bends left. If you aren't lost, the path bends left anyway.",
+      "Do not stare, and do not stop. Both draw a crowd here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_bar_careful_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 38,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A woman does well to know which doors are open to her. The list is short, and I keep it in my head.",
+      "I hear a man was asked why his wife went out alone. He did not answer well. I do not know what happened after.",
+      "People say Narko made us, and Okran made them. I say someone had a lot of work to do between.",
+      "Talk is cheaper than wine here. And a good deal more dangerous.",
+      "I keep my mouth shut and my ears open. It's a good trade, though the pay is poor."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_bar_careful_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 38,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Paladins patrol more near the temple lately. I didn't hear that.",
+      "My mother told me the shortest prayer, which is nothing at all. It's also the safest.",
+      "Everyone in this place knows everyone's business. It is why nobody says any.",
+      "Yes, the Flame is warm. One only wishes it were a little less interested in us.",
+      "A man at the next table says women should be silent. I nodded. It was easier than agreeing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_bar_careful_3",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 36,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I hear the outer cities are looser about it. They also say you can't trust a stranger.",
+      "There was a woman who left for Flotsam last year. We say she went on a pilgrimage.",
+      "Some people are quiet because they have nothing to say. Others, because they are counting.",
+      "Do not ask me who said it. I did not hear it.",
+      "The Inquisition has long ears. I try to make my conversation unworthy of them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_bar_careful_4",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 36,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A good woman is useful, quiet and forgettable. I'm working on all three, and have two.",
+      "The temple wants us humble. It is not hard. We have had practice.",
+      "There's an art to listening with your face still. I could teach it, if teaching were allowed.",
+      "One hears of kind men. I'm sure they exist. They're probably very busy.",
+      "I pour for the faithful and I keep my opinion in the cup. It is rarely finished."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_bar_careful_5",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 34,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "People say the Holy Lord sees all. I hope that His eyes are tired, and His attention elsewhere.",
+      "Be careful who you thank, in this town. Gratitude can be taken for something else.",
+      "I was told today that I was lucky. I smiled. It seemed to be what was wanted.",
+      "If you wish to pass the evening in peace, order something, agree with someone, and leave.",
+      "Even a quiet drink needs a reason, if you are a woman."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_bar_careful_6",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 34,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "They tell stories of women who were bold. They tell them as warnings, and I listen as if they were maps.",
+      "Mind the hour, friend. Dark falls early on a woman who's out alone.",
+      "I do not mind the rules so much as the rule-makers. But I mind neither aloud.",
+      "My cousin was thought difficult. Now she's thought of rarely.",
+      "A kind word is a risk, and so I deliver mine sparingly, and always in plain sight."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_res_m_name",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 8,
+   "repeat": 1,
+   "lines": [
+    {
+     "say": [
+      "Pardon, sir. If a man should be asking after a girl named Ardis, you didn't see me say it. I only wanted it said aloud once.",
+      "You're a stranger, so I'll give you a name to forget. Teluna. There. It's out of my mouth now and in no one's records.",
+      "Sir, you will not know it, but Kesa was a good seamstress. I tell the road because the road does not answer.",
+      "I'm not supposed to say it, but I will. Maret. She had a laugh. Carry that, or drop it, as you like."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_res_m_true",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 8,
+   "repeat": 1,
+   "lines": [
+    {
+     "say": [
+      "It is a heavy thing, being thought of as a stain. I say it quietly, to a stranger, and then I say bless you, sir.",
+      "Sometimes I think this is all a mistake. I did not say that.",
+      "None of it is true, you know. The... the verse, I mean. It is a beautiful verse. Forgive me, I am tired.",
+      "I was young when I learned to look down. I am old enough now to wonder what I was looking away from."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_res_m_kind",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 8,
+   "repeat": 1,
+   "lines": [
+    {
+     "say": [
+      "If you're ever hungry on this road, sir, a woman may have left a loaf where it will be found. I haven't mentioned it.",
+      "If you're heading on, sir, take the quieter path. Fewer eyes. I didn't tell you.",
+      "A word to the wise, outlander. The patrol turns at the next bend and doesn't look back.",
+      "I keep a light lit, some nights, for whoever is out late. Never mind."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_res_f_name",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 1,
+   "lines": [
+    {
+     "say": [
+      "Sister, take this. Not a gift, only a name: Ilena. If you hear of her, say that she's remembered. Then forget I asked.",
+      "Mine is Dessa. Not the name I answer to, the one my mother used. You're the first I've told in years.",
+      "I keep a list of us. No parchment. Just a list. Would you like me to add you? Don't answer now.",
+      "There were four of us who sat together. Now I am the only one who knows all four. Pira, Vessa, Hild, Orla. Say them once, sister."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_res_f_kind",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 1,
+   "lines": [
+    {
+     "say": [
+      "Sister, there is a loaf wrapped in cloth, left where it will be found. It is nobody's.",
+      "Take the back way, sister, not the road. A woman there won't ask. She won't even look up.",
+      "If you need a place to sit unwatched, I know where. Walk behind me and look as if you're tired of me.",
+      "I leave a door unlatched, some nights. People walk past it. I do not ask who."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_res_f_true",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 1,
+   "lines": [
+    {
+     "say": [
+      "I don't believe it, sister. There. Now you know. If it comes to a question, I'll say you misheard.",
+      "We are not tainted. We are tired. Please, do not repeat that. No, you may. No. Do not.",
+      "Sometimes I say the prayer and mean something else entirely. I mean you, a little.",
+      "I used to think I was alone in this. You have the look of someone who thought so too. Walk on."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_res_f_armed",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 8,
+   "repeat": 1,
+   "lines": [
+    {
+     "say": [
+      "That is a fine blade. I wish I had one. Not for anyone. Just to hold, once. Go on, sister.",
+      "Keep it close. The one thing a woman can own here that no one thinks to take is a quiet word.",
+      "You carry it as though it were yours. I would like to see what that is like, someday. Go with care."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_res_beast",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Shek",
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Prince",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive",
+    "Hive Prince South Hive",
+    "Skeleton",
+    "Skeleton P4MkII"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 8,
+   "repeat": 1,
+   "lines": [
+    {
+     "say": [
+      "I have been told you aren't people. I have been told I'm not quite, either. I think we might have a little in common.",
+      "If anyone asks, I never spoke to you. But I would like it known that I did not mind it.",
+      "You are the first today who has not told me where to stand. Thank you. Forget that.",
+      "Go safely, stranger. I will not say what I think of the words they use for you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_res_armed",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Civilian",
+    "Holy Nation Shopkeep",
+    "Holy farmer peasant"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 8,
+   "repeat": 1,
+   "lines": [
+    {
+     "say": [
+      "You walk like someone nobody has told what to be. I envy it.",
+      "A weapon makes people look at you. A woman makes them look away. I have been both ignored and wanted. The first is easier.",
+      "If they stop you ahead, say you are lost. It has worked before. Not for me.",
+      "I won't tell you which way the patrol went. I'll tell you which way it didn't."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_res_bar_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 3.5,
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I know some women who write their names on the inside of their sleeves. Nobody checks the inside of a sleeve.",
+      "I shall tell you one true thing and then take it back. We aren't what they say. And I didn't say that.",
+      "When one of us goes missing, we say the name once, at a table like this, and move on. It's a small way of keeping her.",
+      "Pour yourself something and look elsewhere. I was never here, and neither was this."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_res_bar_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 3.5,
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Put the coin down and I will not remember the face. Put a kind word down and I will remember it a long time.",
+      "A woman here keeps bread by the back door for anyone who needs it. I say nothing. I have not got that bread.",
+      "I heard a name today that I had not heard in years. Keta. I did not repeat it. I only held it a moment.",
+      "Some of us pray the proper way and some of us pray to be forgotten. Both are answered, in their fashion."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_res_bar_3",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 3,
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "They say there is a woman who knows a quiet road. I have never found her.",
+      "I thought, for a moment, that this was all there was. Then someone gave me a name, and I thought, no.",
+      "If you meet a woman who gives you a name and asks nothing, give her yours. Not the one on the list.",
+      "I was warned never to say it. So I say it into the cup and drink it down. The cup is mine, the name is hers."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_res_bar_4",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 3,
+   "repeat": 1,
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I was asked today whether I believed. I said yes. It was a good yes. I have practised it for years.",
+      "Heresy is only a word for listening too closely to what isn't said. I'm careful with silences.",
+      "Do not pity us, stranger. We are not weeping. We are counting. It goes quicker in the quiet.",
+      "I carry three names no one has asked me to. They're heavy, and I wouldn't give them up for the world."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_names_rum_hn_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 36,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "They say there are women in the Holy Nation who keep each other's names. Names the temple struck from the books. I did not hear it from anyone.",
+      "A girl was reported missing last month. Three women said her name at once in the market, quite casually. The Paladins did not look up.",
+      "A name will outlast a beating, I'm told. Some of us hold a few like coals.",
+      "It is not forbidden to remember. It is only unwise to say you do, and to whom."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_names_rum_hn_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 36,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I heard the women pass names the way others pass bread. A hand, a look, a word.",
+      "When a woman dies in the Nation, they strike her from the book. There are some who put her back, one mouth at a time.",
+      "I keep a name of my own. If you ever find me gone, say it once. That's all I ask.",
+      "You will not find it written anywhere. That is rather the idea."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_names_rum_near_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Flotsam Ninjas",
+    "Anti-Slavers",
+    "Drifters"
+   ],
+   "chance": 44,
+   "repeat": 3,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "Traders out of the Holy lands say the women there keep names the way merchants keep ledgers. Quietly, and against the day of reckoning.",
+      "A Holy Nation woman asked me once to remember a name for her. I did. I have no idea whose it was. It still seems important.",
+      "Some of the women who come south say it isn't the Flame they fled but the forgetting. I don't understand it, but they were certain.",
+      "There's talk of women passing names along the pilgrim road. It's no organisation. Just folk who won't be erased."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_names_rum_near_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Flotsam Ninjas",
+    "Anti-Slavers",
+    "Drifters"
+   ],
+   "chance": 44,
+   "repeat": 3,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "I had a hand in carrying a message once, for a woman who didn't look at me. All it held was a name. I'm still not sure I read it right.",
+      "Folk in Flotsam say women there ease the way for sisters who come through. Names are the only toll.",
+      "A name isn't much of a cargo. But I've seen what a woman will do to see one delivered.",
+      "Whatever the Holy Nation says of its women, they seem to be good at remembering each other."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_names_rum_far_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Mercenary Guild",
+    "Western Hive",
+    "Southern Hive",
+    "Swampers",
+    "Tech Hunters",
+    "Dust Bandits",
+    "Bounty Hunters"
+   ],
+   "chance": 38,
+   "repeat": 3,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "I heard Holy Nation women keep each other's names in secret. Odd thing to bother with. Odder to bother hiding.",
+      "Somebody said the Okranite women pass names among themselves. Can that be true? I heard it from a man who sells rope.",
+      "The Nation's women know a lot of names, I heard. Names can be useful."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hw_names_rum_far_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Mercenary Guild",
+    "Western Hive",
+    "Southern Hive",
+    "Swampers",
+    "Tech Hunters",
+    "Dust Bandits",
+    "Bounty Hunters"
+   ],
+   "chance": 38,
+   "repeat": 3,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "Some women are said to carry names for the ones who have lost theirs. A strange thing to do. I wonder who started it.",
+      "Word is, you can tell an Okranite woman who keeps names by how she looks at the dead. Not afraid. Counting.",
+      "A drifter told me of women who recite dead girls' names in a low voice, and are never caught. I don't know what to make of it."
+     ]
+    }
+   ]
+  }
+ ],
+ "quests": [
+  {
+   "id": "hw_q_name",
+   "offer": {
+    "packages": [
+     "Holy Nation Civilian"
+    ],
+    "narrow": true,
+    "if": [
+     {
+      "cond": "DC_IS_FEMALE",
+      "who": "me",
+      "value": 1
+     }
+    ],
+    "chance": 4,
+    "say": [
+     "Stranger, may I trouble you for a very small thing? A name, carried to another woman. Nothing more.",
+     "You travel. I do not. Will you take a name to someone for me? It is only a word, and it is not written.",
+     "There's a woman, somewhere beyond this street, who ought to hear a name. I'd be grateful if you said it to her.",
+     "Forgive me. I have a name that wants carrying, and no feet of my own that are free."
+    ],
+    "accept": [
+     "Tell me the name.",
+     "I will carry it.",
+     "Whose name?",
+     "Say it, and I will take it."
+    ],
+    "decline": [
+     "Not now.",
+     "I have my own road.",
+     "Ask someone else.",
+     "I cannot."
+    ],
+    "accepted": [
+     "Thank you. Ardis. Say it to a woman, quietly, and tell her it was given in good faith. Then come back. Please.",
+     "Ardis. She will know. Find a woman who keeps shop or tends the fields, and say it low. Then return.",
+     "The name is Ardis. Not a word more. A woman will understand. Return if you can, and I will owe you.",
+     "Ardis. Keep it behind your teeth until you find a woman who can hear it. I will wait."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Holy Nation Shopkeep",
+      "Holy farmer peasant"
+     ],
+     "narrow": true,
+     "if": [
+      {
+       "cond": "DC_IS_FEMALE",
+       "who": "me",
+       "value": 1
+      }
+     ],
+     "say": [
+      "I don't know you, stranger. But there's something in how you stand. Have you something to tell me?",
+      "Peace to you. Did someone send you? Please say it softly, if so.",
+      "You have a message for me, I think. I can tell by how you are not looking at me.",
+      "Forgive me. There is a word on your tongue and you do not know where to put it."
+     ],
+     "reply": [
+      "Ardis. A woman asked me to say it to you.",
+      "The name is Ardis. It was given in good faith.",
+      "Ardis. She wanted it said aloud.",
+      "Ardis. That is all of it."
+     ],
+     "after": [
+      "Ardis. Yes. I thought I might never hear it again. Thank you. Go well, and forget my face.",
+      "There. Said, and heard. You were never here, and neither was I. Peace to you.",
+      "She remembered. Good. Tell her it arrived. Say nothing else.",
+      "Ardis. A small word to carry so far. Go in peace, outlander."
+     ]
+    }
+   ],
+   "report": {
+    "if": [
+     {
+      "cond": "DC_IS_FEMALE",
+      "who": "me",
+      "value": 1
+     }
+    ],
+    "reward": 400,
+    "say": [
+     "It arrived? Good. I felt I could breathe a little easier. Here's something for your trouble, and a favour owed, should you need one.",
+     "She heard it. Thank you. Take this. It isn't payment. It's only what a small gratitude looks like. Consider a favour owed.",
+     "Then it's said. I'm in your debt, stranger. A favour owed, whatever a woman can give. Take these.",
+     "You didn't ask what it meant. That's a courtesy. Here's a little, and a favour owed, if it ever matters."
+    ]
+   }
+  },
+  {
+   "id": "hw_q_bread",
+   "offer": {
+    "packages": [
+     "Holy Nation Civilian"
+    ],
+    "narrow": true,
+    "if": [
+     {
+      "cond": "DC_IS_FEMALE",
+      "who": "me",
+      "value": 1
+     }
+    ],
+    "chance": 4,
+    "say": [
+     "Stranger. I have a bowl of bread that someone will not be thanking me for. Will you carry it, and say nothing of where it came from?",
+     "There is someone who cannot be seen taking help. I cannot be seen giving it. A third pair of hands is needed, and yours are free.",
+     "I made too much bread. I always make too much, for reasons I do not discuss. Would you carry it to a woman who needs it?",
+     "A small errand. Bread, to a woman who does not go out. You need only say you found it, and walk on."
+    ],
+    "accept": [
+     "I will take it.",
+     "Where does she live?",
+     "Bread. Simple enough.",
+     "Give it to me."
+    ],
+    "decline": [
+     "Not today.",
+     "I cannot spare the time.",
+     "Find someone else.",
+     "No."
+    ],
+    "accepted": [
+     "Thank you. Find a woman who keeps a shop or works the land, and put it into her hands. She will know what it is. Come back after.",
+     "Walk it to a woman who keeps a shop, or tends the crops. Say you found it. She will take it, and say nothing.",
+     "Do not stop to talk. Hand it over and go. It is a bowl of bread, no more. Return and I will see you right.",
+     "Any woman who tends a stall or a field will do. Say a stranger left it. That is all you know."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Holy Nation Shopkeep",
+      "Holy farmer peasant"
+     ],
+     "narrow": true,
+     "if": [
+      {
+       "cond": "DC_IS_FEMALE",
+       "who": "me",
+       "value": 1
+      }
+     ],
+     "say": [
+      "What's that you carry? Bread? For me? Who sent it?",
+      "I didn't ask for anything. But I won't say I don't need it. Put it down there, please.",
+      "A stranger leaves bread, and I am not to ask who. Very well.",
+      "You must be mistaken. Unless you are not. Is it for the woman who cannot be seen taking it?"
+     ],
+     "reply": [
+      "A woman asked me to bring it. She asked that you say nothing.",
+      "Nobody sent it. I found it on the road.",
+      "It is bread. Take it and eat.",
+      "A friend of a friend. Eat while it is warm."
+     ],
+     "after": [
+      "Then I did not see you, and you did not bring it. Thank you. Tell her it was good bread.",
+      "It smells like my mother's. How could she know? Never mind. Go with Okran's blessing, and tell no one.",
+      "I will eat in the dark, as is proper. Thank you, outlander. Go.",
+      "She remembered me. Tell her I remembered her. Then forget it, both of you."
+     ]
+    }
+   ],
+   "report": {
+    "if": [
+     {
+      "cond": "DC_IS_FEMALE",
+      "who": "me",
+      "value": 1
+     }
+    ],
+    "reward": 300,
+    "say": [
+     "You gave it to her? And she took it? Good. Here, for the bother, and a favour owed. I don't forget those.",
+     "Then she's fed, and no one knows who fed her. That's how it should be. Take these cats. A favour owed besides.",
+     "Thank you. You won't be paid properly, but you have a favour owed. It's the best I can do.",
+     "Bread has gone where it was needed. I think that's the only miracle I'll see."
+    ]
+   }
+  },
+  {
+   "id": "hw_q_phrase",
+   "offer": {
+    "packages": [
+     "Holy Nation Civilian"
+    ],
+    "narrow": true,
+    "if": [
+     {
+      "cond": "DC_IS_FEMALE",
+      "who": "me",
+      "value": 1
+     }
+    ],
+    "chance": 4,
+    "say": [
+     "Stranger, will you say something to a woman for me? Only six words. Some things keep. She will understand, and nobody else will.",
+     "I have a sentence I cannot speak to the right ears. Would you? It is neutral. Nothing a Paladin could object to.",
+     "There is a thing to be said to another woman, quietly. It is a phrase, no more. I cannot say it myself, not safely.",
+     "A message, harmless in itself. Some things keep. Say it to a woman and watch her face. That is all."
+    ],
+    "accept": [
+     "Some things keep. I will say it.",
+     "I will tell her.",
+     "Who should hear it?",
+     "A simple message. Go on."
+    ],
+    "decline": [
+     "I would rather not.",
+     "Not today.",
+     "Find another.",
+     "I have no time."
+    ],
+    "accepted": [
+     "Some things keep. Say it low, to a woman who minds a shop or works the land. She will answer, or she will not. Come back and tell me which.",
+     "Some things keep. That is all. If she looks at you strangely, you have the right woman. Return to me after.",
+     "Some things keep. Just those words. A woman at a stall or in the fields. Then back to me, and I will see you thanked.",
+     "Say it as a remark about the weather. Some things keep. She will hear what she needs to."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Holy Nation Shopkeep",
+      "Holy farmer peasant"
+     ],
+     "narrow": true,
+     "if": [
+      {
+       "cond": "DC_IS_FEMALE",
+       "who": "me",
+       "value": 1
+      }
+     ],
+     "say": [
+      "Do not stand so near. Someone might think we are speaking. Are we speaking?",
+      "You have the look of someone with a message. They are rare, here, and worth listening to.",
+      "If you are going to say something, say it quickly, and look as if it were about the goods.",
+      "You are staring at the ground, as if you rehearsed."
+     ],
+     "reply": [
+      "Some things keep.",
+      "Some things keep, she said.",
+      "I was asked to tell you: some things keep.",
+      "A friend sends word. Some things keep."
+     ],
+     "after": [
+      "Yes. They do. Tell her I said so, if you pass that way. Then forget this, outlander.",
+      "I know who sent you. Say nothing, and walk on. It was a good message.",
+      "Some things do. Pray they keep a while longer. Thank you, stranger.",
+      "She remembered. I am glad. Go on. Look at the goods."
+     ]
+    }
+   ],
+   "report": {
+    "if": [
+     {
+      "cond": "DC_IS_FEMALE",
+      "who": "me",
+      "value": 1
+     }
+    ],
+    "reward": 600,
+    "say": [
+     "She answered? Then it's working, whatever it is. A little coin for you, and a favour owed.",
+     "Good. I was afraid it would go astray. Take this. A favour owed, besides, whenever it is wanted.",
+     "Then it's done. You carried it well. A favour owed, from me, and some cats for the road.",
+     "You're quicker than the Paladins, and kinder. A favour owed to you."
+    ]
+   }
+  },
+  {
+   "id": "hw_q_pilgrim",
+   "offer": {
+    "packages": [
+     "Holy Nation Civilian"
+    ],
+    "narrow": true,
+    "if": [
+     {
+      "cond": "DC_IS_FEMALE",
+      "who": "me",
+      "value": 1
+     }
+    ],
+    "chance": 4,
+    "say": [
+     "Stranger. There's a woman on a pilgrimage who has to pass through before the inspection. Will you tell another woman that the road is quiet?",
+     "I've heard there will be an inspection this evening. A pilgrim must go through before. Will you pass the word, and say nothing else?",
+     "There's a quiet pilgrim who needs a quiet road. All I ask is that you tell a woman the hour is right.",
+     "An inspection is coming. A woman on the road should not be caught in it. Would you carry the word to another woman, softly?"
+    ],
+    "accept": [
+     "I will tell her.",
+     "Who should I tell?",
+     "Only talk? I can do that.",
+     "Quietly, then."
+    ],
+    "decline": [
+     "Not my business.",
+     "I cannot.",
+     "Ask someone else.",
+     "No."
+    ],
+    "accepted": [
+     "Thank you. Find a woman who works the shops or the fields and tell her the road is quiet until dusk. She will do the rest. Come back to me after.",
+     "Say only that the inspection starts late. A woman will take it from there. Return, and I will thank you properly.",
+     "Walk. Do not run. Tell a woman at a stall or in the crops that the road is clear for a pilgrim. Then come back.",
+     "Just a few words. The road is clear until the inspection. She will know what to do with it."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Holy Nation Shopkeep",
+      "Holy farmer peasant"
+     ],
+     "narrow": true,
+     "if": [
+      {
+       "cond": "DC_IS_FEMALE",
+       "who": "me",
+       "value": 1
+      }
+     ],
+     "say": [
+      "Is there news? I have been listening all day for some, but no one tells me anything.",
+      "You have the look of someone with a word. If you do, let it be a short one.",
+      "I won't ask who sent you. Only what you have been sent with.",
+      "You've been sent by someone with a gentle voice."
+     ],
+     "reply": [
+      "The road is clear until dusk.",
+      "The inspection starts late. The pilgrim may go through.",
+      "A friend says the way is quiet. She said you would know.",
+      "The road is clear for a pilgrim. That is all."
+     ],
+     "after": [
+      "Then there is time. Thank you. She will go through on the quiet side, and no one will have seen her.",
+      "Good. Go on, stranger. If a Paladin asks, we spoke of bread.",
+      "I will tell her. Say nothing more, and leave the way you came.",
+      "Okran keep you for this. It is not wrong to help a pilgrim, and not wise to be seen doing it."
+     ]
+    }
+   ],
+   "report": {
+    "if": [
+     {
+      "cond": "DC_IS_FEMALE",
+      "who": "me",
+      "value": 1
+     }
+    ],
+    "reward": 1000,
+    "say": [
+     "She's through? Thank you. No one knew, and no one will. A little coin for you, and a favour owed, whenever you want it.",
+     "Then it's done, and no Paladin the wiser. Take this, and a favour owed. I'm not good with gratitude, so I'll leave it at that.",
+     "She passed. Blessed be the quiet, then. You have a favour owed, from me, and some cats besides.",
+     "You asked nothing. You were not seen. That is the best a woman can hope for. A favour owed. Take these."
+    ]
+   }
+  }
+ ]
+}

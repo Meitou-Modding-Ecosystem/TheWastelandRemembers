@@ -1,0 +1,95 @@
+{
+ "pack": "bounty_hunters",
+ "mod": "LivingWasteland",
+ "meitou_only": true,
+ "note": "Meitou only: when a town marks the squad as hunted (town heat 24+), the helper (Hunters.cs) has that town hire a bounty crew that travels to the squad and fights it. The crew is its own faction, hostile to the player only, so it attacks on sight; everyone else treats it like the Mercenary Guild it was hired from. Setting 'Bounty hunters (test)', off by default.",
+ "clones": [
+  {
+   "kind": "faction",
+   "from": "Mercenary Guild",
+   "name": "Bounty Crews",
+   "int": {
+    "default relation": 0
+   },
+   "drop": [
+    "campaigns",
+    "no-go zones",
+    "bar squads",
+    "buildings replacements",
+    "squad default",
+    "roaming squads",
+    "biomes"
+   ],
+   "ref": {
+    "relations": [
+     [
+      "Nameless",
+      -100,
+      100,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "squad",
+   "from": "Mercenary patrol",
+   "name": "Bounty crew",
+   "ref": {
+    "leader": [
+     [
+      "Mercenary Captain",
+      1,
+      0,
+      0
+     ]
+    ],
+    "squad": [
+     [
+      "Mercenary",
+      3,
+      100,
+      0
+     ]
+    ],
+    "faction": [
+     [
+      "Bounty Crews",
+      0,
+      100,
+      0
+     ]
+    ]
+   }
+  }
+ ],
+ "hunters": {
+  "squad": "Bounty crew"
+ },
+ "dialogues": [
+  {
+   "id": "bh_crew_sight",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Bounty Crews"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Aggro 2"
+   ],
+   "meitou_only": true,
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Your name's on a board back in town.",
+      "Somebody paid good money for you. Come quietly or come in pieces.",
+      "There they are. Remember: alive pays better.",
+      "You made a town angry enough to hire us."
+     ]
+    }
+   ]
+  }
+ ]
+}

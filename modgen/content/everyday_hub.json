@@ -1,0 +1,7072 @@
+{
+ "pack": "everyday",
+ "dialogues": [
+  {
+   "id": "ev_hub_bar_house_rules",
+   "event": "EV_BAR_TALK",
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Blades stay sheathed, tabs get paid, and I didn't see who left by the back door.",
+      "Sit anywhere that isn't behind the counter. Behind the counter is where mistakes get buried.",
+      "Rum is rum. If it tastes of something else, that's the cup's fault and the cup's business.",
+      "Quiet night. I like quiet. Quiet means nobody is bleeding on the floorboards.",
+      "The ruins are a fine landlord. No rent, no questions, and the roof never gets fixed.",
+      "Ask me who drinks here and I say everyone. Ask me who pays and I say most."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Trade Ninjas"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_house_gossip",
+   "event": "EV_BAR_TALK",
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A drunk will tell you anything. A sober man will tell you the same thing for a price. I just pour.",
+      "Everybody passes through the Hub eventually. That's why nobody wanted to keep it.",
+      "I hear the Holy Nation wants the walls back. Funny. They aren't the ones sweeping them.",
+      "Three coats on the peg and one of them is not coming back. I will sell it by morning.",
+      "There are shadows in this town that were here before the bar. They tip well, so I don't ask.",
+      "Lately the road brings more outlanders than customers. Outlanders look at the menu and leave."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Trade Ninjas"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_merc_rates",
+   "event": "EV_BAR_TALK",
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Two thousand a day to guard your skin. Not a cat less, and I won't smile for it either.",
+      "Hired a squad to walk me to Stack once. They walked me. That's all the contract said.",
+      "Guild rules: you pay, we fight, we don't ask what was in the crate. Mostly we don't ask.",
+      "The work dries up when the war goes quiet. Then I miss the war. Strange thing to say.",
+      "Every employer says it will be an easy job. I have a scar for each time that was true.",
+      "Contracts are simple. Dying is simpler. I keep my contracts short."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_merc_road",
+   "event": "EV_BAR_TALK",
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Dust Bandits on the north road, starvers on the east. Pick which one you would rather lose to.",
+      "I counted four caravans this month. Three arrived. Ask the fourth how the guards were.",
+      "The Border Zone eats more boots than blades. Walk it in good boots or don't walk it.",
+      "Squad of Shek crossed the plain last week. Left the traders alone. I don't trust a quiet Shek.",
+      "That tower at the edge of the Hub takes a cut from anything that passes. Pay it or go around.",
+      "We turned down a job to escort a cart to Squin. The man would not say what was under the tarp."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_hounds_talk",
+   "event": "EV_BAR_TALK",
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I keep the peace for a fee. The peace is cheap. It's the people who cost.",
+      "Everybody comes to the Hounds when they have burned something. Few come back to say thanks.",
+      "Hash goes north, cats come south. I like how that sounds. It isn't always how it goes.",
+      "People think I'm soft because I make deals. A deal is just a fight you win with your mouth.",
+      "Sit down, have a cup. If you're here to be forgiven, you can start with the tab.",
+      "Big Grim built the Hounds out of swamp mud. The rest of us just carry the goods. Don't tell the Ninjas."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Hounds"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_drifter_feet",
+   "event": "EV_BAR_TALK",
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Walked from the Skinner's Roam on these. Feel them. No, don't feel them.",
+      "I've been looking for work since the last war. Wars end.",
+      "Left one pair of boots in a bandit's stomach.",
+      "I can fix a roof, shoe a bull, and count to a thousand. Nobody here needs any of it.",
+      "My feet hurt in places feet shouldn't have. Anyone know a surgeon who works for stew?",
+      "Slept in a ditch with a goat last night. The goat complained about me, not the other way."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Drifters"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_drifter_rumours",
+   "event": "EV_BAR_TALK",
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A man told me the Holy Nation has fallen. Another told me it's bigger than ever.",
+      "People say the cannibals have a capital now. A real one, with a throne. I laughed.",
+      "I heard the Empire is run by one man who never leaves a tower. Sounds dull.",
+      "The Shek sacked this place once. You can still tell. The ruins have a certain look of being sorry.",
+      "Somebody swears there's a town of nothing but skeletons in the black sands. Somebody drinks a lot.",
+      "I walked past a hive village once. They didn't hurt me. They didn't look at me either."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Drifters"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_thug_drunk",
+   "event": "EV_BAR_TALK",
+   "chance": 65,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Ah, the cannibals, you know, they don't even chew. They swallow! I saw it! Well. Heard it.",
+      "I had fifty cats on me when I came in. Now I have a very good feeling about everything.",
+      "Bugmaster, right? Big one. Bigger than this bar. Probably. I was drunk, so no, not drunk then.",
+      "Blood Bandits ate my brother. Or married him. One of those. They had the same teeth, anyway.",
+      "Another round for the man who's going to stop talking right after this sentence.",
+      "I could take any one of you. Not today, I have a knee."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Bar Thugs",
+    "Vagrants"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_thug_brawl",
+   "event": "EV_BAR_TALK",
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Last week a man asked me to step outside. I did. He didn't. We're both still here.",
+      "Break a table in this place and the Ninjas break your arm. I've seen the arm.",
+      "Nobody starts fights in here. They just wait for someone to finish theirs.",
+      "I once lost a fight to a stool. In my defence, the stool had help.",
+      "Whoever took my cup, I forgive you. Return it by noon and I forgive you more.",
+      "I don't hate anyone here. That's the secret. I'm too tired to hate anyone here."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Bar Thugs",
+    "Vagrants"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_trader_prices",
+   "event": "EV_BAR_TALK",
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Cactus rum is up again. Every time somebody shoots at a caravan it goes up a few cats.",
+      "Fuel is cheap in Stack and dear here. Guess who carries the difference.",
+      "A foodcube sells for less than the water you drink with it.",
+      "Iron plates go for three times what they cost where they're made. Nothing grows in the Zone but prices.",
+      "Never trust a stall that has no prices on it. That's where they decide what you're worth.",
+      "My margin is thin enough to cut yourself on. I have the scars to prove it."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_trader_road",
+   "event": "EV_BAR_TALK",
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I take the long way round every time now. Short roads have too many people waiting on them.",
+      "Lost a pack animal to a river raptor and a good mood to its owner. Both were the same afternoon.",
+      "Three weeks from Heng with a cart of spices and a head of lice. I'm a rich man in one of those.",
+      "The Shek will trade now, did you hear? They still don't smile when they count.",
+      "A guard asked to inspect my cart. I told him what was in it. He let me through.",
+      "Don't buy bread from a man who says it's fresh. Buy it from a man who's hungry."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_tech_hunters",
+   "event": "EV_BAR_TALK",
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Spent a month digging a ruin. It had one working lamp and a very rude spider.",
+      "The old machines aren't dead. They're sulking. There's a difference, and it's expensive.",
+      "Hand me any wire, any plate, any scrap with a number on it. I'll tell you what it used to be.",
+      "I dream of sealed doors. Always a sealed door and a tool I forgot to pack.",
+      "A Holy Nation man tried to buy my notes. For burning. I said the price was a lot of cats.",
+      "Everyone treats us like grave robbers. We're archivists with bad habits and worse luck."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Tech Hunters",
+    "Machinists"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_skeleton_visitor",
+   "event": "EV_BAR_TALK",
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I don't drink. I sit near those who do. It's the closest I come to a hobby.",
+      "The stool is the wrong shape for me. The stool and I have an understanding.",
+      "Somebody told me this place was once a fort. Somebody was wrong, or I forgot the wall.",
+      "I count the rivets in the ceiling. Three hundred and eleven. Yesterday it was three hundred and ten.",
+      "They stare. I let them. It's an old habit of mine, being stared at.",
+      "Humans say they're tired. I wonder what it's like to run down slowly."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "races": [
+    "Skeleton"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_skeleton_notes",
+   "event": "EV_BAR_TALK",
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A pile of scrap in the corner was once a man. Not much difference from the pile I keep in my bag.",
+      "I was told to find a repair table. I found a stool and some very polite thieves.",
+      "The Holy Nation burns what it doesn't understand. I'm what it doesn't understand.",
+      "Fresh grease would be welcome. A rumour would be welcome too.",
+      "I remember a hallway. I don't remember where it went. This bar isn't the hallway.",
+      "My joints sing in the rain. I thought for years it was the wind."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "races": [
+    "Skeleton"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_hive_visitor",
+   "event": "EV_BAR_TALK",
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The warm things talk very fast here. The hive listens. It doesn't always understand.",
+      "Food is in the cup. Food is also in the cup next to it. The cups are the same.",
+      "This one is far from the hum. The hum is a good sound. The hum has no prices.",
+      "No-hives drink to forget a thing. The hive forgets without cups.",
+      "A man tried to touch this one's shell. The hive remembers hands.",
+      "Many chairs. Few of them fit. The hive stands. The hive is polite about it."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Prince",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive",
+    "Hive Prince South Hive"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_shek_visitor",
+   "event": "EV_BAR_TALK",
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Flatskins serve rum in tin cups. A Shek would be insulted, if a Shek drank here.",
+      "I came for the trade. I stay for the quiet. Don't make the quiet shorter.",
+      "My father burned this town. I wonder if he sat in this chair first.",
+      "The old truces are thin, and my patience is thinner. Count that before you stare at my horns.",
+      "Stack sells me blades, and the Border Zone sells me poor excuses.",
+      "A Shek can sit among flatskins for one cup. A second is a challenge to the first."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_hn_spy_slips",
+   "event": "EV_BAR_TALK",
+   "chance": 70,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Blessed... evening. Sorry. Good evening. I mean, evening. It's a very normal evening.",
+      "I'm just a farmer. Of stones. From, ah, a village. Near. Please don't ask which.",
+      "No, I have never held a Flame. Why would I ask what it weighs? Don't write that down.",
+      "A fine place. A sinner's place. Not that I think so. I think it's wonderful.",
+      "I came for the water. The water isn't holy. I checked.",
+      "Don't look at my hands. They aren't praying. They're just resting in a prayerful position."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_hn_spy_ears",
+   "event": "EV_BAR_TALK",
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "If you lean a little to the left, you hear the Shek at the far table. I don't lean. I merely tilt.",
+      "Somebody said Phoenix, and half the room went quiet. That is the sort of thing one remembers.",
+      "I count the swords at each table. It's a harmless hobby. Don't tell anyone I counted.",
+      "A cup of anything, please. Nothing that makes me say what I think.",
+      "The bartender is a Ninja, a thief, or both. I'm only saying what everyone else is thinking.",
+      "I am here for the Flame and the cheap rum. One of those is a lie."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "The Holy Nation"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_starver_begging",
+   "event": "EV_BAR_TALK",
+   "chance": 65,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Spare a bite. One bite. I won't even chew loud.",
+      "I haven't eaten since the dust storm. The dust storm was last week.",
+      "Anyone leaving crumbs? I am a very patient floor.",
+      "I used to rob caravans. Now I rob my own pockets. They are empty. It stings.",
+      "Foodcube, fish bone, anything. I'm not proud.",
+      "My friend isn't asleep. He's just very hungry. Try him in the morning."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Dust Bandits"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_slaver_nerves",
+   "event": "EV_BAR_TALK",
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Anti-Slavers would string us up if they caught us. Not that I sell anyone. I sell...",
+      "Don't look at the door. Everyone who looks at the door gets looked at.",
+      "I used to love this work. Now I check my shadow twice before I sit.",
+      "Anti-Slavers burned a camp last month. The papers are still blowing around in the sand.",
+      "I sleep in my armour. Cold, uncomfortable, but nobody has ever stabbed armour in its sleep.",
+      "Everybody loves freedom, right up until the food runs out."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_anti_slaver",
+   "event": "EV_BAR_TALK",
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Three hundred cats for a man's whole life. That's the price. Think on it over your cup.",
+      "I notice who pays for what. I notice who doesn't look away. The second list is shorter.",
+      "A collar leaves a pale ring for a year.",
+      "Not every chain is iron. Some are debts. Those are harder to cut.",
+      "Don't tell me your business. I'm just here for the rum and the exits.",
+      "I eat slowly, I sit near the wall, and I tip well. That's my entire plan."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_shinobi_fence",
+   "event": "EV_BAR_TALK",
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Everything has a second owner. I just meet the third one. Cheaper that way, for them.",
+      "The tower has a good view of the road. The road has a good view of nothing.",
+      "People ask me for a discount. I give them a lesson in what that word costs.",
+      "Guards pretend to crack down. A few cats keep the pretence honest.",
+      "Don't carry anything shiny through a thief's town. It's rude to the locals.",
+      "I do not steal. I redistribute attention. The goods follow."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Shinobi Thieves"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_nomad_camp",
+   "event": "EV_BAR_TALK",
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A bull outlives a bad road. The bull has told me this. Slowly.",
+      "Town folk sleep with walls and still lock the door. Walls are for those who forgot the sky.",
+      "Camp is a fire, a pot, and a rule: nobody steals the pot.",
+      "The wind changes at the old fort. I always say hello to it.",
+      "I trade goat milk for tools, tools for stories, stories for goat milk. A good circle.",
+      "Do not call me a beggar. I carry more than you do, I just carry it in my head."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Nomads"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_farmer_talk",
+   "event": "EV_BAR_TALK",
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "They took my plot and my plough and left me the ground. The ground isn't worth much without them.",
+      "Bread is two days old. I'm three. The difference is clear to everyone but the baker.",
+      "The Empire taxes the harvest and the hunger both. Somehow the hunger pays better.",
+      "I'd plant here, if the ruins didn't keep falling on the rows.",
+      "A man with a hoe is a threat if he's angry enough. That's what the tax collector learned.",
+      "Plant when the rain allows, bury when the raiders do. A good cycle, if you don't mix them up."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Rebel Farmers",
+    "Empire Peasants"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_medic_talk",
+   "event": "EV_BAR_TALK",
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Every wound is a story, and most of them end the same.",
+      "A splint and a stern word fix most things. The rest, I charge extra.",
+      "A man came in with a bolt in his thigh and asked if it would scar. It did. He lived.",
+      "People think I'm kind. I'm thrifty. A man who lives pays twice.",
+      "I stitched three Shek last week. They didn't wince.",
+      "Wash your hands. Nobody ever does. That's how I make my living."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Medics Guild"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_cops_off_duty",
+   "event": "EV_BAR_TALK",
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Nobody in the Hub calls for the law.",
+      "I am off duty. That means I am armed in a bar. Do not read anything into it.",
+      "Station is three days north. The criminals know.",
+      "A cop in a lawless town has two jobs. Stay alive. Keep his tunic clean.",
+      "I drink alone and I drink slow. I watch the room. It isn't a habit, it's a diagnosis.",
+      "Bounties are good money here, if you can collect before somebody collects you."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "factions": [
+    "Police",
+    "United Cities"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_bad_food",
+   "event": "EV_BAR_TALK",
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The stew has bones in it. I asked what animal. The cook said, an animal.",
+      "Bread here's hard enough to build with.",
+      "Somebody left a fish on the counter two days ago. It's still there.",
+      "I ordered the special. They said the special was a warning, not a dish.",
+      "The rum is clean. The cup is not. Some choices are just that: choices.",
+      "Meat of the day, they said. The day wasn't specified."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_sore_feet",
+   "event": "EV_BAR_TALK",
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "My feet are two different sizes now. I'd complain, but they can't hear me anymore.",
+      "Rested one night in the ruins and a roof beam kept me company. A fine and frightening thing.",
+      "Four days on foot and I'm hungry for a chair more than a meal.",
+      "I bought boots in Stack. The sole is already apologising.",
+      "Never walk in new boots. I walked in new boots. I'll tell you how that ended if I can stand.",
+      "Walk enough in the Zone and you stop noticing the pain. You start noticing your knees instead."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_robbed",
+   "event": "EV_BAR_TALK",
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I was robbed on the east road. Politely, too. He said please. Then he took the boots.",
+      "Lost my pack, my bull, and my afternoon. The afternoon was the one I missed most.",
+      "Some bandit stole a man's trousers last week. Not the cart. Not the purse. Trousers.",
+      "Caravan three days out is missing. Everyone says it will be fine.",
+      "I'm not saying the guard sold us out. I'm saying he's wearing a very nice belt.",
+      "They left me one boot. One. I walked here in the other's silence."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_weather_talk",
+   "event": "EV_BAR_TALK",
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Dust blew in the whole night. I swept it out. In the morning it was back, with friends.",
+      "Smells like acid rain. You can tell by the way the old men start counting their fingers.",
+      "The wind in this place has opinions. Right now it has the opinion that I should leave.",
+      "Warm today. Which is a lie. The cold just went to get its coat.",
+      "Last storm took a wall. It didn't bother with the door.",
+      "A man at the next table says it will rain. A man always says it will rain. That man was right once."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_hub_history",
+   "event": "EV_BAR_TALK",
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "This was a Holy Nation town. Then the Shek came. Then the Holy Nation came back. Then nobody wanted it.",
+      "Funny thing about the Hub. Everyone has owned it. No one has wanted it.",
+      "The walls have burn marks on the north side. Ask about them and every man tells a different war.",
+      "They call it the Hub because everything crosses here and nothing stays. I think it is a joke.",
+      "Somebody says the Shek razed it. Somebody says the Holy Nation did it to spite them. Somebody is paid either way.",
+      "There was a plan to rebuild, once. The plan is under that wall, with the rest of the rubble."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_hub_neighbours",
+   "event": "EV_BAR_TALK",
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Stack is a half-day on the road. Better prices, worse company.",
+      "Squin has the Ninjas and the water. I don't trust either.",
+      "Mourn is down the road. I hear the bar has a Hound at the back. Everybody has a Hound.",
+      "Tiny Settlement isn't a settlement. It's a pile of walls and a goat.",
+      "Past the old Shek ruins the grass gets thin and the men get thinner.",
+      "The Rebel Base is a short walk. It has the same barman as here. He's faster than he looks."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_black_tower",
+   "event": "EV_BAR_TALK",
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The black tower in the Zone belongs to people who dress like night. They want money for passing it.",
+      "If a ninja asks for a toll, give it. If he asks twice, give it faster.",
+      "I didn't pay once. I don't walk that road anymore, and my knee doesn't forgive the lesson.",
+      "They don't take everything. Just enough that you remember to bring a little extra next time.",
+      "Safe road, safe tax. The tower doesn't like it when you call it a racket.",
+      "A friend refused the toll. The tower sent a note. The note was his own coat."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_wars_far",
+   "event": "EV_BAR_TALK",
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Holy Nation and the Shek have been killing each other for generations. I make my living between funerals.",
+      "I heard the Cities want the Holy Nation gone. I heard the Cities are too busy counting.",
+      "War is a loud thing, and the Hub is a quiet place.",
+      "Every few years someone says the war is over. Then the war says otherwise.",
+      "They say a Phoenix rules the Holy Nation. They also say the Lords rule him.",
+      "A Shek told me he would die gladly in some gateway. I told him I'd rather die in a chair."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_cannibal_lands",
+   "event": "EV_BAR_TALK",
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The cannibals have a capital now. A real one. I wish I could say that was a rumour.",
+      "Whenever the wind blows from the south-east, the old men lock their doors. They won't say why.",
+      "I know a man who was eaten. He tells the story quite well, considering.",
+      "Never trade with someone who licks his lips. You will pay in extremities.",
+      "Cannibals don't hate you. That's the horror of it.",
+      "A hunter came through with a dog and a very long stare. I bought him a drink."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_empire_rumours",
+   "event": "EV_BAR_TALK",
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I heard the Emperor hasn't been seen in years. I also heard he's seen constantly.",
+      "A man in a good coat swore the nobles keep a skeleton or two as curios. A man in a worse coat disagreed.",
+      "Cities taxes are the real monster. Cannibals just want your arm.",
+      "Somebody says the Empire is just a second coming of something older. Everyone nods.",
+      "A noble came through once. He had four guards and a bad smell. I couldn't tell which was louder.",
+      "Out in the southwest, the laws aren't laws, just suggestions with fines."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_holy_reach",
+   "event": "EV_BAR_TALK",
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Holy Nation has ears here. I know because I've met the ears.",
+      "A priest passed through preaching purity. Left with a full purse.",
+      "I heard Phoenix can see a lie from three miles. That's probably an exaggeration of two and a half.",
+      "I don't say anything against the Flame while the room is full. Or empty.",
+      "The Holy Nation took a good man from the next table. Said it was a misunderstanding.",
+      "There are paladins in the east road. Heavy ones. They don't like to be asked about the weather."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_hive_rumours",
+   "event": "EV_BAR_TALK",
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The hive in the west is fine, I hear. Until someone takes their queen. Then it isn't fine.",
+      "I saw a drone buy a bowl of rice. Paid exact change.",
+      "Never argue with a soldier drone. They agree with you, then they stand in front of you, forever.",
+      "They say a prince in the south has no hive anymore. Poor lad.",
+      "Hivers don't drink. I have always wondered who they save the money for.",
+      "The folk in the Stack bar say the hive hums at night. I haven't heard it. I don't want to."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_bounty_gossip",
+   "event": "EV_BAR_TALK",
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A man in the corner has a price on him that would buy this whole town.",
+      "Never stare at a poster longer than the man who posted it. That's how you end up on a poster.",
+      "A bounty hunter spent a month tracking a thief. The thief was in the next room, the whole time.",
+      "Dead bounties pay half. I pay attention to that, every time I meet a man I dislike.",
+      "My cousin turned in a bounty. He got paid. Now he drinks alone, and the bounty's friends drink with him.",
+      "I'd trade a good name for a good bounty. A good name doesn't keep the rain off."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_dog_and_bull",
+   "event": "EV_BAR_TALK",
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "My bull has a better pedigree than I do. He also has better manners, and a better sense of direction.",
+      "A man offered me three hundred for the bull. I told him the bull was not for sale. The bull agreed.",
+      "Never name an animal you plan to sell. That's the entire lesson of my life.",
+      "The wild dogs come at dusk. They don't bite. They stare.",
+      "Landbats up north took a whole herd last year. We lost the goats. The bats were fine.",
+      "River raptors will take a whole row of crops overnight. That's why I don't farm."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_bar_tab",
+   "event": "EV_BAR_TALK",
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Put it on my tab. Somebody. My tab, the one that's long and has a face on it.",
+      "I've never been charged for a drink I didn't want. I've never wanted any other kind.",
+      "I tipped the barman once. He gave it back. I've been uneasy since.",
+      "Last time I paid for a round, nobody drank it. Strange. I was proud of my generosity.",
+      "The price of ale has gone up. The ale has gone down. I'd like the old ratio back.",
+      "Order something strong. The weak things here aren't safe."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_hub_bar_night_watch",
+   "event": "EV_BAR_TALK",
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Somebody patrols the north wall. Somebody else patrols the somebody. We're safe as can be.",
+      "The Shinobi in the tower watch the road. I watch the Shinobi. It's a very busy night.",
+      "No sleep till dawn. No dawn till sleep.",
+      "A strange squad rode past at midnight. They were quiet. Quiet is worse than loud.",
+      "Don't leave your pack on the floor. Not because of thieves. Because of rats.",
+      "The ruins make noises at night. The Ninjas say it's the wind."
+     ]
+    }
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ]
+  },
+  {
+   "id": "ev_ill_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Your pack smells of something the statutes don't like. Keep it closed in the Cities and we'll both be happier.",
+      "I'm not searching you. I'm merely reminding you that I could, and that the fine is two thousand.",
+      "Contraband carries a fee, and a signature, and an unpleasant afternoon. Which one do you prefer?",
+      "Citizens declare. Visitors declare louder. You, I notice, haven't declared at all.",
+      "Whatever is in that bag belongs in a ditch, or a ledger.",
+      "Cities law is not complicated. Do not carry what is forbidden. You appear to be studying the exceptions."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -1
+      ]
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_ill_uc_alarm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_COPS_AROUND",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That's forbidden goods, and you're in my jurisdiction. Guards!",
+      "I know that cargo. Hold where you stand.",
+      "Hashish, or worse. I don't need a nose. I need witnesses. Gentlemen!",
+      "Stop there. Stop! The law has a very specific word for what you're carrying."
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_ill_uc_civ",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I don't see anything. I've never seen anything. The inspector can ask the wall.",
+      "Whatever you are carrying, do not wave it around here. I have a licence to keep.",
+      "A fine for the buyer, a fine for the seller, and a worse one for the man who stands near.",
+      "Business is business, friend. But some business has a very long arm.",
+      "The guards are never far and always bored. Don't give them a hobby."
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_ill_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "There is darkness in your bag. I can smell it. Cast it into the fire or be cast with it.",
+      "The Flame has a list of forbidden things. You seem determined to carry every item on it.",
+      "Unclean goods, unclean company. Turn back, brother, before the Flame does it for you.",
+      "A pious man leaves that behind. A careless man leaves it in a ditch. A fool carries it past me.",
+      "The Holy Nation burns what it must. It would be a pity to include you in the pile.",
+      "I'll pray for the one who sold you that. For you, I'll pray quickly."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_ill_hn_alarm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 11,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_COPS_AROUND",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Heresy in a bag! Brothers, to me, this one carries forbidden things!",
+      "Seize that pack! Burn what is in it before it taints the street!",
+      "Contraband and heresy. I won't hold my tongue.",
+      "The Flame sees you and so do I. Hold, sinner!"
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ]
+  },
+  {
+   "id": "ev_ill_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You carry weakness in a sack, /FLATSKIN/. A Shek doesn't need it. We don't like it near us.",
+      "Whatever that is, it's a coward crutch. Take it somewhere I can't smell it.",
+      "I do not care what you chew or smoke. I care when it makes a fool of someone near me.",
+      "The Kingdom forbids that poison. I'd break it, but it would be a waste of a good strike.",
+      "A warrior takes a fight when he wants dreams."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_ill_slaver",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Careful with that cargo. Some of my best clients have a taste for it.",
+      "I don't judge. I take a small percentage of whoever else does.",
+      "If you want to sell what is in that pack, there are three men in the next town with deep pockets.",
+      "Papers, stamps, and an honest face. That's all it takes to move what you're carrying. You have only one of those.",
+      "The law frowns on it. The law also frowns on me, and look how that turned out."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_ill_lawless",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Whatever it is, I didn't see it, and nobody here will tell. Welcome to the wastes.",
+      "Bag looks heavy. Heavier than the average. Good for you. Just keep it away from the Holy Nation.",
+      "Contraband? That's just a word cops use. Out here it's a purchase.",
+      "I would offer to buy, but I am out of the right sort of cats. Try a fence.",
+      "Keep it out of sight and nobody will mind. Wave it around and somebody will.",
+      "Smells of a fine afternoon. Don't let the priests catch the scent."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_ill_hounds",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Hounds"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ah. A fellow with taste. If you're selling, talk to me. If you're buying, talk to me louder.",
+      "The empire calls it illegal. The empire also calls itself clean. Both are wrong, and both pay.",
+      "Hash goes north, cats come south. You look like you're heading in a direction.",
+      "I can smell that from here, friend. Nice.",
+      "Careful with the Cities border. They're quite protective about what they make themselves."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_ill_bandit",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That is a heavy bag. That is a very heavy bag. Mind who sees it.",
+      "Something in there's worth a fight. I just can't tell what.",
+      "A bag like that draws eyes.",
+      "You carry like a man with something to lose. Careful with that.",
+      "Whatever it is, the Holy Nation would kill for it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_ill_ally_lawless",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Friend, whatever that is, nobody told me. Walk on, we're fine.",
+      "You carry trouble in your pack, but you carry it among friends.",
+      "If the law asks, you were never here. If the law pays, you were.",
+      "I have a blind eye for people I like. Mind that I don't have two."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_skel_hn_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "A machine in the shape of a man. The Lord of Light would not recognise you. Neither do I.",
+      "Move on, abomination. I haven't decided yet whether the Flame would be wasted on you.",
+      "Your kind has no soul to save. Don't look at me as if you could ask for one.",
+      "Walk with the dead if you must. Do it elsewhere, where the faithful can't see.",
+      "Do you sleep? Do you pray? No? Then there's nothing left to say to you."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -2
+      ]
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton"
+   ]
+  },
+  {
+   "id": "ev_skel_hn_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "Machine! The Flame was made for this. Brothers, the abomination walks!",
+      "I'll break you down into little pieces and bury each in a different place.",
+      "Hollow thing, we do not suffer your kind. Run now and perhaps you will rust slowly.",
+      "No soul. No mercy. No rust left in you when we are done.",
+      "Your face is a mask over a lie. The Flame will see the lie burn."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton"
+   ]
+  },
+  {
+   "id": "ev_skel_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "Skeleton. You walk like one who has fought a long time.",
+      "I heard your kind cannot die properly. A pity. A good death is the only gift we have.",
+      "Metal bones, no flesh to cut. A hard thing to fight. An easy thing to respect.",
+      "I won't strike a skeleton for sport. But don't make me wonder how loud you fall.",
+      "You have the stillness of a warrior and none of the blood. Strange. I do not hate it."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton"
+   ]
+  },
+  {
+   "id": "ev_skel_tech",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Tech Hunters",
+    "Machinists"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "Is that an original build? The joints, the plating... Do you have papers? Of course you don't.",
+      "Forgive me. I have read about your kind for years. The reading didn't do you justice.",
+      "You must have been under a mountain for a thousand years. Please tell me you remember some of it.",
+      "A skeleton. Alive. Walking. I may need to sit down, and then write all of this down.",
+      "There is a repair kit in my pack that is older than I am. It is yours if you ask.",
+      "Do you mind if I measure your arm? For science. And, yes, for greed, a little."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton"
+   ]
+  },
+  {
+   "id": "ev_skel_kin",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Skeletons"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "Another of us, still walking. I count ten who aren't.",
+      "You carry yourself well. Better than the broken ones we pass in the sand.",
+      "The sun is a bad idea. You know it, I know it. Walk in the shade of an old wall with me.",
+      "I would say it is good to see you. I do not know what I am saying.",
+      "Your joints click. So do mine. It's a kind of conversation."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "target_races": [
+    "Skeleton"
+   ]
+  },
+  {
+   "id": "ev_skel_kin_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Skeletons"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "You're one of us. I know the shape. Try not to be one of the ones who break.",
+      "Metal bones, steady feet. Do you remember anything older than the road?",
+      "I don't know your model. I know your gait. We're the same kind of tired.",
+      "Greetings. If you find an old repair kit, remember the ones who wait.",
+      "The humans are staring at you. I was staring at you. Please, don't mind either of us."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "target_races": [
+    "Skeleton"
+   ]
+  },
+  {
+   "id": "ev_skel_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "A skeleton. Fine. Keep to the road and stay clear of the nobles. Some of them collect your kind.",
+      "Keep away from the noble houses. Some of the gentry like to hunt what they find walking about.",
+      "I have no quarrel with your kind. I have a quarrel with certain houses that keep trophy rooms.",
+      "Papers? No. Machines don't carry papers. Pity. It would make this simpler.",
+      "You're tall, and exactly what slavers and nobles look for."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton"
+   ]
+  },
+  {
+   "id": "ev_skel_hub",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "Oi, tin can. If you drink, you leak. If you leak, it goes on the floor.",
+      "Fine armour you have there. Is it armour, or is it you? Hard to tell.",
+      "Is it true you don't eat? I'd pay to see you try the stew.",
+      "You're likely the only one for miles who isn't hungry. I wonder if that makes you happier.",
+      "A skeleton on the road. Next you'll tell me the rain is polite.",
+      "Watch your joints around Ninjas and slavers. They pay well for scrap, and they aren't particular."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII",
+    "Skeleton MKII Screamer",
+    "Skeleton No-Head MkII ",
+    "Skeleton P4MkII"
+   ]
+  },
+  {
+   "id": "ev_skel_slaver",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "A skeleton in the open. Noble houses pay well for a tall one. I'm only mentioning it.",
+      "I do not buy skeletons. I know three men who do. I know where they are.",
+      "Quite the specimen. Don't run. I'd hate to ruin a good piece of merchandise.",
+      "How much do you weigh? Not that I'm asking. Not that it matters."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -1
+      ]
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII",
+    "Skeleton MKII Screamer",
+    "Skeleton No-Head MkII ",
+    "Skeleton P4MkII"
+   ]
+  },
+  {
+   "id": "ev_skel_hive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "The metal one moves like the hive moves. Not the same. Close enough.",
+      "No-hive and not flesh. The hive notes this. The hive doesn't mind.",
+      "Metal and quiet. Compatible with the hum. Compatible, yes.",
+      "The no-hive with iron bones. The hive has no word for you. The hive will make one."
+     ]
+    }
+   ],
+   "target_races": [
+    "Skeleton"
+   ]
+  },
+  {
+   "id": "ev_limbs_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ROBOT_LIMBS",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That arm isn't yours. Nor that leg. Do you ask the Flame's permission for everything you replace?",
+      "Wires where the Lord of Light gave you bone. I will pray for the part that is still real.",
+      "A man made of tools. The Holy Nation would sooner you burned than rusted.",
+      "I see the shine of metal under that sleeve. Take it off, or take yourself off.",
+      "Machine parts on a living man. The priests will have words with you, and the paladins will have more."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -2
+      ]
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander",
+    "Shek",
+    "Hive Prince",
+    "Hive Prince South Hive",
+    "Hive Soldier Drone",
+    "Hive Soldier Drone South Hive",
+    "Hive Worker Drone",
+    "Hive Worker Drone South Hive"
+   ],
+   "note": "Was no_target_races, which neither Kenshi nor Meitou reads; now an explicit target_races list."
+  },
+  {
+   "id": "ev_limbs_hn_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ROBOT_LIMBS",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "There it is, the cursed limb!",
+      "Half a man, half a lie. The Flame will see which half lasts!",
+      "You carry abominations on your body. We will carry you to the fire.",
+      "Metal in the flesh! Heretic! The Lord of Light shall not suffer it!"
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander",
+    "Shek",
+    "Hive Prince",
+    "Hive Prince South Hive",
+    "Hive Soldier Drone",
+    "Hive Soldier Drone South Hive",
+    "Hive Worker Drone",
+    "Hive Worker Drone South Hive"
+   ],
+   "note": "Was no_target_races, which neither Kenshi nor Meitou reads; now an explicit target_races list."
+  },
+  {
+   "id": "ev_limbs_tech",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Tech Hunters",
+    "Machinists"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ROBOT_LIMBS",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Who made that arm? I want to know. I want to know right now.",
+      "The wiring on that limb is a work of art. The pain it took to install isn't. How are you managing?",
+      "I have spares, if you need. Don't mention the price. We'll both be embarrassed.",
+      "A man who wears the old craft. Respect. And a drink, if you have the time.",
+      "You're carrying a piece of history on your shoulder. Treat it with the dignity of a museum."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander",
+    "Shek",
+    "Hive Prince",
+    "Hive Prince South Hive",
+    "Hive Soldier Drone",
+    "Hive Soldier Drone South Hive",
+    "Hive Worker Drone",
+    "Hive Worker Drone South Hive"
+   ],
+   "note": "Was no_target_races, which neither Kenshi nor Meitou reads; now an explicit target_races list."
+  },
+  {
+   "id": "ev_limbs_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ROBOT_LIMBS",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A flatskin with an iron hand. Brave, or foolish. It's hard to tell from where I stand.",
+      "Your arm is not flesh, but it grips like something that wants to live.",
+      "Iron where the flesh was lost. A warrior would call that honest.",
+      "Do you feel the blow when it lands? No? Then you are wasting the lesson.",
+      "I wouldn't take it from you. Taking is for men who can't earn. Show me you can earn it."
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander",
+    "Shek",
+    "Hive Prince",
+    "Hive Prince South Hive",
+    "Hive Soldier Drone",
+    "Hive Soldier Drone South Hive",
+    "Hive Worker Drone",
+    "Hive Worker Drone South Hive"
+   ],
+   "note": "Was no_target_races, which neither Kenshi nor Meitou reads; now an explicit target_races list."
+  },
+  {
+   "id": "ev_limbs_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police",
+    "Empire Peasants",
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ROBOT_LIMBS",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Fine workmanship, that limb. Where did you get it? No. Don't tell me.",
+      "I have a cousin who lost a leg in the Red Rebellion. He would have paid anything for what you wear.",
+      "Don't walk near the nobles with that. They have a certain interest in your kind of machinery.",
+      "A metal limb costs a small estate. You either stole it or earned it. I'll assume the better.",
+      "I don't stare. I only observe. Observe now, how much I'd pay for a look at your wrist."
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander",
+    "Shek",
+    "Hive Prince",
+    "Hive Prince South Hive",
+    "Hive Soldier Drone",
+    "Hive Soldier Drone South Hive",
+    "Hive Worker Drone",
+    "Hive Worker Drone South Hive"
+   ],
+   "note": "Was no_target_races, which neither Kenshi nor Meitou reads; now an explicit target_races list."
+  },
+  {
+   "id": "ev_limbs_hive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ROBOT_LIMBS",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The no-hive carries a machine limb. The hive notes it. The hive doesn't say more.",
+      "Metal limb. It replaced something. The hive understands replacement.",
+      "A no-hive with a metal limb. The hive is curious. The hive won't ask.",
+      "A good limb. Strong. A good limb works as one body."
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander",
+    "Shek",
+    "Hive Prince",
+    "Hive Prince South Hive",
+    "Hive Soldier Drone",
+    "Hive Soldier Drone South Hive",
+    "Hive Worker Drone",
+    "Hive Worker Drone South Hive"
+   ],
+   "note": "Was no_target_races, which neither Kenshi nor Meitou reads; now an explicit target_races list."
+  },
+  {
+   "id": "ev_limbs_slaver",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ROBOT_LIMBS",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That limb alone would buy my cart. Do not look at me like that. I am only valuing it.",
+      "I know a noble who pays double for a man with an iron arm. Triple, if he's still breathing.",
+      "A cripple with a prize. Careful, friend. Prizes get noticed by the wrong people.",
+      "Is it detachable? Don't answer that. I have too many ideas already."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_limbs_lawless",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds",
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_HAS_ROBOT_LIMBS",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hell of an arm. Does it hit harder? Or does it just hit sooner?",
+      "I'd trade a good ear for a limb like that. A good ear and a bad knee.",
+      "Is that metal? Real metal? Lost a hand once. Wish I had met you then.",
+      "Don't take it off in public. People will want to touch it.",
+      "Priests will have your head for that. Priests have a hobby of that sort of thing.",
+      "That limb must have a story. Keep it. It's worth more than the arm."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_starve_lawless",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You look like a fence post that learned to walk. Eat something, before you fall in the soup.",
+      "A bowl of stew costs a few cats, a bad bowl costs less. Don't die before the bad bowl.",
+      "I've seen the look. Hunger first takes the colour out of the eyes, then the manners.",
+      "Sit. Eat what I can spare. Pay later. Or never. I have a bad memory for hungry friends.",
+      "You're one of the walking hungry. They fill the wastes these days. I wish there were a cure."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_starve_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hunger is the first test of the faithful. The Flame feeds those who endure it, brother.",
+      "Go to a Holy farm and beg a bowl. They give it to the humble.",
+      "The Lord of Light has set a feast for the righteous, though perhaps not today.",
+      "A fast is a prayer with an empty belly.",
+      "I'd give you bread, but your faith isn't my business, nor your mouth."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_starve_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You look half-dead, citizen. In the Cities, hunger is an offence. Eat before I notice.",
+      "Starving in public is bad manners. Starving in front of the law is worse.",
+      "Poverty is a crime, and hunger is its accomplice. Please correct both.",
+      "There's a soup line in most cities. Find it, and don't mention my name.",
+      "You're blocking the road, hungry as a dog. Move on, and mind your tone."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -1
+      ]
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_starve_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A hungry warrior is a dangerous one. A hungry flatskin is a sad thing. Which are you?",
+      "Eat, and live to fight. Or starve, and be forgotten. The Kingdom is plain on this.",
+      "I have starved with the best of them. It doesn't improve the character.",
+      "Do not beg. A Shek would sooner die. Take it as a sign of health.",
+      "A Shek keeps meat for the road. I do not offer it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_starve_bandit",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Brother, you're skin and bone. We're all skin and bone. Share, and we'll share with you.",
+      "Do you have any food? Any? Tell the truth. I'll know if you lie.",
+      "You look as bad as I feel. Maybe we should join forces. Maybe we should starve in company.",
+      "I know the look, friend. I saw it in the mirror before I broke it.",
+      "There was a time I was proud. Then there was a time I was hungry. Don't choose the second."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_starve_slaver",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hungry, hm? Hunger makes cooperative stock. Not that I'm suggesting anything.",
+      "A meal and a roof are easy things to promise. That's where my business starts.",
+      "Don't worry. A starved man sells for less, but he keeps quiet.",
+      "I'll tell you where to find food. I'll also tell you a place where they pay for hands. Interested?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_starve_aid",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Medics Guild",
+    "Anti-Slavers",
+    "Cannibal Hunters"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You are wasting away. There is bread in my pack. Take it. No payment.",
+      "Feed yourself first. The rest of the world can wait for a plump man.",
+      "Pale lips, hollow cheeks. I know that hunger.",
+      "Slowly, now. Eating fast hurts after a long fast. I learned that the hard way."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ],
+   "packages": [
+    "EV Medics Guild"
+   ]
+  },
+  {
+   "id": "ev_starve_hive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The no-hive is hungry. The hive has food. The hive doesn't share with those who aren't hive.",
+      "Hunger is a loud thing. The hive hears it.",
+      "A thin one. The hive had a thin one once. The hive doesn't talk about that one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_starve_skeleton",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Skeletons"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're the hungry kind. I envy and pity you.",
+      "I don't know hunger. I see it on the faces I pass.",
+      "Please eat. I do not know how much it hurts, but it looks like a lot."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ]
+  },
+  {
+   "id": "ev_leg_generic",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds",
+    "Empire Peasants",
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That leg is wrong. Don't argue, I can see it. Sit somewhere, anywhere, and splint it.",
+      "You're limping like a dropped plate. A splint is a few cats. A cripple's life costs more.",
+      "I've seen worse and I've buried worse. Which are you going to be?",
+      "My uncle walked on a broken leg for a year. He walked in a very small circle.",
+      "Use a stick, use a friend, use a bull. Just stop using that leg."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_leg_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A broken leg is a lesson. Take it, and walk again, or be left behind. The Kingdom has no pity.",
+      "Don't look at me for help. Help is for those who can't help themselves. Which are you?",
+      "I broke a leg once, a horn twice. I did not complain. I did not rest, either.",
+      "Crawl, then. A Shek has crawled further."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_leg_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Lord of Light tests us in the bones. Go to a healer, or pray, or both, but go.",
+      "A cracked leg is a poor pilgrim's burden. I would carry you if you were one of ours.",
+      "Don't rely on the Flame for a splint. Rely on cloth and a straight stick.",
+      "Bones heal. Sins don't. Be glad it's only a leg."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_leg_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Move off the road with that leg. We have enough obstructions without adding another.",
+      "Cripples aren't permitted in the city streets without papers. I didn't write the rule.",
+      "Find a medic before the leg decides for you. Don't tell them I sent you, they gossip.",
+      "A broken leg and a broken purse. I recognise the type, and I pity the combination."
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_leg_bandit",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Dust Bandits",
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BROKEN_LEG",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That leg slows you. That leg also makes you easy.",
+      "Broken, aren't you? What a shame. For you, I mean. For us, it's a very good afternoon.",
+      "Can you run? No? Then don't make me work for this.",
+      "A cripple on the road is a gift. Let me say thank you for that gift."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_ko_generic",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds",
+    "Empire Peasants",
+    "Traders Guild",
+    "Free Traders",
+    "Medics Guild",
+    "Anti-Slavers",
+    "Cannibal Hunters"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're one cut from the ground. Get to a bed, or get to a healer. Not both.",
+      "I've seen men on their last legs. You're standing on yours, and it's shaking.",
+      "You look like a corpse who hasn't heard the news. Sit down before the news arrives.",
+      "Do not die in front of me. I have a very small tolerance for it today.",
+      "That's a lot of blood for one person. Keep it where it belongs.",
+      "A man that pale ought to be lying down. Get yourself wrapped up."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ],
+   "packages": [
+    "EV Medics Guild"
+   ]
+  },
+  {
+   "id": "ev_ko_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You stand when you should fall. A warrior's mistake.",
+      "Half dead, yet walking. The Kingdom has songs about men like you, and they're all short.",
+      "Fall or stand, flatskin. The ground is not your enemy.",
+      "I won't finish you. That's a courtesy, not a kindness."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_ko_bandit",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Dust Bandits",
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Look at you. Barely breathing. Barely standing. Barely worth the effort.",
+      "A good shove and you'll meet the ground. Should I shove? I'm asking nicely.",
+      "That's a lot of blood you aren't using. Let me hold it for you.",
+      "One more hit and you're mine. One more. I'll wait."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_ko_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_NEARLY_KO",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Brother, the Flame is near, and so is the grave.",
+      "The wounded find mercy in the Holy Nation. The wounded who are faithful, I should say.",
+      "Bleed, if you must, but bleed where the paladins won't trip over you.",
+      "I have a prayer and a clean rag. The prayer will not heal you. The rag might."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_slave_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police",
+    "Empire Peasants",
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Whose chain is that? Not mine, not my business.",
+      "A servant with shackles. Fine. The Cities have a law for that, and a very long list of exceptions.",
+      "I'd ask who owns you, but I wouldn't like the answer to be a noble.",
+      "Don't make eye contact with the guards. They see a collar, they see a stamp.",
+      "You have the look of a man who has been very busy and very unpaid."
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_slave_slaver",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That one belongs to someone. I know the brand. Get him to a station before I get ideas.",
+      "A runaway or a loan? I can't tell. Fortunately, I can charge for both.",
+      "Looks like decent stock. A bit of rust on the manners.",
+      "I hope you have your papers. Otherwise the three of us will have an awkward conversation."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_slave_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The chain is a mercy to a heretic. It keeps the hands busy and the soul quiet.",
+      "A slave in the Holy Nation is a slave who hasn't yet found the Flame.",
+      "Don't look at me with those eyes. The Lord of Light sees all debts.",
+      "I have no quarrel with a chain. I have a quarrel with a chain on the wrong neck."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_slave_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A chained man. The Kingdom keeps no chains. We keep honour, and the sword to defend it.",
+      "A man who lets himself be bound has little left to lose. Why does he walk?",
+      "I would cut that chain if it were mine. It is not. Hence I do nothing, as is the proper custom.",
+      "The weak get collars. The strong get names. Which will you be, flatskin?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_slave_free",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That chain doesn't belong on you. Hold on. We'll find a key, or an axe, or both.",
+      "Stay near me. The next time anyone asks, you're travelling with me. Nobody needs a better name than that.",
+      "I wore iron too. Don't look down. Look at the road. It's longer than the chain.",
+      "Your shackles won't outlast the week. I give you my word, and my word is good.",
+      "There are folk who will break that lock. Speak to the first one who doesn't look away."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_slave_lawless",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Whose slave are you? Don't tell me. I don't want to know whose throat I might need to cut.",
+      "Iron is heavy. I know a man with a good file. He asks few questions, and answers fewer.",
+      "Everybody walks with someone's chain. Some of us just wear ours on the outside.",
+      "I'm not saying I'll help. I'm saying I won't stop you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_escaped_slaver",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_ESCAPED_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I know that brand. That one is mine, or somebody's. Hold still.",
+      "A runaway! Take him alive, or take him in several pieces, but take him.",
+      "You thought the wastes would hide you? Somebody always sells a runaway for a few cats.",
+      "There you are, little bird. The cage is warm, and it's waiting.",
+      "Papers or chains. You choose. I have both, and I'm not particular."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_escaped_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_ESCAPED_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Runaway property is runaway property. I don't like it, but the statutes are the statutes.",
+      "Look, I didn't see you. If I had seen you I'd be required to do something, and I'm very tired.",
+      "A fugitive in plain sight. If I were you, I'd learn to blend, and to walk slower.",
+      "The slave houses post descriptions. You fit three of them. Get off the main road."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_escaped_free",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_ESCAPED_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You made it out. Your hands are still shaking. Mine did too.",
+      "Welcome, friend. Nobody here will ask you to explain a scar. We have the same ones.",
+      "Keep going. Find food, find a door without a lock, find someone who asks your name and doesn't use it.",
+      "I know the stare. You're listening for footsteps behind you. There are none."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_escaped_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_ESCAPED_SLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You ran from servitude. The Flame is tolerant, but the Flame also keeps a ledger.",
+      "A runaway. Run further, or kneel and be counted. Do not stand around in the open.",
+      "I will not call the guard. I am only a pilgrim. I am saying this out loud so you can hear it.",
+      "Escaped from your master? Your master's master may still call for you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_shackles_generic",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds",
+    "Empire Peasants",
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Those shackles are locked. I'm not asking. I'm merely counting the turns of the key.",
+      "A locked wrist on a free man. The key is somewhere, and so is the one who holds it.",
+      "You walk like a man who owes the world a very specific debt.",
+      "I know where the nearest file is. I won't mention it, but I know.",
+      "Nobody chains himself. Whoever did that to you has a reason, and you have a problem."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_shackles_slaver",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Locked up and out for a walk. That's somebody's inventory, and somebody will want it back.",
+      "I'd ask for the key, but I'd rather ask for the owner.",
+      "You look like you belong to me. I don't think you do. Not yet.",
+      "Those irons are good irons. It would be a shame to waste them on a man who walks free."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_shackles_free",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Don't say anything. Don't speak. Just walk with me until I find a key.",
+      "That lock is nothing. I have opened worse. I'll open it, if you let me.",
+      "Walk with me. I'll tell you when to stop.",
+      "You don't owe me a word. You only owe yourself the next step."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_caged_generic",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds",
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters",
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Caged and asked nothing. A hard way to see the world, from a box.",
+      "I don't know who put you in there, but I hope the lock is worth it.",
+      "A cage is a cage, and a man in one is always a little more honest.",
+      "You'll wish you had a view better than this. I have seen it, from outside."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_alive_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_BOUNTY_ALIVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A live delivery. Good. The station pays on arrival, and the paperwork is only a morning.",
+      "Hand him over at the desk and ask for the receipt. It is a surprise how often people forget the receipt.",
+      "Is that the one on the poster? You carried him in. Not bad.",
+      "The law approves. The law also warns you to watch his hands, and his friends.",
+      "A prisoner and a poster. Well done. Watch your back on the way out."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_bounty_alive_lawless",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds",
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters",
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_BOUNTY_ALIVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A bounty on your shoulder. Don't stop here, friend. His friends may be looking for him.",
+      "You carry a man worth money. And a fool to carry him in the open.",
+      "Bounty hunters. Always the same face. Pale. Greedy.",
+      "He doesn't look worth the weight. But I suppose the weight is the point.",
+      "A live one is worth more than a dead one. That's the first rule."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_alive_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_BOUNTY_ALIVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A sinner in hand. The Flame is pleased with those who bring them in.",
+      "If that one is a heretic, bring him to the pyre. If he's a thief, bring him to the magistrate. If neither, bring him home.",
+      "Carry him gently. The Flame punishes carelessness with the same fervour as crime.",
+      "I would help you carry him. I would not help you ask where."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_dead_generic",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds",
+    "United Cities",
+    "Police",
+    "Mercenary Police",
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_BOUNTY_DEAD",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A corpse on your back. Who was he? Let me guess: expensive.",
+      "Dead men pay half. A rule older than the Cities. Don't argue with it.",
+      "He bleeds on your boots. That's a very personal kind of work.",
+      "The vultures will want a word about that. They won't get one.",
+      "Whoever he was, he's lighter now. That's a mercy, I suppose.",
+      "That smell isn't pleasant. That smell is a kind of paycheque."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_dead_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_BOUNTY_DEAD",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You kill, and you carry. A hunter. Not a warrior.",
+      "He fell well, I hope. Not in his sleep.",
+      "A kill for coin. The Kingdom does not praise it. The Kingdom does not blame it either.",
+      "Carry him elsewhere. We don't mourn the ones who fall to mercenaries."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_dead_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_BOUNTY_DEAD",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A body. If he was a sinner, he has already been judged. If not, may the Flame show mercy.",
+      "The dead are not mine to pass judgement on. Take him to the registry, quietly.",
+      "I'll say a word for the departed. Not for the killer. The killer has his own account to settle.",
+      "Hard work, bringing them in. The Lord of Light knows its worth."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_enslave_slaver",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 16,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Fresh stock, and still warm. You have an eye for it, friend. Where did you find him?",
+      "Beaten, bound and carried. A fine trade. I know three buyers who would take that off your hands.",
+      "I give twice what the stations do and ask only a quarter of the questions.",
+      "Bring him to a market soon, or I'll meet you on the road with a better offer.",
+      "Don't drop him. He's worth more whole than in parts, though I'd pay for either."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_enslave_free",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "player_only": true,
+   "chance": 29,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Put him down. Put him down now, or I'll take him from your hands and your hands from your arms.",
+      "A slaver carrying a body! Don't look away. Look at what you are.",
+      "You may wear a different coat, but I know the walk.",
+      "I won't let you sell that man. I'd sooner sell you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_enslave_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police",
+    "Empire Peasants",
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A slave in transit. Fine. Take the back roads and keep out of sight.",
+      "Hm. I see a man with a sack and a conscience. I only wonder which will break first.",
+      "Statutes tolerate it. Neighbours don't. Choose your path, and your hour.",
+      "If you're selling, pick a quiet hour and a quiet buyer. I didn't say it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_enslave_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Flame has a use for every heretic. Whether it's a collar or a pyre, I don't decide.",
+      "Don't drag him past the faithful. Take the back way, with the rest of the cargo.",
+      "I would not carry a man I did not hate. Do you hate him? That is the real question.",
+      "You break a man's back for coin. I break my own in prayer."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_enslave_lawless",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds",
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Whose is that? Never mind. I don't want to know. Just don't let him wake near me.",
+      "Sell him in the next town. Sell him fast. Sell him far from anyone who knew him.",
+      "A body on your shoulder, a coin in your eye. You're in the right trade.",
+      "Every slave starts as a free man. It's only a matter of who carries him."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_small_uc",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 500
+    },
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": "<",
+     "value": 5000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A modest bounty on a modest face. Pay it before it grows.",
+      "A small matter, but a matter. Settle at the station or I settle it for you.",
+      "A petty crime, not a hanging offence. Pay up, and I forget I saw you.",
+      "You have a name on a list. It's a short list. Don't make it longer.",
+      "The fines for that aren't severe. The fines for ignoring it are."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -1
+      ]
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_bounty_big_uc",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 5000
+    },
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": "<",
+     "value": 15000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That bounty is a serious sum. I'm an honest man, and it's a very serious sum.",
+      "I know your face from the notice. Someone will make a good living from you. I'd rather it were me.",
+      "You're worth more as a headline than as a wage. Come quietly, and I won't make a speech.",
+      "A bounty like that doesn't come from a clerical error.",
+      "Stop. Don't run. I'd hate to chase someone worth this much, in this dust."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_huge_uc",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 15000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A price like that's a declaration of war. Guards!",
+      "I know that face from the notice. Seize them, and send word to the noble houses.",
+      "Fifteen thousand and more. You've made enemies in places that count.",
+      "Stop, in the name of the Cities. You're wanted, in a very large way."
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_bounty_small_hn",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 500
+    },
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": "<",
+     "value": 5000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A sin recorded. A small one. The Flame is patient, but not endlessly.",
+      "You have a mark in the ledger. Settle it, brother, and the ledger is forgotten.",
+      "A fine for a fault. The Holy Nation prefers repentance to punishment.",
+      "Your name is on a list. Not the worst one. Walk lightly."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_big_hn",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 5000
+    },
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": "<",
+     "value": 15000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A great sin, written in gold. The Holy Nation doesn't forgive that quickly.",
+      "You are marked, heretic. The ones who mark you do not forget.",
+      "The Flame has you in its sight. It won't look away.",
+      "I know your price. I wonder if the faithful will wait for the pyre."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_huge_hn",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 15000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The name from the great notice! Brothers, the Flame has delivered the unclean to us!",
+      "A bounty to pay for a church. Seize them! Seize them, and send for the paladins!",
+      "I have prayed for this. Don't move, sinner. Don't so much as bless yourself.",
+      "The sin of this one stinks to the sky. To arms, all of you!"
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ]
+  },
+  {
+   "id": "ev_bounty_small_shek",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 500
+    },
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": "<",
+     "value": 5000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "/FLATSKIN/ law has marked you. /FLATSKIN/ law means little to a Shek.",
+      "A small price on your head. A Shek would take it as an insult.",
+      "I do not hunt for coin. But I would watch my back, if I were you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_big_shek",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 5000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A great price on you. Whoever put it there thought highly of your value, or little of your skill.",
+      "I have heard of you. The Kingdom hasn't decided what to do. I have, but I'll keep it quiet.",
+      "A man with that price walks like a king or a corpse. Which will you be, flatskin?",
+      "Someone wants you dead. That is a good start. It is not a recommendation."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_hunters",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "Bounty Hunters",
+    "Manhunters",
+    "Mercenary Guild"
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 500
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're on a list I own a copy of. Don't take it personally. Don't take it at all.",
+      "I've seen your face on a poster. The poster flatters you.",
+      "A bounty means someone thinks you're worth the trouble.",
+      "A price on you, friend, and I'm a patient hunter. Surrender, or pay the price in kind.",
+      "I don't need to fight. I only need to find the right moment.",
+      "We haven't met, but I know your name from three different notices."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_small_lawless",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 500
+    },
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": "<",
+     "value": 5000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A price on your head. A small one. Out here that's a good afternoon wage.",
+      "You have a price. It's a small price. Don't be insulted. I have a smaller one.",
+      "Wanted for something petty. Good. Petty is the best kind.",
+      "I don't do the law's work. I do my own. Today my own doesn't include you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_big_lawless",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds",
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters",
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 5000
+    },
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": "<",
+     "value": 15000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Five thousand and more. You did something big, or somebody important got very mad.",
+      "I could use five thousand. I could also use a long life. Today I choose the life.",
+      "Careful, friend. Every drunk with a nose for coin can read a number.",
+      "You are worth a house in a decent town. Sleep with one eye open.",
+      "That's a good bounty. A great bounty."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_huge_lawless",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds",
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters",
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 15000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Fifteen thousand cats and more. If you aren't a monster, you're doing a convincing impression.",
+      "With a price like that, I'd be a king. Or a corpse. Or both, in quick order.",
+      "Don't stand near me. I'd hate to be killed by mistake.",
+      "That bounty is worth half the wastes. The other half is trying to decide how to take it.",
+      "Whoever you crossed, they have a very good memory and a very good purse."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_bounty_slaver",
+   "event": "EV_BOUNTY_SPOTTED",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_BOUNTY_AMOUNT_PERCEIVED",
+     "who": "target",
+     "cmp": ">",
+     "value": 5000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A rich bounty on a free man. That's a thing I know how to handle.",
+      "A price like that makes a man valuable. Come, let me help you meet the ones who posted it.",
+      "Don't run. I'd hate to waste a good price on a short chase.",
+      "Wanted, on a notice, in ink. I do love it when the paperwork is already done."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_rich_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police",
+    "Empire Peasants",
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_PLAYERMONEY",
+     "who": "target",
+     "cmp": ">",
+     "value": 20000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A purse like that has a way of finding doors. Allow me to open one for you, citizen.",
+      "The most distinguished traveller I've seen this week! Or month. Or lifetime. I'm not good at estimating.",
+      "You carry a fortune and no guards. Either you're very brave or very well protected.",
+      "I have a cousin who sells fine cloth. I have a cousin who sells fine swords.",
+      "The Cities welcome all who bring their cats in good faith.",
+      "Wealth speaks. I only hope it doesn't shout in the wrong street."
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_rich_slaver_bandit",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters",
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 16,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_PLAYERMONEY",
+     "who": "target",
+     "cmp": ">",
+     "value": 20000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You hum with cats. I can hear them from here. Sweet.",
+      "A man with that much money doesn't need all of it.",
+      "I'm only looking. Looking is free.",
+      "You have the walk of a man with a very full purse and a very empty escort.",
+      "How many cats? A guess is enough. A hundred would do me. A thousand would be rude."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_rich_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_PLAYERMONEY",
+     "who": "target",
+     "cmp": ">",
+     "value": 20000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Holy Nation accepts tithes in all forms. Particularly in coin, particularly in quantity.",
+      "A man who carries that much might spare a little for the Flame.",
+      "Great wealth is a burden on the soul. The Church would be delighted to lighten it.",
+      "The Lord of Light favours the generous. He doesn't mention it in public."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_rich_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_PLAYERMONEY",
+     "who": "target",
+     "cmp": ">",
+     "value": 20000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You jingle like a goat with bells. Do you think that makes you strong?",
+      "Cats are for flatskins. A warrior carries a blade, and eats what it brings.",
+      "I don't envy gold. Gold is a sleep that comes too easy.",
+      "Rich and slow, a combination I have learned to hunt."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_rich_lawless",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_PLAYERMONEY",
+     "who": "target",
+     "cmp": ">",
+     "value": 20000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That purse is loud, friend. Keep it quiet or somebody will keep it for you.",
+      "Lunch is on you. Dinner is on you. Breakfast, well, we'll see how you feel.",
+      "A rich man out here's either a fool, a prince, or a bait. Which are you?",
+      "I know a very good tailor, a very good surgeon, and a very good grave.",
+      "I'm not going to mug you. I'm going to be your friend. That's more expensive.",
+      "Walk in the middle of the road. Sleep with one eye open. Tip everyone well."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_rich_thieves",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shinobi Thieves"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_PLAYERMONEY",
+     "who": "target",
+     "cmp": ">",
+     "value": 20000
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That purse is a little heavy for the road. May I offer to lighten it, as a service?",
+      "I'd never lift a thing from you. I would, however, advise you to be careful on the road.",
+      "The weight of that purse. I can feel it from here. It isn't good for the spine.",
+      "A man carrying that much is either lucky or watched."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_poor_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_PLAYERMONEY",
+     "who": "target",
+     "cmp": "<",
+     "value": 150
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Penniless in the Cities. A near-crime, you understand. Do keep to the side roads.",
+      "No cats, no business, no excuse. Move along, there's a ditch further down.",
+      "Poverty is catching. Please stand somewhere else.",
+      "I would offer you a coin. I would also offer you a lecture.",
+      "You're one bad week from the gutter. You are, I suspect, in the bad week."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -1
+      ]
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_poor_uc_civ",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Empire Peasants",
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_PLAYERMONEY",
+     "who": "target",
+     "cmp": "<",
+     "value": 150
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Not a cat in that purse, is there? I know the look. I wore it for years.",
+      "Empty pockets and a long road. The Cities are hard on both.",
+      "I'd give you bread, but my own is counted. Try the temple steps, or the tavern kitchen.",
+      "A bad week can last a year. Don't let it become your trade.",
+      "Keep your head up. Poor is common here. Poor and proud is rare, and gets noticed."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_poor_lawless",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds",
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_PLAYERMONEY",
+     "who": "target",
+     "cmp": "<",
+     "value": 150
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Not a cat to your name? Then you're the only one for miles who can't be robbed.",
+      "Broke. Honest broke, I can tell. Honest broke is rare. I pay it respect.",
+      "Come sit with me a while, friend. A beggar and a thief have more in common than they admit.",
+      "You're one of those who have nothing to lose. That's a dangerous kind of man.",
+      "Nothing in the purse, and a hole in your boot. I'd say I feel sorry for you, but I'm too tired."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_poor_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_PLAYERMONEY",
+     "who": "target",
+     "cmp": "<",
+     "value": 150
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The humble are blessed. You must be near sainthood by now.",
+      "If you have no coin, give the Flame your labour.",
+      "Poverty is a test. Yours seems to be a very thorough one.",
+      "Alms are for the faithful. Are you faithful? I only ask because the cup is small."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_uniform_hn",
+   "event": "EV_I_SEE_UNIFORM_IMPOSTER",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "That armour was sanctified for someone better. Take it off, or I take it off you.",
+      "A thief in holy plate. The Flame has an appetite for that sort of fraud.",
+      "You wear our colours as a costume. The Holy Nation does not enjoy theatre.",
+      "That chest plate has a history, heretic.",
+      "I know the weight of that armour. You carry it like a stolen coat."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_uniform_uc",
+   "event": "EV_I_SEE_UNIFORM_IMPOSTER",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "Where did you get that uniform? No, wait. Don't answer. The answer is a crime.",
+      "Wearing a samurai's colours without a samurai's right is called theft here.",
+      "That armour is registered. Registered to someone who isn't you.",
+      "A costume, a stolen coat, or an honest mistake? I'm willing to believe the third."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_uniform_shek",
+   "event": "EV_I_SEE_UNIFORM_IMPOSTER",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "Our markings on a flatskin's back. Do you wear them to honour us, or to mock us?",
+      "That isn't Shek blood. That isn't Shek armour. That's a Shek insult.",
+      "I will have those horns, those plates, and that confidence off your back.",
+      "You wear what a warrior won."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_uniform_skel",
+   "event": "EV_I_SEE_UNIFORM_IMPOSTER",
+   "factions": [
+    "Skeletons"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "That isn't yours. I don't mind.",
+      "A borrowed shell. Some of us keep our own. You, I think, are keeping someone else's.",
+      "The armour doesn't fit your voice.",
+      "I know that plating. It wasn't made for you.",
+      "Those are another's colours. Wear them with care, or give them back."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ]
+  },
+  {
+   "id": "ev_uniform_hive_w",
+   "event": "EV_I_SEE_UNIFORM_IMPOSTER",
+   "factions": [
+    "Western Hive"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "if": [],
+   "packages": [
+    "all"
+   ],
+   "lines": [
+    {
+     "say": [
+      "The no-hive wears hive colours. The hive doesn't remember giving them.",
+      "This shell has an owner. The hive knows the owner. The hive waits for the owner.",
+      "A no-hive in our cloth. We're many.",
+      "The hive sees a false drone. The hive isn't angry.",
+      "Take it off, no-hive. It doesn't suit you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_uniform_hive_s",
+   "event": "EV_I_SEE_UNIFORM_IMPOSTER",
+   "factions": [
+    "Southern Hive"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "if": [],
+   "packages": [
+    "all"
+   ],
+   "lines": [
+    {
+     "say": [
+      "No-hive wearing the hive. The hive does not forgive theft.",
+      "We know our own. You aren't ours.",
+      "The hive counts every drone. You're the one extra.",
+      "Borrowed colours, no-hive. The hive will take them back.",
+      "That cloth has a hive and it is not yours."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_uniform_bandit",
+   "event": "EV_I_SEE_UNIFORM_IMPOSTER",
+   "factions": [
+    "Dust Bandits",
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "That's a stolen look. Whose throat did you cut for it?",
+      "You wear our colours, or something near them. I'd explain it to the boss, if I were you.",
+      "Don't pretend. I know a costume when I see one.",
+      "You look familiar. You look like a man who has done this before."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_uniform_lawless",
+   "event": "EV_I_SEE_UNIFORM_IMPOSTER",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds",
+    "Tech Hunters",
+    "Machinists"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "Nice armour. Is it yours or did you sew it from a dead man? Not my business.",
+      "Careful. People take that uniform personally, and not always from the right direction.",
+      "I've seen disguises before. Most of them are better than yours.",
+      "Wear what you want. Just don't wear it near the people who made it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_race_hn_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "A horned beast walking a human road. The Lord of Light made you strong, and then forgot you.",
+      "I do not speak with beasts. I only watch them, and pray they pass.",
+      "Shek. Everyone fears you. Nobody respects you. Think on that.",
+      "We were at war with your kind before your grandfather's grandfather was born. I am still a little tired.",
+      "Your eyes are the colour of a war. Look elsewhere, I beg you."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -2
+      ]
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ]
+  },
+  {
+   "id": "ev_race_hn_hive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "A bug on the road. A thing without a soul. Don't touch the children.",
+      "You're a hive thing. You have a queen, and the Flame has a pyre.",
+      "I do not know how the hive prays, or if it does. I know that it does not pray to us.",
+      "A drone walking free. I would feel sorrier if I did not feel afraid.",
+      "The Holy Nation says your kind has no soul. I only say you have no business here."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -2
+      ]
+     ]
+    }
+   ],
+   "target_races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ]
+  },
+  {
+   "id": "ev_race_shek_human",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "A /FLATSKIN/, walking proud. Do you know where you are? Do you know what you are?",
+      "Smooth skin. Smooth hands. A smooth life.",
+      "You don't look weak. You look unfinished. We can work with that.",
+      "The Kingdom tolerates outsiders in the places it chooses. Do not mistake tolerance for welcome.",
+      "A /FLATSKIN/ who looks me in the eye. Good. That's where it starts.",
+      "I smell no fear on you. I smell dust and rum."
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ]
+  },
+  {
+   "id": "ev_race_shek_hive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "A bug man. Walking in the open. Where is your hive, bug man? Where is your queen?",
+      "The hive doesn't fight like warriors. It fights like weather. We know both and we respect only one.",
+      "Insects with a mind. I don't like it. I don't hate it either.",
+      "Keep walking, bug man. This ground isn't yours, but the day is young."
+     ]
+    }
+   ],
+   "target_races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ]
+  },
+  {
+   "id": "ev_race_hive_human",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "Warm one. No-hive. You carry too much noise. The hive doesn't like noise.",
+      "A no-hive speaks. The hive doesn't answer. It's the way of things.",
+      "The warm ones are many and shrill. The hive wonders if you ever tire of yourselves.",
+      "You smell of fire and cooked meat. The hive does not eat what it cannot name."
+     ]
+    }
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ]
+  },
+  {
+   "id": "ev_race_skel_human",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Skeletons"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "A man of flesh. You tire. You bleed. You're fortunate. I can't tell if you know it.",
+      "Humans age. It's the most interesting thing about you.",
+      "I have outlived four of your kind who stood just there. Their names are gone. I am sorry about that.",
+      "You're warm. I can feel it from three feet. It makes me think of something I can't name."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ]
+  },
+  {
+   "id": "ev_race_uc_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police",
+    "Empire Peasants",
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "A Shek among us. Peace, friend. We trade, we don't fight. I say it for the benefit of everyone.",
+      "People get nervous around horns. Keep yours up and your temper down.",
+      "I have no quarrel with the Kingdom. I have a quarrel with the last Shek who haggled with me.",
+      "A warrior among traders is a strange thing. I mean no insult. I mean it as an observation."
+     ]
+    }
+   ],
+   "target_races": [
+    "Shek"
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_race_uc_hive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police",
+    "Empire Peasants",
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [],
+   "lines": [
+    {
+     "say": [
+      "A drone. Don't worry, we don't mind your kind. I mean, we don't mind hivers.",
+      "I don't mind your kind. I mind how my customers look at you.",
+      "The guards keep one hand near the blade. It isn't personal.",
+      "Welcome, welcome. Please don't stay long. Please don't frighten the others."
+     ]
+    }
+   ],
+   "target_races": [
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_unarmed_bandit",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Dust Bandits",
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "No blade, no bow, nothing. A brave way to travel.",
+      "Walking about with empty hands, friend. Brave, or lost.",
+      "You look like a man who has never been robbed. Lucky.",
+      "I don't need to threaten you. The road does that on its own.",
+      "Lost your sword, or lost your mind? Either way, mind the road."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_unarmed_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "No weapon. Either you're a fool or you're a very good fighter. I won't test it.",
+      "A man without a blade is a man who has made peace with something.",
+      "A Shek would never go barehanded. A Shek would also never go meekly.",
+      "I can see your fists. They are unconvincing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_unarmed_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A traveller without a sword. Rare. Respectable. Possibly foolish.",
+      "Good. You aren't armed. I like that. Keep it that way as long as you're in the Cities.",
+      "Unarmed out here? You're either a monk or a madman.",
+      "If anyone asks, I didn't tell you to buy a knife. Buy two."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_unarmed_lawless",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads",
+    "Hounds"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "No sword? Out here? Either you're mad or you have friends in the dark.",
+      "Walk around unarmed out here and the wastes will arm you.",
+      "A man without a blade. I'd say I feel sorry for him. But I'm out of that.",
+      "Buy a cudgel, at least. A cudgel isn't a weapon, it's a conversation.",
+      "I've seen kinder men get killed for less than an empty belt."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_unarmed_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You walk without a blade. A pilgrim or a fool, and the Flame has plenty of both.",
+      "There is virtue in an empty hand. There is also a very short life.",
+      "Unarmed, unguarded, unafraid. Blessed, or doomed.",
+      "The Holy Nation approves of those who put down the sword. It does not protect them from those who take it up."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_force_generic",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police",
+    "The Holy Nation",
+    "Dust Bandits",
+    "Holy Nation Outlaws",
+    "Drifters",
+    "Vagrants",
+    "Bar Thugs",
+    "Shinobi Thieves",
+    "Trade Ninjas",
+    "Mercenary Guild",
+    "Nomads"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_SQUAD_SIZE",
+     "who": "target",
+     "cmp": ">",
+     "value": 6
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That is a lot of feet for one road. Whose army are you, friend?",
+      "A column of fighters and a quiet road. I'd say the road is losing the argument.",
+      "Don't count them. Just don't make them count you.",
+      "I have a family. I have a post to keep. Please don't make it a battlefield.",
+      "A company that big doesn't walk. It occupies."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_force_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_SQUAD_SIZE",
+     "who": "target",
+     "cmp": ">",
+     "value": 6
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You march like a warband. That is either an insult or a compliment. I am deciding which.",
+      "A good company. A strong company. Not as strong as a hundred Shek, but strong.",
+      "If you come in numbers, come in honour.",
+      "Do you count your men, or do you count what they have killed?"
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_sneak_thieves",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shinobi Thieves",
+    "Trade Ninjas"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_SNEAKING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Crouching in the open. I'd be offended, but I admire the commitment.",
+      "You tread like a cat with a conscience. That's rare, and I don't trust it.",
+      "If you are going to steal, do it somewhere less crowded. I would hate to be an accessory.",
+      "Not bad. Not good. The footwork is fine. It is the face that gives it away."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_sneak_uc_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police",
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_IS_SNEAKING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're creeping, stranger. Honest folk don't creep.",
+      "I see you crouching there. Stand up, and explain yourself.",
+      "A man who hides is a man with something to hide.",
+      "That isn't a walk. That's a plan. Whatever it is, don't plan it near me."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_barfly_new",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Trade Ninjas",
+    "Drifters",
+    "Bar Thugs",
+    "Vagrants",
+    "Mercenary Guild",
+    "Hounds",
+    "Holy Nation Outlaws"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_NUM_DIALOG_EVENT_REPEATS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "New face. Don't worry, we all started as one.",
+      "Never seen you before. Sit, rest, and don't be a story by morning.",
+      "A stranger. Strangers are either money or trouble. Which are you?",
+      "I'd remember that face. I don't. That's almost as interesting.",
+      "Fresh off the road, by the look of the boots. Welcome to whatever this is."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_barfly_soon",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Trade Ninjas",
+    "Drifters",
+    "Bar Thugs",
+    "Vagrants",
+    "Mercenary Guild",
+    "Hounds",
+    "Holy Nation Outlaws"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": "<",
+     "value": 8
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You again. Did you forget something, or are you just fond of the scenery?",
+      "Back already? The road was not kind, I hope.",
+      "Two visits in a day. Either you like us, or something chased you in.",
+      "I was just beginning to miss you. Not really. But I was thinking about it.",
+      "Hello again. Your debt is still on my mind. It isn't as fresh as it was."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_barfly_while",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Trade Ninjas",
+    "Drifters",
+    "Bar Thugs",
+    "Vagrants",
+    "Mercenary Guild",
+    "Hounds",
+    "Holy Nation Outlaws"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": ">",
+     "value": 72
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": "<",
+     "value": 500
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I know you. A bit older, a bit thinner, a bit quicker to look at the door. How have you been?",
+      "A few days away, and the world got bigger. Did you notice?",
+      "Back from the road. The mud on your boots tells half the story. Tell me the other half.",
+      "I was starting to think the Zone had finished you. I'm glad to be wrong.",
+      "Where did you go? Don't tell me. I'm only making conversation."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_barfly_long",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Trade Ninjas",
+    "Drifters",
+    "Bar Thugs",
+    "Vagrants",
+    "Mercenary Guild",
+    "Hounds",
+    "Holy Nation Outlaws"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": ">",
+     "value": 500
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Well, well. I thought you were dead. I had even picked out your boots.",
+      "You've been gone a long while. Longer than the rum has been in the barrel.",
+      "A face from before. Last I saw you, there was a wall there. Now there's a hole.",
+      "It has been a long time. The faces change.",
+      "Do I know you? Wait. Yes. You owe me a cup."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_barfly_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Trade Ninjas",
+    "Drifters",
+    "Bar Thugs",
+    "Vagrants",
+    "Mercenary Guild",
+    "Hounds",
+    "Holy Nation Outlaws"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": ">",
+     "value": 72
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "There you are! Come sit. Tell me which of my rumours were true.",
+      "A friend returns. We have missed you, in our own awkward fashion.",
+      "You look better than the rumours said.",
+      "I kept a place for you. I wouldn't let anyone near it. Not really. But I thought about it."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_shop_new",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_NUM_DIALOG_EVENT_REPEATS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Welcome, welcome. Look, touch, ask. Buying is optional.",
+      "A new customer. My favourite kind. They haven't yet learned my prices.",
+      "Not from around here? Good. I have a special rate for strangers.",
+      "I know most of the faces in my shop. Yours is a first."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_shop_soon",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": "<",
+     "value": 8
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Back so soon? I only just restocked the thing you didn't buy.",
+      "Did I overcharge you? I do that sometimes. Tell me, I'll rethink my conscience.",
+      "You again. Come in. Browse. I'll pretend I'm not counting the crumbs you left.",
+      "Short memory, long pockets. A merchant's favourite combination."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_shop_while",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": ">",
+     "value": 72
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Look who remembered where I keep the good stock. A while now, was it not?",
+      "I put your usual to one side. Then I sold it. Then I felt bad about it. Come, I have a replacement.",
+      "I've had three better customers since you left. None more interesting.",
+      "Welcome back. Prices have changed. Mostly in my favour. Don't blame me, blame the roads.",
+      "I thought you had gone for a better dealer. I'm glad I was wrong, or I'm not."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_shop_long",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": ">",
+     "value": 500
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I recognise that coat. It has aged better than you have. What brings you back?",
+      "It has been a long time. My hair went grey. The shop lost a wall.",
+      "A long absence. I'd offer a discount. I'll offer a smile.",
+      "You were here before the roof was fixed. I remember because you mocked the roof."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_guard_new",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_NUM_DIALOG_EVENT_REPEATS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Stranger. Papers, or a good excuse. Failing both, a very good smile.",
+      "I don't know your face. That makes you either a traveller or a problem.",
+      "New here? Keep your hands where I can see them, and your opinions where I can't.",
+      "A new face in the Cities. Behave, and it will be a pleasant stay."
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_mem_guard_soon",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": "<",
+     "value": 8
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You were here a moment ago. Forget something? Carrying something?",
+      "Back again. I have a sharp memory for repeating faces.",
+      "Twice in a morning. Suspicious, or just absent-minded. I'll assume the second.",
+      "You keep coming and going. I don't mind. I only like to record it."
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_mem_guard_long",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": ">",
+     "value": 400
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I know your face. Not from a poster. Not yet.",
+      "It has been some time. I hope you've kept out of trouble. The trouble hasn't kept out of you.",
+      "Look who returns. The record says you left owing nothing.",
+      "A long while. Keep to the law. It has aged less than you have."
+     ]
+    }
+   ],
+   "in_town_of": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "ev_mem_hn_new",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_NUM_DIALOG_EVENT_REPEATS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A stranger, and unblessed. The Lord of Light welcomes all who come in peace.",
+      "I don't know your face. May the Flame show me your heart.",
+      "A newcomer. Be careful where you step. The ground is holy in places you cannot see.",
+      "Peace, traveller. Kneel, if it pleases you. Stand, if it does not. Just do not do it loudly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_hn_soon",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": "<",
+     "value": 8
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You have returned. The Flame brought you, or the road did. I can never tell which.",
+      "Again, pilgrim? You seek something. Ask, before the Flame loses patience.",
+      "I remember your face. It troubles me. It troubles everyone, in the end.",
+      "Back so quickly. A crisis of faith, or a crisis of boots?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_hn_long",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": ">",
+     "value": 400
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A long time. The Flame has burned many since. I am pleased you were not among them.",
+      "I thought the road had taken you. The Flame has a long memory and a short temper.",
+      "You return. The Holy Nation does not forget, brother. It only waits.",
+      "Many have gone and few returned. I don't ask where you went."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_shek_new",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_NUM_DIALOG_EVENT_REPEATS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A new /FLATSKIN/. Walk with your head up, and your hands visible.",
+      "I don't know you. I don't need to. State your purpose, then your name.",
+      "Strangers are tested. Pass the test. Fail it, and you won't remember it.",
+      "A fresh face on the Kingdom's road. Don't make it the last."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_shek_soon",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": "<",
+     "value": 8
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You again. Short memory or short temper?",
+      "Back? I have not finished forgetting you.",
+      "Twice in a day. Either you're brave or you're lost.",
+      "I know that stride. Walk on, quickly, before I develop an opinion."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_shek_long",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": ">",
+     "value": 400
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A long absence. Did the world beat you? You look as if it did.",
+      "I remember you, /FLATSKIN/. You're still alive. That's a small honour.",
+      "Time passes. Blades rust. You, I see, didn't.",
+      "You walk a little straighter than before. Good. A warrior may yet be made."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_skel_soon",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Skeletons"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": "<",
+     "value": 8
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I have just seen you. Or I have forgotten. Which is more likely?",
+      "Hello. Again. I'm fairly sure it's again.",
+      "You were just here. I counted my own rivets twice since.",
+      "Greetings. Your face is familiar. That's either a good sign or a faulty memory."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ]
+  },
+  {
+   "id": "ev_mem_skel_long",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Skeletons"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": ">",
+     "value": 400
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're the one from before. I kept the memory. It's the only one I could afford.",
+      "A long time has passed. I don't know how long. It was longer than I wanted.",
+      "I remember your shape. Not your name. Your name was lost to me at the second sunrise.",
+      "You return. Few do. I'll write it down, in the part of my head that still holds writing."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ]
+  },
+  {
+   "id": "ev_mem_hive_long",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": ">",
+     "value": 300
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The no-hive returns. The hive remembers. The hive remembers everything.",
+      "A face the hive has seen. The hive did not mind it then. The hive does not mind it now.",
+      "Absent, then present. The hive notes the pattern.",
+      "We saw you pass. We see you again. The road is a circle, we are told."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_slaver_back",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": ">",
+     "value": 24
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I've seen you before. I never forget a good asset.",
+      "Back, are you? I was only thinking of you. That's a little frightening, is it not?",
+      "A familiar face. Hold still. Let me remember what I paid for it.",
+      "Still free, I see. A small miracle. I wouldn't rely on it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev_wx_rain_fearful",
+   "event": "EV_ACID_RAIN",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "It burns the cloth first, then the skin. Cover up! Cover up, please, cover up!",
+      "I'm not made for weather that bites. Where's a roof? Any roof!",
+      "Do you hear that hiss? That's us. That's us being eaten, slowly.",
+      "My mother said never go outside when the sky turns that colour.",
+      "I'll drown in it. I'll melt in it. I'll do both, and not in that order."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Fearful"
+  },
+  {
+   "id": "ev_wx_rain_brave",
+   "event": "EV_ACID_RAIN",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A little acid, a little sting. I have felt worse from a bad tavern.",
+      "Keep walking. Rain has never stopped a good fighter. It only slows a coward.",
+      "If it burns, it's working. If it's working, I'm still alive.",
+      "Rain! Ha! Come at me, sky. I've seen your worst.",
+      "Pull your hood and move. Shelter is somewhere ahead. We'll find it together."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Brave"
+  },
+  {
+   "id": "ev_wx_rain_smart",
+   "event": "EV_ACID_RAIN",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Cloth burns slower than skin. Wet cloth burns slower still. Keep your boots on, keep your head down.",
+      "Stone overhangs. Dead trees. Anywhere with a ceiling. The sky doesn't apologise.",
+      "It's the dust in the air, drawn up by the heat. In a day it will pass and the ground will smell of metal.",
+      "If you must walk in it, walk fast. Standing in acid is how people become cautionary tales.",
+      "Don't drink from any puddle that's now bubbling. That should go without saying. I'm saying it anyway."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Smart"
+  },
+  {
+   "id": "ev_wx_rain_dumb",
+   "event": "EV_ACID_RAIN",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "It's raining on me! It stings! It stings a lot. Is that normal?",
+      "Why is the water angry? Did I do something to the water?",
+      "My arm smells like a hot pan. Is my arm a pan?",
+      "I opened my mouth to catch some. Don't do that. I'm telling you now, don't.",
+      "Boots, hat, skin. Skin isn't on the list of things I wanted wet."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Dumb"
+  },
+  {
+   "id": "ev_wx_rain_maniacal",
+   "event": "EV_ACID_RAIN",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "HAHAHA! The sky wants a piece of me! Let it have an arm! I have two!",
+      "Dissolve me! Dissolve all of us! The soup of the world!",
+      "I can feel every drop. Every one. Ha ha ha, it's wonderful.",
+      "The clouds bleed on us. I bleed on them.",
+      "Burn, burn, rain! I'll wear the scars like medals!"
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Maniacal"
+  },
+  {
+   "id": "ev_wx_rain_shek",
+   "event": "EV_ACID_RAIN",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The sky spits at us. A Shek spits back. We're on equal terms.",
+      "Pain is weather. Weather passes. We remain.",
+      "Wet armour, burning skin. A fine day to be Battle Born.",
+      "Let the sky try. It has not yet beaten the Kingdom."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "ev_wx_rain_hn",
+   "event": "EV_ACID_RAIN",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Lord of Light tests us with burning rain. Praise him. Praise him quickly, then run.",
+      "A holy cleansing, perhaps. Or merely weather. I can't tell, and I'm too wet to pray.",
+      "Under the cloth, brothers! The rain is a sign, but not a welcome one.",
+      "The sky burns the unworthy. I count myself among the soggy."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ]
+  },
+  {
+   "id": "ev_wx_rain_skeleton",
+   "event": "EV_ACID_RAIN",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The rain doesn't mind me. I don't mind the rain. We have reached an understanding.",
+      "Humans scatter. I walk. It's the only time I feel ahead.",
+      "Water on steel. A sound I almost remember.",
+      "Everyone else is running. I decline to hurry. I enjoy the contrast."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "races": [
+    "Skeleton"
+   ]
+  },
+  {
+   "id": "ev_wx_feet_generic",
+   "event": "EV_ACID_FEET",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The ground is chewing my boots. Chewing! This isn't a joke!",
+      "I swear my soles are melting. I can feel each toe. I have never felt each toe.",
+      "Find a rock. Find a plank. Find a friend with a back.",
+      "Burning feet, burning temper. Put both out, quickly.",
+      "Whoever made this land should have included shoes in the plan."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ]
+  },
+  {
+   "id": "ev_wx_feet_brave",
+   "event": "EV_ACID_FEET",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A stinging sole never stopped a fighter. Walk faster, that's all.",
+      "I have crossed worse. I don't remember where. But I remember it was worse.",
+      "Hop, if you must. Just don't stop."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Brave"
+  },
+  {
+   "id": "ev_wx_water_generic",
+   "event": "EV_ACID_WATER",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The water bites. Out, out, out of it!",
+      "I wouldn't wade that if you paid me. Yes, I'm wading it. No one is paying me.",
+      "My legs. My poor legs. They're going to be a very sad colour tomorrow.",
+      "Fish used to live here. Now there's only a smell.",
+      "Cross it quickly, boots high, and say nothing rude about the water."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ]
+  },
+  {
+   "id": "ev_wx_water_smart",
+   "event": "EV_ACID_WATER",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Alkali, sulphur, old waste. The stream is a sick thing. Don't drink, don't linger.",
+      "Dead water. A polite word for a poison that still looks like a river.",
+      "Wash after. Immediately. Cloth, boots, hands."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Smart"
+  },
+  {
+   "id": "ev_wx_burn_fearful",
+   "event": "EV_BURNING",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I'm on fire! Why am I on fire? I did nothing!",
+      "No no no no no. Water! Sand! A friend!",
+      "I can smell my own hair.",
+      "Please stop it burning. Please. I'll be good for the rest of my life."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Fearful"
+  },
+  {
+   "id": "ev_wx_burn_brave",
+   "event": "EV_BURNING",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Burning! Right. Roll, drop, curse, repeat.",
+      "I've been burned before. It never gets easier, but it gets quicker.",
+      "Stand back and let me slap it out. It's only a bit of fire.",
+      "Hot! Hot! Hot! But still standing."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Brave"
+  },
+  {
+   "id": "ev_wx_burn_maniacal",
+   "event": "EV_BURNING",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I AM THE TORCH! I AM THE BEACON! LOOK AT ME!",
+      "Warm! Finally warm! Do you feel it too?",
+      "Let the flame take the sleeves! Let it take the lot! I never liked those sleeves!",
+      "Ha ha! The light! The beautiful, hungry light!"
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Maniacal"
+  },
+  {
+   "id": "ev_wx_burn_hn",
+   "event": "EV_BURNING",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Flame is merciful, but it isn't gentle. Put it out.",
+      "Burning, Lord of Light! Is this a blessing? It hurts like a punishment!",
+      "If this is a test, I fail it.",
+      "It's only fire. It's only fire. It's only fire."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ]
+  },
+  {
+   "id": "ev_wx_wind_smart",
+   "event": "EV_WINDY",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The wind has turned. Dust will follow, then grit, then sand in every pocket you own.",
+      "A dry wind from the east. Nothing good rides it, but nothing deadly either.",
+      "Cover the nose and mouth with cloth. Trust me.",
+      "I can taste the desert in the air. It's a sour taste, like old coins."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Smart"
+  },
+  {
+   "id": "ev_wx_wind_dumb",
+   "event": "EV_WINDY",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The wind took my hat. The wind is a thief. I want the wind arrested.",
+      "Why does the air keep pushing me? Did I owe it something?",
+      "I have sand in my teeth. And my ears. And that other place.",
+      "Whoa. Whoa! I almost flew. I almost flew away. Do not tell anyone."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Dumb"
+  },
+  {
+   "id": "ev_wx_wind_nomad",
+   "event": "EV_WINDY",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A good wind. It cleans the sky. It also cleans the pocket, so hold on to your purse.",
+      "The wind is talking. I only wish it would talk about something useful.",
+      "Wind from the south means dry. Wind from the north means trouble.",
+      "Keep your bull close and your hat closer."
+     ]
+    }
+   ],
+   "factions": [
+    "Nomads",
+    "Drifters"
+   ]
+  },
+  {
+   "id": "ev_wx_wind_skeleton",
+   "event": "EV_WINDY",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The wind whistles through my ribs. It's a lovely tune. I won't tell anyone I like it.",
+      "Sand finds every joint. Every single one. I'll be a month cleaning it out.",
+      "I could pretend to be a flute. I choose not to."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "races": [
+    "Skeleton"
+   ]
+  },
+  {
+   "id": "ev_wx_gas_fearful",
+   "event": "EV_POISON_GAS",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I can't breathe! I can't breathe!",
+      "The air tastes like a coffin. Get me out of it!",
+      "It is in my lungs. It is in my head. It is in everything!",
+      "Why does it smell like a graveyard that's on fire?"
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Fearful"
+  },
+  {
+   "id": "ev_wx_gas_smart",
+   "event": "EV_POISON_GAS",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Hold your breath, move upwind, and don't cough.",
+      "Heavier than air. Stay high, stay moving, stay calm.",
+      "The cloud will thin in a minute. Not in two.",
+      "Cover your face. I do not care with what."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Smart"
+  },
+  {
+   "id": "ev_wx_gas_brave",
+   "event": "EV_POISON_GAS",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A cough never killed a warrior. A cloud might.",
+      "Grit your teeth and walk through. It can't be longer than a hundred paces.",
+      "I'll hold my breath until the end of the world, if that's what it takes."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Brave"
+  },
+  {
+   "id": "ev_wx_gas_skeleton",
+   "event": "EV_POISON_GAS",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I don't breathe. I do, however, remember it. I'm sorry for those who do.",
+      "The cloud passes through me like a rumour.",
+      "A strange thing, being the one who is not poisoned. I do not know whether to feel lucky."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "races": [
+    "Skeleton"
+   ]
+  },
+  {
+   "id": "ev_wx_leg_brave",
+   "event": "EV_LOST_LEG",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Gone. Clean gone. Well. Now I know how it feels.",
+      "I will walk again. Maybe not on that. But I will walk.",
+      "A leg is a small price for a long life.",
+      "Don't look at it. I don't want to see your face when you look at it."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Brave"
+  },
+  {
+   "id": "ev_wx_leg_fearful",
+   "event": "EV_LOST_LEG",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "My leg! My leg isn't where my leg was! Where's it?",
+      "I can't stand. I can't run. I can't do anything but scream. And I'm doing that.",
+      "Tell me it is still there. Tell me.",
+      "It hurts less than I thought. That's the frightening part."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Fearful"
+  },
+  {
+   "id": "ev_wx_leg_maniacal",
+   "event": "EV_LOST_LEG",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Ha! Ha! One fewer to keep track of!",
+      "Bring me a replacement! Bring me a stick! Bring me a dog!",
+      "I always wanted to know how it felt. Now I know.",
+      "Hop, hop, hop. The world is smaller on one foot."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Maniacal"
+  },
+  {
+   "id": "ev_wx_leg_shek",
+   "event": "EV_LOST_LEG",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A leg is a leg. A warrior fights from his knees if he must.",
+      "The Kingdom doesn't weep for the lost.",
+      "A debt paid in meat. I regret nothing and I regret everything."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "ev_wx_leg_skeleton",
+   "event": "EV_LOST_LEG",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A spare part would be welcome. A spare part would be very welcome.",
+      "I'll find another. I always find another. That's the secret of my kind.",
+      "Please don't step on it."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "races": [
+    "Skeleton"
+   ]
+  },
+  {
+   "id": "ev_wx_arm_brave",
+   "event": "EV_LOST_ARM",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "An arm. Hm. I had two. Now I have one and a good story.",
+      "It hurts. Obviously. But so does everything.",
+      "One arm is enough to hold a blade. Two arms were a luxury."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Brave"
+  },
+  {
+   "id": "ev_wx_arm_fearful",
+   "event": "EV_LOST_ARM",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "It's gone! My arm! It was right here a moment ago!",
+      "I cannot hold anything now. Not a sword, not a cup, not a hand. A hand!",
+      "Will I bleed out? Tell me I won't. I don't want to bleed out in a ditch.",
+      "My arm. My arm. My arm. I'm only saying it so that it's true."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Fearful"
+  },
+  {
+   "id": "ev_wx_arm_hn",
+   "event": "EV_LOST_ARM",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Lord of Light takes what he will. I do not have the right to complain.",
+      "A sacrifice. A small one. A big one, actually. I think it was a big one.",
+      "May the Flame forgive whoever did this. May the Flame also arrive soon with bandages."
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ]
+  },
+  {
+   "id": "ev_wx_arm_honorable",
+   "event": "EV_LOST_ARM",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "It was a fair blow. I won't call it anything else.",
+      "I give no curse to the one who took it. I give a promise: I'll remember.",
+      "A lost arm is a debt. Someone will pay it, in time."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Honorable"
+  },
+  {
+   "id": "ev_wx_peace_honorable",
+   "event": "EV_GET_UP_PEACE",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I was beaten. I accept it. I only wish I had seen the blow.",
+      "The ground is a poor pillow, but an honest one. Where is my sword?",
+      "I won't take up arms again today. I have learned a lesson, and it was sore."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Honorable"
+  },
+  {
+   "id": "ev_wx_peace_traitorous",
+   "event": "EV_GET_UP_PEACE",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I fell on purpose. Don't look at me like that.",
+      "Anyone see who hit me? Good. Keep it that way. I have a few thoughts on revenge.",
+      "I could have stayed down longer. I chose not to. It was generous of me."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Traitorous"
+  },
+  {
+   "id": "ev_wx_peace_smart",
+   "event": "EV_GET_UP_PEACE",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Concussion. Mild. Nausea. Moderate. Pride. Severe. Where did I put my boots?",
+      "Count the fingers. One, two, three. All here. All mine.",
+      "I'll remember who was standing over me. Everyone, in case I need to ask."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Smart"
+  },
+  {
+   "id": "ev_wx_peace_dumb",
+   "event": "EV_GET_UP_PEACE",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "What happened? Did I win? I feel like I won. Why am I on the ground?",
+      "My head is making noises. It isn't supposed to do that.",
+      "Is it morning? It isn't morning. Why did I think it was morning?",
+      "I had a dream about bread. It was wonderful. Then someone hit me."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Dumb"
+  },
+  {
+   "id": "ev_wx_peace_fearful",
+   "event": "EV_GET_UP_PEACE",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Am I dead? No. No, the pain says otherwise. Thank you, pain.",
+      "Please don't hit me again. I'll do anything. I'll do nothing. I'll do whatever you prefer.",
+      "I'll stay very small and very quiet.",
+      "Who was that? Were they angry? I think they were angry."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Fearful"
+  },
+  {
+   "id": "ev_wx_peace_shek",
+   "event": "EV_GET_UP_PEACE",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I was beaten. I'm alive. Both are lessons.",
+      "I'll rise, and I'll remember the one who struck me.",
+      "A warrior does not curse the ground. He studies it."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "ev_wx_fight_brave",
+   "event": "EV_GET_UP_FIGHT",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Down but not out. Come here, and I'll show you a second chance.",
+      "I felt that one. Now you feel mine.",
+      "Not yet! Not today! Not like this!",
+      "Is that all you have? Then I'll return the favour."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Brave"
+  },
+  {
+   "id": "ev_wx_fight_maniacal",
+   "event": "EV_GET_UP_FIGHT",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Oh, that tickled! Do it again!",
+      "Back from the dead! The dead are always hungry!",
+      "Aaaah, you made me angry. How wonderful for both of us.",
+      "I've been hit by worse. I have BEEN worse."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Maniacal"
+  },
+  {
+   "id": "ev_wx_fight_fearful",
+   "event": "EV_GET_UP_FIGHT",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I'm up! I'm up! Please don't hit me while I'm standing!",
+      "Why is the fight still going? Did nobody tell it to stop?",
+      "I'm not ready. I was never ready. I'm just standing.",
+      "Stay away! Stay away! I'm armed!"
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Fearful"
+  },
+  {
+   "id": "ev_wx_fight_smart",
+   "event": "EV_GET_UP_FIGHT",
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Count the exits. Count the enemies. Subtract the ones I can outrun.",
+      "Up, assess, retreat or counter. In that order.",
+      "They think I'm beaten. Let them. It's a useful mistake."
+     ]
+    }
+   ],
+   "packages": [
+    "all"
+   ],
+   "personality": "Smart"
+  },
+  {
+   "id": "ev_wx_fight_hn",
+   "event": "EV_GET_UP_FIGHT",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Flame hasn't finished with me yet!",
+      "I rise in the name of the Lord of Light!",
+      "No corpse of mine will lie in the dirt when the Flame has a use for it!"
+     ]
+    }
+   ],
+   "factions": [
+    "The Holy Nation"
+   ]
+  },
+  {
+   "id": "ev_wx_fight_shek",
+   "event": "EV_GET_UP_FIGHT",
+   "chance": 35,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I fall, I rise. That's the whole of it.",
+      "A true Shek is never beaten.",
+      "Down? Hah. Down is just another way to look up at you.",
+      "My blood is Battle Born. It doesn't stay on the ground."
+     ]
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "ev_mem_medic_new",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hurt? Bleeding? Either way, mind the blood. Not on my boots, please.",
+      "Medics Guild. We mend what we're paid to mend. Ask for a price before you ask for a favour.",
+      "If you're carrying anyone who can't walk, I'd see them first. The rest can wait their turn.",
+      "Bandages, splints, stitches. No miracles. Those are sold elsewhere, at a worse rate.",
+      "Show me the wound. Don't tell me how it happened. I'd rather work without the story."
+     ]
+    }
+   ],
+   "factions": [
+    "Medics Guild"
+   ],
+   "packages": [
+    "EV Medics Guild"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_NUM_DIALOG_EVENT_REPEATS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_medic_soon",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "chance": 15,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Back already? Either you healed fast or you broke something new.",
+      "We only just spoke. Try to leave it a day before you come back bleeding.",
+      "Back again. Do try to keep yourself in one piece this time.",
+      "You look no worse than last time. That isn't praise. It's a low standard."
+     ]
+    }
+   ],
+   "factions": [
+    "Medics Guild"
+   ],
+   "packages": [
+    "EV Medics Guild"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": "<",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_medic_while",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "chance": 17,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Look who walked in under their own power. I had you down as a lesson in a ditch.",
+      "A while now. I don't keep charts, I keep faces. Yours I kept.",
+      "Still in one piece? I charge for pessimism, so I'll say nothing.",
+      "You look like you've had a busy season. Busy seasons are good for the guild."
+     ]
+    }
+   ],
+   "factions": [
+    "Medics Guild"
+   ],
+   "packages": [
+    "EV Medics Guild"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": ">",
+     "value": 72
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_peasant_new",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hello, stranger. If you have work, I have time. If you have coin, I have more time.",
+      "A new face. Good. The old ones tell the same stories. Tell me one that ends differently.",
+      "Peace on the road, traveller. We keep our heads down here, but we keep them friendly.",
+      "Stranger. I'm only a peasant. I know nothing, own nothing, and have opinions about both.",
+      "You aren't from this stretch. Keep to the paths and nobody will mind."
+     ]
+    }
+   ],
+   "factions": [
+    "Empire Peasants"
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_NUM_DIALOG_EVENT_REPEATS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_peasant_soon",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "chance": 15,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You again. Still alive. That makes you better at it than most.",
+      "Back, then. I wasn't worried. I was watching the road, in case I became worried.",
+      "Good to see you. Do not look so surprised. We do speak to those we have already met.",
+      "Same face, different dust on it. Stay a moment, if you want. Standing is free as well."
+     ]
+    }
+   ],
+   "factions": [
+    "Empire Peasants"
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": "<",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "id": "ev_mem_peasant_while",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "chance": 17,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Look at you, back from the road. I thought the road had kept you.",
+      "A good while. The rumours grew in your absence. Which would you like to hear?",
+      "I remember your face. Less dust on it then. Tell me where it has been.",
+      "You have been gone long enough that I started telling people you were a story."
+     ]
+    }
+   ],
+   "factions": [
+    "Empire Peasants"
+   ],
+   "packages": [
+    "Npc CIVILIAN Basic 1"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_MET_TARGET_BEFORE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "me",
+     "cmp": ">",
+     "value": 72
+    }
+   ]
+  }
+ ],
+ "packages_new": [
+  {
+   "name": "EV Medics Guild",
+   "tag": "Living Wasteland"
+  }
+ ],
+ "changes": [
+  {
+   "kind": "character",
+   "name": "Medics guard",
+   "ref_add": {
+    "dialogue package": [
+     [
+      "EV Medics Guild",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  }
+ ]
+}

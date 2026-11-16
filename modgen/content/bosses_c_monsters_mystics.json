@@ -1,0 +1,4420 @@
+{
+ "pack": "bosses_c",
+ "world_states": [
+  {
+   "name": "Eyegore killed by player",
+   "npc": "Eyegore",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Eyegore imprisoned by player",
+   "npc": "Eyegore",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Longen killed by player",
+   "npc": "Longen",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Longen kidnapped by player",
+   "npc": "Longen",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Gorrillo killed by player",
+   "npc": "Gorrillo",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Gorrillo imprisoned by player",
+   "npc": "Gorrillo",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Grey killed by player",
+   "npc": "Grey",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Grey imprisoned by player",
+   "npc": "Grey",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Ghost killed by player",
+   "npc": "Ghost",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Ghost imprisoned by player",
+   "npc": "Ghost",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Fog Prince killed by player",
+   "npc": "Fog Prince",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Fog Prince imprisoned by player",
+   "npc": "Fog Prince",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Mad Cat-Lon killed by player",
+   "npc": "Mad Cat-Lon",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Mad Cat-Lon imprisoned by player",
+   "npc": "Mad Cat-Lon",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Shade killed by player",
+   "npc": "Shade",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Shade imprisoned by player",
+   "npc": "Shade",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Sand Ninja Oni killed by player",
+   "npc": "Sand Ninja Oni",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Sand Ninja Oni imprisoned by player",
+   "npc": "Sand Ninja Oni",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Queen of the South killed by player",
+   "npc": "Queen of the South",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Queen of the South imprisoned by player",
+   "npc": "Queen of the South",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Vault Warden killed by player",
+   "npc": "The Vault Warden",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Vault Warden imprisoned by player",
+   "npc": "The Vault Warden",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Cannibal Grand Wizard killed by player",
+   "npc": "Cannibal Grand Wizard",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Cannibal Grand Wizard imprisoned by player",
+   "npc": "Cannibal Grand Wizard",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "Meat Lord killed by player",
+   "npc": "Meat Lord",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "Meat Lord imprisoned by player",
+   "npc": "Meat Lord",
+   "is": "imprisoned",
+   "player": true
+  },
+  {
+   "name": "General Jang killed by player",
+   "npc": "General Jang",
+   "is": "dead",
+   "player": true
+  },
+  {
+   "name": "General Jang imprisoned by player",
+   "npc": "General Jang",
+   "is": "imprisoned",
+   "player": true
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "bc_eyegore_alive_uc_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Imperial Lords",
+    "Empire Peasants",
+    "Police"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Eyegore doesn't argue with a problem. He ends it, and then the problem is a report.",
+      "I've seen him once, on the Heng road. The crows moved to the other side.",
+      "The Captain-General has never once been late. Think about what that means.",
+      "Nobles whisper that the Empire has one answer to every question, and it's armoured.",
+      "He was bred in the South and sent north to be useful. He is very useful.",
+      "Pay your taxes. Eyegore is what the taxes are for."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     false
+    ],
+    [
+     "Eyegore imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_alive_enemies_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Anti-Slavers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Their general is a Hiveless drone. Even the Hive wouldn't take him back, and the Empire made him a god of war.",
+      "I heard Eyegore walked through a shield wall like it was wet paper. I heard it from a man missing the shield.",
+      "Put the Cities out of mind, they say. Put Eyegore out of mind. One of those is easier.",
+      "Nobody I know has fought him twice. That tells you something about the first time.",
+      "Hiveless and southern-born and the Empire's finest edge. I would be curious about him, if I were less afraid."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     false
+    ],
+    [
+     "Eyegore imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_alive_hive_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Empire's soldier is no-hive. A lost one, bent into serving them. The hive doesn't take him back.",
+      "We hear of the lost one called Eyegore. He walks like a drone and kills like none of us. We don't say his name twice.",
+      "Hiveless, and the Empire calls him captain. The hive would have used him better.",
+      "No-hive, and still he obeys. We obey because we're one. What does he obey?",
+      "Stay off the roads where the Empire's samurai ride. The lost one rides behind them."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     false
+    ],
+    [
+     "Eyegore imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_alive_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Dust Bandits",
+    "Scavengers",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Bounty Hunters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There's a drone in the Empire they send when everything else has failed. That's all I know.",
+      "Stay off the roads where samurai ride in fives.",
+      "People say Eyegore never sleeps. Probably untrue. Probably he just doesn't need to.",
+      "Wronged the Cities badly enough, and the last thing you see is a Captain-General.",
+      "Everyone I have met who talks about Eyegore is lighter in the pocket and longer in the silence.",
+      "A soldier drone with an empire's boot behind him. Don't be what he's aimed at."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     false
+    ],
+    [
+     "Eyegore imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_killed_uc_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Imperial Lords",
+    "Empire Peasants",
+    "Police"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Eyegore is dead. Say it again and tell me it still sounds like a thing that can happen.",
+      "The Captain-General fell and the barracks went so quiet I could hear a ledger turning.",
+      "Somebody has to tell Lord Tengu's court. I'm glad it won't be me.",
+      "They carried him in on a gate. A samurai wept and tried to pass it off as dust.",
+      "The Empire leaned on him for a lifetime. Now we all lean on nothing.",
+      "Whatever was coming for the next trouble, it just lost its edge."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_killed_neigh_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Eyegore, the Empire's mad dog, in the dirt. The Flame does not call it a mercy aloud, but it is one.",
+      "The Cities lost their great blade. Say what you like of the heretic who did it, the roads are safer.",
+      "Hiveless to the end. Even in dying he belonged to no one. A pity, and a mercy.",
+      "Everyone on this side of the border is breathing lighter. Everyone on that side has gone to count their soldiers.",
+      "The Empire's captain is down. Pray the next is not cleverer."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_killed_hive_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The lost one called Eyegore is dead. He belonged to no hive. We didn't know him.",
+      "A no-hive drone fell in the Empire's service. The hive doesn't mourn the lost.",
+      "We hear the Empire's soldier is gone. We feel nothing. We aren't sure why we say it twice.",
+      "Hiveless to the end. Even the dead need a hive.",
+      "Someone broke what the Empire made. The hive watches the one who did."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_killed_antislaver_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Eyegore, the Empire's mad dog, in the dirt. I'd buy the one who did it a drink and then keep a wall between us.",
+      "The Cities lost their great blade. I won't call it a mercy aloud, but it's one.",
+      "Someone put Eyegore down. Whoever it was, the Cities will be watching the roads for them.",
+      "He was a slave too, in his way, bent to the Empire's will. I won't mourn him. I won't cheer either.",
+      "One less leash in the Empire's hand. Spring will hear of it tonight."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_killed_shek_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A flatskin put Eyegore down. Remarkable. The Shek will remember the name and watch the road.",
+      "The Empire's mad dog is dead. A Shek would have done it with more ceremony, but I will not complain.",
+      "Hiveless in life, nameless in death. Even a warrior deserves a name on the stone.",
+      "The Cities lost their great blade. Their soldiers will want revenge. Honour won't be theirs.",
+      "I'd have met him sword to sword. Whoever did it took that from me, and I'm almost grateful."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_killed_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Dust Bandits",
+    "Scavengers",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Bounty Hunters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I heard Eyegore fell. Not to a battle. To a cut. A single cut, with the whole Empire watching.",
+      "They say the Captain-General died at the hands of a hundred. Or one.",
+      "The Empire is bleeding somewhere south. A great soldier gone, and every thief in Heng is grinning.",
+      "Somebody finished Eyegore. Don't ask me who. Nobody who knows is saying.",
+      "A wall fell in the Cities. Only a man, they tell me, but a wall.",
+      "Whoever it was, I hope they enjoy a short and well-defended life."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_imprisoned_uc_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Imperial Lords",
+    "Empire Peasants",
+    "Police"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Eyegore in a cage. I have to say it twice to make my mouth believe it.",
+      "The Captain-General is a prisoner. There's a price on his return, and a bigger one on those who took him.",
+      "I keep waiting for a samurai squad to ride out and settle it. Perhaps they're waiting too.",
+      "They didn't kill him. They kept him. That's worse, in the way it leaves a door open.",
+      "Taken alive, gods help us. Whoever has Eyegore has the Empire's undivided attention."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_imprisoned_neigh_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Eyegore is in chains. The Flame has a great many uses for a soldier like him, and for the one who holds the key.",
+      "A cage for the Cities' best blade. I wonder who feeds him, and what he thinks about while he eats.",
+      "Eyegore alive and held. The Empire will tear the plains up looking, so do not be the plains.",
+      "Better a living Eyegore in a cell than a dead one in a legend. Dead ones do not bargain.",
+      "A Hiveless drone in a cell. Even a heretic's cage is kinder than the Empire's leash."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_imprisoned_hive_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The lost one is held in a cage. We feel the empty place where a hive would be.",
+      "No-hive, and in a cage. The hive wouldn't have kept him so. The hive would have used him.",
+      "The one the Empire made is held. We watch the one who holds him.",
+      "We hear the Empire searches. The hive doesn't search."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_imprisoned_antislaver_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Eyegore held, and Grey would want to talk to him.",
+      "A cage for the Empire's best blade. A soldier is a slave too, with a different collar.",
+      "If anyone can make a lost one remember being a drone, it's us.",
+      "Better him in a cell than on the roads. Whoever holds him, do not let him loose."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_imprisoned_shek_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Eyegore is caged. A warrior should die on the field, not wait in a cell. Even for him, a cruelty.",
+      "A flatskin holds the Empire's blade. The Shek will watch to see how long he keeps it.",
+      "Hiveless and held. The Stone Golem would not weep for him.",
+      "The Empire will tear the plains up looking. Let them. The Shek have watched armies pass before."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_imprisoned_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Dust Bandits",
+    "Scavengers",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Bounty Hunters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I heard they took the Captain-General alive. Alive! Nobody takes anyone like that alive.",
+      "Eyegore is somebody's prisoner. That sentence has never been true before this season.",
+      "There's a drone in a cell somewhere who used to be the worst thing in the Empire. Now he's a rumour.",
+      "Do you know what the Empire pays for a general back? I don't either, but I hear it's more than the whole bar.",
+      "They didn't kill the Empire's blade, they borrowed him."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_eyegore_killed_uc_hostile",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Imperial Lords",
+    "Empire Peasants",
+    "Police"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're the one who ended Eyegore. The Empire has a long memory and a short list of names, and you're on it."
+     ],
+     "effects": [
+      [
+       "DA_ASSIGN_BOUNTY",
+       3000
+      ]
+     ]
+    },
+    {
+     "say": [
+      "There's a ledger for what you owe now. Eyegore alone is more than your whole life."
+     ],
+     "effects": [
+      [
+       "DA_ASSIGN_BOUNTY",
+       3000
+      ]
+     ]
+    },
+    {
+     "say": [
+      "That's the face. That's the face that did it."
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    },
+    {
+     "say": [
+      "You cost us our Captain-General. I'll cost you the rest.",
+      "Murderer of the army's right hand. Run, if you must. It will be a short run."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_eyegore_imprisoned_uc_hostile",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Imperial Lords",
+    "Empire Peasants",
+    "Police"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You hold Eyegore. Give him back, or watch how much heavier the Empire can be."
+     ],
+     "effects": [
+      [
+       "DA_ASSIGN_BOUNTY",
+       3000
+      ]
+     ]
+    },
+    {
+     "say": [
+      "You kidnapped the Captain-General. Nobody is that brave.",
+      "Every blade in the Cities is looking for you. We only hope to find you first.",
+      "Release him, and I may see to it that your death is a quick one."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore imprisoned by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_eyegore_killed_southern_hive",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Southern Hive"
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hiveless one is gone. No hive weeps.",
+      "This one was Southern once. Not any more. Not ever. It's better this way.",
+      "The Faraway empire lost a drone. We don't count it a loss.",
+      "Fallen: a soldier with no queen. The queen would say nothing."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_eyegore_killed_neutral_awe",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Dust Bandits",
+    "Starving Bandits",
+    "Scavengers",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Reavers",
+    "Skin Bandits",
+    "Red Sabres",
+    "Crab Raiders",
+    "Grass Pirates",
+    "Black Dog",
+    "Stone Rats",
+    "Twinblades",
+    "Blackshifters",
+    "Bounty Hunters"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You. The one they say put Eyegore down. Don't stand near me, the Empire watches me too.",
+      "A soldier drone, a captain-general, and you. The world is changing. I don't like how it sounds.",
+      "Careful. Anyone who killed Eyegore has people hunting them who also watch from windows.",
+      "I won't ask. I'll say only: good, and also, please move along.",
+      "There's a sort of silence that follows you. It's the silence of a road with fewer soldiers on it."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     true
+    ]
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bc_eyegore_killed_ally_thanks",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Anti-Slavers",
+    "Shek Kingdom",
+    "Flotsam Ninjas"
+   ],
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Eyegore ended. That chain won't close on us this season. You have our thanks, and our caution.",
+      "Many of us marched into his spears in the old days. You marched out.",
+      "A great weight left the world when he fell. I won't say the name again, to save us the shiver."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       2
+      ]
+     ]
+    },
+    {
+     "say": [
+      "We have stories of the Captain-General. Now we have a better one: how he ended."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_eyegore_imprisoned_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Dust Bandits",
+    "Starving Bandits",
+    "Scavengers",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Reavers",
+    "Skin Bandits",
+    "Red Sabres",
+    "Crab Raiders",
+    "Grass Pirates",
+    "Black Dog",
+    "Stone Rats",
+    "Twinblades",
+    "Blackshifters",
+    "Bounty Hunters"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I heard you're holding Eyegore. Don't tell me where. Don't tell me anything.",
+      "A cage with that inside it must be heavy to keep. I almost envy you the weight.",
+      "You took the Captain-General alive and walk about with that face? Brave.",
+      "I'd feed him well, if it were me. A well-fed monster is only half a monster."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore imprisoned by player",
+     true
+    ]
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bc_longen_on_eyegore_dead",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "My Captain-General is dead and you stand before me. Convenient that I can't deduct it from your fee.",
+      "Eyegore was my insurance. You have made me uninsured. We shall negotiate that.",
+      "Nobody breathes in this hall without wondering if they're next. You did that.",
+      "I paid for that soldier's every breath. The price you owe isn't small."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     true
+    ]
+   ],
+   "characters": [
+    "Longen"
+   ]
+  },
+  {
+   "id": "bc_grey_on_eyegore_imprisoned",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You hold Eyegore alive. Good. A man like that is more use turned than broken.",
+      "Don't harm him more than the work needs. A soldier is a slave too, with a different collar.",
+      "I'd speak to him, if you'll allow it. Chains teach nothing, but sometimes a listener does.",
+      "He was a drone before he was a weapon. I want to find the drone again."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore imprisoned by player",
+     true
+    ]
+   ],
+   "characters": [
+    "Grey"
+   ]
+  },
+  {
+   "id": "bc_longen_alive_tg_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "Free Traders",
+    "Slave Traders"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Longen counts the cats and the cats are afraid to be counted wrong.",
+      "The throne room in Trader's Edge has a view of everything that's for sale.",
+      "I've never seen him, but I have paid him. Every merchant has. That's its own kind of seeing.",
+      "He doesn't tax, he assesses. There's a difference, and he will explain it very slowly.",
+      "There's a story the Guild has no door he can't open. Another says he has no door he can't close.",
+      "The nobles swear to him before they swear to anyone. Tengu holds the sword."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     false
+    ],
+    [
+     "Longen kidnapped by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_longen_alive_slaves_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Rebel Farmers",
+    "Vagrants",
+    "Nomads"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Trader's Edge buys and sells people the way other towns sell bread. Longen owns the shop, the bread, and the bakers.",
+      "When a chain breaks in the Cities, I think somewhere Longen frowns and writes down the cost.",
+      "Tinfist rails against him and Longen yawns. The yawn is more frightening than the rails.",
+      "Everyone owes the Guild something. Longen only collects.",
+      "He's smart. That's what you must remember. A fool on a throne can be forgotten, he can't.",
+      "I won't speak of him within sight of a Guild shop. Even walls there carry weight."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     false
+    ],
+    [
+     "Longen kidnapped by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_longen_alive_antislaver_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Trader's Edge buys and sells people the way other towns sell bread. Longen owns the shop, the bread, and the bakers.",
+      "Every collar I have cut was paid for with Guild coin.",
+      "When a chain breaks in the Cities, I think somewhere Longen frowns and writes down the cost.",
+      "Tinfist rails against him and Longen yawns. The yawn is more frightening than the rails.",
+      "He's smart. That's what we must remember. A fool on a throne can be forgotten, he can't."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     false
+    ],
+    [
+     "Longen kidnapped by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_longen_alive_slave_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Slaves"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Trader's Edge buys and sells people the way other towns sell bread. Longen owns the shop, the bread, and the bakers.",
+      "Every collar I have ever worn was warmed by a Guild coin.",
+      "When a chain breaks in the Cities, I think somewhere Longen frowns and writes down the cost.",
+      "Tinfist rails against him and Longen yawns. The yawn is more frightening than the rails.",
+      "I won't speak of him within sight of a Guild shop. Even walls there carry weight."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     false
+    ],
+    [
+     "Longen kidnapped by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_longen_alive_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Dust Bandits",
+    "Scavengers",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Bounty Hunters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Whoever holds the roads holds the trade, and the Guild holds the roads. Whoever holds the Guild is called Longen.",
+      "You can buy anything from his people. Anything. Ask a slave if you doubt it.",
+      "A trader from Heng told me the king of commerce never leaves his chair.",
+      "There are men who run empires and men who own them. I am told Longen is the second kind.",
+      "He would sell a flood to a fish, and the fish would sign."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     false
+    ],
+    [
+     "Longen kidnapped by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_longen_killed_local_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "Slave Traders",
+    "Imperial Lords"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Longen is dead. The market in Trader's Edge stopped for an hour. First time in my life.",
+      "They're already arguing over his chair. Nobody is brave enough to sit in it.",
+      "Without him, who signs the manifests? Who buys the debts? We're a ship without a keel.",
+      "I lit a lamp for the old accountant and then checked my own books for threats.",
+      "The man who owned the slave trade of an empire went down like anyone else. I keep turning it over.",
+      "Prices are already moving. A kingmaker dies, and the cats wake up trembling."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_longen_killed_neigh_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Free Traders",
+    "Anti-Slavers",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Mercenary Guild",
+    "Tech Hunters"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Guild lost its head. The Free Traders will pretend to mourn and be selling in his markets by month's end.",
+      "Longen dead? Then the roads are a little less owned. Some of us call that a good day.",
+      "I have no love for traders, yet even I notice the quiet where Longen used to hum.",
+      "Somebody took the largest slaver in the Empire off the board. Whoever it was did us a favour we can't repay.",
+      "It will take years for the Guild to bury him properly and about a week for it to bury the story."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_longen_killed_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Dust Bandits",
+    "Scavengers",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Bounty Hunters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The king of the markets was killed. I heard it from three merchants. Each said a different year.",
+      "Longen is dead, they say. Can a thing like that die? I always thought him furniture.",
+      "Somebody cut the throat of the Empire's purse. Prices in the south have been wild since.",
+      "A slaver of that size, and nobody mourns him loudly. That is its own sort of epitaph.",
+      "A man in a throne room died, and half the continent breathed out."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_longen_kidnapped_local_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "Slave Traders",
+    "Imperial Lords"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "They took Longen. Alive. The Guild is offering a ransom nobody will pay in full.",
+      "Silence in the Edge. His own guards are staring at their boots.",
+      "An empire's worth of debts, and the man holding the ledger is in a cell. Imagine the creditors.",
+      "I don't know what's worse for us. If he returns, or if he doesn't.",
+      "Longen in a cage. I thought only slaves could be told what to eat."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen kidnapped by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_longen_kidnapped_neigh_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Free Traders",
+    "Anti-Slavers",
+    "Mercenary Guild",
+    "Drifters",
+    "Nomads",
+    "Rebel Farmers",
+    "Hounds",
+    "Swampers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Guild's master is held. For once, someone else is setting a price.",
+      "Taken alive, I heard. A hostage worth a thousand slaves. What would you ask for?",
+      "Longen caged. The jokes write themselves, and every one of them costs a coin to tell.",
+      "I hope he is learning the weight of the iron he sold.",
+      "They kept him breathing. Someone is very patient, or very greedy.",
+      "A man who can buy anything finally finds something that isn't for sale: his own door."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen kidnapped by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_longen_killed_tg_hostile",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "Slave Traders"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're the one that killed our master. The Guild shall find its own accounting for that."
+     ],
+     "effects": [
+      [
+       "DA_ASSIGN_BOUNTY",
+       6000
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Longen's blood on your hands, and you walk our road."
+     ],
+     "effects": [
+      [
+       "DA_ASSIGN_BOUNTY",
+       6000
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Whatever you carry, you carry over his grave. The Guild collects on every debt.",
+      "I swore my oath to him before I swore any other. Have your death, stranger, and make it quick."
+     ]
+    },
+    {
+     "say": [
+      "He wasn't kind. He wasn't just. He was mine. I'll take you for it."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_longen_kidnapped_tg_hostile",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "Slave Traders"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Where's the Guildmaster? Tell me, or I'll carve it out of you."
+     ],
+     "effects": [
+      [
+       "DA_ASSIGN_BOUNTY",
+       5000
+      ]
+     ]
+    },
+    {
+     "say": [
+      "You hold Longen? The ransom was always going to be your life. You didn't read the terms.",
+      "He fixed prices for kings. What do you imagine he has done to yours?",
+      "Release him, and I'll let you hope for a quick end."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen kidnapped by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_longen_killed_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Dust Bandits",
+    "Starving Bandits",
+    "Scavengers",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Reavers",
+    "Skin Bandits",
+    "Red Sabres",
+    "Crab Raiders",
+    "Grass Pirates",
+    "Black Dog",
+    "Stone Rats",
+    "Twinblades",
+    "Blackshifters",
+    "Bounty Hunters",
+    "Anti-Slavers"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You killed Longen. I don't need telling. The way people step aside makes it plain.",
+      "You do realise half the roads in the Empire were his, do you not? And the other half were also his.",
+      "Strange. I expected a monster. You look quite ordinary.",
+      "Hush. If a Guild man hears I spoke to you, I lose a customer and a hand."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     true
+    ]
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bc_longen_killed_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Anti-Slavers",
+    "Rebel Farmers",
+    "Flotsam Ninjas",
+    "Shek Kingdom"
+   ],
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Longen is gone. Listen to the roads. Quiet.",
+      "Thousands wore his collars. Few will ever tell you his name without spitting after.",
+      "You cut the largest chain in the world. We'll carry the thanks of it as far as our own can go."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       3
+      ]
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_longen_kidnapped_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Anti-Slavers",
+    "Rebel Farmers",
+    "Flotsam Ninjas"
+   ],
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You hold the Guildmaster. Don't let him speak too much. He sells with a mouth.",
+      "Alive, then. Good. Let him count the days the way his slaves did.",
+      "If the iron fits, use it. If it doesn't, find iron that does."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen kidnapped by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_grey_on_longen_dead",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Longen dead. Tinfist will hear of it. He may not say anything. He may not need to.",
+      "You've done what we spoke of for years. We shall not make a song of it, but we'll remember.",
+      "I have been taught the dead can't be wronged further. I'm still glad it's him who's dead.",
+      "A slaver of that size, finished. Do you feel lighter? Some do."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     true
+    ]
+   ],
+   "characters": [
+    "Grey"
+   ]
+  },
+  {
+   "id": "bc_warden_on_longen_dead",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Guildmaster is dead. That leaves me with the same prisoners and fewer people to blame.",
+      "Fascinating. You walk in here on the heels of Longen's death. I am almost impressed.",
+      "Don't look so pleased. The one who replaces him will have the same appetite, with fewer manners.",
+      "Longen gone, and Tengu's Vault still has a lock. The world is stubborn, is it not?"
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     true
+    ]
+   ],
+   "characters": [
+    "The Vault Warden"
+   ]
+  },
+  {
+   "id": "bc_gorrillo_alive_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Hounds",
+    "Vagrants"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Old Prison has a big something living in it. Big, and bored, and very touchy about names.",
+      "Don't call him a gorilla. Don't call him anything. Don't go near the Old Prison, in fact.",
+      "I saw a man thrown from the Old Prison wall. He landed far past where a man ought to land.",
+      "They tell me Gorrillo cries when he loses at games. I tell them I do not plan to be there to see.",
+      "The Gorrillo Bandits are the only ones who can say his name without wincing. They wince later.",
+      "Something in the Old Prison eats and eats and still looks bored. Somebody must feed it."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Gorrillo killed by player",
+     false
+    ],
+    [
+     "Gorrillo imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_gorrillo_alive_own_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "The Gorrillo Bandits"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "BOSS BIG. BOSS STRONG. BOSS PUNCH DOOR. DOOR GONE. YOU NEXT.",
+      "Don't CALL BOSS APE. BOSS HEAR. BOSS NOT HAPPY.",
+      "OLD PRISON IS OURS. BIG ONE LIVES THERE. YOU NOT GO IN.",
+      "WE FEED BOSS. BOSS KEEP WALLS. TINY GO AWAY.",
+      "BOSS CRY WHEN LOSE AT GAMES. Don't LAUGH. WE ALL TRY NOT TO.",
+      "SIXTY THOUSAND CATS ON BOSS. NOBODY COLLECT. NOBODY COME BACK."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Gorrillo killed by player",
+     false
+    ],
+    [
+     "Gorrillo imprisoned by player",
+     false
+    ]
+   ],
+   "packages": [
+    "Gorillo Bandit",
+    "Gorrillo"
+   ]
+  },
+  {
+   "id": "bc_gorrillo_killed_local_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Scavengers"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The big one is down. I keep waiting for a roar. Nothing. It's worse than the roar.",
+      "Big as a wall and slow as one. Half the bandits out here liked him anyway.",
+      "The Old Prison is empty now. Nobody wants to be the first one to walk in and look.",
+      "Who smashes the doors now? Who carries the heavy things? The Forbidden Zone will miss him.",
+      "Sixty thousand cats on him and it took one stranger. The Old Prison won't feel the same."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Gorrillo killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_gorrillo_killed_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Reavers",
+    "Skin Bandits",
+    "Bounty Hunters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The thing in the Old Prison is dead. I can hear the roads being less loud.",
+      "You hear about Gorrillo? Some drifter did him in. I'd love to see that fight, from very, very far.",
+      "A giant, they said, with a taste for locked doors. Now he's a story.",
+      "Whoever beat that great ape deserves a medal. Or a long rest. Or a priest.",
+      "Everyone in the badlands slept easier last night, and a few of them cried."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Gorrillo killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_gorrillo_imprisoned_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Scavengers",
+    "Drifters",
+    "Nomads",
+    "Hounds",
+    "Mercenary Guild"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "They put him in a cage. A cage! Can you imagine what holds that?",
+      "Gorrillo held. I'd pay to watch that hold, from very far away.",
+      "He isn't killed. He's simply unhappy, and unhappy is the more dangerous.",
+      "The bandits are leaderless and nervous. They keep looking at the horizon for a roar.",
+      "The big one is somebody's now. May whoever has him love him better than the Old Prison did."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Gorrillo imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_gorrillo_killed_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "The Gorrillo Bandits"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "YOU SMASH BIG ONE! ME SMASH TINY YOU!",
+      "BIG ONE GONE. TINY DID IT. ME SQUISH TINY.",
+      "HUR HUR. NO MORE BIG ONE. NOW ME SMASH.",
+      "ME NOT LIKE TINY NOW. ME HUG TINY. TOO HARD.",
+      "BIG ONE DOWN. ME WAIT FOR ROAR. NO ROAR. IS WORSE.",
+      "WHO SMASH DOORS NOW? WHO CARRY HEAVY THINGS? NOT ME. YOU DO IT, TINY.",
+      "GORRILLO DIE BORED. NOW YOU DIE BUSY."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Gorrillo killed by player",
+     true
+    ]
+   ],
+   "packages": [
+    "Gorillo Bandit",
+    "Gorrillo"
+   ]
+  },
+  {
+   "id": "bc_gorrillo_imprisoned_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "The Gorrillo Bandits"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "WHERE BIG ONE? GIVE BACK OR ME BREAK TINY HEAD!",
+      "BIG ONE IN BOX. BIG ONE HATE BOX. YOU HATE MORE.",
+      "YOU TAKE BIG ONE. ME SMASH TINY. PLEASE RUN. ME LIKE CHASE.",
+      "BOSS HATE BOX. BOSS BREAK BOX. THEN BOSS BREAK YOU.",
+      "OLD PRISON QUIET WITHOUT BOSS. TOO QUIET. ME NOT LIKE."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Gorrillo imprisoned by player",
+     true
+    ]
+   ],
+   "packages": [
+    "Gorillo Bandit",
+    "Gorrillo"
+   ]
+  },
+  {
+   "id": "bc_gorrillo_killed_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Reavers",
+    "Skin Bandits",
+    "Red Sabres",
+    "Crab Raiders",
+    "Grass Pirates",
+    "Black Dog",
+    "Stone Rats",
+    "Twinblades",
+    "Blackshifters",
+    "Bounty Hunters"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I hear you dropped the great ape of the Old Prison. How big were the bones? Big, I bet.",
+      "You're the one who went into the Old Prison and walked out. Don't stop here, you'll frighten the horses.",
+      "No one comes out of there. You did.",
+      "Sit, drink, and say nothing about the ape. Please."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Gorrillo killed by player",
+     true
+    ]
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bc_grey_alive_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers",
+    "Drifters",
+    "Rebel Farmers",
+    "Nomads",
+    "Vagrants"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Go to Spring and speak to Grey. He asks who your enemy is.",
+      "He turns people away. Not cruelly. He asks what you would do if the collar were on your own neck.",
+      "I was a slave. Grey didn't ask what I had done. He asked what I'd do next. That was all.",
+      "They say he never raises his voice. They also say few raise theirs at him.",
+      "Tinfist is the face of the thing.",
+      "He guides the new ones. If the ones he guides survive, the movement survives."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Grey killed by player",
+     false
+    ],
+    [
+     "Grey imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_grey_killed_local_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Grey is dead. Who will ask the new ones where they stand? Who will hold the door?",
+      "He asked every one of us one question. Now there's no one to ask it.",
+      "Spring is grey today. I don't mean the sky. I don't mean the stone.",
+      "Tinfist said a few words over him. Nobody remembers them, only the quiet.",
+      "We'll do what he would have done. We won't do it well."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Grey killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_grey_killed_others_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Traders Guild",
+    "Imperial Lords"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "One of the troublemakers is dead. They'll make a martyr of him, but a martyr is cheaper than a living nuisance.",
+      "Grey, the Anti-Slaver at Spring, is dead. One less voice telling slaves they have a choice.",
+      "The Anti-Slavers lost their recruiter. That's a quiet kind of victory, and I'll take it.",
+      "One death in Spring, and a great deal of quiet. Strange how those go together.",
+      "Tell your friends: the road to Spring just got a little longer."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Grey killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_grey_killed_slavers_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Grey is dead. One less voice telling the cargo it has a choice.",
+      "The Anti-Slaver at Spring has fallen. Runaways will lose heart, and the roads get easier for us.",
+      "Their recruiter is dead. Their camp is a headless dog, for now.",
+      "Grey is gone. I won't pretend to be sorry. Business will be good this season."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Grey killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_grey_imprisoned_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers",
+    "Drifters",
+    "Rebel Farmers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Grey in chains. The irony would be funny if it weren't so exact.",
+      "They took the man who frees slaves. Whoever did it has made a lot of enemies in Spring.",
+      "He won't break. Men like that don't.",
+      "The recruiters have gone to ground. The camp at Spring is waiting, and counting hours.",
+      "Grey in a cage. Spring won't sit still for that."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Grey imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_grey_imprisoned_slavers_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Grey in a cage. Now we see how he likes being on the wrong side of the bars.",
+      "The one who guides runaways has been taken. Prices are about to improve.",
+      "Grey in chains. Somebody should send Tinfist a collar, as a gift.",
+      "The Anti-Slavers lost their spine. Expect them to come looking, and expect them to be sloppy."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Grey imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_grey_imprisoned_others_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Anti-Slaver leader caged. Someone has done what the Cities could not.",
+      "Grey in chains. The recruiters will be scrambling, and the camp at Spring will be furious.",
+      "They took the man who frees slaves. There will be a price for that, and not only in cats.",
+      "A famous troublemaker in a cell. Trade sleeps easier tonight, and wakes uneasy."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Grey imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_grey_killed_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You killed Grey. You're a dead thing walking, and I'll see it done.",
+      "Grey believed in second chances. I'm not nearly as kind."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -3
+      ]
+     ]
+    },
+    {
+     "say": [
+      "He asked every stranger the same question. You answered it with a blade.",
+      "Spring won't forget. Neither will I."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Grey killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_grey_imprisoned_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You hold Grey. We're coming. All of us.",
+      "Take the collar off him, friend. It's an easy thing, and it's the last easy thing you'll be asked.",
+      "You're a slaver. I didn't think I'd say that of anyone who walked here."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Grey imprisoned by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_grey_killed_ally_grief",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You stand with us, and Grey is gone. We shall do it together, then.",
+      "He wouldn't want revenge. He would want the door left open for the next one.",
+      "Come sit with us. There's no one to ask the question, so ask yourself."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Grey killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_grey_killed_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Dust Bandits",
+    "Starving Bandits",
+    "Scavengers",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Reavers",
+    "Skin Bandits",
+    "Red Sabres",
+    "Crab Raiders",
+    "Grass Pirates",
+    "Black Dog",
+    "Stone Rats",
+    "Twinblades",
+    "Blackshifters",
+    "Bounty Hunters"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're the one who ended the Anti-Slaver at Spring. They'll want to know your name, stranger.",
+      "Killing the gentle ones. That is a certain kind of courage, or the other kind.",
+      "Half the roads now have Anti-Slaver eyes on you. I wouldn't go to Stobe's Gamble."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Grey killed by player",
+     true
+    ]
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bc_grey_on_slaver_boss_dead",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You've been busy with the tyrants. A small joy. Don't let it become a taste.",
+      "Spring has heard of what you do. Tinfist has said nothing.",
+      "Prove you're the enemy of our enemy, and the door opens. It seems you proved it more than once.",
+      "Be careful whom you serve in turning. Some fall because they enjoyed it."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Longen killed by player",
+     true
+    ]
+   ],
+   "characters": [
+    "Grey"
+   ]
+  },
+  {
+   "id": "bc_ghost_alive_shek_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There was a warrior once named Suchon. We don't say it. The one who walks out there's called by something else.",
+      "He lost, they say. That's all the Kingdom says. A warrior who loses should die.",
+      "Go east of Last Stand and the Berserkers sing for him. It's a song with no words.",
+      "I have seen him once. He did not fight. He looked at the horizon as if it owed him an answer.",
+      "Some say he wants to be struck down. Some say the blade will not finish him. Neither helps.",
+      "A Shek without a Kingdom is a ghost. The name came easily to the people who gave it."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Ghost killed by player",
+     false
+    ],
+    [
+     "Ghost imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_ghost_alive_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Dust Bandits",
+    "Scavengers",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Bounty Hunters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There's an exile out east they call the Ghost. Nobody calls him it to his face.",
+      "A Shek exile who can't die properly. Sounds like a story.",
+      "East of Last Stand there's a camp where nobody sleeps well. You'll know the horns.",
+      "The Ghost hasn't lost a duel in years. He's looking for a loss that will take.",
+      "They say he's sad. They say being sad hasn't made him slower."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Ghost killed by player",
+     false
+    ],
+    [
+     "Ghost imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_ghost_killed_berserker_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Berserkers",
+    "Band of Bones",
+    "Kral's Chosen"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Ghost is gone. The one thing none of us could be, he was. Now he's that thing for good.",
+      "He wanted it. We know he wanted it. We still do not forgive the one who gave it.",
+      "The camp is loud and nobody is speaking. There's a space where he sat.",
+      "We never believed the Kingdom would take him back. We never believed anything could stop him.",
+      "Sing for him. Sing badly. He liked it that way."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Ghost killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Band Of Bones",
+    "Shek Kral's Chosen",
+    "Ghost"
+   ]
+  },
+  {
+   "id": "bc_ghost_killed_shek_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Flotsam Ninjas",
+    "Drifters",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The exile is dead. Peace to him, whatever peace means to a Shek.",
+      "Suchon died, finally. Let the name be said once, quietly, and put down.",
+      "It was a death the Kingdom wouldn't give him. An outsider did, I hear. I find that strangely fitting.",
+      "The Berserkers are leaderless. A bad season for the east is coming.",
+      "He walked the world for years looking for an end. Somebody just found it for him."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Ghost killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_ghost_imprisoned_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Berserkers",
+    "Band of Bones",
+    "Kral's Chosen",
+    "Drifters",
+    "Nomads"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "They took the Ghost alive. Of all the things he feared, I think that was the one.",
+      "Locked. A warrior who sought death, held out of its reach.",
+      "The Shek police will want him. Not for what he did.",
+      "The Berserkers wait. Waiting is a slow poison to them.",
+      "If you can chain a ghost, you can chain anything. I'd be very careful of whoever did."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Ghost imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_ghost_killed_berserkers_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Berserkers",
+    "Band of Bones",
+    "Kral's Chosen"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You killed the Ghost. We'll honour him by killing you. Slowly.",
+      "He said no one was worth fighting any more. You were. Now you'll be again.",
+      "The one who ended Suchon. We have your scent. Hide if you like. We love hide and seek.",
+      "Blood for the Ghost. Blood, stranger."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Ghost killed by player",
+     true
+    ]
+   ],
+   "packages": [
+    "Band Of Bones",
+    "Shek Kral's Chosen",
+    "Ghost"
+   ]
+  },
+  {
+   "id": "bc_ghost_imprisoned_berserkers_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Berserkers",
+    "Band of Bones"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You hold our Ghost. Open the door or lose the hands that closed it.",
+      "A warrior chained is a sin. A cage for him is worse.",
+      "Fight us, flatskin. Or are you only brave with the weak and the sad?"
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Ghost imprisoned by player",
+     true
+    ]
+   ],
+   "packages": [
+    "Band Of Bones",
+    "Shek Kral's Chosen",
+    "Ghost"
+   ]
+  },
+  {
+   "id": "bc_ghost_killed_shek_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're the one who ended the exile. The Kingdom didn't ask this of you. But we won't weep.",
+      "A flatskin slew the Ghost. Strange. Honourable, in a way. I do not know what to feel.",
+      "Walk well, outlander. The Shek do not forget that someone took a burden from us.",
+      "Suchon is gone. The name has weight."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Ghost killed by player",
+     true
+    ]
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bc_fogprince_alive_mongrel_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Mongrel"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Princes come when the fog thickens. Close the shutters and keep the lamps low.",
+      "A Prince can stand in a ring of spears and look bored. Then the Fogmen come, and no one is bored.",
+      "We hear them at night. Not screaming. Humming. It's the humming that kills the mind.",
+      "The Shinobi guards hold the gate. Don't ask what they hold it against. Ask who sleeps.",
+      "My brother went to the fog for treasure. A Prince had him by sundown. I think of it as a thing that happened to the weather.",
+      "A Prince's head sells for a good price. Almost nobody ever sells one."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Fog Prince killed by player",
+     false
+    ],
+    [
+     "Fog Prince imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_fogprince_alive_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Scavengers",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Bounty Hunters",
+    "The Holy Nation"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Fog Islands. Don't go. Whatever they pay you, don't go.",
+      "They were Hivers once, I am told. Now they are something else, and it sits in a Prince's head.",
+      "A Prince eats the ones the Fogmen drag in. Alive. That is the thing I cannot stop knowing.",
+      "A Prince of the fog. I saw a drawing of one in a bar. I left the bar.",
+      "There's a parasite, so I hear. That's the polite word for what the fog does.",
+      "Fogmen carry the prey to the Prince. The Prince decides which part first."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Fog Prince killed by player",
+     false
+    ],
+    [
+     "Fog Prince imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_fogprince_killed_mongrel_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Mongrel"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A Prince is dead. The fog sounded different last night. Quieter. Not gone.",
+      "Some stranger killed one of them. Well. Let us hope the others didn't notice.",
+      "I want to see the head. I don't want to be in the room with the head.",
+      "Another Prince will come. They always do. But for tonight the walls feel thicker.",
+      "Whoever it was, they went into the fog and came out. Sit, let me buy you something."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Fog Prince killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_fogprince_killed_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Bounty Hunters",
+    "The Holy Nation",
+    "Tech Hunters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I heard somebody killed one of the fog princes. Or maybe it killed them and walked away.",
+      "A prince of the Deadhive, dead. The Islands will be hungry, they say, to replace him.",
+      "The head fetches six thousand cats. That's a lot of cats to hold in a hand that smells of fog.",
+      "Kill one Prince and I expect another takes the place. In the fog I hope that's untrue.",
+      "Stranger, whoever did it: do not go back. The fog keeps a ledger."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Fog Prince killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_fogprince_imprisoned_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Mongrel",
+    "Mercenary Guild",
+    "Tech Hunters",
+    "Drifters",
+    "The Holy Nation"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "They took one alive. In a cage. I keep imagining the sound it makes.",
+      "A Prince, held. Whatever holds it, I hope it's stronger than the thing in its head.",
+      "People want to see it. People are fools. People will be eaten.",
+      "Keep it alive, keep it fed, keep it far. That's the Mongrel prayer now."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Fog Prince imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_fogprince_imprisoned_bar_hive",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The fog prince is held. The hive felt the song go thin. We do not understand it. We worry.",
+      "A prince in a cage. We hum for him. He does not hum back.",
+      "Don't hurt the held one. Don't hurt us.",
+      "The fog prince is far and afraid. We feel that much."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Fog Prince imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_fogprince_killed_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Mongrel",
+    "Drifters",
+    "Mercenary Guild",
+    "Tech Hunters",
+    "The Holy Nation"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You smell of fog. Keep your distance. The fog follows some people home.",
+      "Killed a Prince, I heard. We'll see if the fog agrees you won.",
+      "Mongrel can give you a drink, a bed, and a long look.",
+      "You went in and came out. Do you hear it still? That humming? I do."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Fog Prince killed by player",
+     true
+    ]
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bc_catlon_alive_skel_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There's a throne in the domes. A very old one sits in it. It has been sitting a very long time.",
+      "Cat-Lon founded what the Empire was. Then he held it too tightly. I haven't recorded the result.",
+      "He ordered a whole people once. Now he orders an empty dome, and the dome doesn't answer.",
+      "He isn't mad, precisely. He's correct about many things, for many reasons, all of them wrong.",
+      "He speaks of treason. He speaks of thralls. He speaks of the first mistake. It's always the same speech.",
+      "I don't go near the domes. I measure the distance."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     false
+    ],
+    [
+     "Mad Cat-Lon imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "bar:all"
+   ],
+   "races": [
+    "Skeleton",
+    "Skeleton MKII Screamer",
+    "Skeleton Log-Head MKII",
+    "Skeleton P4MkII"
+   ]
+  },
+  {
+   "id": "bc_catlon_alive_human_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Every Tech Hunter knows the domes in the Ashlands. Most know better than to go in. A very old Skeleton sits on a throne there.",
+      "Mad Cat-Lon. The name comes up whenever someone sells a map of the Ashlands. The maps are always wrong.",
+      "He ruled an empire of metal once. Now he rules a dome that doesn't answer. I wouldn't test it.",
+      "Word is, he isn't mad, only correct for reasons that are all wrong.",
+      "The CPU of a Skeleton king would fetch a fortune. Nobody who went for it came back to collect."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     false
+    ],
+    [
+     "Mad Cat-Lon imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_catlon_alive_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Bounty Hunters",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There's a skeleton in the Ashlands who used to rule an empire. He rules a dome now.",
+      "The Second Empire fell and one still sits in his throne. I hear he talks to the walls.",
+      "Mad Cat-Lon. Say it softly. The name has a way of arriving in a room.",
+      "People say he thralled his own people to save them. They say he's still saving them.",
+      "An empire of metal, held together by one lonely mind. I would not stand in that mind's way.",
+      "Dome after dome in the Ashlands, and a ruler in the last one. I won't visit. Please don't ask."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     false
+    ],
+    [
+     "Mad Cat-Lon imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_catlon_killed_skel_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The old ruler has ended. I'm not sure what I feel. I have no entry for this.",
+      "The throne is empty. It was the only thing that gave the domes meaning, and now there's no meaning.",
+      "He built something and then he broke it. He's dead now.",
+      "I recall his voice. I recall the first time he spoke to me. I recall not being able to disagree.",
+      "The CPU left the dome in a human's pocket. That's a ridiculous end for a founder."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "bar:all"
+   ],
+   "races": [
+    "Skeleton",
+    "Skeleton MKII Screamer",
+    "Skeleton Log-Head MKII",
+    "Skeleton P4MkII"
+   ]
+  },
+  {
+   "id": "bc_catlon_killed_human_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Mad Cat-Lon is dead. The CPU is out of the dome, they say, and a fortune is walking around in somebody's pocket.",
+      "Cat-Lon scrapped. The domes are open for business, and every Tech Hunter in the Ashlands knows it.",
+      "He ruled an empire and ended in a dome. A fitting end, if anyone is keeping records.",
+      "The throne is empty. Whoever did it walked out again. I'd like to buy that person a drink."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_catlon_killed_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Bounty Hunters",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Mad Cat-Lon is dead. I didn't know that could happen. I thought he was a weather.",
+      "Somebody went into the Ashlands domes and came out. That alone should be a legend.",
+      "The skeleton king is no more. His empire was already no more. Now the ruin is formally complete.",
+      "A founder of the old world, scrapped in his own dome. History has an odd taste for irony.",
+      "Somebody will call it a victory. Somebody calls everything a victory. This time I almost agree."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_catlon_imprisoned_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "The Holy Nation",
+    "United Cities"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "They took Cat-Lon alive. What do you do with such a thing in a cage? Who dares hold the key?",
+      "Taken. A ruler without a dome. I wonder if he still gives orders to the walls.",
+      "The oldest mind in the Ashlands, a prisoner. The jailer must hear things at night.",
+      "I wouldn't ask what he says. I'd only shut the door more tightly."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_catlon_imprisoned_bar_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Cat-Lon is held. I don't know what holds him.",
+      "The oldest mind in the Ashlands is in a cell. I wouldn't guard it.",
+      "A ruler without a dome. He may still be giving orders. The walls are listening, or aren't.",
+      "They took the emperor alive. I record that it was not wise. I record that I am not wise either."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "bc_catlon_killed_skel_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Skeletons",
+    "Old Machines",
+    "Skeleton Bandits"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're the one who removed Cat-Lon. I'll say nothing. I'll think a great deal.",
+      "The ruler of the Old Empire is dead. And you stand there, breathing.",
+      "I have no feelings about it. That's a lie, and I record it as such.",
+      "Please don't describe how it ended. I'd prefer to imagine it."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     true
+    ]
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Black desert skeleton patron",
+    "Skeleton legion"
+   ]
+  },
+  {
+   "id": "bc_catlon_killed_far_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Dust Bandits",
+    "Starving Bandits",
+    "Scavengers",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Reavers",
+    "Skin Bandits",
+    "Red Sabres",
+    "Crab Raiders",
+    "Grass Pirates",
+    "Black Dog",
+    "Stone Rats",
+    "Twinblades",
+    "Blackshifters",
+    "Bounty Hunters"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You walked into the Ashlands and the domes let you out. That is the whole of your reputation, stranger.",
+      "People say the old skeleton king is gone. Whoever did it won't be allowed to forget.",
+      "I'll tell no one what I know. But I'll look at you a little longer."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Mad Cat-Lon killed by player",
+     true
+    ]
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bc_shade_alive_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Swamp Ninjas",
+    "Swampers",
+    "Twinblades",
+    "Hounds",
+    "Stone Rats",
+    "Grayflayers",
+    "Blackshifters",
+    "Drifters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Shade moves through the South Wetlands like a thought nobody wanted. You hear the reeds after she has gone.",
+      "The Swamp Ninjas have a lady for a boss. They're proud of this and wish you to know it.",
+      "The Red Sabres hate her and the Shek want her. That's the sort of attention a woman earns by being good at it.",
+      "I met a Swamp Ninja who took my boots. She said her boss would take the rest if I liked.",
+      "She is said to be generous to her own. Her own is a short list.",
+      "If a patrol vanishes in the wetlands, no one asks. The reeds have already answered."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Shade killed by player",
+     false
+    ],
+    [
+     "Shade imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_shade_killed_ninja_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Swamp Ninjas"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Shade is gone. We have the base, the blades, the mud. We don't have her.",
+      "She taught us to cut once and walk away. Who teaches us how to walk away from this?",
+      "I looked for her in the reeds.",
+      "No patrols tonight. No one has the heart.",
+      "Whoever did it was good. That's the only comfort I have."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Shade killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_shade_killed_neigh_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Red Sabres",
+    "Swampers",
+    "Twinblades",
+    "Hounds",
+    "Stone Rats",
+    "Grayflayers",
+    "Blackshifters",
+    "Shek Kingdom",
+    "Drifters"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Swamp Ninjas have lost their blade. I'd be glad if I weren't afraid of what grows in its place.",
+      "Shade dead. The reeds will be quieter and the roads busier.",
+      "A Shek bounty collected, or about to be. Somebody got rich off the lady in the wetlands.",
+      "The South Wetlands may be safe to cross. Maybe. I'll let someone else find out.",
+      "Red Sabres are drinking tonight. They're drinking to a rival. That's the highest form of respect they know."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Shade killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_shade_imprisoned_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Swamp Ninjas",
+    "Red Sabres",
+    "Swampers",
+    "Twinblades",
+    "Hounds",
+    "Shek Kingdom",
+    "Drifters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "They have Shade in a cell. If I were the jailer I'd be counting exits.",
+      "A ninja in a cage is a dangerous thing. A boss in a cage is catastrophic.",
+      "The Swamp Ninjas have gone to ground. The reeds are watching the road.",
+      "A bounty on her head and now a lock. The Shek are pleased, and wary."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Shade imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_shade_killed_ninja_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Swamp Ninjas"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You killed Shade. I won't insult you with a threat. I'll only follow.",
+      "You're a ghost already, outlander. You don't know it yet.",
+      "I'll cut once. I'll walk away. That's how she taught me.",
+      "The reeds know your name now."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Shade killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_shade_imprisoned_ninja_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Swamp Ninjas"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You hold Shade. Open the lock or wait for ours.",
+      "We can't break her out and can't let you keep her. A hard kind of arithmetic.",
+      "I have a knife and a very long memory. Let her go."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Shade imprisoned by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_shade_killed_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Red Sabres",
+    "Swampers",
+    "Twinblades",
+    "Hounds",
+    "Shek Kingdom",
+    "Drifters",
+    "Nomads"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You put down the lady of the wetlands. The Sabres owe you a drink. They won't pay it.",
+      "I saw Shade fight, once. I wouldn't have thought she could be beaten.",
+      "The Shek will ask about you. Better to have an answer ready.",
+      "Quiet in the reeds now. You made that quiet. Own it, or run from it."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Shade killed by player",
+     true
+    ]
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bc_oni_on_shade_dead",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Shade is dead? A sister of the trade, then. That makes you a problem, little traveller.",
+      "The swamp has lost its blade. I'm not the grieving kind, but I note the passing.",
+      "You're very good, to ruin a rival of mine. You should be careful about being good."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Shade killed by player",
+     true
+    ]
+   ],
+   "characters": [
+    "Sand Ninja Oni"
+   ]
+  },
+  {
+   "id": "bc_oni_alive_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Sand ninjas",
+    "Dust Bandits",
+    "Nomads",
+    "Drifters",
+    "Mercenary Guild",
+    "Free Traders",
+    "Black Dragon Ninjas"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Oni doesn't ride at the front. Oni rides behind, and picks the tired ones.",
+      "Cactus Den has more teeth than its name lets on. The Oni's raiders cut the dune roads.",
+      "The Sand Ninjas strike bases at dawn and are gone by noon. If your gate is thin, you won't like the morning.",
+      "A dust cloud on the horizon at dawn is the Oni. Bar your gate.",
+      "Word is, the Oni never loses a prisoner. They say the prisoners wish otherwise.",
+      "The Cities pay a bounty twice over for that mask, and no one collects it."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Sand Ninja Oni killed by player",
+     false
+    ],
+    [
+     "Sand Ninja Oni imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_oni_killed_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Sand ninjas",
+    "Dust Bandits",
+    "Nomads",
+    "Mercenary Guild",
+    "Free Traders",
+    "Black Dragon Ninjas",
+    "Traders Guild",
+    "United Cities"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Oni is dead. The dunes will be quiet. I don't trust it.",
+      "No more raids on the outposts, they say. I'll believe that when a month passes.",
+      "The sand has less teeth. Good. Teeth return, in the end, but for now we breathe.",
+      "Twenty thousand cats on a mask, and someone finally took it off.",
+      "Sand Ninjas without their Oni are only thieves. Common ones."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Sand Ninja Oni killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_oni_imprisoned_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Sand ninjas",
+    "Dust Bandits",
+    "Nomads",
+    "Mercenary Guild",
+    "Free Traders",
+    "Traders Guild",
+    "United Cities",
+    "Drifters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "They held the Oni alive. A bounty that big, and the one who has it sits calmly, they say.",
+      "A caged Sand Ninja is a lie waiting to be told. Don't believe the cage.",
+      "The Cities will want her for the gallows. Her own people will want her back for something else.",
+      "The raids stopped. I keep counting days between, waiting for the one that won't."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Sand Ninja Oni imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_oni_killed_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Sand ninjas"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You ended the Oni. Hide, if you like.",
+      "Our mask is gone. You owe us your own.",
+      "We took from the weak. You took from us.",
+      "We don't forgive. We rarely forget."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Sand Ninja Oni killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_oni_imprisoned_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Sand ninjas"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Release the Oni. Our patience is a cheap thing and we spent it long ago.",
+      "You hold our master. We hold your outposts' weak points. Which of us blinks?",
+      "Tell the Oni we're coming. If they're alive to hear it."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Sand Ninja Oni imprisoned by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_oni_killed_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Nomads",
+    "Dust Bandits",
+    "Mercenary Guild",
+    "Free Traders",
+    "Traders Guild",
+    "United Cities",
+    "Drifters"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I hear you took the Oni's mask. The Cities will thank you, for once, and mean it.",
+      "The dunes are less crowded now. I would shake your hand but I have grown fond of mine.",
+      "Whatever they paid you, it wasn't enough. Whatever they owe you, I wouldn't collect.",
+      "A stranger killed the Oni. Strange. I thought they were part of the sand."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Sand Ninja Oni killed by player",
+     true
+    ]
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bc_queen_south_alive_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Reavers",
+    "Swampers",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Southern Hive has a queen and a king. We don't speak of the king.",
+      "They're pink, the Southern ones. Don't take it for softness. The pink is a warning.",
+      "Nobody who walks into the Southern Hive comes out with a story. The drones aren't hospitable.",
+      "A drone told me once that hivers call outsiders the Faraway.",
+      "The Queen of the South is the rival of the one in the west. They're rivals, and neither has ever been kind.",
+      "Patrols in the Bonefields. Patrols in the Hook. Patrols in places no Hiver has any business."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Queen of the South killed by player",
+     false
+    ],
+    [
+     "Queen of the South imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_queen_south_alive_bar_hive",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The other queen sings in the south. Her song is wrong. It is not ours. We do not listen.",
+      "The pink ones keep their own song. We keep ours. The border is a hum we do not cross.",
+      "A queen is a queen. The southern one is not ours. We do not say more.",
+      "The pink hive moves in the Bonefields. We feel it. We feel nothing from it we like."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Queen of the South killed by player",
+     false
+    ],
+    [
+     "Queen of the South imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_queen_south_alive_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Bounty Hunters",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There is a Hive in the south that does not trade and does not talk. Stay away from it.",
+      "The Queen of the South. I hear she screams. I hear it carries for miles. I'm inclined to believe.",
+      "Hive drones I understand. Southern drones I don't. They look at you like they're counting your bones.",
+      "Don't enter the Royal Valley. Don't enter Greyshelf. If you must, enter in pieces.",
+      "I had a friend who went south for a job. The job was fine. The drones weren't on the invoice."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Queen of the South killed by player",
+     false
+    ],
+    [
+     "Queen of the South imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_queen_south_killed_hive_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Southern Hive"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Queen is gone. The hive is gone. This one isn't. This one doesn't know why.",
+      "No-hive did it. No-hive. No-hive. We carry the word and can't put it down.",
+      "Queen silent. King silent. We wait. We wait.",
+      "Blood on the ground that was her blood. Don't step in it.",
+      "The hum has stopped. What's this one, when the hum has stopped?"
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Queen of the South killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_queen_south_imprisoned_hive_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Southern Hive"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Queen is taken. Queen isn't here. The hive is a stomach with no mouth.",
+      "Faraway took her. The Faraway will be eaten.",
+      "Bring her back. We bring more of you.",
+      "We are loud with no queen. We are very loud."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Queen of the South imprisoned by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_queen_south_killed_neigh_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Reavers",
+    "Swampers",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Queen of the South is dead. The patrols have gone strange. Some stand still. Some walk into the fog.",
+      "A hive without its queen doesn't die. It turns. I've seen one turn. I don't wish to describe it.",
+      "The Western Queen won't be sorry. The Western Queen won't be anything. She's a different kind of quiet.",
+      "Reavers used to be afraid of the southern drones. Now they're afraid of what the drones become.",
+      "Somebody killed a queen. That isn't a deed. That's a catastrophe with a face."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Queen of the South killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_queen_south_killed_neigh_bar_hive",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The southern queen isn't. We felt the quiet from here. It's a bad quiet.",
+      "Her hive turns without her. A turned hive is not a hive. We keep our drones close.",
+      "A queen has fallen. Our Queen sings softer tonight. We don't know if that's grief or fear.",
+      "No-hive reached a queen. That's a thing the hive doesn't forget."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Queen of the South killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_queen_south_killed_far_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild",
+    "Free Traders",
+    "Rebel Farmers",
+    "Vagrants",
+    "Swampers",
+    "Hounds",
+    "Bounty Hunters",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I heard the pink queen died and the Southern Hive lost its mind. They say it does that.",
+      "A queen dead means a nest gone wrong. The drones will wander until they find someone to blame.",
+      "I wouldn't want to be the one who did it. I wouldn't want to be near the one who did it.",
+      "Somebody ended a hive. Whether they meant to, whether they could have known, whether they care, I can't say.",
+      "Bad omens in the south. The sky doesn't look different."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Queen of the South killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_queen_south_imprisoned_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Reavers",
+    "Swampers",
+    "Drifters",
+    "Mercenary Guild",
+    "United Cities"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "They've taken the pink queen. I can't decide if that's brave or monstrous.",
+      "A hive with its queen caged hums wrong. You can hear it from the border.",
+      "Whoever holds her holds the whole south on a string. A string is not an advantage. It is a threat.",
+      "The Western queen is said to have noticed. She hasn't spoken. That's what worries me."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Queen of the South imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_queen_south_imprisoned_bar_hive",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The southern queen is taken. Our Queen heard it.",
+      "A queen in a cage. We have no word for it. We don't want one.",
+      "The south hums crooked. They search for her. We hope they don't search here.",
+      "A rival queen, held. Don't think we're glad. We're only afraid in a different way."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Queen of the South imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_queen_south_killed_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Reavers",
+    "Swampers",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're the one who killed the Southern queen. Walk a little farther from me, please.",
+      "The hive is looking for you, so I hear. It has no eyes, it has all of them.",
+      "I cannot decide whether to thank you or run from you. Both feel sensible.",
+      "What it cost you, I don't know. What it will cost the rest of us, I don't like."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Queen of the South killed by player",
+     true
+    ]
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bc_queen_south_killed_neutral_hive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You. You're the shape from the south. Walk slowly.",
+      "The southern queen isn't, and you were near. The hive will remember your shape.",
+      "We don't thank. We don't hate.",
+      "A queen fell by your hand. Some of us are afraid. Some of us are curious. Go."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Queen of the South killed by player",
+     true
+    ]
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bc_warden_alive_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Imperial Lords",
+    "Empire Peasants",
+    "Police",
+    "Slaves",
+    "Rebel Farmers",
+    "Drifters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Tengu's Vault has a warden with a jitte that glows like a lamp. He talks to the prisoners the way a butcher talks to ham.",
+      "I did a month in the Vault once. The Warden taught me what silence costs.",
+      "He's funny, which is the worst thing about him. Funny enough that you laugh, then remember where you are.",
+      "The prisoners wager on his moods. The cheap bets are on cruelty. The rich ones are on boredom.",
+      "A Meitou jitte for keeping men in line. The Empire doesn't give those out for gentle work."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Vault Warden killed by player",
+     false
+    ],
+    [
+     "Vault Warden imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_warden_killed_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Imperial Lords",
+    "Empire Peasants",
+    "Police",
+    "Rebel Farmers",
+    "Slaves",
+    "Drifters"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Warden is dead and a samurai captain took his post. Same keys, same jokes, less fun.",
+      "Somebody killed the Vault Warden. I never thought a joke could be extinguished.",
+      "A hundred outlaws are celebrating in their cells. They're quiet about it. They're also celebrating.",
+      "He had a witty word for every face. Now no one has a word for his.",
+      "Whoever did it, I hope they gave him a good last line. He deserved to hear one."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Vault Warden killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_warden_imprisoned_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Imperial Lords",
+    "Empire Peasants",
+    "Police",
+    "Rebel Farmers",
+    "Drifters"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Warden, in a cell. The poetry of it's almost too heavy.",
+      "The man who held the keys now waits for someone to hold them for him.",
+      "Somebody finally put the Vault's master behind his own door. I have nothing clever to add.",
+      "The prisoners ask the guards where he is. The guards pretend they can't hear."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Vault Warden imprisoned by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_warden_killed_uc_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Imperial Lords",
+    "Empire Peasants",
+    "Police"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You ended the Vault Warden. The Empire keeps what it holds, and it will hold you."
+     ],
+     "effects": [
+      [
+       "DA_ASSIGN_BOUNTY",
+       2500
+      ]
+     ]
+    },
+    {
+     "say": [
+      "You killed a keeper of the Empire's prisons. A bad idea, stranger, and a worse habit.",
+      "The Vault has a new warden and the new warden has your description.",
+      "Murderer. There are cells with your measurements, you know."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Vault Warden killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_warden_imprisoned_uc_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Imperial Lords",
+    "Empire Peasants",
+    "Police"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You put the Warden in a cell. The Empire has cells too.",
+      "Free the Warden. Or we'll lock you somewhere that has no door.",
+      "Kidnapping an official. There's a poetic clause for that. I look forward to reading it."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Vault Warden imprisoned by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_warden_killed_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Rebel Farmers",
+    "Drifters",
+    "Nomads",
+    "Free Traders",
+    "Mercenary Guild",
+    "Vagrants"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're the one who killed the Vault Warden? The outlaws will write songs.",
+      "I have a cousin in the Vault. If you hear my cousin's name, be kind. Please.",
+      "Careful. The Empire doesn't forget a keeper.",
+      "A fine deed. A foolish one."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Vault Warden killed by player",
+     true
+    ]
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bc_warden_on_eyegore_dead",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Eyegore dead and you walk in with that face. I won't make a joke. I won't need to.",
+      "The Captain-General fell. I suppose the Vault is next. Everything falls at the same rate, in my experience.",
+      "You killed the Empire's arm and now you ask for its leg. Tell me, how is the weather in the cell?"
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Eyegore killed by player",
+     true
+    ]
+   ],
+   "characters": [
+    "The Vault Warden"
+   ]
+  },
+  {
+   "id": "bc_wizard_alive_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Hunters",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "United Cities",
+    "Drifters",
+    "Nomads"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The painted tribe has a Grand Wizard in the capital. No one has returned from calling on him.",
+      "Forty thousand cats on his head from three nations. Nobody has collected.",
+      "People say he speaks very little. They say it's because everything he says is hungry.",
+      "A hunter told me the wizard sat in the capital's centre, eating something that wasn't sleeping. I stopped the story there.",
+      "Call him a king and they tell you he isn't. Call him a god and they tell you the same."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     false
+    ],
+    [
+     "Cannibal Grand Wizard imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_wizard_killed_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Hunters",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "United Cities",
+    "Drifters",
+    "Nomads",
+    "Mercenary Guild"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Grand Wizard of the painted tribe is dead. The cannibals aren't any less hungry.",
+      "Forty thousand cats, so I hear. I wouldn't have gone in for forty million.",
+      "Without him the clans will war with each other. That's the good news. The bad news is that it will spill.",
+      "I always thought he was a story to scare children. It was reassuring and terrible to hear otherwise.",
+      "Hunters are celebrating. Hunters are always celebrating. This time they have a reason."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_wizard_killed_cannibal_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "/CANNIBALCOOK/ gone. /CANNIBALKA/. Wizard is meat. Bad meat.",
+      "Who eat now? Who tell us who to eat? /CANNIBALHA/. Everybody ungry, no voice.",
+      "Mighty Wizard fall. We sing. We not know song. We sing anyway.",
+      "/CANNIBALCURSE/. Dhe one who do it, we find."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_wizard_killed_cannibal_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You eat Wizard? No. You kill him. Worse. /CANNIBALCURSE/!",
+      "You stand where Wizard stand. You bery small. We eat you into right shape.",
+      "/CANNIBALHA/. Tall one come to be guest. Long guest.",
+      "Wizard dead. You not dead yet."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_meatlord_alive_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Hunters",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "United Cities",
+    "Drifters",
+    "Nomads"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A cannibal chief with arms like ropes, and a village called First. They say it was the first of something.",
+      "Thirty thousand on his head from three nations. Hunters talk about it more than they try.",
+      "He isn't clever. He's strong. The painted tribe likes that more.",
+      "He feeds his guests well. Nobody's sure what with."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Meat Lord killed by player",
+     false
+    ],
+    [
+     "Meat Lord imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_meatlord_killed_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Hunters",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "United Cities",
+    "Drifters",
+    "Nomads"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Meat Lord is down. First Village is silent. Silent, and then loud, and then silent.",
+      "I won't say good riddance. He had a bounty, and now the bounty has a body.",
+      "Painted men carry his bones on poles. They're grieving.",
+      "A strong man falls to a stronger. The lesson is the oldest and least useful one."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Meat Lord killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_meatlord_killed_cannibal",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Meat Lord down. First Village go quiet. Quiet is bad. Quiet mean somebody choosing who sit in his chair.",
+      "Meat Lord not sit at his table now. Dhe table is long.",
+      "Dhe polite one dead. Dhe big seat is empty. Dhe ungry look at it.",
+      "Outlander killed Meat Lord. We carry his bones on dhe poles. Dhat is respect. Dhat is also soup."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Meat Lord killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_meatlord_killed_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You end Meat Lord! He /CANNIBALTASTY/ man! He good meat!",
+      "Big Lord down. Little killer standing. Funny. Not funny. /CANNIBALCURSE/.",
+      "He get eaten, you know. By everybody."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "Meat Lord killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "bc_jang_alive_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Cannibal Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Hydraulic Knights still have a general. He fights the pirates and the painted ones. He hasn't tired.",
+      "The cannibals have a name for him, the Inedible One. Even they don't bite what won't break.",
+      "Ashland Dome Three has his flag. Dome Three has his boots. Dome Three has very few survivors.",
+      "He was a soldier when the Empire was young. He's a soldier now. It's the only thing he remembers how to be."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "General Jang killed by player",
+     false
+    ],
+    [
+     "General Jang imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_jang_alive_bar_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Hydraulic Knights have a general. He fights those who come. He hasn't tired.",
+      "General Jang holds the third dome. I record: he hasn't been relieved.",
+      "The painted ones call him the Inedible One. They are accurate.",
+      "He remembers being a soldier. He remembers nothing else."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "General Jang killed by player",
+     false
+    ],
+    [
+     "General Jang imprisoned by player",
+     false
+    ]
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  },
+  {
+   "id": "bc_jang_killed_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Cannibal Hunters",
+    "Second Empire Exile"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "General Jang is dead. The Hydraulic Knights stand without orders. A soldier without orders is a dangerous thing.",
+      "The Inedible One has been dismantled. I don't say eaten. I say dismantled.",
+      "A general of a dead empire, finally dead. I find the symmetry elegant.",
+      "His knights are still standing in the dome. They haven't been told to stop."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "General Jang killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true
+  },
+  {
+   "id": "bc_jang_killed_bar_skel",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "General Jang is destroyed. The Knights stand without orders.",
+      "A soldier of the old Empire has stopped. I record it.",
+      "The Inedible One is dismantled. The painted ones will say eaten. They will be wrong.",
+      "His Knights remain in the dome. No one has told them."
+     ]
+    }
+   ],
+   "states": [
+    [
+     "General Jang killed by player",
+     true
+    ]
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton town resident",
+    "Skeleton Town barman",
+    "Skeleton bandit - BASE"
+   ]
+  }
+ ]
+}

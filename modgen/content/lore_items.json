@@ -1,0 +1,631 @@
+{
+ "pack": "lore_items",
+ "lore_items": [
+  {
+   "id": "li_hoa_ledger",
+   "name": "Head of Agriculture's Ledger",
+   "from": "Men of Dirt",
+   "description": "The last pages of an agricultural ledger, ruled in a very neat hand:\n\n\"Yield: none. Yield: none. Yield: none. Filed with the usual report. No reply.\"",
+   "place": []
+  },
+  {
+   "id": "li_hoa_requisition",
+   "name": "Unsigned Grain Requisition",
+   "from": "Letter Of The Condemned",
+   "description": "A requisition form, never stamped:\n\n\"Grain for the east terraces, forty days. Approval pending. Approval pending. Approval pending.\"",
+   "place": []
+  },
+  {
+   "id": "li_hoa_forecast",
+   "name": "Harvest Forecast, Final Year",
+   "from": "Tech Hunter's Notes: The Ashlands",
+   "description": "A bound report in a skeleton clerk's careful print:\n\n\"The forecast was revised downward four times. I would like it noted that I revised it honestly.\"",
+   "place": []
+  },
+  {
+   "id": "li_hat12_memo",
+   "name": "Hat-12 Memo: Cult Suppression",
+   "from": "Letter Of The Condemned",
+   "description": "A police memo, stiff with official phrasing:\n\n\"Gatherings of the new faith are to be broken up on sight. Detain, do not harm. Repeat: do not harm. Reports say otherwise.\"",
+   "place": []
+  },
+  {
+   "id": "li_hat12_roster",
+   "name": "Empire Police Roster",
+   "from": "Men of Dirt",
+   "description": "A water-stained duty roster. Several names are struck out, with a single word in the margin:\n\n\"Gone.\"",
+   "place": []
+  },
+  {
+   "id": "li_legion_order",
+   "name": "Legion Order: Hold the Line",
+   "from": "Letter Of The Condemned",
+   "description": "A terse printed order on scorched paper:\n\n\"The line is held until relieved. No relief is coming. Hold the line anyway.\"",
+   "place": [
+    [
+     "ancient lab ruins",
+     3
+    ]
+   ]
+  },
+  {
+   "id": "li_legion_tally",
+   "name": "Legion Muster Tally",
+   "from": "Men of Dirt",
+   "description": "A muster tally. Each column is shorter than the one before it, and the last is only a mark.",
+   "place": []
+  },
+  {
+   "id": "li_rhino_worklog",
+   "name": "Rhinobot's Work Log",
+   "from": "Tech Hunter's Notes: The Ashlands",
+   "description": "A maintenance log in clean, cheerful print:\n\n\"Task complete. Task complete. Task complete. I was not told to stop. Is this correct?\"",
+   "place": []
+  },
+  {
+   "id": "li_rhino_requests",
+   "name": "Rhinobot Request Slips",
+   "from": "Men of Dirt",
+   "description": "A stack of request slips, each stamped APPROVED by the same unit:\n\n\"Whatever is asked, I will help. It is what I am for.\"",
+   "place": []
+  },
+  {
+   "id": "li_jang_dispatch",
+   "name": "Hydraulic Knights Dispatch",
+   "from": "Letter Of The Condemned",
+   "description": "A battered field dispatch:\n\n\"Pirates dispersed. More of them than we were told. Fewer of them armed than we were told. Please advise.\"",
+   "place": []
+  },
+  {
+   "id": "li_ash_foreman",
+   "name": "Ash Dome Work Order",
+   "from": "Men of Dirt",
+   "description": "A work order for one of the domes, with no date:\n\n\"Seal the lower doors. Power to remain on. Staff to remain inside. Remain.\"",
+   "place": []
+  },
+  {
+   "id": "li_catlon_decree",
+   "name": "Cat-Lon's Decree on Order",
+   "from": "Tech Hunter's Notes: The Ashlands",
+   "description": "A decree on heavy old paper, signed by a skeleton in thin, sharp strokes:\n\n\"Order is the kindest thing I can give you. Accept it.\"",
+   "place": [
+    [
+     "ancient lab ruins",
+     4
+    ]
+   ],
+   "int": {
+    "value": 100
+   }
+  },
+  {
+   "id": "li_tailor_measures",
+   "name": "Tailor's Measure Book",
+   "from": "Men of Dirt",
+   "description": "A pocket book of body measures, neat and unhurried:\n\n\"Chest 38, arm 24, a fine tall one. Keep the face for last. The face is the difficult part.\"",
+   "place": [
+    [
+     "bandit camp loot",
+     6
+    ],
+    [
+     "worthless camp loot",
+     4
+    ]
+   ]
+  },
+  {
+   "id": "li_tailor_fitting",
+   "name": "Tailor's Fitting Notes",
+   "from": "Captive's Journal II",
+   "description": "A page of tailoring notes:\n\n\"A coat sits better when the wearer has not moved too much. Tallow helps. So does patience. So does a good needle.\"",
+   "place": [
+    [
+     "bandit camp loot",
+     6
+    ],
+    [
+     "worthless camp loot",
+     4
+    ]
+   ]
+  },
+  {
+   "id": "li_tailor_order",
+   "name": "Order for a Fine Pelt",
+   "from": "Letter Of The Condemned",
+   "description": "A short order in careful handwriting:\n\n\"One suit, medium build, no scars. Payment on delivery. I am told the last one was not quite right at the hands.\"",
+   "place": [
+    [
+     "bandit camp loot",
+     5
+    ],
+    [
+     "worthless camp loot",
+     3
+    ]
+   ]
+  },
+  {
+   "id": "li_hunter_journal_i",
+   "name": "Hunter's Field Journal I",
+   "from": "Captive's Journal II",
+   "description": "A field journal, the cover stained brown:\n\n\"Day 3 on the Plains. Found a camp. Cold ashes, picked bones, teeth on a string. Moving on before dark.\"",
+   "place": [
+    [
+     "Lore: Flotsam Village Notes",
+     40
+    ],
+    [
+     "cannibal treasure",
+     12
+    ]
+   ]
+  },
+  {
+   "id": "li_hunter_journal_ii",
+   "name": "Hunter's Field Journal II",
+   "from": "Captive's Journal II",
+   "description": "A field journal, the last entries rushed:\n\n\"They do not run when hunted. They wait. I do not like how well they wait. Out of rations tomorrow.\"",
+   "place": [
+    [
+     "Lore: Flotsam Village Notes",
+     40
+    ],
+    [
+     "cannibal treasure",
+     12
+    ]
+   ]
+  },
+  {
+   "id": "li_hunter_tally",
+   "name": "Cannibal Hunter's Tally",
+   "from": "Men of Dirt",
+   "description": "A strip of leather scratched with tally marks. Beside the last one, in charcoal:\n\n\"Not worth it. Do not come out here.\"",
+   "place": [
+    [
+     "Lore: Flotsam Village Notes",
+     30
+    ],
+    [
+     "cannibal treasure",
+     10
+    ]
+   ]
+  },
+  {
+   "id": "li_cannibal_larder",
+   "name": "Larder Count",
+   "from": "Captive's Journal II",
+   "description": "A scrap of hide scratched with marks, a drawing of a bowl beside each:\n\n\"Six, and the quiet one from the hill. Not enough for the cold season.\"",
+   "place": [
+    [
+     "Notes From a cannibal camp",
+     40
+    ],
+    [
+     "cannibal treasure",
+     10
+    ]
+   ]
+  },
+  {
+   "id": "li_cannibal_bring",
+   "name": "Bring-Meat Mark",
+   "from": "Captive's Journal II",
+   "description": "A rough drawing on hide: a hand holding a haunch, a gate beside it. Beneath it, a single word in a child's hand:\n\n\"Beast.\"",
+   "place": [
+    [
+     "Notes From a cannibal camp",
+     40
+    ],
+    [
+     "cannibal treasure",
+     10
+    ]
+   ]
+  },
+  {
+   "id": "li_shek_letter_warrior",
+   "name": "Letter From a Shek Warrior",
+   "from": "Shager's Overthrow",
+   "description": "A letter in a fighter's plain hand:\n\n\"The new city is quiet and the quiet is bad for us. We were made to fight. The Golem keeps us in line. For now.\"",
+   "place": [
+    [
+     "Lore: Shek Official Books For Shops & Homes",
+     60
+    ]
+   ]
+  },
+  {
+   "id": "li_shek_letter_trade",
+   "name": "A Shek Trader's Complaint",
+   "from": "Shager's Overthrow",
+   "description": "A trader's letter, written in a hurry:\n\n\"Foreign coin is good coin, but not one of them will say thank you. I told my wife, keep smiling, keep counting.\"",
+   "place": [
+    [
+     "Lore: Shek Official Books For Shops & Homes",
+     60
+    ]
+   ]
+  },
+  {
+   "id": "li_shek_kral_verse",
+   "name": "Verses on the Hundred Swords",
+   "from": "Shager's Overthrow",
+   "description": "A Shek chant copied onto a leaf of paper:\n\n\"One hundred blades and one man standing. One hundred blades, and the man still standing, in the song.\"",
+   "place": [
+    [
+     "Lore: Shek Official Books For Shops & Homes",
+     60
+    ]
+   ]
+  },
+  {
+   "id": "li_hn_sermon_ash",
+   "name": "Sermon on the Ashes",
+   "from": "The Guiding Light IV",
+   "description": "A Holy Nation sermon, printed for distribution:\n\n\"Where the world was burned, Narko walks. The faithful do not look at the ash. The faithful look to the Light.\"",
+   "place": [
+    [
+     "Lore: Holy Nation Offiical Books For Shops & Homes",
+     40
+    ]
+   ]
+  },
+  {
+   "id": "li_hn_sermon_burn",
+   "name": "Sermon on Burning",
+   "from": "The Guiding Light IV",
+   "description": "A Holy Nation sermon, thumbed soft:\n\n\"What is cast into the flame is not lost. It is returned. Do not weep at the pyre. Weep for those who will not be returned.\"",
+   "place": [
+    [
+     "Lore: Holy Nation Offiical Books For Shops & Homes",
+     40
+    ],
+    [
+     "Lore: Holy Nation Official Notes For Churches",
+     40
+    ]
+   ]
+  },
+  {
+   "id": "li_hn_sermon_hunger",
+   "name": "Sermon on Hunger",
+   "from": "The Guiding Light IV",
+   "description": "A Holy Nation sermon on hunger:\n\n\"The faithful hunger and are fed. The faithless feast and are empty. Eat what Okran gives, and ask for no more.\"",
+   "place": [
+    [
+     "Lore: Holy Nation Offiical Books For Shops & Homes",
+     40
+    ],
+    [
+     "Lore: Holy Nation Official Notes For Churches",
+     40
+    ]
+   ]
+  },
+  {
+   "id": "li_hn_inquisitor_order",
+   "name": "Inquisitor's Standing Order",
+   "from": "Holy Edict",
+   "description": "A standing order with the Holy Nation seal:\n\n\"Report any gathering of more than four without a priest. Report it before dusk. Do not wait to be certain.\"",
+   "place": [
+    [
+     "Lore: Holy Nation Official Notes For Churches",
+     50
+    ],
+    [
+     "Lore: Holy Nation Offiical Books For Shops & Homes",
+     20
+    ]
+   ]
+  },
+  {
+   "id": "li_hn_forbidden_prayer",
+   "name": "A Prayer Said Quietly",
+   "from": "Letter From A Freedom Fighter",
+   "description": "A prayer scrawled on a scrap, folded small:\n\n\"Okran, if you hear this, I am not tainted. I only wanted to read. Please let them forget my name.\"",
+   "place": [
+    [
+     "Lore: Holy Nation Forbidden Books & Notes",
+     60
+    ]
+   ]
+  },
+  {
+   "id": "li_slave_ledger",
+   "name": "Slave Ledger",
+   "from": "Men of Dirt",
+   "description": "A ledger of purchases, in a clerk's precise hand:\n\n\"Two strong. One weak, sold at a discount. One child, sold in a lot. No complaints recorded.\"",
+   "place": [
+    [
+     "Lore: Empire Unnofficial Letters & Books",
+     50
+    ],
+    [
+     "slaver farm vendor",
+     12
+    ]
+   ]
+  },
+  {
+   "id": "li_slave_manifest",
+   "name": "Slave Caravan Manifest",
+   "from": "Letter Of The Condemned",
+   "description": "A caravan manifest:\n\n\"Lot of twelve for the western markets. One died on the road. Deduct the loss from the guards, not the price.\"",
+   "place": [
+    [
+     "Lore: Empire Unnofficial Letters & Books",
+     50
+    ],
+    [
+     "slaver farm vendor",
+     12
+    ]
+   ]
+  },
+  {
+   "id": "li_guild_note",
+   "name": "Traders Guild Notice",
+   "from": "Letter Of The Condemned",
+   "description": "A printed Traders Guild notice:\n\n\"Debts are collected on the first of the month. Unpaid debts are collected otherwise. The Guild thanks you for your custom.\"",
+   "place": [
+    [
+     "Lore: Empire Official Books",
+     50
+    ]
+   ]
+  },
+  {
+   "id": "li_guild_tariff",
+   "name": "Guild Tariff Sheet",
+   "from": "Men of Dirt",
+   "description": "A tariff sheet, folded and refolded:\n\n\"Iron, by weight. Food, by hunger. Everything else, by what the buyer can be made to pay.\"",
+   "place": [
+    [
+     "Lore: Empire Official Books",
+     50
+    ],
+    [
+     "Lore: Empire Unnofficial Letters & Books",
+     30
+    ]
+   ]
+  },
+  {
+   "id": "li_hive_obs_i",
+   "name": "Hive Observations I",
+   "from": "Tech Hunter's Notes: The Ashlands",
+   "description": "A researcher's observation sheet:\n\n\"The workers do not rest. They hold the structure and pass the weight along. I have not seen one idle in nine days.\"",
+   "place": [
+    [
+     "Lore: Worlds End Library",
+     25
+    ],
+    [
+     "hive",
+     50
+    ]
+   ]
+  },
+  {
+   "id": "li_hive_obs_ii",
+   "name": "Hive Observations II",
+   "from": "Tech Hunter's Notes: The Ashlands",
+   "description": "A researcher's observation sheet, hurried:\n\n\"The queen is never seen outside. The workers carry things in and things out, and nothing is ever wasted. Nothing.\"",
+   "place": [
+    [
+     "Lore: Worlds End Library",
+     25
+    ],
+    [
+     "hive",
+     50
+    ]
+   ]
+  },
+  {
+   "id": "li_gate_token",
+   "name": "Meat-Bringer's Token",
+   "from": "Animal Claw",
+   "description": "A claw on a scrap of cord, the knots tied in a pattern. Whoever carries it has fed the gate, and the gate remembers.",
+   "place": [
+    [
+     "cannibal treasure",
+     8
+    ]
+   ],
+   "int": {
+    "value": 40
+   }
+  }
+ ],
+ "item_lists": [
+  {
+   "name": "Ash Dome I Papers",
+   "count": 1,
+   "items": [
+    [
+     "Head of Agriculture's Ledger",
+     100
+    ],
+    [
+     "Unsigned Grain Requisition",
+     100
+    ],
+    [
+     "Harvest Forecast, Final Year",
+     100
+    ],
+    [
+     "Legion Muster Tally",
+     100
+    ]
+   ],
+   "squads": [
+    [
+     "ash dome 1",
+     55
+    ]
+   ]
+  },
+  {
+   "name": "Ash Dome II Papers",
+   "count": 1,
+   "items": [
+    [
+     "Rhinobot's Work Log",
+     100
+    ],
+    [
+     "Rhinobot Request Slips",
+     100
+    ]
+   ],
+   "squads": [
+    [
+     "ash dome 2",
+     55
+    ]
+   ]
+  },
+  {
+   "name": "Ash Dome III Papers",
+   "count": 1,
+   "items": [
+    [
+     "Hydraulic Knights Dispatch",
+     100
+    ],
+    [
+     "Legion Order: Hold the Line",
+     100
+    ]
+   ],
+   "squads": [
+    [
+     "ash dome 3",
+     55
+    ]
+   ]
+  },
+  {
+   "name": "Ash Dome IV Papers",
+   "count": 1,
+   "items": [
+    [
+     "Hat-12 Memo: Cult Suppression",
+     100
+    ],
+    [
+     "Empire Police Roster",
+     100
+    ],
+    [
+     "Ash Dome Work Order",
+     100
+    ]
+   ],
+   "squads": [
+    [
+     "ash dome 4",
+     55
+    ]
+   ]
+  }
+ ],
+ "changes": [
+  {
+   "kind": "character",
+   "name": "Head of Agriculture",
+   "ref_add": {
+    "inventory": [
+     [
+      "Head of Agriculture's Ledger",
+      1,
+      0,
+      0
+     ],
+     [
+      "Unsigned Grain Requisition",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Rhinobot",
+   "ref_add": {
+    "inventory": [
+     [
+      "Rhinobot's Work Log",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "General Jang",
+   "ref_add": {
+    "inventory": [
+     [
+      "Hydraulic Knights Dispatch",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "General Hat-12",
+   "ref_add": {
+    "inventory": [
+     [
+      "Hat-12 Memo: Cult Suppression",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Cannibal Chief",
+   "ref_add": {
+    "death items": [
+     [
+      "Severed Cannibal Right Arm",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Cannibal Grand Wizard",
+   "ref_add": {
+    "death items": [
+     [
+      "Severed Cannibal Right Arm",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  }
+ ]
+}

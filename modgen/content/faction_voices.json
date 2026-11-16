@@ -1,0 +1,606 @@
+{
+ "pack": "faction_voices",
+ "mod": "LivingWasteland",
+ "note": "A voice for factions vanilla gives little or none (they speak through their characters' own packages; see MEITOU_PORT.md). Lines in our own words, matched to the Kenshi wiki (2026-11-12). No lines for factions that never speak in vanilla or have no members: Thrall Masters, Skeleton Legion, Cat-Lon's exiles (Second Empire Exile), Fishmen, Skimmers, Okranites, the Medics Guild (ours), Cannibals (their own packs).",
+ "dialogues": [
+  {
+   "id": "fv_police_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Police"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Keep it civil. The magistrate likes a quiet street.",
+      "Hands where we can see them. Nothing personal.",
+      "Crime is a tax here. Somebody always pays it.",
+      "Move along. Loitering is a fine."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_police_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Police"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "You're under arrest. Or you're dead.",
+      "In the name of the Emperor, stand still.",
+      "Resisting? Good. The paperwork's shorter."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_bones_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Band of Bones"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Eyes on my horns? Then you'd better have a blade to back it.",
+      "Tora says the weak feed the strong.",
+      "A cleaver doesn't care who you used to be.",
+      "The Kingdom threw us out. We kept the fighting."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_krals_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Kral's Chosen"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Outsider. Show us what you're worth.",
+      "Kral's blood runs in the Flying Bull. Remember that in New Kralia.",
+      "You walk Shek ground. Walk it straight.",
+      "Soft hands. Soft steps. Soft bones, I'd wager."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_krals_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Kral's Chosen"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "For the Flying Bull!",
+      "Kral would have crushed you already.",
+      "Fight, outsider. That's the only greeting we know."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_berserkers_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Berserkers"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "No king. No law. Just the fight.",
+      "The Kingdom went soft. We didn't.",
+      "Ghost wants a skull for the fire.",
+      "Run if you want. It's better sport."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_machinists_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Machinists"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Bring us books. Old ones. Any condition.",
+      "Knowledge is the one thing the dust can't bury.",
+      "Finch says the old world isn't dead, only badly filed.",
+      "World's End has room for anyone who can read. Fewer than you'd think."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_machinists_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists"
+   ],
+   "bar_only": false,
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Iyo sorted the archive by century again. Nobody can find anything.",
+      "Another tech hunter sold us a cookbook as a schematic.",
+      "The ancients wrote everything down. Then they forgot to stay alive."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_crabs_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Crab Raiders"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Queen wants shells. Yours will do.",
+      "Not many visitors in the pits.",
+      "Hard outside, soft inside. Like you.",
+      "Praise the shell, and die."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_crabs_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Crab Raiders"
+   ],
+   "bar_only": false,
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Praise the shell.",
+      "The Queen's armour turns blades. Faith does the rest.",
+      "Samurai don't come down to the pits. Not twice."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_skelbandits_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Skeleton Bandits"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "We're skeletons. We feel nothing.",
+      "The Elder says flesh is a phase.",
+      "Take off your skin. It's holding you back.",
+      "Proper skeletons don't bleed. Watch."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_manhunters_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Manhunters"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You've the look of a runaway.",
+      "Runaways fetch good money. So do the ones who look like runaways.",
+      "Keep walking, unless you've a brand to hide.",
+      "We find what the slavers lose."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_scavengers_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Scavengers"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Gutterhead gets the boots. We get the rest.",
+      "Fall down. We'll take it from there.",
+      "Nothing personal. Just your things.",
+      "Dead or alive, you'll lighten the load."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_skeletons_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Skeletons"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Flesh. You still eat, sleep and die.",
+      "The Black Desert keeps the living away.",
+      "We remember things your kind forgot on purpose.",
+      "You'll rust too. Slower, but you will."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_twinblades_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Twinblades"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Can you pay? No? Then you'll pay another way.",
+      "Big Fang likes healthy ones. You look healthy.",
+      "Ransom or parts. Your family chooses."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_twinblades_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Twinblades"
+   ],
+   "bar_only": false,
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Doctors pay well for what we bring them. They don't ask where it grew.",
+      "Nobody in Mud Town says no to Big Fang twice."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_blackshifters_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Blackshifters"
+   ],
+   "bar_only": false,
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The house always wins. That's not a rule, it's a debt.",
+      "Everybody owes. Darkbrow keeps the book.",
+      "Lucky tonight? Then somebody's cheating. Hope it's us.",
+      "Hivers keep honest tallies. That's what makes us dangerous."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_stonerats_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Stone Rats"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Nice place. Shame if it caught fire.",
+      "Protection's cheap. Bandages aren't.",
+      "This isn't hound ground, so it's ours."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_stonerats_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Stone Rats"
+   ],
+   "bar_only": false,
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Big Al says pay the Hounds their due and keep the rest.",
+      "We don't touch hound business. We're not stupid."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_grayflayers_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Grayflayers"
+   ],
+   "bar_only": false,
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "We only rob the bad ones. Funny how many there are.",
+      "Quiet work pays. Loud work gets you strung up.",
+      "The Smugglers' Bar serves anyone who doesn't ask questions.",
+      "Big Gray takes the jobs nobody else can keep quiet about."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_tradeninjas_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Trade Ninjas"
+   ],
+   "bar_only": false,
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Drink. Pay. Don't make me stand up.",
+      "Dust Bandits drink outside.",
+      "Trouble in here gets carried out.",
+      "Every bar needs a back room."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_blackdog_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Black Dog"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're enjoying our protection. Time to chip in.",
+      "Protection's a fair price. Ask anyone who didn't pay.",
+      "The dogs are hungry. Pay, and they eat something else.",
+      "Nice base. Be a shame if the vermin got in."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_gorrillo_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "The Gorrillo Bandits"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "No weapons. No need.",
+      "Nobody takes our fists off us when we're down.",
+      "Gorrillo says a blade is a crutch."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_outlaw_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Outlaw"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Nobody owns me. Not any more.",
+      "Every law in this land was written by someone with a sword.",
+      "You didn't see me. I didn't see you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fv_oldmachines_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Old Machines"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "UNAUTHORISED. UNAUTHORISED.",
+      "Directive: clean.",
+      "Sector closed. Sector closed. Sector closed.",
+      "Biological matter detected. Correcting."
+     ]
+    }
+   ]
+  }
+ ]
+}

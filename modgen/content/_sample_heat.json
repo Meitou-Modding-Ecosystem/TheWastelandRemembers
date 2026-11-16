@@ -1,0 +1,12 @@
+{
+  "pack": "sample_heat", "mod": "LivingWastelandHeat",
+  "variables": [{"name": "Holy Nation heat", "initial": 0}],
+  "dialogues": [
+    {"id": "sample hn witness assault (silent heat)", "event": "EV_WITNESS_GENERIC_ASSAULT", "factions": ["The Holy Nation"],
+     "player_only": true, "repeat": 1,
+     "lines": [{"silent": true, "var_add": [["Holy Nation heat", 1]]}]},
+    {"id": "sample hn hot bark", "event": "EV_I_SEE_NEUTRAL_SQUAD", "factions": ["The Holy Nation"], "player_only": true,
+     "vars": [["Holy Nation heat", ">", 5]], "chance": 40, "repeat": 2,
+     "lines": [{"say": ["We know what you've been doing, outlander."], "effects": [["DA_AFFECT_RELATIONS", -2]]}]}
+  ]
+}

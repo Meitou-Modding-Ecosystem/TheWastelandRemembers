@@ -1,0 +1,531 @@
+{
+ "pack": "cannibals_data",
+ "mod": "LivingWastelandCannibals",
+ "packages_new": [
+  {
+   "name": "Gate Folk",
+   "tag": "Living Wasteland"
+  }
+ ],
+ "clones": [
+  {
+   "kind": "faction",
+   "from": "Cannibals",
+   "name": "Gate Folk",
+   "int": {
+    "default relation": 0
+   },
+   "float": {
+    "trustworthy": 0.0
+   },
+   "drop": [
+    "campaigns",
+    "no-go zones",
+    "bar squads",
+    "buildings replacements",
+    "squad default",
+    "roaming squads",
+    "biomes"
+   ],
+   "ref": {
+    "relations": [
+     [
+      "Cannibals",
+      -100,
+      100,
+      0
+     ]
+    ],
+    "biomes": [
+     [
+      "Northern Coast",
+      0,
+      0,
+      0
+     ],
+     [
+      "Hidden Forest",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "from": "Cannibal",
+   "name": "Gate Folk Keeper",
+   "states": false,
+   "int": {
+    "combat stats": 20
+   },
+   "ref": {
+    "faction": [
+     [
+      "Gate Folk",
+      0,
+      100,
+      0
+     ]
+    ],
+    "dialogue package": [
+     [
+      "Gate Folk",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "from": "Scrawny Cannibal",
+   "name": "Gate Folk Gaunt",
+   "states": false,
+   "int": {
+    "combat stats": 11
+   },
+   "ref": {
+    "faction": [
+     [
+      "Gate Folk",
+      0,
+      100,
+      0
+     ]
+    ],
+    "dialogue package": [
+     [
+      "Gate Folk",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "from": "Cannibal Chief",
+   "name": "Gate Folk Sentinel",
+   "states": false,
+   "int": {
+    "combat stats": 32,
+    "bounty amount": 0,
+    "bounty chance": 0
+   },
+   "ref": {
+    "faction": [
+     [
+      "Gate Folk",
+      0,
+      100,
+      0
+     ]
+    ],
+    "dialogue package": [
+     [
+      "Gate Folk",
+      0,
+      0,
+      0
+     ]
+    ],
+    "bounty factions": []
+   }
+  },
+  {
+   "kind": "character",
+   "from": "Cannibal Chief",
+   "name": "Warden Hush",
+   "bool": {
+    "unique": 1,
+    "named": 0
+   },
+   "int": {
+    "combat stats": 46,
+    "strength": 60,
+    "armour grade": 2,
+    "bounty amount": 0,
+    "bounty chance": 0,
+    "female chance": 100
+   },
+   "ref": {
+    "faction": [
+     [
+      "Gate Folk",
+      0,
+      100,
+      0
+     ]
+    ],
+    "dialogue package": [
+     [
+      "Gate Folk",
+      0,
+      0,
+      0
+     ]
+    ],
+    "bounty factions": []
+   }
+  },
+  {
+   "kind": "squad",
+   "from": "Cannibal home guards",
+   "name": "Gate Folk guards",
+   "ref": {
+    "faction": [
+     [
+      "Gate Folk",
+      0,
+      0,
+      0
+     ]
+    ],
+    "leader": [
+     [
+      "Gate Folk Sentinel",
+      2,
+      0,
+      0
+     ]
+    ],
+    "squad": [
+     [
+      "Gate Folk Keeper",
+      5,
+      8,
+      0
+     ],
+     [
+      "Gate Folk Gaunt",
+      3,
+      6,
+      0
+     ]
+    ],
+    "dialog leader": [
+     [
+      "Gate Folk",
+      0,
+      0,
+      0
+     ]
+    ],
+    "dialog squad": [
+     [
+      "Gate Folk",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "squad",
+   "from": "Cannibal scrawny",
+   "name": "Gate Folk patrol",
+   "ref": {
+    "faction": [
+     [
+      "Gate Folk",
+      0,
+      0,
+      0
+     ]
+    ],
+    "squad": [
+     [
+      "Gate Folk Gaunt",
+      4,
+      8,
+      0
+     ],
+     [
+      "Gate Folk Keeper",
+      1,
+      2,
+      0
+     ]
+    ],
+    "dialog leader": [
+     [
+      "Gate Folk",
+      0,
+      0,
+      0
+     ]
+    ],
+    "dialog squad": [
+     [
+      "Gate Folk",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "squad",
+   "from": "Cannibal meat lord",
+   "name": "Warden Hush's household",
+   "ref": {
+    "leader": [
+     [
+      "Warden Hush",
+      1,
+      0,
+      0
+     ]
+    ],
+    "squad": [
+     [
+      "Gate Folk Sentinel",
+      2,
+      3,
+      0
+     ]
+    ],
+    "faction": [
+     [
+      "Gate Folk",
+      0,
+      0,
+      0
+     ]
+    ],
+    "dialog leader": [
+     [
+      "Gate Folk",
+      0,
+      0,
+      0
+     ]
+    ],
+    "dialog squad": [
+     [
+      "Gate Folk",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "town",
+   "from": "Cannibals",
+   "name": "The Gate",
+   "bool": {
+    "residents override": 1
+   },
+   "ref": {
+    "faction": [
+     [
+      "Gate Folk",
+      0,
+      100,
+      0
+     ]
+    ],
+    "roaming squads": [
+     [
+      "Gate Folk patrol",
+      9,
+      0,
+      0
+     ]
+    ],
+    "residents": [
+     [
+      "Gate Folk guards",
+      1,
+      2,
+      0
+     ],
+     [
+      "Warden Hush's household",
+      1,
+      3,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "from": "Meat Lord",
+   "name": "Alder Quill",
+   "int": {
+    "combat stats": 48,
+    "strength": 55,
+    "bounty amount": 20000,
+    "bounty chance": 100
+   },
+   "ref": {
+    "bounty factions": [
+     [
+      "The Holy Nation",
+      0,
+      0,
+      0
+     ],
+     [
+      "United Cities",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "from": "Cannibal Grand Wizard",
+   "name": "Mother Brine",
+   "int": {
+    "combat stats": 46,
+    "bounty amount": 18000,
+    "bounty chance": 100,
+    "female chance": 100
+   },
+   "ref": {
+    "bounty factions": [
+     [
+      "The Holy Nation",
+      0,
+      0,
+      0
+     ],
+     [
+      "United Cities",
+      0,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "squad",
+   "from": "Cannibal meat lord",
+   "name": "Alder Quill's table",
+   "ref": {
+    "leader": [
+     [
+      "Alder Quill",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "squad",
+   "from": "Cannibal grand wizard",
+   "name": "Mother Brine's cure-house",
+   "ref": {
+    "leader": [
+     [
+      "Mother Brine",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  }
+ ],
+ "changes": [
+  {
+   "kind": "faction",
+   "name": "Gate Folk",
+   "ref_add": {
+    "squad default": [
+     [
+      "Gate Folk guards",
+      0,
+      100,
+      0
+     ]
+    ],
+    "roaming squads": [
+     [
+      "Gate Folk patrol",
+      200,
+      100,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "zone",
+   "name": "Northern Coast",
+   "ref_add": {
+    "nests": [
+     [
+      "The Gate",
+      600,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "zone",
+   "name": "Hidden Forest",
+   "ref_add": {
+    "nests": [
+     [
+      "The Gate",
+      300,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "town",
+   "name": "Cannibals",
+   "ref_add": {
+    "residents": [
+     [
+      "Alder Quill's table",
+      1,
+      1,
+      0
+     ],
+     [
+      "Mother Brine's cure-house",
+      1,
+      1,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Cannibal Grand Wizard",
+   "int": {
+    "combat stats": 60
+   }
+  },
+  {
+   "kind": "character",
+   "name": "Meat Lord",
+   "int": {
+    "combat stats": 55
+   }
+  }
+ ]
+}

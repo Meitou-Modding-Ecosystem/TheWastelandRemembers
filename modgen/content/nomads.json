@@ -1,0 +1,415 @@
+{
+ "pack": "nomads",
+ "mod": "LivingWasteland",
+ "note": "A voice for the Nomads, checked against the Kenshi wiki (2026-11-12): human wanderers and animal herders, neutral, content to tend their animals; they call settled people 'Townie'; they roam the south-west (Stenn Desert, Border Zone, Shem, Okran's Gulf, Dreg) and the north-east (Hidden Forest, Northern Coast, Darkfinger, Sinkuun, the Great Desert, Heng, Grey Desert); their camps are free to anyone (rain shelter, campfire, bed); a pack beast carries their light; they trade goats, pack beasts, bonedogs and bulls; they coexist with the Dust Bandits and the Band of Bones and are friendly with the Western Hive and Empire peasants. (Vanilla already has them feed a starving traveller cooked vegetables, so no gift here.) Vanilla gives their squads no dialogue packages; the compiler reaches them through their characters' own packages with a 'my faction' check.",
+ "changes": [
+  {
+   "kind": "zone",
+   "name": "Border Zone",
+   "ref_add": {
+    "homeless spawns": [
+     [
+      "Nomads",
+      2,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "zone",
+   "name": "Dreg",
+   "ref_add": {
+    "homeless spawns": [
+     [
+      "Nomads",
+      30,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "zone",
+   "name": "Flats Lagoon",
+   "ref_add": {
+    "homeless spawns": [
+     [
+      "Nomads",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "zone",
+   "name": "Grey Desert",
+   "ref_add": {
+    "homeless spawns": [
+     [
+      "Nomads",
+      3,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "zone",
+   "name": "Heng",
+   "ref_add": {
+    "homeless spawns": [
+     [
+      "Nomads",
+      14,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "zone",
+   "name": "Hidden Forest",
+   "ref_add": {
+    "homeless spawns": [
+     [
+      "Nomads",
+      3,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "zone",
+   "name": "Okran's Gulf",
+   "ref_add": {
+    "homeless spawns": [
+     [
+      "Nomads",
+      6,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "zone",
+   "name": "Shem",
+   "ref_add": {
+    "homeless spawns": [
+     [
+      "Nomads",
+      1,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "zone",
+   "name": "Sinkuun",
+   "ref_add": {
+    "homeless spawns": [
+     [
+      "Nomads",
+      6,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "zone",
+   "name": "Stenn Desert",
+   "ref_add": {
+    "homeless spawns": [
+     [
+      "Nomads",
+      8,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "zone",
+   "name": "The Great Desert",
+   "ref_add": {
+    "homeless spawns": [
+     [
+      "Nomads",
+      13,
+      0,
+      0
+     ]
+    ]
+   }
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "nm_road_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Nomads"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Keep walking, Townie. It's the only thing that works.",
+      "Towns are where the trouble keeps its money.",
+      "Water, then shade, then talk. In that order.",
+      "We were here before the walls. We'll be here after them.",
+      "You've road dust on you. Good. Means you're honest about it.",
+      "Wheels break out here. Feet mend.",
+      "Our fires are open to anyone. Just don't make us regret it.",
+      "Walk with the wind at your back."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nm_animals_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Nomads"
+   ],
+   "characters": [
+    "Nomad Animal Trader",
+    "Nomad Animal Trader Town"
+   ],
+   "player_only": true,
+   "chance": 15,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Need an animal, Townie? Nobody survives the road on their own back.",
+      "A pack bull carries what you can't.",
+      "Pack beasts are slow. So is dying of thirst.",
+      "Bonedogs bite strangers. That's what you're paying for.",
+      "Feed them first, then yourself. They remember.",
+      "A bull that size could pull a wagon, if anyone out here still built them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nm_goats_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Nomads"
+   ],
+   "characters": [
+    "Goat Herder"
+   ],
+   "player_only": true,
+   "chance": 15,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Mind the goats. They don't mind you.",
+      "Goats know when the weather turns. Watch them, not the sky.",
+      "Goats eat anything. So do we.",
+      "Lost three to beak things last season. The rest walked on."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nm_bar_talk",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Nomads"
+   ],
+   "bar_only": false,
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The hivers out west trade fair. Fairer than most Townies.",
+      "Dust Bandits leave us be. We've nothing they'd bother carrying.",
+      "My father walked from Shem to Heng twice. Never got rich.",
+      "The Bones and us drink at the same well.",
+      "Settled folk count walls. We count wells.",
+      "A town is a road that gave up.",
+      "Old Empire farmers used to share their water with us."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nm_lone_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Nomads"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_A_NON_PLAYER_TOWN",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Out here alone? Either you're brave or you've nowhere left.",
+      "If you're lost, the road's that way. If you're not, keep it that way.",
+      "Follow the pack beast's lamp if night catches you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nm_fire_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Nomads"
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Townie. Sit by the fire a while?",
+      "Fire's going. Sit, if you've the time.",
+      "You look like you've walked far."
+     ],
+     "then": [
+      {
+       "say": [
+        "I could use the rest."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "effects": [
+        [
+         "DA_AFFECT_RELATIONS",
+         1
+        ]
+       ],
+       "then": [
+        {
+         "say": [
+          "Water's in the skin. Talk if you like, or don't.",
+          "Rest. The road will still be there. It always is.",
+          "Sit close. The nights out here bite."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Any news from the road?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Beak things on the move near the coast.",
+          "The painted ones came further south this year. Keep your fires small up north.",
+          "Acid rain over the south-east again. Our goats knew a day early.",
+          "Saw a caravan's bones off the road. Somebody wanted what it carried more than they wanted the drivers.",
+          "Skimmers in the dunes at night. Don't sleep in the open, Townie.",
+          "Hivers out west are trading again. Fair prices, if you can stand the staring.",
+          "Bandits on the old road, waiting for anyone fat enough to rob. You're thin. You'll be fine."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Not tonight."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "The fire keeps. So does the road.",
+          "Suit yourself, Townie."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

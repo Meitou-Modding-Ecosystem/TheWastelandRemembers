@@ -1,0 +1,37 @@
+x_courier: six courier errands (mod LivingWastelandHeat). Playtest notes.
+
+NEEDS: BFrizz's Extra Extensions (the recipient takes the item). The handover uses the vanilla line reference
+'give item', which modgen/content.py does not yet write: a patch to content.py is needed
+(it adds `give_items` to refs_from and the offer's accepted line).
+Without the patch the pack still builds but the giver hands over nothing and the errand cannot be finished.
+
+COMMON SHAPE. Offer chance is 12 percent per talk, only when the giver likes you (relation above 5) and you have not
+taken the errand. Accept: the giver speaks the 'accepted' line and the object appears in your pack. Carry it to the
+named kind of NPC and talk to them: they speak first (only if you carry the object), you answer, they take the object
+and react. Go back to ANY giver of the same kind and talk: pays the reward. No kills, no spawns, no world states.
+Extra lines: while the errand is open a giver may nag (var 1); once finished, givers, recipients and bar patrons
+mention it (var 99). Each item has a tiny value and is readable in the inventory tooltip.
+Lost item or dead recipient: the errand stalls (recipient talk lines need the object). Not fixable in data.
+Overlap: dissent_errands.json (de_*) and hn_women.json (hw_q_*) already hold word-only versions of the same ideas;
+these add real objects and different pairings.
+
+1. cr_cord  Knotted Cord, pays 600.
+   Giver: a Holy Nation woman (Civilian, Shopkeep, farm peasant). Recipient: Anti-Slavers ninja (Anti Slaver Ninja
+   or HQ), relation to Anti-Slavers +3. Check: cord appears; ninja says who tied the knots; woman pays and asks you
+   not to come back.
+2. cr_tally  Ronin's Day Tally, pays 500.
+   Giver: a hive ronin (Hive Prince race, ronin packages). Recipient: a Southern or Western Hive worker or soldier
+   drone. Check: the drone says the hive holds the count; the ronin pays and thanks you.
+3. cr_hide  Scraped Hide Strip, pays 700.
+   Giver: a Shek mercenary, bounty hunter, drifter, nomad, scavenger or outlaw (race Shek; not Kingdom). Recipient:
+   Kingdom Shek shopkeeper or retainer, Shek Kingdom relation +2. Check: they react to the scraped mark, the giver pays.
+4. cr_page  Folded Page, pays 800.
+   Giver: any Tech Hunter. Recipient: a skeleton (town resident, barman, junkyard, patron). The skeleton reads the page
+   (one of four short readings, random) and keeps it. Giver pays and does not ask what it said.
+5. cr_coin  Dented Coin, pays 900.
+   Giver: a Slave Traders NPC (guilty conscience). Recipient: Flotsam Ninja, relation +2. They take it, not forgiving.
+6. cr_note  Sealed Note, pays 400.
+   Giver: Empire farmer or bar patron. Recipient: any Mongrel. Relation +2. A note from home, passed on without a name.
+
+Bar rumours: 5 per errand, 3 always, 2 only after the errand is done.
+Report in the test: item appears on accept (the key check), taken on delivery, cats on report, no repeats of the offer.

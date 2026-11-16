@@ -1,0 +1,806 @@
+{
+ "pack": "x_memory",
+ "mod": "LivingWasteland",
+ "dialogues": [
+  {
+   "id": "mem_uc_hate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You. I know what you did to mine. The law may forget. I don't.",
+      "Keep walking. My people remember you, and so do I.",
+      "There you are. We have a debt, you and I. Not today."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_uc_love",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_LOVE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You. You pulled me out of that. I have not forgotten.",
+      "The one who stood over me. I owe you, and the Cities will hear of it.",
+      "I remember you. On your feet when I was not."
+     ],
+     "effects": [
+      [
+       "DA_LOCK_THIS_DIALOG",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_hn_hate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Okran sees you. So do I. I remember what you did.",
+      "The faithful don't forget a wrong. Walk on, and pray I'm busy.",
+      "You took from mine. Okran keeps the tally. I keep the face."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_hn_love",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_LOVE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Okran sent you to me once. I haven't forgotten His messenger.",
+      "You freed me. I pray for you, outlander. Every dawn.",
+      "I remember your hand on my shoulder."
+     ],
+     "effects": [
+      [
+       "DA_LOCK_THIS_DIALOG",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_shek_hate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I remember your blade. Next time I'll be ready for it.",
+      "You beat us once. A Shek remembers the arm that did it.",
+      "Not today, outlander. But I haven't forgotten."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_shek_love",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_LOVE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You stood over me when I fell. A Shek does not forget that either.",
+      "I owe you my horns. Say the word and I will pay it.",
+      "You. I was down, and you didn't leave me. That's a debt I like."
+     ],
+     "effects": [
+      [
+       "DA_LOCK_THIS_DIALOG",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_as_hate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "We know you. What you did to ours is written somewhere.",
+      "Tinfist doesn't forget. Neither do we.",
+      "You. Keep your distance. We remember."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_as_love",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_LOVE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You cut my chains. I remember.",
+      "The one who freed me. There's always a place by our fire for you.",
+      "I was a slave when we met. I am not now."
+     ],
+     "effects": [
+      [
+       "DA_LOCK_THIS_DIALOG",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_th_hate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I logged you. Date, place, what you took.",
+      "You're in the ledger, and not on the good page.",
+      "We remember who robs the Hunters."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_th_love",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_LOVE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I logged you too. Under the good page.",
+      "You carried me out of there. I remember that, and I remember you.",
+      "The Hunters pay their debts. Ask when you need it."
+     ],
+     "effects": [
+      [
+       "DA_LOCK_THIS_DIALOG",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_mg_hate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I know that face. It cost us. Keep your coin and your distance.",
+      "You put some of mine in the dirt. The Guild keeps score.",
+      "Not hiring. Not to you. Not after that."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_mg_love",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_LOVE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You patched me. Guild rate for you, from now on. Lower.",
+      "I remember you. You didn't have to stop.",
+      "You dragged me clear. I'll stand for you when it counts."
+     ],
+     "effects": [
+      [
+       "DA_LOCK_THIS_DIALOG",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_sw_hate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Swampers"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Oi. I remember you. Nobody here does, but I do.",
+      "You again. The swamp doesn't forget a face.",
+      "Keep to your side of the plank. I know what you did."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_sw_love",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Swampers"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_LOVE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You pulled me out of the muck once.",
+      "Oi. The one who didn't leave me.",
+      "You. Good to see you breathing. Me too, thanks to you."
+     ],
+     "effects": [
+      [
+       "DA_LOCK_THIS_DIALOG",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_db_hate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You. You're the one. Boys, that's the one.",
+      "I remember you. My ribs remember you.",
+      "Walk on. I owe you something, and it isn't cats."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_db_love",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_LOVE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You let me live once. I haven't decided what that means yet.",
+      "I remember you. You could have finished it. You did not.",
+      "Walk on. I owe you one and I hate it."
+     ],
+     "effects": [
+      [
+       "DA_LOCK_THIS_DIALOG",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_tg_hate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I have your name on a list, and it isn't the one with discounts.",
+      "You cost the Guild. The Guild doesn't forget a debit.",
+      "Business is business. Yours isn't welcome here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_tg_love",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_LOVE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You saved the Guild a loss. The Guild remembers an asset.",
+      "I remember you. The good ledger this time.",
+      "You carried me out. There's a discount in that. Ask."
+     ],
+     "effects": [
+      [
+       "DA_LOCK_THIS_DIALOG",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_mon_hate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Mongrel"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I remember you. Most things out here don't live long enough to remember.",
+      "You. Not here. Not after what you did.",
+      "Keep walking. The fog can have you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mem_mon_love",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Mongrel"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_I_LOVE_THIS_GUY",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_I_HATE_THIS_GUY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You. You stayed when the fog came.",
+      "The one who freed me. There isn't much thanks out here.",
+      "I remember you. I don't say that often."
+     ],
+     "effects": [
+      [
+       "DA_LOCK_THIS_DIALOG",
+       0
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

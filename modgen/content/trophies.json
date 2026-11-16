@@ -1,0 +1,138 @@
+{
+ "pack": "trophies",
+ "mod": "LivingWasteland",
+ "meitou_only": true,
+ "note": "Meitou only: things worn in the helper's neck slot (Trophies.cs, Meitou 0.18+; on 0.17 they stay in the bag). The keepsake goes to a fallen squadmate's mourner; the charms are the faction gifts' second item (gen_title_temperaments.py CHARMS); each named outlaw's token is made with the outlaw (content.py make_outlaw). The warrant is dropped by a beaten bounty hunters' crew (Hunters.cs).",
+ "keepsake": "Keepsake of the Fallen",
+ "lore_items": [
+  {
+   "name": "Keepsake of the Fallen",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 1
+   },
+   "description": "Something small that belonged to a squadmate who did not make it, kept by the one who stood over them. It is worth nothing to anyone else.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Okran's Token",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 25
+   },
+   "description": "A small brass sun on a cord, the kind the faithful give to those who serve the Nation well. Paladins will notice it.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Shek Battle Knot",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 25
+   },
+   "description": "A knot of red cord the Shek tie for warriors they respect. Wearing one you did not earn would be a quick way to die.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Noble's Favour",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 25
+   },
+   "description": "A lacquered tag stamped with a noble house's crest. In the Cities, being owed by the right family is worth more than cats.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Guild Marker",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 25
+   },
+   "description": "A stamped trade marker the Guild hands to people it wants to keep doing business with. Opens doors, closes questions.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Tech Hunter Pin",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 25
+   },
+   "description": "A tarnished pin from the Tech Hunters, given to outsiders who proved useful in the field. They remember who wears one.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Broken Shackle Charm",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 25
+   },
+   "description": "A link of broken chain on a leather thong. The Anti-Slavers give it to those who stood against the slavers.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Flotsam Ribbon",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 25
+   },
+   "description": "A faded ribbon the Flotsam Ninjas tie on friends of the cause. A Holy Nation patrol would not like seeing it on you.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Guild Coin",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 25
+   },
+   "description": "An old guild coin with a hole punched through it. Mercenaries give these to fighters they would stand beside.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Nomad Bead String",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 25
+   },
+   "description": "A string of carved beads from the Nomads, who give them to those who share the road with them. Each bead is a story.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Drifter's Charm",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 25
+   },
+   "description": "A twist of wire and glass the Drifters pass to those they trust. Worth nothing, and they will never forget who has one.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Swamp Fang",
+   "from": "Coin",
+   "int": {
+    "slot": 11,
+    "stackable": 1,
+    "value": 25
+   },
+   "description": "A swamp creature's fang on a cord. The Swampers give them to people who can handle themselves out there.\n\nWorn in the neck slot."
+  },
+  {
+   "name": "Bounty Hunter's Warrant",
+   "from": "Flotsam Safehouse Note",
+   "int": {
+    "value": 1
+   },
+   "description": "A town's warrant with your squad's description and price on it, taken off the bounty hunters it hired to bring you in. They didn't manage it.\n\nWorth nothing to a trader. Worth keeping all the same."
+  }
+ ],
+ "warrant": "Bounty Hunter's Warrant"
+}

@@ -1,0 +1,3618 @@
+{
+ "pack": "x_world_consequences",
+ "dialogues": [
+  {
+   "id": "wc_fist_cann_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "in_town_of": [
+    "Cannibals"
+   ],
+   "states": [
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "holy phoenix okay",
+     false
+    ]
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Dhe Fist is ours now. Gates broken, no one fix dhem. Why fix? Dhe door only keeps dhe dinner in.",
+      "Okranites built big walls. We live behind dhem. Dhey sleep in dhe ground, quiet, and we have dhe pit going.",
+      "Cooking pit in dhe Fist, torches on dhe posts. Holy folk made it nice for us. /CANNIBALTASTY/.",
+      "Dhe flame priests not come back. Dhe flame priests not come back anywhere.",
+      "We sit where dhey prayed. Sit, and wait. Dhe road bring someone every few days."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_fist_cann_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "in_town_of": [
+    "Cannibals"
+   ],
+   "states": [
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "holy phoenix okay",
+     false
+    ]
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Dhis is Okran's house, outlander. Okran not home. We are.",
+      "You walk into dhe Fist with weapons out? Bery honest of you.",
+      "Dhe walls are holy, dhey say. Dhey taste like any walls. You, I am not sure.",
+      "Holy men used to stand here. Dhey stood bery still, at dhe end."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_fist_cann_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "states": [
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "holy phoenix okay",
+     false
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Okran's Fist is in cannibal hands. The Nation's own wall, and they are cooking inside it.",
+      "People say the Fist's gates hang broken and nobody in the Nation will go near.",
+      "No holy lord left to hold the Fist, and the hungry walked in. It is not a thing the scripture planned for.",
+      "My cousin served at the Fist. I stopped asking where he went. I hear the smoke from there now.",
+      "Pray for the Fist. Pray quietly. The smell is on the wind."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_fist_cann_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Shek Kingdom",
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Drifters",
+    "Free Traders",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "holy phoenix okay",
+     false
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The cannibals took Okran's Fist. A fortress, and they walked in through the gates the Nation forgot to mend.",
+      "Heard the Holy Nation's Fist is a cannibal camp now. Don't take that road to save an afternoon.",
+      "Phoenix gone, the inquisitor gone, and the Fist went to the cannibals.",
+      "I wouldn't trade with anyone coming from the Fist."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_fist_half_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     true
+    ],
+    [
+     "Valtena is alive",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Fist is half in ruin since the leadership broke. The army patrols what still has a roof.",
+      "One of our lords is gone and the Fist feels it. Walls stand. Spirits do not.",
+      "Patrols at the Fist grow thinner. Nobody says why. Everybody knows.",
+      "The Fist keeps its lamps lit, and keeps its fears quieter."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_fist_half_hn2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Valtena is alive",
+     true
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Fist is half in ruin since Phoenix fell. The army patrols what still has a roof.",
+      "Phoenix is gone, and the Fist feels it. Walls stand.",
+      "Patrols at the Fist grow thinner. Nobody says why. Everybody knows.",
+      "The Fist is bruised, not broken. We tell each other that every watch."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_stack_shek_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "in_town_of": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Esata is alive",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Stack is a Kingdom town now. The Inquisitor is gone and we walked in without drawing. Odd, to win by waiting.",
+      "Holy banners down in Stack, our gate guards up.",
+      "The flatskins in Stack sell us what they sold the Nation. Cats are cats. We count them just as hard.",
+      "Esata keeps her word. The Nation broke theirs. So Stack is ours."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_stack_kral_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Kral's Chosen"
+   ],
+   "in_town_of": [
+    "Kral's Chosen"
+   ],
+   "states": [
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "Flying Bull is alive",
+     true
+    ]
+   ],
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Stack answers to the Chosen of Kral now. No Esata, no Seta. Just the ones who still remember the Last Stand.",
+      "Flying Bull took Stack while the Stone Golem lay cold. Say what you like. Somebody had to hold it.",
+      "We hold a Holy town and we don't pray in it. The stone doesn't mind.",
+      "Stack was the Nation's. Now it is Kral's. The flatskins in the market still bargain for peace."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_stack_ruin_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites",
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers",
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "Flying Bull is alive",
+     false
+    ]
+   ],
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Stack is ruins. The Nation lost it, the Kingdom lost it, and the Bull lost it. Only the wind has a claim.",
+      "Nobody holds Stack. It had its gate, its market, its priests. Now it has a lot of empty buildings.",
+      "Went by Stack. A town with nobody in charge is just a pile of rooms. I didn't stay.",
+      "I heard the Nation, the Kingdom and the Bull all failed in Stack. It's a rare thing to see all three lose."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_stack_shek_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "in_town_of": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Esata is alive",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Stack was holy once. Now it's quiet and Shek hold the gate.",
+      "You walk in Shek-held Stack. Mind the market, /FLATSKIN/. We weren't the ones who built it.",
+      "A Holy town without its Inquisitor is only a town. Now it is our town.",
+      "Stack is quiet under our banner. Spend your cats and keep walking."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_badteeth_shek_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "in_town_of": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     true
+    ],
+    [
+     "Seta is alive",
+     false
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Bad Teeth is under Kingdom spears. The pass is ours, and the Nation's door is open for the first time in ages.",
+      "A Holy gate town, and Shek patrol it. The priests say it is blasphemy. The priests are not here.",
+      "Warriors in the bar, warriors on the wall. Bad Teeth has not been this quiet in years.",
+      "Seta is gone and the pass fell. Esata didn't even have to ask."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_badteeth_kral_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Kral's Chosen"
+   ],
+   "in_town_of": [
+    "Kral's Chosen"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Flying Bull is alive",
+     true
+    ]
+   ],
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Bad Teeth belongs to Kral's Chosen now. With Esata and Seta gone, Flying Bull had the pass for the asking.",
+      "We hold Bad Teeth. We don't hold it politely.",
+      "The pass is ours, and so are the patrols. Flatskins who want passage can pay in cats or in manners.",
+      "Holy walls, Shek hands. Kral would laugh. Or not. He's hard to read in the Gateway."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_badteeth_ruin_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites",
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers",
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "Flying Bull is alive",
+     false
+    ]
+   ],
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Bad Teeth is a ruin. No Phoenix, no Seta, no Esata, no Bull. Nobody left to fight over the rubble.",
+      "Heard Bad Teeth is a husk. The pass stands open and nobody guards it. That should worry someone.",
+      "They emptied Bad Teeth the way you empty a fish. Everything good is gone and the rest is for the crows.",
+      "I used to buy there. Now I buy nowhere near it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_badteeth_half_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Seta is alive",
+     true
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Bad Teeth is wounded. The Phoenix is gone and the Inquisitor has to hold the pass alone.",
+      "Half the town stands empty since the fall. We keep the gate. We do not sleep soundly.",
+      "Phoenix is gone. Seta lives. Bad Teeth waits to learn which of those matters more.",
+      "Bad Teeth bleeds. We bandage it with prayer and hope it is enough."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_mines_shek_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "in_town_of": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     true
+    ],
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "These mines were holy. They're Kingdom mines now. Mind the carts, /FLATSKIN/.",
+      "Phoenix fell, Seta fell, and the Mines are ours. Don't make us regret that we took them.",
+      "We hold the Holy Mines, and there's no priest left to curse us for it.",
+      "The Mines changed masters. The ore didn't notice."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_mines_kral_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Kral's Chosen"
+   ],
+   "in_town_of": [
+    "Kral's Chosen"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "Flying Bull is alive",
+     true
+    ],
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ]
+   ],
+   "player_only": true,
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Kral's Chosen work the Mines now. Nobody asked the Nation. The Nation can't answer.",
+      "We took what the Holy ones left. The ore comes out the same. We're used to the dust.",
+      "Keep walking. The Mines are held and we hold them gladly.",
+      "Do not stare at the shafts. The Chosen do not like being stared at."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_mines_slaver_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Slave Traders"
+   ],
+   "in_town_of": [
+    "Slave Traders"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Longen is alive",
+     true
+    ],
+    [
+     "Tengu is alive",
+     true
+    ],
+    [
+     "flying bull is ok",
+     false
+    ]
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Holy Mines are under the Traders now. We work them with whoever walks in, and you walked in.",
+      "Nobody guards a mine without a reason. The reason is the cages. Take a good look.",
+      "The Nation left the Mines. We didn't leave them empty.",
+      "Another pair of hands for the pit. Lucky us."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_mines_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites",
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Holy Mines have new owners since the Nation lost its leaders. Nobody asks the ore who it prefers.",
+      "Heard the Mines are not Holy any longer. Whoever holds them, the ore still comes out of the ground the same.",
+      "Phoenix and Seta gone, and the Mines passed to someone with a bigger spear. It's the oldest story there is.",
+      "Somebody holds the Holy Mines who doesn't pray there. That's all I know, and all I want to."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_squin_mukai_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "in_town_of": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "Mukai is alive",
+     true
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Esata is gone and Mukai holds Squin. He isn't the Stone Golem. He stands in the same place all the same.",
+      "The Mountain keeps Squin. Warriors still obey. The Kingdom has a new back, if not a new head.",
+      "Mukai doesn't talk about Esata. That tells you how much he thinks about her.",
+      "Mukai is a wall that walks. Squin is lucky to have him."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_squin_kral_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Kral's Chosen"
+   ],
+   "in_town_of": [
+    "Kral's Chosen"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "Flying Bull is alive",
+     true
+    ],
+    [
+     "Mukai is alive",
+     false
+    ]
+   ],
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Squin is Kral's now. Mukai is dead, Esata is dead, and the Bull has the seat.",
+      "Flying Bull took Squin without much argument. Nobody was left to argue.",
+      "A Shek town with no Shek queen. The Chosen keep the gate, and the gate keeps us.",
+      "Kral's colours in Squin. A year ago I would have laughed. Now I keep my head low."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_squin_ruin_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "The Holy Nation",
+    "Okranites",
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "Flying Bull is alive",
+     false
+    ],
+    [
+     "Mukai is alive",
+     false
+    ]
+   ],
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Squin is a ruin. The berserkers sit in the empty rooms. I wouldn't go near it for any price.",
+      "The Kingdom lost Squin when Esata, Mukai and the Bull all went down. Berserkers moved into the mess.",
+      "Squin used to sell fine goods. Now it sells nothing, to nobody.",
+      "Squin is ash and berserkers. I wish I knew how to say it kindly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_admag_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites",
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     false
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Admag is a ruin and berserkers squat in it. Whatever the Kingdom was, it isn't that any more.",
+      "They say the Shek capital is empty halls now. A hard thing, for a people who value their seat.",
+      "Esata held Admag, and Admag held the Kingdom. One is gone, so the other follows.",
+      "Admag, where the queen sat. Now the berserkers sit. The world is poorer for both."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_shield_uc_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities"
+   ],
+   "in_town_of": [
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "Tengu is alive",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Okran's Shield is a United Cities post now. The Inquisitor is gone and the Empire keeps the road.",
+      "We hold the Shield. Holy walls, Empire flag. Keep to the road and no harm comes.",
+      "This post was Holy ground not long ago. We keep it tidy and we keep it armed.",
+      "Okran's Shield was a Holy gate. Now it is a gate that opens for cats."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_shield_shek_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "in_town_of": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     true
+    ],
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "Player is ally of Shek Kingdom",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Okran's Shield belongs to the Kingdom, /FLATSKIN/. You're an ally of ours, so you may pass.",
+      "The Shield is ours, and so is the border.",
+      "A Holy fortress with Shek on the wall. Strange sight. I have grown to like it.",
+      "The Shield opens to friends of the Kingdom. You may count yourself lucky."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_shield_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites",
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Valtena is alive",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Okran's Shield has changed hands. Valtena is gone, and whoever stands there now isn't Holy.",
+      "The eastern post stands, but not for the Nation. Valtena was the lock. The lock is gone.",
+      "I don't know who holds the Shield these days. I know it isn't Valtena.",
+      "The Shield has a new keeper. I won't guess who. Most of the answers are bad."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_drin_hn_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Tengu is alive",
+     false
+    ],
+    [
+     "Inaba is alive",
+     false
+    ],
+    [
+     "Valtena is alive",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Drin is under the Flame now. Empire stones, Holy hands. We did not ask the Empire.",
+      "Tengu, Inaba, gone. Valtena stayed. So Drin flies the flame. Lucky town.",
+      "You trespass in a Holy town. Say your name to the fire.",
+      "Drin has a Holy flag now. Be grateful it isn't worse."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_drin_ruin_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "The Holy Nation",
+    "Okranites",
+    "Drifters",
+    "Free Traders",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Tengu is alive",
+     false
+    ],
+    [
+     "Inaba is alive",
+     false
+    ],
+    [
+     "Valtena is alive",
+     false
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Drin is rubble. No Tengu, no Inaba, no Valtena. Nobody left to claim it.",
+      "They say Drin has no owner at all. A town with no owner is a town with no future.",
+      "I walked by Drin. I walked fast.",
+      "Drin is a husk now. Nothing left to rob and nobody left to rob it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_blister_outlaws_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "in_town_of": [
+    "Holy Nation Outlaws"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Moll is ok",
+     false
+    ],
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Esata is alive",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Blister Hill is ours now. Holy walls and nobody left to hold them. We took what we found.",
+      "Phoenix is gone and so is the order. We're what's left of the Nation, and not the part that prays.",
+      "You walk the Nation's hill without its blessing. Nobody to arrest you, but we are not nobody.",
+      "The flame doesn't light here any more. We keep a small fire and we keep it ours."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_blister_outlaws_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Moll is ok",
+     false
+    ],
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Esata is alive",
+     true
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The hill is held by outlaws. Our own people, once. That's the worst of it.",
+      "Blister Hill fell without Phoenix. They say the houses are full of strangers.",
+      "I pray for the hill. The hill does not pray back.",
+      "They hold the hill and call it ours. It was ours."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_blister_outlaws_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Shek Kingdom",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Moll is ok",
+     false
+    ],
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Esata is alive",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Blister Hill belongs to outlaws now. The Nation's seat, and the Nation lost it to its own scum.",
+      "Heard the hill is held by Holy Outlaws. Don't mistake them for the old Nation. These people have no priest.",
+      "The Nation without Phoenix is a mob. Blister Hill is the proof.",
+      "A hill with no priest is a hill with no law. Keep your coins in your boots."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_blister_flotsam_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "in_town_of": [
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "Moll is ok",
+     true
+    ],
+    [
+     "Esata is alive",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Blister Hill is ours now. The Nation is gone, and the ones who ran from it are home.",
+      "You look surprised. So were we. We hold the hill. The flame can burn elsewhere.",
+      "Careful in the market. We hold this place by being careful.",
+      "Flotsam in Blister Hill. If you had told me a year ago I'd have asked what you were drinking."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_blister_flotsam_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "in_town_of": [
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "Moll is ok",
+     true
+    ],
+    [
+     "Esata is alive",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "We keep a hill the Nation held. I still check the corners for them.",
+      "Flotsam holds the hill. Do not tell anyone how it feels to sleep in their beds.",
+      "The runaways keep the hill, and we guard it with the kind of care that comes from knowing what loses it.",
+      "The Nation built this hill. We use it. Nobody mentions that part at the table."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_rebirth_flotsam_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Flotsam Ninjas"
+   ],
+   "in_town_of": [
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Moll is ok",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Rebirth is ours. The Nation used it to unmake people. We keep the doors open.",
+      "Nobody serves here any more. Not unless they choose to.",
+      "A Holy school with Flotsam guards. Stranger things have happened.",
+      "Mind your step. We didn't clean everything yet."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_rebirth_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters",
+    "Anti-Slavers",
+    "Rebel Farmers"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Moll is ok",
+     true
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Rebirth is Flotsam's now. They say the doors stand open and the servants walk free.",
+      "I heard the Rebirth school has no master. I hope the people in there got out.",
+      "Phoenix, Seta, Valtena. All gone, and Rebirth went to the ones the Nation hated most. It's a fair joke.",
+      "Rebirth, held by the runaways. I wonder if they can stand to sleep in it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_rebirth_ruin_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters",
+    "The Holy Nation",
+    "Okranites",
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Moll is ok",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Rebirth is empty. Outlaws squat in its halls. No Nation, no Flotsam.",
+      "Word is, you can hear nothing at Rebirth now. That's worse than screaming.",
+      "Nobody wants Rebirth. Not even the people who made it.",
+      "Rebirth is a husk with squatters. I'd sooner sleep in the sand."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_simion_ruin_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters",
+    "Rebel Farmers",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Tengu is alive",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Fort Simion is a ruin since Tengu fell. Rebel swordsmen camp in the broken parts.",
+      "The old fort has nobody in charge. The rebels live in it like rats in a granary.",
+      "Tengu is dead and Simion is wrecked. I don't know what the fort was before, and now I never will.",
+      "Fort Simion is a cracked shell. I walked past once. I didn't look in."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_stoat_yabuta_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Yabuta Outlaws"
+   ],
+   "in_town_of": [
+    "Yabuta Outlaws"
+   ],
+   "states": [
+    [
+     "Inaba is alive",
+     false
+    ],
+    [
+     "Yabuta is alive",
+     true
+    ],
+    [
+     "Tengu is alive",
+     false
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Stoat is ours now. The Empire can't hold it, and we can.",
+      "Yabuta stands and Inaba doesn't. The town knows which of us it pays now.",
+      "Move along. The Outlaws are the law in Stoat.",
+      "Yabuta's people keep Stoat. They keep it hard."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_stoat_tech_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "in_town_of": [
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Tengu is alive",
+     false
+    ],
+    [
+     "Inaba is alive",
+     false
+    ],
+    [
+     "Yabuta is alive",
+     false
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Stoat belongs to us hunters now. Empire left, the desert came in, and we kept what we found.",
+      "We dig the ruins and we sell the finds. It's as good a government as Stoat ever had.",
+      "No lord to bow to. Just a market, a crowd, and our own pockets.",
+      "The hunters keep Stoat. It's a market with a gun behind it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_stoat_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters",
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "states": [
+    [
+     "Tengu is alive",
+     false
+    ],
+    [
+     "Inaba is alive",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Stoat has no lord now. Inaba is dead and the Empire has other worries. Whoever grabs it, grabs it.",
+      "Heard Stoat is outlaw country since the lord fell. Don't carry anything you can't afford to lose.",
+      "Tengu gone, Inaba gone. Stoat is a plum with nobody guarding the tree.",
+      "Stoat has no lord, and the vultures know it. So do I."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_shobattai_cann_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "in_town_of": [
+    "Cannibals"
+   ],
+   "states": [
+    [
+     "Tengu is alive",
+     false
+    ],
+    [
+     "Lord Nagata is alive",
+     false
+    ],
+    [
+     "Boss Simion is alive",
+     false
+    ]
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Sho-Battai is quiet. Quiet is good. Quiet means dhe pit is full.",
+      "Dhe Empire had a wall. We have dhe pit. Dhe wall is still dhere. Dhe pit is just newer.",
+      "Dhere were lords here. Dhere are guests here.",
+      "Dhe gates are broken. We never fix. Dhe road is dhe door."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_shobattai_peas_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Empire Peasants"
+   ],
+   "in_town_of": [
+    "Empire Peasants"
+   ],
+   "states": [
+    [
+     "Tengu ok",
+     false
+    ],
+    [
+     "Lord Nagata is alive",
+     false
+    ],
+    [
+     "Boss Simion is alive",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Sho-Battai is ours now. The lord is gone, the Emperor too, and Simion keeps us fed. Don't spoil it.",
+      "No Empire guards, no Empire tax.",
+      "We farm what we can and we guard what we farm. Walk the roads, don't trample the rows.",
+      "The peasants of Sho-Battai aren't an army. We're a whole town of people with nowhere else to go."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_shobattai_cann_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters",
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "states": [
+    [
+     "Tengu is alive",
+     false
+    ],
+    [
+     "Lord Nagata is alive",
+     false
+    ],
+    [
+     "Boss Simion is alive",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Sho-Battai is gone to the cannibals. A walled town, and now a pit. Nobody warned them in time.",
+      "Heard Lord Nagata is dead, and Simion too. Sho-Battai has no one left to bar the gate.",
+      "I used to buy hats in Sho-Battai. I don't know who sells them now.",
+      "Sho-Battai is quiet now. Quiet is the worst sound of all."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_catun_fish_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters",
+    "The Holy Nation",
+    "Okranites",
+    "Empire Peasants"
+   ],
+   "states": [
+    [
+     "Lord Shiro is alive",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Catun belongs to the fish now. The smiths left, the Gurglers came, and the water is coming in.",
+      "Catun is a gurgler town. A pity. They made good steel there.",
+      "I heard Lord Shiro is dead. Catun went quiet, then it got bloody.",
+      "Catun is a sunken thing. The fish keep it company."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_crabtown_fish_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters",
+    "Reavers",
+    "Crab Raiders",
+    "Empire Peasants"
+   ],
+   "states": [
+    [
+     "crab bandit queen is OK",
+     false
+    ]
+   ],
+   "packages": [
+    "Crab raider"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Crab Town is held by the fish since the Crab Queen fell. The crabs don't mind.",
+      "Gurglers sit in Crab Town. They are no worse than the Raiders, and no better.",
+      "Without the Queen, Crab Town lost its spine.",
+      "Crab Town without its Queen is a fishmonger's dream and a trader's nightmare."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_brink_reaver_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Reavers"
+   ],
+   "in_town_of": [
+    "Reavers"
+   ],
+   "states": [
+    [
+     "Lady Tsugi is not alive",
+     true
+    ],
+    [
+     "valamon is alive (reavers)",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Brink is Reaver now. The lady is dead and the Reavers moved in. We do the talking.",
+      "You're in a Reaver town. Make your face smaller.",
+      "Tsugi didn't stay. We did. We stay a long time.",
+      "Brink had walls. We used them. We had to knock one or two down first."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_brink_reaver_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters",
+    "Empire Peasants"
+   ],
+   "states": [
+    [
+     "Lady Tsugi is not alive",
+     true
+    ],
+    [
+     "valamon is alive (reavers)",
+     true
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Brink belongs to the Reavers now. Tsugi is dead and the Reavers have a town to hold. They don't hold it gently.",
+      "Heard Brink has Reaver patrols. Stay clear.",
+      "Lady Tsugi gone and the Reavers took Brink in the same breath.",
+      "Brink was a Cities town. It's a Reaver town now. The cats still flow, to different hands."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ark_crab_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Crab Raiders"
+   ],
+   "in_town_of": [
+    "Crab Raiders"
+   ],
+   "states": [
+    [
+     "valamon is alive (reavers)",
+     false
+    ],
+    [
+     "crab bandit queen is OK",
+     true
+    ]
+   ],
+   "player_only": true,
+   "packages": [
+    "Crab raider"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Ark is ours now. The Reavers have no master and Ark has no rules. Except ours.",
+      "You see the camp? Crab Raiders keep it. Don't get comfortable.",
+      "Ark was Reaver. Now it's Crab.",
+      "Ark has new masters. They aren't kinder. They're cleaner about it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_grayflayer_bones_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Band of Bones"
+   ],
+   "in_town_of": [
+    "Band of Bones"
+   ],
+   "states": [
+    [
+     "Tora is alive",
+     true
+    ],
+    [
+     "Big Gray is alive",
+     false
+    ],
+    [
+     "Grimm is not alive",
+     true
+    ]
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Grayflayer is Band of Bones ground now. Gray is gone, Grim is gone, and we came down from the hills.",
+      "The swamp changes hands often. We hold this part. Don't take it personally.",
+      "We keep our bones close, and Grayflayer is a good place to keep them.",
+      "Bones keep Grayflayer. The swamp doesn't care who holds it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_edge_anti_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "in_town_of": [
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Longen is alive",
+     false
+    ],
+    [
+     "Tinfist is not alive",
+     false
+    ],
+    [
+     "Tengu is alive",
+     false
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Trader's Edge is free now. The Empire's grip is gone and so is the old guard. Walk it with your head up.",
+      "We hold the Edge. We hold it for everyone who came here in chains.",
+      "A free town costs a lot to keep. We pay it. Don't be rude to the ones paying.",
+      "No lords at the Edge. That's a good sign. The Edge is ours."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_heft_peas_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Empire Peasants"
+   ],
+   "in_town_of": [
+    "Empire Peasants"
+   ],
+   "states": [
+    [
+     "Tengu is alive",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Heft is a rebel town now. The Emperor is dead and the lords are scrambling. We keep our heads down and our knives sharp.",
+      "No Tengu, no Emperor. Heft bar is full of people who don't know what happens next.",
+      "A revolution is a mess. This one is quiet so far. That's what worries me.",
+      "Heft changed owners without anyone noticing. Which is how the best changes happen."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_bark_peas_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Empire Peasants"
+   ],
+   "in_town_of": [
+    "Empire Peasants"
+   ],
+   "states": [
+    [
+     "Tengu is alive",
+     false
+    ],
+    [
+     "Lord Sanda is alive",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Bark belongs to the peasants since Sanda fell. The farmers keep their own stores for once.",
+      "We eat what we grow. For the first time in memory, that's a sentence that works.",
+      "No lord in Bark. No overseer. I keep waiting for someone to come and fix that.",
+      "Bark is ours now. I never thought I'd say that."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_clown_peas_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Empire Peasants"
+   ],
+   "in_town_of": [
+    "Empire Peasants"
+   ],
+   "states": [
+    [
+     "Slave Market Master is alive",
+     false
+    ],
+    [
+     "Slave Mistress Grace is alive",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Clownsteady belongs to the people since the slavers were dealt with. It is not rich. It is ours.",
+      "No more market master. No more Grace. Nobody said a word about it for a while.",
+      "We keep what's left. We share what we can. Don't mistake that for weakness.",
+      "Clownsteady changed. The cages aren't what they were."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_drifters_free_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Free Traders"
+   ],
+   "in_town_of": [
+    "Free Traders"
+   ],
+   "states": [
+    [
+     "Merin is alive",
+     false
+    ],
+    [
+     "Slave Mistress Grace is alive",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Drifter's Last is a Free Trader town now. Merin is dead and Grace is dead.",
+      "No lady, no mistress. The Free Traders keep their ledgers and their gates.",
+      "We trade here without paying a lord. It isn't much, but it isn't nothing.",
+      "Free Traders keep Drifter's Last. We keep it fair, or we keep it gone."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_cultvillage_slaver_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Slave Traders"
+   ],
+   "in_town_of": [
+    "Slave Traders"
+   ],
+   "states": [
+    [
+     "Tinfist is alive",
+     false
+    ],
+    [
+     "Longen is alive",
+     true
+    ],
+    [
+     "Slave Master Grande is alive",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Cult Village is ours now. Quiet place. Good fences. You'll be good here too.",
+      "The Traders hold this camp. If you came to preach, preach to the cages.",
+      "Cult people used to live here. Now they work for us.",
+      "The Cult Village hums with work. We hear no more prayers."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_fishing_slaver_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Slave Traders"
+   ],
+   "in_town_of": [
+    "Slave Traders"
+   ],
+   "states": [
+    [
+     "Tinfist is alive",
+     false
+    ],
+    [
+     "Longen is alive",
+     true
+    ],
+    [
+     "Tengu is alive",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The fishing village is a work camp now. The fishers work, we collect.",
+      "Tinfist is dead and we moved in. Nobody complained, because nobody was left to.",
+      "You smell the fish? That's a good sign. It means the nets are working.",
+      "The fishers work. We collect. It's a simple arrangement."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_holyfarm_slaver_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Slave Traders"
+   ],
+   "in_town_of": [
+    "Slave Traders"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "Longen is alive",
+     true
+    ],
+    [
+     "Tengu ok",
+     true
+    ],
+    [
+     "Valtena is alive",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ]
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "These were Holy farms. The Holy are gone. The soil doesn't care who pulls the weeds.",
+      "The Traders hold the farm. Keep your hands away from the cages and your mouth shut.",
+      "We took the farm when the Nation could not hold it. The Nation is not in a position to argue.",
+      "A farm with a fence and a bell. We are the bell now."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_bark_half_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities"
+   ],
+   "in_town_of": [
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Lord Sanda is alive",
+     false
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Bark is half in ruins since Lady Sanda fell. The repairs are slow and the money is slower.",
+      "Sanda is gone and the town shows it. Cracked walls, empty stalls, and a long wait for relief.",
+      "I keep a bucket by the door. Everything leaks since Sanda.",
+      "Half of Bark is ruins now. The other half is busy ignoring it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_stoat_half_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities"
+   ],
+   "in_town_of": [
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Inaba is alive",
+     false
+    ],
+    [
+     "Tengu is alive",
+     true
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Stoat is half broken since Inaba fell. The Empire patches what it can.",
+      "No Lord Inaba, no steady hand. Stoat sells what is left and counts the losses.",
+      "Stoat isn't what it was. Come in, buy, and don't look too hard at the walls.",
+      "Stoat is half rubble. The rest holds on out of spite."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_shobattai_half_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities"
+   ],
+   "in_town_of": [
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Lord Nagata is alive",
+     false
+    ],
+    [
+     "Tengu is alive",
+     true
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Sho-Battai is half in ruin since Nagata fell. The guards do what they can.",
+      "Lord Nagata is gone. The wall holds, mostly.",
+      "Half the shops closed since Nagata. I sell hats to the other half.",
+      "Sho-Battai is half broken. We call it half whole."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_driftlast_half_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities"
+   ],
+   "in_town_of": [
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Merin is alive",
+     false
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Drifter's Last is half in ruin since Merin fell. The stalls that remain charge twice.",
+      "The Lady is gone, and Drifter's Last is only a place to stop on the way somewhere better.",
+      "Merin kept this town in order. Now it keeps itself, badly.",
+      "Drifter's Last is half broken. The inn still pours."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_nobles_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters"
+   ],
+   "states": [
+    [
+     "All nobles are not alive",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "All the lords are gone. The Emperor, Sanda, Tsugi, Inaba, Nagata, Yoshinaga. Who signs the cats now?",
+      "No nobles left in the Empire. Only clerks and guards. And the clerks are watching the guards.",
+      "The Empire without lords is a market without a floor. We're all waiting for it to drop.",
+      "I served a lord once. Now I serve a ledger. The ledger doesn't pay either."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_nobles_peas",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Empire Peasants",
+    "Rebel Farmers",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "All nobles are not alive",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Every lord of the Empire is dead. I didn't think I'd live to say that. Don't say it too loud.",
+      "No lords. No tax collectors. Just us, our farms, and the question of who comes next.",
+      "The nobles are gone. The farmers are still here. That is how it ends, in the long run.",
+      "Lords die. Wheat grows. That's the whole of history."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_nobles_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites",
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers",
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters"
+   ],
+   "states": [
+    [
+     "All nobles are not alive",
+     true
+    ]
+   ],
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I hear the Empire has no lords left. A strange thing, an empire with only the people.",
+      "All the Empire's nobles are dead, people say. I wouldn't take work in the Great Desert just now.",
+      "A land without lords is a land open to whoever has the nerve.",
+      "The Empire has no noble left alive. I don't know how that ends. I'm not in a hurry to learn."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_nobles_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Empire Peasants"
+   ],
+   "states": [
+    [
+     "All nobles are not alive",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Every lord of the Empire is dead. It makes the whole place feel loose.",
+      "No nobles left. Strange to say, I miss the order.",
+      "The lords are gone. We're still here. That's a kind of honour.",
+      "A lordless Empire is an odd thing. I keep expecting someone to come and tell us what to do."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_north_slavers_gone_traders",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters"
+   ],
+   "states": [
+    [
+     "All North Slave Masters are not alive",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The northern masters are all dead. Grande, Haga, Ruben, Wada, Ren. Even Kana. Even Longen.",
+      "No masters in the north. The cages are full and the keys are in nobody's hands.",
+      "Without the northern masters the work camps are barely run. The overseers are fighting over who gives orders.",
+      "The Traders are headless in the north."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_north_slavers_gone_anti",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers",
+    "Rebel Farmers",
+    "Empire Peasants",
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "All North Slave Masters are not alive",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The northern masters are all dead. I won't say I'm sorry.",
+      "Every one of them, gone. The camps still stand.",
+      "No masters in the north. The next job is the cages.",
+      "The north has no masters. The cages need opening. I know a few who will."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_south_slavers_gone",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters",
+    "United Cities",
+    "Traders Guild",
+    "Drifters",
+    "Free Traders",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "All South Slave Masters are not alive",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The southern masters are dead. The Market Master and Grace both. The market has nobody to sell for.",
+      "No Grace, no Market Master. The south is quiet and the buyers have nothing to buy.",
+      "Slave Mistress Grace is dead. I hear the southern cages are empty. I did not hear who emptied them.",
+      "No Grace, no Market Master. The south is a market with nobody to sell to."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_south_bosses_gone",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters",
+    "Free Traders"
+   ],
+   "states": [
+    [
+     "All South Bosses are not alive",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Merin, Grace and the Market Master. The south has no boss left. Someone is going to take it.",
+      "All the southern bosses are dead. A town without a boss is a town waiting to be taken.",
+      "No Merin, no Grace, no Market Master. The south is unmanaged, and the unmanaged don't stay that way.",
+      "The south has no bosses now. That's a gap, and gaps get filled."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_hn_leaders_gone_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "states": [
+    [
+     "Phoenix, Seta and Valtena are not okay",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Phoenix, Seta and Valtena. All fallen. The Nation has no head and no hands.",
+      "We still say the words. The words feel hollow.",
+      "Which of us leads? Nobody knows. Which of us follows? We all do.",
+      "The three pillars are down. We wait for the roof to follow."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_hn_leaders_gone_heretic",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Flotsam Ninjas",
+    "Anti-Slavers",
+    "Rebel Farmers",
+    "Rebirth Slaves",
+    "Drifters",
+    "Free Traders",
+    "Nomads"
+   ],
+   "states": [
+    [
+     "Phoenix, Seta and Valtena are not okay",
+     true
+    ]
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Phoenix and both Inquisitors are gone. The Nation is a body without a mouth. We keep quiet and watch.",
+      "I didn't think I'd live to see it. I won't say it out loud.",
+      "The Holy leaders are all dead. The soldiers don't know what to do with their hands.",
+      "The Nation lost every head it had. I drink to nobody, and I drink to everybody."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_hn_leaders_gone_shek",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers"
+   ],
+   "states": [
+    [
+     "Phoenix, Seta and Valtena are not okay",
+     true
+    ]
+   ],
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Nation has no leaders left. Some would call this the time to strike. Nobody has called it yet.",
+      "The Holy lords are all dead. The old enemy has no face now. It is stranger than it sounds.",
+      "A people with no head still have teeth. Keep your guard up, flatskin or Shek.",
+      "The Nation is leaderless. A fallen enemy is still an enemy, /FLATSKIN/."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_hn_leaders_gone_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "states": [
+    [
+     "Phoenix, Seta and Valtena are not okay",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Nation is leaderless. We are still here. The flame does not care who holds the torch.",
+      "No Phoenix, no Seta, no Valtena. We pray in the dark.",
+      "Keep walking. We have enough to bury.",
+      "Phoenix, Seta, Valtena. Gone. We keep the faith, just not the same way."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_bm_phoenix_gone",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters",
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "Bugmaster and Phoenix are NOT alive",
+     true
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Bugmaster and Phoenix are both dead. Two heads that ruled with fear, gone.",
+      "No Bugmaster, no Phoenix. I'm not sure whether to drink or to hide.",
+      "Everyone who feared the pair is now afraid of what follows.",
+      "Two tyrants gone. I'll wait to see what grows in the gap."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_thrall_masters_done",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Machinists",
+    "Tech Hunters",
+    "Skeletons",
+    "Traders Guild",
+    "Free Traders",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "thrall masters defeated",
+     true
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The thrall masters are defeated. Ponk and Screamer both. The machines have nobody to answer to.",
+      "I heard Ponk and Screamer are down. Their thralls will walk anyway, I suspect.",
+      "No Screamer, no Ponk. Someone walked into the ash and came out. That doesn't happen.",
+      "The thrall masters fell. The thralls don't know it yet. Or they do, and can't say."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ally_shek_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "states": [
+    [
+     "Player is ally of Shek Kingdom",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I hear the Kingdom counts you a friend. A friend of the horned is no friend of the Flame.",
+      "Shek allies. The scripture has a word for that. I will not say it in the street.",
+      "Be careful where you stand, stranger. The Kingdom's friends are the Nation's problem.",
+      "The Kingdom's friend is a blasphemer. I am sworn to say so. I am not sworn to enjoy it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ally_hn_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom",
+    "Kral's Chosen"
+   ],
+   "states": [
+    [
+     "Player is ally of HN",
+     true
+    ]
+   ],
+   "player_only": true,
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You have friends in the Holy Nation. That is a poor choice of friends, /FLATSKIN/.",
+      "The Nation's friend walks among us. We stay our hands.",
+      "Friend of the Flame. We cut those down. You we leave. Do not make us change our minds.",
+      "The Flame's friend is welcome nowhere near an axe."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ally_hn_flotsam",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Player is ally of HN",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You have friends in the Nation. We don't hold it against you.",
+      "A friend of the Flame? Pass. Keep your mouth closed about where you sleep.",
+      "We heard the Nation holds you dear. Don't bring that here.",
+      "The Nation likes you. That's a bad thing to be liked by."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ally_flotsam_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "states": [
+    [
+     "Player is ally of Flotsam",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Flotsam's friend. Heretic by association. The Flame has long memory.",
+      "You keep company with the Hidden Forest. The Flame notices.",
+      "I hear you ally with the runaways. I won't say what the Inquisitors would do.",
+      "Flotsam. The Flame knows the name."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ally_shek_flotsam_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "states": [
+    [
+     "Player is ally of Shek AND Flotsam",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Friends with the horned and the runaways both. You pick enemies like a man who enjoys it.",
+      "Shek and Flotsam. The Nation's two worst nightmares, and you drink with both.",
+      "You have made quite a list, stranger. Don't be surprised when the list reads back.",
+      "Horned and runaway friends. Plenty of folk in the Nation would like a word."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ally_slavers_anti",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers",
+    "Rebel Farmers",
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "Player is ally of Slave Traders",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "People say you keep company with the Slave Traders. I'll remember that when it matters.",
+      "A friend of the cages is no friend of mine.",
+      "Slaver friend. Walk on. I won't give you the satisfaction of hating you out loud.",
+      "A slaver's friend. I hope the price was good."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ally_anti_slavers_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters"
+   ],
+   "states": [
+    [
+     "Player is ally of Anti slavers",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Anti-Slaver friend. You walk on our ground with that stink on you.",
+      "The Traders' enemies are your friends. That's a poor trade.",
+      "I know your type. Free the slaves, ruin the business.",
+      "You're the Anti-Slavers' creature. We aren't fond of those."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ally_anti_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Player is ally of Anti slavers",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I heard the Anti-Slavers like you. The Empire has other opinions, but I'll keep mine private.",
+      "A friend of the free. Not a friend of mine, but not an enemy either.",
+      "We hear you keep company with the free folk. It makes the Empire nervous.",
+      "A friend of the free is a friend of someone dangerous."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ally_reavers",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Empire Peasants",
+    "Anti-Slavers",
+    "Crab Raiders"
+   ],
+   "states": [
+    [
+     "Player is ally of Reavers",
+     true
+    ]
+   ],
+   "player_only": true,
+   "packages": [
+    "Crab raider"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "People say the Reavers favour you. I didn't know Reavers had favour to give.",
+      "A Reaver friend. Interesting. I count my cats twice when you pass.",
+      "Keep your Reaver friends in the south where they belong.",
+      "Reaver friend. I'll take my business elsewhere."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ally_hounds",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Swampers",
+    "Blackshifters",
+    "Grayflayers",
+    "Twinblades",
+    "Swamp Ninjas"
+   ],
+   "states": [
+    [
+     "Player is ally of Hounds",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You are a friend to the Hounds. The swamp does not make friends easily. Do not take that for granted.",
+      "I hear the Hounds like you.",
+      "Hounds and you. Well. At least somebody does.",
+      "The swamp has an opinion of you. Surprisingly good."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_enemy_hn_friends",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Flotsam Ninjas",
+    "Anti-Slavers",
+    "Rebel Farmers",
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Player is enemy of Holy Nation",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Nation hates you. Good. Anyone the Nation hates is worth a drink.",
+      "Word is, you're an enemy of the Flame. I won't say what I think. I'll say I like your shoes.",
+      "You're at war with the Holy Nation. Keep moving. Don't stand near me.",
+      "Enemy of the Flame. I've heard worse recommendations."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_enemy_slavers_friends",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers",
+    "Rebel Farmers",
+    "Flotsam Ninjas"
+   ],
+   "states": [
+    [
+     "Player is enemy of Slave Traders",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Slave Traders want you dead. Good. Take that as a recommendation.",
+      "I hear the Traders are after you. I'll say nothing. I'll think a great deal.",
+      "Enemy of the Traders. That's a long list of enemies, stranger.",
+      "The Traders hate you. I have rarely heard a better review."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_enemy_uc_traders",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Free Traders",
+    "Drifters",
+    "Nomads",
+    "Vagrants"
+   ],
+   "states": [
+    [
+     "Player is enemy of UC",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're an enemy of the Cities. Ask yourself whether that was a good use of your life.",
+      "The Empire has a long arm. It's on its way to you.",
+      "At odds with the Cities. The Free Traders will still sell you water.",
+      "The Cities hate you. I only sell you water. I don't sell you sympathy."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_stack_kral_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Kral's Chosen"
+   ],
+   "in_town_of": [
+    "Kral's Chosen"
+   ],
+   "states": [
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "Flying Bull is alive",
+     true
+    ]
+   ],
+   "player_only": true,
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Stack is ours, the Chosen's. The Nation lost it, the Kingdom lost it. We keep it.",
+      "Kral's Chosen hold Stack. Speak your business or step aside.",
+      "You walk Stack under Kral's eye. Don't give him a reason to look harder.",
+      "Holy walls, Chosen guards. The stone doesn't mind."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_badteeth_shek_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "in_town_of": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     true
+    ],
+    [
+     "Seta is alive",
+     false
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Bad Teeth is a Kingdom town now. The Nation left the gate open, so we closed it.",
+      "Pass through, /FLATSKIN/. The Kingdom holds the pass.",
+      "A Holy gate with Shek on it. Be glad the Nation can't see it.",
+      "We hold Bad Teeth. You may walk it. Don't make us regret it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_badteeth_kral_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Kral's Chosen"
+   ],
+   "in_town_of": [
+    "Kral's Chosen"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "Seta is alive",
+     false
+    ],
+    [
+     "Flying Bull is alive",
+     true
+    ]
+   ],
+   "player_only": true,
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Bad Teeth answers to Kral's Chosen. Your business is your business. Ours is the gate.",
+      "We took the pass. We keep it. Keep walking.",
+      "No Esata, no Seta. Just the Chosen.",
+      "A Holy gate with a Chosen guard."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_squin_mukai_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "in_town_of": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "Mukai is alive",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 18,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Squin stands because Mukai stands. Do not tempt either of us.",
+      "The Mountain keeps this town. Speak softly and spend freely.",
+      "Esata is gone and the Kingdom goes on. Don't mistake that for weakness, /FLATSKIN/.",
+      "Squin is a Kingdom town. We do not have much left, but we hold this."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_squin_kral_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Kral's Chosen"
+   ],
+   "in_town_of": [
+    "Kral's Chosen"
+   ],
+   "states": [
+    [
+     "Esata is alive",
+     false
+    ],
+    [
+     "Flying Bull is alive",
+     true
+    ],
+    [
+     "Mukai is alive",
+     false
+    ]
+   ],
+   "player_only": true,
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Squin is Kral's now. Don't mention Esata here.",
+      "Flying Bull keeps Squin. Watch your tongue.",
+      "The Chosen hold Squin. Do you have a problem with that?",
+      "Kral's colours on a Kingdom town. Think carefully about what you say next."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_heft_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "Okranites",
+    "Shek Kingdom",
+    "Kral's Chosen",
+    "Berserkers",
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters"
+   ],
+   "states": [
+    [
+     "Tengu is alive",
+     false
+    ]
+   ],
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Heft is held by the peasants since the Emperor died. Don't expect lords to come back.",
+      "Heft changed hands quietly. The lords didn't even notice until it was done.",
+      "Tengu dead, and Heft belongs to the people. Odd to hear it said aloud.",
+      "I used to sell in Heft to the lords. Now I sell to whoever has cats. It's all the same."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_bark_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters",
+    "The Holy Nation",
+    "Okranites",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Tengu is alive",
+     false
+    ],
+    [
+     "Lord Sanda is alive",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Bark is run by peasants now. The farmers kept their own stores for once.",
+      "Lady Sanda dead, Tengu dead. Bark goes on with farmers at the gate.",
+      "Bark is a peasant town. They sell wheat to anyone.",
+      "Heard Bark has no lord. No tax."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_shobattai_peas_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Empire Peasants"
+   ],
+   "in_town_of": [
+    "Empire Peasants"
+   ],
+   "states": [
+    [
+     "Tengu ok",
+     false
+    ],
+    [
+     "Lord Nagata is alive",
+     false
+    ],
+    [
+     "Boss Simion is alive",
+     true
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Sho-Battai is run by farmers now. No lord left, no Emperor.",
+      "The town is poorer, but it's ours.",
+      "Simion keeps us fed. I don't ask where the food comes from.",
+      "We were afraid when the lords fell. Then we ate."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_edge_anti_own",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "in_town_of": [
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Longen is alive",
+     false
+    ],
+    [
+     "Tinfist is not alive",
+     false
+    ],
+    [
+     "Tengu is alive",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Trader's Edge is ours. The Empire is gone, and so are the old guards. We hold it with what we have.",
+      "A free town. No lord. No collar. Just us and the gate.",
+      "We keep the Edge for those who came here with scars on their wrists.",
+      "Free, and still poor. I'll take that over the alternative."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_fist_half_out",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Free Traders",
+    "Nomads",
+    "Vagrants",
+    "Mercenary Guild",
+    "Traders Guild",
+    "Bounty Hunters",
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Shek Kingdom",
+    "Kral's Chosen"
+   ],
+   "states": [
+    [
+     "holy phoenix okay",
+     false
+    ],
+    [
+     "Valtena is alive",
+     true
+    ]
+   ],
+   "packages": [
+    "Shek Kral's Chosen"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Fist is half in ruin. The Nation lost a leader, and the walls started to crack.",
+      "I hear Okran's Fist is in trouble. The Nation doesn't say. The cracks do.",
+      "A Holy fortress with half its roof. The army holds what's left.",
+      "The Nation is thinner at the Fist now. Someone will notice, and that someone won't be friendly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ally_skeleton_bandits",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Player is ally of Skeleton bandits",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I hear the Skeleton Bandits like you. I didn't know they liked anyone.",
+      "A friend to the Bandits? Walk on. Stay out of my cart.",
+      "Bandit friends. Fine. Take your friends elsewhere.",
+      "Skeleton Bandits have little friends. You must be useful."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_ally_crab_raiders",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Empire Peasants"
+   ],
+   "states": [
+    [
+     "Player is ally of crab raiders",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I hear the Crab Raiders count you a friend. I keep my crates closed when you come.",
+      "A Crab friend. Don't bring your friends here.",
+      "Crab Raiders have no friends. They have debts. You must owe them, or they owe you.",
+      "Crab-friend. I won't say what I think. I'll say what I do: I lock the door."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_enemy_hive_foe",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Western Hive"
+   ],
+   "states": [
+    [
+     "Player is enemy of Hive",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Hive knows you. The Hive doesn't forgive. Come closer.",
+      "You're an enemy of the Hive. Feel how we hum when you walk near.",
+      "Enemy of the many. You stand alone, and we do not.",
+      "Soft step, thin skin. Hive remembers every one of them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wc_enemy_shek_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "states": [
+    [
+     "Player is enemy of Shek Kingdom",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Kingdom hates you. Interesting. They are not wrong about most things.",
+      "You're the Kingdom's enemy. I won't stand near you, but I'll watch.",
+      "Shek enemies make the Nation's friends. Do not mistake that for friendship.",
+      "I hear the Kingdom wants your head. The Flame won't mind if it's taken."
+     ]
+    }
+   ]
+  }
+ ]
+}

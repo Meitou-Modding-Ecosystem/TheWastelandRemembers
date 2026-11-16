@@ -1,0 +1,3124 @@
+{
+ "pack": "x_grudges",
+ "mod": "LivingWastelandHeat",
+ "variables": [
+  {
+   "name": "Grudge Shek Kingdom",
+   "initial": 0
+  },
+  {
+   "name": "Grudge Dust Bandits",
+   "initial": 0
+  },
+  {
+   "name": "Grudge Reavers",
+   "initial": 0
+  },
+  {
+   "name": "Grudge Red Sabres",
+   "initial": 0
+  },
+  {
+   "name": "Grudge Starving Bandits",
+   "initial": 0
+  },
+  {
+   "name": "Grudge Band of Bones",
+   "initial": 0
+  },
+  {
+   "name": "Grudge Grass Pirates",
+   "initial": 0
+  },
+  {
+   "name": "Grudge Slavers",
+   "initial": 0
+  },
+  {
+   "name": "Grudge Holy Nation Outlaws",
+   "initial": 0
+  },
+  {
+   "name": "Grudge Cannibals",
+   "initial": 0
+  },
+  {
+   "name": "Grudge Hounds",
+   "initial": 0
+  },
+  {
+   "name": "Grudge Blackshifters",
+   "initial": 0
+  },
+  {
+   "name": "Grudge Twinblades",
+   "initial": 0
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "gm_shek_set_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "target_factions": [
+    "Shek Kingdom"
+   ],
+   "vars": [
+    [
+     "Grudge Shek Kingdom",
+     "==",
+     0
+    ]
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Shek Kingdom",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_shek_set_lost",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "vars": [
+    [
+     "Grudge Shek Kingdom",
+     "==",
+     0
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Shek Kingdom",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_shek_wary",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Shek Kingdom",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You. The fight we lost. A Shek remembers a defeat longer than a victory. I won't begin it again.",
+      "I know that face. You bested a Shek spear and did it cleanly enough. Pass, and do not make me regret it.",
+      "The Stone Golem teaches that the beaten must learn. I have learned.",
+      "We lost to you once. A Shek doesn't hide from that, and doesn't ask for a second.",
+      "A good fighter. I keep my hand from my blade, and I'd like you to notice it."
+     ],
+     "var_set": [
+      [
+       "Grudge Shek Kingdom",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_shek_bitter",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Shek Kingdom",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You. I haven't forgotten who left us bleeding. Move along before I forget my orders.",
+      "Shek blood dried in the dust and you walk free.",
+      "A Shek can be beaten. A Shek can't be made to like it.",
+      "Don't smile. We remember, and one day the numbers will favour us.",
+      "That fight cost us men and pride. I mean to take the pride back."
+     ],
+     "var_set": [
+      [
+       "Grudge Shek Kingdom",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_shek_smug",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Shek Kingdom",
+     "==",
+     2
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Up and walking. I remember your squad on the ground.",
+      "Those who fall to us don't often come back this way.",
+      "Still alive? The Shek were merciful. Don't mistake it for weakness.",
+      "You again. We stood and you didn't."
+     ],
+     "var_set": [
+      [
+       "Grudge Shek Kingdom",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_shek_n_wary",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Shek Kingdom",
+     "==",
+     1
+    ]
+   ],
+   "chance": 30,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You are the one who beat our spears. I will say nothing of it, and you will say nothing of it.",
+      "Pass, outlander. A Shek knows a stronger arm when he has felt it.",
+      "I was told about you. The Stone Golem would call it a lesson. I call it a sore ribcage.",
+      "We have no quarrel today. We had one once, and I remember how it ended."
+     ],
+     "var_set": [
+      [
+       "Grudge Shek Kingdom",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_shek_n_bitter",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Shek Kingdom",
+     "==",
+     1
+    ]
+   ],
+   "chance": 30,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Walk quickly. Our brothers aren't the only thing that fell that day. Our pride went down with them.",
+      "You are not welcome in my sight. You are tolerated. Remember the difference.",
+      "I smile for the law of the Kingdom. Not for you. Pass.",
+      "There is a debt there, outlander."
+     ],
+     "var_set": [
+      [
+       "Grudge Shek Kingdom",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_shek_n_smug",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Shek Kingdom",
+     "==",
+     2
+    ]
+   ],
+   "chance": 30,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I remember what we did to your squad. Remember it too, and keep to the road.",
+      "The Kingdom was gentle with you once. It has a long memory and a short patience.",
+      "You walked away from us once. Don't take that for a habit.",
+      "We broke you and let you go. A Shek doesn't boast of it."
+     ],
+     "var_set": [
+      [
+       "Grudge Shek Kingdom",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_dust_set_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "target_factions": [
+    "Dust Bandits"
+   ],
+   "vars": [
+    [
+     "Grudge Dust Bandits",
+     "==",
+     0
+    ]
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Dust Bandits",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_dust_set_lost",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "vars": [
+    [
+     "Grudge Dust Bandits",
+     "==",
+     0
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Dust Bandits",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_dust_wary",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Dust Bandits",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're the one. Half the boys went down and you didn't. Keep walkin', I ain't paid for this.",
+      "I ain't startin' nothin'. Last time we started it, we lost teeth.",
+      "Easy now. I seen what you do.",
+      "I know you. Put half of us in the dirt.",
+      "Take what you like off the road, just leave me out of it."
+     ],
+     "var_set": [
+      [
+       "Grudge Dust Bandits",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_dust_bitter",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Dust Bandits",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You! You put my mates down. I'll be sharpenin' somethin' for you.",
+      "Still got the limp from you. Hope you enjoy walkin' around.",
+      "We had a good thing goin' till you showed up, /INSULT/.",
+      "Hope it was worth it, you /BASTARD/. Some of 'em had family.",
+      "Count your steps. One of 'em's gonna be wrong."
+     ],
+     "var_set": [
+      [
+       "Grudge Dust Bandits",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_dust_smug",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Dust Bandits",
+     "==",
+     2
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Well look at that. Still breathin'. Last time you weren't doin' much of anythin'.",
+      "Back again? Last time we left you eatin' dust. Do it again, will you?",
+      "You wake up with all your teeth? We was feelin' kind.",
+      "Remember who walked away that day, /INSULT/? It weren't you."
+     ],
+     "var_set": [
+      [
+       "Grudge Dust Bandits",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_reaver_set_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "target_factions": [
+    "Reavers"
+   ],
+   "vars": [
+    [
+     "Grudge Reavers",
+     "==",
+     0
+    ]
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Reavers",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_reaver_set_lost",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Reavers"
+   ],
+   "vars": [
+    [
+     "Grudge Reavers",
+     "==",
+     0
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Reavers",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_reaver_wary",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Reavers"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Reavers",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You beat us. The brotherhood respects a hard blow, and I'll not pick that fight today.",
+      "A fine fighter. We lived as brothers and you split us. Go in peace.",
+      "You stood against the Reavers and got up after. That's a hero's story. Don't make it a short one.",
+      "Heroes lose too. I hold no grudge today.",
+      "Move on. I was told to remember your face, not draw on it."
+     ],
+     "var_set": [
+      [
+       "Grudge Reavers",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_reaver_bitter",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Reavers"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Reavers",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Brothers fell to you. The brotherhood never forgets, it's the only thing it does well.",
+      "You walk like the road is yours. It was ours before you came and spilled us over it.",
+      "I want your name. The brothers will ask who did it.",
+      "You broke what we were. I'll break something of yours, someday.",
+      "Every brother you put down has a name. I know them all. I'll say them to you one by one."
+     ],
+     "var_set": [
+      [
+       "Grudge Reavers",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_reaver_smug",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Reavers"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Reavers",
+     "==",
+     2
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "We broke your squad and let you crawl off. The Reavers are generous.",
+      "Remember the day we put you down? We do. It was a good day.",
+      "You live because we allowed it. Remember who has the right."
+     ],
+     "var_set": [
+      [
+       "Grudge Reavers",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_sabre_set_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "target_factions": [
+    "Red Sabres"
+   ],
+   "vars": [
+    [
+     "Grudge Red Sabres",
+     "==",
+     0
+    ]
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Red Sabres",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_sabre_set_lost",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Red Sabres"
+   ],
+   "vars": [
+    [
+     "Grudge Red Sabres",
+     "==",
+     0
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Red Sabres",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_sabre_wary",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Red Sabres"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Red Sabres",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Eh, it's you. Not lookin' for trouble this time.",
+      "I ain't draggin' my sabre for you.",
+      "You're the one who took the lads. Go on, I'll look the other way.",
+      "Don't start, eh? We've all had our share of bleedin' from you.",
+      "Walk on. Today we don't want your blood."
+     ],
+     "var_set": [
+      [
+       "Grudge Red Sabres",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_sabre_bitter",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Red Sabres"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Red Sabres",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You! You dropped the lads in the muck like they was nothin'.",
+      "My brother's still not right after what you did, you /BASTARD/.",
+      "You took a bite out of us in blood, and we ain't forgot the taste.",
+      "Can't forget that, eh? Ain't gonna.",
+      "Hope the ground was kind to you, /INSULT/."
+     ],
+     "var_set": [
+      [
+       "Grudge Red Sabres",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_sabre_smug",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Red Sabres"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Red Sabres",
+     "==",
+     2
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hah! Look who crawled back. Last time you went off bleedin'.",
+      "Remember how we left you? Eh? Face down in the dirt.",
+      "We put you down once. Can do it twice, /INSULT/.",
+      "You walk like you won somethin'. You didn't."
+     ],
+     "var_set": [
+      [
+       "Grudge Red Sabres",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_starve_set_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "target_factions": [
+    "Starving Bandits"
+   ],
+   "vars": [
+    [
+     "Grudge Starving Bandits",
+     "==",
+     0
+    ]
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Starving Bandits",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_starve_set_lost",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "vars": [
+    [
+     "Grudge Starving Bandits",
+     "==",
+     0
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Starving Bandits",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_starve_wary",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Starving Bandits",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You... you hit hard. We ain't got the strength to try again. Please.",
+      "Don't hurt us. Don't. We learned. We learned already.",
+      "I know you. You left us on the ground. I won't get up for you again.",
+      "Leave us. Leave us be. We got nothin' you want, honest.",
+      "I'm too hungry to be brave. You take your fight somewhere else."
+     ],
+     "var_set": [
+      [
+       "Grudge Starving Bandits",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_starve_bitter",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Starving Bandits",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You left us weaker. We didn't have much to lose before, but you found some.",
+      "You with your food. You with your boots. You beat us and went on eatin'.",
+      "I remember you. I remember how it felt. It's the only thing I got left to remember.",
+      "Somebody's gonna get fed for what you did.",
+      "Fight a starving man, fine. Starve and see how the fight feels."
+     ],
+     "var_set": [
+      [
+       "Grudge Starving Bandits",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_starve_smug",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Starving Bandits",
+     "==",
+     2
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "We beat you once. Still hungry.",
+      "You lost to starvin' men. Think about that on your way.",
+      "Remember us, the ones who put you down? Rememberin' don't fill a belly, but it's somethin'.",
+      "Last time we had you. Didn't even get a good meal out of it."
+     ],
+     "var_set": [
+      [
+       "Grudge Starving Bandits",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_bones_set_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "target_factions": [
+    "Band of Bones"
+   ],
+   "vars": [
+    [
+     "Grudge Band of Bones",
+     "==",
+     0
+    ]
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Band of Bones",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_bones_set_lost",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Band of Bones"
+   ],
+   "packages": [
+    "Band Of Bones"
+   ],
+   "vars": [
+    [
+     "Grudge Band of Bones",
+     "==",
+     0
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Band of Bones",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_bones_wary",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Band of Bones"
+   ],
+   "packages": [
+    "Band Of Bones"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Band of Bones",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hmph. You again. A Shek honours the stronger blade. I don't draw today.",
+      "You beat the Band. I keep my place and you keep yours.",
+      "I felt your steel once. It was enough.",
+      "We were bested, and not by luck.",
+      "Pass. I would rather live to be better than die to be proud."
+     ],
+     "var_set": [
+      [
+       "Grudge Band of Bones",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_bones_bitter",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Band of Bones"
+   ],
+   "packages": [
+    "Band Of Bones"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Band of Bones",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Beaten by an outsider. I have turned it over a hundred times.",
+      "Bones remember. Every cut you gave. Pass before I count them.",
+      "You made the Band look weak. Weak men don't forget that.",
+      "The Band was a name that frightened people. You've made it a lesson. I don't thank you.",
+      "I will have my reckoning. Not today. But I will."
+     ],
+     "var_set": [
+      [
+       "Grudge Band of Bones",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_bones_smug",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Band of Bones"
+   ],
+   "packages": [
+    "Band Of Bones"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Band of Bones",
+     "==",
+     2
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "We beat you once and left you the breath to learn from it.",
+      "The Band took you apart. It wasn't even hard.",
+      "Don't stand so proud. The ground remembers where you lay.",
+      "You walk like a man who forgot."
+     ],
+     "var_set": [
+      [
+       "Grudge Band of Bones",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_grass_set_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "target_factions": [
+    "Grass Pirates"
+   ],
+   "vars": [
+    [
+     "Grudge Grass Pirates",
+     "==",
+     0
+    ]
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Grass Pirates",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_grass_set_lost",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "vars": [
+    [
+     "Grudge Grass Pirates",
+     "==",
+     0
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Grass Pirates",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_grass_wary",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Grass Pirates",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Aye, you. Not lookin' for round two. We got all the lumps we need.",
+      "I ain't forgot. Put the sword away, and I'll put mine away.",
+      "Easy. I'll steer clear of you if you steer clear of me.",
+      "You're good. I'll admit that much. Don't ask me for more.",
+      "Walk on. The crew's had enough of you for a lifetime."
+     ],
+     "var_set": [
+      [
+       "Grudge Grass Pirates",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_grass_bitter",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Grass Pirates",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You took the crew apart, you /BASTARD/. I'll not forget a single one.",
+      "I got a score to settle and your face is on it.",
+      "Cost us men, cost us a good haul. I'll want it back, one way or the other.",
+      "You're the one. Heh. I've not slept well since.",
+      "Watch your back, /INSULT/. Pirates never forget a thing."
+     ],
+     "var_set": [
+      [
+       "Grudge Grass Pirates",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_grass_smug",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Grass Pirates"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Grass Pirates",
+     "==",
+     2
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ha! Yer the one we beat down. Back for more, are ye?",
+      "We left you in the dirt. How's the view from standin' up?",
+      "Don't look so sour. It's only losin'. We lost plenty ourselves, once.",
+      "Remember us, do ya? Good. Keep rememberin'."
+     ],
+     "var_set": [
+      [
+       "Grudge Grass Pirates",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_slaver_set_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "target_factions": [
+    "Slave Hunters",
+    "Slave Traders"
+   ],
+   "vars": [
+    [
+     "Grudge Slavers",
+     "==",
+     0
+    ]
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Slavers",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_slaver_set_lost",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Slave Hunters",
+    "Slave Traders"
+   ],
+   "vars": [
+    [
+     "Grudge Slavers",
+     "==",
+     0
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Slavers",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_slaver_wary",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Slave Hunters",
+    "Slave Traders"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Slavers",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You. That fight cost us hands and a day's work.",
+      "I know you. Business is business, and you were poor business.",
+      "Keep walkin'. A beaten hunter is a poor hunter, and I'm a poor one today.",
+      "We lost the last tangle. Stock don't come cheap, but you come costlier.",
+      "I'll not shackle you today. Don't mistake that for mercy."
+     ],
+     "var_set": [
+      [
+       "Grudge Slavers",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_slaver_bitter",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Slave Hunters",
+    "Slave Traders"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Slavers",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That fight cost us men, and men cost money. Someone owes, and you know who.",
+      "I keep a ledger of debts. You're on the first page.",
+      "You'd fetch a fine price, you know. Maybe not today, but someday.",
+      "I lost good people to your lot.",
+      "Someone's chains are still waiting for a neck."
+     ],
+     "var_set": [
+      [
+       "Grudge Slavers",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_slaver_smug",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Slave Hunters",
+    "Slave Traders"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Slavers",
+     "==",
+     2
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "We broke your squad. Fine stock, some of 'em.",
+      "You'd have fetched a fair price once.",
+      "You lost, and we let you leave. Think of it as an advance.",
+      "Remember the last time? So do I."
+     ],
+     "var_set": [
+      [
+       "Grudge Slavers",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_slaver_n_wary",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Slave Hunters",
+    "Slave Traders"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Slavers",
+     "==",
+     1
+    ]
+   ],
+   "chance": 30,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hm. You're the one who cost us at the last scrap. Can't say I'll miss that.",
+      "Business is business. Your fight with us was bad for it. Let's keep it quiet from here.",
+      "I know you. I'll leave you be.",
+      "You've cost us once already. I'd rather sell than fight."
+     ],
+     "var_set": [
+      [
+       "Grudge Slavers",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_slaver_n_bitter",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Slave Hunters",
+    "Slave Traders"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Slavers",
+     "==",
+     1
+    ]
+   ],
+   "chance": 30,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You aren't forgiven. Just noted.",
+      "That fight cost us stock, and stock costs cats. I'd rather not talk about it.",
+      "I see you. I'm not pleased to.",
+      "I haven't forgotten the cost. You'll pay one way or another."
+     ],
+     "var_set": [
+      [
+       "Grudge Slavers",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_hno_set_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "target_factions": [
+    "Holy Nation Outlaws"
+   ],
+   "vars": [
+    [
+     "Grudge Holy Nation Outlaws",
+     "==",
+     0
+    ]
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Holy Nation Outlaws",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_hno_set_lost",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "vars": [
+    [
+     "Grudge Holy Nation Outlaws",
+     "==",
+     0
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Holy Nation Outlaws",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_hno_wary",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Holy Nation Outlaws",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're the one who beat us. Outlawed, not stupid. Walk on.",
+      "The Nation cast us out and you broke us after. I'll not give you the satisfaction of a second fight.",
+      "We learned. The hard way, as the Nation teaches everything.",
+      "I know you. I'll keep my blade down, and my prayers up.",
+      "Go. Even outcasts know when the Flame isn't on their side."
+     ],
+     "var_set": [
+      [
+       "Grudge Holy Nation Outlaws",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_hno_bitter",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Holy Nation Outlaws",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Nation threw us out and you finished the job of ruining us.",
+      "You took no god from me. Only friends.",
+      "I'll not forget, outlander. The fires we've left are burning for you.",
+      "Every cut you gave me is a lesson, and I don't thank the teacher.",
+      "We were outcasts and now we're less."
+     ],
+     "var_set": [
+      [
+       "Grudge Holy Nation Outlaws",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_hno_smug",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Holy Nation Outlaws"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Holy Nation Outlaws",
+     "==",
+     2
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Nation threw us out and still we beat you.",
+      "Even outcasts have steel. You learned it the hard way.",
+      "Remember us, do you? The Flame remembers you.",
+      "You fell to outcasts. Pray the Nation never hears of it."
+     ],
+     "var_set": [
+      [
+       "Grudge Holy Nation Outlaws",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_cannibal_set_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "target_factions": [
+    "Cannibals"
+   ],
+   "vars": [
+    [
+     "Grudge Cannibals",
+     "==",
+     0
+    ]
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Cannibals",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_cannibal_set_lost",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Cannibals"
+   ],
+   "vars": [
+    [
+     "Grudge Cannibals",
+     "==",
+     0
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Cannibals",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_cannibal_wary",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Cannibals",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "/UG/. You. You hurt us. No fight now.",
+      "You strong. Cannibals remember strong. Not fight.",
+      "Hurt. Still hurt. /UG/. Go, go.",
+      "You, dhe one. Meat run away from you. Not us, not now.",
+      "No eat you. No fight you. Bad meat, hit back too hard."
+     ],
+     "var_set": [
+      [
+       "Grudge Cannibals",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_cannibal_bitter",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Cannibals",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You /CANNIBALCURSE/. You kill ours. We remember. We eat you.",
+      "Brodher gone. You do. /UG/. Cannibals not forget.",
+      "Mine blood. Your blood. Same, soon.",
+      "You walk, walk. We watch. We wait.",
+      "Face I know. Teeth I know."
+     ],
+     "var_set": [
+      [
+       "Grudge Cannibals",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_cannibal_smug",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Cannibals",
+     "==",
+     2
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You back. Meat back. /UG/. We knock you down once, we do again.",
+      "We got you once. You walk away. Lucky meat.",
+      "Remember. You fall. We stand. Cannibals strong.",
+      "/UG/. You hurt, we hurt more. Still alibe, you, for now."
+     ],
+     "var_set": [
+      [
+       "Grudge Cannibals",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_hound_set_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "target_factions": [
+    "Hounds"
+   ],
+   "vars": [
+    [
+     "Grudge Hounds",
+     "==",
+     0
+    ]
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Hounds",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_hound_set_lost",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Hounds"
+   ],
+   "vars": [
+    [
+     "Grudge Hounds",
+     "==",
+     0
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Hounds",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_hound_wary",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Hounds"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Hounds",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hounds remember. You hit hard for a stranger. Hounds don't bark at things that bite back.",
+      "Not tonight. The pack licked its wounds and learned your smell.",
+      "You're the one. The pack said leave you be.",
+      "I got no quarrel today. Last time ended with my head ringing.",
+      "Easy. Hounds know when to circle and when to lie down."
+     ],
+     "var_set": [
+      [
+       "Grudge Hounds",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_hound_bitter",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Hounds"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Hounds",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You bled the pack. The swamp is wide, but the Hounds' memory is wider.",
+      "Remember the howls? That was us, hurtin'.",
+      "No man tells the Hounds what to do, and no stranger breaks them and walks free.",
+      "I'll find you in the swamp, outsider.",
+      "Hounds mourn their own. You made us mourn. We'll mourn you."
+     ],
+     "var_set": [
+      [
+       "Grudge Hounds",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_hound_smug",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Hounds"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Hounds",
+     "==",
+     2
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hounds put you down once. It's why you walk soft now.",
+      "Heh. The pack laid you out.",
+      "You came at the Hounds and the Hounds put you down.",
+      "Arooo. You lost, stranger. The swamp remembers."
+     ],
+     "var_set": [
+      [
+       "Grudge Hounds",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_black_set_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "target_factions": [
+    "Blackshifters"
+   ],
+   "vars": [
+    [
+     "Grudge Blackshifters",
+     "==",
+     0
+    ]
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Blackshifters",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_black_set_lost",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Blackshifters"
+   ],
+   "packages": [
+    "Swamper Gang Member"
+   ],
+   "vars": [
+    [
+     "Grudge Blackshifters",
+     "==",
+     0
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Blackshifters",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_black_wary",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Blackshifters"
+   ],
+   "packages": [
+    "Swamper Gang Member"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Blackshifters",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You cost us some good hands. Everything has a price, and yours was too high. Move along.",
+      "I do business with people who win. You won. Walk on.",
+      "I'll not make trouble. I'll only make a note.",
+      "The Blackshifters can read a loss. We lost.",
+      "You were an expense we would rather not repeat."
+     ],
+     "var_set": [
+      [
+       "Grudge Blackshifters",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_black_bitter",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Blackshifters"
+   ],
+   "packages": [
+    "Swamper Gang Member"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Blackshifters",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You owe the Blackshifters for what you did. We keep accounts, and we collect.",
+      "Every man you put down was owed money by someone.",
+      "You'll pay, outsider. In cats or in blood.",
+      "I'd say something sharp, but I'll keep it for the day it matters.",
+      "We never forget a debt. Enjoy your freedom while the interest builds."
+     ],
+     "var_set": [
+      [
+       "Grudge Blackshifters",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_black_smug",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Blackshifters"
+   ],
+   "packages": [
+    "Swamper Gang Member"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Blackshifters",
+     "==",
+     2
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "We put your squad down for free. Next time we'll send a bill.",
+      "You lost to the Blackshifters. Think of the cost.",
+      "The last time we met, you left some of yourself on the floor. Fair price.",
+      "You paid in blood. We take cats, too, if you have them."
+     ],
+     "var_set": [
+      [
+       "Grudge Blackshifters",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_twin_set_won",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "target_factions": [
+    "Twinblades"
+   ],
+   "vars": [
+    [
+     "Grudge Twinblades",
+     "==",
+     0
+    ]
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Twinblades",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_twin_set_lost",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Twinblades"
+   ],
+   "packages": [
+    "Swamper Gang Member"
+   ],
+   "vars": [
+    [
+     "Grudge Twinblades",
+     "==",
+     0
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "monologue": true,
+   "one_at_a_time": false,
+   "lines": [
+    {
+     "silent": true,
+     "var_set": [
+      [
+       "Grudge Twinblades",
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_twin_wary",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Twinblades"
+   ],
+   "packages": [
+    "Swamper Gang Member"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Twinblades",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Two blades, one fight, and you won it. Credit where it's due.",
+      "I know the face. My blades know your guard. Neither of us needs round two.",
+      "Not today. I've still got the stitches from last time.",
+      "You beat us. The Twinblades don't forget that, nor do they beg for another.",
+      "Walk on. My blades are sheathed."
+     ],
+     "var_set": [
+      [
+       "Grudge Twinblades",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_twin_bitter",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Twinblades"
+   ],
+   "packages": [
+    "Swamper Gang Member"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Twinblades",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "My blades remember what yours did.",
+      "You're the one who took the Twinblades down a peg. I'll bring it back up.",
+      "Sleep light, outsider. Blades are quiet.",
+      "You made fools of us. A fool with two blades is worse than a clever man with one.",
+      "I owe you a pair of cuts. Two blades, two cuts."
+     ],
+     "var_set": [
+      [
+       "Grudge Twinblades",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm_twin_smug",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Twinblades"
+   ],
+   "packages": [
+    "Swamper Gang Member"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Grudge Twinblades",
+     "==",
+     2
+    ]
+   ],
+   "chance": 35,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "monologue": true,
+   "if": [
+    {
+     "cond": "DC_TARGET_LAST_SEEN_X_HOURS_AGO",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Two blades beat your lot once.",
+      "You lost to the Twinblades. The cuts heal.",
+      "Heh. I recall how you looked on the ground.",
+      "We cut you down once. Twice is no harder."
+     ],
+     "var_set": [
+      [
+       "Grudge Twinblades",
+       0
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

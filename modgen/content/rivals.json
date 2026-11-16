@@ -1,0 +1,376 @@
+{
+ "pack": "rivals",
+ "mod": "LivingWasteland",
+ "meitou_only": true,
+ "note": "Rivals (Meitou helper, Rivals.cs): /LWRIVAL_k/ carries rival k's live name; lw_if rival k: 1 a rival about, 2 one that has beaten the squad.",
+ "word_swaps": [
+  {
+   "name": "LWRIVAL_0",
+   "lines": [
+    {
+     "say": "someone"
+    }
+   ]
+  },
+  {
+   "name": "LWRIVAL_1",
+   "lines": [
+    {
+     "say": "someone"
+    }
+   ]
+  },
+  {
+   "name": "LWRIVAL_2",
+   "lines": [
+    {
+     "say": "someone"
+    }
+   ]
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "rv_0_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "rival": 0,
+     "cmp": "=",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "/LWRIVAL_0/ came through asking about your squad and wouldn't say why.",
+      "Somebody called /LWRIVAL_0/ is buying drinks for anyone who's seen your lot.",
+      "/LWRIVAL_0/ was in here two nights ago, telling anyone who'd listen what your squad did to them.",
+      "I'd watch the roads if I were you. /LWRIVAL_0/ has been asking which way you went.",
+      "/LWRIVAL_0/ sat in that corner for an hour sharpening a blade, muttering your squad's name."
+     ]
+    }
+   ],
+   "chance": 12,
+   "repeat": 3
+  },
+  {
+   "id": "rv_0_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "rival": 0,
+     "cmp": ">",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're the ones /LWRIVAL_0/ keeps asking about, aren't you?",
+      "/LWRIVAL_0/ hasn't forgotten you, mind. Thought you should know.",
+      "Somebody's looking for your squad. /LWRIVAL_0/, they said."
+     ]
+    }
+   ],
+   "chance": 5,
+   "repeat": 2
+  },
+  {
+   "id": "rv_0_boast",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "rival": 0,
+     "cmp": "=",
+     "value": 2
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "/LWRIVAL_0/ has been telling everyone how they put your squad in the dirt.",
+      "Heard /LWRIVAL_0/ beat your lot. They won't stop going on about it.",
+      "/LWRIVAL_0/ walked in here grinning, reckons your squad wasn't so hard after all."
+     ]
+    }
+   ],
+   "chance": 15,
+   "repeat": 3
+  },
+  {
+   "id": "rv_1_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "rival": 1,
+     "cmp": "=",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "/LWRIVAL_1/ came through asking about your squad and wouldn't say why.",
+      "Somebody called /LWRIVAL_1/ is buying drinks for anyone who's seen your lot.",
+      "/LWRIVAL_1/ was in here two nights ago, telling anyone who'd listen what your squad did to them.",
+      "I'd watch the roads if I were you. /LWRIVAL_1/ has been asking which way you went.",
+      "/LWRIVAL_1/ sat in that corner for an hour sharpening a blade, muttering your squad's name."
+     ]
+    }
+   ],
+   "chance": 12,
+   "repeat": 3
+  },
+  {
+   "id": "rv_1_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "rival": 1,
+     "cmp": ">",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're the ones /LWRIVAL_1/ keeps asking about, aren't you?",
+      "/LWRIVAL_1/ hasn't forgotten you, mind. Thought you should know.",
+      "Somebody's looking for your squad. /LWRIVAL_1/, they said."
+     ]
+    }
+   ],
+   "chance": 5,
+   "repeat": 2
+  },
+  {
+   "id": "rv_1_boast",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "rival": 1,
+     "cmp": "=",
+     "value": 2
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "/LWRIVAL_1/ has been telling everyone how they put your squad in the dirt.",
+      "Heard /LWRIVAL_1/ beat your lot. They won't stop going on about it.",
+      "/LWRIVAL_1/ walked in here grinning, reckons your squad wasn't so hard after all."
+     ]
+    }
+   ],
+   "chance": 15,
+   "repeat": 3
+  },
+  {
+   "id": "rv_2_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "rival": 2,
+     "cmp": "=",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "/LWRIVAL_2/ came through asking about your squad and wouldn't say why.",
+      "Somebody called /LWRIVAL_2/ is buying drinks for anyone who's seen your lot.",
+      "/LWRIVAL_2/ was in here two nights ago, telling anyone who'd listen what your squad did to them.",
+      "I'd watch the roads if I were you. /LWRIVAL_2/ has been asking which way you went.",
+      "/LWRIVAL_2/ sat in that corner for an hour sharpening a blade, muttering your squad's name."
+     ]
+    }
+   ],
+   "chance": 12,
+   "repeat": 3
+  },
+  {
+   "id": "rv_2_sight",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "rival": 2,
+     "cmp": ">",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're the ones /LWRIVAL_2/ keeps asking about, aren't you?",
+      "/LWRIVAL_2/ hasn't forgotten you, mind. Thought you should know.",
+      "Somebody's looking for your squad. /LWRIVAL_2/, they said."
+     ]
+    }
+   ],
+   "chance": 5,
+   "repeat": 2
+  },
+  {
+   "id": "rv_2_boast",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nomads",
+    "Drifters",
+    "Free Traders",
+    "Hounds",
+    "Western Hive",
+    "Tech Hunters",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "rival": 2,
+     "cmp": "=",
+     "value": 2
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "/LWRIVAL_2/ has been telling everyone how they put your squad in the dirt.",
+      "Heard /LWRIVAL_2/ beat your lot. They won't stop going on about it.",
+      "/LWRIVAL_2/ walked in here grinning, reckons your squad wasn't so hard after all."
+     ]
+    }
+   ],
+   "chance": 15,
+   "repeat": 3
+  }
+ ]
+}

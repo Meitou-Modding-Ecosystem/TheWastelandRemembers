@@ -1,0 +1,78 @@
+{
+ "pack": "sample_phoenix",
+ "world_states": [
+  {
+   "name": "Phoenix killed by player",
+   "npc": "Holy Lord Phoenix",
+   "is": "dead",
+   "player": true
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "sample phoenix dead - holy nation bar mourning",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Phoenix killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "They say the Flame went out at the Holy Lord's feet.",
+      "I lit a candle for him. Then I put it out, in case anyone was looking."
+     ]
+    },
+    {
+     "say": [
+      "Who guards the Holy Nation now? Not the Flame, that much I know."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sample phoenix dead - shek gloat",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Phoenix killed by player",
+     true
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -50
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You. You're the one who ended the Phoenix. The Shek remember who does their work for them."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       2
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,75 @@
+{
+ "pack": "cannibals_wanted",
+ "mod": "LivingWastelandCannibals",
+ "note": "Contracts on the two named cannibal leaders made in cannibals_data.json (loads after it). They live in the cannibal village, not a roaming camp, so the Meitou helper pays no distance bonus for them and every giver can offer the job.",
+ "contracts": [
+  {
+   "id": "cn_alder_quill_contract",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "state": "Alder Quill killed by player",
+   "reward": 6000,
+   "chance": 40,
+   "offer": [
+    "There was a kitchen priest at the Fist who read to the novices while they ate. Alder Quill. He went north and found a worse table. Okran wants him ended.",
+    "Alder Quill wore the sun once. Now he cooks for the cannibals and quotes scripture while he does it. The Nation will pay to stop his mouth.",
+    "A priest of Okran gone over to the eaters. Quill. They say he lives among them, polite as a deacon. End him."
+   ],
+   "accept": [
+    "I'll find him.",
+    "Where do the cannibals keep him?"
+   ],
+   "accepted": [
+    "In the cannibal village, past the plains. He will offer you soup. Do not take it.",
+    "North, among the eaters. He is soft-spoken. Do not let that fool you."
+   ],
+   "decline": [
+    "That is the Nation's shame, not mine.",
+    "Not today."
+   ],
+   "report": [
+    "Quill is dead? Okran's light finds even the kitchens. Here is your reward.",
+    "The kitchen priest is silenced. The Nation is grateful. Take this.",
+    "Dead among the eaters. Fitting. Your payment."
+   ],
+   "packages": [
+    "bar:all"
+   ]
+  },
+  {
+   "id": "cn_mother_brine_contract",
+   "factions": [
+    "United Cities"
+   ],
+   "state": "Mother Brine killed by player",
+   "reward": 5500,
+   "chance": 40,
+   "offer": [
+    "The cannibals have a woman who salts people like hams. Mother Brine. Her cure-house is in their village. The Cities want the smoke put out.",
+    "Mother Brine keeps the eaters fed through the winters. Kill her and the winter does the rest of the work for us.",
+    "There is a cure-house in the cannibal village with fifty names on its beams. The woman who carved them is Mother Brine. End her."
+   ],
+   "accept": [
+    "I'll put out her fire.",
+    "Where is this cure-house?"
+   ],
+   "accepted": [
+    "In the cannibal village, in the smoke. Follow the smell.",
+    "She is old and never alone. Bring people you trust."
+   ],
+   "decline": [
+    "I have no stomach for it.",
+    "Not today."
+   ],
+   "report": [
+    "Brine is dead? Then let them have a hungry winter. Here is the purse.",
+    "The cure-house is cold. Good. Take your cats.",
+    "Salted in her own smoke, I hope. Your reward."
+   ],
+   "packages": [
+    "bar:all"
+   ]
+  }
+ ]
+}

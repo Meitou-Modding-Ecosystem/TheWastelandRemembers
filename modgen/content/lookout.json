@@ -1,0 +1,889 @@
+{
+ "pack": "lookout",
+ "mod": "LivingWasteland",
+ "meitou_only": true,
+ "note": "Meitou only: lookout calls (Lookout.cs). The helper fires EV_SOUND_THE_ALARM (used by nothing else) on the squad member nearest a hostile person within 150 m; the line goes by the target's faction, a squadmate may answer. The generic line has the lowest score. An enemy squad marching in a nation's campaign (an army on its way to take a town, as Kenshi Ultimate Overhaul sends) gets the army lines first (lw_if marching, Marches.cs).",
+ "dialogues": [
+  {
+   "id": "lk_army",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 40,
+   "lw_if": [
+    {
+     "marching": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That's not a patrol. That's an army.",
+      "/TARGETFACTION/ on the march. Somebody's town is about to burn.",
+      "Column on the road. A big one.",
+      "War party, moving fast. They're not here for us... yet.",
+      "Look at them all. That's a whole army walking.",
+      "Banners, marching order, the lot. /TARGETFACTION/ means business."
+     ],
+     "then": [
+      {
+       "say": [
+        "Then we stay out of its way.",
+        "Or we break it before it gets there.",
+        "Where are they headed?",
+        "Kill the one leading it and the rest scatter.",
+        "Whoever they're marching on, I pity them.",
+        "Keep low. Let it pass."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lk_generic",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 0,
+   "lines": [
+    {
+     "say": [
+      "Company coming. Weapons out.",
+      "Movement out there. Not friendly.",
+      "Heads up! Trouble coming our way.",
+      "Someone's coming, and they're not here to trade."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lk_dust",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Dust Bandits on the ridge!",
+      "Dust Bandits. Of course it's Dust Bandits.",
+      "Dust Bandits coming. Hold together."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Dust Bandits"
+   ]
+  },
+  {
+   "id": "lk_starving",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Starving Bandits. Poor wretches want our food.",
+      "Hungry ones coming. They won't stop till they drop."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Starving Bandits"
+   ]
+  },
+  {
+   "id": "lk_cannibals",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Cannibals! Nobody gets dragged off!",
+      "Cannibals coming. Nobody goes down alone."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Cannibals"
+   ]
+  },
+  {
+   "id": "lk_fogmen",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Fogmen! Keep moving, don't get taken!",
+      "The fog's moving. Fogmen!"
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Fogmen"
+   ]
+  },
+  {
+   "id": "lk_holy",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Paladins. And they don't look like they're praying.",
+      "Holy Nation soldiers. Here it comes."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "The Holy Nation"
+   ]
+  },
+  {
+   "id": "lk_uc",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Samurai. Somebody sent the law after us.",
+      "Cities' men coming. They won't be asking nicely."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "lk_shek",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Shek warriors. They want a fight, they'll get one.",
+      "Shek coming. Expect them to hit hard."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "lk_skin",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Skin Bandits. Don't let them take anyone.",
+      "Skin Bandits. Don't let them get near the downed."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "lk_manhunters",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Manhunters. Someone's put a price on us.",
+      "Manhunters coming. They want us alive."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Manhunters"
+   ]
+  },
+  {
+   "id": "lk_slavers",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Slavers. Not today.",
+      "Slavers coming. Nobody wears chains today."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Slave Traders"
+   ]
+  },
+  {
+   "id": "lk_reavers",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Reavers. Watch for crossbows.",
+      "Reavers on the road. They take everything."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Reavers"
+   ]
+  },
+  {
+   "id": "lk_swampninja",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Swamp Ninjas in the reeds!",
+      "Swamp Ninjas. Watch your flanks."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Swamp Ninjas"
+   ]
+  },
+  {
+   "id": "lk_sabres",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Red Sabres. Keep your heads.",
+      "Red Sabres coming. They're good. Be better."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Red Sabres"
+   ]
+  },
+  {
+   "id": "lk_crabs",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Crab Raiders! Look at that armour.",
+      "Crab Raiders. Aim for the joints."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Crab Raiders"
+   ]
+  },
+  {
+   "id": "lk_blackdragon",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Black Dragon Ninjas. Stay close.",
+      "Black Dragons. Fast and nasty. Together, now."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Black Dragon Ninjas"
+   ]
+  },
+  {
+   "id": "lk_bones",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Band of Bones. Big fellows. Careful.",
+      "Band of Bones coming. Don't let them swing freely."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Band of Bones"
+   ]
+  },
+  {
+   "id": "lk_southhive",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Southern Hive drones! Stay together!",
+      "Pink hivers. They don't take prisoners."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Southern Hive"
+   ]
+  },
+  {
+   "id": "lk_hounds",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Hounds. Big Grim's dogs, out for blood.",
+      "Hounds coming. Keep the gate shut."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Hounds"
+   ]
+  },
+  {
+   "id": "lk_kral",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Kral's Chosen. They want to die well. Oblige them.",
+      "Kral's Chosen, looking for a glorious end."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Kral's Chosen"
+   ]
+  },
+  {
+   "id": "lk_thrall",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Thrall Masters. Skeletons with chains.",
+      "Thrall Masters coming. Don't go down near them."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Thrall Masters"
+   ]
+  },
+  {
+   "id": "lk_gutters",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Gutters. They'll strip the dead before the fight's done.",
+      "Gutters coming. Watch your packs."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Gutters"
+   ]
+  },
+  {
+   "id": "lk_gorillos",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Gorillos! Big ones!",
+      "Gorillos coming. Spread out, don't get cornered."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Gorillos"
+   ]
+  },
+  {
+   "id": "lk_spiders",
+   "event": "EV_SOUND_THE_ALARM",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 100,
+   "repeat": 0,
+   "score": 10,
+   "lines": [
+    {
+     "say": [
+      "Spiders! Keep your legs moving!",
+      "Spiders coming. Lots of them."
+     ],
+     "then": [
+      {
+       "say": [
+        "I see them.",
+        "On it.",
+        "Let them come.",
+        "Stay together.",
+        "Weapons out, then.",
+        "Seen. Nobody wander off."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ],
+   "target_factions": [
+    "Spiders"
+   ]
+  }
+ ]
+}

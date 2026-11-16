@@ -1,0 +1,2256 @@
+{
+ "pack": "quest_chains_outlaws",
+ "mod": "LivingWastelandOutlaws",
+ "quests": [
+  {
+   "id": "qc_inquisition",
+   "offer": {
+    "factions": [
+     "The Holy Nation"
+    ],
+    "packages": [
+     "Holy Nation Inquisitor"
+    ],
+    "narrow": true,
+    "chance": 55,
+    "say": [
+     "There's rot in the Flame's own household. Ilsa Hearthmourn wore our colours once. Now a cell shelters her, and the Nation must follow its threads.",
+     "Heresy does not walk the road alone. Someone feeds Ilsa Hearthmourn bread and steel and whispers. Find who, and finish it at her.",
+     "The Inquisition has names but not faces. Ask the priests who heard her cell confess, then the Paladins who patrol its roads. Then end Hearthmourn.",
+     "A cell of the faithless, and at its head a woman who once pacified for the Flame. I want her silenced. First, listen to those who have heard her.",
+     "Hearthmourn prays for the end of Okran, and others pray with her. The trail runs through the temple."
+    ],
+    "accept": [
+     "Where do I begin?",
+     "I will follow the trail.",
+     "The Nation's work, then.",
+     "Name the first thread."
+    ],
+    "decline": [
+     "Not my sort of work.",
+     "Find another hand.",
+     "I have my own road.",
+     "The Flame has plenty of hands."
+    ],
+    "accepted": [
+     "Begin with the priests. Confession leaves marks. After them, the Paladins on the roads. Find her, end her, and return to me.",
+     "Priests first, Paladins second. Say the Inquisition sent you. Then Ilsa Hearthmourn. Do not bring her back alive.",
+     "Speak to a priest of the Flame. Someone will have heard enough. Then ask the Paladins where the cell moves.",
+     "Quietly. The faithless have ears in the pews. Priest, Paladin, and then the woman herself."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Holy Priest"
+     ],
+     "narrow": true,
+     "say": [
+      "The Inquisitor sent you? Then hear me and say nothing of it after. A woman came to confession and wept for a Flame that was not hers.",
+      "I have heard her cell in the dark, stranger, and I have kept it too long. Hearthmourn's people leave scraps of scripture turned inside out.",
+      "You carry the Inquisition's word. Good. Heretics hide in plain pews, and some of them hide in my congregation. Hearthmourn is among their names.",
+      "I confessed none of them, but I listened. They speak of Okran as a mistake. Your Inquisitor was right to worry."
+     ],
+     "reply": [
+      "Where is the cell now?",
+      "Which way do they move?",
+      "Tell me what you heard.",
+      "Where do I find her?"
+     ],
+     "after": [
+      "The Paladins on the roads have seen their cell moving. Ask them where. I have said too much already.",
+      "Ask the Paladins. They see who leaves the pilgrim roads. I only hear who is afraid.",
+      "Not mine to say. The soldiers of the Flame know the ground. Speak to a Paladin.",
+      "Not mine to say. Go to the Paladins. I will pray for your errand, and for mine."
+     ]
+    },
+    {
+     "packages": [
+      "Holy Nation Paladin"
+     ],
+     "narrow": true,
+     "say": [
+      "The Inquisition's errand? We have watched the cell move through Okran's Pride and the hills past the pilgrim roads. Hearthmourn walks with them.",
+      "Hearthmourn. Yes. We marked her camp twice and both times found only ashes. She sleeps lightly and her people are loyal.",
+      "A heretic cell hides in the open. We watch it. Ilsa Hearthmourn leads it, and she was good with a blade before she lost her faith.",
+      "You are the Inquisitor's hound? Then the cell is in the hills beyond the pilgrim roads, and the woman at its heart is yours."
+     ],
+     "reply": [
+      "Then I know where to look.",
+      "I will find her.",
+      "Anything else I should know?",
+      "She will not leave those hills."
+     ],
+     "after": [
+      "Do not offer her the Flame's mercy. The Inquisition does not wait for it.",
+      "Take care. She prays while she fights. It is worse than it sounds.",
+      "Strike once and leave nothing for her cell to bury.",
+      "She is not the only one in that cell. Do not think the rest are lambs."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Ilsa Hearthmourn killed by player",
+    "reward": 9000,
+    "say": [
+     "Hearthmourn is dead? Then her cell will wither. The Flame is grateful, and so is the Inquisition.",
+     "You followed the thread to its end. The Nation doesn't often thank, but it pays.",
+     "Ashes, I hear. Good. The heresy won't outlive its mouth. This is what the Inquisition owes you.",
+     "She prayed for the end of Okran and got her own. Take the Nation's coin and keep silent about the rest."
+    ]
+   }
+  },
+  {
+   "id": "qc_tipoff",
+   "offer": {
+    "factions": [
+     "Anti-Slavers"
+    ],
+    "chance": 40,
+    "say": [
+     "A man crawled out of a slave farm last week, half dead, with a name on his lips. The ones who got away know more than we do.",
+     "We keep hearing about a farm where they're worn down in rows. The woman who runs it's Grace. The escaped talk. Find one who will tell you.",
+     "Our network is thin and the farms are big. Find an escaped slave. They know where the keys are kept and who holds them.",
+     "There's a mistress who does her own whipping. Slave Mistress Grace. The runaways know her face. Go and listen to them.",
+     "Tips travel faster than chains. Ask the escaped about Grace, then do what we can't."
+    ],
+    "accept": [
+     "I will talk to them.",
+     "Point me to the freed.",
+     "I want her name on my blade.",
+     "Tell me where to start."
+    ],
+    "decline": [
+     "That is a bigger fight than I want.",
+     "Not today.",
+     "I have my own work.",
+     "Find someone else."
+    ],
+    "accepted": [
+     "Find an escaped slave. Any camp, any road. They will tell you where Grace works. Then end her.",
+     "Talk to the runaways first. They remember everything. When you have what you need, kill the Mistress and come to me.",
+     "The freed know the way in. We know what the farm is. You will do the rest.",
+     "Quietly with the runaways, loudly with Grace. Come back when she is dead."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Empire escaped slave",
+      "Holy Nation escaped slave"
+     ],
+     "narrow": true,
+     "say": [
+      "You ask about Grace? I wore her collar. She works the rows herself and she counts every one of us. I don't sleep because of it.",
+      "Slave Mistress Grace. I know the name in my back. She keeps the farm and she keeps the whip, and she keeps the best guards for her own door.",
+      "You're with the Anti-Slavers? Then here's what I know: Grace never leaves the farm. Not for markets, not for her own sake.",
+      "I got out in the night. Grace is still in there. I hear her at night, I think. Do not let her live."
+     ],
+     "reply": [
+      "Tell me how to find her.",
+      "Where is the farm?",
+      "She will not hurt anyone else.",
+      "What guards her?"
+     ],
+     "after": [
+      "Look for the Mistress in the rows of her own farm. Go in hard. They never expect the rows to fight back.",
+      "She will be at the centre of her farm, as always.",
+      "Strike at the heart of the farm. The guards fall back when she falls. They fear her more than they fear death.",
+      "Be quick. Every day she lives is a day someone does not wake up."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Slave Mistress Grace killed by player",
+    "reward": 15000,
+    "say": [
+     "Grace is dead? The farm is open? The Anti-Slavers pay what they owe. It is little for a thing this large.",
+     "You went into the rows and came out. Take the cats. The runaways will remember you.",
+     "The Mistress is gone, and the keys are loose. That's worth more than anything we can pay, but take this.",
+     "We heard it before you reached us. Slaves are singing in the camps. Here is your reward."
+    ]
+   }
+  },
+  {
+   "id": "qc_duel",
+   "offer": {
+    "factions": [
+     "Shek Kingdom"
+    ],
+    "chance": 35,
+    "say": [
+     "Tora was one of us. The Stone Golem took her horns and she kept her blade. A warrior who won't put down her sword must be answered with one.",
+     "There's a stain in the Kingdom's name. Tora, the one they call Gutless. Honour says she's met in the open, blade to blade.",
+     "You aren't Shek, /FLATSKIN/. But the Kingdom will honour a duel fought well. Tora refused her disgrace. Now she must be refused her life.",
+     "A disgraced warrior who still carries steel is a challenge to every one of us. Take it up, /FLATSKIN/. We'll remember the answer.",
+     "Tora lives, and that's a question none of us can answer in words. Answer it with a sword."
+    ],
+    "accept": [
+     "I will meet her blade.",
+     "Where does she wait?",
+     "A duel, then.",
+     "I take the challenge."
+    ],
+    "decline": [
+     "That is a Shek quarrel.",
+     "Not my fight.",
+     "No.",
+     "Find a warrior of your own."
+    ],
+    "accepted": [
+     "Speak to the warriors at the gates first. They will give you the terms. One blade, no tricks, no run.",
+     "The gate guards know the rule of the duel. Hear it from them. Then meet her. Alone.",
+     "Honour requires the terms be stated. A gate guard will state them. After that, it is you and Tora.",
+     "Go. Hear the terms. Meet her. Return when she is dead and you are not."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Shek Gate Guard"
+     ],
+     "narrow": true,
+     "say": [
+      "You come about Tora? Then hear the terms. One blade. No tricks. No second to flee. A duel is answered in the open.",
+      "Tora. We don't say that name inside the walls. If you fight her, fight her like a Shek, /FLATSKIN/.",
+      "The Kingdom's honour is simple. If you meet her, you meet her face to face. If you win, you're owed. If you lose, she's owed.",
+      "A duel isn't a hunt. You don't use a trap. You don't use a crowd. You walk up and you draw."
+     ],
+     "reply": [
+      "Single blade. Understood.",
+      "I will meet her fairly.",
+      "What else is required?",
+      "Fine. Where is she?"
+     ],
+     "after": [
+      "She will not run. She never did. That is the tragedy of her.",
+      "She keeps to the wastes. Go with a clean blade and a clear head.",
+      "If she asks your name, give it. She will want to know whom she kills.",
+      "The Stone Golem does not speak of her. We speak of her when he cannot hear."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Tora killed by player",
+    "reward": 14000,
+    "say": [
+     "Tora is dead. She met the blade as a warrior should. The Kingdom marks your name.",
+     "You fought her and you stand. The stain is washed. Take the Kingdom's coin, /FLATSKIN/.",
+     "A Shek who dies by the sword hasn't died in shame. Take this. It isn't payment.",
+     "The duel is done. She had her answer and so do we."
+    ]
+   }
+  },
+  {
+   "id": "qc_rebel_farm",
+   "offer": {
+    "factions": [
+     "United Cities"
+    ],
+    "chance": 30,
+    "say": [
+     "Boss Simion has the Rebel Farmers behind a palisade and a long list of Empire fields burned. The Cities want the head, not the farm.",
+     "Farmers are loyal until they're hungry. Simion made them hungry. Speak to the loyal ones, then end him.",
+     "Someone is burning tax-collectors and calling it justice. Boss Simion. The Empire doesn't pay for justice, but it pays for his head.",
+     "Rebellion is bad for trade. Simion has done a great deal of it. The loyal farmers know where his men are. Ask them. Then ask him.",
+     "A fort of angry peasants is still a fort. The Cities need it empty. Start with the farmers who still pay their dues."
+    ],
+    "accept": [
+     "I will speak to the farmers.",
+     "Show me the fort.",
+     "A rebel's head, then.",
+     "Where do I start?"
+    ],
+    "decline": [
+     "Not my war.",
+     "Peasants are hard to fight.",
+     "The Empire has soldiers.",
+     "No."
+    ],
+    "accepted": [
+     "Find a loyal farmer of the Empire. They will tell you what they know. Then Simion, and then me.",
+     "The farmers know the ground. Ask them. Then take the head to the Cities, or the news of it.",
+     "A farmer first. Then the fort. Come back with the Boss dead.",
+     "Do not trust a farmer you cannot see. Do trust the ones who still pay. They will tell you."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Empire Farmer"
+     ],
+     "narrow": true,
+     "say": [
+      "The Empire sent you about Simion? Aye. He takes half the harvest at the point of a blade, and calls it fairness. We pay the Empire the rest.",
+      "You want Simion? Then you want a fort, a gate and a lot of angry men. I'll tell you what I know, for what the Empire is worth.",
+      "I keep my head down and my fields in order. The Rebels burn the ones who don't join.",
+      "Boss Simion. He was a farmer once, same as me. Then he stopped farming and started taking."
+     ],
+     "reply": [
+      "Where is his fort?",
+      "How many men?",
+      "What do you need?",
+      "Tell me about Simion."
+     ],
+     "after": [
+      "His fort has a gate, a palisade and men who do not sleep. That is all I will swear to.",
+      "He keeps captains with him. You'll want help, or a plan, or both.",
+      "End him, and half the Rebels go home. Stay alive, and the other half goes quiet.",
+      "Tell the Empire we kept our end. Tell them the rest was Simion's doing."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Boss Simion killed by player",
+    "reward": 18000,
+    "say": [
+     "Simion is dead? The Cities thank you and pay promptly. The fields will be quiet by autumn.",
+     "A good job. The Rebels will hold a funeral and burn nothing. The Empire is satisfied.",
+     "You ended a rebellion's head. Take the cats. Do not expect the farmers to say thanks.",
+     "The Boss is dead and the fort is leaderless. Here's the Cities' coin."
+    ]
+   }
+  },
+  {
+   "id": "qc_red_bandit",
+   "offer": {
+    "factions": [
+     "Swampers"
+    ],
+    "chance": 40,
+    "say": [
+     "The Red Sabre boss sits in his hideout with a score of blades and takes a cut of every cart through the wet. We want him out of the mud.",
+     "Red Sabres drink our rum and rob our roads. Their boss never walks out. Someone has to walk in.",
+     "The barman hears things. Ask him about the Red Sabre hideout. Then do what we can't.",
+     "Swamp law is simple. Don't steal from your neighbours. The Red Sabres never learned it.",
+     "A boss who hides is a boss who is afraid. The Red Sabre is afraid of something."
+    ],
+    "accept": [
+     "I will ask the barman.",
+     "I will find his hideout.",
+     "What do I get?",
+     "Show me the way."
+    ],
+    "decline": [
+     "Too many blades.",
+     "I have my own mud.",
+     "Not today.",
+     "No."
+    ],
+    "accepted": [
+     "Ask at a swamper bar. Barmen hear what the bandits boast of. Then walk in and end him.",
+     "Talk to the barman first. He will know when the boss has visitors. Then you decide.",
+     "A bartender is better than a map. Go, drink, listen. Then the Red Sabre.",
+     "Bring his sabre if you want to. We want him dead, not famous."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "swamper barman"
+     ],
+     "narrow": true,
+     "say": [
+      "Red Sabre boss? I pour for his men when they have coin. They drink quietly and brag loudly. He stays in his hideout and sends boys to collect.",
+      "You ask the wrong man, but I hear things. The Red Sabre boss does not leave the hideout. He thinks the swamp will keep him.",
+      "A score of blades around him and a bounty on his head. Men talk.",
+      "Ask me nothing you can't pay for. The Red Sabre has a hideout, a lot of friends and a lot of mud. That's all I know."
+     ],
+     "reply": [
+      "Where is the hideout?",
+      "How many men?",
+      "I will end him.",
+      "Good enough. Thanks."
+     ],
+     "after": [
+      "Deep in the wet. You'll hear it before you see it. They are loud and they are scared.",
+      "Go in carefully. The mud hides more than footprints.",
+      "End him quickly. A man like that breeds replacements.",
+      "Tell nobody I spoke. Red Sabres drink here too."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Red Sabre Boss killed by player",
+    "reward": 11000,
+    "say": [
+     "The Red Sabre boss is dead? The wet breathes easier. Here are the swamp's cats.",
+     "Mud and blood and a bandit boss gone. Good work.",
+     "You walked into the hideout and out again. That is rare. Take the pay.",
+     "The sabres will scatter. Whoever replaces him will think twice."
+    ]
+   }
+  },
+  {
+   "id": "qc_skeleton_bounty",
+   "offer": {
+    "characters": [
+     "Finch",
+     "Iyo"
+    ],
+    "chance": 60,
+    "say": [
+     "The University studies Skeletons. The Elder preaches against flesh, and his followers prey on travellers. He's a data point we can no longer afford.",
+     "A Skeleton leader called the Elder gathers Skeleton Bandits to his iron hall. The University would prefer his study to end.",
+     "Our research relies on Skeletons who still speak. The Elder's creed doesn't. A Skeleton must hear the end of it.",
+     "The scholars have a bounty. An odd one: the Elder, a Skeleton, a leader. Ask the Skeletons who live in the towns. They'll tell you about him.",
+     "There's little the University pays for outside a book or a part. The Elder is both. We want him dead and his core intact."
+    ],
+    "accept": [
+     "I will speak to the Skeletons.",
+     "Where does the Elder hide?",
+     "Dead and intact, then.",
+     "A bounty is a bounty."
+    ],
+    "decline": [
+     "I do not fight Skeletons for books.",
+     "Not my work.",
+     "No.",
+     "I have no quarrel with him."
+    ],
+    "accepted": [
+     "Find a Skeleton in one of the towns. They know the Elder's creed. Then you will know where he waits.",
+     "Skeletons talk in short sentences. Ask the town ones. Then walk into the iron hall.",
+     "A resident of a Skeleton town will know. Ask. Then end him, and return with the news.",
+     "You will not find him by asking people. You will find him by asking Skeletons. Go."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Skeleton town resident"
+     ],
+     "narrow": true,
+     "say": [
+      "The Elder. He says we're superior. We're free of flesh. Some Skeletons like it.",
+      "Elder. Iron hall. Many followers. He wants all Skeletons to follow. We don't all follow.",
+      "You ask about the Elder. I'm not him. I'm not his. I'll tell you what I know.",
+      "He's a danger to Skeletons who don't agree."
+     ],
+     "reply": [
+      "Where is his hall?",
+      "How many follow him?",
+      "Will you help?",
+      "Is he strong?"
+     ],
+     "after": [
+      "Iron headquarters. Hard walls. Many blades. Take care.",
+      "He is strong. His sabre is better than your sword. His followers will not run.",
+      "I will not help. I will not stop you. That is what I can offer.",
+      "I cannot tell you more. I can only tell you he is not wrong about everything."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Elder killed by player",
+    "reward": 28000,
+    "say": [
+     "The Elder is dead. The University is grateful and the Skeletons are quieter. Here is the pay.",
+     "You ended a creed, or at least its voice. Our scholars will study what is left. Take this.",
+     "A leader of Skeletons, ended by flesh. The irony isn't lost.",
+     "Intact or not, he's gone, and that's enough. Take what the University owes."
+    ]
+   }
+  },
+  {
+   "id": "qc_savant",
+   "offer": {
+    "factions": [
+     "United Cities"
+    ],
+    "packages": [
+     "Empire Noble"
+    ],
+    "narrow": true,
+    "chance": 55,
+    "say": [
+     "The Skin Bandits wear their victims. Their master, Savant, has a bounty on him the size of a small city. The Cities want him gone.",
+     "Savant. He skins the living and sits on a throne of the work. The Empire pays for his head. Ask the hunters who have tried.",
+     "Bounty hunters have gone after Savant and not returned. The Cities want someone who might. Ask them what they learned.",
+     "The Skin Bandits' king has a posted price that rises each year. I'd like to see it paid. Learn what you can first.",
+     "Savant. A name that means little and a record that means everything. End him."
+    ],
+    "accept": [
+     "I will ask the hunters.",
+     "Where does Savant sit?",
+     "The price is right.",
+     "It will be done."
+    ],
+    "decline": [
+     "Too dangerous.",
+     "I do not skin people.",
+     "Not for any price.",
+     "No."
+    ],
+    "accepted": [
+     "Find a bounty hunter. They know the cost of failing. Then kill Savant and return to me.",
+     "Ask the hunters what they know. Then do what none of them could.",
+     "Do not go in blind. Hunters have tried and died. Listen. Then end him.",
+     "He sits on his throne among his own. Be prepared. Come back with news of his death."
+    ]
+   },
+   "steps": [
+    {
+     "factions": [
+      "Bounty Hunters"
+     ],
+     "say": [
+      "Savant? I tracked him once. Three of mine went in and none came out. If you go, bring more than courage.",
+      "You're after the Skin Bandit king? He's half mad and fully lethal. His throne room is a place you don't forget.",
+      "Savant has a price on him. I'd take it myself if I valued my skin.",
+      "I know where his road leads. It leads to a throne and a lot of dead hunters. If you want his head, you will be next in line."
+     ],
+     "reply": [
+      "Tell me what you saw.",
+      "How do I reach him?",
+      "How many guards?",
+      "I will do better."
+     ],
+     "after": [
+      "He sits in the Skin Bandit country. Bring armour, not clothes.",
+      "He is quick and mad, and his bandits are many. Plan for both.",
+      "Go in hard and leave nothing alive. He will not give you a second chance.",
+      "If you live, tell the Empire we tried first. It matters at the paying."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Savant killed by player",
+    "reward": 60000,
+    "say": [
+     "Savant is dead? The Cities have waited years. Here's more than a soldier earns in a lifetime.",
+     "You did what ten hunters couldn't. The Empire pays what it promised. Spend it before the next war.",
+     "The Skin Bandits have lost their king. The Empire doesn't weep.",
+     "Savant's throne is empty. That's worth a fortune, and here it is."
+    ]
+   }
+  },
+  {
+   "id": "qc_dust_king",
+   "offer": {
+    "factions": [
+     "Mercenary Guild"
+    ],
+    "packages": [
+     "mercenary guild"
+    ],
+    "narrow": true,
+    "chance": 50,
+    "say": [
+     "The Dust King holds the dry roads with more men than the Guild can field. Speak to the mercenaries who have walked them, then take the contract.",
+     "Dust Bandits answer to a king. The Guild would see the crown removed. Ask the sellswords who have walked his roads.",
+     "A king of sand and thieves. The Guild pays well for his end. Learn how far he reaches before you try.",
+     "The Dust King is a business problem. Too many caravans paid him. Too many guards died. Learn from the ones who lived.",
+     "A contract for the Dust King's crown. Nobody has finished it. Talk to the veterans first."
+    ],
+    "accept": [
+     "I will talk to the veterans.",
+     "Where does the Dust King sit?",
+     "The Guild pays well?",
+     "Let me hear it."
+    ],
+    "decline": [
+     "Too many men.",
+     "That is a war, not a contract.",
+     "Not for this pay.",
+     "No."
+    ],
+    "accepted": [
+     "Find a sellsword who has been out there. They will tell you what the walls are like. Then end him.",
+     "Ask the mercenaries what they saw. Then take the contract all the way to his throne.",
+     "Listen to those who survived. That is the cheapest advice you will ever get.",
+     "Hear the veterans first. Then the Dust King. Then me."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Npc TOUGH Merc Basic 1"
+     ],
+     "narrow": true,
+     "say": [
+      "Dust King? I was hired to guard a wagon on his road once. The wagon got through. I didn't like how.",
+      "The Dust King keeps a lot of men and a thick wall. Go in with less than a dozen and you stay in.",
+      "You want to kill the Dust King? Everyone does. Few have the stomach for the cleanup.",
+      "I took coin to run his road once. I took more coin not to run it a second time. Make of that what you will."
+     ],
+     "reply": [
+      "What did you see?",
+      "How do I reach him?",
+      "How many men?",
+      "Anything else?"
+     ],
+     "after": [
+      "His men watch the dry roads. They will see you long before you see them.",
+      "He is cautious. That is why he is alive. Be quicker than his caution.",
+      "Strike when his men are away. They are away more often than you'd think.",
+      "Take a medic. Do not take a lot of pride."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Dust King killed by player",
+    "reward": 24000,
+    "say": [
+     "The Dust King is dead. The Guild has waited a long time for this.",
+     "You did what a company of sellswords couldn't. The cats are yours, and the Guild's thanks.",
+     "The dry roads are open. Some other thief will fill the gap, but not this month.",
+     "Dust King down. The Guild will make a speech about it. You have the better end: the cats."
+    ]
+   }
+  },
+  {
+   "id": "qc_hive_drone",
+   "offer": {
+    "factions": [
+     "Western Hive",
+     "Southern Hive"
+    ],
+    "chance": 40,
+    "say": [
+     "One of us left. He took seven others. They speak with seven voices and none of them are ours. This is a wound.",
+     "A drone who left the Hive isn't a drone. He's a question. We would like the question ended. Speak to the workers first.",
+     "Tchik of Seven Voices. Once of the Hive, now of nothing. The workers know where he walks.",
+     "We're many and one. He's one and many. The difference is intolerable. Speak to the workers, then to him.",
+     "A drone and seven who followed. The Hive remembers. The Hive doesn't forgive."
+    ],
+    "accept": [
+     "I will ask the workers.",
+     "Where does he walk?",
+     "A lost drone, then.",
+     "I will end it."
+    ],
+    "decline": [
+     "The Hive can mend its own wounds.",
+     "Not today.",
+     "No.",
+     "That is not my quarrel."
+    ],
+    "accepted": [
+     "The workers hear much. Listen to them. Then find Tchik and end the question.",
+     "We cannot say where he walks. We can say who might. A worker will tell you.",
+     "A worker. Then Tchik. Then us. We will pay when it is done.",
+     "He is not dangerous alone. He is dangerous with seven. Be ready."
+    ]
+   },
+   "steps": [
+    {
+     "packages": [
+      "Npc HIVER Worker - Complete Package"
+     ],
+     "narrow": true,
+     "say": [
+      "He left. The Hive felt it. A cold place where a warm one was. He walks in the Dark Finger, I think, with the others.",
+      "Tchik. We do not say the rest. Seven voices, one throat. It is an ugly sound.",
+      "I saw him once, in the desert. He didn't know me. He knew the others. He spoke in all their voices.",
+      "He's lost. He's hungry. He's dangerous. I'm sorry for all of it."
+     ],
+     "reply": [
+      "Where can I find him?",
+      "How many follow him?",
+      "Why did he leave?",
+      "Is there any hope for him?"
+     ],
+     "after": [
+      "Desert and the Dark Finger. Where the paths split and the wind sings.",
+      "Seven, and a few more. They carry him as much as he carries them.",
+      "No hope. We would rather he be at peace.",
+      "Be gentle with him, if you can. The Hive is not gentle with itself."
+     ]
+    }
+   ],
+   "report": {
+    "state": "Tchik of Seven Voices killed by player",
+    "reward": 5500,
+    "say": [
+     "He's quiet now. The Hive feels it. A warm place where a cold one was.",
+     "Seven voices, and now none. The Hive is grateful.",
+     "The wound is closed. It will scar.",
+     "The drone who left has returned to nothing. We're many again."
+    ]
+   }
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "qc_inquisition_rum_hn_1",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Inquisitors are asking questions in the confessionals. Someone has been feeding a heretic.",
+      "They say there is a cell in the hills, and Hearthmourn's name is the first word in it. Do not say it loudly.",
+      "Seen a priest packing his scripture in the night. Maybe nothing. Maybe a name on the Inquisition's list.",
+      "Faith has a rot in it these days. Hearthmourn used to be one of ours. Now we hunt our own.",
+      "A Paladin told me the cell is moving. He did not say where. He did not look well."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Ilsa Hearthmourn killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_inquisition_rum_hn_2",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "If the Inquisition comes for you, you have already lost. If they want a hired hand instead, you have a choice.",
+      "Hearthmourn was a Pacifier. Now she is a sermon turned inside out. The Flame will not forgive her.",
+      "A priest in my district stopped sleeping. Said he heard things he cannot unhear. Then he stopped speaking at all.",
+      "The Nation loses a few every month to doubt. Better to lose them to the sword than to the whisper."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Ilsa Hearthmourn killed by player",
+     false
+    ]
+   ],
+   "packages": [
+    "Holy Priest"
+   ]
+  },
+  {
+   "id": "qc_inquisition_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Holy Nation is hunting its own again. A woman called Hearthmourn who won't pray the way she's told.",
+      "Heard the Inquisition is paying for an old Pacifier. Funny, they never pay for anything else.",
+      "The Nation turns on itself eventually. Hearthmourn today, somebody else tomorrow.",
+      "There's a cell of the faithless out there, people say. Even the Flame can't keep everyone in line."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Shek Kingdom",
+    "Mercenary Guild"
+   ],
+   "states": [
+    [
+     "Ilsa Hearthmourn killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_inquisition_rum_dead",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Hearthmourn is dead. The Inquisition has quietly stopped asking questions at the temple doors.",
+      "They burned the cell's scripture in the square. Someone put the woman's ashes in with it, they say.",
+      "The Pacifier who forgot her prayer is gone. Funny how quiet the pews are now.",
+      "Somebody took the Inquisition's coin and ended the Hearthmourn cell."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Ilsa Hearthmourn killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_inquisition_rum_dead_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Holy Nation wiped out some heretic cell in the hills. Somebody paid for it, I heard.",
+      "The Nation's Inquisitors have one fewer name on their list.",
+      "Word is the Flame's hounds got their woman. Hearthmourn, something.",
+      "The Holy Nation is quiet about some heretic they burned. That usually means a loud one."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Shek Kingdom",
+    "Mercenary Guild",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Ilsa Hearthmourn killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_tipoff_rum_as",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Runaways keep turning up with the same story. A mistress who whips her own rows and never sleeps.",
+      "There's a slave farm that eats its workers. Grace runs it. The Anti-Slavers know and they can't reach her.",
+      "Heard a runaway crying in the camp last night, saying the same name over and over.",
+      "Someone has to end the Mistress. I would, but I have a family and a head I like attached."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Anti-Slavers",
+    "Drifters",
+    "Shinobi Thieves"
+   ],
+   "states": [
+    [
+     "Slave Mistress Grace killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_tipoff_rum_free",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The escaped are all talking about the same woman. Grace. They say she counts them every night.",
+      "I got out of a farm once. Not hers, thank the stars.",
+      "Ask a runaway what they fear most. Half of them will say the Mistress.",
+      "Whoever kills Grace won't need to buy a drink for a year, in the right camps."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Slave Mistress Grace killed by player",
+     false
+    ]
+   ],
+   "packages": [
+    "Empire escaped slave",
+    "Holy Nation escaped slave"
+   ]
+  },
+  {
+   "id": "qc_tipoff_rum_trade",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Grace has the best output of any farm in the south. Efficient.",
+      "The Mistress wants three hundred hands by month's end. I wouldn't take that contract.",
+      "Someone is asking about Slave Mistress Grace. Wrong questions. The Anti-Slavers should keep their noses out of it.",
+      "Slave traders talk about Grace the way miners talk about a deep seam. With greed and with fear."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Slave Traders",
+    "Traders Guild",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Slave Mistress Grace killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_tipoff_rum_dead",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "I heard Grace is dead. The farm is open and the rows are empty. Not all of them ran far.",
+      "Mistress Grace fell at her own gate. The Anti-Slavers put it about that it was a runaway's justice.",
+      "Somebody went into the rows and Grace didn't come out. Half the south is celebrating and the other half is counting losses.",
+      "A farm gone cold. A Mistress gone cold. I cannot say it hurts to see."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Anti-Slavers",
+    "Drifters",
+    "Shinobi Thieves"
+   ],
+   "states": [
+    [
+     "Slave Mistress Grace killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_tipoff_rum_dead_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Slave Mistress Grace is dead, they say. The farm is losing money fast.",
+      "Grace is gone. The Slave Traders will name a new mistress by the next market, and it won't be an improvement.",
+      "Somebody opened a slave farm in the south. Not for coin, I think. The Mistress didn't live.",
+      "Heard a farm in the south went quiet. Slave Traders are blaming the Anti-Slavers. The Anti-Slavers are blaming luck."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Slave Traders",
+    "Traders Guild",
+    "United Cities",
+    "Mercenary Guild",
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Slave Mistress Grace killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_duel_rum_shek",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Tora still carries her blade. Every Shek knows it and none of us can look away.",
+      "A warrior without horns is a warrior without a name. Yet Tora will not die quietly.",
+      "There's talk of a duel. Honour wants it settled. The Stone Golem doesn't speak of it.",
+      "Gate guards turn their heads when her name is said. Shame is a heavy thing to carry."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Tora killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_duel_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Shek have a disgraced warrior in the dust. Tora. She keeps her sword and her pride and nothing else.",
+      "Heard the Kingdom wants a duel. Foreigners only, of course. They wouldn't dirty their own hands.",
+      "A Shek without horns, still fighting. I wouldn't cross her road for a month's wages.",
+      "Tora the Fearless, they used to call her. Now the Kingdom calls her something else."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "Anti-Slavers",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Tora killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_duel_rum_dead",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Tora is dead. They say it was a duel, clean. The Kingdom has gone quiet, which is its own kind of praise.",
+      "Gate guards say her name again. That's how you know it's over.",
+      "She died on a blade, in the open, like she wanted. That is more than most get.",
+      "The Kingdom didn't cheer. Shek don't cheer. But something in the walls loosened."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Tora killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_duel_rum_dead_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Tora is dead. A foreigner did it, they say, and the Shek approved. I did not think they could.",
+      "That disgraced Shek, Tora, finally fell. They say it was a fair duel. I didn't think Shek knew fair.",
+      "The wandering Shek with no horns is gone. Somebody met her sword.",
+      "A Shek duel ended well, for once. Even the Kingdom looked pleased, and that's saying something."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Mercenary Guild",
+    "The Holy Nation",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Tora killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_rebel_farm_rum_uc",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Rebel Farmers burned another tax-wagon last week. Boss Simion sends the ashes back with a note.",
+      "The Empire keeps asking for Simion's head. The Empire keeps not paying enough for it.",
+      "Loyal farmers pay their dues in fear now. The Rebels watch the road.",
+      "I knew a man who joined Simion. Last I saw him he had a scythe and a stolen helmet."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "United Cities",
+    "Empire Peasants"
+   ],
+   "states": [
+    [
+     "Boss Simion killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_rebel_farm_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Boss Simion has a fort, a grudge and a lot of men. The Empire is nervous.",
+      "A peasant rebellion, they call it. Fires and dead tax-men. Hard to sell to either side.",
+      "Don't take a contract from the Empire against Simion.",
+      "Simion's captains are better armed than half the city watch. I'd stay away."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "Mercenary Guild",
+    "Drifters",
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Boss Simion killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_rebel_farm_rum_dead",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Simion is dead. The Empire declared a holiday and the farmers declared nothing at all.",
+      "The Rebel Farmers lost their Boss. Some went home. Some went further into the hills, angrier.",
+      "I heard it was a stranger, not a soldier. The Empire will still take the credit.",
+      "No more tax-wagons burning, for now. The fields are quiet and nobody trusts it."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "United Cities",
+    "Empire Peasants",
+    "Rebel Farmers"
+   ],
+   "states": [
+    [
+     "Boss Simion killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_rebel_farm_rum_dead_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Rebel Farmers lost their leader. Somebody killed Simion. The Empire will be insufferable.",
+      "That farmers' rebellion in the north-east went quiet. They say the Boss fell.",
+      "Simion's gone. Whoever did it got paid by the Cities. It's a living.",
+      "Fort Simion is leaderless. The Empire's tax-men are heading back out, and nobody is cheering."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "Mercenary Guild",
+    "Shek Kingdom",
+    "Anti-Slavers",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Boss Simion killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_red_bandit_rum_sw",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Red Sabres took another cart on the south road. Their boss sits in the hideout and counts.",
+      "A score of Red Sabres around one fat man. You could tell the whole swamp where he's and it wouldn't matter.",
+      "Whoever kills the Red Sabre boss will drink free in every swamper bar. I'll pour the first one.",
+      "Red Sabres drink our rum and rob our roads. Their boss never walks out."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Swampers"
+   ],
+   "states": [
+    [
+     "Red Sabre Boss killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_red_bandit_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Red Sabres have a boss with a hideout somewhere in the mud. Everyone knows.",
+      "Swampers want the Red Sabre dead. They've been saying so for years.",
+      "I'd take a Red Sabre contract if the price were right. It never is.",
+      "Don't cross the swamp roads at night. Red Sabres don't care who you are."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "Mercenary Guild",
+    "Drifters",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Red Sabre Boss killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_red_bandit_rum_dead",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Red Sabre boss is dead. The roads through the wet are quiet, which makes the quiet itself nervous.",
+      "Somebody walked into the hideout and out again. The sabres don't know who to be afraid of.",
+      "A new Red Sabre will rise. They always do. But for now the wet can breathe.",
+      "Swampers poured one for the dead boss. Not out of love."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Swampers"
+   ],
+   "states": [
+    [
+     "Red Sabre Boss killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_red_bandit_rum_dead_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Red Sabres lost their boss. Somebody went into the swamp and walked out again.",
+      "Heard the Red Sabre is dead. The swamp is a quieter place and a more nervous one.",
+      "Whoever killed the Red Sabre is a fool or a legend. In the swamp it's the same thing.",
+      "Red Sabres without their boss will do what bandits do: split, bicker, and rob in smaller numbers."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "Mercenary Guild",
+    "Drifters",
+    "United Cities",
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Red Sabre Boss killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_skeleton_bounty_rum_sk",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Elder says we're free of flesh. I'm free of nothing.",
+      "Some Skeletons follow the Elder. Some don't.",
+      "Iron hall. Many followers. Many blades. I don't go there.",
+      "The Elder is loud. Loud draws attention."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Elder killed by player",
+     false
+    ]
+   ],
+   "packages": [
+    "Skeleton town resident"
+   ]
+  },
+  {
+   "id": "qc_skeleton_bounty_rum_mach",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The University has a question and the Elder is the answer. They don't like what it says.",
+      "A Skeleton leader who preaches against flesh, and a university of flesh that studies him.",
+      "Machinists pay well for Skeleton data. Better for a Skeleton leader's end.",
+      "The Elder's followers are no use to scholarship. They only fight. The scholars hate waste."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Elder killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_skeleton_bounty_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Skeleton Bandits have a leader called the Elder. He wants every Skeleton to join him. The rest of us just want them to go away.",
+      "Heard the Elder keeps an AI core in his hall. Whoever takes it could buy a town.",
+      "Skeletons preaching about being better than us. I've heard it before from others.",
+      "Skeleton Bandits follow a leader called the Elder. They take what they like from the road and call it freedom."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "Mercenary Guild",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Elder killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_skeleton_bounty_rum_dead",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Elder is dead. The Skeleton Bandits are a rabble now. No creed, no leader, just rust.",
+      "Machinists paid for it, I heard. Scholars with a bounty. The world is stranger than it was.",
+      "The Elder fell. His followers will break one way or the other. Skeletons don't mourn.",
+      "Somebody ended the Elder. A Skeleton remembers. A Skeleton doesn't forgive."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Elder killed by player",
+     true
+    ]
+   ],
+   "packages": [
+    "Skeleton town resident"
+   ]
+  },
+  {
+   "id": "qc_skeleton_bounty_rum_dead_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Skeleton Elder is dead. The whole Skeleton Bandit crowd are leaderless now.",
+      "Somebody put down the Elder. The University paid. That's all I know.",
+      "Skeleton Bandits will be crossing the roads in smaller bands now. Be careful.",
+      "A Skeleton leader is down and the University is smug. I didn't know scholars could pay for killing."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "Mercenary Guild",
+    "Drifters",
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Elder killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_savant_rum_uc",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Savant's bounty went up again. The Empire would pay anything to see that throne empty.",
+      "Bounty hunters keep going out after the Skin Bandit king. Few come back.",
+      "A noble told me Savant's price is the highest in the Empire. I told him I'd rather keep my skin.",
+      "They say Savant sits on a throne and wears his work. I don't ask for details."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "United Cities",
+    "Bounty Hunters"
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_savant_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Skin Bandits have a king called Savant. The nobles want him dead and nobody wants to be the one.",
+      "I'd go after Savant if the pay were ten times what it is.",
+      "A mad king on a throne, wearing his victims. I've heard worse, but not often.",
+      "The Empire's bounty on Savant is the worst-kept secret in the Ashlands."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "Mercenary Guild",
+    "Drifters",
+    "The Holy Nation",
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_savant_rum_dead",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Savant is dead. The Skin Bandits are a rabble. The Empire has paid the largest bounty in memory.",
+      "Whoever killed Savant is a rich person today. I would like to meet them. From a distance.",
+      "Savant's throne is empty. They say you could hear the Ashlands exhale.",
+      "Savant fell. Somebody finally did what the bounty hunters couldn't."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "United Cities",
+    "Bounty Hunters"
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_savant_rum_dead_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Savant, the Skin Bandit king, is dead. The Ashlands are quieter by one madman.",
+      "The Empire paid out the largest bounty ever. Somebody finally killed Savant.",
+      "I heard the Skin Bandits will scatter now. Which means they'll spread.",
+      "Whoever collected Savant's bounty has more cats than a small town. I wouldn't walk the same road."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "Mercenary Guild",
+    "Drifters",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_dust_king_rum_mg",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Dust King has the dry roads. Every guard who goes out there prices that in.",
+      "A Guild contract for the Dust King's crown. I'd take it if I had a company.",
+      "Dust Bandits bleed caravans. Their king does it politely.",
+      "Veterans of the dry road don't tell stories. They tell warnings."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Mercenary Guild",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Dust King killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_dust_king_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Dust King wants coin, not blood. The blood comes second, when you refuse.",
+      "I paid the Dust King once.",
+      "Whoever ends the Dust King will have the whole south asking for favours.",
+      "Dust Bandits never run out of men. They only run out of leaders."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "United Cities",
+    "Drifters",
+    "Shek Kingdom",
+    "Anti-Slavers"
+   ],
+   "states": [
+    [
+     "Dust King killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_dust_king_rum_dead",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Dust King is dead. The Guild paid out. The dry roads are open, at least for a while.",
+      "A sellsword did it, or someone who looked like one. The Guild is taking credit.",
+      "Dust Bandits are fighting over the crown. Let them. It keeps them busy.",
+      "The Dust King died and not one caravan master wept."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Mercenary Guild",
+    "Traders Guild",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Dust King killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_dust_king_rum_dead_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Dust King is dead. The Dust Bandits are leaderless and angry.",
+      "Heard the Mercenary Guild got its man. The Dust King. I didn't think anyone would.",
+      "A king of sand, ended by a hired blade. The south will be bandit-free for a month, maybe two.",
+      "Somebody is selling the Dust King's gear in the markets."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Drifters",
+    "Shek Kingdom",
+    "Anti-Slavers",
+    "The Holy Nation",
+    "Swampers"
+   ],
+   "states": [
+    [
+     "Dust King killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_hive_drone_rum_hive",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Tchik left. The Hive felt it. We don't speak of it, but we feel it.",
+      "A drone with seven voices. It's a wrong sound. Even the queen turns her head.",
+      "Something walks where the paths split. It's one and it's many.",
+      "Some leave. Few take seven with them."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "states": [
+    [
+     "Tchik of Seven Voices killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_hive_drone_rum_near",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Hive drone walking the Dark Finger with seven others. They speak all at once. I tried to answer and lost my train of thought.",
+      "A Hiver who left the Hive. I didn't think that was possible. Apparently it is.",
+      "Seven voices in one head. I wouldn't want to share a meal with it.",
+      "The Hive wants one of its own dead. That should tell you something about the Hive."
+     ]
+    }
+   ],
+   "chance": 55,
+   "repeat": 4,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "Drifters",
+    "Mercenary Guild",
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Tchik of Seven Voices killed by player",
+     false
+    ]
+   ]
+  },
+  {
+   "id": "qc_hive_drone_rum_dead",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The one called Tchik is quiet. The Hive felt it. The paths are less loud.",
+      "Seven voices, now none. The Hive is relieved and a little afraid of the relief.",
+      "A drone is dead. The Hive doesn't mourn.",
+      "Something ended the one who left. We are many again."
+     ]
+    }
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "states": [
+    [
+     "Tchik of Seven Voices killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_hive_drone_rum_dead_far",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "That Hiver with seven voices is dead. The Dark Finger is quiet again.",
+      "Somebody put down Tchik. The Hive paid. They don't usually pay.",
+      "Seven voices fewer in the desert. I sleep a little better.",
+      "A Hiver gone wrong has been put right. That's the way the Hive puts it, anyway."
+     ]
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "factions": [
+    "Traders Guild",
+    "Drifters",
+    "Mercenary Guild",
+    "Tech Hunters",
+    "United Cities"
+   ],
+   "states": [
+    [
+     "Tchik of Seven Voices killed by player",
+     true
+    ]
+   ]
+  },
+  {
+   "id": "qc_inquisition_rum_road",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Paladins are walking the hill roads in twos now, which they never do. Something has them looking over their shoulders.",
+      "Pilgrims say they saw Hearthmourn's people burning prayers in a ditch. They didn't stay to watch.",
+      "The Holy Nation has begun checking pilgrim packs for forbidden pages. Not for coin.",
+      "If you wear Flame colours and the Inquisition stops you, answer fast and look afraid. It's the only safe answer."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "states": [
+    [
+     "Ilsa Hearthmourn killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3
+  },
+  {
+   "id": "qc_inquisition_rum_priest",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A priest said a name in the confessional once and a Paladin turned up that night. Be careful what you whisper.",
+      "The old priests are listening harder than they used to. Some say they sell what they hear to the Inquisition.",
+      "I used to trust my confessor. Now I confess in the dark and in a whisper, and mostly to myself.",
+      "The Inquisitors only visit a town when something is wrong. They have visited more towns this year than the last three."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Holy Priest"
+   ],
+   "states": [
+    [
+     "Ilsa Hearthmourn killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3
+  },
+  {
+   "id": "qc_tipoff_rum_road",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Runaways are turning up at the waystations with raw wrists and one name. The Anti-Slavers are listening, for once.",
+      "A slave trader told me the south farm is short of hands. Short of living ones, he meant.",
+      "I buy from the farms. I don't ask who runs them. That's how I sleep.",
+      "A girl crossed the dust last week with no collar and no shoes. She wouldn't say where she came from. She only said the name Grace."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "Drifters",
+    "Traders Guild",
+    "United Cities",
+    "Shinobi Thieves"
+   ],
+   "states": [
+    [
+     "Slave Mistress Grace killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3
+  },
+  {
+   "id": "qc_tipoff_rum_slave",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Free men do not know what the Mistress does at night. I do. Ask me nothing. I will tell you anyway.",
+      "The Anti-Slavers pay for names. Grace is the biggest name I know. Do you have a blade?",
+      "I counted the rows. I counted forty before they caught me counting. Grace didn't smile.",
+      "I got out. Thirty didn't. Grace remembers every one of us, and I remember her."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Empire escaped slave",
+    "Holy Nation escaped slave"
+   ],
+   "states": [
+    [
+     "Slave Mistress Grace killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3
+  },
+  {
+   "id": "qc_duel_rum_gate",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "At the gate they say a duel is a gift: the one you kill takes your shame with her. Foreigners never understand.",
+      "Honour does not need a crowd. It needs a blade, a challenge, and the courage to stand where you said you would.",
+      "A warrior fights because it's the only honest thing she can do. Remember that when you meet one.",
+      "Gate duty is long. We tell stories of the duels we didn't fight. They're always better than the ones we did."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Shek Gate Guard"
+   ],
+   "states": [
+    [
+     "Tora killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3
+  },
+  {
+   "id": "qc_duel_rum_stone",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Horns are not just bone. They are what separates a Shek from a beast. Tora knows what she lost.",
+      "A Shek who kills a Shek is a stain. A foreigner who does it's a mercy, they say, though not aloud.",
+      "The Stone Golem does not speak of the disgraced. But he keeps count.",
+      "Every Shek has a story of a disgraced warrior who wouldn't die. Tora's is the only one that's still being told."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "states": [
+    [
+     "Tora killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3
+  },
+  {
+   "id": "qc_rebel_farm_rum_farm",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "I farm the Empire's field, I pay the Empire's tax, and I sleep with a hoe by my bed. The Rebels don't ask which side you're on.",
+      "Simion was a farmer once. He sold his hoe for a sword and called it freedom. The sword is the only thing he hasn't sold.",
+      "Tax men come at harvest and Rebels come at night. Between them there's nothing left to eat.",
+      "A man in my village joined the Rebels. We buried what they sent back. It was small."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Empire Farmer"
+   ],
+   "states": [
+    [
+     "Boss Simion killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3
+  },
+  {
+   "id": "qc_rebel_farm_rum_road",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Empire is hiring guards for the tax wagons. Double pay, people say.",
+      "Rebel Farmers don't hold land. They hold grudges. It makes them hard to starve out.",
+      "I heard the Boss has captains who were soldiers once. That's a bad sign for the Empire's recruiting.",
+      "Whenever the Empire raises taxes, the Rebels grow. The Empire never learns."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "United Cities",
+    "Empire Peasants"
+   ],
+   "states": [
+    [
+     "Boss Simion killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3
+  },
+  {
+   "id": "qc_red_bandit_rum_bar",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The barman at the swamp bars hears more than the Red Sabres think. He says nothing. For a price he says everything.",
+      "Red Sabres drink in the swamp towns on their boss's coin. Strange coin.",
+      "Mind what you say in a swamper bar. Half the men at the tables are Red Sabres off the clock.",
+      "I don't pour for Red Sabres on credit. I learned that the same way I learned most things: the hard way."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "swamper barman"
+   ],
+   "states": [
+    [
+     "Red Sabre Boss killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3
+  },
+  {
+   "id": "qc_red_bandit_rum_wet",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "In the wet, a rumour travels faster than a man. The Red Sabre boss has been rumoured dead twice and wrong both times.",
+      "The Red Sabres paint their blades red. That's the whole joke. They aren't good at jokes.",
+      "A boss who stays in his hideout sends his boys to do the dying. A smart boss.",
+      "Swamp roads are wet in summer and wetter in blood. Take the long way round if you can."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "Swampers",
+    "Traders Guild",
+    "Drifters"
+   ],
+   "states": [
+    [
+     "Red Sabre Boss killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3
+  },
+  {
+   "id": "qc_skeleton_bounty_rum_town",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Elder says flesh is a cage. I say cages have walls. I have walls.",
+      "Skeleton Bandits take what they like. Elder says it's freedom.",
+      "I don't need to be better than anyone. I need to be repaired.",
+      "Those who follow the Elder don't stay repaired. They stay angry. It isn't the same."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Skeleton town resident"
+   ],
+   "states": [
+    [
+     "Elder killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3
+  },
+  {
+   "id": "qc_skeleton_bounty_rum_book",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Finch has a theory about the Elder. The University doesn't publish it. That should tell you what it says.",
+      "Iyo keeps a list of things the University will pay for. The Elder isn't the first on it, but he's the loudest.",
+      "Scholars hate waste. A Skeleton leader who preaches against study is both waste and an insult.",
+      "The University doesn't usually pay for killing. It's a sign of something that it does now."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "Tech Hunters"
+   ],
+   "states": [
+    [
+     "Elder killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3
+  },
+  {
+   "id": "qc_savant_rum_hunter",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "I took a contract on Savant once. I got as far as the first wall.",
+      "Bounty hunters who go after Savant take their shadows with them, in case they need company on the way back.",
+      "A price this high is a warning, not an invitation.",
+      "Savant skins the living and sits on his work. The hunters tell it as a joke, and nobody laughs."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "Bounty Hunters"
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3
+  },
+  {
+   "id": "qc_savant_rum_noble",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Lords of the Empire argue over who pays Savant's bounty. They argue longer than he has been alive.",
+      "A noble told me Savant is a symptom of the Ashlands. I told him the Ashlands are a symptom of the Empire.",
+      "If the Skin Bandits knew the Cities would pay a fortune for their king, they'd sell him themselves.",
+      "Savant's bounty is the largest in the Empire. The nobles have stopped bragging about it."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Empire Noble"
+   ],
+   "states": [
+    [
+     "Savant killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3
+  },
+  {
+   "id": "qc_dust_king_rum_merc",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "The Guild wants the Dust King removed. The Guild wants everything removed. It only pays when someone else does the removing.",
+      "A veteran of the dry road told me the Dust King's men all wear the same boots. It's a small thing to notice.",
+      "I took Dust coin once and it bought me three days of peace. It was the cheapest peace I ever had.",
+      "Sellswords talk about the Dust King the way sailors talk about a reef. Everyone knows where it is."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Npc TOUGH Merc Basic 1"
+   ],
+   "states": [
+    [
+     "Dust King killed by player",
+     false
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3
+  },
+  {
+   "id": "qc_dust_king_rum_dry",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "A king in the dust wants a toll and a bow. A dead king wants nothing. The south is waiting on the second.",
+      "The Dust King answers to nobody. His men answer to him, and to the sun.",
+      "Dust Bandits never run out of men, so I hear. They only run out of luck.",
+      "If you pay the Dust King, you live. If you pay him twice, you live well. If you refuse, ask the sand."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "Dust Bandits",
+    "Drifters",
+    "Traders Guild"
+   ],
+   "states": [
+    [
+     "Dust King killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3
+  },
+  {
+   "id": "qc_hive_drone_rum_worker",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "We feel the wound. A drone gone cold. The Hive is quieter than it was.",
+      "Workers do not leave. It is not in us. He left. We do not understand it.",
+      "I think of him sometimes. Seven voices and one throat. We do not say his name aloud.",
+      "The Hive is many. When one goes, the many ache. It will heal."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "packages": [
+    "Npc HIVER Worker - Complete Package"
+   ],
+   "states": [
+    [
+     "Tchik of Seven Voices killed by player",
+     false
+    ]
+   ],
+   "chance": 50,
+   "repeat": 3
+  },
+  {
+   "id": "qc_hive_drone_rum_desert",
+   "event": "EV_BAR_TALK",
+   "lines": [
+    {
+     "say": [
+      "Heard voices in the desert, seven at once, all saying the same thing a little different. I left my camp that night.",
+      "A drone who left the Hive is a hungry thing, and a hungry thing is a dangerous one.",
+      "Hivers do not fight each other, as a rule. Tchik broke the rule and the rule broke him.",
+      "Seven bodies, one will. It sounds like a boast. It sounds worse when you hear it."
+     ]
+    }
+   ],
+   "one_at_a_time": true,
+   "factions": [
+    "Drifters",
+    "Traders Guild",
+    "Mercenary Guild"
+   ],
+   "states": [
+    [
+     "Tchik of Seven Voices killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3
+  }
+ ]
+}

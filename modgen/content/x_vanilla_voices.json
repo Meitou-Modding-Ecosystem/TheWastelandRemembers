@@ -1,0 +1,5318 @@
+{
+ "pack": "x_vanilla_voices",
+ "mod": "LivingWasteland",
+ "dialogues": [
+  {
+   "id": "vv_reva_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Reva"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Keep your sermons. I've heard them all and the god never answered.",
+      "If you serve a flame or a saint, walk the other way.",
+      "Flotsam taught me to fight. Nobody taught me to forgive.",
+      "Say what you want and leave off the praying."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_reva_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Reva"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Another believer with a blade. Good.",
+      "Your god sent you? Then he can come collect you himself.",
+      "Stand there and pray. I'll finish while you do.",
+      "I know your kind. Paladins cry loudest when the blade goes in."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_reva_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "United Cities",
+    "Anti-Slavers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There's a Flotsam woman who spits at the mention of Okran. Nobody in the bar there argues with her.",
+      "Reva, they call her. Trained by the ninjas, angry with everything holy.",
+      "Saw a woman walk out of a Holy Nation sermon mid-prayer once. Reva, somebody said. She did not look back.",
+      "Hire Reva and you hire a temper. The sword comes free with it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_reva_arrive_okran_s_pride",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Reva"
+   ],
+   "zones": [
+    "Okran's Pride"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Green fields and not one honest face. I hate this place.",
+      "Every tower here has a prayer on it.",
+      "I keep my hood up in Holy country.",
+      "Walls and gates. I like open ground better."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_reva_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Reva"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Stay close. The plains are theirs and we're walking food.",
+      "Cannibals are no worse than priests. At least they say what they want.",
+      "Watch the grass. They like to lie in it.",
+      "Every hunter has a game trail. Ours is the one with fewer bodies."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_reva_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Reva"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Wet and lawless. Finally a place that doesn't lie about it.",
+      "Nobody here asks about gods. I could live with that.",
+      "Mind the mud. Slavers hide behind it.",
+      "Mud and flies. It's honest, at least."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_reva_arrive_deadlands",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Reva"
+   ],
+   "zones": [
+    "Deadlands"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Dead land, dead gods. Suits me.",
+      "Nothing out here to pray to, thank everything.",
+      "Quiet. Too quiet for my taste, and I don't like quiet.",
+      "Dust and bones. Fine company for the faithless."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_reva_arrive_heng",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Reva"
+   ],
+   "zones": [
+    "Heng"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Slavers in every doorway. Don't look at them. Don't turn your back.",
+      "Empire city. Clean shoes, dirty hands.",
+      "I won't be sold here. Remember that if you meet a buyer.",
+      "Do not let the guards look at our hands."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_reva_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Reva"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Down. Stay down.",
+      "That one prayed. It didn't help.",
+      "Next one steps forward. I have time.",
+      "Check them. Quickly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_reva_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Reva"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "I've had worse from a priest's temper.",
+      "Up. Up. I'm not finished.",
+      "Don't stand over me. Fight.",
+      "Lucky hit. It won't happen twice."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_reva_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Reva"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Stop fussing. Just tie it off.",
+      "Fine. Thanks. Don't make it a thing.",
+      "Careful. That is my good arm.",
+      "Hm. Not bad hands. Keep them to yourself."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_reva_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Reva"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Don't ask me about my past. Ask me about the road.",
+      "I'll keep your back. In return, keep your faith to yourself.",
+      "Still here, still angry. Take it or leave it.",
+      "If a priest crosses us, let me speak first. Briefly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_digna_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Digna"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Don't come closer than the sword reaches.",
+      "I sleep badly. Don't make it worse.",
+      "Flotsam taught me to keep walking.",
+      "You want something? Be quick about it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_digna_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Digna"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Draw. I'd rather get it over with.",
+      "I've done worse than you to people I loved.",
+      "Come on, then. You won't be the one who haunts me.",
+      "I was hoping for someone who could hurt me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_digna_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "The Holy Nation",
+    "Anti-Slavers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There's a Flotsam woman who sleeps outside walls and never in the beds. Digna. She doesn't like to talk about why.",
+      "Digna fights like she's paying off something. The kind of debt coin doesn't clear.",
+      "Heard Digna left home with her family chasing her. Didn't say who came back.",
+      "Hire Digna and you won't hear her complain. You'll hear her wake up at night."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_digna_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Digna"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "I sleep better with a wall at my back. There are no walls here.",
+      "If something comes out of the grass I will cut it. Do not stop me.",
+      "Quiet plains. They're never quiet.",
+      "I'm not afraid. I'm only awake."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_digna_arrive_okran_s_pride",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Digna"
+   ],
+   "zones": [
+    "Okran's Pride"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "My home was somewhere like this. I don't recommend remembering it.",
+      "Flat fields, long memory. Keep moving.",
+      "Priests, paladins, patrols. Say nothing.",
+      "If a priest speaks, I leave. Remember that."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_digna_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Digna"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Mud does not remember anything. I like that.",
+      "Nights here are loud. Good. Silence is worse.",
+      "Keep a watch tonight. I'll take the first.",
+      "A dry spot and a fire. That's all I want."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_digna_arrive_deadlands",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Digna"
+   ],
+   "zones": [
+    "Deadlands"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Nothing alive to remind me of anyone. Good.",
+      "Dead land. I can breathe here.",
+      "Walk on. Don't stop to look.",
+      "Even the wind is quiet here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_digna_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Digna"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "It gets quieter every time. Not better.",
+      "Done. Move on.",
+      "They fell like anyone else.",
+      "Leave them. I do not need to look."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_digna_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Digna"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Pain is easy. It's the nights that are hard.",
+      "Not done yet. Help me up.",
+      "Hold on. I have a lot left.",
+      "I've buried worse hurts. Help me up."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_digna_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Digna"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player flotsam"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thanks. Don't ask how I got the old scars.",
+      "Quickly. I do not like being still.",
+      "Good. Back on my feet.",
+      "Don't look at my scars."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_digna_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Digna"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I don't talk about my father. Ask about the sword if you must.",
+      "The road is easier than a bed. Don't ask me why.",
+      "I'll fight for you. That's all I'm offering.",
+      "I follow orders better than I follow advice."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_pia_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Pia"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Are there paladins behind you? Tell me honestly.",
+      "I move fast. If this goes wrong, I won't be here.",
+      "My sister said never touch a sword. I touch swords.",
+      "Keep your hand off my purse. I'm quick and I know the price."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_pia_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Pia"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Holy Nation? No? Then fight me fair. If yes, I fight mean.",
+      "Naevia taught me to run. I came back to fight.",
+      "You're slow. I'm not.",
+      "Slow down and let me look at you. Oh."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_pia_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "United Cities",
+    "Anti-Slavers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Pia, the girl from Flotsam, jumps at a paladin's shadow. She's also the fastest thing on two legs I've seen.",
+      "Her sister died fighting paladins. Pia goes quiet when you say the name Naevia.",
+      "Pia wants three thousand cats to go with you. Cheap, for how fast she is.",
+      "Pia left the Holy Nation behind. She still checks every door for white cloaks."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_pia_arrive_okran_s_pride",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Pia"
+   ],
+   "zones": [
+    "Okran's Pride"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Pia"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Paladins. Everywhere. Keep close and don't look at them.",
+      "This is the worst place for me.",
+      "I know these roads. I hoped never to again.",
+      "Okran forgive me. No, don't."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_pia_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Pia"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Pia"
+   ],
+   "lines": [
+    {
+     "say": [
+      "No paladins in the swamp. I love the swamp.",
+      "Mud slows you down but I am still faster.",
+      "Quiet here, which means someone is waiting.",
+      "I almost feel safe. Almost. Hush."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_pia_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Pia"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Pia"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Things hide in the grass. I can outrun most.",
+      "Cannibals don't frighten me half as much as holy robes.",
+      "Watch the high ground. They like it.",
+      "Fast, fast. Don't trail behind."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_pia_arrive_heng",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Pia"
+   ],
+   "zones": [
+    "Heng"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Pia"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Everyone buys everything here. Even me, probably.",
+      "Paid guards. Paid friends. Pay me too, ha.",
+      "Don't stop. Keep moving.",
+      "If anyone asks, I never said I was a ninja."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_pia_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Pia"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player Pia"
+   ],
+   "lines": [
+    {
+     "say": [
+      "For Naevia!",
+      "Fast enough, thank you.",
+      "They never see me move.",
+      "One more for the list."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_pia_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Pia"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player Pia"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ow! I was faster than that!",
+      "Up. Up. They are not done.",
+      "That was luck. Next time it isn't.",
+      "Ow! I'm usually faster, I swear!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_pia_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Pia"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player Pia"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ow, ow. Gently!",
+      "Thank you. Truly. I owe you.",
+      "Fine, fine. Back to it.",
+      "You have steadier hands than I have luck."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_pia_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Pia"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Do you think I could be as good as Naevia? Don't answer that.",
+      "I keep looking for white cloaks.",
+      "Money is easy here and nowhere else.",
+      "Is it true you can buy nearly anything in the Cities? Even a sword for me?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hamut_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Hamut"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "If you deal in slaves, speak plainly now.",
+      "I carry a name I don't say aloud.",
+      "I used to belong somewhere. Now I belong to the road.",
+      "Do you hate slavers? Say yes. It will save us both trouble."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hamut_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Hamut"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You trade in people. That's reason enough.",
+      "I've waited a long time for someone like you.",
+      "Draw your blade and I'll give you what she never got.",
+      "Your hands smell of chains. Mine will smell of you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hamut_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "Anti-Slavers",
+    "United Cities"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Hamut is on the road again. Lost his wife to slavers and the Anti-Slavers would not take him in.",
+      "If you see a Greenlander killing slavers with no word at all, that's Hamut.",
+      "A widower with a blade. Hamut will fight beside you free, if you hate slavery as he does.",
+      "Hamut thinks the world owes him an answer. He seeks it in slavers' blood."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hamut_arrive_heng",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Hamut"
+   ],
+   "zones": [
+    "Heng"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Hamut"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Slavers all around. I want to kill every one.",
+      "This is where they sell people. Do not ask me to stay long.",
+      "Walk. Don't buy anything. Don't look at the cages.",
+      "Another town built on someone's back."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hamut_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Hamut"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Hamut"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Mud, mosquitoes, and men worse than both.",
+      "The slavers came through here once. Maybe still do.",
+      "Keep your voice down. The reeds hear.",
+      "Smoke and reeds. A slaver's hiding place, if ever there was."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hamut_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Hamut"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Hamut"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Tinfist used to hit camps like this. I wish he were here.",
+      "Watch the grass. They hunt like slavers do.",
+      "I won't be taken. Not again, not here.",
+      "Slaves fed to the grass. I wouldn't be the first."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hamut_arrive_okran_s_pride",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Hamut"
+   ],
+   "zones": [
+    "Okran's Pride"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Hamut"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Holy walls. Holy chains. Same difference.",
+      "The paladins sell people too, quietly.",
+      "Move on. I don't like this air.",
+      "I don't trust the clean white coats."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hamut_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Hamut"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player Hamut"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Slavers fall the same as anyone.",
+      "One less. There are always more.",
+      "Forever remember. Never forget.",
+      "She would have wanted it done properly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hamut_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Hamut"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player Hamut"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Not yet. I have more to do.",
+      "Up. I won't rest while they live.",
+      "Get me on my feet.",
+      "Not here. I haven't found her yet."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hamut_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Hamut"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player Hamut"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thank you. I don't forget a kindness.",
+      "My hands are steady. It's only my head.",
+      "Good. Back to it.",
+      "Much obliged. It's a long road."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hamut_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Hamut"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Do you ever hear someone you lost? In the wind, I mean.",
+      "If we meet slavers, don't hold me back.",
+      "I'm glad to walk with you. I'm not good company.",
+      "If I ever stop looking, you'll know I'm gone."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_crumblejon_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Crumblejon"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Back in my day, strangers bowed. Never mind. What do you want?",
+      "My back is gone and my pride follows.",
+      "Know who I was? The White Ripper.",
+      "I carried a master's sword once. Now I carry my own bones."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_crumblejon_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Crumblejon"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Old I may be, fool. Come and see what the old can do.",
+      "A noble's sword never tired. I'm tired, but not that tired.",
+      "You'll tell your children you fought the White Ripper.",
+      "I can still cut you into three. The fourth part is tricky."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_crumblejon_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "United Cities",
+    "Bar Thugs",
+    "Anti-Slavers"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The White Ripper still walks. Bent like a cane now, but they say nobody fenced like him in the Cities.",
+      "Crumblejon, the old samurai. Complains about his back and could still cut you in half.",
+      "Nobles used him and dropped him. He walks a free road now, and grumbles every step.",
+      "If an old man offers you a fight, check his blade first. It might be Crumblejon's."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_crumblejon_arrive_heng",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Crumblejon"
+   ],
+   "zones": [
+    "Heng"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Crumblejon"
+   ],
+   "lines": [
+    {
+     "say": [
+      "I remember being paraded down streets like this. I was a boy then.",
+      "The Empire changes nothing and the nobles everything.",
+      "Rest soon. My back says so.",
+      "The Cities crumble like me. Differently."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_crumblejon_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Crumblejon"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Crumblejon"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Swamp mud in my boots at my age. Disgraceful.",
+      "Is there a dry stone anywhere? My knees ask.",
+      "Quiet. Mosquitoes bite old men hardest.",
+      "Damp ruins a sword and an old man alike."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_crumblejon_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Crumblejon"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Crumblejon"
+   ],
+   "lines": [
+    {
+     "say": [
+      "If they eat me, keep my beard. It's the only part worth keeping.",
+      "Teeth like theirs on bones like mine. They'll break a tooth.",
+      "Back in my youth I killed a dozen of them before breakfast.",
+      "If a cannibal eats me, chew slowly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_crumblejon_arrive_deadlands",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Crumblejon"
+   ],
+   "zones": [
+    "Deadlands"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Crumblejon"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Quiet. Good place for an old man to rest.",
+      "Nothing lives here. Even the flies have retired.",
+      "Slow down. I'm not the horse.",
+      "These stones were fresh when I was young."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_crumblejon_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Crumblejon"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player Crumblejon"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Not bad for a crumbling old man.",
+      "Back in my youth, this took half the time.",
+      "The blade remembers even if I don't.",
+      "Help an old man loot the dead."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_crumblejon_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Crumblejon"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player Crumblejon"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ah! My back! Help me up, damn you.",
+      "Not yet. I am old, not finished.",
+      "Easy! I'm antique.",
+      "Don't just stand there. Pick up an old man."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_crumblejon_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Crumblejon"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player Crumblejon"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Rub the back while you're at it. No? Fine.",
+      "Thank you. My bones thank you less.",
+      "Good hands. Better than the nobles' physicians.",
+      "Careful with the spine. It's decades older than you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_crumblejon_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Crumblejon"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Nobles are fickle as fish. Remember that before you serve any.",
+      "Is there a soft chair anywhere? I am asking, not demanding.",
+      "I follow a new master now. You. Try not to disappoint me.",
+      "I've done this for forty years. My knees say thirty-nine too many."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hobbs_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Hobbs"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Come, sit, have a drink, have a story. What do you mean you are leaving?",
+      "Have you ever wrestled a gorillo? I have. Barehanded. Mostly.",
+      "Beware the talking cacti! They remember who owes them.",
+      "I know a legend. It sleeps in a cave. Don't ask me which."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hobbs_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Hobbs"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You, with the face! Fight me! I'm old and I'm angry and I'm drunk!",
+      "I wrestled a gorillo. You're smaller.",
+      "You'll go in my legend. As the one who lost."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hobbs_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "Traders Guild",
+    "United Cities"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Old Hobbs will buy you a drink and talk until the rum is gone. Stories of banshees and talking cacti.",
+      "He swears he wrestled a gorillo with a bottle in his belly. Nobody has the heart to tell him the gorillo would have won.",
+      "Hobbs wants a partner for his wailing thing. If you ever go, take plenty of rum.",
+      "Mad as a hatter and kinder than most. Hobbs is the old man who talks to cacti and thanks them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hobbs_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Hobbs"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Wet! Lovely! Like a cave, but with sky.",
+      "I once heard a wail in a swamp like this. Or was that my knees?",
+      "Do not step in anything that moves. Or anything that does not."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hobbs_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Hobbs"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "I know a tale about cannibals. It ends with truffles.",
+      "Hungry folk out here. Offer them a story. They like stories. They like me.",
+      "Quiet now. The grass listens. It always has."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hobbs_arrive_the_great_desert",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Hobbs"
+   ],
+   "zones": [
+    "The Great Desert"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Sand, sand, sand. Somewhere under it, a banshee.",
+      "My Aunt Una crossed a desert once. She didn't mention it after.",
+      "Thirsty! Who is thirsty? Not me, I am drinking."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hobbs_arrive_floodlands",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Hobbs"
+   ],
+   "zones": [
+    "Floodlands"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Water as far as you can see. I knew a man who drank it all.",
+      "The wailing thing sleeps near water, they say. Or sand.",
+      "Wet boots, wet legend. Good day."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hobbs_arrive_deadlands",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Hobbs"
+   ],
+   "zones": [
+    "Deadlands"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Dead land. Dead cacti. I salute them.",
+      "A very old story lives here. I forget it.",
+      "No rum here. A tragedy for the ages."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hobbs_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Hobbs"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ha! Into the legend with you!",
+      "Ah, they don't fight like gorillos.",
+      "Quick, quick, loot them before the cacti come.",
+      "Another tale for the cave."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hobbs_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Hobbs"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ow! A scratch! A glorious scratch!",
+      "Put me down, I'm a legend, I get up myself!",
+      "Hm, rum helps. It does, it does."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hobbs_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Hobbs"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thank you, thank you. Do you want a drink for it?",
+      "Gentle, gentle! I'm an antique!",
+      "Bind it tight. A story is only as good as its teller."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_hobbs_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Hobbs"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Did I tell you about the wailing thing? Of course I did. Did I mention the truffles?",
+      "The best stories are the ones I invent halfway through.",
+      "You don't seem to mind an old fool. That's rare."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_riddly_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Riddly"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Hello! Are you travelling far? I'd love some company.",
+      "A fine road for an adventure, is it not? Or a funeral.",
+      "I'm not a settler. I like roads. Do you?",
+      "Anything worth seeing around here? I always ask."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_riddly_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Riddly"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I'd rather chat, but if you insist.",
+      "Sorry about this. Truly.",
+      "Alright, alright. Let us get it over with."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_riddly_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There's a woman who wanders. Riddly, her name. Wants an adventure, any adventure. Hire her and she's cheerful the whole way.",
+      "Friendly sword for hire. Riddly. Never settles, never complains, never turns down a road.",
+      "Met Riddly once. Said she was looking for someone to ask her along. Nobody had. Now I regret it.",
+      "A lone adventurer who actually smiles. Riddly. It's unsettling and nice."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_riddly_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Riddly"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Wet! Wonderful! I like new terrain.",
+      "If we find something that glows, can we look at it first?",
+      "Mud is just soft ground. That's the way I look at it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_riddly_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Riddly"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Everyone says don't go here.",
+      "Hold your breath, step light. This should be fun.",
+      "The grass is very tall. That is concerning and exciting."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_riddly_arrive_heng",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Riddly"
+   ],
+   "zones": [
+    "Heng"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "So many people to talk to!",
+      "This is the Empire? I expected statues.",
+      "Look at that gate. Imagine paying to walk through."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_riddly_arrive_the_black_desert",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Riddly"
+   ],
+   "zones": [
+    "The Black Desert"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Sleek, black, dry. Dramatic. I approve.",
+      "Do the skeletons here take visitors? I'll ask.",
+      "Nothing grows here. I feel for the plants."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_riddly_arrive_floodlands",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Riddly"
+   ],
+   "zones": [
+    "Floodlands"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Water, water, everywhere. Don't drink the middle.",
+      "I wonder what lives down there. Should we ask?",
+      "Wet boots. Great fun, wet boots."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_riddly_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Riddly"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Right! That went well, I think.",
+      "Sorry! Truly. Search them though.",
+      "Another adventure behind us.",
+      "Nobody hurt? Besides them, I mean."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_riddly_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Riddly"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ow, ow, that stings. I am fine!",
+      "Just a scratch. A big one.",
+      "Hold on, up we go!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_riddly_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Riddly"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thank you! Truly. I owe you tea.",
+      "You're kind. Don't tell anyone.",
+      "Better. A bit better. Mostly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_riddly_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Riddly"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thank you for asking me along. Nobody does.",
+      "The road is better with company. I didn't know that before.",
+      "I like you. You don't talk much."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_lumi_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Lumi"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Don't step on the crabs.",
+      "Crabs are far better company than people.",
+      "I talk to crabs. They never lie to me.",
+      "Do you like crabs? If you say no, I'll walk faster."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_lumi_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Lumi"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Leave the crabs alone. And me.",
+      "I'm not fighting you. I'm just very angry.",
+      "You frighten me. That isn't wise of you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_lumi_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "Traders Guild",
+    "United Cities"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Crab Town has a woman who prefers crabs to people. Lumi. Harmless unless you hurt a crab.",
+      "Lumi speaks to the crabs. They're said to listen. Don't ask me how I know.",
+      "Someone in Crab Town speaks fluent crab. I am not joking. Ask Lumi.",
+      "Lumi moved there because she dislikes crowds. Crab Town suits her. The crabs didn't object."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_lumi_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Lumi"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Lumi"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Muddy things with legs. Wonderful. Don't bother them.",
+      "I think that one waved. Hello!",
+      "Be gentle, please. This is their home."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_lumi_arrive_floodlands",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Lumi"
+   ],
+   "zones": [
+    "Floodlands"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Lumi"
+   ],
+   "lines": [
+    {
+     "say": [
+      "So many shells! Careful where you step.",
+      "I could stay here and talk to them for years.",
+      "They're shy at first. Then not."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_lumi_arrive_fog_islands",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Lumi"
+   ],
+   "zones": [
+    "Fog Islands"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Lumi"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Cold and quiet. Not even a crab.",
+      "I don't like the fog.",
+      "Stay close. I'm frightened, but I won't run."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_lumi_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Lumi"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Lumi"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Do not leave me alone in this grass.",
+      "I am frightened. Do not tell the crabs.",
+      "If something bites, I'll hit it with my bag."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_lumi_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Lumi"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player Lumi"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Oh! Oh, I did it. Don't look at me.",
+      "Sorry, sorry. It had to be done.",
+      "I hate this part. Search them, please.",
+      "Please, no crabs near the bodies."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_lumi_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Lumi"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player Lumi"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Owww! That hurt!",
+      "Please don't leave me. I'll get up.",
+      "I'm fine. I'm fine. I'm not fine."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_lumi_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Lumi"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player Lumi"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thank you, thank you. You're very kind.",
+      "Is it bad? Don't tell me.",
+      "Better. Slightly. Thank you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_lumi_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Lumi"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I know it's silly, loving crabs. Nobody ever stops me, though.",
+      "I am a poor fighter. I try.",
+      "You're patient with me. Thank you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_izumi_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Izumi"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I'm a medic, not a fighter. Come to me hurt, not angry.",
+      "Have you got a sponsor? Research costs more than swords.",
+      "Don't touch my bag. The samples are fragile.",
+      "The nobles are as fickle as fish. I only trust my notes."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_izumi_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Izumi"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I have a scalpel and no patience. Back away.",
+      "I've taken apart worse than you.",
+      "You'll need a medic after this. I won't be it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_izumi_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A young medic named Izumi wants a sponsor for her experiments. Smart as they come, and she knows it.",
+      "Izumi, the girl with the notes and the sharp tongue. Heals better than most doctors twice her age.",
+      "Hire her and she will lecture you the whole way. Cheaper than a bad bandage, though.",
+      "Heard a girl in the bar telling a noble that his research was nonsense. Izumi. Nobody argued."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_izumi_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Izumi"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player CIVILIAN"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Interesting. The water here's full of things I want to look at.",
+      "Mind the standing water. It teaches you medicine quickly.",
+      "I wonder what the mud does to a wound."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_izumi_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Izumi"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player CIVILIAN"
+   ],
+   "lines": [
+    {
+     "say": [
+      "They can't be all savages. Probably. I'd like to check.",
+      "Stay together. I'd rather not dissect this in public.",
+      "Don't drink. Don't touch."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_izumi_arrive_the_black_desert",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Izumi"
+   ],
+   "zones": [
+    "The Black Desert"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player CIVILIAN"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Metal and bone and dust. A scientist's dream and a patient's nightmare.",
+      "I'd love to look inside one of these machines.",
+      "Quiet. The ancients left a lot of notes here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_izumi_arrive_heng",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Izumi"
+   ],
+   "zones": [
+    "Heng"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player CIVILIAN"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Nobles. Fickle. And I need a sponsor.",
+      "Do not mention my age. I am old enough.",
+      "Stay near. Slavers do not mind a medic."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_izumi_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Izumi"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player CIVILIAN"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Interesting. Quick, check them. For loot, I mean.",
+      "Done. I'll bandage the rest if anyone wants it.",
+      "They fall like patients, really.",
+      "Do not look at me like that. I am a medic first."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_izumi_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Izumi"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player CIVILIAN"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hold still, I diagnose myself. Ow.",
+      "Don't panic. It's a manageable wound.",
+      "Get me my bag. Now."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_izumi_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Izumi"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player CIVILIAN"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thanks. I'd have done it myself, but my hands shake.",
+      "You have good technique. Don't tell anyone I said so.",
+      "Fine. Back to work."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_izumi_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Izumi"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Do you know a noble who funds research? Not that I trust one.",
+      "I patch people. It's the least I can do.",
+      "Don't call me a child. I'm older than I look."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_jewel_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Jewel"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Not hiring, not selling, not interested. Unless you pay.",
+      "I keep my knives close and my opinions closer.",
+      "Realist, that's me. Fighting is for people who like losing teeth.",
+      "Need something patched? I charge less than the doctors."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_jewel_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Jewel"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I'd rather argue, but I'll cut you if I must.",
+      "Put the blade down. Think about your teeth.",
+      "You picked the wrong woman to bully."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_jewel_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Jewel is on the road, dry as bone and sharp as a razor. Not a fighter, but you won't like crossing her.",
+      "A Scorchlander woman named Jewel will patch you up and tell you what you did wrong.",
+      "Jewel doesn't boast and doesn't flinch.",
+      "Had an argument with Jewel over a bill once. I paid."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_jewel_arrive_the_black_desert",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Jewel"
+   ],
+   "zones": [
+    "The Black Desert"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hot, dry, and nobody smiling. Home.",
+      "Metal sun, metal ground. Mind your boots.",
+      "I know this sand. It doesn't forgive."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_jewel_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Jewel"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Wet and loud and everyone owes someone.",
+      "Keep the pack dry. Everything else can rot.",
+      "If it bites, I will tell you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_jewel_arrive_heng",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Jewel"
+   ],
+   "zones": [
+    "Heng"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Empire city. Everything has a price and a tax.",
+      "Don't pay for a thing before you taste it.",
+      "Keep your hands where I can see them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_jewel_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Jewel"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Not a dinner I'd sit down for.",
+      "I'll cook if we survive. Don't hold your breath.",
+      "The grass is too tall for my liking."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_jewel_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Jewel"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Done. Don't make a fuss.",
+      "I told them to think about their teeth.",
+      "Search them. They owe me for the trouble.",
+      "Practical. That's the whole trick."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_jewel_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Jewel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ow. That will cost somebody.",
+      "I am fine. Help me up, quietly.",
+      "I knew this would happen."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_jewel_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Jewel"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thanks. I'll remember it. Not that I'll say so.",
+      "Careful. I bruise like fruit.",
+      "Good. Back on my feet."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_jewel_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Jewel"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I keep my distance from heroes. They don't live long.",
+      "Fighting costs more than it pays. Remember that.",
+      "I trust you a little. That's a lot."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_soman_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Soman"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Hands are my trade. Rope, nets, whatever wants mending.",
+      "If you need something fixed, ask. If you need a fight, ask someone else.",
+      "Things are slow. The family is stretched thin.",
+      "Don't mind me. I only carry a knife for fish."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_soman_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Soman"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I'm not looking for trouble. Don't make me find it.",
+      "Back off. I work with my hands and they're strong.",
+      "I have gutted bigger than you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_soman_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Soman from the fishing houses is looking for work. Strong hands, plain talk. Needs coin to settle some family business.",
+      "Her family is struggling. Soman will join you for the right price and not complain.",
+      "Quiet woman, good with her hands. Soman, they call her.",
+      "Soman needs thirty-five hundred cats. Sounds like a debt, not a dream."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_soman_arrive_floodlands",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Soman"
+   ],
+   "zones": [
+    "Floodlands"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Water I understand. This much of it, less so.",
+      "Good for fish. Bad for the knees.",
+      "Mind the edges. They are softer than they look."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_soman_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Soman"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Slow mud, slow water. Nets would rot in a day.",
+      "Smells like home, if home were worse.",
+      "Keep to the firm ground. I'll watch the rest."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_soman_arrive_heng",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Soman"
+   ],
+   "zones": [
+    "Heng"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Everything costs more here. Even the fish.",
+      "Nobody has time for a quiet woman.",
+      "Keep close and keep your purse."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_soman_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Soman"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Nothing grows here that I'd eat.",
+      "Be quiet. Be fast.",
+      "I'll carry what I can."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_soman_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Soman"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Plain work. Done.",
+      "Fish put up less of a fight.",
+      "Bind what you can. Take the rest.",
+      "I didn't enjoy that. Move on."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_soman_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Soman"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ow. That will bruise.",
+      "I'm fine. Help me up.",
+      "I've taken worse from a net."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_soman_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Soman"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thank you. I owe you a favour.",
+      "Plain work, that. Good.",
+      "Better. I can walk."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_soman_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Soman"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I need coin. Not much. Enough to tie up some loose ends.",
+      "Plain work, plain pay. That's all I ask.",
+      "I won't let you down. I never leave a job half done."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_green_finger_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Green Finger"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Don't step on the sprouts. They're all I have.",
+      "I am not a fighter. I like things that grow.",
+      "Is it safe ahead? Tell me honestly.",
+      "I keep a seed in my pocket."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_green_finger_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Green Finger"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Please don't hurt me. I'll give you what I have.",
+      "I do not want a fight.",
+      "Don't make me do this."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_green_finger_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "United Cities",
+    "Traders Guild"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There is a nervous Scorchlander at the fishing houses with a pocket full of seeds. Green Finger, they call him. Gentle, jumpy.",
+      "Green Finger would sooner farm than fight. He will fight if cornered. Apologises afterwards.",
+      "A man who plants things in the Scorch. Brave, or daft.",
+      "Hire him if you want a quiet, skittish companion. He talks to the plants more than to you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_green_finger_arrive_okran_s_pride",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Green Finger"
+   ],
+   "zones": [
+    "Okran's Pride"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Green grass! Real grass. I could weep.",
+      "I miss soil that doesn't crack.",
+      "Look at the crops. Somebody knows what they're doing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_green_finger_arrive_floodlands",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Green Finger"
+   ],
+   "zones": [
+    "Floodlands"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "All this water, and nothing planted.",
+      "If the ground were firmer I'd settle here.",
+      "Is the water clean? Please say it's clean."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_green_finger_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Green Finger"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Please stay close. I'm scared.",
+      "Don't leave me behind. I'll carry things.",
+      "Those don't grow wild. Something tends them. That's worse."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_green_finger_arrive_the_black_desert",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Green Finger"
+   ],
+   "zones": [
+    "The Black Desert"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Nothing grows here. Not a root. Not a spore.",
+      "I feel bad for the sand. It must be so dry.",
+      "I'll keep walking. I'm not stopping."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_green_finger_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Green Finger"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Oh. Oh no. That's awful.",
+      "Sorry. Sorry. Check them, please.",
+      "I didn't want that. Move on.",
+      "I will plant something where they fell. Later."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_green_finger_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Green Finger"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ow! It hurts! Please help.",
+      "I'm sorry. I'm slow.",
+      "I'll get up. I will."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_green_finger_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Green Finger"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player TOUGH Merc",
+    "player character default"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thank you, thank you. You're so kind.",
+      "It does not hurt as much now.",
+      "I'll repay this. Somehow."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_green_finger_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Green Finger"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Do you think anything will ever grow properly in the Wend? I dream of it.",
+      "I'm afraid, but I'm here. That counts, right?",
+      "If we find good soil, can we stop? Just once?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sadneil_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Sadneil"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Nothing new here. Nothing new anywhere.",
+      "I'd greet you properly, but what's the point.",
+      "I have talked to gurglers. They disappoint less than most.",
+      "If you want company, I'm available. I'm not good company."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sadneil_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Sadneil"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Go on, then. Finish me. I have little else planned.",
+      "I'm already dead, more or less.",
+      "A fight. How novel. Come on."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sadneil_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Skeletons",
+    "Drifters",
+    "Bar Thugs",
+    "United Cities"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There is a skeleton in Black Desert City so low-spirited it makes the others look cheerful. Sadneil.",
+      "Sadneil will join a party out of pure weakness, then complain at every step. Reliable in a gloomy way.",
+      "If a skeleton sighs at you, it's Sadneil.",
+      "Heard Sadneil say the gurglers were better company than people. He may be right."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sadneil_arrive_the_black_desert",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Sadneil"
+   ],
+   "zones": [
+    "The Black Desert"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Sadneil "
+   ],
+   "lines": [
+    {
+     "say": [
+      "Home. I'd say it's lovely, but I don't lie.",
+      "The sand is the same as ever. I wish I weren't.",
+      "I know every dune. None of them has helped."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sadneil_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Sadneil"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Sadneil "
+   ],
+   "lines": [
+    {
+     "say": [
+      "Wet, cold, and noisy. Of course.",
+      "My joints rust in this air.",
+      "I suppose it's nice that something lives here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sadneil_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Sadneil"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Sadneil "
+   ],
+   "lines": [
+    {
+     "say": [
+      "They'll eat the flesh and leave the bones. Fine by me.",
+      "If they take me apart, I won't stop them.",
+      "I don't look appetising. That's the one bright spot."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sadneil_arrive_okran_s_pride",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Sadneil"
+   ],
+   "zones": [
+    "Okran's Pride"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Sadneil "
+   ],
+   "lines": [
+    {
+     "say": [
+      "Holy ground. I'm not welcome.",
+      "They hate us here. Honestly, fair enough.",
+      "Keep moving. Do not give them an excuse."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sadneil_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Sadneil"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player Sadneil "
+   ],
+   "lines": [
+    {
+     "say": [
+      "That's that. It changes nothing.",
+      "One more down. Another will come.",
+      "Search them. I won't enjoy it.",
+      "I should feel something. I don't."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sadneil_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Sadneil"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player Sadneil "
+   ],
+   "lines": [
+    {
+     "say": [
+      "Another crack. Another day.",
+      "I'm still here. Unfortunately.",
+      "Just leave me. No? Fine, help me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sadneil_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Sadneil"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player Sadneil "
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thank you. I'll be fine until the next time.",
+      "Don't bother with kindness. It won't take.",
+      "It helps a little. A little is enough."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sadneil_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Sadneil"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Joining you was weakness, not choice. I regret nothing, because regret takes energy.",
+      "I've seen worse days. Not many.",
+      "If I stay quiet it isn't anger."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_oron_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Oron"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A retainer's life is long and dull.",
+      "Do you fight, stranger? Or just walk?",
+      "Peasant work kills a warrior's soul. Say it isn't so.",
+      "Pride, kin. Or not. I can't tell what you are."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_oron_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Oron"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "At last, a fight worth having!",
+      "Draw. I've waited long for honest steel.",
+      "You won't leave. I won't allow it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_oron_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Drifters",
+    "Bar Thugs",
+    "United Cities"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A Shek retainer called Oron hungers for battle. Would pay to be free of their lord. Thirty-five hundred cats, I heard.",
+      "Oron is bored. A bored Shek is a dangerous Shek. Hire them before they do something drastic.",
+      "There's a warrior in the Shek lands who wants a fight more than a meal. Oron. They would follow you into a pit.",
+      "Oron won't stay a peasant much longer. The question is who gets the sword."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_oron_arrive_stenn_desert",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Oron"
+   ],
+   "zones": [
+    "Stenn Desert"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player SHEK Warrior"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Open sand. Open sky. This is where a Shek should walk.",
+      "A good place for a duel. A better place for a feast.",
+      "Pride, kin. I breathe easier here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_oron_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Oron"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player SHEK Warrior"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Cannibals. A fine test. Don't hold me back.",
+      "Many enemies, little honour. I'll take what I can.",
+      "Tall grass, wary eyes. This will be exciting."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_oron_arrive_okran_s_pride",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Oron"
+   ],
+   "zones": [
+    "Okran's Pride"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player SHEK Warrior"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Flatskins and their zealots. I'll wait to fight.",
+      "Their walls are high. My blade is long.",
+      "Don't draw yet. Soon."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_oron_arrive_the_great_desert",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Oron"
+   ],
+   "zones": [
+    "The Great Desert"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player SHEK Warrior"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Sun on my back and nothing to kill.",
+      "If anything dares cross us, I shall thank it.",
+      "Endless sand. Endless boredom."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_oron_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Oron"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player SHEK Warrior"
+   ],
+   "lines": [
+    {
+     "say": [
+      "That was a start. Show me more.",
+      "Honour to them. They died well.",
+      "Is that all? I'm only warmed up.",
+      "Pride, kin. Loot them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_oron_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Oron"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player SHEK Warrior"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A scratch. Give me a minute.",
+      "I have bled more for less.",
+      "Up. I'm not done."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_oron_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Oron"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player SHEK Warrior"
+   ],
+   "lines": [
+    {
+     "say": [
+      "I owe you. A Shek pays debts.",
+      "Good. Return me to the fight.",
+      "Your hands are steady. Well done."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_oron_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Oron"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I want a fight. Any fight. That is all.",
+      "Carry me into a battle worth singing about.",
+      "I won't abandon you. I don't abandon anyone."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_miu_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Miu"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "If you're a slaver, say so now.",
+      "I escaped once. I won't be sold again.",
+      "Do you see any spiders? No? Good.",
+      "I charm my way out of most things."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_miu_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Miu"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I escaped the chains. I won't return.",
+      "Come close and find out what a slave learns.",
+      "Not today. Not ever. You will not take me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_miu_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "Anti-Slavers",
+    "United Cities"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There's an escaped slave with a removed brand and a bad temper. Miu. She screams at spiders long before they show.",
+      "Miu swears like a miner and fights like a fiend. Sells nothing. Buys nothing.",
+      "Her friend died to a spider, so I hear. Miu hasn't forgiven the whole species.",
+      "Miu hates the Holy Nation, the Empire and spiders. In that order, depending on the day."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_miu_arrive_spider_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Miu"
+   ],
+   "zones": [
+    "Spider Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Miu"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Spiders! I hate spiders! Keep your eyes open!",
+      "Every shadow could be eight legs.",
+      "I swear, if one drops on me I'm burning this place down."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_miu_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Miu"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Miu"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Home, roughly. Mud and mosquitoes and mad folk.",
+      "I know the bars here. Don't drink anything green.",
+      "Nobody asks questions in the swamp."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_miu_arrive_heng",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Miu"
+   ],
+   "zones": [
+    "Heng"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Miu"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Empire land. The place is rife with slavers. Eyes up.",
+      "If anyone checks my wrist, I run.",
+      "I shouldn't be here. Let us leave."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_miu_arrive_okran_s_pride",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Miu"
+   ],
+   "zones": [
+    "Okran's Pride"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Miu"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Holy country. I like to charm my way out of problems.",
+      "Don't smile too much. Priests notice.",
+      "Say nothing. I mean it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_miu_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Miu"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player Miu"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hah! Fuck off back to the slaver who made you.",
+      "That's for every chain I ever wore.",
+      "Check them. They might have a key.",
+      "Nobody sells me, you bastards."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_miu_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Miu"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player Miu"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Shit! That stung.",
+      "I am up! Do not fuss.",
+      "Get me back in. Now."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_miu_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Miu"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player Miu"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thanks. I'll remember. I always do.",
+      "Ow, careful. Fuck, that hurts.",
+      "Good. Back to it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_miu_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Miu"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I was farm girl, then slave, then free.",
+      "Ask me about the spiders and I will talk for an hour.",
+      "I never forget a kindness. Or a chain."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_luquin_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Luquin"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Psst. Is the key near? No? Then keep walking.",
+      "Open air. I forgot how big it was.",
+      "I spent a lot of years behind bars. Don't stare.",
+      "Do not mention the Empire. Or do."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_luquin_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Luquin"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Another of Tengu's dogs. Come on.",
+      "I killed a lord once. Don't make me practice.",
+      "I lived in a cell. You won't put me back in one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_luquin_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "Anti-Slavers",
+    "United Cities"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "They say Luquin still lives in the Vault. Hold on to that if the Empire frightens you.",
+      "Luquin, the farmer's son who killed a lord. They made him write a tribute to Tengu..",
+      "The Anti-Slavers still sing about Luquin. Some believe it, some don't.",
+      "If you find the Vault, ask for the thin man with a wry mouth."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_luquin_arrive_heng",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Luquin"
+   ],
+   "zones": [
+    "Heng"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Ludin"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Last time I was here, they paraded me through the street.",
+      "I do not like these walls. Too many guards.",
+      "Keep your head low. Tengu has long arms."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_luquin_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Luquin"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Ludin"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Mud, reeds, no walls. Hah. Beautiful.",
+      "Breathe in. That's freedom, and it smells awful.",
+      "Nobody knows me here. Good."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_luquin_arrive_the_great_desert",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Luquin"
+   ],
+   "zones": [
+    "The Great Desert"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Ludin"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Open. Open and bright. I could walk forever.",
+      "Nothing between me and the sky. I forgot what that was.",
+      "Did the dunes always look this large?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_luquin_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Luquin"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Ludin"
+   ],
+   "lines": [
+    {
+     "say": [
+      "A cage is a cage, even a big one.",
+      "Eyes open. I won't be locked in again.",
+      "If they catch me, it won't be quick."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_luquin_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Luquin"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player Ludin"
+   ],
+   "lines": [
+    {
+     "say": [
+      "That's for every year I was held.",
+      "Tengu's men are weaker than they look.",
+      "Check them. They have keys.",
+      "Another bar closed forever."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_luquin_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Luquin"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player Ludin"
+   ],
+   "lines": [
+    {
+     "say": [
+      "I have survived worse in a cell.",
+      "Not this time. Up.",
+      "I won't die in the open."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_luquin_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Luquin"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player Ludin"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Thank you. It's strange being kind to.",
+      "Right. Back to work.",
+      "I owe you. I don't forget."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_luquin_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Luquin"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "if": [
+    {
+     "cond": "DC_IS_RECRUITABLE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I was in the Vault a long time. The air tastes strange now.",
+      "Thank you for opening the door.",
+      "If you fight the Empire, count me in."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_garret_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Garret"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Business, stranger? Make it quick, I'm off the clock.",
+      "A happy slave works harder. Remember that, if you ever buy.",
+      "Don't say slave lover. I don't like the word.",
+      "Everything has a price. The people too."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_garret_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Garret"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I'm a businessman. Don't make me waste a blade on you.",
+      "You're bad for trade. Therefore you die.",
+      "Take the slave and go. No? Pity."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_garret_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "Anti-Slavers",
+    "United Cities"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Garret buys his slave a drink and calls it good business. Nobody in the bar is sure whether to laugh.",
+      "They called Garret a slave lover to his face once.",
+      "A dealer who pampers his stock. Garret. The Anti-Slavers hate the whole thing and him more.",
+      "Garret says a content slave is a profitable slave. Probably the nicest monster I know."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_garret_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Garret"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Business concluded.",
+      "Pity. I wanted to haggle.",
+      "The profit is in the stripping.",
+      "Always more at the end of a fight than the start."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_koin_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Koin"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I'm only the secretary. Nobody listens to me, so don't start.",
+      "The Emperor is busy. He is always busy. Do you have an appointment?",
+      "Speak quickly. My master dislikes waiting and so do I.",
+      "Don't bring up the nobles. I have to live with them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_koin_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Koin"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Guards! Deal with this, please.",
+      "I'm a diplomat, not a swordsman. But I'll cut if I must.",
+      "The Empire doesn't forget its enemies, stranger."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_koin_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "characters": [
+    "Koin"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A friend of the Empire. How rare.",
+      "Your name is known here. I won't say how.",
+      "Welcome. Don't overstay it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_koin_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Drifters",
+    "Bar Thugs",
+    "Traders Guild"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Tengu has a tired little secretary named Koin. He decides who gets favours and who gets nothing.",
+      "Koin the diplomat smiles at everyone and trusts no one.",
+      "If you want an audience with the Emperor, Koin is the gatekeeper.",
+      "They say Koin corrects Tengu's pronunciation and survives. I'd pay to see that."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_koin_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Koin"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A diplomat's burden. Sorry about that.",
+      "I did warn them. In writing.",
+      "Please remove the bodies from the hall.",
+      "Another matter settled."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_yamdu_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Yamdu"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Please, sir, don't hurt me. I'm only here to help.",
+      "I'm a squire. Squires carry things.",
+      "I'm nervous around visitors. Forgive me.",
+      "Hello! May I interest you in a membership? Please say yes."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_yamdu_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Yamdu"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "No, no, please! I'll fetch someone!",
+      "I'm only a squire! Don't hurt me!",
+      "Guards! Guards, please!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_yamdu_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "Drifters",
+    "Bar Thugs"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There's a Hive squire at the Traders Guild who flinches at his own shadow. Yamdu.",
+      "Yamdu handles membership enquiries and dreads every one. Kindly man.",
+      "The noble's squire fears everything but never fails to help.",
+      "If you meet the nervous drone at Trader's Edge, buy something."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_yamdu_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Yamdu"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I didn't want that! I'm so sorry!",
+      "Please look away. I'll clean up.",
+      "Is it over? It's over.",
+      "I won't sleep tonight."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_mani_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Mani"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Eyes on the grass. The cannibals are patient.",
+      "Keep clear of the post unless you have business.",
+      "I have hunted cannibals for years. Don't tell me they're gone.",
+      "Move along. This is no place for a stroll."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_mani_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Mani"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You aren't welcome here. Draw.",
+      "I've fought worse than you in the dark.",
+      "Don't test the Flotsam."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_mani_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "characters": [
+    "Mani"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Friend of Flotsam. Welcome. Eyes open.",
+      "Good to see a friendly face on this road.",
+      "You have helped us. We remember."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_mani_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Flotsam Ninjas",
+    "Drifters",
+    "Bar Thugs",
+    "United Cities"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Flotsam guard at the scout post escaped a cannibal cage years ago. Mani. He doesn't joke about cannibals.",
+      "Mani trades what he can and kills cannibals when he must. Both with the same face.",
+      "Heard Mani lost his friends to a cannibal camp and walked out alone.",
+      "If you hurt Flotsam, Mani remembers. If you help, he remembers that too."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_mani_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Mani"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Cannibals don't stay dead. Remember that.",
+      "Down. Check the grass for more.",
+      "That's one less. Keep watching.",
+      "Burn them. Don't leave them to the plains."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_ells_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Ells"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Ells is hungry! Got food? Got rum?",
+      "Ells doesn't steal. Ells borrows.",
+      "The guards hit Ells. Ells doesn't like the guards.",
+      "Is it rum? Ells smells rum!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_ells_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Ells"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Ells will fight! Ells isn't a coward!",
+      "No bounty! Ells isn't worth it!",
+      "Ells doesn't want to! But will!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_ells_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "United Cities",
+    "Empire Peasants"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Ells the rum thief raided the distillery again. Daft as a post, but nobody can catch him.",
+      "Someone put a bounty on a half-wit named Ells. For stealing rum. The world is a strange place.",
+      "Ells talks about himself like a stranger. Sweet, in a sad way. Feed him and he follows you anywhere.",
+      "Barkeeps hate him, guards beat him, and he still comes back for rum. Ells."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_ells_arrive_heng",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Ells"
+   ],
+   "zones": [
+    "Heng"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Squint"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ells doesn't like this place.",
+      "Ells smells rum. Can Ells go look?",
+      "Ells will be good. Promise."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_ells_arrive_the_swamp",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Ells"
+   ],
+   "zones": [
+    "The Swamp"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Squint"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Mud! Ells likes mud. And rum.",
+      "Ells isn't scared. Ells is a little scared.",
+      "Is there rum in the swamp? Please say yes."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_ells_arrive_cannibal_plains",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Ells"
+   ],
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Squint"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ells doesn't like the tall grass.",
+      "Ells will stay close. Very close.",
+      "Don't leave Ells behind."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_ells_arrive_deadlands",
+   "event": "EV_ENTER_BIOME",
+   "characters": [
+    "Ells"
+   ],
+   "zones": [
+    "Deadlands"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "score": 6,
+   "packages": [
+    "Player Squint"
+   ],
+   "lines": [
+    {
+     "say": [
+      "No rum here. Ells is sad.",
+      "Ells misses the distillery.",
+      "Ells will carry things, if there's food."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_ells_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Ells"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "packages": [
+    "Player Squint"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ells did it! Eeheehee!",
+      "Ma said Ells would do good!",
+      "Ells is strong! Ells is strong!",
+      "Ells needs a drink now!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_ells_hurt",
+   "event": "EV_GET_UP_FIGHT",
+   "characters": [
+    "Ells"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "packages": [
+    "Player Squint"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ow! Ells is hurt!",
+      "Ells wants Ma!",
+      "Ells will get up. Ells will."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_ells_healed",
+   "event": "EV_BEING_HEALED_START",
+   "characters": [
+    "Ells"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "packages": [
+    "Player Squint"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Ells thanks you kindly!",
+      "Ow, careful! But thank you!",
+      "Ells feels better. Ells is happy."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_psycho_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Psycho"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "What are you in for? I'm in for something.",
+      "I don't hate you. Don't think I do.",
+      "You'll do. Maybe later.",
+      "Say something. Anything. The silence is worse."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_psycho_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Psycho"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I'll take my time. You won't enjoy it.",
+      "Come here. I'm very calm.",
+      "Choke on a cactus. Then I'll help you do it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_psycho_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "United Cities",
+    "Outlaw"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "There's a man in Tengu's Vault who calmly says what he did. Psycho, he's called. Nobody says it twice.",
+      "Psycho sits in his cell and smiles. The guards stopped speaking to him.",
+      "Word is, a martial artist in the Vault is in for disembowelling. Matter-of-fact. That's the frightening part.",
+      "Psycho was framed, he insists. Then he tells you what he did anyway."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_psycho_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Psycho"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Done. That was easy.",
+      "I've done worse for less.",
+      "Keep still. This is the fun part.",
+      "Next."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_espher_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Espher"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Out. We must go out. Soon.",
+      "This isn't a good place.",
+      "Few words. Fewer hours. Move.",
+      "Hive doesn't belong in cages."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_espher_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Espher"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You keep us in. You die.",
+      "Hive won't be caged again.",
+      "We go out now."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_espher_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "United Cities",
+    "Outlaw"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A Hive worker in Tengu's Vault wants out so badly he stares at the door all day.",
+      "Espher speaks little and means all of it.",
+      "I heard a South Hive drone sits in the Vault and counts the guards' steps. Espher.",
+      "If the Vault falls, Espher will be the first through the door."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_espher_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Espher"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Done. Out now.",
+      "We leave. Quickly.",
+      "Free. Not yet. But closer.",
+      "No time. Go."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sinklyde_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Sinklyde"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Pride, kin. Even in a cage a Shek has his pride.",
+      "Do you bring news or only a stare?",
+      "The Vault has been quiet for too long.",
+      "Stop looking at me. Say something."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sinklyde_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Sinklyde"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I owe the Empire a blade.",
+      "A Shek bows to no cage.",
+      "You won't like the sound of my laughter."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sinklyde_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom",
+    "Drifters",
+    "Bar Thugs",
+    "Outlaw"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A Shek called Sinklyde sits in Tengu's Vault with his pride intact. They haven't broken him yet.",
+      "Sinklyde has been behind those bars long enough to learn every guard's name.",
+      "A Shek in the Vault? Sinklyde. He will tell you honour is worth more than freedom. Then ask you to break him out.",
+      "The Vault holds a Shek who hums battle songs. Sinklyde. Guards complain."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_sinklyde_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Sinklyde"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Pride, kin. That's how a Shek fights.",
+      "They knew the risk.",
+      "Search them. Quickly.",
+      "A short fight. A shorter life."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_screamy_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Screamy"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "AHHH! You! Come closer! No, go away!",
+      "They put me in here for screaming. I scream because they put me in here.",
+      "Quiet. Hush. No! Scream!",
+      "Do you hear it? No? I do."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_screamy_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Screamy"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "AAAAHHH! Go away!",
+      "Get away from me! AAAH!",
+      "I'll scream until you leave!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_screamy_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "United Cities",
+    "Outlaw"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Someone in Tengu's Vault never stops screaming. Screamy. Even the guards take their lunch elsewhere.",
+      "Screamy does nothing but scream. Nobody has asked why.",
+      "I heard you can hear Screamy from half a mile outside the Vault.",
+      "If a scream wakes you at night near the Vault, that's Screamy."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_screamy_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Screamy"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "AAAAH!",
+      "Hush now! Hush!",
+      "Quiet, quiet, quiet!",
+      "No more! No more!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_harmothoe_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Harmothoe"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I lead a caravan. If you aren't buying, don't block the road.",
+      "Free Traders go where the cats are. Keep out of our way.",
+      "Mind your hands near my cart.",
+      "I don't talk to men with swords unless they pay."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_harmothoe_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Harmothoe"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Bandit or fool. Either way, you pay.",
+      "My caravan has survived worse than you.",
+      "I escaped chains once. I won't fear you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_harmothoe_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "characters": [
+    "Harmothoe"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A friend of the Free Traders. Good. We need more.",
+      "You have my thanks. Truly.",
+      "Safe roads, friend. Hard to come by."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_harmothoe_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Free Traders",
+    "Drifters",
+    "Bar Thugs",
+    "United Cities"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Harmothoe leads the Free Traders. Wealthy in cats, ruthless with thieves.",
+      "They sing about Harmothoe in the Free Trader camps. Not a gentle song.",
+      "A caravan leader who killed her old masters. Harmothoe. Keep your hands clean when you deal with her.",
+      "Harmothoe pays in coin and holds grudges in iron."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_harmothoe_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Harmothoe"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Pay your debts, or the road will.",
+      "Free Traders don't forgive.",
+      "Loot them. Quickly, before dark.",
+      "That's how we protect cats."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_yayoi_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Yayoi"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Flotsam sees everything. Walk carefully.",
+      "You look battle ready. But you aren't one of us.",
+      "State your business or move on.",
+      "I carry a blade for a reason. Remember that."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_yayoi_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Yayoi"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Another fool for Flotsam to bury.",
+      "Leave. Or learn why we're feared.",
+      "I train with steel. Come and meet it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_yayoi_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "characters": [
+    "Yayoi"
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A friend of Flotsam is a friend of mine.",
+      "We remember our friends. We remember the rest too.",
+      "Good fighting. Keep it up."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_yayoi_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Flotsam Ninjas",
+    "Drifters",
+    "Bar Thugs",
+    "The Holy Nation"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Yayoi trains the newer ninjas. Hard on them, fair on the sword.",
+      "People say Yayoi fights better than most Flotsam veterans. Few challenge her.",
+      "Yayoi walks without a sound. You only notice when it's too late.",
+      "Paladins fear Flotsam, and Yayoi is the reason."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_yayoi_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Yayoi"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Flotsam doesn't lose.",
+      "Quiet. Efficient. Done.",
+      "Search them. Leave the rest.",
+      "Too slow. They always are."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_white_eyebrow_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "White Eyebrow"
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Do you carry a wanted poster? Because I'm it.",
+      "Drought wasn't my fault. Say otherwise and bleed.",
+      "Leave me be. I answer to no one.",
+      "I deserted my duties. I regret nothing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_white_eyebrow_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "White Eyebrow"
+   ],
+   "player_only": true,
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Another bounty hunter. Come and try.",
+      "I don't care what the poster says.",
+      "You won't take me alive."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_white_eyebrow_rumour",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Drifters",
+    "Bar Thugs",
+    "United Cities",
+    "Shek Kingdom"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "White Eyebrow abandoned his duties and now they blame him for the Brown Drought.",
+      "Nobody believes one man could cause a drought. Nobody except the clan he left.",
+      "White Eyebrow has a camp somewhere in the sands. Wanted. Dangerous.",
+      "If the poster is true, he's a menace. If false, he's a scapegoat."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vv_white_eyebrow_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "White Eyebrow"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Another hunter down.",
+      "The poster lies. The blade doesn't.",
+      "Search them. They carry coin.",
+      "Nobody takes me."
+     ]
+    }
+   ]
+  }
+ ]
+}

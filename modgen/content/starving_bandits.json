@@ -1,0 +1,195 @@
+{
+ "pack": "starving_bandits",
+ "mod": "LivingWasteland",
+ "dialogues": [
+  {
+   "id": "sbn_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Food. You got food? Give!",
+      "Hungry. So hungry. Look at me.",
+      "Stay there. Don't move. Don't make me hungrier.",
+      "Waaah! Food! Where's food?",
+      "Smell that? That's you. That's dinner.",
+      "Not hunting you. Not yet. Don't test me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sbn_unarmed",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "chance": 36,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "No blade? Hah! Easy! Easy meat!",
+      "Nothing in your hands. Good. Good for us.",
+      "Unarmed. Stupid or rich. Both are food.",
+      "No weapon! No fight! Just give!",
+      "You walk with nothing. We'll fix that. We'll take what you have."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "id": "sbn_poor",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Nothing in your pockets. Same as us.",
+      "Broke. Starving. Like us. Hah! Go, go.",
+      "Empty purse? Then you're no use.",
+      "You have nothing? We have nothing."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_PLAYERMONEY",
+     "who": "target",
+     "cmp": "<",
+     "value": 150
+    }
+   ]
+  },
+  {
+   "id": "sbn_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "chance": 100,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "FOOOOD! I'm taking your food!",
+      "Waaah! Get them! Get the food!",
+      "Hungry! So hungry! ARRRGH!",
+      "Gimme! Gimme! Gimme!",
+      "I've been hit harder than that.",
+      "Kill it! Eat it! Kill it!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sbn_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "chance": 100,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Ahh... food. Finally. Some food.",
+      "Dead? Good. More for us.",
+      "Eat now. Fight later.",
+      "Search them! Search them for food!",
+      "Hahh! Not so tough now, are you?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sbn_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": false,
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hey. Hey! You dead? Got food?",
+      "Down. Good. Check the pockets.",
+      "Poor thing. Poor, poor thing. Hungry too?",
+      "Meat on the ground. Meat!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sbn_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "chance": 100,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Mine! All mine!",
+      "Food? Food? FOOD?",
+      "Take everything. Everything!",
+      "Nothing. Nothing. NOTHING. Nobody has anything."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sbn_rich",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Look at you. Full pockets. Full belly.",
+      "You have money. You have food. Why you have everything?",
+      "Cats! Cats can buy food! Give cats!",
+      "Hah! Rich one! Rich one walks the road!"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_PLAYERMONEY",
+     "who": "target",
+     "cmp": ">",
+     "value": 20000
+    }
+   ]
+  }
+ ]
+}

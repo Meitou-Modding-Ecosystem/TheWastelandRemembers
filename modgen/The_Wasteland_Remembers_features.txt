@@ -1,0 +1,128 @@
+THE WASTELAND REMEMBERS
+A Meitou mod for Kenshi. Vanilla-plus: no new races, no super weapons, no rewritten factions.
+Just a world that notices what you do, and remembers it.
+
+Every feature below can be switched off in game (press U > Settings, or Esc > Settings > Mods),
+and one slider sets how much of the added talk you hear, from all of it down to none.
+"Record only" turns everything off except the squad record.
+
+
+YOUR SQUAD'S STORY
+------------------
+- Squad record window (press U, or the button at the top right)
+    Per character: kills (and of which factions), knockouts, leaders and named characters killed,
+    limbs cut off and lost, damage dealt and taken, times downed, fights won and last stands,
+    distance walked / ridden / sailed, food eaten, items crafted, hours spent on every kind of work.
+- 75 titles earned from real deeds
+    Member titles (the Hard Hand, Bonepicker, Field Medic, the Headsman, the Walker...), squad titles
+    (the Grave-Fillers, the Ash Tide, the Gatekeepers...) and named kills (kill Holy Lord Phoenix and
+    you become Narko). A higher rung quiets the lower one.
+- Factions react to your titles by their own nature: some admire, some fear, some despise you and
+  will not hire you. An admiring barman may give you something on the house.
+- History: your squad's story, newest first. The Fallen: who died, where, who killed them, whether
+  they were avenged, and an epitaph. "Save as text" writes it all to a file.
+- Notices: a small message floats up when someone gains a skill level, and when a faction's standing
+  with you rises (green) or falls (red).
+
+
+A SQUAD THAT FEELS IT
+---------------------
+- Lookouts: when hostiles come near, your people call them out by name ("Dust Bandits on the ridge!")
+  and a squadmate answers. An army on the march gets its own warning.
+- Memorials: your people mourn the fallen by name, remember where they fell, and the town that took
+  their arm.
+- Grief: for three days after a death, the banter turns quiet, and wins turn angry, using the fallen
+  squadmate's name ("That one was for Beep.").
+- Victory lines after a won fight.
+
+
+A WORLD THAT TALKS
+------------------
+- Thousands of new lines for townsfolk, bosses and factions vanilla barely voices, checked against
+  the lore. Nomads with their own voice; cannibals who speak the way the game's own cannibals do.
+- Bar talk: patrons talk among themselves, and once you are famous they tell tales about your squad.
+- Rumours of what actually happened: who you killed, which outlaw took a beating, which town is at war.
+- Town criers: now and then a local calls out the real news of your world (wars, marches, outlaws
+  raiding, raids beaten off, big deaths), or their faction's proclamation. Never more than every
+  few minutes, each piece of news once a day.
+- Alms and offerings: some townsfolk ask for alms (Empire), an offering for Okran (Holy Nation) or a
+  donation to the Anti-Slavers. Giving warms their faction toward you (up to friendly, never allied),
+  and a generous squad earns a title for it.
+
+
+THE ATLAS
+---------
+- A tab of the places you know (79) and the people talked about (80), filled by the gossip your squad
+  really overhears. Hidden bosses stay a blur until the rumours add up.
+- Who holds each town now, where you last saw someone.
+- Every faction you have met: how it stands with you, its wars, which of your titles it admires,
+  fears or despises, and its own title for you (Empire: Obedient ... General, or Trouble-Maker ...
+  Enemy of the State; Holy Nation: Approved Trader ... Hero of Light, or Heathen ... The Devil).
+- Meitou 0.19+: each person's page shows their face.
+
+
+RIVALS
+------
+- Win a fight and leave someone alive, and they may come back for you. The survivor (the actual person
+  your squad beat) is renamed for what happened: Hollin One-Arm, Tesk Crutch, Mara the Unbowed. Once you've
+  walked away, word reaches you that they crawled off and swore to come back.
+- A day or two later they hunt your squad across the map, a little stronger each time. One who lost a leg
+  comes back on an iron leg. Beat them and they may get away again; lose, and they boast about it in every
+  bar. Kill them or put them in chains to end it.
+- Townsfolk near a rival talk about them by name, the Atlas keeps their story, and History and Recap note
+  every turn. With no rival about, your next won fight that leaves someone notable alive always makes one;
+  with one about, now and then more, at most three at a time.
+
+
+OUTLAWS AND WORK
+----------------
+- 36 named outlaws, each with a home ground, contracts on their heads, and news about what they
+  are up to (raiding, lying low, gathering men, licking wounds). News of an outlaw stays near
+  their ground (5 km by default), and talk about a boss stays near their home.
+- Successors: a few days after a named outlaw dies or is jailed, one of their gang takes over the
+  same ground under a new name, with a smaller bounty, a new contract and their own gossip.
+- Bounties that grow while an outlaw keeps raiding; contracts that pay more the further you travel.
+- Every contract you finish makes the faction that posted it think a little better of you
+  (up to friendly, never allied: they won't die for you).
+- Quests and errands from townsfolk, with a sensible limit on open jobs.
+- Town heat: towns remember your crimes, guards warn you, it fades with time. Push it too far and
+  a town may hire bounty hunters. They follow you across the map and attack; beat them and one
+  carries a warrant with your squad's name on it. Hurt a named outlaw's people and they may send
+  men after you too.
+- Trophies and keepsakes worn in a new neck slot: an outlaw's token, a fallen friend's keepsake,
+  a faction's charm.
+- Optional, off by default (still being tested): moving outlaw camps, harassment raids (small
+  factions harass big ones; nothing changes hands).
+
+
+SQUAD ROLES (Meitou 0.19+)
+--------------------------
+Give any of your squads a role from the game's own NPC routines, in the Squads tab:
+  Guard home / Guard home day and night / Patrol nearby (defend only) /
+  Rest at home / Wander from town to town / Escort another of your squads (like hired bodyguards).
+Give it a home building where it sleeps. Your orders always come first; the squad picks its role
+up again afterwards. Saved with your game.
+
+
+MADE TO FIT OTHER MEITOU MODS
+-----------------------------
+- Recap: titles, last stands, avenged squadmates, broken marches and more appear in its
+  "Previously on your adventure".
+- Kenshi Ultimate Overhaul: its armies march for real; your lookouts know an army from a patrol,
+  and a march you break goes into your History. Our small raids step aside, so nothing doubles up.
+- Guild & Quests: guild ranks, seals and jobs go into your History and earn squad titles.
+- Raid Commander: raids on your base you beat off are remembered; three and you are the Gatekeepers.
+- Execution / Brutality: every finishing blow and severed limb counts for whoever did it.
+- Meitou Transport: rides and voyages count apart from walking, with their own titles.
+- Quest Log & Town Map: finds our outlaws and their bounties by itself.
+- Landmark Banners: the Atlas lists each visited town's bar, doctor, police station and shops.
+- TimeLight Map: both sit top right by default; move the map (topcam corner bottom-right) or our button.
+
+
+REQUIREMENTS
+------------
+- MeitouClient 0.17.3 or later (0.19 recommended: faces and squad roles need it).
+- One mod: LivingWasteland (the code and the data in one folder), below your other mods.
+- A new game is recommended; in an existing save your record starts from zero.
+
+Made largely with Claude Code (generative AI). Early version: feedback and bug reports very welcome.

@@ -1,0 +1,4866 @@
+{
+ "pack": "notoriety",
+ "mod": "LivingWasteland",
+ "note": "Meitou only: titles are kept by the LivingWastelandMeitou helper from real kills and deeds (catalog in its Squad record window); dialogues with lw_if are left out of the Kenshi build.",
+ "titles": [
+  {
+   "id": "hardhand",
+   "name": "the Hard Hand",
+   "scope": "member",
+   "stat": "kills",
+   "at": 75
+  },
+  {
+   "id": "bonepicker",
+   "name": "Bonepicker",
+   "scope": "member",
+   "stat": "kills",
+   "at": 250
+  },
+  {
+   "id": "longshadow",
+   "name": "the Long Shadow",
+   "scope": "member",
+   "stat": "kills",
+   "at": 600
+  },
+  {
+   "id": "fist",
+   "name": "the Fist",
+   "scope": "member",
+   "stat": "knockouts",
+   "at": 150
+  },
+  {
+   "id": "breaker",
+   "name": "the Breaker",
+   "scope": "member",
+   "stat": "knockouts",
+   "at": 500
+  },
+  {
+   "id": "headsman",
+   "name": "the Headsman",
+   "scope": "member",
+   "stat": "executions",
+   "at": 25
+  },
+  {
+   "id": "avenger",
+   "name": "the Avenger",
+   "scope": "member",
+   "stat": "avenged",
+   "at": 1
+  },
+  {
+   "id": "limbtaker",
+   "name": "Limb-Taker",
+   "scope": "member",
+   "stat": "limbs",
+   "at": 40
+  },
+  {
+   "id": "carver",
+   "name": "the Carver",
+   "scope": "member",
+   "stat": "limbs",
+   "at": 150
+  },
+  {
+   "id": "redhands",
+   "name": "Red Hands",
+   "scope": "member",
+   "stat": "damage",
+   "at": 250000
+  },
+  {
+   "id": "dusteater",
+   "name": "Dust-Eater",
+   "scope": "member",
+   "stat": "kills",
+   "at": 100,
+   "faction": "Dust Bandits"
+  },
+  {
+   "id": "starver",
+   "name": "the Starver",
+   "scope": "member",
+   "stat": "kills",
+   "at": 100,
+   "faction": "Starving Bandits"
+  },
+  {
+   "id": "sabrebreaker",
+   "name": "Sabre-Breaker",
+   "scope": "member",
+   "stat": "kills",
+   "at": 60,
+   "faction": "Red Sabres"
+  },
+  {
+   "id": "skinner",
+   "name": "Skinner's Bane",
+   "scope": "member",
+   "stat": "kills",
+   "at": 50,
+   "faction": "Skin Bandits"
+  },
+  {
+   "id": "fogcutter",
+   "name": "Fog-Cutter",
+   "scope": "member",
+   "stat": "kills",
+   "at": 120,
+   "faction": "Fogmen"
+  },
+  {
+   "id": "cannibalbane",
+   "name": "Eater-Killer",
+   "scope": "member",
+   "stat": "kills",
+   "at": 150,
+   "faction": "Cannibals"
+  },
+  {
+   "id": "unbeliever",
+   "name": "the Unbeliever",
+   "scope": "member",
+   "stat": "kills",
+   "at": 50,
+   "faction": "The Holy Nation"
+  },
+  {
+   "id": "samuraibane",
+   "name": "Samurai-Killer",
+   "scope": "member",
+   "stat": "kills",
+   "at": 50,
+   "faction": "United Cities"
+  },
+  {
+   "id": "hornbreaker",
+   "name": "Horn-Breaker",
+   "scope": "member",
+   "stat": "kills",
+   "at": 50,
+   "faction": "Shek Kingdom"
+  },
+  {
+   "id": "guildbreaker",
+   "name": "Guild-Breaker",
+   "scope": "member",
+   "stat": "kills",
+   "at": 40,
+   "faction": "Traders Guild"
+  },
+  {
+   "id": "slaversend",
+   "name": "Slaver's End",
+   "scope": "member",
+   "stat": "kills",
+   "at": 50,
+   "faction": "Slave Traders"
+  },
+  {
+   "id": "hunterhunter",
+   "name": "Hunter of Hunters",
+   "scope": "member",
+   "stat": "kills",
+   "at": 50,
+   "faction": "Manhunters"
+  },
+  {
+   "id": "crabcracker",
+   "name": "Crab-Cracker",
+   "scope": "member",
+   "stat": "kills",
+   "at": 60,
+   "faction": "Crab Raiders"
+  },
+  {
+   "id": "dragoncutter",
+   "name": "Dragon-Cutter",
+   "scope": "member",
+   "stat": "kills",
+   "at": 40,
+   "faction": "Black Dragon Ninjas"
+  },
+  {
+   "id": "swampdrainer",
+   "name": "Swamp-Drainer",
+   "scope": "member",
+   "stat": "kills",
+   "at": 60,
+   "faction": "Swamp Ninjas"
+  },
+  {
+   "id": "reaverbane",
+   "name": "Reaver-Bane",
+   "scope": "member",
+   "stat": "kills",
+   "at": 60,
+   "faction": "Reavers"
+  },
+  {
+   "id": "bonebreaker",
+   "name": "Bone-Breaker",
+   "scope": "member",
+   "stat": "kills",
+   "at": 40,
+   "faction": "Band of Bones"
+  },
+  {
+   "id": "hiveburner",
+   "name": "Hive-Burner",
+   "scope": "member",
+   "stat": "kills",
+   "at": 80,
+   "faction": "Western Hive"
+  },
+  {
+   "id": "swarmbreaker",
+   "name": "Swarm-Breaker",
+   "scope": "member",
+   "stat": "kills",
+   "at": 80,
+   "faction": "Southern Hive"
+  },
+  {
+   "id": "narko",
+   "name": "Narko",
+   "scope": "member",
+   "stat": "named",
+   "at": 1,
+   "target": "Holy Lord Phoenix"
+  },
+  {
+   "id": "emperorkiller",
+   "name": "Emperor-Killer",
+   "scope": "member",
+   "stat": "named",
+   "at": 1,
+   "target": "Emperor Tengu"
+  },
+  {
+   "id": "queenbreaker",
+   "name": "Queen-Breaker",
+   "scope": "member",
+   "stat": "named",
+   "at": 1,
+   "target": "Esata the Stone Golem"
+  },
+  {
+   "id": "princesend",
+   "name": "the Prince's End",
+   "scope": "member",
+   "stat": "named",
+   "at": 1,
+   "target": "Fog Prince|Royal Fog Prince"
+  },
+  {
+   "id": "bugburner",
+   "name": "Bug-Burner",
+   "scope": "member",
+   "stat": "named",
+   "at": 1,
+   "target": "Bugmaster"
+  },
+  {
+   "id": "wizardsend",
+   "name": "the Wizard's End",
+   "scope": "member",
+   "stat": "named",
+   "at": 1,
+   "target": "Cannibal Grand Wizard"
+  },
+  {
+   "id": "redruin",
+   "name": "the Red Ruin",
+   "scope": "member",
+   "stat": "named",
+   "at": 1,
+   "target": "Red Sabre Boss"
+  },
+  {
+   "id": "kingslayer",
+   "name": "Kingslayer",
+   "scope": "member",
+   "stat": "named",
+   "at": 1,
+   "target": "Dust King"
+  },
+  {
+   "id": "fieldmedic",
+   "name": "Field Medic",
+   "scope": "member",
+   "stat": "hours:first aid",
+   "at": 6
+  },
+  {
+   "id": "bonesetter",
+   "name": "Bonesetter",
+   "scope": "member",
+   "stat": "hours:first aid",
+   "at": 25
+  },
+  {
+   "id": "hardtokill",
+   "name": "Hard to Kill",
+   "scope": "member",
+   "stat": "downed",
+   "at": 60
+  },
+  {
+   "id": "unburied",
+   "name": "the Unburied",
+   "scope": "member",
+   "stat": "downed",
+   "at": 200
+  },
+  {
+   "id": "unfinished",
+   "name": "the Unfinished",
+   "scope": "member",
+   "stat": "limbs_lost",
+   "at": 2
+  },
+  {
+   "id": "whatremains",
+   "name": "What Remains",
+   "scope": "member",
+   "stat": "limbs_lost",
+   "at": 4
+  },
+  {
+   "id": "walker",
+   "name": "the Walker",
+   "scope": "member",
+   "stat": "distance",
+   "at": 2000000
+  },
+  {
+   "id": "rider",
+   "name": "the Rider",
+   "scope": "member",
+   "stat": "ridden",
+   "at": 500000
+  },
+  {
+   "id": "boatman",
+   "name": "the Boatman",
+   "scope": "member",
+   "stat": "sailed",
+   "at": 100000
+  },
+  {
+   "id": "labourer",
+   "name": "the Labourer",
+   "scope": "member",
+   "stat": "hours:working",
+   "at": 60
+  },
+  {
+   "id": "wallraiser",
+   "name": "Wall-Raiser",
+   "scope": "member",
+   "stat": "hours:building",
+   "at": 30
+  },
+  {
+   "id": "packbeast",
+   "name": "Pack-Beast",
+   "scope": "member",
+   "stat": "hours:hauling",
+   "at": 30
+  },
+  {
+   "id": "scavenger",
+   "name": "the Scavenger",
+   "scope": "member",
+   "stat": "hours:looting",
+   "at": 10
+  },
+  {
+   "id": "quiethand",
+   "name": "the Quiet Hand",
+   "scope": "member",
+   "stat": "hours:sneak attacks",
+   "at": 3
+  },
+  {
+   "id": "brawler",
+   "name": "Old Brawler",
+   "scope": "member",
+   "stat": "hours:fighting",
+   "at": 15
+  },
+  {
+   "id": "veteran",
+   "name": "the Veteran",
+   "scope": "member",
+   "stat": "fights",
+   "at": 50
+  },
+  {
+   "id": "oldhand",
+   "name": "the Old Hand",
+   "scope": "member",
+   "stat": "fights",
+   "at": 150
+  },
+  {
+   "id": "laststand",
+   "name": "Last One Standing",
+   "scope": "member",
+   "stat": "last_stands",
+   "at": 3
+  },
+  {
+   "id": "smith",
+   "name": "the Smith",
+   "scope": "member",
+   "stat": "crafted",
+   "at": 30,
+   "kind": "weapons"
+  },
+  {
+   "id": "armourer",
+   "name": "the Armourer",
+   "scope": "member",
+   "stat": "crafted",
+   "at": 30,
+   "kind": "armour"
+  },
+  {
+   "id": "maker",
+   "name": "the Maker",
+   "scope": "member",
+   "stat": "crafted",
+   "at": 300
+  },
+  {
+   "id": "headtakers",
+   "name": "the Headtakers",
+   "scope": "squad",
+   "stat": "leaders",
+   "at": 25
+  },
+  {
+   "id": "chiefbreakers",
+   "name": "the Chiefbreakers",
+   "scope": "squad",
+   "stat": "leaders",
+   "at": 100
+  },
+  {
+   "id": "bountytakers",
+   "name": "the Bounty Takers",
+   "scope": "squad",
+   "stat": "named",
+   "at": 3
+  },
+  {
+   "id": "wantedenders",
+   "name": "the Wanted-Enders",
+   "scope": "squad",
+   "stat": "named",
+   "at": 15
+  },
+  {
+   "id": "gravefillers",
+   "name": "the Grave-Fillers",
+   "scope": "squad",
+   "stat": "kills",
+   "at": 800
+  },
+  {
+   "id": "guildhands",
+   "name": "the Guild Hands",
+   "scope": "squad",
+   "stat": "guild_jobs",
+   "at": 25
+  },
+  {
+   "id": "sealbearers",
+   "name": "the Seal-Bearers",
+   "scope": "squad",
+   "stat": "guild_seals",
+   "at": 10
+  },
+  {
+   "id": "guildsown",
+   "name": "the Guild's Own",
+   "scope": "squad",
+   "stat": "guild_rank",
+   "at": 6
+  },
+  {
+   "id": "gatekeepers",
+   "name": "the Gatekeepers",
+   "scope": "squad",
+   "stat": "raids_repelled",
+   "at": 3
+  },
+  {
+   "id": "unbroken",
+   "name": "the Unbroken",
+   "scope": "squad",
+   "stat": "fights_won",
+   "at": 400
+  },
+  {
+   "id": "longnight",
+   "name": "the Long Night",
+   "scope": "member",
+   "stat": "kills",
+   "at": 1500,
+   "legendary": true
+  },
+  {
+   "id": "lastmercy",
+   "name": "the Last Mercy",
+   "scope": "member",
+   "stat": "hours:first aid",
+   "at": 80,
+   "legendary": true
+  },
+  {
+   "id": "lordslayer",
+   "name": "Lordslayer",
+   "scope": "member",
+   "stat": "named",
+   "at": 1,
+   "targets": [
+    "Holy Lord Phoenix",
+    "Emperor Tengu",
+    "Esata the Stone Golem"
+   ],
+   "legendary": true
+  },
+  {
+   "id": "ashtide",
+   "name": "the Ash Tide",
+   "scope": "squad",
+   "stat": "kills",
+   "at": 3000,
+   "legendary": true
+  },
+  {
+   "id": "endofkings",
+   "name": "the End of Kings",
+   "scope": "squad",
+   "stat": "named",
+   "at": 1,
+   "targets": [
+    "Holy Lord Phoenix",
+    "Emperor Tengu",
+    "Esata the Stone Golem",
+    "Fog Prince|Royal Fog Prince",
+    "Bugmaster",
+    "Cannibal Grand Wizard",
+    "Red Sabre Boss",
+    "Dust King"
+   ],
+   "legendary": true
+  },
+  {
+   "id": "openhand",
+   "name": "the Open Hand",
+   "scope": "squad",
+   "stat": "alms",
+   "at": 2000
+  },
+  {
+   "id": "almsgivers",
+   "name": "the Almsgivers",
+   "scope": "squad",
+   "stat": "alms",
+   "at": 10000
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "nt_hated_dusteater_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "dusteater",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That's the one who's been thinning us out. Don't look at them.",
+      "Dust-Eater. A hundred of ours in the sand because of that one.",
+      "Walk wide. That's the one the boys talk about."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_dusteater_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "dusteater",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That's the one who's been thinning us out. Don't look at them.",
+      "Dust-Eater. A hundred of ours in the sand because of that one.",
+      "Walk wide. That's the one the boys talk about."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_starver_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "starver",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Starver. Leave them. There's easier food.",
+      "That one's put more of us in the ground than hunger has.",
+      "Don't. I've seen what's left after."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_starver_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "starver",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Starver. Leave them. There's easier food.",
+      "That one's put more of us in the ground than hunger has.",
+      "Don't. I've seen what's left after."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_sabrebreaker_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Red Sabres"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "sabrebreaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Sabre-Breaker. The boss wants that head.",
+      "That's the one. Sixty of ours. Let someone else be sixty-one.",
+      "Steady. Steady. Let them pass."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_sabrebreaker_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Red Sabres"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "sabrebreaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Sabre-Breaker. The boss wants that head.",
+      "That's the one. Sixty of ours. Let someone else be sixty-one.",
+      "Steady. Steady. Let them pass."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_skinner_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Skin Bandits"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "skinner",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Bad meat. Bad meat walking.",
+      "That one breaks us. Breaks us and walks away.",
+      "Not that one. Find another."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_skinner_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Skin Bandits"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "skinner",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Bad meat. Bad meat walking.",
+      "That one breaks us. Breaks us and walks away.",
+      "Not that one. Find another."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_fogcutter_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Fogmen"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "fogcutter",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Cut. Cuts us. Hide.",
+      "Fog-Cutter. Fog-Cutter. Back to the fog.",
+      "That one. The fog remembers that one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_fogcutter_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Fogmen"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "fogcutter",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Cut. Cuts us. Hide.",
+      "Fog-Cutter. Fog-Cutter. Back to the fog.",
+      "That one. The fog remembers that one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_cannibalbane_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Cannibals"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "cannibalbane",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Killer. Killer of eaters. Run.",
+      "Dhat one eat nodhing. Dhat one kill eaters.",
+      "No. Not dhat meat. Not dhat one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_cannibalbane_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "cannibalbane",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Killer. Killer of eaters. Run.",
+      "Dhat one eat nodhing. Dhat one kill eaters.",
+      "No. Not dhat meat. Not dhat one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_unbeliever_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "unbeliever",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Okran sees what you have done.",
+      "Fifty of the faithful. You will answer for every one.",
+      "The Unbeliever walks here. Watch them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_unbeliever_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "unbeliever",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Okran sees what you have done.",
+      "Fifty of the faithful. You will answer for every one.",
+      "The Unbeliever walks here. Watch them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_samuraibane_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "samuraibane",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That's the one who cuts down samurai. Be civil and be ready.",
+      "Samurai-Killer. The magistrates know your face.",
+      "Smile at them. Then tell the captain."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_samuraibane_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "samuraibane",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That's the one who cuts down samurai. Be civil and be ready.",
+      "Samurai-Killer. The magistrates know your face.",
+      "Smile at them. Then tell the captain."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_hornbreaker_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "hornbreaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Horn-Breaker. Fifty of our warriors. Face me, if you have honour left.",
+      "You kill Shek like it means nothing. It means something to us.",
+      "The Horn-Breaker. Our dead are waiting for you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_hornbreaker_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "hornbreaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Horn-Breaker. Fifty of our warriors. Face me, if you have honour left.",
+      "You kill Shek like it means nothing. It means something to us.",
+      "The Horn-Breaker. Our dead are waiting for you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_guildbreaker_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "guildbreaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Guild has a file on you. A thick one.",
+      "Guild-Breaker. Our accountants have priced your head.",
+      "Don't come near the warehouses."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_guildbreaker_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "guildbreaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Guild has a file on you. A thick one.",
+      "Guild-Breaker. Our accountants have priced your head.",
+      "Don't come near the warehouses."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_slaversend_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Slave Traders"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "slaversend",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That's the one killing our people on the roads.",
+      "Keep the stock quiet. Slaver's End is in town.",
+      "Don't sell to that one. Don't even talk to them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_slaversend_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Slave Traders"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "slaversend",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That's the one killing our people on the roads.",
+      "Keep the stock quiet. Slaver's End is in town.",
+      "Don't sell to that one. Don't even talk to them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_dragoncutter_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Black Dragon Ninjas"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "dragoncutter",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Dragon-Cutter. We know your name. We have always known it.",
+      "Forty brothers. The Dragon remembers.",
+      "Leave. While we allow it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_dragoncutter_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Black Dragon Ninjas"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "dragoncutter",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Dragon-Cutter. We know your name. We have always known it.",
+      "Forty brothers. The Dragon remembers.",
+      "Leave. While we allow it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_swampdrainer_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Swamp Ninjas"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "swampdrainer",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Swamp-Drainer. The bosses want a word. A long one.",
+      "That's the one who empties the swamp. Don't start nothing.",
+      "Sixty of ours in the water because of you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_swampdrainer_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Swamp Ninjas"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "swampdrainer",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Swamp-Drainer. The bosses want a word. A long one.",
+      "That's the one who empties the swamp. Don't start nothing.",
+      "Sixty of ours in the water because of you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_reaverbane_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Reavers"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "reaverbane",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Reaver-Bane. The black ships remember you.",
+      "You've cost us sixty. Someone will collect.",
+      "Not here. Not now. Later."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_reaverbane_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Reavers"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "reaverbane",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Reaver-Bane. The black ships remember you.",
+      "You've cost us sixty. Someone will collect.",
+      "Not here. Not now. Later."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_hiveburner_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "hiveburner",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hive-Burner. Queen is told. Queen isn't pleased.",
+      "Many drones gone. You. It was you.",
+      "Hive remembers. Hive doesn't forgive."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_hiveburner_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Western Hive"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "hiveburner",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hive-Burner. Queen is told. Queen isn't pleased.",
+      "Many drones gone. You. It was you.",
+      "Hive remembers. Hive doesn't forgive."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_swarmbreaker_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Southern Hive"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "swarmbreaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Swarm-Breaker. Swarm counts its dead. You're the count.",
+      "Kill. Kill. Kill the breaker. Not yet.",
+      "The Queen of the South has your smell."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_swarmbreaker_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Southern Hive"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "swarmbreaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Swarm-Breaker. Swarm counts its dead. You're the count.",
+      "Kill. Kill. Kill the breaker. Not yet.",
+      "The Queen of the South has your smell."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_narko_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "narko",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Narko! Narko walks in the light of Okran!",
+      "You killed the Holy Lord. There's no prayer long enough for what you are.",
+      "Demon. Phoenix's blood is on those hands. I see it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_narko_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "narko",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Narko! Narko walks in the light of Okran!",
+      "You killed the Holy Lord. There's no prayer long enough for what you are.",
+      "Demon. Phoenix's blood is on those hands. I see it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_emperorkiller_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "emperorkiller",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Emperor-Killer. Every noble in the Cities wants you skinned.",
+      "You killed the Emperor. Do you know how many lords that made happy? Not the ones watching you now.",
+      "The Cities will never forgive Tengu's death. Never."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_emperorkiller_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "emperorkiller",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Emperor-Killer. Every noble in the Cities wants you skinned.",
+      "You killed the Emperor. Do you know how many lords that made happy? Not the ones watching you now.",
+      "The Cities will never forgive Tengu's death. Never."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_queenbreaker_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "queenbreaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You killed Esata. Every Shek alive owes you a death.",
+      "Queen-Breaker. Our horns will find you.",
+      "Esata's killer. Stand and fight, if you have the spine."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_queenbreaker_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "queenbreaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You killed Esata. Every Shek alive owes you a death.",
+      "Queen-Breaker. Our horns will find you.",
+      "Esata's killer. Stand and fight, if you have the spine."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_princesend_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Fogmen"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "princesend",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Prince. Prince gone. You. You.",
+      "The Prince's End. Fog weeps. Fog hunts.",
+      "Gone. Prince gone. Kill. Kill."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_princesend_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Fogmen"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "princesend",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Prince. Prince gone. You. You.",
+      "The Prince's End. Fog weeps. Fog hunts.",
+      "Gone. Prince gone. Kill. Kill."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_wizardsend_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Cannibals"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "wizardsend",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Wizard gone. Wizard gone. You.",
+      "Bone-man killer. Run. Run.",
+      "No more wizard. Only you. Only meat."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_wizardsend_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "wizardsend",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Wizard gone. Wizard gone. You.",
+      "Bone-man killer. Run. Run.",
+      "No more wizard. Only you. Only meat."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_redruin_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Red Sabres"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "redruin",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Red Ruin. You put our boss in the ground.",
+      "Boss is dead because of you.",
+      "Red Ruin. The Sabres want their blood back."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_redruin_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Red Sabres"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "redruin",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Red Ruin. You put our boss in the ground.",
+      "Boss is dead because of you.",
+      "Red Ruin. The Sabres want their blood back."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_kingslayer_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "kingslayer",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Kingslayer. The Dust King's dead and the sand is still talking about it.",
+      "You killed the King. There's a price on you in every camp.",
+      "That's the one. That's the one who did the King."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_hated_kingslayer_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "kingslayer",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Kingslayer. The Dust King's dead and the sand is still talking about it.",
+      "You killed the King. There's a price on you in every camp.",
+      "That's the one. That's the one who did the King."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_dusteater",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "dusteater",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Dust-Eater. Fewer of them on the roads because of you.",
+      "The caravans speak well of you. Rare praise.",
+      "Keep at the Dust Bandits. Nobody here will mourn them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_starver",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "starver",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're the one clearing the starvers off the roads.",
+      "The Starver. My sister travels easier now.",
+      "Good work out there. Grim, but good."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_sabrebreaker",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "sabrebreaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Sabre-Breaker. You fight the Red Sabres. That's a warrior's work.",
+      "The Sabres fear you. The Shek respect that.",
+      "Kill more of them. Our scouts will sing of it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_skinner",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "skinner",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Skinners are abominations, and you break them.",
+      "Skinner's Bane. Walk in the light.",
+      "The machines fall to you. Good."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_fogcutter",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Hounds",
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "fogcutter",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Fog-Cutter. The fog is thinner because of you.",
+      "Mongrel owes people like you. More than it says.",
+      "You go into the fog and come back."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_cannibalbane",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom",
+    "Cannibal Hunters"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "cannibalbane",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Eater-Killer. Stay a while. Drinks are on someone.",
+      "You thin the eaters. Every village in the west owes you.",
+      "Good. Fewer eaters, fewer empty villages."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_unbeliever",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom",
+    "Flotsam Ninjas"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "unbeliever",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Unbeliever. The paladins pray against you. We drink to you.",
+      "Fifty of the Holy Nation. That's a good start.",
+      "Any enemy of the Nation can rest here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_samuraibane",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Rebel Farmers"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "samuraibane",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Samurai-Killer. The nobles fear you. Good.",
+      "Fewer samurai, fewer slaves. We remember who did it.",
+      "You fight the Cities. We're with you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_hornbreaker",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "hornbreaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Horn-Breaker. The Nation thanks you for your work against the beasts.",
+      "Okran guides your blade against the Shek.",
+      "Fifty of the horned ones. Well done."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_slaversend",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "slaversend",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Slaver's End. Every chain you break counts.",
+      "You kill slavers. Sit. You're welcome here.",
+      "Word is, the slave roads are quieter."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_hunterhunter",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "hunterhunter",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hunter of Hunters. The manhunters run from you now.",
+      "You turn the hunt. Good. Keep turning it.",
+      "Fewer manhunters, fewer sacks over heads."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_narko",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom",
+    "Flotsam Ninjas",
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "narko",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Narko. That's what they call you in the Nation. Here we call you a friend.",
+      "You killed the Phoenix. Sit down. Nobody here pays for your drink.",
+      "The Holy Lord is dead and the Nation trembles. Good work, Narko."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_emperorkiller",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas",
+    "Rebel Farmers"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "emperorkiller",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You killed Tengu. Do you know how many chains that broke?",
+      "Emperor-Killer. The Cities shake. We sing.",
+      "Sit. The one who killed Tengu does not stand at our fire."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_queenbreaker",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "queenbreaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Queen of the beasts is dead by your hand.",
+      "Queen-Breaker. The Nation will remember you kindly.",
+      "Esata's death was a gift to the Nation."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_princesend",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Hounds"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "princesend",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You killed the Fog Prince. Mongrel will never forget it.",
+      "The Prince's End. The fog's quieter.",
+      "Drink. You killed the Prince. Drink."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_wizardsend",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom",
+    "Cannibal Hunters"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "wizardsend",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Grand Wizard is dead. The eaters are lost without him.",
+      "The Wizard's End. Every village in the west can breathe.",
+      "You did what armies didn't. Thank you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_redruin",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "redruin",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Red Sabre boss is dead. The Shek honour that.",
+      "The Red Ruin. Sit with us.",
+      "The Sabres are broken. A good day's work."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_liked_kingslayer",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 25,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "kingslayer",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You killed the Dust King. The roads are safer. The Guild says thank you, in its way.",
+      "Kingslayer. The bounty was well earned.",
+      "A bandit king in the ground. Good."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_hardhand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "hardhand",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Careful with that one. Hard hands.",
+      "I've heard of you. Not good things, but things.",
+      "You have the look of someone who has buried people."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_bonepicker",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "bonepicker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Bonepicker. They say you leave nothing for the scavengers.",
+      "Keep your hands where I can see them, Bonepicker.",
+      "There goes trouble with a name."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_longshadow",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 15,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "longshadow",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Long Shadow. In my town.",
+      "I heard you'd killed more men than the plague. Looking at you, I believe it.",
+      "Don't stare. That's the Long Shadow. People who stare get noticed."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_limbtaker",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "limbtaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Limb-Taker. Counting arms and legs, are you?",
+      "I'd like to keep all of mine, thank you.",
+      "I heard you take limbs. I need mine for work."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_carver",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 14,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "carver",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Carver. People leave your fights in pieces.",
+      "Mind the Carver. They cut what they don't kill.",
+      "I saw what you left at the crossroads. Was that you? Of course it was."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_fist",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "fist",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That's the one who drops people with bare hands.",
+      "The Fist. I've seen the faces you leave.",
+      "Mind the hands on that one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_breaker",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "breaker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Breaker. Five hundred people woke up hurting because of you.",
+      "Don't start anything near the Breaker.",
+      "They say you've knocked down half the wasteland."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_fieldmedic",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "fieldmedic",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're the one who patches people up on the road. Good.",
+      "Field Medic. If I fall over, you'll know what to do.",
+      "A medic. Rare enough out here to be worth a nod."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_bonesetter",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "bonesetter",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Bonesetter. People say you've pulled more back from the edge than the clinics.",
+      "I owe a friend's leg to someone like you.",
+      "Bonesetter. Stay safe. We need people who mend."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_hardtokill",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "hardtokill",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Word is, you've been put in the dirt sixty times and got up every one.",
+      "Hard to Kill. Some would say hard to learn.",
+      "You again. Still breathing. Impressive, or stupid."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_unburied",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "unburied",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Unburied. Death keeps sending you back. Nobody wants you either, it seems.",
+      "I've heard you can't be killed. I'd rather not find out.",
+      "Two hundred times down. Still walking. What are you?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_unfinished",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "unfinished",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Unfinished. The world keeps taking pieces and you keep walking.",
+      "Lost another bit, have you? You're a stubborn sort.",
+      "There's less of you every time I hear the story."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_whatremains",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "whatremains",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "What Remains. That's the name, and it fits.",
+      "More metal than meat by now, I'd guess.",
+      "They keep taking bits of you, and you keep coming back for more."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_walker",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 6,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "walker",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Walker. Is there a road you haven't worn down?",
+      "You've seen more of this country than most maps.",
+      "Back again. Where to this time?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_labourer",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 6,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "labourer",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Labourer. Sixty hours at a machine.",
+      "A worker. We could use more of those, fewer of the other kind.",
+      "Good hands. Working hands."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_wallraiser",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 6,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "wallraiser",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Wall-Raiser. Building out there takes nerve. Or stupidity.",
+      "You put walls up where nobody else would. Good luck with that.",
+      "A builder. The wasteland knocks things down."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_quiethand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "quiethand",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Keep an eye on your back. The Quiet Hand is about.",
+      "I didn't hear you come in. I suppose that's the point.",
+      "Quiet Hand. People wake up with headaches near you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_redhands",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "redhands",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Red Hands. You've spilled enough blood to fill a well.",
+      "There's a smell about you. Old blood.",
+      "Wash, sometimes. People talk."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_legend_longnight_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "longnight",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Long Night. Fifteen hundred dead, people say. I believe it now I've seen you.",
+      "Mothers in the Hub scare children with your name.",
+      "When you came in the room got colder. That's not a figure of speech."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_legend_longnight_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "longnight",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Long Night. Fifteen hundred dead, people say. I believe it now I've seen you.",
+      "Mothers in the Hub scare children with your name.",
+      "When you came in the room got colder. That's not a figure of speech."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_bar_longnight",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "longnight",
+     "who": "target"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Long Night. Fifteen hundred dead, people say. I believe it now I've seen you.",
+      "Mothers in the Hub scare children with your name.",
+      "When you came in the room got colder. That's not a figure of speech."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_legend_lastmercy_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "lastmercy",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Last Mercy. You've pulled more people out of the dirt than anyone alive.",
+      "Word is, if you fall near the Last Mercy, you get up again.",
+      "I've heard of you. Everyone who's been saved has."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_legend_lastmercy_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "lastmercy",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Last Mercy. You've pulled more people out of the dirt than anyone alive.",
+      "Word is, if you fall near the Last Mercy, you get up again.",
+      "I've heard of you. Everyone who's been saved has."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_bar_lastmercy",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "lastmercy",
+     "who": "target"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Last Mercy. You've pulled more people out of the dirt than anyone alive.",
+      "Word is, if you fall near the Last Mercy, you get up again.",
+      "I've heard of you. Everyone who's been saved has."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_legend_lordslayer_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "lordslayer",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Lordslayer. The Phoenix, the Emperor, the Queen. All of them.",
+      "Every throne in the wasteland is empty because of you.",
+      "There are no lords left to bow to."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_legend_lordslayer_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "lordslayer",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Lordslayer. The Phoenix, the Emperor, the Queen. All of them.",
+      "Every throne in the wasteland is empty because of you.",
+      "There are no lords left to bow to."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_bar_lordslayer",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "lordslayer",
+     "who": "target"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Lordslayer. The Phoenix, the Emperor, the Queen. All of them.",
+      "Every throne in the wasteland is empty because of you.",
+      "There are no lords left to bow to."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_legend_ashtide_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "ashtide",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Ash Tide. Three thousand dead. Even the beak things go quiet when you pass.",
+      "Your crew is the reason the scavengers are fat this year.",
+      "The Ash Tide came through here once. We still sweep up after it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_legend_ashtide_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "ashtide",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Ash Tide. Three thousand dead. Even the beak things go quiet when you pass.",
+      "Your crew is the reason the scavengers are fat this year.",
+      "The Ash Tide came through here once. We still sweep up after it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_bar_ashtide",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "ashtide",
+     "who": "target"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Ash Tide. Three thousand dead. Even the beak things go quiet when you pass.",
+      "Your crew is the reason the scavengers are fat this year.",
+      "The Ash Tide came through here once. We still sweep up after it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_legend_endofkings_n",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "endofkings",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The End of Kings. Every crowned head out there, in the ground. What's left to rule?",
+      "Your crew killed them all. The Phoenix, Tengu, Esata, the Fog Prince.",
+      "Nobody's in charge any more. That's your doing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_legend_endofkings_e",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "endofkings",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The End of Kings. Every crowned head out there, in the ground. What's left to rule?",
+      "Your crew killed them all. The Phoenix, Tengu, Esata, the Fog Prince.",
+      "Nobody's in charge any more. That's your doing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_bar_endofkings",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "endofkings",
+     "who": "target"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The End of Kings. Every crowned head out there, in the ground. What's left to rule?",
+      "Your crew killed them all. The Phoenix, Tengu, Esata, the Fog Prince.",
+      "Nobody's in charge any more. That's your doing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_bar_headtakers",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "headtakers",
+     "who": "target"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Heard of the Headtakers? They go for the leader first.",
+      "That crew that kills bosses. Twenty-five chiefs, people say. Bad for the bandit trade.",
+      "If you lead a gang, you don't want the Headtakers knowing your name."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_bar_chiefbreakers",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "chiefbreakers",
+     "who": "target"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Chiefbreakers. A hundred bosses in the dirt. Every gang out there counts its leaders twice now.",
+      "Nobody wants to be in charge of anything while the Chiefbreakers are walking.",
+      "They say the bandit bosses pay each other not to be first in line."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_bar_bountytakers",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "bountytakers",
+     "who": "target"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Some crew's been taking named heads in. The posters keep coming down.",
+      "Bounty Takers, people call them. Three names crossed off, and they're looking for the next.",
+      "Whoever cashed those bounties has a reputation now."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_bar_wantedenders",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "wantedenders",
+     "who": "target"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Wanted-Enders. Fifteen named heads. The poster wall's getting bare.",
+      "Every name on the board is drinking somewhere else now.",
+      "Outlaws sleep badly while the Wanted-Enders are about."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_bar_gravefillers",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "gravefillers",
+     "who": "target"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Grave-Fillers. Eight hundred dead, if you believe it.",
+      "There's a crew out there that's killed more than the fog. Don't ask me where they are.",
+      "Grave-Fillers. Even the scavengers can't keep up."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_headtakers",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "headtakers",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're with the Headtakers, aren't you.",
+      "Headtakers in town. The bandits will be nervous tonight.",
+      "Your lot goes for the boss first. Smart."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_wantedenders",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "wantedenders",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're the crew clearing the poster wall. Some say thank you. Some say watch your back.",
+      "Wanted-Enders. My cousin's village sleeps better because of you.",
+      "The board's half empty. That's your doing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_smith",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "smith",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You're the smith people talk about.",
+      "The Smith. If my blade breaks, I know who to find.",
+      "Your work's turning up all over."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_armourer",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 8,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "armourer",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Armourer. People walk out of fights in your plates.",
+      "Good armour's worth more than a good sword. You'd know.",
+      "I heard your armour stops what other armour doesn't."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_veteran",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "veteran",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You have the look of someone who has seen a lot of fights.",
+      "A veteran. You can tell by how they stand.",
+      "Fifty fights and still walking. Not many can say that."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_laststand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "laststand",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "They say you were the last one standing.",
+      "Last One Standing. Your friends must be glad you're stubborn.",
+      "When everyone else drops, you keep going. I've heard the stories."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_town_oldhand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 10,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "oldhand",
+     "who": "target"
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Old Hand. Every scar has a story, and you have a lot of scars.",
+      "A hundred and fifty fights. You must be tired.",
+      "Old Hand. Don't start anything with that one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nt_bar_unbroken",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Traders Guild",
+    "Nameless",
+    "Drifters"
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "title": "unbroken",
+     "who": "target"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That crew they call the Unbroken. Four hundred fights won between them.",
+      "The Unbroken. Knock them down, they get up, they win anyway.",
+      "Nobody bets against the Unbroken any more."
+     ]
+    }
+   ]
+  }
+ ]
+}

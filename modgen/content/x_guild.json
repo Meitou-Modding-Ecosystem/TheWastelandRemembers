@@ -1,0 +1,936 @@
+{
+ "pack": "x_guild",
+ "mod": "LivingWasteland",
+ "dialogues": [
+  {
+   "id": "gl_licence_mercenary_guild",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "packages_only": true,
+   "player_only": true,
+   "personality": "Honorable",
+   "score": 2,
+   "if": [
+    {
+     "cond": "DC_FACTION_RANK",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -20
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Eight hundred cats and your name goes in the book. Guild work, Guild rates, and the big names when they come up.",
+      "You want Guild work? The book is open. Eight hundred for the ink."
+     ],
+     "then": [
+      {
+       "say": [
+        "Here's the eight hundred.",
+        "Put my name in.",
+        "Done. Take it."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": ">",
+         "value": 799
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Pay the eight hundred, then. You're Guild now. Don't embarrass the book."
+         ],
+         "effects": [
+          [
+           "DA_TAKE_MONEY",
+           800
+          ],
+          [
+           "DA_INCREASE_FACTION_RANK",
+           1
+          ],
+          [
+           "DA_AFFECT_RELATIONS",
+           10
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I don't have it.",
+        "Too rich for me today."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": "<",
+         "value": 800
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Come back when you have eight hundred. The book doesn't take promises."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Not interested.",
+        "I work alone."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Suit yourself. The book stays open.",
+          "Then the small jobs are all you get."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gl_member_mercenary_guild",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Mercenary Guild"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_FACTION_RANK",
+     "who": "me",
+     "cmp": ">",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "One of ours. Good. Keep the Guild out of the gutter.",
+      "You're in the book. Act like it.",
+      "Member. The board has work when you want it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gl_licence_anti_slavers",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "packages_only": true,
+   "player_only": true,
+   "personality": "Honorable",
+   "score": 2,
+   "if": [
+    {
+     "cond": "DC_FACTION_RANK",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -20
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "We take what help we can get, but we take it on trust. Eight hundred cats, for the people we have freed and will free. Then you're one of us, as far as anyone asks.",
+      "You want to work against the slavers properly? Eight hundred, for the cause. It buys food, not favours."
+     ],
+     "then": [
+      {
+       "say": [
+        "Here's the eight hundred.",
+        "Put my name in.",
+        "Done. Take it."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": ">",
+         "value": 799
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Good. You're with us now. There's harder work than the small jobs; ask for it."
+         ],
+         "effects": [
+          [
+           "DA_TAKE_MONEY",
+           800
+          ],
+          [
+           "DA_INCREASE_FACTION_RANK",
+           1
+          ],
+          [
+           "DA_AFFECT_RELATIONS",
+           10
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I don't have it.",
+        "Too rich for me today."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": "<",
+         "value": 800
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Eight hundred. Not a cat less. The freed eat before you do."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Not interested.",
+        "I work alone."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Suit yourself. The book stays open.",
+          "Then the small jobs are all you get."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gl_member_anti_slavers",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_FACTION_RANK",
+     "who": "me",
+     "cmp": ">",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "One of ours. Good. Keep Tinfist's people out of the gutter.",
+      "You're in the book. Act like it.",
+      "Member. The board has work when you want it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gl_licence_tech_hunters",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "packages_only": true,
+   "player_only": true,
+   "personality": "Honorable",
+   "score": 2,
+   "if": [
+    {
+     "cond": "DC_FACTION_RANK",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -20
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Hunters take associates. Eight hundred cats covers the paperwork and the first round of lies about how dangerous it is.",
+      "An associate's licence. Eight hundred. It gets you the real contracts, and the ones nobody comes back from."
+     ],
+     "then": [
+      {
+       "say": [
+        "Here's the eight hundred.",
+        "Put my name in.",
+        "Done. Take it."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": ">",
+         "value": 799
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Signed. You are a Hunter's associate. The dangerous contracts are yours to refuse now."
+         ],
+         "effects": [
+          [
+           "DA_TAKE_MONEY",
+           800
+          ],
+          [
+           "DA_INCREASE_FACTION_RANK",
+           1
+          ],
+          [
+           "DA_AFFECT_RELATIONS",
+           10
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I don't have it.",
+        "Too rich for me today."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": "<",
+         "value": 800
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Eight hundred for the licence. Come back when the ruins have paid you."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Not interested.",
+        "I work alone."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Suit yourself. The book stays open.",
+          "Then the small jobs are all you get."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gl_member_tech_hunters",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_FACTION_RANK",
+     "who": "me",
+     "cmp": ">",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "One of ours. Good. Keep the Hunters out of the gutter.",
+      "You're in the book. Act like it.",
+      "Member. The board has work when you want it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gl_licence_traders_guild",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Traders Guild"
+   ],
+   "packages": [
+    "bar:all"
+   ],
+   "packages_only": true,
+   "player_only": true,
+   "personality": "Honorable",
+   "score": 2,
+   "if": [
+    {
+     "cond": "DC_FACTION_RANK",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -20
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Guild takes contractors. Eight hundred cats, a stamp, and the Guild's bigger problems become your opportunities.",
+      "Contractor's stamp. Eight hundred. The Guild pays well and asks few questions, in that order."
+     ],
+     "then": [
+      {
+       "say": [
+        "Here's the eight hundred.",
+        "Put my name in.",
+        "Done. Take it."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": ">",
+         "value": 799
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Stamped. You're a Guild contractor. The expensive names are on the board now."
+         ],
+         "effects": [
+          [
+           "DA_TAKE_MONEY",
+           800
+          ],
+          [
+           "DA_INCREASE_FACTION_RANK",
+           1
+          ],
+          [
+           "DA_AFFECT_RELATIONS",
+           10
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "I don't have it.",
+        "Too rich for me today."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "if": [
+        {
+         "cond": "DC_PLAYERMONEY",
+         "who": "target",
+         "cmp": "<",
+         "value": 800
+        }
+       ],
+       "then": [
+        {
+         "say": [
+          "Eight hundred for the stamp. The Guild doesn't extend credit to strangers."
+         ]
+        }
+       ]
+      },
+      {
+       "say": [
+        "Not interested.",
+        "I work alone."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "pct": 0,
+       "then": [
+        {
+         "say": [
+          "Suit yourself. The book stays open.",
+          "Then the small jobs are all you get."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gl_member_traders_guild",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 12,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "if": [
+    {
+     "cond": "DC_FACTION_RANK",
+     "who": "me",
+     "cmp": ">",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "One of ours. Good. Keep the Guild out of the gutter.",
+      "You're in the book. Act like it.",
+      "Member. The board has work when you want it."
+     ]
+    }
+   ]
+  }
+ ],
+ "quests": [
+  {
+   "id": "bg_th_books",
+   "offer": {
+    "factions": [
+     "Tech Hunters"
+    ],
+    "chance": 40,
+    "say": [
+     "The University is short of reading. Two Ancient Science Books, intact, and the Hunters pay for the trouble of not selling them to a noble.",
+     "Books. Old ones. Two of them. We pay more than the shops because we actually read them."
+    ],
+    "accept": [
+     "I will find them.",
+     "Two books. Fine."
+    ],
+    "accepted": [
+     "Ruins, mostly. Or thieves. Bring them to me."
+    ],
+    "decline": [
+     "Not my trade.",
+     "Another time."
+    ]
+   },
+   "steps": [],
+   "report": {
+    "say": [
+     "Two books, untouched. That's more than most bring back."
+    ],
+    "reward": 1800,
+    "target_has_item": [
+     "Ancient Science Book"
+    ],
+    "take_items": [
+     [
+      "Ancient Science Book",
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bg_shek_meat",
+   "offer": {
+    "factions": [
+     "Shek Kingdom"
+    ],
+    "chance": 40,
+    "say": [
+     "The war camp eats. Eight dried meat, and the Kingdom pays in cats and in not asking where you got it.",
+     "Meat for the warriors. Eight, dried. Bring it to me and nobody else."
+    ],
+    "accept": [
+     "Eight. I will bring it.",
+     "Dried meat. Done."
+    ],
+    "accepted": [
+     "Dried, not raw. A warrior with a bad stomach is a liability."
+    ],
+    "decline": [
+     "Not my trade.",
+     "Another time."
+    ]
+   },
+   "steps": [],
+   "report": {
+    "say": [
+     "Eight. Counted. The camp eats tonight because of a flatskin."
+    ],
+    "reward": 1000,
+    "target_has_item": [
+     "Dried Meat"
+    ],
+    "take_items": [
+     [
+      "Dried Meat",
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bg_uc_copper",
+   "offer": {
+    "factions": [
+     "United Cities"
+    ],
+    "chance": 40,
+    "say": [
+     "The clerks want copper and the mines are slow. Ten copper, to me, and the Cities pay above the going rate. Quietly.",
+     "Ten copper. Mined or bought, I don't care."
+    ],
+    "accept": [
+     "Ten copper. Yes.",
+     "I know a vein."
+    ],
+    "accepted": [
+     "Ten. Bring them here. Not to the store; to me."
+    ],
+    "decline": [
+     "Not my trade.",
+     "Another time."
+    ]
+   },
+   "steps": [],
+   "report": {
+    "say": [
+     "Ten copper. The clerks will be pleased, which is rare."
+    ],
+    "reward": 1200,
+    "target_has_item": [
+     "Copper"
+    ],
+    "take_items": [
+     [
+      "Copper",
+      10
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bg_hn_fruit",
+   "offer": {
+    "factions": [
+     "The Holy Nation"
+    ],
+    "chance": 40,
+    "say": [
+     "The tithe is short this season. Ten greenfruit for the temple stores, and Okran's thanks, and mine, in cats.",
+     "Fruit. Ten. The faithful eat and the stranger is paid. That's how it should be."
+    ],
+    "accept": [
+     "Ten greenfruit.",
+     "For the temple, then."
+    ],
+    "accepted": [
+     "Ten. Fresh. Bring them to me and I will see them counted."
+    ],
+    "decline": [
+     "Not my trade.",
+     "Another time."
+    ]
+   },
+   "steps": [],
+   "report": {
+    "say": [
+     "Ten, and not a bruise on them. Okran provides, through strange hands."
+    ],
+    "reward": 800,
+    "target_has_item": [
+     "Greenfruit"
+    ],
+    "take_items": [
+     [
+      "Greenfruit",
+      10
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bg_as_splints",
+   "offer": {
+    "factions": [
+     "Anti-Slavers"
+    ],
+    "chance": 40,
+    "say": [
+     "We break chains and sometimes bones with them. Three splint kits, and the freed walk again.",
+     "Splints. Three. Nobody sells to us openly, so you'll have to."
+    ],
+    "accept": [
+     "Three splint kits.",
+     "I can get those."
+    ],
+    "accepted": [
+     "Three. Bring them to me; the others would ask who sent you."
+    ],
+    "decline": [
+     "Not my trade.",
+     "Another time."
+    ]
+   },
+   "steps": [],
+   "report": {
+    "say": [
+     "Three kits. Someone walks tonight who crawled yesterday."
+    ],
+    "reward": 1100,
+    "target_has_item": [
+     "Splint Kit"
+    ],
+    "take_items": [
+     [
+      "Splint Kit",
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bg_sw_hemp",
+   "offer": {
+    "factions": [
+     "Swampers"
+    ],
+    "chance": 40,
+    "say": [
+     "The den is dry. Six hemp, and the boss pays well because the boss is twitchy.",
+     "Hemp. Six bundles. Don't ask what it's for. You know what it's for."
+    ],
+    "accept": [
+     "Six hemp.",
+     "I will find it."
+    ],
+    "accepted": [
+     "Six. Here, to me. Not to the gate; the gate talks."
+    ],
+    "decline": [
+     "Not my trade.",
+     "Another time."
+    ]
+   },
+   "steps": [],
+   "report": {
+    "say": [
+     "Six. Good hemp too. The boss stops twitching."
+    ],
+    "reward": 1300,
+    "target_has_item": [
+     "Hemp"
+    ],
+    "take_items": [
+     [
+      "Hemp",
+      6
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bg_tg_fabrics",
+   "offer": {
+    "factions": [
+     "Traders Guild"
+    ],
+    "chance": 40,
+    "say": [
+     "A caravan lost its cloth to the dust. Five fabrics to fill the order, and the Guild pays the contractor's rate.",
+     "Fabrics. Five. The buyer is waiting and the Guild doesn't keep buyers waiting."
+    ],
+    "accept": [
+     "Five fabrics.",
+     "Consider it done."
+    ],
+    "accepted": [
+     "Five. Clean. Bring them to me."
+    ],
+    "decline": [
+     "Not my trade.",
+     "Another time."
+    ]
+   },
+   "steps": [],
+   "report": {
+    "say": [
+     "Five fabrics, order filled, buyer happy. The Guild's rate, as promised."
+    ],
+    "reward": 1400,
+    "target_has_item": [
+     "Fabrics"
+    ],
+    "take_items": [
+     [
+      "Fabrics",
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "id": "bg_mg_sake",
+   "offer": {
+    "factions": [
+     "Mercenary Guild"
+    ],
+    "chance": 40,
+    "say": [
+     "The lads are dry and the barman is slow. Four sake, and the Guild pays better than the bar sells.",
+     "Sake. Four bottles. It isn't a contract, it's a favour with cats attached."
+    ],
+    "accept": [
+     "Four sake.",
+     "Easy."
+    ],
+    "accepted": [
+     "Four. Bring them to me before they start singing without it."
+    ],
+    "decline": [
+     "Not my trade.",
+     "Another time."
+    ]
+   },
+   "steps": [],
+   "report": {
+    "say": [
+     "Four. You're a hero to about nine people tonight."
+    ],
+    "reward": 700,
+    "target_has_item": [
+     "Sake"
+    ],
+    "take_items": [
+     [
+      "Sake",
+      4
+     ]
+    ]
+   }
+  }
+ ]
+}

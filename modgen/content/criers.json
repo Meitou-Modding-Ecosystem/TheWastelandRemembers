@@ -1,0 +1,353 @@
+{
+ "pack": "criers",
+ "mod": "LivingWasteland",
+ "meitou_only": true,
+ "note": "Meitou only: town criers (Criers.cs). Now and then the helper picks a local of the town's own faction near your squad and fires EV_I_SEE_PLAYER_NICE_BUILDING on them (an event nothing else uses). Real news wins (the crier copies of rumours, outlaw news, war news and title talk, built in content.py, score 10); with no news to tell, the faction's own proclamation below about half the time (score 0, chance 50), so a quiet town stays mostly quiet.",
+ "dialogues": [
+  {
+   "id": "cr_hn",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "chance": 50,
+   "repeat": 6,
+   "score": 0,
+   "if": [
+    {
+     "cond": "DC_IN_A_NON_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Okran's light on all who keep his law!",
+      "Hear, faithful! The Phoenix watches. Sin is seen.",
+      "Report the skeletons and the heathen to the Paladins.",
+      "Pray, work, obey. So Okran wills it.",
+      "The Inquisition walks among you. The pure have nothing to fear."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cr_uc",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "factions": [
+    "United Cities",
+    "Traders Guild"
+   ],
+   "player_only": true,
+   "chance": 50,
+   "repeat": 6,
+   "score": 0,
+   "if": [
+    {
+     "cond": "DC_IN_A_NON_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "By the Emperor's grace, the roads are safe for honest folk.",
+      "Hear, citizens! Taxes are due, and the samurai collect.",
+      "Trade is the Empire's lifeblood. Buy, sell, and keep your purse close.",
+      "Bounties posted! The nobles pay well for outlaw heads.",
+      "Mind your betters. A noble's word is law here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cr_shek",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "chance": 50,
+   "repeat": 6,
+   "score": 0,
+   "if": [
+    {
+     "cond": "DC_IN_A_NON_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Strength and honour! The Kingdom stands!",
+      "Hear, warriors! A Shek who runs from battle shames us all.",
+      "Fight well, die well. There is nothing else.",
+      "The Queen keeps the peace now. Not every warrior likes it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cr_th",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true,
+   "chance": 50,
+   "repeat": 6,
+   "score": 0,
+   "if": [
+    {
+     "cond": "DC_IN_A_NON_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hear this! Books and old tech bought, fair prices for what the ruins give up.",
+      "The ruins are open to those brave enough.",
+      "Bring back what the old world left. The Hunters pay in cats."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cr_as",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "chance": 50,
+   "repeat": 6,
+   "score": 0,
+   "if": [
+    {
+     "cond": "DC_IN_A_NON_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hear! No chains in this town. Not now, not ever.",
+      "Every slave freed is one more blade against the Empire.",
+      "Bring us the shackled and we'll strike the irons off."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cr_sw",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "factions": [
+    "Swampers"
+   ],
+   "player_only": true,
+   "chance": 50,
+   "repeat": 6,
+   "score": 0,
+   "if": [
+    {
+     "cond": "DC_IN_A_NON_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "News for the swamp! Mind your step and your purse.",
+      "The gangs keep the peace here. Pay them and you'll keep yours.",
+      "Blood spiders in the reeds again. Keep to the walkways."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cr_dr",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "factions": [
+    "Drifters"
+   ],
+   "player_only": true,
+   "chance": 50,
+   "repeat": 6,
+   "score": 0,
+   "if": [
+    {
+     "cond": "DC_IN_A_NON_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Bar's open. Water's extra.",
+      "Anyone selling meat, see the barman.",
+      "Keep your blades sheathed inside the walls.",
+      "Bandits on the roads again. Travel in groups.",
+      "Looking for work? Ask around the bar."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cr_tn",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "factions": [
+    "Trade Ninjas"
+   ],
+   "player_only": true,
+   "chance": 50,
+   "repeat": 6,
+   "score": 0,
+   "if": [
+    {
+     "cond": "DC_IN_A_NON_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Beds upstairs, paid up front. No refunds for the dead.",
+      "Whatever you're carrying, there's a buyer here. Don't ask who.",
+      "Fight in the street and you'll pay for the street.",
+      "Holy Nation patrol came through yesterday. Keep your head down and your idols hidden.",
+      "Shek come through looking for a scrap. Don't give them one.",
+      "Bar's open. Don't drink the water, drink the beer."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cr_ft",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true,
+   "chance": 50,
+   "repeat": 6,
+   "score": 0,
+   "if": [
+    {
+     "cond": "DC_IN_A_NON_PLAYER_TOWN",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Fair prices, no questions.",
+      "Caravan leaving at dawn if anyone wants to walk with it.",
+      "Buying hides and copper. Good rates.",
+      "Keep the peace in here and nobody gets hurt."
+     ]
+    }
+   ]
+  }
+ ]
+}

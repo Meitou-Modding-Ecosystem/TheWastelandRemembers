@@ -1,0 +1,8546 @@
+{
+ "pack": "base_reactions",
+ "dialogues": [
+  {
+   "id": "bl_hn_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A house for the faithful? No. Then whose house, stranger?",
+      "Your own roof. Does the Flame know whose it is?",
+      "I'll remember this place. So will the Inquisitors.",
+      "Build what you like, outlander. Okran counts every stone.",
+      "Heresy likes quiet corners. Be sure this is not one.",
+      "We're watching you, stranger. Not unkindly.",
+      "Whose blessing did you build under? Not ours, I think.",
+      "A roof with no priest under it. That is how the rot begins."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hn_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A good house, /BROTHER/. May the Flame find it clean.",
+      "Honest work on honest ground. The Lord of Light sees it.",
+      "You build like a man with faith. Keep it.",
+      "Peace on your roof, traveller. May no darkness cross it.",
+      "Not many outlanders keep a decent house.",
+      "The faithful would sleep easy here."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hn_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walls. Good. The Lord of Light favours a house that can be defended.",
+      "Stone against the dark. At least you have sense.",
+      "A wall is a prayer in stone. Keep it whole.",
+      "Walls keep the heretics out. Mind that they don't keep the truth out too.",
+      "Behind your walls, who do you answer to? I ask only to know."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hn_small",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A shack and a fire. The faithful have lived on less.",
+      "Small. Humble. The Lord of Light doesn't mind small.",
+      "One fire in the wastes. Tend it, or the dark will.",
+      "You have started. Starting is the part most don't manage."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_TOWN_LEVEL_CURRENT_LOCATION",
+     "who": "target",
+     "cmp": "<",
+     "value": 2
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hn_grand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A town, of sorts. A town needs a priest. Have you a priest?",
+      "So many roofs. Okran did not build the first Nation on less.",
+      "This is more than a camp. Holy Nation law will want to know of it.",
+      "A settlement of outlanders. I'd like to meet whoever speaks for it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_TOWN_LEVEL_CURRENT_LOCATION",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hn_beasts",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A beast with a roof. The Lord of Light weeps.",
+      "Darkness learns to build now. It won't last.",
+      "Look, it keeps a house like a man. A mockery. A dull one.",
+      "This is no house. It is a lair with a door.",
+      "Mark this place. It will need cleansing when the time comes.",
+      "Walls and doors for the darkened. What next, a church?"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 33,
+   "repeat": 3,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII",
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone",
+    "Shek",
+    "Fishman"
+   ]
+  },
+  {
+   "id": "bl_hn_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "You hold this place? Not for long. The Flame is patient.",
+      "Heretic, your house will burn warm.",
+      "Every wall falls to the faithful. Yours is only a wall.",
+      "Build high, heretic. It is farther to fall.",
+      "The Lord of Light sees this place.",
+      "You made a home in sinful ground. I'll help you leave it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hn_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Blessings upon this house, /BROTHER/. Is there bread?",
+      "May the Lord of Light keep your walls and your sleep.",
+      "Your doors are open to the faithful.",
+      "A holy house, however small. Well done."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hn_ally_grand",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "A town worthy of the Nation. Okran would nod, I think.",
+      "The Holy Nation could use a settlement like this on the road.",
+      "You have built where others only passed.",
+      "Should the Nation need a hall in these lands, we know whose door to knock."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_TOWN_LEVEL_CURRENT_LOCATION",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hn_nice_hostile",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "A fine house for a heretic. The Flame will leave it standing, perhaps.",
+      "You build well. It makes the sin worse.",
+      "A handsome place. Pity who lives in it.",
+      "Fine stonework. Heretics always take pride in their cages."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": -20
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hn_nice_mid",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "That is a good house. The faithful would be glad of it.",
+      "A tidy place. Keep it free of darkness.",
+      "Well made. Whoever built this had faith in his hands at least.",
+      "I've seen worse chapels. This is better than most."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hn_nice_ally",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Blessed craftsmanship, /BROTHER/. The Lord of Light favours the builder.",
+      "A true house of the faithful. I will tell the others.",
+      "You've done well here. The Nation sees it.",
+      "Now that is a house worth defending."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 39
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hn_takeover",
+   "event": "EV_TAKEN_OVER_PLAYER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "The land is returned to the Lord of Light.",
+      "Purge it. Burn what will not be blessed.",
+      "Cleansed. Another stone in the Nation.",
+      "Heretics out. The faithful in.",
+      "Hold the gate. Let none of the darkness back in.",
+      "This ground was always ours."
+     ]
+    }
+   ],
+   "if": [],
+   "chance": 100,
+   "repeat": 4,
+   "factions": [
+    "The Holy Nation"
+   ]
+  },
+  {
+   "id": "bl_shek_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A /FLATSKIN/ builds. Does he know what he builds on?",
+      "Your wall faces the wrong way. A Shek child would see it.",
+      "You hold ground. Can you hold it when warriors come?",
+      "Poor ground. Good ground is won, not bought.",
+      "A fortress is a promise to fight. See that you keep it.",
+      "I judge your defences, /FLATSKIN/. They aren't kind to you."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_shek_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You build as warriors build. Plain and strong.",
+      "A solid place, /FLATSKIN/. Better than I expected.",
+      "This house has been thought about. Good.",
+      "There's honour in a well-held home."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_shek_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Good walls. A warrior's house. I approve, /FLATSKIN/.",
+      "Walls tell me you expect a fight.",
+      "Stone is honest. It doesn't lie about what it will stop.",
+      "Strong walls. Now, who stands on them?",
+      "Your gate is your pride. Keep it shut to cowards."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_shek_grand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A whole settlement. A /FLATSKIN/ doesn't often finish what he starts.",
+      "You have raised a town in the dust.",
+      "So many roofs to defend. Do you have so many spears?",
+      "The Kingdom may wish to know who rules this place."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_TOWN_LEVEL_CURRENT_LOCATION",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_shek_kin",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A hall for a Shek in foreign land. Kral sees it, kinsman.",
+      "You raise a house for our people.",
+      "Shek build, Shek hold. Well met, kinsman.",
+      "This ground is yours by blade and by work."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 33,
+   "repeat": 3,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Shek"
+   ]
+  },
+  {
+   "id": "bl_shek_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Your walls are paper. I have broken thicker.",
+      "You made a home, /FLATSKIN/. Now you have more to lose.",
+      "I will take this house and sit in your chair.",
+      "A fine hall. It would look better with a Shek flag.",
+      "Hold your gate, if you can. I would enjoy it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_shek_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Your hall is well kept, friend.",
+      "I would fight beside you on these walls.",
+      "There is honour in this house. I feel it.",
+      "Shek do not praise lightly. This is a good place."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_shek_nice_mid",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "A good building. There's skill in it.",
+      "Well made. The Stone Golem would approve.",
+      "Solid and plain. Just so.",
+      "I have seen Shek halls less sound than this."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_shek_nice_ally",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "A hall worthy of a warrior. I'll speak of it.",
+      "You honour us by building well, friend.",
+      "This is how a home should look.",
+      "Kral smiles on a house like this."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 39
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_shek_takeover",
+   "event": "EV_TAKEN_OVER_PLAYER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "This ground is Shek now. Kral watches.",
+      "Throw the flatskins out. Keep the walls.",
+      "Raise the banner. Let them see who holds this.",
+      "A good hall. We'll make better use of it."
+     ]
+    }
+   ],
+   "if": [],
+   "chance": 100,
+   "repeat": 4,
+   "factions": [
+    "Shek Kingdom"
+   ]
+  },
+  {
+   "id": "bl_uc_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Your own place, eh? Registered? No? Hm.",
+      "Building on Empire land with no paperwork.",
+      "Somebody's going to want a cut of this. Might as well be us.",
+      "Pretty. Pay your dues and nobody has to ask about it.",
+      "Under whose charter, stranger? I ask only so I can write it down.",
+      "The Empire keeps ledgers on everything, even this."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_uc_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Nice outpost. A civilised corner of the wastes.",
+      "Law and order, one wall at a time.",
+      "You have the look of a proper tax-paying citizen.",
+      "A tidy house on a tidy road. The Empire could use more."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_uc_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walls, a gate, a lock. Good. Crime will have a harder time.",
+      "Fine walls. Mind who you lock out, and who you lock in.",
+      "A walled hold. That counts as a town in some books.",
+      "Behind walls and no permit. That's a fine trick."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_uc_small",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A hut and a fence. Not taxable.",
+      "Small. Too small to bother with. Come back when you are bigger.",
+      "A shack is a shack. Grow, and the Empire will find you.",
+      "Cosy. The tax collectors will not find it. Cosy."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_TOWN_LEVEL_CURRENT_LOCATION",
+     "who": "target",
+     "cmp": "<",
+     "value": 2
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_uc_grand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "This is no camp, this is a town. Towns pay tithes in the Empire.",
+      "So many roofs! An assessor would weep for joy.",
+      "A settlement of this size draws the eye of every lord on the road.",
+      "You have built a town. Expect visitors with ledgers."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_TOWN_LEVEL_CURRENT_LOCATION",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_uc_beasts",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Skeletons and Shek and worse, setting up house on Empire sand.",
+      "A strange sort of landlord, this. Does the Empire know?",
+      "They're settling in? On Empire ground? The Lords will love that.",
+      "Not a face I'd have picked for a neighbour. Business is business."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII",
+    "Hive Prince",
+    "Hive Soldier Drone",
+    "Hive Worker Drone",
+    "Shek",
+    "Fishman"
+   ]
+  },
+  {
+   "id": "bl_uc_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Nice walls. You won't need them once the Empire gets hold of you.",
+      "Your place will make a fine garrison. Thank you for building it.",
+      "I know your face. The ledger knows your name.",
+      "That's Empire land you're sitting on."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_uc_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "A friend in the outlands. Always good to know a landlord.",
+      "Your place keeps the road safer. The Empire thanks you.",
+      "If there's a bed going, I'll pay in cats.",
+      "A strong outpost makes a strong ally. I'd say the same to the Lords."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_uc_nice_hostile",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Pretty place for a criminal.",
+      "An excellent building. The tax collector will have a field day.",
+      "Well built, I'll say that. Which makes it worth confiscating.",
+      "I admire your workmanship. I'll appraise it later."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": -20
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_uc_nice_mid",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "A fine building. Whose permit is it under?",
+      "Handsome work. Properly built, properly drained.",
+      "Well made. That sort of thing raises the value of the road.",
+      "Good lines, solid roof. The City would approve, if it noticed."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_uc_nice_ally",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "A credit to the district. I'll mention it in my report.",
+      "That's how a proper outpost should look.",
+      "Splendid. I'd vouch for it at any gate in the Empire.",
+      "You have a talent for this. The Empire could use you."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 39
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_uc_illegal_hostile",
+   "event": "EV_I_SEE_ILLEGAL_PLAYER_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Stop right there. This place is against Empire law.",
+      "Whatever is going on in there, it's finished. Hands where I can see them.",
+      "An illegal operation, and you're the owner.",
+      "Don't trouble yourself to explain. The law has already read this building."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": -20
+    }
+   ],
+   "chance": 90,
+   "repeat": 4,
+   "player_only": true,
+   "packages": [
+    "police",
+    "Empire Scout",
+    "Empire City Guard "
+   ],
+   "factions": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "bl_uc_illegal_mid",
+   "event": "EV_I_SEE_ILLEGAL_PLAYER_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "You there. That building isn't permitted under Empire law.",
+      "I've seen what's in there. Shut it down or I will.",
+      "Some things you can't do on UC land. This is one of them.",
+      "That's no honest trade. Close it. Do it now.",
+      "A warning, then, since I am in a good mood. Close it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    }
+   ],
+   "chance": 90,
+   "repeat": 4,
+   "player_only": true,
+   "packages": [
+    "police",
+    "Empire Scout",
+    "Empire City Guard "
+   ],
+   "factions": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "bl_uc_illegal_ally",
+   "event": "EV_I_SEE_ILLEGAL_PLAYER_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Friend, I don't want to write this. That building is illegal here.",
+      "I like you. That's why I'm telling you to shut it down.",
+      "Whatever is in there, I didn't see it.",
+      "Get rid of it before somebody less friendly walks by."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 39
+    }
+   ],
+   "chance": 90,
+   "repeat": 4,
+   "player_only": true,
+   "packages": [
+    "police",
+    "Empire Scout",
+    "Empire City Guard "
+   ],
+   "factions": [
+    "United Cities"
+   ]
+  },
+  {
+   "id": "bl_tg_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Setting up shop on guild roads? Fees apply, you know.",
+      "A little outpost, no permit. The Guild regulates all trade out here.",
+      "Your prices had better match ours, or the Guild will notice.",
+      "I see a shop in the making. I see a fee in the making."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_tg_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A fine place for a market. Roads this way want one.",
+      "Good location. Traffic, good water, and a wall. That's a trade post.",
+      "If you stock proper goods, the Guild could do business here.",
+      "Not bad at all. You could turn a profit here."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_tg_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walls mean safe stock. Safe stock means better prices.",
+      "A walled place. Merchants like that.",
+      "Walls and a gate. Now if only you had a counter.",
+      "A wall around the stock is worth more than a lock on the door."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_tg_trader",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "I smell trade. Do you sell here? Do you buy?",
+      "If you keep a shop, I'll take a look.",
+      "A new place on the road. I'll see what the shelves hold.",
+      "Prices are what matter. Where do you stand on prices?",
+      "Nobody else sells here, I take it. Good. Nobody to undercut."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_tg_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "I knew a guild permit would be too much to ask.",
+      "You built this? Pity. The Guild will price you out of it.",
+      "I hope you like empty shelves.",
+      "The Guild has long arms. Your place is in reach."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_tg_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Friend of the Guild, friend of mine. Let us talk prices.",
+      "Good to see you. Is the shop open? I have goods.",
+      "The Guild will hear that you run a decent place.",
+      "You and I could make good money, with a road between us."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_tg_nice_mid",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Nice place. Good for a trade post.",
+      "A building like that raises the value of the whole road.",
+      "Well put together. Do you rent?",
+      "Solid. I'd store goods there."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_tg_nice_ally",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "That's a real trade house. The Guild would back it.",
+      "Good stonework, good road, good friends.",
+      "You have the makings of a market town. I mean it.",
+      "A place like that makes a trader feel safe."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 39
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_tg_permit_visit",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Founded a little outpost without a permit, I see. The Guild would like a word.",
+      "No permit on this ground. Do you plan to trade, or only to sit?",
+      "Trade on the Guild roads is by permit. Raise this with me, not with the gate guards.",
+      "A man who builds first and asks later."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Traders Guild"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_ft_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Your own place. Does it buy or sell? Either is fine.",
+      "No Guild, no tax, no fee? That is how I like it.",
+      "Out here by yourself. Good for you. Hard for you.",
+      "I wouldn't mind a roof for a night. Are you charging?"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_ft_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Good place. A free post, no fees.",
+      "A man who builds his own market. I salute him.",
+      "You have a good spot here.",
+      "This is how every town in the Empire started. A man, a wall, a fire."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_ft_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walls make me feel safe about my cart. Nice.",
+      "I'd leave my goods behind a wall like that.",
+      "A gate that shuts. That's a good thing for a trader.",
+      "A wall and a gate. That's the price of a quiet night."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_ft_trader",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "I have goods and a long road. What do you stock?",
+      "If you buy, I sell. Simple as that.",
+      "No Guild tax here, I take it. That already beats most places.",
+      "I'll look around. I hope you have more than rope and lice.",
+      "Any dealer here with decent prices? Point me."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_ft_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Friend, I have a few things for sale if you want first look.",
+      "A free house on a free road. Cheers.",
+      "You always know where the good stuff is.",
+      "I'll tell others to stop here."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_ft_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Nice little place. Shame the road runs through it.",
+      "I have no quarrel with a building.",
+      "Free trade, no Guild. Free to be robbed, too.",
+      "I'll remember you. Prices will reflect it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_ft_nice_mid",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Now that's a fine building. Whoever put that up was no fool.",
+      "Good lines. A trader could rest behind that.",
+      "I'd stable a cart there, no question.",
+      "Neat. A proper place, not just a shack."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_ft_nice_ally",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "That is a building I would trust with my goods.",
+      "Good building, good friends. Hard to beat.",
+      "I'll put in a good word for this place on the road.",
+      "Strong work. People pass this way and will stop."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 39
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Free Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_as_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Whose house is this? And does it hold anyone who didn't choose to be here?",
+      "I look at every new building the same way. Where are the doors, and who holds the keys?",
+      "You built here. Good. Remember what you build it for.",
+      "Hmm. I'll be watching what comes out of that gate."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_as_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A place like this gives people a reason to stop running.",
+      "Good. A house where nobody is chained.",
+      "Safe walls, free people. That's all anyone wants.",
+      "You have done something decent. It is rarer than you think."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_as_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walls to keep people out. See that they never keep people in.",
+      "A gate that opens both ways.",
+      "Walls are fine. A cage behind them isn't.",
+      "Keep the gate open to anyone running. That's my only ask."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_as_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Friend, there are runaways on the road. Is there room?",
+      "This is a refuge, whether you named it or not.",
+      "Your walls have saved lives. I've seen it.",
+      "The cause is lucky to have a house like this near the roads."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_as_ally_grand",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "A whole town of free people. That's worth more than a victory.",
+      "Enough people here to be a threat to slavers.",
+      "You have built something the slavers will hate.",
+      "If slavers come, this place won't stand alone."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_TOWN_LEVEL_CURRENT_LOCATION",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_as_nice_mid",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "It's a good house. May nobody in it ever be sold.",
+      "A fine, decent place. Hold to what it stands for.",
+      "Well made. Someone cared about this.",
+      "I like this place. I don't say that often."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_as_nice_ally",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "A true place of freedom. I'll tell the others where it is.",
+      "This is what we fight for. A house, a wall, a fire, and nobody owned.",
+      "Your house is a banner for us.",
+      "I'd lay my head down there happily."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 39
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_as_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "You made a house on slave money, did you? I hope it chokes you.",
+      "Whatever you did to build this, we saw. We remember.",
+      "A pretty place built on someone's bad day.",
+      "You own people? Then this is a prison to me."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sl_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Good ground. Wide yard. I could fit forty cages in that.",
+      "Nice place. Plenty of room for a pen.",
+      "A man with a house has goods worth taking. Do you have goods?",
+      "I look at that wall and I see a buyer's gate."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Slave Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sl_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Solid walls. That keeps the stock in and the thieves out.",
+      "I wouldn't mind a wall like that around my yard.",
+      "Walls like that would hold a hundred.",
+      "Good wall. A man could keep a lot behind it, if he wanted."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Slave Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sl_grand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "So many people living in one place. Do they know their value?",
+      "A settlement. Free people, mostly. That's a lot of potential stock.",
+      "Lots of hands here. Hands are cats, in the right market.",
+      "Count the heads. Think about the money. That's all I do."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_TOWN_LEVEL_CURRENT_LOCATION",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Slave Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sl_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Good place for a pickup. We pay well on delivery.",
+      "I might do business here, if you do.",
+      "Take a seat. Tell me what you have. I tell you what it's worth.",
+      "Hm. You keep a tidy place."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Slave Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sl_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "I will take this place. Then I will sell everyone in it.",
+      "Your walls will make a fine pen.",
+      "Count heads. I want a number before we start.",
+      "What a beautiful stockyard you built for me."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Slave Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sl_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "A friend of the trade. Care to sell?",
+      "Good place. Let us talk about the business.",
+      "I could use a base on this stretch. Do you rent?",
+      "You and I could make cats here."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Slave Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sl_nice_mid",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "A pretty building. Someone with taste. Someone who pays.",
+      "I'd put an auction block in front of that.",
+      "A fine place to watch a sale from.",
+      "Good lines. I could fill it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Slave Traders"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sl_takeover",
+   "event": "EV_TAKEN_OVER_PLAYER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "Round them up. Everyone. Leave nobody running.",
+      "This place is ours. The people in it too.",
+      "Lock the gate. Count them. Price them.",
+      "A fine hold. We'll put it to use."
+     ]
+    }
+   ],
+   "if": [],
+   "chance": 100,
+   "repeat": 4,
+   "factions": [
+    "Slave Traders"
+   ]
+  },
+  {
+   "id": "bl_sl_hunter",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Your own place. Runaways like such places. I'll keep an eye out.",
+      "A house where nobody asks questions. That's where runaways go.",
+      "If you shelter any of my quarry, you'll hear from me.",
+      "I smell a base for runaways. Don't make me prove it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Slave Hunters",
+    "Manhunters"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hv_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "No-hive builds. Strange. What for?",
+      "A home with no queen. How does it hold together?",
+      "This one builds alone. Odd.",
+      "The drones do not build alone. Why does he?"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hv_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A good nest. Hive would be glad of it.",
+      "You build like a hive builds. Many hands.",
+      "Safe walls, many workers. The Queen would nod.",
+      "This is a good place to work. I could stay."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hv_grand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Many hands live here. Many hands build.",
+      "The drones count. They count many here.",
+      "A great nest, for no-hive. Strange. Good.",
+      "All of these work together? Even without a queen?"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_TOWN_LEVEL_CURRENT_LOCATION",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hv_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walls. Good. Walls are a hive.",
+      "Walls keep the nest warm. Keep them.",
+      "A shell of stone. The Queen would like that.",
+      "Stone shell. Many workers inside. Good."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hv_prince",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A Prince keeps a house of his own. That's a rare sight.",
+      "One of us, building. The Queen's thoughts are far away, but I like it.",
+      "A Prince with walls of his own. It is good.",
+      "Our people build in the wastes now. That is proper."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 33,
+   "repeat": 3,
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ]
+  },
+  {
+   "id": "bl_hv_drone",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A worker like us, building. Good.",
+      "One of us, with a house. Yes.",
+      "You build. I carry. We are the same.",
+      "Drones count. You count too."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 33,
+   "repeat": 3,
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ]
+  },
+  {
+   "id": "bl_hv_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "No-hive nest. Death to it.",
+      "The walls will not stop us.",
+      "A no-hive builds. The drones will break it.",
+      "Burn the nest of the no-hive."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Southern Hive"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hv_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "A friend of the Hive builds well. Good.",
+      "The Hive is glad. The drones are glad.",
+      "Many hands will visit your nest.",
+      "A good place. We'll carry the word."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hv_nice_mid",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "A good nest. Strong and clean.",
+      "The drones would build it the same.",
+      "A fine place. We would live in it.",
+      "Good work. The workers admire it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hv_nice_ally",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "The Hive will remember this place.",
+      "A true friend's nest. We'll protect it.",
+      "A house the Queen would admire, I think.",
+      "Good. Good. Come, tell us how it's made."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 39
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_hv_takeover",
+   "event": "EV_TAKEN_OVER_PLAYER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "Greeeee! The nest is ours!",
+      "The no-hive are out. The drones come in.",
+      "Break the doors. Carry the nest away.",
+      "Greeeee! Drones, take the walls!"
+     ]
+    }
+   ],
+   "if": [],
+   "chance": 100,
+   "repeat": 4,
+   "factions": [
+    "Southern Hive"
+   ]
+  },
+  {
+   "id": "bl_hv_walk_tr",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "They live inside stone. We live inside a hive.",
+      "They have built so many roofs. We would need a queen for all of them.",
+      "I don't understand why no-hives need so many walls.",
+      "All of these roofs. Who tells them what to do?"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_TOWN_LEVEL_CURRENT_LOCATION",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    }
+   ],
+   "chance": 21,
+   "repeat": 3,
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sk_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Structure detected. Purpose unknown.",
+      "Walls, roof, door. Adequate. Inefficient.",
+      "Why does a human sleep under so many things?",
+      "Observation. This place. Efficiency estimated at sixty percent."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits",
+    "Band of Bones",
+    "Skeleton Legion"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton bandit - BASE",
+    "Skeleton legion",
+    "Skeleton town resident",
+    "Skeleton Junkyard"
+   ]
+  },
+  {
+   "id": "bl_sk_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Efficient. I note the angles. Good.",
+      "A sound structure. Not wasteful.",
+      "This works. I will not say it twice.",
+      "Good enough. A skeleton could live here."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits",
+    "Band of Bones",
+    "Skeleton Legion"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton bandit - BASE",
+    "Skeleton legion",
+    "Skeleton town resident",
+    "Skeleton Junkyard"
+   ]
+  },
+  {
+   "id": "bl_sk_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "The walls are adequate. The gate is the weak point.",
+      "Perimeter noted. It leaks, a little.",
+      "Walls are a sensible use of stone. Continue.",
+      "Wall thickness is sufficient for the current threat level."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits",
+    "Band of Bones",
+    "Skeleton Legion"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton bandit - BASE",
+    "Skeleton legion",
+    "Skeleton town resident",
+    "Skeleton Junkyard"
+   ]
+  },
+  {
+   "id": "bl_sk_grand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Many structures. Many occupants. Assessing. Not an efficient system.",
+      "This settlement has too many doors.",
+      "Large population. Resource burn estimated high.",
+      "So much housing. Skeletons do not need it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_TOWN_LEVEL_CURRENT_LOCATION",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits",
+    "Band of Bones",
+    "Skeleton Legion"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton bandit - BASE",
+    "Skeleton legion",
+    "Skeleton town resident",
+    "Skeleton Junkyard"
+   ]
+  },
+  {
+   "id": "bl_sk_kin",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A skeleton builds? Good. Few do.",
+      "A builder like me. Working structure. Good.",
+      "Same as me. We build without being asked.",
+      "One of us, with a roof. Why does one of us need a roof?"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 33,
+   "repeat": 3,
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits",
+    "Band of Bones",
+    "Skeleton Legion"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII",
+    "Skeleton MKII Screamer",
+    "Skeleton No-Head MkII ",
+    "Skeleton P4MkII",
+    "P4 Unit",
+    "Soldierbot"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton bandit - BASE",
+    "Skeleton legion",
+    "Skeleton town resident",
+    "Skeleton Junkyard"
+   ]
+  },
+  {
+   "id": "bl_sk_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "The structure is a target.",
+      "Walls are an obstacle. Obstacles are removed.",
+      "Your structure won't hold. I have tested better.",
+      "I compute three weak points. Four."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits",
+    "Band of Bones",
+    "Skeleton Legion"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton bandit - BASE",
+    "Skeleton legion",
+    "Skeleton town resident",
+    "Skeleton Junkyard"
+   ]
+  },
+  {
+   "id": "bl_sk_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Your structure is acceptable. I will use it.",
+      "A good place to wait. I'll remain.",
+      "A safe base. Keep it that way.",
+      "Efficient. I like efficient."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits",
+    "Band of Bones",
+    "Skeleton Legion"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton bandit - BASE",
+    "Skeleton legion",
+    "Skeleton town resident",
+    "Skeleton Junkyard"
+   ]
+  },
+  {
+   "id": "bl_sk_nice_mid",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Good structure. Efficient.",
+      "A sound build. I approve.",
+      "Square corners. A pleasing result.",
+      "Well built. Few humans build well."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits",
+    "Band of Bones",
+    "Skeleton Legion"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton bandit - BASE",
+    "Skeleton legion",
+    "Skeleton town resident",
+    "Skeleton Junkyard"
+   ]
+  },
+  {
+   "id": "bl_sk_nice_ally",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Efficiency high. Structure sound. Approved.",
+      "I would not change a single plank.",
+      "This place works. That's rare.",
+      "I'll remember where this is."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 39
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Skeletons",
+    "Skeleton Bandits",
+    "Band of Bones",
+    "Skeleton Legion"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton bandit - BASE",
+    "Skeleton legion",
+    "Skeleton town resident",
+    "Skeleton Junkyard"
+   ]
+  },
+  {
+   "id": "bl_sk_takeover",
+   "event": "EV_TAKEN_OVER_PLAYER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "Feeble humans. Out.",
+      "The structure is claimed.",
+      "Humans leave. Skeletons stay.",
+      "The place is ours. The humans aren't."
+     ]
+    }
+   ],
+   "if": [],
+   "chance": 100,
+   "repeat": 4,
+   "factions": [
+    "Skeleton Bandits",
+    "Skeletons"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Skeleton bandit - BASE",
+    "Skeleton legion",
+    "Skeleton town resident",
+    "Skeleton Junkyard"
+   ]
+  },
+  {
+   "id": "bl_cn_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "/CANNIBALTASTY/ walls. We climb. We eat in your house.",
+      "Nice house. Nice big pot. /CANNIBALHA/!",
+      "Many people in house. Many meal in house.",
+      "Walls no stop hunger. Walls only slow."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Cannibals"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_cn_takeover",
+   "event": "EV_TAKEN_OVER_PLAYER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "/CANNIBALHA/! New place to eat!",
+      "Your house our house. Your pot our pot.",
+      "/CANNIBALKA/! Good, soft house.",
+      "Everybody who stay get cooked. Everybody."
+     ]
+    }
+   ],
+   "if": [],
+   "chance": 100,
+   "repeat": 4,
+   "factions": [
+    "Cannibals"
+   ]
+  },
+  {
+   "id": "bl_cn_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "House of meat. Many soft ones, I dhink.",
+      "You build good pen. We come back.",
+      "So tidy. Good place to hide from. Good place to come back.",
+      "Walls look strong. Strong walls make people feel safe. /CANNIBALTASTY/."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Cannibals"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_cn_nice",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Pretty house. Pretty meat inside.",
+      "We watch from grass. We watch long time.",
+      "So many light. So many sleeper. /CANNIBALHA/.",
+      "Strong house. Nice soft inside, yes?"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": -20
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Cannibals"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sb_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "What a lovely lodging. I do so enjoy a home with good light for sewing.",
+      "A well-kept house. A well-kept man.",
+      "I do hope your walls aren't too thick. They're so hard to stitch.",
+      "Forgive the intrusion. I like to see where a man keeps his skin before I borrow it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sb_takeover",
+   "event": "EV_TAKEN_OVER_PLAYER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "How charming. Do come out, one at a time. I'll measure you at the door.",
+      "This will do very nicely. I'll take the large room.",
+      "Everyone out of the house. Gently. You'll bruise.",
+      "Lovely place. I'll need to rearrange the furniture."
+     ]
+    }
+   ],
+   "if": [],
+   "chance": 100,
+   "repeat": 4,
+   "factions": [
+    "Skin Bandits"
+   ]
+  },
+  {
+   "id": "bl_sb_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "What a fine house. May I come in? Only to look at the people.",
+      "I notice a great deal of lovely skin on the premises.",
+      "Pretty place. Do you sleep with the door locked? Please do.",
+      "A house is only as good as its occupants. May I meet them?"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sb_nice",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "That's a house with real skin in it.",
+      "I like how they hold the doors open. Almost an invitation.",
+      "It would suit a collection beautifully.",
+      "Such delicate craftsmanship. Almost as good as mine."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": -20
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Skin Bandits"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_fg_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Walls. Light. It will not hold.",
+      "You built in the fog? We breathe the fog.",
+      "Stone does not stop the fog. Stone only keeps you inside it.",
+      "We watch the lights in your windows."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Fogmen"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_fg_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A house in the grey. It will not last.",
+      "Candle in the fog. Easy to find.",
+      "A pretty fire. We will come to see it.",
+      "You make noise, you make light."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Fogmen"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_fg_nice",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "That is a fine house. It will make a fine pyre.",
+      "We saw your wall. We heard your gate.",
+      "So many sleepers. So close to the fog.",
+      "We watch your doors. We always watch."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": -20
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Fogmen"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_fg_takeover",
+   "event": "EV_TAKEN_OVER_PLAYER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "The fog is in your house now.",
+      "Keep still. The grey will pass you.",
+      "Take the walls. Leave the dead.",
+      "No more lights. Only the fog."
+     ]
+    }
+   ],
+   "if": [],
+   "chance": 100,
+   "repeat": 4,
+   "factions": [
+    "Fogmen"
+   ]
+  },
+  {
+   "id": "bl_db_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Nice place. Anyone home who's worth a look?",
+      "Pretty walls. What's behind them? Loot?",
+      "I count a few doors, a few barrels, a few throats.",
+      "Got walls, got a gate, got a bed. Gotta get something worth taking."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_db_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "That's your house, is it? Perfect. I'll be sleeping there tonight.",
+      "Walls ain't gonna help you. Gate ain't gonna help you.",
+      "Look at all that stuff! I want it.",
+      "You built it. We'll live in it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_db_takeover",
+   "event": "EV_TAKEN_OVER_PLAYER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "Boot 'em out! Throw their stuff in the dust!",
+      "Ours now! Nobody touches the beds but me.",
+      "/LAUGH/! Pass me a drink!",
+      "We're gonna live here and eat all your food."
+     ]
+    }
+   ],
+   "if": [],
+   "chance": 100,
+   "repeat": 4,
+   "factions": [
+    "Dust Bandits"
+   ]
+  },
+  {
+   "id": "bl_db_nice",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Nice house. Nice enough to burn.",
+      "That would make a good hideout.",
+      "I want it. Lemme see the lock.",
+      "What a place. Must be full of good things."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": -20
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_db_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Good walls. They got something worth hiding.",
+      "Gate's thin. I could kick it in.",
+      "I could climb that wall by dinnertime.",
+      "Walls and a gate. They never stopped me before."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_db_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Good place, friend. Ever need a hand getting what's not yours, say so.",
+      "Heh. A decent bar, a good roof, a locked door. Got any spare beds?",
+      "Keep this place standing and I'll keep the others off it.",
+      "You got food in there? A man gets hungry."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sv_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "So much house. So much food in it?",
+      "Spare a crust, house-man?",
+      "I see a roof. I see a pot on the fire. I'm hungry.",
+      "Behind those walls, someone is eating."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 30,
+   "repeat": 3,
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sv_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Give us the food. We will not touch the walls.",
+      "We'll eat your house. Door by door.",
+      "You hoard. You build walls to hoard.",
+      "We're hungry. Walls aren't."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_sv_takeover",
+   "event": "EV_TAKEN_OVER_PLAYER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "Food! Find the food!",
+      "Eat. Eat. Eat everything.",
+      "There's bread! Get the bread!",
+      "No more starving. No more! Feed us!"
+     ]
+    }
+   ],
+   "if": [],
+   "chance": 100,
+   "repeat": 4,
+   "factions": [
+    "Starving Bandits"
+   ]
+  },
+  {
+   "id": "bl_sv_nice",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "A house with a full pot.",
+      "Look at those walls. Walls mean food.",
+      "A rich man built that. A rich man eats.",
+      "I'd kill for a bowl in a house like that."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": -20
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_bd_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Somebody built a fort out here. Brave. Stupid.",
+      "Look at that place. Who lives there? What's inside?",
+      "A house this far out has to be hiding something.",
+      "I'll be keeping this place in mind for next season."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Reavers",
+    "Shrieking Bandits",
+    "Crab Raiders",
+    "Grass Pirates"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_bd_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Pretty walls. I'll take them down with you in them.",
+      "Hold the gate if you want.",
+      "Your little fort will make a nice bonfire.",
+      "All this work. All for us."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Reavers",
+    "Shrieking Bandits",
+    "Crab Raiders",
+    "Grass Pirates"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_bd_takeover",
+   "event": "EV_TAKEN_OVER_PLAYER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "Take it! All of it!",
+      "Out! Out! Out of our house!",
+      "We could stay here. Eat. Sleep.",
+      "Good loot. Better house."
+     ]
+    }
+   ],
+   "if": [],
+   "chance": 100,
+   "repeat": 4,
+   "factions": [
+    "Reavers",
+    "Shrieking Bandits",
+    "Crab Raiders",
+    "Grass Pirates"
+   ]
+  },
+  {
+   "id": "bl_bd_dog",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Nice little outpost. It would be a shame if it came to harm.",
+      "Somebody ought to look after a place like that. For a fee.",
+      "I see walls. Walls need protection. That costs.",
+      "A home without a friend is a home waiting to burn."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Black Dog",
+    "Swampers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_mg_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A base of your own. Hope you can afford a guard for it.",
+      "Nice place. Who's guarding it? Nobody? I don't do that kind of favour.",
+      "Everybody builds a place sooner or later. Nobody can hold it for long.",
+      "You build, I fight. That's how the world works."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Mercenary Guild",
+    "Mercenary Police"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_mg_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Solid place. Does it have a job board? I need work.",
+      "If you need blades for hire, I know a few.",
+      "A man with walls has enemies. A man with enemies needs help.",
+      "Nice fort. I could stay a night, for a rate."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Mercenary Guild",
+    "Mercenary Police"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_mg_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walls are only as good as the swords behind them.",
+      "Decent walls. Who stands on them? That's the question.",
+      "Good defences, mostly. I'd reinforce the gate.",
+      "I have broken walls like these."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Mercenary Guild",
+    "Mercenary Police"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_mg_grand",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "That's a lot of people to defend. Must pay well to hire for.",
+      "A town. You'll need a guard.",
+      "Big place. Big ambitions. Big enemies.",
+      "With a place like this, you must be hiring."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_TOWN_LEVEL_CURRENT_LOCATION",
+     "who": "target",
+     "cmp": ">",
+     "value": 2
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Mercenary Guild",
+    "Mercenary Police"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_mg_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Nice walls. I've been paid to knock down worse.",
+      "I don't hate you. I'm just paid to.",
+      "You built it, I break it.",
+      "Whoever paid me knew what he was doing. This is a good target."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Mercenary Guild",
+    "Mercenary Police"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_mg_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Friend, if you need blades, I'm your man.",
+      "Good fort. I'd stand a watch here for a fair price.",
+      "I've seen a lot of bases. This one is better than most.",
+      "You keep a clean fort. It tells me who to fight for."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Mercenary Guild",
+    "Mercenary Police"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_mg_nice_mid",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "A good piece of work. Whoever built that knew their craft.",
+      "Tidy. I like a base that makes a guard's job easy.",
+      "A good bed for a mercenary.",
+      "Neat, solid, defensible. What more is there?"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Mercenary Guild",
+    "Mercenary Police"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_mg_takeover",
+   "event": "EV_TAKEN_OVER_PLAYER_TOWN",
+   "lines": [
+    {
+     "say": [
+      "We were paid for this. Now we hold it.",
+      "Secure the gate. Count the loot.",
+      "Nice base. Now it's ours.",
+      "Your walls, our wage."
+     ]
+    }
+   ],
+   "if": [],
+   "chance": 100,
+   "repeat": 4,
+   "factions": [
+    "Mercenary Guild"
+   ]
+  },
+  {
+   "id": "bl_bh_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A fixed address. Handy. Anyone with a bounty on his head should avoid one.",
+      "A man with a base is a man who can be found.",
+      "Your gates are not locked to me, I think. A man with a house has a name.",
+      "Hm. I'll remember this place, in case I need to find someone."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Bounty Hunters"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_dr_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A real roof. Huh. Been a while.",
+      "Your own place? Must be nice.",
+      "Do you let people in? No? Fair enough.",
+      "I wouldn't mind a wall at night."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Drifters",
+    "Vagrants"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_dr_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "That looks warm. You hiring?",
+      "Place like that could use a hand.",
+      "Is there room? I don't need much.",
+      "Good place. Quiet. Safe. I'd take it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Drifters",
+    "Vagrants"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_dr_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walls. A gate. Real food, I bet.",
+      "A wall that actually keeps the dark out. I envy you.",
+      "Nice and safe in there. I can feel it.",
+      "I'd sleep outside your wall and be glad of it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Drifters",
+    "Vagrants"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_dr_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Any work here, friend? Any bread?",
+      "You keep a good house. People like us talk about it.",
+      "If you ever need a body for the walls, I'm one.",
+      "I'll tell the other roamers your door is open."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Drifters",
+    "Vagrants"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_dr_nice",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "That's a house. A proper house. I forgot what they look like.",
+      "A roof like that and I'd never leave.",
+      "I'd give an arm for a hearth like that.",
+      "Whoever built that's a lucky man."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Drifters",
+    "Vagrants"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_dr_nice_ally",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Thank you for building a place a body can feel safe near.",
+      "Your house gives a body hope.",
+      "A good house. Good people in it, I hope.",
+      "I walk past it and feel the weight lift."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 39
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Drifters",
+    "Vagrants"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_dr_join",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Is there room for another pair of hands? Not asking for much.",
+      "I can carry, I can chop. Take me in?",
+      "I'd work for a bed.",
+      "Any chance of a place here? I have nowhere else."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_SQUAD_SIZE",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 0
+    },
+    {
+     "cond": "DC_TOWN_LEVEL_CURRENT_LOCATION",
+     "who": "target",
+     "cmp": ">",
+     "value": 1
+    }
+   ],
+   "chance": 21,
+   "repeat": 3,
+   "factions": [
+    "Drifters",
+    "Vagrants"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_nm_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A wall. We prefer wind. But yes, a wall is a wall.",
+      "You stay in one place. Strange.",
+      "A house is a heavy thing.",
+      "Your fort won't move. The land does."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Nomads"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc CIVILIAN Basic 1"
+   ]
+  },
+  {
+   "id": "bl_nm_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A good place to rest for a night.",
+      "Nice. A nice place to share a fire.",
+      "The wind blows around you. That's a good sign.",
+      "We pass this place often. It looks the same each time. That's good."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Nomads"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc CIVILIAN Basic 1"
+   ]
+  },
+  {
+   "id": "bl_nm_nice",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Strong place. It will last. We won't.",
+      "A fine house for a fixed man.",
+      "It's well made. We wouldn't live in it.",
+      "Good. The road needs a few places that stay."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Nomads"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc CIVILIAN Basic 1"
+   ]
+  },
+  {
+   "id": "bl_nm_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Friend of the road, your fire is welcome.",
+      "We'll trade for a night under your roof.",
+      "Your house is a good place. The herd likes it.",
+      "We sell and we buy. Do you do both?"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Nomads"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc CIVILIAN Basic 1"
+   ]
+  },
+  {
+   "id": "bl_nm_trader",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "We carry what we carry. Do you buy?",
+      "A fixed place needs goods from outside.",
+      "My cart is full. Your shelves aren't.",
+      "Name what you need. We find it."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Nomads"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc CIVILIAN Basic 1"
+   ]
+  },
+  {
+   "id": "bl_fr_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "That's a nice farm. If it's a farm. What are you growing?",
+      "Anyone farming here? Not many do, with the dust.",
+      "You have soil and a wall. That's more than most of us.",
+      "I hope you know what you're doing with a place like that."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Empire Peasants",
+    "Rebel Farmers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_fr_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "What's the soil like? I never see good soil.",
+      "If you grow food here, you won't go hungry. Not like us.",
+      "A good place for crops. If the bandits stay away.",
+      "I've seen worse land for planting."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Empire Peasants",
+    "Rebel Farmers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_fr_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walls around good land. That's how it should be done.",
+      "A wall keeps the bandits off the fields.",
+      "I'd sleep easy behind that.",
+      "Walls and a gate. A farmer wants nothing more."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Empire Peasants",
+    "Rebel Farmers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_fr_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Friend, we have grain if you need it.",
+      "You're doing good work here. Folk need a place like this.",
+      "A strong hold means safe fields.",
+      "I would plough your furrows for the right wage."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Empire Peasants",
+    "Rebel Farmers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_fr_nice",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "That's a good house. Somebody works hard there.",
+      "A proper house. More than we have.",
+      "I could farm beside a place like that.",
+      "It's well built. May it stand."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Empire Peasants",
+    "Rebel Farmers"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_th_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Digging site? Or just a house?",
+      "Built over ruins? Hope you didn't seal a good one.",
+      "If you find anything old out here, I want to know.",
+      "Nice base. Mine is a tent and a pack."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_th_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A good base. Dry, strong, high.",
+      "Good place to sort a haul. Would you rent a bench?",
+      "You could stash relics in a place like that.",
+      "This is a better camp than I have ever had."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_th_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Walls around ruins is a good habit.",
+      "Lock up anything from the old world. People will kill for it.",
+      "I'd store a rack of relics in there, but it isn't mine.",
+      "Any ruin worth digging has a wall. Yours is better than most."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_th_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Friend, if I find something big, I'll bring it here first.",
+      "A good base for a hunter.",
+      "You and I should split a find sometime.",
+      "Strong walls, good people. I need that."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_th_nice",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Decent building. Old tech sealed up in a place like that would be safe.",
+      "That's better than any ruin I ever slept in.",
+      "Well made. Fewer rusty bits than the old ruins.",
+      "I like it. I like it better than a ruin."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Tech Hunters"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_mc_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Brickwork, load-bearing. Not bad.",
+      "A structure of this sort needs engineering.",
+      "The joints on that are crude.",
+      "I'd reinforce the corners. Just a thought."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Machinists"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc CIVILIAN Basic 1"
+   ]
+  },
+  {
+   "id": "bl_mc_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A sound structure. Even the joints show skill.",
+      "This is well designed. I could learn from it.",
+      "Nice. If you want, I could make improvements.",
+      "Good lines, good materials. Not bad at all."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Machinists"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc CIVILIAN Basic 1"
+   ]
+  },
+  {
+   "id": "bl_mc_walled",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Good wall, if over-engineered. Probably fine.",
+      "The stress points are well placed.",
+      "Walls need maintenance. Do you have an engineer?",
+      "Nicely built. Not how I'd do it, but nicely built."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_WITHIN_TOWN_WALLS",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Machinists"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc CIVILIAN Basic 1"
+   ]
+  },
+  {
+   "id": "bl_mc_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "I'll tell the University of your hold. It's a fine thing.",
+      "If you need a mechanic, I know a few.",
+      "This is the sort of place where science could happen.",
+      "I'd add a lab here, if you don't mind."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Machinists"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc CIVILIAN Basic 1"
+   ]
+  },
+  {
+   "id": "bl_mc_nice",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "Fine craft. Tolerances good. Materials good.",
+      "This is something. A rare thing in a place like this.",
+      "I admire a building that does what it must.",
+      "The pieces fit well. I note that."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Machinists"
+   ],
+   "player_only": true,
+   "packages": [
+    "Npc CIVILIAN Basic 1"
+   ]
+  },
+  {
+   "id": "bl_bn_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "You built it. Do you know what protects it?",
+      "A house needs protectors. Have you considered ours?",
+      "We've been watching your place.",
+      "Well, well. A fort with no protection from anyone worth having."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Black Dragon Ninjas",
+    "Flotsam Ninjas"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_bn_warm",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A house worth protecting. We could arrange it.",
+      "For one fifth of your income, we'll keep your walls safe.",
+      "We pass this way often. Keep your gate open for us.",
+      "You keep a tidy place. We approve. It will cost you."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": 10
+    }
+   ],
+   "chance": 24,
+   "repeat": 3,
+   "factions": [
+    "Black Dragon Ninjas",
+    "Flotsam Ninjas"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_bn_nice",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "A fine house. It would be a shame if something happened.",
+      "Such craftsmanship deserves a guardian.",
+      "We like what we see. We shall see more.",
+      "We don't often stop to admire."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Black Dragon Ninjas",
+    "Flotsam Ninjas"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_tr_hive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "Greeeee. A new place. Any need of my goods?",
+      "A new nest, no-hive. Do you trade?",
+      "Carry. Sell. Carry. Sell. Does your nest buy?",
+      "The queen's goods are good goods."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "player_only": true,
+   "packages": [
+    "Hiver Merchant ",
+    "Hiver Merchant Lantern"
+   ]
+  },
+  {
+   "id": "bl_tr_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A new stall on this road? I carry a good selection. Care to look?",
+      "A proper market in the wastes. Imagine that. What are the prices?",
+      "I won't undersell the Empire, but I'll look at your stock.",
+      "Hm. A fair place. Let us see what you sell."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_tr_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A trader of the Shek. I'd look at your wares, /FLATSKIN/.",
+      "I carry good goods. You may inspect them.",
+      "A foreign market in foreign land. I'll see its prices.",
+      "Do you honour a good deal? I do."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_tr_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A market for the faithful, or for the damned? I'll see.",
+      "I carry blessed goods. You may look.",
+      "Prices fair as the Lord of Light would have them. Yours?",
+      "A new trade stand? Good. I trade only in clean goods."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_A_TRADER",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_rb_neut",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "lines": [
+    {
+     "say": [
+      "A house. A real house. I forgot they exist.",
+      "You have walls. Nobody put you in them.",
+      "I'd give a lot for a door that opens from the inside.",
+      "Is it true? You aren't a prisoner there?"
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_rb_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "lines": [
+    {
+     "say": [
+      "Free people inside a house. I'd stay a year.",
+      "You saved us. Your walls saved us.",
+      "This is what freedom looks like. A door.",
+      "I'll remember this place until I die."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_A_PLAYER_TOWN",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 27,
+   "repeat": 3,
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "player_only": true
+  },
+  {
+   "id": "bl_rb_nice",
+   "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
+   "lines": [
+    {
+     "say": [
+      "That house is the most beautiful thing I have ever seen.",
+      "A house for the free. Imagine.",
+      "Is it safe to look at? Is it a trick?",
+      "Whoever lives there, I envy them."
+     ]
+    }
+   ],
+   "if": [
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": ">",
+     "value": -21
+    },
+    {
+     "cond": "DC_RELATIONS",
+     "who": "me",
+     "cmp": "<",
+     "value": 40
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "cmp": "==",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "factions": [
+    "Rebirth Slaves"
+   ],
+   "player_only": true
+  }
+ ]
+}

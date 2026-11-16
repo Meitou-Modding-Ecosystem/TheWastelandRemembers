@@ -1,0 +1,11 @@
+{
+  "id": "SquadRecord",
+  "name": "Squad Record",
+  "apiVersion": 2,
+  "version": "0.2.18",
+  "assemblies": [
+    "SquadRecord.dll"
+  ],
+  "entry": "LivingWasteland.MeitouMod.SquadRecordMod",
+  "gameVersion": ">=0.17.3 <0.21.0"
+}

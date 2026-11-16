@@ -1,0 +1,1061 @@
+{
+ "note": "Hand-edited source for the Atlas (Meitou only; the squad record window's Atlas tab, Atlas.cs). gen_atlas.py turns it into x_atlas.json, adding the named outlaws and every gossip line the helper listens for. Our own words, after the Kenshi wiki and kenshimap; ASCII only. places: TOWN record names (base records). known: common knowledge once the place is on your map. explored: what you learn by going there. people: CHARACTER record names. hidden: nobody says where they are; they appear blurred (vague) after one rumour, placed after two, fully once met. rumours: dialogue id prefixes of gossip about them (bosses_*.json, x_rumours.json and so on). wanted_for: what the posters say.",
+ "places": {
+  "Blister Hill": {
+   "region": "Okran's Pride",
+   "known": "The Holy Nation's capital. The Holy Lord Phoenix sits on his throne there.",
+   "explored": [
+    "Two towns in one: the Phoenix's walled quarter, and everyone else outside it.",
+    "Paladins at every corner. Pray loudly, and do not be a Shek."
+   ]
+  },
+  "Bad Teeth": {
+   "region": "Okran's Pride",
+   "known": "A Holy Nation town that guards the pass into the green valleys.",
+   "explored": [
+    "Farmers, priests and a lot of Holy Sentinels with nothing to do.",
+    "What comes down the pass from the wilds gets stopped here, or eaten."
+   ]
+  },
+  "Stack": {
+   "region": "the Holy Nation's edge",
+   "known": "A Holy Nation town between the Hub and the Western Hive. Traders like it; so do thieves.",
+   "explored": [
+    "Good shops for a frontier town.",
+    "The Nation watches the road to the Hub from here, and the Hive watches back."
+   ]
+  },
+  "Rebirth": {
+   "region": "north of the Holy Nation",
+   "known": "Where the Holy Nation sends sinners to work until Okran forgives them. He rarely does.",
+   "explored": [
+    "A mine with walls, and slaves who were citizens last week.",
+    "Nobody leaves Rebirth by asking."
+   ]
+  },
+  "Okran's Fist": {
+   "region": "the Arm of Okran",
+   "known": "A Holy Nation fortress on the north-east road.",
+   "explored": [
+    "Paladins and Sentinels, drilled and bored.",
+    "The Nation's door to the north-east. Closed to most."
+   ]
+  },
+  "Okran's Shield": {
+   "region": "the Iron Valleys border",
+   "known": "A Holy Nation fortress that closes the valley road like a gate.",
+   "explored": [
+    "Built across a choke-point; every caravan passes under its walls.",
+    "The garrison stops the Skin Bandits coming down from the dark."
+   ]
+  },
+  "Heft": {
+   "region": "the Great Desert",
+   "known": "Capital of the United Cities. Emperor Tengu holds court there.",
+   "explored": [
+    "Nobles, samurai and the Emperor's palace. Money talks; everyone else bows.",
+    "Lord Ohta keeps his house here too, and the Emperor's ear."
+   ]
+  },
+  "Stoat": {
+   "region": "the Great Desert",
+   "known": "The last United Cities town before the eastern desert. Lord Inaba governs it.",
+   "explored": [
+    "Fed by the stone camp and the slave farm nearby.",
+    "A good place to buy water and a bad place to be a runaway slave."
+   ]
+  },
+  "Sho-Battai": {
+   "region": "the Great Desert",
+   "known": "A big United Cities town in the middle of the desert. Lord Nagata rules it.",
+   "explored": [
+    "The only hat shop in the Cities, and a thieves' guild nobody admits to.",
+    "It eats what Port North digs up."
+   ]
+  },
+  "Brink": {
+   "region": "the Stormgap Coast",
+   "known": "A United Cities town on the coast. Lady Tsugi governs it.",
+   "explored": [
+    "It lives on what Eyesocket's slaves produce.",
+    "Reavers walk the roads outside like they own them. Some days they do."
+   ]
+  },
+  "Bark": {
+   "region": "the Great Desert coast",
+   "known": "A United Cities town built around old lagoons on the north-east coast. Lady Sanda governs it.",
+   "explored": [
+    "Half a port, with no ships. Supplies come from Port North and Port South.",
+    "Fishing smells and noble perfume, both strong."
+   ]
+  },
+  "Drifter's Last": {
+   "region": "the Hook",
+   "known": "A United Cities town in the south-west, ringed by farms. Lady Merin lives there.",
+   "explored": [
+    "Farms outside, guards inside, and trouble from the hills now and then.",
+    "Plenty of newcomers start out here with nothing."
+   ]
+  },
+  "Catun": {
+   "region": "the Bonefields",
+   "known": "A United Cities fortress town on a plateau in the Bonefields.",
+   "explored": [
+    "Home of the Catun Scrapmasters, the best robotics workshop in the Cities.",
+    "Well walled. The Bonefields are no place to be caught outside."
+   ]
+  },
+  "Heng": {
+   "region": "south-west of Heft",
+   "known": "The Empire's trading town, joined to Trader's Edge by a metal bridge.",
+   "explored": [
+    "Everything has a price here, and a Guild man to take a cut of it.",
+    "The bridge to Trader's Edge is worth the walk."
+   ]
+  },
+  "Trader's Edge": {
+   "region": "beside Heng",
+   "known": "The Traders Guild's own settlement, on a plateau next to Heng.",
+   "explored": [
+    "Where the Guild keeps its ledgers and its friends.",
+    "Samurai guard it. The Guild pays them well."
+   ]
+  },
+  "Mourn": {
+   "region": "the Bonefields",
+   "known": "A mining town built inside an old metal ruin. A slave revolt broke it.",
+   "explored": [
+    "The Tech Hunters own it now, and the Cities still say it is theirs.",
+    "Empty mines and angry ghosts, as the locals tell it."
+   ]
+  },
+  "Admag": {
+   "region": "the Stenn Desert",
+   "known": "Capital of the Shek Kingdom, on a hill with one way in. Esata the Stone Golem rules there.",
+   "explored": [
+    "The Hundred Guardians stand at the gate. They are not a ceremony.",
+    "Honour matters here more than cats. Fight well or do not fight."
+   ]
+  },
+  "Squin": {
+   "region": "the Border Zone",
+   "known": "A Shek town east of Admag, run on wind power.",
+   "explored": [
+    "The lights flicker when the wind drops. Nobody here complains about it.",
+    "A Shek town, but traders of every kind pass through."
+   ]
+  },
+  "Last Stand": {
+   "region": "the Spider Plains",
+   "known": "A Shek fortress where old warriors go to die well, fighting the Bugmaster's spiders.",
+   "explored": [
+    "Grey warriors sharpening blades they will not bring back.",
+    "Arach is just over the hill. You can hear it at night."
+   ]
+  },
+  "The Great Fortress": {
+   "region": "the Stenn Desert",
+   "known": "A Shek fortress, mostly ruined, near New Kralia.",
+   "explored": [
+    "Only the police station and the hall still stand.",
+    "Grand name, broken walls."
+   ]
+  },
+  "The Hub": {
+   "region": "the Border Zone",
+   "known": "A broken town between the Shek and the Holy Nation, fought over for years.",
+   "explored": [
+    "The Trade Ninjas run it now, quietly.",
+    "Cheap beds, cheap bar, and nobody asks where you got it."
+   ]
+  },
+  "Shark": {
+   "region": "the Swamp",
+   "known": "The Swamp's big town, full of ex-slaves, gangs and worse. The Swampers say they run it.",
+   "explored": [
+    "The Hounds actually run it. Everybody knows; nobody says.",
+    "You can buy anything in Shark. You can also be bought."
+   ]
+  },
+  "Mud Town": {
+   "region": "the Swamp",
+   "known": "A Swamper village north of Shark.",
+   "explored": [
+    "Stilts, mud and people who would rather not be found.",
+    "Odd folk drift in here, some worth hiring."
+   ]
+  },
+  "Rot": {
+   "region": "the Swamp",
+   "known": "A Hounds village in the Swamp.",
+   "explored": [
+    "Ears and Big Grim's people. Friendly, if you are one of them.",
+    "There is not much in Rot but the Hounds and the smell."
+   ]
+  },
+  "World's End": {
+   "region": "the Arm of Okran",
+   "known": "A Tech Hunter town on a mountain, inside Holy Nation lands.",
+   "explored": [
+    "The Machinists build things the Nation would burn.",
+    "It stays free by being useful, and by being hard to climb."
+   ]
+  },
+  "Black Scratch": {
+   "region": "the Outlands",
+   "known": "The Tech Hunters' home, built around an ancient structure on a hill.",
+   "explored": [
+    "The Great Library is here. Bring cats, and an interest in old things.",
+    "The Tech Hunter bar has stories. Most are true."
+   ]
+  },
+  "Flats Lagoon": {
+   "region": "Flats Lagoon",
+   "known": "A Tech Hunter town by the lagoon. Safer than it looks.",
+   "explored": [
+    "Harpooners on the shore, Hive caravans on the road. They do not always agree.",
+    "A good place to rest between bad places."
+   ]
+  },
+  "Spring": {
+   "region": "Stobe's Gamble",
+   "known": "The Anti-Slavers' mountain base. Tinfist is there.",
+   "explored": [
+    "Built to be defended, and it has been.",
+    "Every slave who reaches Spring is free. Every slaver who reaches it is not."
+   ]
+  },
+  "Black Desert City": {
+   "region": "the Deadlands",
+   "known": "A town of skeletons, from after the Second Empire. No humans live there.",
+   "explored": [
+    "Repair beds instead of beds. The bar sells things no person needs.",
+    "Sadneil keeps the Skeleton Bar. He remembers a long time."
+   ]
+  },
+  "The Bastion": {
+   "region": "between Darkfinger and Sinkuun",
+   "known": "The Cannibal Hunters' stronghold.",
+   "explored": [
+    "Red cloaks, sharp blades and long memories.",
+    "They pay for cannibal heads. They ask fewer questions about the rest."
+   ]
+  },
+  "Mongrel": {
+   "region": "the Fog Islands",
+   "known": "A walled town in the fog. Nobody goes out at night there.",
+   "explored": [
+    "The Fogmen come to the gates most nights.",
+    "The people here are hard, because the soft ones were taken."
+   ]
+  },
+  "Western Hive": {
+   "region": "Vain",
+   "known": "The Western Hive's village, on an island in acid water.",
+   "explored": [
+    "The water burns. The drones do not mind.",
+    "Soldier drones meet you at the shore. Be polite."
+   ]
+  },
+  "Cannibal Capital": {
+   "region": "the Cannibal Plains",
+   "known": "Once a town called Deadcat. The cannibals took it.",
+   "explored": [
+    "It looks like a town from a distance. That is the trap.",
+    "The Gran' Wizard lives here, among more cannibals than you can count."
+   ]
+  },
+  "First Village": {
+   "region": "Darkfinger",
+   "known": "A cannibal village in the north of Darkfinger.",
+   "explored": [
+    "The Meat Lord's table is here, and the cages that feed it.",
+    "Do not accept an invitation to dinner."
+   ]
+  },
+  "Cannibals": {
+   "region": "the Cannibal Plains",
+   "known": "A cannibal village on the plains.",
+   "explored": [
+    "Alder Quill's kitchen and Mother Brine's cure-house, if the stories are true. They are.",
+    "The smoke comes from the cure-house. Do not think about it."
+   ]
+  },
+  "Throne of the Bugmaster": {
+   "region": "Arach",
+   "known": "A crater full of spiders in Arach.",
+   "explored": [
+    "Skin spiders and blood spiders, more than anyone has counted.",
+    "Something sits on a throne at the bottom. The spiders guard it."
+   ]
+  },
+  "Cat-Lon's Exile": {
+   "region": "the Ashlands",
+   "known": "Domes deep in the Ashlands, under something huge hanging in the sky.",
+   "explored": [
+    "The Second Empire's exiles live here, and their Stormthralls.",
+    "One of the old empire's own, still alive, still angry."
+   ]
+  },
+  "Tower of Fog": {
+   "region": "off the coast of Vain",
+   "known": "A lone tower on an island. Fogmen live there.",
+   "explored": [
+    "Fogmen everywhere, and one of their princes.",
+    "Nobody goes in by choice."
+   ]
+  },
+  "Skinhouse HQ": {
+   "region": "the Sonorous Dark",
+   "known": "Where the Skin Bandits live, somewhere in the dark lands.",
+   "explored": [
+    "Peeler machines. People go in whole.",
+    "Savant rules it from a throne."
+   ]
+  },
+  "Swamp Ninja Base": {
+   "region": "the South Wetlands",
+   "known": "A hidden base of the Swamp Ninjas.",
+   "explored": [
+    "Ninjas of every rank, and Shade over them.",
+    "Hidden well; that was the point."
+   ]
+  },
+  "Cactus Den": {
+   "region": "Spine Canyon",
+   "known": "A watchtower in Spine Canyon, home of the Sand Ninjas.",
+   "explored": [
+    "Sand Ninja Oni lives at the top. Walking in uninvited makes enemies.",
+    "Close to Tengu's Vault, and they like it that way."
+   ]
+  },
+  "Red Sabre Hideout": {
+   "region": "the Swamp",
+   "known": "The Red Sabres' hideout in the south-west Swamp.",
+   "explored": [
+    "Twenty-odd Red Sabres and their boss.",
+    "Good gear inside, for whoever survives taking it."
+   ]
+  },
+  "Dust King Tower": {
+   "region": "the Border Zone",
+   "known": "A fortified tower in the Border Zone. The Dust King's.",
+   "explored": [
+    "Walls, a gate and crossbows on the walls. Dust Bandits by the dozen.",
+    "The Dust King does not come down."
+   ]
+  },
+  "Fort Simion": {
+   "region": "Sinkuun",
+   "known": "The Rebel Farmers' fort in Sinkuun.",
+   "explored": [
+    "Swamp domes and shacks, and Boss Simion over them.",
+    "Farmers who stopped paying the Holy Nation, and lived."
+   ]
+  },
+  "Cult Village": {
+   "region": "the Stormgap Coast",
+   "known": "A village on the coast where the Preacher's cult lives.",
+   "explored": [
+    "They say blood in the soil brings a harvest. They test it.",
+    "Do not get caught here."
+   ]
+  },
+  "Tower of Abuse": {
+   "region": "Venge",
+   "known": "An old lab in Venge. The Thrall Masters use it.",
+   "explored": [
+    "Prisoners on the top floor. Agnu, among them, if the stories are right.",
+    "Venge's lasers make the walk there worse."
+   ]
+  },
+  "Tengu's Vault": {
+   "region": "the Skimsands",
+   "known": "The United Cities' prison in the Skimsands.",
+   "explored": [
+    "Samurai guards, a Warden, floors of cells.",
+    "Those inside were put there for good."
+   ]
+  },
+  "Flotsam Village": {
+   "region": "the Hidden Forest",
+   "known": "Where the Flotsam Ninjas hide, somewhere in the Hidden Forest.",
+   "explored": [
+    "Refugees and deserters from the Holy Nation, still praying to Okran in their own way.",
+    "Moll leads them. The Nation wants her head."
+   ]
+  },
+  "Port North": {
+   "region": "the Great Desert",
+   "known": "A slavers' work camp in the Great Desert. Not a port at all.",
+   "explored": [
+    "Stone and iron, dug by slaves.",
+    "Half the Cities eat because of this place."
+   ]
+  },
+  "Eyesocket": {
+   "region": "the Stormgap Coast",
+   "known": "A slave camp on a hill by the coast.",
+   "explored": [
+    "Slave Master Grande runs it.",
+    "Brink lives on what is dug here."
+   ]
+  },
+  "Slave Markets": {
+   "region": "the South Wetlands",
+   "known": "Where slavers sell what they catch.",
+   "explored": [
+    "Cages, buyers and a Slave Market Master.",
+    "Keep your papers close."
+   ]
+  },
+  "Black Dog HQ": {
+   "region": "the Outlands",
+   "known": "The Black Dogs' snailhouse, west of Black Scratch.",
+   "explored": [
+    "Thick walls, a good gate and short tempers.",
+    "Start nothing here."
+   ]
+  },
+  "Bast": {
+   "region": "Bast",
+   "known": "A United Cities city the Holy Nation destroyed.",
+   "explored": [
+    "Ruins and squatters now.",
+    "The war passed through and took everything."
+   ]
+  },
+  "Rebel Base": {
+   "region": "the Border Zone",
+   "known": "A small bar in the Border Zone where outlaws drink.",
+   "explored": [
+    "The Trade Ninjas sell things there you cannot buy elsewhere.",
+    "Crossbows, blueprints, and no questions."
+   ]
+  },
+  "Manhunter Base": {
+   "region": "the Hook",
+   "known": "An outpost of the Manhunters.",
+   "explored": [
+    "Manhunters, and nothing but.",
+    "They hunt people for money. You are people."
+   ]
+  },
+  "Clownsteady": {
+   "region": "the Hook",
+   "known": "A small United Cities town in the Hook, fed by the slave farms nearby.",
+   "explored": [
+    "Compact, busy, and well supplied.",
+    "Ask the traders here; they carry things the bigger towns do not."
+   ]
+  },
+  "Port South": {
+   "region": "the Great Desert",
+   "known": "A slavers' stone camp in the desert. Like Port North, it is no port.",
+   "explored": [
+    "Stone mines and ore, worked by slaves.",
+    "Slave Master Wada keeps the place running."
+   ]
+  },
+  "Stone Camp": {
+   "region": "between Stoat and Sho-Battai",
+   "known": "A slavers' work camp between Stoat and Sho-Battai.",
+   "explored": [
+    "Stone mines, and slaves who will die in them.",
+    "Slave Master Haga lives here, behind guards."
+   ]
+  },
+  "Slave Farm": {
+   "region": "near Heng",
+   "known": "A slavers' cactus farm near Heng.",
+   "explored": [
+    "Rows of cactus as far as you can see, and the slaves who tend them.",
+    "Slave Mistress Ren rules it from a noble house."
+   ]
+  },
+  "Holy Mines": {
+   "region": "Skinner's Roam and Okran's Gulf",
+   "known": "The Holy Nation's mines, worked by servants and prisoners.",
+   "explored": [
+    "High Overseers with whips, and sinners with picks.",
+    "Five of them, scattered through the Nation's hills."
+   ]
+  },
+  "Holy Farm": {
+   "region": "Okran's Pride and Okran's Valley",
+   "known": "Holy Nation farms on the green lands.",
+   "explored": [
+    "Greenfruit, cotton, wheat. The Nation eats because of them.",
+    "Lower servants work; paladins watch."
+   ]
+  },
+  "Holy Military Base": {
+   "region": "Okran's Gulf",
+   "known": "Holy Nation outposts facing the Fog Islands.",
+   "explored": [
+    "Built to hold back the Fogmen.",
+    "The soldiers here do not sleep well."
+   ]
+  },
+  "Waystation": {
+   "region": "the roads",
+   "known": "Tech Hunter waystations on the long roads.",
+   "explored": [
+    "A bed, a bar and a shop where there would otherwise be nothing.",
+    "Tech Hunters stop here on the way to the ruins."
+   ]
+  },
+  "Ark": {
+   "region": "Stobe's Garden",
+   "known": "The Reavers' stronghold, in Stobe's Garden.",
+   "explored": [
+    "Cages for prisoners, and Reavers who think they are free men.",
+    "Valamon leads them from here."
+   ]
+  },
+  "Grayflayer Village": {
+   "region": "the Swamp",
+   "known": "A Swamp village run by the Grayflayers.",
+   "explored": [
+    "Big Gray's people. The Swampers' hardest gang.",
+    "Come with friends or do not come."
+   ]
+  },
+  "Iron HQ": {
+   "region": "the Crags",
+   "known": "The Skeleton Bandits' hold in the Crags.",
+   "explored": [
+    "Metal walls, and old skeletons who decided to be bandits.",
+    "Elder leads them."
+   ]
+  },
+  "The Old Prison": {
+   "region": "the Bonefields",
+   "known": "A bandit stronghold south of Mourn.",
+   "explored": [
+    "An old tower like a lab, and Gorrillo's bandits all over it.",
+    "Gorrillo himself is worth a fortune to someone."
+   ]
+  },
+  "Crab Town": {
+   "region": "the Pits East",
+   "known": "The Crab Raiders' outpost.",
+   "explored": [
+    "They sell crabs. They also are crabs, in spirit.",
+    "The Crab Queen holds court here."
+   ]
+  },
+  "New Kralia": {
+   "region": "the Stenn Desert",
+   "known": "The hold of Kral's Chosen, south of Admag.",
+   "explored": [
+    "Shek who think the Kingdom has gone soft. They fight anyone who comes.",
+    "Fifteen or twenty of them, all looking for a death worth singing about."
+   ]
+  },
+  "Shek Ruins": {
+   "region": "the Stenn Desert",
+   "known": "Broken buildings on a hill east of Admag.",
+   "explored": [
+    "An old border post, wrecked in some war.",
+    "Nothing lives here but scavengers."
+   ]
+  },
+  "Southern Hive Village": {
+   "region": "the Royal Valley",
+   "known": "A village of the Southern Hive.",
+   "explored": [
+    "Pink-skinned hivers, nothing like the western kind.",
+    "They do not trade. They take."
+   ]
+  },
+  "Hive Village": {
+   "region": "Vain and Dreg",
+   "known": "A Western Hive village.",
+   "explored": [
+    "Drones at work, soldiers at the edge, a trader if you are welcome.",
+    "Beak things and gorillos come at it often."
+   ]
+  },
+  "Distant Hive Village": {
+   "region": "Sinkuun",
+   "known": "A Western Hive village far from the others, in Sinkuun.",
+   "explored": [
+    "Hivers far from home.",
+    "Quiet, until something comes out of the desert."
+   ]
+  },
+  "Settled Nomad Village": {
+   "region": "Dreg",
+   "known": "A Nomad village that stopped wandering, south of Raptor Island.",
+   "explored": [
+    "They sell animals and packs.",
+    "Settled, but they still talk like the road is home."
+   ]
+  },
+  "Ashland Dome I": {
+   "region": "the Ashlands",
+   "known": "A great dome in the Ashlands, south-east of the Skinhouse.",
+   "explored": [
+    "Many floors around a winding stair.",
+    "The Head of Agriculture is here, with thralls of the old Legion."
+   ]
+  },
+  "Deadhive Overrun": {
+   "region": "Okran's Gulf",
+   "known": "A dead town near the Fog Islands. The Fogmen have it.",
+   "explored": [
+    "It was someone's town once.",
+    "The Fogmen took it, and they keep what they take."
+   ]
+  },
+  "Expedition 4": {
+   "region": "Stobe's Garden",
+   "known": "A town the Tech Hunters built and left, in Stobe's Garden.",
+   "explored": [
+    "The wind generator still turns. Nobody knows why they left.",
+    "Their notes mention it."
+   ]
+  },
+  "Burn's Tower": {
+   "region": "the Floodlands",
+   "known": "A tower in the northern Floodlands, full of machines.",
+   "explored": [
+    "Old technology everywhere.",
+    "A skeleton called Burn lives here, and he is not friendly yet."
+   ]
+  },
+  "Spider Factory": {
+   "region": "the Forbidden Isle",
+   "known": "An old factory on the Forbidden Isle.",
+   "explored": [
+    "Security spiders by the hundred.",
+    "Whatever it built, it is still building."
+   ]
+  }
+ },
+ "people": {
+  "Holy Lord Phoenix": {
+   "epithet": "the Holy Lord",
+   "place": "Blister Hill",
+   "about": "The Holy Nation's ruler, Okran's voice on earth. Each Phoenix follows the last; the faithful say it is the same man reborn.",
+   "wanted_for": "Shek and Flotsam alike would pay for his end.",
+   "rumours": [
+    "ba_phoenix",
+    "bv_phx"
+   ]
+  },
+  "Emperor Tengu": {
+   "epithet": "Emperor of the United Cities",
+   "place": "Heft",
+   "about": "Rules the Cities from his palace in Heft. Rich, old and suspicious.",
+   "rumours": [
+    "ba_tengu",
+    "bv_tengu"
+   ]
+  },
+  "Esata the Stone Golem": {
+   "epithet": "Queen of the Shek",
+   "place": "Admag",
+   "about": "The Shek Queen. A warrior first, and a queen because of it.",
+   "rumours": [
+    "ba_esata",
+    "bv_esata"
+   ]
+  },
+  "Seto": {
+   "epithet": "Esata's daughter",
+   "place": "Admag",
+   "about": "The Queen's daughter. Some Shek hope she will change the Kingdom. Some fear she will.",
+   "rumours": [
+    "ba_seto",
+    "bv_seto"
+   ]
+  },
+  "Tinfist": {
+   "epithet": "leader of the Anti-Slavers",
+   "place": "Spring",
+   "about": "A man in a machine body who wants every slave freed and every slaver dead.",
+   "wanted_for": "The United Cities want him for war on their slave trade.",
+   "rumours": [
+    "ba_tinfist",
+    "bv_tinfist"
+   ]
+  },
+  "Moll": {
+   "epithet": "leader of the Flotsam Ninjas",
+   "place": "Flotsam Village",
+   "about": "Leads the Flotsam Ninjas against the Holy Nation, from somewhere in the Hidden Forest.",
+   "wanted_for": "The Holy Nation wants her for rebellion.",
+   "rumours": [
+    "bb_moll",
+    "bv_moll"
+   ]
+  },
+  "High Inquisitor Valtena": {
+   "epithet": "the High Inquisitor",
+   "region": "the Holy Nation",
+   "about": "The Holy Nation's chief inquisitor. Sinners fear her; so do the faithful.",
+   "rumours": [
+    "ba_valtena",
+    "bv_valtena"
+   ]
+  },
+  "Lord Ohta": {
+   "epithet": "a noble of Heft",
+   "place": "Heft",
+   "about": "One of the Cities' great lords, never far from the Emperor.",
+   "rumours": [
+    "ba_ohta",
+    "bv_ohta"
+   ]
+  },
+  "Lord Nagata": {
+   "epithet": "lord of Sho-Battai",
+   "place": "Sho-Battai",
+   "about": "Governs Sho-Battai and lives well on Port North's stone.",
+   "rumours": [
+    "ba_nagata",
+    "bv_nagata"
+   ]
+  },
+  "Lady Tsugi": {
+   "epithet": "lady of Brink",
+   "place": "Brink",
+   "about": "Governs Brink. The Reavers on her roads are her problem, and she does not like problems.",
+   "rumours": [
+    "ba_tsugi",
+    "bv_tsugi"
+   ]
+  },
+  "Lord Inaba": {
+   "epithet": "lord of Stoat",
+   "place": "Stoat",
+   "about": "Governs Stoat, the last town before the eastern desert.",
+   "rumours": [
+    "ba_inaba",
+    "bv_inaba"
+   ]
+  },
+  "Lord Yoshinaga": {
+   "epithet": "a noble of the Cities",
+   "region": "the United Cities",
+   "about": "A lord of the Noble Circle, with a house and guards to match.",
+   "rumours": [
+    "ba_yoshinaga",
+    "bv_yoshinaga"
+   ]
+  },
+  "Longen": {
+   "epithet": "a Traders Guild lord",
+   "region": "the United Cities",
+   "about": "A Guild man with an Emperor's manners and a merchant's heart.",
+   "rumours": [
+    "bc_longen",
+    "bv_longen"
+   ]
+  },
+  "Cannibal Grand Wizard": {
+   "epithet": "the Gran' Wizard",
+   "place": "Cannibal Capital",
+   "about": "Leader of all the cannibals. They say he hears a bell no one rings.",
+   "wanted_for": "Wanted everywhere for leading the cannibals.",
+   "rumours": [
+    "bc_wizard",
+    "cn_gw_r",
+    "hz_gw"
+   ]
+  },
+  "Meat Lord": {
+   "epithet": "the host of the First Village",
+   "place": "First Village",
+   "about": "A cannibal leader with manners, a long table and a full larder.",
+   "wanted_for": "Wanted for the people at his table.",
+   "rumours": [
+    "bc_meatlord",
+    "cn_ml_r",
+    "hz_ml"
+   ]
+  },
+  "Alder Quill": {
+   "epithet": "the Quiet Cook",
+   "place": "Cannibals",
+   "about": "A Holy Nation kitchen priest who went over to the cannibals. Gentle, they say. That makes it worse.",
+   "wanted_for": "The Holy Nation and the Cities want him for what he cooks.",
+   "rumours": [
+    "cn_aq_r",
+    "cn_aq_k",
+    "cn_aq_i"
+   ]
+  },
+  "Mother Brine": {
+   "epithet": "the Salt Mother",
+   "place": "Cannibals",
+   "about": "Keeps the cannibals' cure-house. She fed them through the bad winter, and they never asked with what.",
+   "wanted_for": "The Holy Nation and the Cities want her for the cure-house.",
+   "rumours": [
+    "cn_mb_r",
+    "cn_mb_k",
+    "cn_mb_i"
+   ]
+  },
+  "Bugmaster": {
+   "epithet": "the Bugmaster",
+   "place": "Throne of the Bugmaster",
+   "hidden": true,
+   "vague": "A man who keeps spiders, somewhere in the east. Old Shek go to die fighting his pets.",
+   "about": "Sits on a throne at the bottom of a crater, guarded by more spiders than anyone has counted.",
+   "wanted_for": "A criminal of the old kind, wanted by every faction that has lost people to his spiders.",
+   "rumours": [
+    "ba_bug"
+   ]
+  },
+  "Mad Cat-Lon": {
+   "epithet": "the Exile",
+   "place": "Cat-Lon's Exile",
+   "hidden": true,
+   "vague": "An exile of the old empire, still alive somewhere in the ash. Nobody who says so has been there.",
+   "about": "One of the Second Empire's own, living among his Stormthralls in the Ashlands. Old, and still angry.",
+   "rumours": [
+    "bc_catlon",
+    "bv_catlon"
+   ]
+  },
+  "Fog Prince": {
+   "epithet": "a Fog Prince",
+   "place": "Tower of Fog",
+   "hidden": true,
+   "vague": "The Fogmen have princes. One lives in a tower in the sea, they say.",
+   "about": "A prince of the Fogmen, in a tower full of them.",
+   "rumours": [
+    "bc_fogprince"
+   ]
+  },
+  "Savant": {
+   "epithet": "lord of the Skin Bandits",
+   "place": "Skinhouse HQ",
+   "hidden": true,
+   "vague": "The Skin Bandits have a master. He lives in the dark, and he collects skins.",
+   "about": "Rules the Skin Bandits from his throne. The peelers are his.",
+   "wanted_for": "Wanted for the people he has skinned.",
+   "rumours": [
+    "bb_sav",
+    "bv_savant"
+   ]
+  },
+  "Shade": {
+   "epithet": "leader of the Swamp Ninjas",
+   "place": "Swamp Ninja Base",
+   "hidden": true,
+   "vague": "The Swamp Ninjas have a leader called Shade. Their base is somewhere in the wetlands.",
+   "about": "Leads the Swamp Ninjas from their hidden base.",
+   "wanted_for": "Wanted for the Swamp Ninjas' raids.",
+   "rumours": [
+    "bc_shade"
+   ]
+  },
+  "Sand Ninja Oni": {
+   "epithet": "leader of the Sand Ninjas",
+   "place": "Cactus Den",
+   "hidden": true,
+   "vague": "The Sand Ninjas answer to one called Oni. Somewhere in the canyons.",
+   "about": "Leads the Sand Ninjas from the top of a watchtower.",
+   "wanted_for": "Wanted by the Cities.",
+   "rumours": [
+    "bc_oni"
+   ]
+  },
+  "Red Sabre Boss": {
+   "epithet": "boss of the Red Sabres",
+   "place": "Red Sabre Hideout",
+   "hidden": true,
+   "vague": "The Red Sabres have a boss and a hideout, somewhere in the Swamp.",
+   "about": "Runs the Red Sabres from their hideout.",
+   "wanted_for": "Wanted for the Red Sabres' killings.",
+   "rumours": [
+    "ba_redsabre"
+   ]
+  },
+  "Dust King": {
+   "epithet": "the Dust King",
+   "place": "Dust King Tower",
+   "about": "King of the Dust Bandits, in a tower he never leaves.",
+   "wanted_for": "Wanted for leading the Dust Bandits.",
+   "rumours": [
+    "bb_dk",
+    "bv_dustking"
+   ]
+  },
+  "Boss Simion": {
+   "epithet": "boss of the Rebel Farmers",
+   "place": "Fort Simion",
+   "about": "Leads farmers who stopped paying the Holy Nation, and lived.",
+   "wanted_for": "The Holy Nation wants him for rebellion.",
+   "rumours": [
+    "bb_sim",
+    "bv_simion"
+   ]
+  },
+  "The Preacher": {
+   "epithet": "the Preacher",
+   "place": "Cult Village",
+   "about": "Leads the coast cult. Blood in the soil, he preaches.",
+   "wanted_for": "Wanted for the cult's murders.",
+   "rumours": [
+    "ba_preacher"
+   ]
+  },
+  "Valamon": {
+   "epithet": "leader of the Reavers",
+   "region": "Stobe's Garden",
+   "hidden": true,
+   "vague": "The Reavers have a leader, a Shek called Valamon. Their stronghold is somewhere in the far north.",
+   "about": "A Shek who left the Kingdom and leads the Reavers. Tall, fond of a fight, and not fond of anyone.",
+   "wanted_for": "Wanted for the Reavers' raids and slaving.",
+   "rumours": [
+    "bb_val",
+    "bv_valamon"
+   ],
+   "place": "Ark"
+  },
+  "Sadneil": {
+   "epithet": "keeper of the Skeleton Bar",
+   "place": "Black Desert City",
+   "about": "A skeleton who keeps the bar in Black Desert City and remembers the Second Empire.",
+   "rumours": []
+  },
+  "Agnu": {
+   "epithet": "a prisoner of the Thrall Masters",
+   "place": "Tower of Abuse",
+   "hidden": true,
+   "vague": "Someone is held at the top of a tower in Venge, they say.",
+   "about": "Held by the Thrall Masters in the Tower of Abuse.",
+   "rumours": []
+  },
+  "Gutterhead": {
+   "epithet": "leader of the Scavengers",
+   "region": "the wastes",
+   "about": "Leads the Scavengers. Whatever you dropped, he has it.",
+   "wanted_for": "Wanted for the Scavengers' raids.",
+   "rumours": [
+    "bd_gutter"
+   ]
+  },
+  "Flying Bull": {
+   "epithet": "a Shek extremist",
+   "region": "Shek lands",
+   "hidden": true,
+   "vague": "A Shek called Flying Bull wants a war. Where he is, nobody says.",
+   "about": "A Shek warmonger who wants the old wars back.",
+   "wanted_for": "Wanted for warmongering.",
+   "rumours": [
+    "bb_fb",
+    "bv_bull"
+   ]
+  },
+  "Ghost": {
+   "epithet": "a Shek outcast",
+   "region": "Shek lands",
+   "hidden": true,
+   "vague": "A Shek they call Ghost. Seen once, never twice.",
+   "about": "A Shek outcast with a bounty and no fear.",
+   "wanted_for": "Wanted by the Shek.",
+   "rumours": [
+    "bc_ghost",
+    "bv_ghost"
+   ]
+  },
+  "Blue Eyes": {
+   "epithet": "an outlaw of the Holy Nation's borders",
+   "region": "the Holy Nation's borders",
+   "about": "Wanted by the Holy Nation for heresy. Says what the priests will not.",
+   "wanted_for": "Wanted by the Holy Nation.",
+   "rumours": [
+    "bd_blueeyes"
+   ]
+  },
+  "Tora The Fearless": {
+   "epithet": "a Shek outcast",
+   "region": "Shek lands",
+   "about": "A Shek warrior the Kingdom calls dishonoured.",
+   "wanted_for": "Wanted by the Shek.",
+   "rumours": [
+    "ba_tora",
+    "bv_tora"
+   ]
+  },
+  "Slave Master Haga": {
+   "epithet": "a slave master",
+   "region": "the United Cities",
+   "about": "Runs the Stone Camp and lives like a noble, behind noble guards.",
+   "rumours": [],
+   "place": "Stone Camp"
+  },
+  "Elder": {
+   "epithet": "leader of the Skeleton Bandits",
+   "place": "Iron HQ",
+   "about": "An old skeleton who leads the Skeleton Bandits from the Crags.",
+   "rumours": [
+    "bb_elder",
+    "bv_elder"
+   ]
+  },
+  "Big Gray": {
+   "epithet": "boss of the Grayflayers",
+   "place": "Grayflayer Village",
+   "about": "Runs the Grayflayers, the Swamp's hardest gang.",
+   "rumours": [
+    "bb_gray",
+    "bv_biggray"
+   ]
+  },
+  "Gorrillo": {
+   "epithet": "a bandit boss",
+   "place": "The Old Prison",
+   "about": "Leads the bandits holed up in the old prison south of Mourn.",
+   "wanted_for": "Wanted for his gang's raids.",
+   "rumours": [
+    "bc_gorrillo"
+   ]
+  },
+  "Crab Queen": {
+   "epithet": "queen of the Crab Raiders",
+   "place": "Crab Town",
+   "about": "Leads the Crab Raiders from Crab Town.",
+   "wanted_for": "Wanted for the Crab Raiders' raids.",
+   "rumours": [
+    "bb_cq",
+    "bv_crabqueen"
+   ]
+  },
+  "Slave Mistress Ren": {
+   "epithet": "mistress of the Slave Farm",
+   "place": "Slave Farm",
+   "about": "Rules the cactus slave farm near Heng from a noble house.",
+   "rumours": []
+  },
+  "Slave Master Wada": {
+   "epithet": "master of Port South",
+   "place": "Port South",
+   "about": "Keeps the slaves of Port South digging.",
+   "rumours": []
+  },
+  "Big Grim": {
+   "epithet": "leader of the Hounds",
+   "region": "the Swamp",
+   "about": "Leads the Hounds, who run Shark whatever the Swampers say.",
+   "rumours": [
+    "bb_grim",
+    "bv_grim"
+   ]
+  },
+  "Head of Agriculture": {
+   "epithet": "an old official of the Empire",
+   "place": "Ashland Dome I",
+   "hidden": true,
+   "vague": "Someone from the old empire still keeps a dome in the Ashlands, they say.",
+   "about": "An official of the old empire, still in his dome in the Ashlands with his thralls.",
+   "rumours": []
+  }
+ }
+}

@@ -1,0 +1,3204 @@
+{
+ "pack": "x_gender_bribes",
+ "mod": "LivingWasteland",
+ "dialogues": [
+  {
+   "id": "gb_hn_f_alone_pal",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Paladin"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Lines assume no man in the party.",
+   "lines": [
+    {
+     "say": [
+      "A woman on this road with no man beside her. Explain yourself, or explain it to the Inquisitors.",
+      "Where's your escort? The Flame doesn't look kindly on a woman walking alone.",
+      "No brother, no husband. Those who walk alone are marked as tainted. Which are you?",
+      "Keep your head down and your business short. Women don't wander here unattended.",
+      "You are far from a man's roof. That is how the Inquisitorium finds its work.",
+      "I have no quarrel with you yet. See that I never do. Find a man to walk behind."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_alone_inq",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Inquisitor"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Lines assume no man in the party.",
+   "lines": [
+    {
+     "say": [
+      "The Inquisitorium keeps no women, and wants none. Be gone before somebody writes your name down.",
+      "A woman, unescorted. Seta would have words. I'd rather not repeat them to you.",
+      "Tainted ones come in two kinds. Those who know it, and those about to be told.",
+      "Whose are you? Somebody must answer for you, or the Flame will.",
+      "I see no master at your side. The law has a name for that, and a punishment.",
+      "Leave. If I must ask twice, I will not ask."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_alone_pri",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Priest"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Lines assume no man in the party.",
+   "lines": [
+    {
+     "say": [
+      "Daughter, a woman alone is a door left open. Close it. Go home, and pray.",
+      "Narko whispers to the unattended. Have you no one to speak for you, child?",
+      "You walk without a man at your shoulder. The Lord of Light sees that.",
+      "Humility, sister. Cover yourself and keep to a man's side.",
+      "A woman out alone is the most dangerous thing in the Nation.",
+      "Pray, and go home. I will pretend I did not see you, this once."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_alone_gate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Shop Guard Holy"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Lines assume no man in the party.",
+   "lines": [
+    {
+     "say": [
+      "Halt. No woman passes unescorted. Fetch a husband or a brother, or turn around.",
+      "A woman needs a male escort in this city. You have none.",
+      "Not without a man to answer for you. Those are the rules, and the rules are the wall.",
+      "Come back with a man at your side. Until then you are not getting past me.",
+      "Unescorted women are punished here. I'm doing you a kindness by saying no.",
+      "Do not argue. A woman who argues with a guard is a woman on the way to the cells."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_man_pal",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Paladin"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Assumes a man travels with her.",
+   "lines": [
+    {
+     "say": [
+      "You there. Is she yours? Then keep her at your side, and keep her quiet.",
+      "I'll speak to you, not her. Is this woman in your charge?",
+      "Brother, a woman in your care is your sin if she strays.",
+      "Good. A man with her. See she stays behind you.",
+      "Her conduct is your responsibility. I hope you take it seriously.",
+      "I ask the man. The woman need not trouble herself to answer."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_man_inq",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Inquisitor"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Assumes a man travels with her.",
+   "lines": [
+    {
+     "say": [
+      "Speak for her. If she's yours, say so. If she isn't, say so faster.",
+      "A woman needs a man to answer for her. Are you he, or must I find another?",
+      "The Inquisitorium looks to the man. Whatever she does, you will answer for.",
+      "Keep her close. Tainted women are cured by discipline, not by freedom.",
+      "Is she obedient? Don't tell me. Show me, by keeping her silent.",
+      "I am watching her. You should be, too. One of us is paid for it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_man_pri",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Priest"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Assumes a man travels with her.",
+   "lines": [
+    {
+     "say": [
+      "Brother, guide her gently, and firmly. A woman without guidance is easily led astray.",
+      "Bless you for walking with her. A wandering woman is a burden on her keeper's soul.",
+      "Does she pray? A man should know. He is answerable for it.",
+      "I'll address you, brother. She's welcome to listen.",
+      "Keep her from temptation, and yourself from hers. That's the whole law.",
+      "Walk ahead of her. A man leads. The Lord of Light was clear on it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_man_gate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Shop Guard Holy"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Assumes a man travels with her.",
+   "lines": [
+    {
+     "say": [
+      "She goes where you go, and says what you let her. That is the arrangement.",
+      "Is the woman yours? Then she passes behind you.",
+      "Talk to me, not to her. Are you her escort?",
+      "Mind her. If she misbehaves in the city, you will pay.",
+      "A man with her is the only reason I am being polite. Keep it that way.",
+      "Keep her close, keep her modest, and keep moving."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_m_women_pal",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Paladin"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Assumes women travel with the man.",
+   "lines": [
+    {
+     "say": [
+      "Those women are yours? Then their sins are yours, brother.",
+      "I see you travel with women. Wise, to keep them near. Wiser still to keep them quiet.",
+      "Are they your wives, or your trouble? Either way, you answer for them.",
+      "A man's women are his duty. Do not let them wander from your sight.",
+      "Control your women and we'll have no business, you and I.",
+      "Your women are not my concern, so long as they are yours. Make sure they remain so."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_m_women_inq",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Inquisitor"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Assumes women travel with the man.",
+   "lines": [
+    {
+     "say": [
+      "Whose are the women? Yours? Then the Inquisitorium looks to you if they stray.",
+      "A man with women in tow. Keep them leashed, in word and in habit.",
+      "Tell me they're obedient. Then prove it by their silence.",
+      "I won't bother them. I'll bother you, if they give cause.",
+      "You answer for each one. Every word, every glance.",
+      "Women are nearly always trouble. Yours had better be the exception."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_m_women_pri",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Priest"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Assumes women travel with the man.",
+   "lines": [
+    {
+     "say": [
+      "Brother, you carry a heavy charge. Women need guidance, and you're the guide.",
+      "Bless you for shepherding them. Keep them from the temptations of the road.",
+      "Do they pray as they should? A man ought to know.",
+      "Keep them at your back and your faith at your front.",
+      "The Lord of Light gave them to men for a reason.",
+      "A good man guides his women. A fool loses them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_m_women_gate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Shop Guard Holy"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Assumes women travel with the man.",
+   "lines": [
+    {
+     "say": [
+      "Your women stay behind you in the city. Remember it, and we will agree.",
+      "Keep your women quiet and out of the way. Pass.",
+      "You answer for them while you are in the city. Every one of them.",
+      "If any of them wanders off alone, you're the one who pays.",
+      "Women follow the man. That is how it is done here. Do it that way.",
+      "I would rather not deal with any of them. Make sure I never have to."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_armed_pal",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Paladin"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Also DC_IM_UNARMED (target, value 0).",
+   "lines": [
+    {
+     "say": [
+      "A blade on a woman. Moll's kind carry steel. Which kind are you?",
+      "Put that away before it's taken. A woman with a sword is a heresy with a handle.",
+      "Armed, and no man to answer for you. That's two crimes before I have asked a question.",
+      "Who gave you that blade? A woman has no use for one, only an excuse.",
+      "Don't touch it. I'd so hate to have to be sure of you.",
+      "The Nation has burned women for less than a sword."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_armed_inq",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Inquisitor"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Also DC_IM_UNARMED (target, value 0).",
+   "lines": [
+    {
+     "say": [
+      "Steel in a woman's hand. A confession in waiting, I think.",
+      "Women who bear arms tend to follow the one who calls herself Moll. Do you?",
+      "Take no offence. I only wish to know whether to arrest you or merely watch you.",
+      "Armed and alone. The file almost writes itself.",
+      "A woman's weapon is her obedience. Where is yours?",
+      "The sword gives away what your face hides. Set it down, or explain it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_armed_gate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Shop Guard Holy"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IM_UNARMED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Also DC_IM_UNARMED (target, value 0).",
+   "lines": [
+    {
+     "say": [
+      "Weapons are for men. Hand it over or turn around.",
+      "A woman with a sword gets no welcome here. Sheath it, and keep walking.",
+      "Not escorted, and armed. You manage both. Impressive.",
+      "Do not make me ask whose blade that is. I will not like the answers.",
+      "Keep that sheathed. The cells are full of women who did not.",
+      "We have no use for fighting women. Move along."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_sneak_pal",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Paladin"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SNEAKING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Also DC_IS_SNEAKING (target).",
+   "lines": [
+    {
+     "say": [
+      "Creeping. A woman with something to hide, or someone to hide from. Which is it?",
+      "Step into the light, woman. Honest people don't crouch.",
+      "I saw that. A woman skulking along a wall is nothing the Flame needs explained.",
+      "Stand up. Slowly. Tell me who you're escaping."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_sneak_inq",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Inquisitor"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SNEAKING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Also DC_IS_SNEAKING (target).",
+   "lines": [
+    {
+     "say": [
+      "A woman who creeps is a woman who has been told not to.",
+      "Skulking and unescorted. I'll remember your face.",
+      "The innocent walk straight. You don't.",
+      "Hiding from whom, woman? From us, or from yourself?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_sneak_gate",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Shop Guard Holy"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SNEAKING",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Also DC_IS_SNEAKING (target).",
+   "lines": [
+    {
+     "say": [
+      "Stop right there. Honest women do not creep around a wall.",
+      "Sneaking in the Nation. A woman. You'll want to explain that to someone else.",
+      "Come out where I can see you. The sooner, the shorter the questions.",
+      "I see you. Don't run. The ones who run are the ones we remember."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_illegal_pal",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Paladin"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Also DC_HAS_ILLEGAL_ITEM (target); relies on the engine's own test.",
+   "lines": [
+    {
+     "say": [
+      "Forbidden things in a woman's pack. Narko's work, plainly.",
+      "Women should not carry what men dare not. Open the bag.",
+      "Darkness smells the same in any hand. In yours it smells worse.",
+      "A tainted woman and tainted goods. You've made my morning simple."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_illegal_inq",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Nation Inquisitor"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Also DC_HAS_ILLEGAL_ITEM (target); relies on the engine's own test.",
+   "lines": [
+    {
+     "say": [
+      "Forbidden goods, and a woman to carry them. I couldn't have designed it better.",
+      "Your pack is heresy. Your sex is merely the explanation.",
+      "The Inquisitorium has questions for the bag. It will have more for the woman.",
+      "Whose were these? You will name him, or take the blame whole."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_illegal_pri",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Holy Priest"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Also DC_HAS_ILLEGAL_ITEM (target); relies on the engine's own test.",
+   "lines": [
+    {
+     "say": [
+      "A woman carrying what the Lord forbids. Pray, daughter. Then open the bag.",
+      "Whatever is in there, it will not stay in your hands. Give it here, and kneel.",
+      "Narko has made you her porter. Set it down, and be forgiven the weight.",
+      "Temptation and contraband. Both end the same, in the Flame."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_enemy_pal",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "Holy Nation Paladin"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target), untested; fires only at an enemy player.",
+   "lines": [
+    {
+     "say": [
+      "Tainted! A woman on the road with a price on her head! The Flame will have you!",
+      "Wicked daughter of Narko. Kneel, or burn standing.",
+      "No man, no leash, and no fear. That is how it begins.",
+      "Seize her! The Nation has no mercy for a wild woman!",
+      "You should have stayed behind a door. Doors are kinder than I am.",
+      "You dare walk in the Nation's sight? Your kind is not welcome here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_enemy_inq",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "Holy Nation Inquisitor"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target), untested; fires only at an enemy player.",
+   "lines": [
+    {
+     "say": [
+      "The Flame wants you. A woman. I'll take no pleasure.",
+      "Woman, you will be questioned. You will confess. That is the order of things.",
+      "Another tainted one, and an enemy besides.",
+      "Narko has led you astray. I will return you to the light, or to the ashes.",
+      "The Inquisitorium has a place for you.",
+      "You won't run, woman. Nobody does."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_enemy_pri",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "Holy Priest"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target), untested; fires only at an enemy player.",
+   "lines": [
+    {
+     "say": [
+      "Repent, wretched woman! The Lord of Light sees all that you've done!",
+      "Narko's daughter, here in the open!",
+      "Even now you may kneel. Even now there is a lesser punishment.",
+      "You carry darkness in your very blood. Be cleansed.",
+      "The Flame purges what the Lord can't teach.",
+      "Temptress. Your day ends here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_enemy_gate",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Shop Guard Holy"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target), untested; fires only at an enemy player.",
+   "lines": [
+    {
+     "say": [
+      "A woman, wanted by the Nation! Alarm!",
+      "You! Stop! The Nation has no gate open for the likes of you!",
+      "Wild women are not tolerated here.",
+      "Alone and hunted. Foolish, tainted woman.",
+      "I won't be softened by a woman's tears.",
+      "Hands up! The law will deal with you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_ally_pal",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "Holy Nation Paladin"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target), untested; fires only when the Holy Nation is allied to the player.",
+   "lines": [
+    {
+     "say": [
+      "You have the Nation's favour, woman. Do not mistake it for freedom.",
+      "Allies are allies. Still, a woman should walk with a man, even a friend of the Flame.",
+      "I won't trouble you. Others may, and I can't stop them all.",
+      "You've done the Nation service. Keep your head covered and your voice low, and few will complain.",
+      "The paladins remember good service. The Inquisitors remember everything else.",
+      "Peace to you, sister. Walk carefully."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_ally_inq",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "Holy Nation Inquisitor"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target), untested; fires only when the Holy Nation is allied to the player.",
+   "lines": [
+    {
+     "say": [
+      "The Nation's friend, and a woman. A rare combination. I shall note it, kindly.",
+      "Your deeds are written. So is your sex. Both matter to the Inquisitorium.",
+      "Don't let your service make you proud. Pride is a woman's first sin.",
+      "You have friends in high places, for now. Keep them, and keep your silence.",
+      "Be careful whom you speak to. Not all of us read the same page about you.",
+      "I won't question you today."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_ally_pri",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "Holy Priest"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target), untested; fires only when the Holy Nation is allied to the player.",
+   "lines": [
+    {
+     "say": [
+      "Bless you for your service, daughter. May it earn your soul some quiet.",
+      "The Lord of Light rewards humility. See that you show some.",
+      "You've been a friend to the Nation. That counts, even for a woman.",
+      "Walk in the light, sister, and keep close to those who guide you.",
+      "Your faith is noted. Your freedom, less so.",
+      "The Flame keeps its friends. It keeps everyone else, too."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_f_ally_gate",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Shop Guard Holy"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target), untested; fires only when the Holy Nation is allied to the player.",
+   "lines": [
+    {
+     "say": [
+      "You may pass. A friend of the Nation does not need a husband. Not today.",
+      "Allied, aye. Still, keep to the main road and keep your head down.",
+      "I won't stop you. I might wish I had, if the Inquisitors ask.",
+      "The Nation vouches for you. I do, a little.",
+      "You know the rules. I need not repeat them.",
+      "Pass, and do not linger."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_m_enemy_mix_pal",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "Holy Nation Paladin"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Fires only at an enemy player.",
+   "lines": [
+    {
+     "say": [
+      "Heretic, and with women in tow. The Flame will have them too.",
+      "You answer for them, and you answer to me.",
+      "A man who drags women into his crimes is twice a sinner.",
+      "You will die first. Your women will watch. Then they will be taken in hand."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_hn_m_enemy_mix_inq",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "packages": [
+    "Holy Nation Inquisitor"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE (target) and DC_MIXED_GENDER_GROUP (target), both untested in game; assumes the flag describes the player's squad. Fires only at an enemy player.",
+   "lines": [
+    {
+     "say": [
+      "A heretic with a household of tainted women. The Inquisitorium thanks you for your trouble.",
+      "You corrupt them, and then you bring them near the holy ones. Shameless.",
+      "Whatever they have done, you are the one who answers.",
+      "Your women will be questioned. You, I'll only kill."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_fl_ninja_f",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Flotsam Ninja"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE / DC_MIXED_GENDER_GROUP (target), untested. Lore basis: refugees afraid of Holy Nation spies, ninjas calling each other sister.",
+   "lines": [
+    {
+     "say": [
+      "Sister. Good. Keep walking, nobody here will ask where you came from.",
+      "You walk like someone who has done it alone. Come in from the road if you want.",
+      "A woman on the road. Eat something before you leave. That's the whole rule.",
+      "We know the look. Take your time, and we won't ask for a story.",
+      "The Nation hasn't broken everything. You're proof.",
+      "Stay as long as you can pay for it. Otherwise you're welcome."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_fl_ninja_man",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Flotsam Ninja"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE / DC_MIXED_GENDER_GROUP (target), untested. Lore basis: refugees afraid of Holy Nation spies, ninjas calling each other sister.",
+   "lines": [
+    {
+     "say": [
+      "A human man at our door. The Nation sends men like you.",
+      "Where are you from, and who sent you? Neat answers get you nowhere.",
+      "We've been burned by smiles before.",
+      "Walk slow and keep your hands where I see them. Spies learn patience, and so do we.",
+      "Not one of the Flotsam ninjas, and not one of the Nation's. So what are you?",
+      "I have a long memory for faces. Give me a reason to forget yours."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_fl_ninja_man_women",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Flotsam Ninja"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE / DC_MIXED_GENDER_GROUP (target), untested. Lore basis: refugees afraid of Holy Nation spies, ninjas calling each other sister.",
+   "lines": [
+    {
+     "say": [
+      "Whose are the women? If they're yours, we'll be watching. If they aren't, we'll be asking them.",
+      "A man leading women. You may be a rescuer or a keeper. I can't tell yet.",
+      "Careful. If any of them wants to leave you, we won't stand in the way.",
+      "The Nation's men like to bring their women to heel. Show me you aren't that.",
+      "Keep your hands off them while you are here. I will not repeat myself."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_fl_ninja_f_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "Flotsam Ninja"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE / DC_MIXED_GENDER_GROUP (target), untested. Lore basis: refugees afraid of Holy Nation spies, ninjas calling each other sister.",
+   "lines": [
+    {
+     "say": [
+      "Our sister returns. The door is yours.",
+      "Good to see you again. Come in off the road.",
+      "You have earned a place at the fire. Don't tell the Nation where it is.",
+      "We remember who helped. Sit and rest.",
+      "Nothing to prove to us. Not any more."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_fl_ninja_man_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "packages": [
+    "Flotsam Ninja"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE / DC_MIXED_GENDER_GROUP (target), untested. Lore basis: refugees afraid of Holy Nation spies, ninjas calling each other sister.",
+   "lines": [
+    {
+     "say": [
+      "You earned the gate. You haven't earned the rest of the town.",
+      "A friend, and still a man. Forgive us. We have reasons to be careful.",
+      "We vouch for you. Don't make us regret it.",
+      "The ninjas say you're all right. I say it too, loosely.",
+      "Pass. And don't ask where we sleep."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_fl_refugee_f",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Flotsam Refugee"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_MIXED_GENDER_GROUP",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE / DC_MIXED_GENDER_GROUP (target), untested. Lore basis: refugees afraid of Holy Nation spies, ninjas calling each other sister.",
+   "lines": [
+    {
+     "say": [
+      "Are you running too? Keep low. The Nation looks east first.",
+      "I thought you were one of them. Forgive me, women look the same when they are frightened.",
+      "Please, don't tell anyone you saw me. I'm only passing.",
+      "There's food, if you can find it, and ninjas, if you can't. Stay out of the middle.",
+      "I have not said a word, lady. I have learned not to."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_fl_refugee_man",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "Flotsam Refugee"
+   ],
+   "player_only": true,
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "note": "Depends on DC_IS_FEMALE / DC_MIXED_GENDER_GROUP (target), untested. Lore basis: refugees afraid of Holy Nation spies, ninjas calling each other sister.",
+   "lines": [
+    {
+     "say": [
+      "Swear on whatever you hold sacred that you aren't from the Nation.",
+      "Are you here for me? Say it plainly. I'd rather know.",
+      "Don't step closer. Please. I've had enough of men with kind faces.",
+      "The ninjas say we're safe. I believe it on alternate days.",
+      "I have nothing for you. No money, no secrets. Walk on."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_br_uc_hon",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "personality": "Honorable",
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "in_town_of": [
+    "United Cities"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Voice only; the bribe itself is vanilla's (Drug bust bribe and the gate dialogues, which already branch on DC_PERSONALITY_TAG). Depends on DC_HAS_ILLEGAL_ITEM (target) and the speaker personality tag.",
+   "lines": [
+    {
+     "say": [
+      "Don't even think of offering. I have turned down fatter purses than yours and written down the names.",
+      "That bag is a matter for the ledger, not for the pocket. I won't be paid to forget.",
+      "I have an honest face and a report waiting for any hand that tries to feed it.",
+      "Offer me a bribe and the fine doubles. Offer me nothing and it merely stays the same.",
+      "I took an oath. It isn't for sale, even to someone with a good story.",
+      "Close the bag. If you reach for the purse instead, I reach for the manacles."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_br_uc_brave",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "personality": "Brave",
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "in_town_of": [
+    "United Cities"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Voice only; the bribe itself is vanilla's (Drug bust bribe and the gate dialogues, which already branch on DC_PERSONALITY_TAG). Depends on DC_HAS_ILLEGAL_ITEM (target) and the speaker personality tag.",
+   "lines": [
+    {
+     "say": [
+      "Whatever is in that pack, I'm not afraid of it, or of you. Reach for coin and I'll take you in.",
+      "I fear no one on this road. A bribe is only an insult that costs more.",
+      "Try me. I like a challenge, and the cells need filling.",
+      "I don't need your cats. I need a reason to draw this.",
+      "Bribery is a trade for cowards. I'm not one of them.",
+      "Many have tried. Most are still in the cells."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_br_uc_trait",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "personality": "Traitorous",
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "in_town_of": [
+    "United Cities"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Voice only; the bribe itself is vanilla's (Drug bust bribe and the gate dialogues, which already branch on DC_PERSONALITY_TAG). Depends on DC_HAS_ILLEGAL_ITEM (target) and the speaker personality tag.",
+   "lines": [
+    {
+     "say": [
+      "Hm. A heavy pack, and a lighter purse than you pretend. A man could be reasonable, with the right figure.",
+      "Customs is a long job. A man gets tired. A man gets thirsty. You see how it is.",
+      "I have never seen that bag. I'd hate to start seeing it now.",
+      "A few cats make the eyes tired.",
+      "The Cities pay by the month. The rest I collect as I go.",
+      "Walk by slowly. Think about what it's worth to you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_br_uc_fear",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "personality": "Fearful",
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "factions": [
+    "United Cities",
+    "Police",
+    "Mercenary Police"
+   ],
+   "in_town_of": [
+    "United Cities"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Voice only; the bribe itself is vanilla's (Drug bust bribe and the gate dialogues, which already branch on DC_PERSONALITY_TAG). Depends on DC_HAS_ILLEGAL_ITEM (target) and the speaker personality tag.",
+   "lines": [
+    {
+     "say": [
+      "Th-that bag. Is it what I think it is? I'd rather not know. I'd rather you were somewhere else.",
+      "I'm only a guard. A small one. Whatever is in there, I didn't see it.",
+      "Please keep it closed. If the sergeant sees, we're both done. You more than me, I hope.",
+      "I do not want trouble. Nobody wants trouble. Maybe you have something to ease the trouble.",
+      "My hands are shaking. That's only the cold.",
+      "Keep moving, quietly. And if you have anything to say, say it quietly, too."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_br_hn_hon",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "personality": "Honorable",
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "packages": [
+    "Holy Nation Paladin",
+    "Holy Nation Inquisitor",
+    "Holy Priest",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Shop Guard Holy"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Voice only; the bribe itself is vanilla's (Drug bust bribe and the gate dialogues, which already branch on DC_PERSONALITY_TAG). Depends on DC_HAS_ILLEGAL_ITEM (target) and the speaker personality tag.",
+   "lines": [
+    {
+     "say": [
+      "Bribery is a sin before it's a crime. Keep your cats, and keep your hands from your purse.",
+      "The Flame cannot be bought. I have met men who tried.",
+      "You insult the faith and me. Reach for coin once more and I'll call it heresy.",
+      "Coin buys bread. It does not buy a paladin.",
+      "My honour is not a market stall. Open your pack, or be taken.",
+      "Confess what you carry before you offer to hide it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_br_hn_brave",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "personality": "Brave",
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "packages": [
+    "Holy Nation Paladin",
+    "Holy Nation Inquisitor",
+    "Holy Priest",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Shop Guard Holy"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Voice only; the bribe itself is vanilla's (Drug bust bribe and the gate dialogues, which already branch on DC_PERSONALITY_TAG). Depends on DC_HAS_ILLEGAL_ITEM (target) and the speaker personality tag.",
+   "lines": [
+    {
+     "say": [
+      "I do not fear your pack, or its darkness. Show me, or I will take it.",
+      "Darkness hides in bags and in bribes.",
+      "Cast it into the fire, or I cast you.",
+      "Try to buy me, heretic. Let us see how much it costs you.",
+      "I walk the line between the Flame and the dark every day. You won't push me over.",
+      "A coward takes coin. I'm not one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_br_hn_trait",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "personality": "Traitorous",
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "packages": [
+    "Holy Nation Paladin",
+    "Holy Nation Inquisitor",
+    "Holy Priest",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Shop Guard Holy"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Voice only; the bribe itself is vanilla's (Drug bust bribe and the gate dialogues, which already branch on DC_PERSONALITY_TAG). Depends on DC_HAS_ILLEGAL_ITEM (target) and the speaker personality tag.",
+   "lines": [
+    {
+     "say": [
+      "The faith is strong. The pay is not. A tithe might lighten my duty.",
+      "Heresy is heavy, and so is my list of duties. Perhaps a little lighter, hm?",
+      "I have seen nothing in that bag. The Flame does not ask me to look so hard.",
+      "A donation to the temple is always welcome. I'm the temple, today.",
+      "The High Paladin counts the faithful. He doesn't count the cats.",
+      "Walk slowly. Think of a generous number."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_br_hn_fear",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "personality": "Fearful",
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "packages": [
+    "Holy Nation Paladin",
+    "Holy Nation Inquisitor",
+    "Holy Priest",
+    "Holy Nation Gate Guard",
+    "holy nation guard",
+    "Shop Guard Holy"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Voice only; the bribe itself is vanilla's (Drug bust bribe and the gate dialogues, which already branch on DC_PERSONALITY_TAG). Depends on DC_HAS_ILLEGAL_ITEM (target) and the speaker personality tag.",
+   "lines": [
+    {
+     "say": [
+      "The High Paladin has ordered stricter checks. If I miss one thing, I burn. Please. Do not make me look.",
+      "I am only a servant of the Flame. Whatever you carry, I wish I did not know.",
+      "If the Inquisitors find out I looked away, I will be the one in the cage.",
+      "Quietly, stranger. Whatever you decide, quietly.",
+      "My duty frightens me more than you do. Make it simple for us both.",
+      "Do not tempt me. I am a weak man, and the Flame sees weakness."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_br_slaver_trait",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "personality": "Traitorous",
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "factions": [
+    "Slave Traders"
+   ],
+   "packages": [
+    "slaver gate guard",
+    "slaver guard MAIN"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Voice only; the bribe itself is vanilla's (Drug bust bribe and the gate dialogues, which already branch on DC_PERSONALITY_TAG). Depends on DC_HAS_ILLEGAL_ITEM (target) and the speaker personality tag.",
+   "lines": [
+    {
+     "say": [
+      "Everything has a price here. Yours is probably in your pocket.",
+      "Paperwork is cheap. Silence costs a little more.",
+      "I'm paid to look at the goods. Not paid enough to look hard.",
+      "Hashish. Nice. The boss doesn't need to hear about it, does he?",
+      "Slow walk. Think about the number."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_br_slaver_fear",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "personality": "Fearful",
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "factions": [
+    "Slave Traders"
+   ],
+   "packages": [
+    "slaver gate guard",
+    "slaver guard MAIN"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Voice only; the bribe itself is vanilla's (Drug bust bribe and the gate dialogues, which already branch on DC_PERSONALITY_TAG). Depends on DC_HAS_ILLEGAL_ITEM (target) and the speaker personality tag.",
+   "lines": [
+    {
+     "say": [
+      "The boss counts everything. If a crate goes missing it's my neck. Don't make me a thief as well.",
+      "Whatever that is, put it away. I didn't see it.",
+      "If they catch me looking away I'm on the block myself. Please.",
+      "I should search you. I want to go home in one piece more.",
+      "Quietly. Whatever you decide, quietly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_br_shek_hon",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "personality": "Honorable",
+   "if": [
+    {
+     "cond": "DC_HAS_ILLEGAL_ITEM",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "note": "Voice only; the bribe itself is vanilla's (Drug bust bribe and the gate dialogues, which already branch on DC_PERSONALITY_TAG). Depends on DC_HAS_ILLEGAL_ITEM (target) and the speaker personality tag.",
+   "lines": [
+    {
+     "say": [
+      "Greed does not live long in Shek land. Take your hand from your purse, flatskin.",
+      "A Shek isn't paid to look away. Don't make the offer. You won't like the answer.",
+      "You carry weakness in a sack and insult in a hand. Both stay where I can see them.",
+      "I don't trade honour. Not for cats, not for anything you own.",
+      "Keep your coin, flatskin. The Shek have no place to put it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_uc_took",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "United Cities"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "note": "Gossip around the vanilla bribe mechanic; no condition beyond the bar. Cities factions are not required, any bar speaker.",
+   "lines": [
+    {
+     "say": [
+      "A gate sergeant took a smuggler's purse and waved him in. The smuggler came back with friends. The sergeant doesn't stand at that gate now.",
+      "People say the Cities guards have a price. They say it sadly, as if it were weather.",
+      "Slip a tired guard a few cats and he forgets how to read. Slip it to a rested one and you forget how to walk.",
+      "A man bribed his way in at one gate and got robbed at the next. Nobody sold him a map of honest ones.",
+      "Two thousand for a patrol to look away. A few hundred for a sergeant at a gate. Cheap, until it isn't."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_uc_refused",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "United Cities"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "note": "Gossip around the vanilla bribe mechanic; no condition beyond the bar.",
+   "lines": [
+    {
+     "say": [
+      "A gate guard turned in his own captain for taking coin. They made him sergeant, then posted him somewhere worse.",
+      "Some Cities guards cannot be bought. They are the ones who get posted to the dull towns.",
+      "I offered a patrolman a purse. He wrote my name down and asked me to spell it. I don't go to that gate now.",
+      "There's an honest guard at the south gate. Nobody has found his price. Several have gone broke looking.",
+      "A bribe is a gamble. Half the guards eat it. The other half eat you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_hn_took",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "note": "Gossip around the vanilla bribe mechanic; no condition beyond the bar.",
+   "lines": [
+    {
+     "say": [
+      "A paladin took a tithe to forget a pack. They say he was the one who turned my cousin in a month later.",
+      "The Flame can't be bought. A paladin on a bad month can be rented.",
+      "There are frightened men in the Nation's helmets. Frightened men look at the floor, if you ask them to.",
+      "A priest once let a smuggler pass for a donation. The temple got the cats. The priest got a cell.",
+      "Paladins are paid in prayer. Prayer doesn't buy bread."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_hn_refused",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "note": "Gossip around the vanilla bribe mechanic; no condition beyond the bar.",
+   "lines": [
+    {
+     "say": [
+      "A man tried to buy his way past a paladin in the city. They burned the bag. They didn't stop at the bag.",
+      "The holy ones despise bribes. Not the ones who offer, the ones who accept.",
+      "I would sooner swim the swamp than hand a Nation guard a coin.",
+      "Try buying a paladin and learn the colour of a cage.",
+      "Don't offer. In the Nation, offering is the crime they were waiting for."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_shek",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "races": [
+    "Shek"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "note": "Gossip around the vanilla bribe mechanic; no condition beyond the bar.",
+   "lines": [
+    {
+     "say": [
+      "Offer a Shek a bribe and learn what a flatskin's hand is worth. It isn't much, in pieces.",
+      "The Shek don't take coin to look away. Take it as a warning, not as a rumour.",
+      "I saw a flatskin try to bribe a Shek gate guard. He's still on his knees. He's very polite now.",
+      "A Shek called bribery the worst of crimes. He didn't say what was the second worst.",
+      "Strange kingdom. No tolls, no bribes. Only the blade, and then the apology."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_price",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "chance": 45,
+   "repeat": 3,
+   "note": "Gossip around the vanilla bribe mechanic; no condition beyond the bar.",
+   "lines": [
+    {
+     "say": [
+      "Two thousand to look away at a patrol. A few hundred at a gate. Fifty if the guard is lazy and the night is long.",
+      "A guard takes your money depending on his mood. You don't learn his mood until you try.",
+      "Honest guards cost you nothing, and so much more. Crooked guards cost you cats, and still might not do it.",
+      "Never bribe the nervous ones in front of the sergeant. Nervous ones remember the sergeant.",
+      "Some take it. Some report you. Some do both, in that order."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_dust0",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "No pack. Good. A toll, paid in cats, and you walk. It's a fair price for walking.",
+      "You carry nothing worth the trouble. Give us a toll and we forget you were here.",
+      "Light on your feet and light in your hands. A toll. Hand it over and move.",
+      "Empty back. Then it's in your pockets. A toll, and we don't check.",
+      "Toll road. Cats. You don't even have a pack to complain about.",
+      "No bags to rob, so we take it in coin."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_dust1",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 0,
+     "cmp": ">"
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "Look at that pack. You are hiding more than you say. Pay, and then pay again.",
+      "A pack that size and you want to haggle? Empty it.",
+      "Nobody walks with a pack that heavy and nothing in it. How much is in there?",
+      "The toll is higher for the ones who carry. Take off the pack, or take out the cats.",
+      "A pack. That doubles the price, and halves my patience.",
+      "You tell me you have only a little, with that on your back? I don't believe you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_dust3",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 2,
+     "cmp": ">"
+    }
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "Bags upon bags. A caravan on two legs! We shall be rich, or you'll be dead.",
+      "That's a lot of backpacks. Hand some over and we part friends.",
+      "I count three. Four. Where did you put the rest? Hand it over.",
+      "All that weight and not one cat to spare? Show me.",
+      "A walking warehouse. The toll just went up, and so did my appetite."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_reaver0",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Reavers"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "No pack. Then you pay in cats or in blood.",
+      "Nothing on your back. The Reavers don't mind. You pay with what you have.",
+      "Little to take. Little to lose. A few hundred cats should do for the trouble.",
+      "Empty-backed and brave. Pay the toll, brave one.",
+      "You pass if you pay. We don't forgive. We don't forget, either.",
+      "No bags. Then the cats come from your belt."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_reaver1",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Reavers"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 0,
+     "cmp": ">"
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "That pack is a lie waiting to be told. Open it or pay twice.",
+      "You carry something. We'll have our share of it.",
+      "Nobody lugs a pack that heavy for fun. Hand it over.",
+      "We cut open the heavy ones first.",
+      "A pack means cats. A pack means more cats than you say.",
+      "Show us your bag, stranger, or we'll find our own way inside."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_reaver3",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Reavers"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 2,
+     "cmp": ">"
+    }
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "I count your packs and I do not like the number. Too many for one back, too few for a lie.",
+      "You're carrying a market. Share some of the market.",
+      "Every pack is a debt. You owe us for each.",
+      "That much weight. We would be fools to let it walk by."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_sabre0",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Red Sabres"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "No pack on you. A toll, then, a small one, paid fast.",
+      "Walking light is wise. Walking free costs a few hundred cats.",
+      "Empty back, but you came this way for a reason.",
+      "Nothing to carry, nothing to hide. Pay what a poor traveller pays.",
+      "A few hundred cats and the road is yours."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_sabre1",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Red Sabres"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 0,
+     "cmp": ">"
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "That backpack says you have more than a poor traveller. Pay as a rich one.",
+      "Weight like that's cats in disguise. Settle the toll.",
+      "A pack. Open it, or the price opens it for us.",
+      "You carry a lot to be so quiet. What's in it?",
+      "Don't tell me it's empty."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_sabre3",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Red Sabres"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 2,
+     "cmp": ">"
+    }
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "Heavy-laden and slow. A target, and a gift.",
+      "More packs than shoulders. We shall relieve you of a few.",
+      "You are travelling with a shop. We are tax collectors.",
+      "Overloaded. That isn't a traveller, that's a donation."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_starve0",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "No pack? Nothing to eat in it. Cats then!",
+      "No bag, no food. Cats! Give us cats!",
+      "Empty back. Hmm. Pockets then. Pockets!",
+      "You got no food on you? Then pay. Pay with something.",
+      "Nothing to carry? Then something in your hands."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_starve1",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Starving Bandits"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 0,
+     "cmp": ">"
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "A pack! Food in there, yes? Give!",
+      "That bag. What's in the bag? Food? Give us a little.",
+      "Heavy pack, heavy with food. Share. Please.",
+      "We won't hurt you. Give us the pack.",
+      "Open the bag. Show us. We only want to look. Then to eat."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_dust_en0",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "Nothing on your back, nothing to lose. This will be quick.",
+      "No pack, no tears. Just a body to pick over.",
+      "Empty-backed and unlucky. Cats first, then the rest.",
+      "Nobody comes this far with nothing unless they are running. Run, then."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_dust_en1",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Dust Bandits"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 0,
+     "cmp": ">"
+    }
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "Fat pack. Fat purse. Good!",
+      "That backpack is for us. The rest of you can go with it.",
+      "Heavy bag and a heavier mistake.",
+      "You should have paid when we asked nicely. We were never that nice."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_reaver_en0",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Reavers"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "No pack. We'll take it from the corpse.",
+      "Not worth the rope. Quick death, then.",
+      "Nothing on your back. Then the rest of you'll do.",
+      "Walk with nothing and die with nothing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_toll_reaver_en1",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Reavers"
+   ],
+   "player_only": true,
+   "if": [
+    {
+     "cond": "DC_NUM_BACKPACKS",
+     "who": "target",
+     "value": 0,
+     "cmp": ">"
+    }
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "note": "Depends on DC_NUM_BACKPACKS (target): value 0, or more than 0 / 2. Untested in game. Barks only; the toll itself is vanilla's.",
+   "lines": [
+    {
+     "say": [
+      "Fat pack. Cut it from the dead.",
+      "You carry well, stranger. You will carry for us.",
+      "Heavy bag, heavy loss for you. Take it!",
+      "The sea gives, and so do fools."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_toll_pack",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "chance": 45,
+   "repeat": 3,
+   "note": "Rumour about the vanilla toll talk; no condition.",
+   "lines": [
+    {
+     "say": [
+      "They ask for coin if you carry nothing. They ask for everything if you carry a pack.",
+      "The Dust Bandits count your backpacks before they count your cats. A bag is an admission.",
+      "Three hundred is an insult to a bandit with a good eye. They know what a pack can hide.",
+      "Carry the bag, lose the bag. Leave it behind, lose a few hundred.",
+      "Bandits aren't stupid. A big pack and a small purse tells them a story, and they don't like the ending."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_toll_reavers",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "chance": 45,
+   "repeat": 3,
+   "note": "Rumour about the vanilla toll talk; no condition.",
+   "lines": [
+    {
+     "say": [
+      "Reavers charge by how heavy you look. I walked the coast with nothing on my back once. It cost me my boots.",
+      "The Reavers never take the first offer. They take the second, and the third, until there is no fourth.",
+      "Pay the road gangs early and light. Let them think you're poor. They won't believe you, but they'll remember the courtesy.",
+      "Pay the road gangs early and light. They won't believe you're poor, but they remember the courtesy."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_toll_starve",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "chance": 45,
+   "repeat": 3,
+   "note": "Rumour about the vanilla toll talk; no condition.",
+   "lines": [
+    {
+     "say": [
+      "The hungry ones ask for food first. Cats when they have no food to ask for. Nothing when they have neither.",
+      "A man with no pack told a starving bandit he had nothing. They shared a long silence and parted friends.",
+      "Starvers don't set tolls. They set a mood. Meet it, and keep walking.",
+      "Never joke with a hungry bandit about your lunch. Only one of you'll be laughing, and it won't be him."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_hn_women_town",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "note": "Gossip only; no condition beyond the bar and, where stated, in_town_of. Lore basis: women without a male escort are punished; the Nation restricts women.",
+   "lines": [
+    {
+     "say": [
+      "A woman out without her husband or brother gets noticed here. Noticed is the best you can hope for.",
+      "They restrict the women here. You get used to it. You stop noticing the quiet.",
+      "The priests say women are Narko's image. The priests are men. Make of that what you will.",
+      "Rumour has it a woman walked into the temple unescorted last month. She isn't mentioned any more.",
+      "Stay in, stay veiled, stay quiet. It's simpler than the alternative."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_hn_women_town2",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "note": "Gossip only; no condition beyond the bar and, where stated, in_town_of. Lore basis: women without a male escort are punished; the Nation restricts women.",
+   "lines": [
+    {
+     "say": [
+      "I've heard of women purged for stepping out without an escort. I've never asked what happened to the escort.",
+      "A woman's best protection here's a man who doesn't mind answering for her.",
+      "The Inquisitors check women first. That's how they find the tainted ones, people say.",
+      "If you must walk with a woman, stay close, speak first, and hope she says nothing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_hn_women_far",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "chance": 40,
+   "repeat": 3,
+   "note": "Gossip only; no condition beyond the bar and, where stated, in_town_of. Lore basis: women without a male escort are punished; the Nation restricts women.",
+   "lines": [
+    {
+     "say": [
+      "Never take a woman north without a man beside her. The Nation doesn't ask questions. It doesn't need to.",
+      "A friend went into the Holy Nation with her husband. She came back. He didn't. That's how they do it.",
+      "I heard in the Nation a woman is punished for walking alone. They're right.",
+      "The Holy Nation punishes women who travel without a male escort. Most only fear it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_hn_women_far2",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "chance": 40,
+   "repeat": 3,
+   "note": "Gossip only; no condition beyond the bar and, where stated, in_town_of. Lore basis: women without a male escort are punished; the Nation restricts women.",
+   "lines": [
+    {
+     "say": [
+      "The Nation despises women who read, women who fight, and women who walk unescorted.",
+      "If you're a woman, and you must pass through the Holy Nation, find a man, or find another road.",
+      "I heard women flee the Nation for Flotsam. Not many reach it.",
+      "A woman in the Nation is a guest of whoever claims her. Claim yourself first, and walk away."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_pac_mud",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Holy Nation Outlaws",
+    "Tech Hunters",
+    "Slave Traders",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: United Cities, The Holy Nation, Shek Kingdom, Holy Nation Outlaws, Tech Hunters, Slave Traders, Mongrel",
+   "lines": [
+    {
+     "say": [
+      "Fallen out with the Anti-Slavers? There's a pacifier in Mud Town. Bring a great many cats.",
+      "Mud Town is where you buy the Anti-Slavers back.",
+      "The man in Mud Town can talk the Anti-Slavers round. Your purse does the real talking.",
+      "Mud Town sells forgiveness for the Anti-Slavers. Dear, but cheaper than a cage.",
+      "They say the Anti-Slavers' peacemaker sits in Mud Town. They are usually right about the price."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_pac_hub",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Tech Hunters",
+    "Swampers",
+    "Slave Traders",
+    "Anti-Slavers",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: United Cities, The Holy Nation, Shek Kingdom, Tech Hunters, Swampers, Slave Traders, Anti-Slavers, Mongrel",
+   "lines": [
+    {
+     "say": [
+      "The Hounds hold grudges. The Hub holds a pacifier for them.",
+      "Wronged the Hounds? Go to the Hub and pay someone who talks gently.",
+      "There's a man in the Hub who makes the Hounds forget. For a fee.",
+      "Hounds don't forgive. Hounds are paid to. The Hub is where.",
+      "The Hub has a pacifier for the Hounds. It's on the same street as the people who need one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_pac_worldsend",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Holy Nation Outlaws",
+    "Swampers",
+    "Slave Traders",
+    "Anti-Slavers",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: United Cities, The Holy Nation, Shek Kingdom, Holy Nation Outlaws, Swampers, Slave Traders, Anti-Slavers, Mongrel",
+   "lines": [
+    {
+     "say": [
+      "The Shek have a pacifier at World's End. It costs less than your head.",
+      "Cross the Shek? World's End has someone who mends that. Bring cats, not excuses.",
+      "They say a flatskin can buy peace with the Shek in World's End. A Shek would never say so.",
+      "World's End. The Shek peace is sold there. Strange, for a people with no use for coin."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_pac_stoat",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Holy Nation Outlaws",
+    "Tech Hunters",
+    "Swampers",
+    "Anti-Slavers",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: The Holy Nation, Shek Kingdom, Holy Nation Outlaws, Tech Hunters, Swampers, Anti-Slavers, Mongrel",
+   "lines": [
+    {
+     "say": [
+      "The slavers keep a pacifier at Stoat. Odd to pay slavers for peace. Odder not to.",
+      "If the slavers want you, Stoat has a man who talks them out of it.",
+      "Pay the slave traders at Stoat and they forget your face. They never forget the price.",
+      "Stoat. That's where the slavers mend their quarrels."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_pac_lagoon",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Holy Nation Outlaws",
+    "Swampers",
+    "Slave Traders",
+    "Anti-Slavers",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: United Cities, The Holy Nation, Shek Kingdom, Holy Nation Outlaws, Swampers, Slave Traders, Anti-Slavers, Mongrel",
+   "lines": [
+    {
+     "say": [
+      "The Cities angry at you? Flats Lagoon has a pacifier. Pay the fee, forget the fines.",
+      "Flats Lagoon will clear your name with the Cities. A very long ledger, a very short list of ways.",
+      "If the Empire wants you, go to Flats Lagoon with a heavy purse.",
+      "A man in Flats Lagoon sells you back to the Cities. Think of it as a loan."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_pac_general",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names.",
+   "lines": [
+    {
+     "say": [
+      "A pacifier costs a fortune. A bounty costs your head.",
+      "There is a man for every faction who will fix a bad name. They all want paying. Heavily.",
+      "The pacifier does not care who you killed. Only that you can pay for forgetting.",
+      "I saved for years to be forgiven. I spent it in one afternoon. I'd do it again."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_pac_hn",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names.",
+   "lines": [
+    {
+     "say": [
+      "Pay the Nation for peace? Repentance is the only coin the Flame takes.",
+      "No man sells forgiveness here. Forgiveness is paid in prayer, and in ash.",
+      "A bounty with the Nation is settled in the cells or on the pyre. Nobody has found a third way.",
+      "The Nation forgives the penitent. The penitent don't come back to ask the price."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_thief_where",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "Holy Nation Outlaws",
+    "Tech Hunters",
+    "Swampers",
+    "Mongrel",
+    "Slave Traders",
+    "Anti-Slavers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: Holy Nation Outlaws, Tech Hunters, Swampers, Mongrel, Slave Traders, Anti-Slavers",
+   "lines": [
+    {
+     "say": [
+      "The Shinobi keep a hut in most big towns. Heng, Catun, Heft. Ask for a quiet man.",
+      "Looking for the thieves? They keep a place in the larger towns. Heng has one, I'm told.",
+      "Join the Shinobi and the guards stop being your problem. Mostly.",
+      "Catun, Heft, Heng. Every one has a back door with nobody guarding it.",
+      "Thieves don't advertise. Look for the place the guards avoid looking at."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_thief_fee",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "Holy Nation Outlaws",
+    "Tech Hunters",
+    "Swampers",
+    "Mongrel",
+    "Slave Traders",
+    "Anti-Slavers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: Holy Nation Outlaws, Tech Hunters, Swampers, Mongrel, Slave Traders, Anti-Slavers",
+   "lines": [
+    {
+     "say": [
+      "The Shinobi sell membership like a stall sells bread.",
+      "They take cats at the door. Plenty of them. After that, you're a brother.",
+      "Thieves stick together. That costs more than sticking alone.",
+      "Joining the Shinobi costs a great deal. Not joining costs your pockets, now and then."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_thief_uc",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "United Cities"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. Refusal by culture: Empire.",
+   "lines": [
+    {
+     "say": [
+      "Thieves? There are no thieves in the Cities. Ask somebody else, and ask quietly.",
+      "I would never point a stranger toward that sort of place. I would not know where it was, either.",
+      "The Empire's law has an answer for people who ask. You won't like it.",
+      "Go and ask the guards. I'm sure they'll be curious why you want to know.",
+      "No. And I didn't hear the question."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_thief_hn",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. Refusal by culture: Holy Nation.",
+   "lines": [
+    {
+     "say": [
+      "A den of sinners. I wouldn't name it, and I'll report whoever does.",
+      "Seek the thieves and the Flame will find you first.",
+      "There's no such place in Okran's land. If there were, I'd burn it.",
+      "Ask me that again and the Inquisitors will ask you why.",
+      "Pray for your own sake that you didn't mean what you said."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_thief_shek",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "races": [
+    "Shek"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. Refusal by culture: Shek (race Shek, any bar).",
+   "lines": [
+    {
+     "say": [
+      "Flatskin thieves and their holes. A Shek has no use for either.",
+      "Ask a flatskin. I don't keep company with shadows.",
+      "A thief is a coward with quick hands. I won't tell you where to find them.",
+      "No. A Shek doesn't lead anyone to a thieves' nest.",
+      "Go and ask the rats. They know."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_rob_bdc",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "United Cities",
+    "Shek Kingdom",
+    "Holy Nation Outlaws",
+    "Tech Hunters",
+    "Swampers",
+    "Slave Traders",
+    "Anti-Slavers",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: United Cities, Shek Kingdom, Holy Nation Outlaws, Tech Hunters, Swampers, Slave Traders, Anti-Slavers, Mongrel",
+   "lines": [
+    {
+     "say": [
+      "Black Desert City has the best robot limbs in the land. Taken off dead Skeletons, I hear.",
+      "Need a new leg? Black Desert City. Mind the sand, mind the twisters, mind your boots.",
+      "The Skeletons sell parts in Black Desert City. Used parts. Very used.",
+      "The robotics shop in Black Desert City is the best anywhere. The road there's the price."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_rob_mongrel",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "United Cities",
+    "Shek Kingdom",
+    "Holy Nation Outlaws",
+    "Tech Hunters",
+    "Swampers",
+    "Slave Traders",
+    "Anti-Slavers"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: United Cities, Shek Kingdom, Holy Nation Outlaws, Tech Hunters, Swampers, Slave Traders, Anti-Slavers",
+   "lines": [
+    {
+     "say": [
+      "Mongrel sells robot legs. Plenty of demand. Mind the fog on the way.",
+      "Legs in Mongrel. Everyone there seems to need them. Do not ask why.",
+      "For a limb that works, go to Mongrel. For a limb that fits, bring patience.",
+      "Mongrel is where legs go when they've lost their owners. Cheap enough, if you can stand the fog."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_rob_hive",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "United Cities",
+    "Shek Kingdom",
+    "Holy Nation Outlaws",
+    "Tech Hunters",
+    "Swampers",
+    "Slave Traders",
+    "Anti-Slavers",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: United Cities, Shek Kingdom, Holy Nation Outlaws, Tech Hunters, Swampers, Slave Traders, Anti-Slavers, Mongrel",
+   "lines": [
+    {
+     "say": [
+      "The Hivers sell cheap legs. Cheap, I said.",
+      "Need a leg and short of cats? The hive will sell you one. It won't look good.",
+      "A hive limb gets you walking. It does not get you admired.",
+      "The hive grows its own. It will sell you spares. Don't ask what they're made of."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_rob_hn",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. Refusal by culture: Holy Nation.",
+   "lines": [
+    {
+     "say": [
+      "Machine limbs are an abomination. I won't tell you where to buy one. Wear one here, and you'll burn.",
+      "Ask about iron legs in the Nation and see how the street empties.",
+      "Cut off by the Skeleton wars and fitted with metal? Don't come here.",
+      "There's an iron foot in a ditch outside the walls. Its owner was found nearby."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_rob_skel",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "races": [
+    "Skeleton"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names.",
+   "lines": [
+    {
+     "say": [
+      "Parts come from the Black Desert, or from Mongrel. Or from whatever stops moving first.",
+      "I need a limb. A limb needs a donor. Donors are scarce, and often unwilling.",
+      "Spare parts are spare. Most of mine were somebody's.",
+      "A limb is a limb. Whose it was isn't my concern."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_doctor",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names.",
+   "lines": [
+    {
+     "say": [
+      "Hurt? Any big town has someone with a needle and a bottle. Ask the barman, he has stitches of his own.",
+      "A doctor is easy to find. A good one is easy to afford, or neither.",
+      "Skeletons need robot repair, the rest of us need a doctor. The doctor is easier to find.",
+      "If you bleed in a town, someone will sew you up. If you bleed outside, bleed quietly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_smith_weapons",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Holy Nation Outlaws",
+    "Tech Hunters",
+    "Swampers",
+    "Slave Traders",
+    "Anti-Slavers",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: The Holy Nation, Shek Kingdom, Holy Nation Outlaws, Tech Hunters, Swampers, Slave Traders, Anti-Slavers, Mongrel",
+   "lines": [
+    {
+     "say": [
+      "Catun has the most famous weapon smith. Heng has one of the best shops around. Both are worth the walk.",
+      "A good blade is from Catun. A better argument is from Heng. Take your pick.",
+      "For weapons, Catun and Heng. For anything else, the nearest gutter.",
+      "A Catun blade is good. A Heng blade is better. A blade from neither is a rumour."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_smith_scrap",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "United Cities",
+    "Shek Kingdom",
+    "Holy Nation Outlaws",
+    "Tech Hunters",
+    "Swampers",
+    "Slave Traders",
+    "Anti-Slavers",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: United Cities, Shek Kingdom, Holy Nation Outlaws, Tech Hunters, Swampers, Slave Traders, Anti-Slavers, Mongrel",
+   "lines": [
+    {
+     "say": [
+      "The Scraphouse in Black Desert City beats every weapon shop in the land. Getting there's the real test.",
+      "Best weapons are in Black Desert City. Worst road in the world to carry them back along.",
+      "A Scraphouse blade is a rumour I trust. I've seen what's left of the ones who bought one.",
+      "Scraphouse. Say the word and watch a tinker go quiet."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_smith_armour",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Holy Nation Outlaws",
+    "Tech Hunters",
+    "Swampers",
+    "Slave Traders",
+    "Anti-Slavers",
+    "Mongrel"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: The Holy Nation, Shek Kingdom, Holy Nation Outlaws, Tech Hunters, Swampers, Slave Traders, Anti-Slavers, Mongrel",
+   "lines": [
+    {
+     "say": [
+      "Heft is the best place I found for armour. I cannot think of any other, unless you count the rumour about the Armour King.",
+      "Good plate comes from Heft. Everything else is a story.",
+      "If you want to stay alive, buy armour in Heft. If you want to stay in coins, don't.",
+      "Armour from Heft. Everything else I have bought has been a lesson."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb_rum_svc_smith_crossbow",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "one_at_a_time": true,
+   "in_town_of": [
+    "United Cities",
+    "Shek Kingdom",
+    "Holy Nation Outlaws",
+    "Swampers",
+    "Slave Traders",
+    "Anti-Slavers",
+    "The Holy Nation"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "note": "Service rumour; towns from the game data (Yara's pacifier directory and Hunter Edjack's shopping guide in vanilla books). Depends on in_town_of to avoid being said in the town it names. in_town_of: United Cities, Shek Kingdom, Holy Nation Outlaws, Swampers, Slave Traders, Anti-Slavers, The Holy Nation",
+   "lines": [
+    {
+     "say": [
+      "For crossbows, the Tech Hunter towns. Mongrel too, if you don't mind the fog. Black Scratch is good.",
+      "The Tech Hunters make decent crossbows. They'll tell you so.",
+      "A crossbow out of Black Scratch has never failed me. I have never tested it on anything that fights back.",
+      "Heard Mongrel has a decent crossbow maker. Heard the fog has a better one."
+     ]
+    }
+   ]
+  }
+ ]
+}

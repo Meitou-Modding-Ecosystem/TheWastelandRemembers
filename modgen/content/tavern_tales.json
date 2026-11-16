@@ -1,0 +1,524 @@
+{
+ "pack": "tavern_tales",
+ "mod": "LivingWasteland",
+ "note": "Meitou only (tale: someone of the squad, or the squad itself, holds the title): bar patrons tell the story behind the squad's biggest titles. rm_ ids, so the Gossip amount slider covers them.",
+ "dialogues": [
+  {
+   "id": "rm_tale_narko",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "narko"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I heard a squad walked into Blister Hill and the Phoenix never walked out. The paladins won't say the name. Narko.",
+      "The Holy Lord is dead. Not the Shek, not an army. A handful of drifters."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_emperorkiller",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "emperorkiller"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Somebody killed Emperor Tengu. Not an army, a squad. Heft still pretends it didn't happen.",
+      "The Emperor's dead and the nobles are counting their knives. All because of one squad."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_queenbreaker",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "queenbreaker"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Esata fell. The Stone Golem herself. To a squad of nobodies, they say. The Shek sing about it, and not kindly.",
+      "Admag has no Queen. Some squad saw to that. Bold, or mad."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_bugburner",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "bugburner"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Somebody walked into Arach and came back without the Bugmaster in it. Last Stand ran out of reasons to die.",
+      "The Bugmaster's dead. A squad did it. The spiders don't know what to do with themselves."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_wizardsend",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "wizardsend"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Gran' Wizard's bell is quiet. A squad off the plains did it. The cannibals are still looking for them.",
+      "No more bell in the cannibal capital. Whoever did it, I'd buy them a drink and then run."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_princesend",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "princesend"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Someone killed a Fog Prince in the fog itself. I'd buy them a drink, if I ever found them sober."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_redruin",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "redruin"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Red Sabres lost their boss. A squad walked into the swamp and came out lighter by one bandit chief."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_kingslayer",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "kingslayer"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Dust King's tower has no king. A squad climbed up and settled it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_endofkings",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "endofkings"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "One squad, and the great ones keep falling. People are starting to lock their doors when they hear the name."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_gravefillers",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "gravefillers"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "There's a squad out there that's buried more men than the plague."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_ashtide",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "ashtide"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "They call them the Ash Tide. Wherever they go, the dead pile up like ash after a fire."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_unbroken",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "unbroken"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "There's a crew that's won four hundred fights. Four hundred."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_wantedenders",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "wantedenders"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A squad's been ending every name on the bounty board. The bounty clerks are running out of posters."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_gatekeepers",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "gatekeepers"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Raiders keep throwing themselves at one outpost and limping home. The Gatekeepers, people call them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_guildsown",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "guildsown"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "The guild has a squad at rank S now. Twenty seals on the charter. Nobody thought it could be done."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rm_tale_chiefbreakers",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "United Cities",
+    "The Holy Nation",
+    "Shek Kingdom",
+    "Nomads",
+    "Drifters",
+    "Hounds",
+    "Swampers",
+    "Tech Hunters",
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "one_at_a_time": true,
+   "chance": 8,
+   "repeat": 3,
+   "lw_if": [
+    {
+     "tale": "chiefbreakers"
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "A hundred leaders down. A hundred! Bandit gangs fall apart when they hear that squad's coming."
+     ]
+    }
+   ]
+  }
+ ]
+}

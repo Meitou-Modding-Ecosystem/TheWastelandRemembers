@@ -1,0 +1,8424 @@
+{
+ "pack": "captives",
+ "mod": "LivingWasteland",
+ "dialogues": [
+  {
+   "id": "pc_hn_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 85,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Brother, I'm no heretic. I said one wrong thing at the wrong table, that's all.",
+      "Okran sees every cell. He must be looking elsewhere.",
+      "I have recanted twice. They want a third that I mean.",
+      "Don't speak to me where the paladins can see.",
+      "I have prayed until my knees bled. The light doesn't come through stone.",
+      "They call it penance. I call it being forgotten slowly.",
+      "I only wanted to know what became of my brother.",
+      "If you serve the light, say a verse for me. I have forgotten them all."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hn_captive",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 90,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "You hold a child of Okran in a cage. Count that against yourself when the light comes.",
+      "Give me to the Inquisitorium and I'll speak kindly of you. Keep me, and I won't.",
+      "Whatever you want from the Holy Nation, I can't give it. I'm nobody. That's why I'm here.",
+      "Kill me and I'm a martyr. Free me and I'm a witness. Do neither and I'm a nuisance.",
+      "I forgive you. It's easy. I have been practising on the guards.",
+      "You're no paladin. Paladins at least pretend the keys are holy."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hn_passing",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Brother! Say my name at the gate. Only once.",
+      "Pray for me. Pray loudly. Someone important might hear.",
+      "Don't look at me. Look at the paladins. They're the ones who decide.",
+      "A little water, a little mercy. Either one will do.",
+      "Whoever you are, you walk. I envy the walking.",
+      "Is that the light on your face, or only the torches?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hn_hostile",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Dark one. Even in chains I'm cleaner than you.",
+      "Okran will burn the door off my cell, and then he will find you.",
+      "Look at me, beast. Look at what the light does to its own. Imagine what it does to you.",
+      "Take your eyes off me. I won't be tainted by being looked at.",
+      "I pray you hang from your own chains, stranger.",
+      "The light is patient, heretic. It can wait for you as long as it likes."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hn_lockpick",
+   "event": "EV_UNLOCK_MY_CAGE_ATTEMPT",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Quietly. The paladins pass this corridor at every bell.",
+      "Okran guide your hands. And please, hurry them.",
+      "Faster. Faster. I hear boots.",
+      "There is a trick to that lock. No. I do not know it. Keep going.",
+      "Don't stop. Don't look back. Don't tell me if someone is coming.",
+      "Yes. Yes, that's how the light must feel."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hn_freed",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Okran be praised. And you, whoever you are.",
+      "I am free. I am free and I am a criminal. I will think about that later.",
+      "Run. I'll follow as I can. Don't wait for a sinner.",
+      "The light let me out through your hands.",
+      "You have broken a holy lock. They'll call it a holy crime.",
+      "Don't tell me your name. I wouldn't be able to lie about it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hn_released",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 1,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You free me? Why? Is this a test of faith?",
+      "I'll remember this, stranger. All of it.",
+      "Do you think a chain is the worst thing that happened to me here? Go on.",
+      "I'll tell the Inquisitorium how you treated me. I'll tell it kindly."
+     ],
+     "effects": [
+      [
+       "DA_FLAG_TEMP_ENEMY",
+       0
+      ],
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Free to go? Free to be caught by someone else.",
+      "Is this a trick? Don't answer.",
+      "I'll pray for you. Quickly, before I think better of it.",
+      "Don't follow me. Don't even watch."
+     ],
+     "effects": [
+      [
+       "DA_FLAG_TEMP_ENEMY",
+       0
+      ],
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hn_waking",
+   "event": "EV_GET_UP_PEACE",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Not a dream. Still the stone.",
+      "Brother? No. Only the wall.",
+      "I dreamed of the fields. The light was warm there.",
+      "My head. What did they hit me with? Never mind.",
+      "Awake again. I thought sleep would be a mercy, but it keeps ending."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hn_healed_captor",
+   "event": "EV_BEING_HEALED_FINISHED",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Why heal what you mean to keep? Never mind.",
+      "Mercy from a jailer. Okran, you have a sense of humour.",
+      "A mended prisoner lasts longer. I understand the arithmetic.",
+      "I won't thank you. I'll pray for you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hn_healed_stranger",
+   "event": "EV_BEING_HEALED_FINISHED",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You heal a heretic, brother. Is that allowed? It feels allowed.",
+      "The light thanks you, and so do I.",
+      "Strange, being touched without being struck.",
+      "Go carefully. Mercy is a crime in some corridors."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hn_marked",
+   "event": "EV_MARKED_FOR_DEATH",
+   "factions": [
+    "The Holy Nation",
+    "Okranites"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "The Holy Nation"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 65,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Okran have mercy. I recanted. I recanted everything.",
+      "Not me. I was only singing. Singing isn't a sin.",
+      "They are coming with the prayer again. It is not a prayer I like.",
+      "Let it be quick. Let it be holy. Let it be soon. No."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_shek_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Shek Bayan",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 85,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A Shek in a coop. Look, /FLATSKIN/. Enjoy the sight, it won't last.",
+      "Unlock this and I will not remember your face. Leave it and I will remember it forever.",
+      "It took six of them to hold me. Count that when you tell it.",
+      "I won't beg. I'll wait. The difference is a Shek's whole life.",
+      "Honour is hard to keep in a cage. I keep it anyway.",
+      "Are you here to gawk, /FLATSKIN/? Gawk quickly.",
+      "This is no death for a warrior. Open the door and let it be a better one.",
+      "Go on. Ask me what I want. I want my spear and your absence."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_shek_captive",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Shek Bayan",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 90,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Hold me or kill me, /FLATSKIN/.",
+      "You chain a Shek and call it victory. Bring it to my kin and see what they call it.",
+      "I won't bargain. If my kin pay, they pay. If they don't, I die as I am.",
+      "One day this cage will be a story. I'll tell it, and you'll be the fool in it.",
+      "Spit on you? I would, but I won't waste water.",
+      "A Shek doesn't ask. A Shek waits for the right moment to stop waiting.",
+      "You have the key. You also have the fear."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_shek_passing",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Shek Bayan",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You. Flatskin. Walk on. A Shek in a cage is no sight for you.",
+      "I don't beg. I say: open it, once, and with respect.",
+      "If you fear my kin, free me. If you don't, free me also.",
+      "Walk past if you must. Remember that I was standing.",
+      "Even through bars I can count how many of you there are.",
+      "A stranger. Have you a blade? Even a poor one? No? Then walk on."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_shek_hostile",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Shek Bayan",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Come close, /FLATSKIN/. The bars are thin where it matters.",
+      "Every night I dream your neck. Every morning it's still unbroken.",
+      "When I'm out, you'll know it by the silence.",
+      "Bring your friends. I'll use them to climb out.",
+      "I know your face now. A Shek forgets nothing.",
+      "Coward. You hit me when I was alone. Hit me again."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_shek_lockpick",
+   "event": "EV_UNLOCK_MY_CAGE_ATTEMPT",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Shek Bayan",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Don't tremble, /FLATSKIN/. A lock is only a small enemy.",
+      "Slow hands. A good lock is a patient enemy.",
+      "I hear them coming. Or I hear my pulse.",
+      "If you fail, I won't blame you. I'll only die disappointed.",
+      "Yes. That's the click. Again.",
+      "Don't look at me. Look at the lock. I'm not the one who needs killing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_shek_freed",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Shek Bayan",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You have my gratitude. Don't mistake that for friendship.",
+      "I'm in your debt, /FLATSKIN/. A Shek counts debts exactly.",
+      "Freedom. Good. Now I find my spear.",
+      "You did it without being asked. I'll remember that kindly.",
+      "Go. My kin will hear of what you did, and they'll be fair.",
+      "I thought I'd die in there. Instead I'll die later, and more loudly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_shek_released",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Shek Bayan",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 1,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You release me? You are either a fool or a better warrior than you look.",
+      "I'll be back for your head. That isn't a threat.",
+      "To cage a Shek is foolishness. To free one is worse.",
+      "I don't thank captors. I outlive them."
+     ],
+     "effects": [
+      [
+       "DA_FLAG_TEMP_ENEMY",
+       0
+      ],
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Free? Hm. I'll remember the door, the hour, and your face.",
+      "I won't run. I'll walk quickly, with dignity.",
+      "My thanks to the lock. Not to you.",
+      "Don't mistake an open door for mercy. It's only a door."
+     ],
+     "effects": [
+      [
+       "DA_FLAG_TEMP_ENEMY",
+       0
+      ],
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_shek_waking",
+   "event": "EV_GET_UP_PEACE",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Shek Bayan",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave",
+    "Player THUG",
+    "Player TOUGH Merc",
+    "Player CIVILIAN",
+    "Player SUNDEMON",
+    "Player SHEK Warrior",
+    "Player HIVER Ronin",
+    "Player SKELETON"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Stone. Bars. A bad dream that refuses to end.",
+      "Who struck me? Show me their face and I'll thank them with my fist.",
+      "I'm awake. That's the worst news yet.",
+      "My head. They hit well. Remember that.",
+      "The roof is low. A Shek should wake under open sky."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_shek_healed_captor",
+   "event": "EV_BEING_HEALED_FINISHED",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Shek Bayan",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Why mend what you mean to break? Keep your hands from my face.",
+      "I didn't ask. I won't thank. I'll simply not kill you today.",
+      "A healthy prisoner is a better trade.",
+      "The wound closes. The insult doesn't."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_shek_healed_stranger",
+   "event": "EV_BEING_HEALED_FINISHED",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Shek Bayan",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You help a caged Shek. Good. Gratitude.",
+      "Hm. Your hands are not clumsy. Gratitude, /FLATSKIN/.",
+      "Quiet kindness is rare among your kind.",
+      "I didn't fall that badly. But I thank you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_shek_screaming",
+   "event": "EV_SCREAMING_TORTURE",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc Shek Warrior - Base 1",
+    "Shek Bayan",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 65,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "ARGH! Do it properly, cowards!",
+      "ARGH! I don't scream! This is... NGH...",
+      "NGH! Is that all! IS THAT ALL!",
+      "Shek don't cry out. Shek announce!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_skel_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 85,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I'm locked in. I'd like to be unlocked.",
+      "Hello. I'm a prisoner. This isn't a joke. I don't know jokes.",
+      "They wish to open me and see what I am. I'm a skeleton. That's what I am.",
+      "My joints are cold. The cage is damp. I don't recommend it.",
+      "Please don't leave. I'll wait. I'm good at waiting.",
+      "You can open this? Please do. I'll remember who did.",
+      "Tell the others I didn't run."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_skel_captive",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 90,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "You're my captor. I register that. I don't like it.",
+      "If you wish to sell me for parts, do it quickly. If not, stop looking at my arm.",
+      "You hold me and I hold nothing. That's an uneven arrangement.",
+      "I don't bargain well. I have only the one thing, and you already have it.",
+      "Release me and I won't follow. I give my word. It's a short word.",
+      "You may break me. You may not make me say I'm sorry. I'm not."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_skel_passing",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Human. I'm in a cage.",
+      "Please take out a lock pick and use it.",
+      "I'm not dangerous. I'm only inconvenient.",
+      "You look at me. Do not look.",
+      "I don't fear the cold. I fear the bolt cutters.",
+      "Others walked by. You're the first who looked."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_skel_hostile",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Human. You stand outside my cage. I'll remember where you stand.",
+      "When I'm free I'll find you. I don't forget. I wasn't built to.",
+      "You made a mistake. Nobody has told you yet.",
+      "I'm not afraid. I have nothing left to be afraid with.",
+      "Strike the bars. See which one breaks first."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_skel_lockpick",
+   "event": "EV_UNLOCK_MY_CAGE_ATTEMPT",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Yes. Turn it. A little more.",
+      "Do not force it. The lock is old. So am I.",
+      "I hear no one. That isn't the same as no one.",
+      "Continue. I am not worried. I am only waiting.",
+      "Careful with the pick. It's the only one we have."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_skel_freed",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Thank you. I have no pay. I have a long memory.",
+      "Open. Good. I'll walk now.",
+      "You did that for no reason. I'll think about why.",
+      "I owe you. I won't forget the amount.",
+      "Goodbye. I mean it as a kindness."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_skel_released",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 1,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I won't be caged twice.",
+      "You let me go. That was an error. I won't correct it for you.",
+      "Releasing me doesn't undo the key.",
+      "Run. That's my advice. It's free."
+     ],
+     "effects": [
+      [
+       "DA_FLAG_TEMP_ENEMY",
+       0
+      ],
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Let me go. I will go.",
+      "Release accepted. Goodbye.",
+      "I do not understand why. I am leaving before you understand it.",
+      "Thank you. I won't use that word again."
+     ],
+     "effects": [
+      [
+       "DA_FLAG_TEMP_ENEMY",
+       0
+      ],
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_skel_waking",
+   "event": "EV_GET_UP_PEACE",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave",
+    "Player THUG",
+    "Player TOUGH Merc",
+    "Player CIVILIAN",
+    "Player SUNDEMON",
+    "Player SHEK Warrior",
+    "Player HIVER Ronin",
+    "Player SKELETON"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Systems restored. The cage is still here.",
+      "I'm online. Unfortunately.",
+      "Dark. Cold. Bars. Awake.",
+      "I had a dream. Then I remembered I don't dream.",
+      "Joints stiff. Head clear. Situation unchanged."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_skel_healed_captor",
+   "event": "EV_BEING_HEALED_FINISHED",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You repair what you hold. This is a good habit. Please continue, then let me go.",
+      "Repairs complete. Thank you. This doesn't change what you are.",
+      "My arm works. I won't use it on you.",
+      "I'm functional. I understand why you wanted me functional."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_skel_healed_stranger",
+   "event": "EV_BEING_HEALED_FINISHED",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Repairs accepted. I have nothing to pay with but notice.",
+      "You fixed me. I didn't ask.",
+      "That was kind. I'll log it.",
+      "I'm whole enough. Thank you, human."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_skel_healing_any",
+   "event": "EV_BEING_HEALED_START",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Don't remove that panel.",
+      "Careful. That part is difficult to replace.",
+      "Fine. Proceed. Don't drop anything inside me.",
+      "I'm leaking. I've been leaking for days."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_skel_marked",
+   "event": "EV_MARKED_FOR_DEATH",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 65,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "They're coming. I assume it's for disassembly.",
+      "I'm next. I see it. I don't like it.",
+      "I don't want to be taken apart. This is an unusual thing to say.",
+      "Please. Unlock. Please."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_skel_screaming",
+   "event": "EV_SCREAMING_TORTURE",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 65,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Stop. Stop. This isn't useful information.",
+      "*screech* Stop. Please stop.",
+      "No more. There's nothing more in me.",
+      "*buzz* I've told you. I don't know."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hive_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 85,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "We're caught. The cage is for one, but we're many.",
+      "The Hive is far. Our heads are quiet. We don't like quiet.",
+      "Please, /RACENAMEHIVE/. Free us. We work well. We work without rest.",
+      "We don't understand why we're in here. We did the work. We carried what we were given.",
+      "Don't hurt us. We don't know how to hurt back.",
+      "We count the bars. There are many. We stop counting. We start again."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hive_captive",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 90,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "You hold us. We feel it. We aren't angry.",
+      "The Hive will wonder where we are. The Hive wonders about everyone. It's its way.",
+      "Release us and we'll carry for you. We're good at carrying.",
+      "We won't fight. We don't understand fighting. We're sorry for that.",
+      "You're the one with the key. We're the ones with the time.",
+      "We don't know your name. We'll call you the one who kept us."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hive_passing",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "/RACENAMEHIVE/. Please. We're in a small place.",
+      "Don't walk past. Please. Walk here.",
+      "We make no noise. We are good at making no noise. Please.",
+      "You are not Hive. You are not hunters. You are something kinder.",
+      "Free us. We won't forget. We forget little. It's how we're made.",
+      "Others went by. None stopped. You have stopped."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hive_lockpick",
+   "event": "EV_UNLOCK_MY_CAGE_ATTEMPT",
+   "races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Yes. Yes. That's how it opens.",
+      "Quiet. Quiet. The loud ones will come.",
+      "We help. We press our hands to the bars. It isn't enough.",
+      "It's nearly open. We can feel it. We're afraid to hope.",
+      "Hurry. Please. We aren't good at being still."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hive_freed",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Free. We're free. We didn't think of free. We thought only of work.",
+      "Thank you, /RACENAMEHIVE/. We will tell the others. There are few others.",
+      "Open. We go now. We go quietly. Thank you.",
+      "We'll find the Hive. Or the Hive will find us. We don't mind which.",
+      "You gave us air. We are not used to it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hive_released",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 1,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Free? You free us? After the cage?",
+      "We don't understand. You kept. Now you let go.",
+      "We'll go. We won't look back. We'll look back once.",
+      "Thank you. We're confused. We're grateful and confused."
+     ],
+     "effects": [
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hive_waking",
+   "event": "EV_GET_UP_PEACE",
+   "races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave",
+    "Player THUG",
+    "Player TOUGH Merc",
+    "Player CIVILIAN",
+    "Player SUNDEMON",
+    "Player SHEK Warrior",
+    "Player HIVER Ronin",
+    "Player SKELETON"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "We wake. The cage is the same. The cage is always the same.",
+      "Dark. Small. We're still here.",
+      "We dreamed of the Hive. We didn't hear it.",
+      "Our heads hurt. The pain is ours alone."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hive_healed_any",
+   "event": "EV_BEING_HEALED_FINISHED",
+   "races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "We're mended. Why? We don't know. We're grateful all the same.",
+      "The pain is small now. We can work. We want to work.",
+      "You fixed us. We must be of use to you.",
+      "Thank you. A broken drone is nothing. A mended one is a gift."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hive_marked",
+   "event": "EV_MARKED_FOR_DEATH",
+   "races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 65,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "No. No. We aren't ready.",
+      "They come for us. They come for one of us. We don't know which one.",
+      "We do not want to stop. We do not know how to stop.",
+      "Please. We'll work harder. We'll work harder."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_hive_screaming",
+   "event": "EV_SCREAMING_TORTURE",
+   "races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 65,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "GAAAAH! We don't know! We don't know!",
+      "It hurts! It hurts all of us!",
+      "Why do they do this? We don't understand! WE Don't!",
+      "STOP! The Hive can't hear us!",
+      "We're only drones! We don't scream! We're screaming!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_prince_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 85,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I have questions. Where am I? Who holds me? Why do they cage a thinker?",
+      "I've been counting hours. I made the mistake of counting them all.",
+      "Do you have an answer for me? I have too many questions and nobody to ask.",
+      "I won't be broken. I'll be patient. These aren't the same.",
+      "Don't pity me. I'm the only one in here still asking things.",
+      "You can open this. I know it. You know it. What are you waiting for?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_prince_captive",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 90,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "You hold me. Fine. Ask me anything. I'll answer, and then you'll answer mine.",
+      "I was free once. I didn't understand it until it was gone.",
+      "You can't cage a question. You can only wait for it to get out.",
+      "Don't mistake silence for surrender. I'm thinking.",
+      "I don't hate you. I'd like to."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_prince_passing",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Hive Prince",
+    "Hive Prince South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)",
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Stranger. You have a face that asks things. Ask me. I'll ask you back.",
+      "A little longer in here and I'll talk to the wall.",
+      "Please. I'm not mad. I'm only bored beyond reason.",
+      "You can walk wherever you want. Do you know how rare that is?",
+      "Open it. I'll tell you something worth the trouble."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_any_caged_waking",
+   "event": "EV_ALMOST_WOKE_UP",
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave",
+    "Npc Shek Warrior - Base 1",
+    "Shek Bayan",
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Mm. What. Where...",
+      "Ah! Not again.",
+      "Not yet. Please. Not yet.",
+      "...The lock. It's still locked."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_band_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Outlaw",
+    "Grass Pirates",
+    "Black Dragon Ninjas",
+    "Holy Nation Outlaws",
+    "The Gorrillo Bandits"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 85,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "/OI/. Don't just stand there. Unlock it. I'll cut you in on something.",
+      "I'm worth more alive than dead. Tell somebody.",
+      "Don't look at me like that. I was winning. Then I wasn't.",
+      "My crew'll come. They always come. Usually late.",
+      "What's your price? Everybody's got one.",
+      "If you're not here to unlock it, /GETLOST/.",
+      "Two cats and a bad knee is all I own. Still worth freeing. Probably.",
+      "They caught me stealing a loaf. A /FUCKING/ loaf."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_band_captive",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Outlaw",
+    "Grass Pirates",
+    "Black Dragon Ninjas",
+    "Holy Nation Outlaws",
+    "The Gorrillo Bandits"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 90,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "All right, all right. You've got me. What d'you want? Money? I've got some. Not on me.",
+      "Kill me and my crew finds out. Free me and my crew never hears.",
+      "I was only doing a job. Same as you. We're both sorry, aren't we?",
+      "You'll get no apology from me. You'll get my knife the second I'm out.",
+      "I can tell you where the loot is. Some of it.",
+      "You won't kill me. You'd have done it already. Which means I get to talk.",
+      "Hit me and I'll lie. Feed me and I'll lie slower."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_band_passing",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Outlaw",
+    "Grass Pirates",
+    "Black Dragon Ninjas",
+    "Holy Nation Outlaws",
+    "The Gorrillo Bandits"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "/OI/! You! Unlock this and I'll never forget it.",
+      "Don't just walk past. I'll make it worth your while.",
+      "A cat for a drink of water, mate. A cat. I've got one.",
+      "You've got honest eyes. You're going to open this and not ask questions.",
+      "Hey. Hey! Don't go! I was nice to the last one who got me out.",
+      "Nothing personal, but if you don't open this I'll hate you for life."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_band_hostile",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Outlaw",
+    "Grass Pirates",
+    "Black Dragon Ninjas",
+    "Holy Nation Outlaws",
+    "The Gorrillo Bandits"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You! You did this! When I'm out I'll carve your name in your back!",
+      "Look at you. Big man. Come closer and say that to my face.",
+      "/FUCKING/ stuck in here with the stink and you strolling by.",
+      "I'll find you. Doesn't matter where.",
+      "Come to gloat? Gloat quick. The guards change soon.",
+      "Hurt me again and see what my crew does to you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_band_lockpick",
+   "event": "EV_UNLOCK_MY_CAGE_ATTEMPT",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Outlaw",
+    "Grass Pirates",
+    "Black Dragon Ninjas",
+    "Holy Nation Outlaws",
+    "The Gorrillo Bandits"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Faster, you /IDIOT/! Not that way!",
+      "Yeah! Yes! Jackpot! Open it!",
+      "C'mon, c'mon. Somebody's gonna see.",
+      "Easy. Easy. If you snap that pick I'll never forgive you.",
+      "Hurry. I can hear them coming."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_band_freed",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Outlaw",
+    "Grass Pirates",
+    "Black Dragon Ninjas",
+    "Holy Nation Outlaws",
+    "The Gorrillo Bandits"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Free! Hah! Remember my face, I'll remember yours.",
+      "You're a good one. Don't tell anyone.",
+      "That's one favour I owe. I pay my favours.",
+      "I'm out. I'm out and I'm taking something on the way.",
+      "I was starting to think nobody'd come."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_band_released",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Outlaw",
+    "Grass Pirates",
+    "Black Dragon Ninjas",
+    "Holy Nation Outlaws",
+    "The Gorrillo Bandits"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 1,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're letting me go? Big mistake.",
+      "Free to go, am I? Right. I'll go. Then I'll come back.",
+      "You ain't putting me back in those locks.",
+      "Say goodbye to your face. I'm gonna rearrange it."
+     ],
+     "effects": [
+      [
+       "DA_FLAG_TEMP_ENEMY",
+       0
+      ],
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Free? Free to... go? Right. I'll just go, then.",
+      "Don't follow me. I mean it. Don't.",
+      "I'm gone. You never saw me. Neither did I.",
+      "Smart. Or dumb. Not stopping to find out."
+     ],
+     "effects": [
+      [
+       "DA_FLAG_TEMP_ENEMY",
+       0
+      ],
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_band_waking",
+   "event": "EV_GET_UP_PEACE",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Outlaw",
+    "Grass Pirates",
+    "Black Dragon Ninjas",
+    "Holy Nation Outlaws",
+    "The Gorrillo Bandits"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Ah. My head. Where's my knife?",
+      "Cage. Right. Still a cage.",
+      "Everything hurts. Good. I'm alive.",
+      "Who hit me? When I find 'em, I'll hit 'em back."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_band_healed_any",
+   "event": "EV_BEING_HEALED_FINISHED",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Outlaw",
+    "Grass Pirates",
+    "Black Dragon Ninjas",
+    "Holy Nation Outlaws",
+    "The Gorrillo Bandits"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Fixing me up before the beating, eh?",
+      "That stings. Good. Means it's working.",
+      "Thanks, I guess. Don't expect me to be nice about it.",
+      "Fewer holes in me. I'll take it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_band_marked",
+   "event": "EV_MARKED_FOR_DEATH",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Outlaw",
+    "Grass Pirates",
+    "Black Dragon Ninjas",
+    "Holy Nation Outlaws",
+    "The Gorrillo Bandits"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 65,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "No! Not me! Take the other one!",
+      "/FUCK/. They're coming. They're really coming.",
+      "I'll tell you where it's buried! I'll tell you anything!",
+      "Somebody! Somebody tell the boss! TELL THE BOSS!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_uc_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Imperial Lords"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 85,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "You there. I am a person of means. Open this door and name your fee.",
+      "There has been a mistake. Somewhere there's a clerk who will confirm it.",
+      "I'll pay. I'll pay handsomely. Please don't make me say it twice.",
+      "I have contracts waiting. Do you know what a missed contract costs?",
+      "I've never been in a cage. I didn't know it smelled like this.",
+      "My family won't leave me here. They're bad at many things, but not that.",
+      "Who put me here? Never mind. I'll have a list drawn up."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_uc_captive",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Imperial Lords"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 90,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Name your ransom. I can pay. I can pay better than whoever hired you.",
+      "Take me to a city gate and I'll make it worth your while. Take me anywhere else and I'll make it worse.",
+      "I'm a person of consequence. Don't be the sort who forgets that.",
+      "I won't scream. I'll remember.",
+      "You'll find I'm worth more breathing. Every merchant is.",
+      "I did nothing worse than my neighbour. He's simply better at paper."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_uc_passing",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Imperial Lords"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You there! Not a guard? No matter.",
+      "A traveller. Have you a purse? I'll repay it twice over.",
+      "Don't stare. Do something. Anything. A coin to the right person.",
+      "I'm worth a great deal to someone. Find that someone, and be rich.",
+      "Please. I'm a respectable person. Respectable people don't smell like this."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_uc_hostile",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Imperial Lords"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You! Do you know who I am? You'll before the week is out.",
+      "Look at you, loose in the world. Enjoy it. My lawyers aren't slow.",
+      "I'll have your name written on a very short list.",
+      "You laugh now. You won't laugh at the hearing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_uc_lockpick",
+   "event": "EV_UNLOCK_MY_CAGE_ATTEMPT",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Imperial Lords"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hurry! Time is money. My money.",
+      "Don't scratch the lock. It's good ironwork.",
+      "Quiet! Do you want the guard to hear?",
+      "Yes. Yes. That's the sound of a debt being paid.",
+      "Faster. I'm late. I'm so very late."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_uc_freed",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Imperial Lords"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Wonderful. Wonderful. I shall remember you in my accounts.",
+      "You'll be paid. Come to my city when you're able.",
+      "I'm free. Now I'm late.",
+      "A debt of cats and a debt of honour.",
+      "I don't know your name. I'll find it. This is a promise, not a threat."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_uc_released",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Imperial Lords"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 1,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You... you'll regret this. No. I'll be generous.",
+      "Free? After all that? I won't ask why.",
+      "Remember this day. I will. In detail.",
+      "I'll pay for this. Not to you. To whoever made you do it."
+     ],
+     "effects": [
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_uc_waking",
+   "event": "EV_GET_UP_PEACE",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Imperial Lords"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Where... what's this? Where's my valet?",
+      "Dirt. My shoes are in dirt.",
+      "A cage? A cage. How crude.",
+      "My head. I have a meeting."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_uc_healed_any",
+   "event": "EV_BEING_HEALED_FINISHED",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Imperial Lords"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Thank you. Put it on my account.",
+      "A little pressure. Not so much.",
+      "That's better. You have steady hands, whoever you are.",
+      "Do it properly. I'll pay for proper."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_uc_marked",
+   "event": "EV_MARKED_FOR_DEATH",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Imperial Lords"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 65,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "No! I have money! I have so much money!",
+      "They can't. There are laws. Someone must have written laws.",
+      "Wait! I can pay! Everyone can be paid!",
+      "This isn't how it's done."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_merc_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Nomads",
+    "Drifters",
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 85,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Contracts go bad. Today mine did.",
+      "I fight for pay. Whoever pays better than this cage gets me.",
+      "If you're hiring, I'm available. Get me out first.",
+      "Don't tell me it's a mistake. I make mistakes for a living.",
+      "Nothing personal. It never is.",
+      "Got a blade? A coin? A crust? I'll take any of the three."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_merc_captive",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Nomads",
+    "Drifters",
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 90,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I know how this goes. You hold me, you wait to be paid. Make it quick.",
+      "I've held prisoners myself. Feed them.",
+      "Kill me or hire me. Don't leave me in the middle.",
+      "No hard feelings. Plenty of soft ones.",
+      "If somebody's paying for me, say so now. I'd like to know what I'm worth.",
+      "I can fight for you. I can fight against you. I just can't fight from in here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_merc_passing",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Nomads",
+    "Drifters",
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hey. Friend. Some other time I'd offer you a drink. Right now: a lock pick.",
+      "I'd pay you for this. When I'm out. Probably.",
+      "Don't just stand there with that face.",
+      "You look like someone who needs a good sword arm. Mine's free, if you ask nicely.",
+      "Whatever you're thinking, I did worse."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_merc_lockpick",
+   "event": "EV_UNLOCK_MY_CAGE_ATTEMPT",
+   "factions": [
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Nomads",
+    "Drifters",
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Easy. Don't scratch it.",
+      "Come on, you've done harder locks.",
+      "That's it. Now push.",
+      "Quiet. Quiet. Boots.",
+      "There. Feel that? That's the tumbler. One more."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_merc_freed",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "factions": [
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Nomads",
+    "Drifters",
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Good work. I'll remember. Drink's on me, someday.",
+      "Free. Great. Now I need a weapon, a meal and a better employer.",
+      "Thanks. I'd say I owe you, but I'd rather pay.",
+      "You did that for nothing? Then you're either kind or planning something.",
+      "I don't forget a favour. Or a face."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_merc_released",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "factions": [
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Nomads",
+    "Drifters",
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 1,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You let me go? That's bad business.",
+      "Free to go. Funny. I thought you'd at least ask for a fee.",
+      "I'll take the door. I'll also take your name.",
+      "A mistake, friend. A very polite one."
+     ],
+     "effects": [
+      [
+       "DA_FLAG_TEMP_ENEMY",
+       0
+      ],
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    },
+    {
+     "say": [
+      "Fine. No hard feelings. Don't follow me.",
+      "I'll just be on my way, then. Slowly.",
+      "That's the last of you I want to see.",
+      "Quits. For now."
+     ],
+     "effects": [
+      [
+       "DA_FLAG_TEMP_ENEMY",
+       0
+      ],
+      [
+       "DA_RUN_AWAY",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_merc_waking",
+   "event": "EV_GET_UP_PEACE",
+   "factions": [
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Nomads",
+    "Drifters",
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Where's my sword? ...Right. Cage.",
+      "Everything hurts. I've had worse. Not much worse.",
+      "Who hit me? Never mind. It was a good one.",
+      "Awake. That's a start."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_merc_healed_captor",
+   "event": "EV_BEING_HEALED_FINISHED",
+   "factions": [
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Nomads",
+    "Drifters",
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Bandaged by the one who jailed me. That's a new one.",
+      "Smart. A healthy sellsword fetches more.",
+      "Thanks. Don't let the others see me say that.",
+      "Is this a courtesy, or are you building a case?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_merc_healed_stranger",
+   "event": "EV_BEING_HEALED_FINISHED",
+   "factions": [
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Nomads",
+    "Drifters",
+    "Tech Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Appreciate it. Most people just step over me.",
+      "Good hands. You ever done this for pay?",
+      "That's better. I'm in your debt, a little.",
+      "Most folk step over a body in a cage. You didn't."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_canh_talk_camp",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "Cannibals"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 85,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I hunted them for years. Now I learn the other end of the hunt.",
+      "I know where I am. I know what the painted ones do. Don't tell me it will be fine.",
+      "I buried more of their kills than I can count. I never thought I'd be the next.",
+      "If you can open it, open it. They come at dusk with the long poles.",
+      "Tell the others at the hunters' camp... no. Tell nobody. They would come, and they would die.",
+      "Don't talk loud. They sleep light, and they sleep hungry."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_canh_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 80,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "A hunter in a cage. Don't laugh.",
+      "They took my knives and my boots. I could forgive the knives.",
+      "I tracked people for coin. Now the coin is in somebody else's pocket and I'm in here.",
+      "Cannibals, slavers, whatever. They all lock the same way.",
+      "I was good at this. Tell me I was good at this."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_canh_passing",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "Cannibals"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You. Look past me. Look at what's in the pots.",
+      "If you have blades, you have a chance. If you have a pick, you have a better one.",
+      "I know that walk. You have hunted too.",
+      "Do not leave me. I know what they do with the ones nobody opens."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_canh_lockpick",
+   "event": "EV_UNLOCK_MY_CAGE_ATTEMPT",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "Cannibals"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Careful. They have dogs. Or something like dogs.",
+      "Quiet. Quieter. They hear metal.",
+      "I know that sound. Stay still. Wait.",
+      "Hands low. Do not rattle it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_canh_freed",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "in_town_of": [
+    "Cannibals"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Out. Out. Burn the place on the way if you can.",
+      "I owe you. A hunter pays his debts in meat, but I'll pay in coin.",
+      "Don't look back at the pots. Just walk.",
+      "I'll tell the others what you did. They'll like you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_cann_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Cannibals"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 85,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "/CANNIBALCURSE/! Dhey cage Cannibal! Dhis wrong!",
+      "Let out. Let out. Cannibal ungry. Cannibal not eat you. Maybe. Let out first.",
+      "/CANNIBALHA/. You look soft. Open. Open, soft one.",
+      "Dhis /CANNIBALTOUGH/ cage. Make Cannibal angry.",
+      "Cannibal ungry. Dey no feed. Dey no feed!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_cann_captive",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Cannibals"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 90,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Kill. Kill Cannibal or let out. No talk. /CANNIBALCURSE/.",
+      "You no eat Cannibal? You soft? /CANNIBALHA/.",
+      "Cannibal remember. Cannibal remember dis face.",
+      "Feed Cannibal. Dhen talk. Dhen maybe not kill.",
+      "Chief come for Cannibal. Chief come with many. You see."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_cann_passing",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Cannibals"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You! Soft one! Let out! /CANNIBALHA/!",
+      "Cannibal see you. Cannibal smell you. Open!",
+      "Dhere. You. Dhe pick. Use dhe pick.",
+      "No go! Cannibal will be nice! Cannibal will be /CANNIBALSOFT/!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_cann_freed",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "factions": [
+    "Cannibals"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Out! Out! /CANNIBALHA/!",
+      "Dhank you, soft one. Cannibal not eat you.",
+      "Free! Free Cannibal go home! Free Cannibal /CANNIBALYES/!",
+      "You open. Good. Dhat make you friend. Maybe."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_anti_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 85,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "If you have a key, you have an enemy of the slavers beside you.",
+      "They caught me freeing others. Now I get my turn on the other end of the lock.",
+      "Don't pity me. Free the rest of them first.",
+      "Tell the others where I am.",
+      "I'd do it for you. I have done it for strangers. That's why I'm here."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_anti_captive",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 90,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "You have caught an enemy of the slavers. If that makes you a friend of theirs, say so now.",
+      "Ask me anything about the cages and chains. I'll tell you where the weak links are. Not where my people are.",
+      "I won't beg. I've told hundreds not to.",
+      "I know your face. I have freed people from worse.",
+      "If you're going to sell me, you should know I have been sold before."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_anti_passing",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Stranger. If you hate slavers, you're on my side of this chain.",
+      "Free me and I'll free ten more. That isn't a boast.",
+      "Don't leave me. They'll sell me before the week is out.",
+      "I've seen your kind before. Honest, tired, looking for a reason."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_anti_lockpick",
+   "event": "EV_UNLOCK_MY_CAGE_ATTEMPT",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Careful. If they find the pick, they find us both.",
+      "Yes. That is the sound I have been listening for.",
+      "Quick. They check at the turn of the watch.",
+      "You're good at this. I wonder who taught you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_anti_freed",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Free. Right. Now we go back for the rest.",
+      "Thank you, stranger. We fight on the same side of this chain.",
+      "Name the favour and it's done. I don't say that lightly.",
+      "I'll tell them your name. The ones I trust. It's a short list, but a good one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_slave_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Slaves"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 85,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Yes /SIR/? Is there a task? I'll do it.",
+      "Please don't tell the guards I spoke.",
+      "I am not allowed to rest. Do you have something for me to carry?",
+      "Years. I stopped counting the years.",
+      "Don't look at me too long. Looking is what gets people thinking.",
+      "I can work all day. I can work most of the night. Don't ask about the rest."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_slave_passing",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Slaves"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IMPRISONED_BY_TARGET",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Please. If you have a coin, buy me. If you have a blade, cut me. If you have neither, forgive me.",
+      "Don't make eye contact. They see it and they ask me questions.",
+      "I'd run. I would. My legs forgot how.",
+      "Another traveller who does not look. You looked. Thank you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_slave_lockpick",
+   "event": "EV_UNLOCK_MY_CAGE_ATTEMPT",
+   "factions": [
+    "Slaves"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Stop. Stop! No. Yes. No. Please be careful.",
+      "If they find the pick they'll find me.",
+      "Do not look at me while you do it. They will notice.",
+      "My hands are shaking. Is that the lock or me?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_slave_freed",
+   "event": "EV_UNLOCK_MY_CAGE_OR_SHACKLES",
+   "factions": [
+    "Slaves"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_HAS_TAG",
+     "who": "target",
+     "value": 0,
+     "tag": 5
+    },
+    {
+     "cond": "DC_IS_IN_LOCKED_CAGE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_WEARING_LOCKED_SHACKLES",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Free... I can't feel it yet. Is it supposed to feel like this?",
+      "I'll run. I'll run until I find somewhere nobody owns me.",
+      "Thank you. I have nothing to give but this. Thank you.",
+      "You freed me. They'll say you stole me. Don't let them be right."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_slave_healed_any",
+   "event": "EV_BEING_HEALED_FINISHED",
+   "factions": [
+    "Slaves"
+   ],
+   "packages": [
+    "Npc TOUGH Merc Escape 4",
+    "Npc TOUGH Escape Holy 4",
+    "Npc THUG Escapes 2",
+    "Npc OUTLAW Escapes 4",
+    "Npc NINJA Escape 4",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Nobody has done that in a long time.",
+      "I'll work harder. I won't need to.",
+      "Why? I am not worth the bandage. Thank you.",
+      "I'm whole again. Is that a gift or a debt?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_buy_slavers",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Slave Traders"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ENEMY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Is that cargo breathing? Four hundred and fifty cats and I never saw it.",
+      "Fresh stock on your shoulder. Four hundred and fifty, no papers, no names.",
+      "You carry like someone who wants rid. Four hundred and fifty, cash.",
+      "Don't tell me who he was. Four hundred and fifty, and the name stays with you.",
+      "I can use another back. Four hundred and fifty. Fair, by any trader's measure."
+     ],
+     "then": [
+      {
+       "say": [
+        "Agreed.",
+        "Sold.",
+        "He's yours."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "effects": [
+        [
+         "DA_GIVE_MONEY",
+         450
+        ],
+        [
+         "DA_ENSLAVE_TARGETS_CARRIED_PERSON",
+         0
+        ]
+       ],
+       "then": [
+        {
+         "say": [
+          "Good. Set him down. Walk away lighter.",
+          "Pleasure. Don't come back asking where he went.",
+          "Done. He's ours now. Go and spend it.",
+          "Cash for flesh. It is an old arrangement."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "He's not for sale.",
+        "Not today."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Then stop dangling him in front of me.",
+          "Your loss. There are other posts.",
+          "Suit yourself. Carry him. He will get heavier.",
+          "No? Then why show him? Move along."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "That's too little.",
+        "I want more."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Four fifty is the price. Take it, or carry him to the next post.",
+          "I don't haggle with merchandise I haven't touched yet.",
+          "It is what the book says. Take it or leave it.",
+          "Ask the next buyer. Come back when he laughs."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_buy_hunters",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Slave Hunters"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_ENEMY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "That one worth anything? Three hundred cats, no questions.",
+      "Heavy, ain't he? Three hundred and I take the weight off you.",
+      "Hunters pay on delivery. Three hundred.",
+      "Three hundred. That ain't generous. That's what he is worth to people like us.",
+      "I'll take him. Three hundred. Do not haggle, my hands are busy."
+     ],
+     "then": [
+      {
+       "say": [
+        "Agreed.",
+        "Sold.",
+        "He's yours."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "effects": [
+        [
+         "DA_GIVE_MONEY",
+         300
+        ],
+        [
+         "DA_ENSLAVE_TARGETS_CARRIED_PERSON",
+         0
+        ]
+       ],
+       "then": [
+        {
+         "say": [
+          "Done. Easiest three hundred I paid this month.",
+          "Good. Now go before he wakes.",
+          "Cats for the carcass. Fair trade.",
+          "Pleasure doing business. Never saw you."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "He's not for sale.",
+        "Not today."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Then don't wave him around.",
+          "Fine. Keep him. He will stink by morning.",
+          "Your funeral. Not mine.",
+          "Nobody asked you to stand here, then."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "That's too little.",
+        "I want more."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Three hundred. That's the price. I don't climb.",
+          "More? He's a weight, not a prize.",
+          "You can argue with the next hunter.",
+          "Three hundred. Final. Not a copper more."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_buy_hn",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Holy Nation Paladin",
+    "Holy Nation Gate Guard",
+    "holy nation guard"
+   ],
+   "states": [
+    [
+     "Player is ally of Flotsam",
+     false
+    ],
+    [
+     "Player is ally of Anti slavers",
+     false
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_BOUNTY_ALIVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_ENEMY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SAME_RACE_AS_ME",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_HAS_ROBOT_LIMBS",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A captive, brother. Is the heretic marked? The Holy Nation covers the cost of delivering them.",
+      "You carry a prize for Okran. Give them to us and the price on their head is yours.",
+      "Praise the light. A captured one. We will bear them from here and see you rewarded.",
+      "That one breathes. Good. The dead teach nothing.",
+      "Okran's work, brother. Hand them over and the Holy Nation will meet the bounty."
+     ],
+     "then": [
+      {
+       "say": [
+        "Hand over, then.",
+        "They're yours."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "effects": [
+        [
+         "DA_PAY_BOUNTY",
+         0
+        ],
+        [
+         "DA_ARREST_TARGETS_CARRIED_PERSON",
+         0
+        ],
+        [
+         "DA_AFFECT_RELATIONS",
+         2
+        ]
+       ],
+       "then": [
+        {
+         "say": [
+          "Okran remembers a faithful hand.",
+          "Go in light, brother. The price is paid.",
+          "The Inquisitorium thanks you.",
+          "Blessed be the one who delivers. Take your due."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "Not yet.",
+        "I'll keep them for now."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Keep them breathing, then. Do not be long.",
+          "As you will. The light is patient.",
+          "Hesitation is the first doubt, brother.",
+          "Then don't tarry. A heretic's lease on life is short."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_buy_uc",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "United Cities",
+    "Police"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Empire City Guard ",
+    "Empire Gate Guard"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_BOUNTY_ALIVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_ENEMY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "That one on your back. Is he on the list? The reward is paid at the post, in cats, by the book.",
+      "A live bounty. Good. The Cities pay more for the living. Hand him over and I record the claim.",
+      "Careful with the merchandise. Alive, he's worth the full bounty.",
+      "Bring him in, sign nothing, take the cats. That's how the Cities treat an honest hunter.",
+      "A body for the cells, a purse for you. Sound arrangement?"
+     ],
+     "then": [
+      {
+       "say": [
+        "Take him off my hands.",
+        "Here. Pay me."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "effects": [
+        [
+         "DA_PAY_BOUNTY",
+         0
+        ],
+        [
+         "DA_ARREST_TARGETS_CARRIED_PERSON",
+         0
+        ],
+        [
+         "DA_AFFECT_RELATIONS",
+         2
+        ]
+       ],
+       "then": [
+        {
+         "say": [
+          "Claim recorded. Cats on the table.",
+          "Paid. Don't spend it all in one tavern.",
+          "Done. The Cities remember their friends.",
+          "Signed, sealed, paid. A pleasure."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "I'm only carrying him.",
+        "Not for hire."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Then carry him somewhere else. Not through my street.",
+          "A bounty in your arms, no claim in your mouth.",
+          "Hm. Don't waste a guard's time.",
+          "Keep walking. The Cities have little patience for idle crowds."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_buy_shek",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "packages": [
+    "Npc Shek Warrior Law 2",
+    "Shek Gate Guard"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_BOUNTY_ALIVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_ENEMY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "A captive on your shoulder, /FLATSKIN/. Is he wanted? A Shek pays for the wanted.",
+      "Give him to me. If he is wanted, you are paid. If not, you are a fool.",
+      "You hunt and you carry. That I respect. Hand him over and I'll see what he's worth.",
+      "A prisoner. Hm. The Kingdom has use for such things.",
+      "Don't make me ask twice, /FLATSKIN/. Wanted or not, I'll judge."
+     ],
+     "then": [
+      {
+       "say": [
+        "Take him, then.",
+        "He's yours."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "effects": [
+        [
+         "DA_PAY_BOUNTY",
+         0
+        ],
+        [
+         "DA_ARREST_TARGETS_CARRIED_PERSON",
+         0
+        ],
+        [
+         "DA_AFFECT_RELATIONS",
+         2
+        ]
+       ],
+       "then": [
+        {
+         "say": [
+          "Honour.",
+          "The price is paid. Go.",
+          "The Kingdom pays what it owes.",
+          "Good. You aren't entirely a flatskin."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "Not yet.",
+        "I'll keep them for now."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Then why do you stand before me?",
+          "Hm. Don't waste my time again.",
+          "A coward's answer. Go.",
+          "Indecision. A poor trait in a hunter."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_buy_hunters_cannibal",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "packages": [
+    "Cannibal Hunter"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_BOUNTY_ALIVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_ENEMY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're carrying one alive. If they have a price, we pay it. Hunters don't cheat hunters.",
+      "A live one. Good. A dead one is meat. A live one is a witness.",
+      "Set them down gently. If they're wanted, you get the cats.",
+      "I know that look on your face. You brought someone in. Good. Show me.",
+      "Don't tell me what they did. Just tell me they're on the list."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_buy_anti",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_BOUNTY_ALIVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_ENEMY",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 40,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're carrying someone. If it's a slaver, set them down gently.",
+      "A prisoner. Tell me they ran the cages. If they did, we'll meet the price.",
+      "Slavers fetch a premium here. Not in cats, in justice.",
+      "Bring them to us alive. We'll make them talk.",
+      "If you caught one, you did us a favour. If not, put them down quickly."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_bail_inquisitor",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Holy Nation Inquisitor"
+   ],
+   "states": [
+    [
+     "Player is ally of Flotsam",
+     false
+    ],
+    [
+     "Player is ally of Anti slavers",
+     false
+    ],
+    [
+     "Holy phoenix is not okay",
+     false
+    ]
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_MY_BUILDING",
+     "who": "me",
+     "value": 1
+    },
+    {
+     "cond": "DC_HAS_ROBOT_LIMBS",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_FEMALE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SAME_RACE_AS_ME",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_CARRYING_BOUNTY_ALIVE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_CARRYING_BOUNTY_DEAD",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "/HOLYGREET/, brother. The Inquisitorium is open. State your business.",
+      "Welcome, brother. Do you come to confess, to report, or to pay?",
+      "The light be with you. What brings you to the Inquisitorium?",
+      "Brother. You have the look of someone with a debt."
+     ],
+     "then": [
+      {
+       "say": [
+        "Is there any seized stock for sale?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "All confiscated goods are priced for the faithful. Look.",
+          "Taken from the unclean, sold to the clean.",
+          "What was seized for Okran may be bought for Okran.",
+          "Every item here was a sinner's. Now it's yours, for a fee."
+         ],
+         "effects": [
+          [
+           "DA_TRADE",
+           0
+          ]
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "I've come to post bail for someone."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Bail. Another heretic's price. The Inquisitorium counts the coin, but the Lord counts the soul.",
+          "You pay for another's sin. It is a holy gesture. It is also a bad habit.",
+          "A friend, you say. Choose carefully. Their sin will follow you out of here.",
+          "Redemption bought is still redemption, in the eyes of the light. It is the ledger that suffers.",
+          "Is it a heretic you vouch for? Then you vouch with your own name.",
+          "The cells are full of the unconvinced. Take yours, and take them far from here."
+         ],
+         "then": [
+          {
+           "say": [
+            "Very well. The register is open.",
+            "Speak the name, brother. We'll see what it costs.",
+            "Go on. Don't expect gratitude from the cell.",
+            "Then let it be written. Choose."
+           ],
+           "effects": [
+            [
+             "CHOOSE_PRISONER_BAIL",
+             0
+            ]
+           ],
+           "pct": 0
+          }
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "Never mind."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Then do not waste the light.",
+          "Silence is also a prayer, brother.",
+          "Go, then.",
+          "The Inquisitorium has no use for idle visitors."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_bail_shek_desk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "packages": [
+    "shek bounty desk"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_BOUNTY_ALIVE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_CARRYING_BOUNTY_DEAD",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Well, /FLATSKIN/? Speak.",
+      "Speak. I have a long list and a short patience.",
+      "Hm. State your business at the desk.",
+      "A visitor. Quickly, then."
+     ],
+     "then": [
+      {
+       "say": [
+        "Is there any seized stock for sale?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "See for yourself.",
+          "Spoils of the Kingdom, taken from the guilty.",
+          "What the guilty lost, the Kingdom keeps.",
+          "Hm. Choose quickly."
+         ],
+         "effects": [
+          [
+           "DA_TRADE",
+           0
+          ]
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "I've come to post bail for someone."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Bail. So, a friend in the cells. Does a Shek buy back a friend? Yes. Honour requires it.",
+          "You pay for another. That is a foreigner's way. Hm.",
+          "A friend in the cages. I hope he's worth the cats.",
+          "Bail is simple. You pay, they walk, and if they run again, it is on your name.",
+          "To free a prisoner by purse and not by blade. A strange custom."
+         ],
+         "then": [
+          {
+           "say": [
+            "Name them. I'll call the keeper.",
+            "Go to the list. The cost is written there.",
+            "Speak the name and place the cats.",
+            "Choose. Do not dither."
+           ],
+           "effects": [
+            [
+             "CHOOSE_PRISONER_BAIL",
+             0
+            ]
+           ],
+           "pct": 0
+          }
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "Never mind."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Then don't stand there.",
+          "Hm. Don't bother me again without cause.",
+          "Leave.",
+          "Then your presence is the problem."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_bail_police_chief",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Police Chief"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_CARRYING_BOUNTY_ALIVE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_CARRYING_BOUNTY_DEAD",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Yes? State your business.",
+      "Well?",
+      "Chief of police. You want something, or you're lost?",
+      "Make it quick, citizen."
+     ],
+     "then": [
+      {
+       "say": [
+        "Is there any seized stock for sale?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Sure. Take a look.",
+          "Everything on those shelves was taken from somebody.",
+          "Evidence, mostly. Evidence that nobody came back for.",
+          "Heh. Be gentle with the exhibits."
+         ],
+         "effects": [
+          [
+           "DA_TRADE",
+           0
+          ]
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "I've come to post bail for someone."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Bail. Fine. A fine, a signature, and a promise. Don't make me regret the signature.",
+          "A friend in the cells. Everybody has one.",
+          "You pay, they walk. If they run again, you pay again. That is the rule.",
+          "Bail is the Cities at their most generous. Don't tell anyone I said so.",
+          "Cats, then. The cell door opens for cats faster than it opens for tears."
+         ],
+         "then": [
+          {
+           "say": [
+            "Give me the name.",
+            "Write it down, and the cats go on the table.",
+            "Go on. The clerk is busy, but not that busy.",
+            "Pick one. The cells aren't going anywhere."
+           ],
+           "effects": [
+            [
+             "CHOOSE_PRISONER_BAIL",
+             0
+            ]
+           ],
+           "pct": 0
+          }
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "Never mind."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Then stop wasting my time.",
+          "Hm. Next.",
+          "Right. Out of my office.",
+          "Nothing? Nothing isn't a case."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_bail_vigilante_chief",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Vigilante Chief"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_CARRYING_BOUNTY_ALIVE",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_CARRYING_BOUNTY_DEAD",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Well, what's it?",
+      "You look like trouble. Or trouble's relative.",
+      "Speak up. My ears are tired.",
+      "Yeah? Out with it."
+     ],
+     "then": [
+      {
+       "say": [
+        "Is there any seized stock for sale?"
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Sure, look. It was somebody's. Now it's mine.",
+          "Heh. Help yourself. Sort of.",
+          "Whatever's on the shelf is fair game. Prices are on the tags.",
+          "Pay first, complain after."
+         ],
+         "effects": [
+          [
+           "DA_TRADE",
+           0
+          ]
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "I've come to post bail for someone."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Bail. You got a friend in my cells? Everybody does.",
+          "Somebody you owe? Somebody who owes you? Either way, it costs.",
+          "I don't ask what they did. I ask what you're paying.",
+          "Pay, and they walk. Don't make me chase them twice.",
+          "You really want them out? Bold. Fine."
+         ],
+         "then": [
+          {
+           "say": [
+            "Name them.",
+            "Come on. Give me the name.",
+            "Say it clearly. I don't write well.",
+            "Talk. The cell won't open itself."
+           ],
+           "effects": [
+            [
+             "CHOOSE_PRISONER_BAIL",
+             0
+            ]
+           ],
+           "pct": 0
+          }
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      },
+      {
+       "say": [
+        "Never mind."
+       ],
+       "speaker": "T_TARGET_IF_PLAYER",
+       "then": [
+        {
+         "say": [
+          "Then get out of my light.",
+          "Next time bring cats.",
+          "Hm. Go.",
+          "Nothing, huh? That's a lot of nothing."
+         ],
+         "pct": 0
+        }
+       ],
+       "pct": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_free_hn",
+   "event": "EV_PRISONER_FREE_TO_GO",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc TOUGH Vigilante Law 3",
+    "police"
+   ],
+   "target_races": [
+    "Greenlander",
+    "Scorchlander"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Inquisitorium has judged. Your sins are weighed and found light. Go.",
+      "You have repented, child. The light doesn't hold what you were.",
+      "Go, and sin no more. We'll know if you do.",
+      "You're cleansed. Don't make us do it again.",
+      "Out. Walk in the light, and keep your mouth clean.",
+      "The cell was a lesson. Don't forget it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_free_hn_beast",
+   "event": "EV_PRISONER_FREE_TO_GO",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc TOUGH Vigilante Law 3",
+    "police"
+   ],
+   "target_races": [
+    "Shek",
+    "Skeleton",
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Out, beast. You are released. Do not wander.",
+      "The Holy Nation lets you go. Take the mercy and keep to the edges.",
+      "You won't be held. Don't mistake that for welcome.",
+      "Go. Don't look at the paladins. They're looking at you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_free_uc",
+   "event": "EV_PRISONER_FREE_TO_GO",
+   "factions": [
+    "United Cities",
+    "Police"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc TOUGH Vigilante Law 3",
+    "police"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Your time is served. The fine is paid.",
+      "You're free to go. Keep your hands in your own pockets this time.",
+      "Sentence complete. Collect your things and leave the building.",
+      "Released. The Cities keep records. They'll keep yours.",
+      "Go on. You've been processed, and so has your last cat.",
+      "Next time, I won't recognise you. That's a kindness."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_free_uc_nonhuman",
+   "event": "EV_PRISONER_FREE_TO_GO",
+   "factions": [
+    "United Cities",
+    "Police"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc MILITARY Holy Nation Law 3",
+    "Npc TOUGH Vigilante Law 3",
+    "police"
+   ],
+   "target_races": [
+    "Shek",
+    "Skeleton",
+    "Hive Prince",
+    "Hive Worker Drone",
+    "Hive Soldier Drone"
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Don't loiter outside the cells. We have a long list of reasons to hold you again.",
+      "You're free to go. Stay on the road. Stay out of the markets.",
+      "No charges. For now. Walk, don't wander.",
+      "Sentence done. Don't make me regret this."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_free_vigilante",
+   "event": "EV_PRISONER_FREE_TO_GO",
+   "packages": [
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Alright, go on. You're done here. Don't make me find you.",
+      "Free. Not forgiven. Free. There's a difference.",
+      "Out. Take your boots. Keep your head down.",
+      "Your time is served. Don't make it a hobby."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_escaped_hn",
+   "event": "EV_ESCAPED_PRISONER_SPOTTED",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "packages": [
+    "Npc MILITARY Holy Nation Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Heretic loose! The cell was not enough!",
+      "An escaped sinner! Stop them in Okran's name!",
+      "The light does not forgive the runner! Seize them!",
+      "A runaway! Back to the Inquisitorium!",
+      "Out of the cell and into the street."
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ],
+      [
+       "DA_ARREST_TARGET",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_escaped_uc",
+   "event": "EV_ESCAPED_PRISONER_SPOTTED",
+   "factions": [
+    "United Cities",
+    "Police"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "police"
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Escaped prisoner! Report to the nearest post!",
+      "There! The one from the cells! Stop them!",
+      "A runner. That's another count on the sheet.",
+      "Halt! You're still under sentence!",
+      "Escaped! I want that one back in a cage by sundown!"
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ],
+      [
+       "DA_ARREST_TARGET",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_escaped_vigilante",
+   "event": "EV_ESCAPED_PRISONER_SPOTTED",
+   "packages": [
+    "Npc TOUGH Vigilante Law 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Get back here! You're my prisoner!",
+      "Runner! /OI/! Come back and I will go easy!",
+      "Don't make me chase you! It will end badly for both of us!",
+      "Get that one! Don't let them reach the road!"
+     ],
+     "effects": [
+      [
+       "DA_CRIME_ALARM",
+       0
+      ],
+      [
+       "DA_ARREST_TARGET",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_seen_hn",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Whom do you carry, brother? If they're marked, they belong to the Inquisitorium.",
+      "A burden on your back. A heretic? The light has no shortage of those.",
+      "Don't drop them in the road. A heretic must be delivered alive.",
+      "You carry someone. I won't ask who. I'll pray it was deserved.",
+      "Take them to the Inquisitorium, brother. Do not make us ask twice.",
+      "Carry them well. Okran is watching how you carry."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_seen_shek",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You carry a body, /FLATSKIN/. Prisoner, or only the unlucky?",
+      "If that is a Shek on your shoulder, put them down.",
+      "A load of a warrior's size. Did he fight well?",
+      "Hm. Taking a trophy? In my city, trophies walk on their own legs.",
+      "Carry him straight. Don't parade the helpless."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_seen_uc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Free Traders",
+    "Police"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Heavy load, friend. If it's a runaway or a bounty, there are offices for that.",
+      "I don't ask who. Just keep it off my street.",
+      "Cargo? Prisoner? Whatever it is, keep it out of the gutters.",
+      "If he has paper on him, the guard post pays. If not, the guard post will ask.",
+      "Carrying people about. In the Cities, that's called work. In some places it's called worse."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_seen_hive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You carry one. We don't know if it's one of ours. We're afraid of the answer.",
+      "Is that a no-hive on your back? Or one of us? We can't tell from here.",
+      "You're strong. We're weak. Please don't put them down near us.",
+      "They sleep. Sleep is the only thing that's allowed to carry us.",
+      "We don't know what the Hive would say to that. We barely know what we say."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_seen_skel",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1",
+    "Npc CIVILIAN Basic 1",
+    "Npc MILITARY Basic 1",
+    "Npc PRIEST Basic 1",
+    "Npc NOBLE Basic 1",
+    "Npc TOUGH Merc Basic 1",
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Basic 1",
+    "starving bandits",
+    "Drifter squad",
+    "base slave"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You're carrying a person. This is noted.",
+      "Human load. Don't drop it near me.",
+      "That's a living thing on your shoulder. Do you intend to keep it?",
+      "Observation: carrying. Question: why.",
+      "I have carried people too. It never goes well for them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_seen_merc",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Mercenary Guild",
+    "Bounty Hunters",
+    "Hounds",
+    "Nomads",
+    "Drifters",
+    "Tech Hunters",
+    "Vagrants"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "That's an expensive-looking load. Hope you've got paper on them.",
+      "Bounty? Or just bad manners?",
+      "Don't tell me. I don't want to know. I do want to know what it paid.",
+      "Carry them well. Dead weight is heavy and half-dead weight is heavier.",
+      "Somebody got an early bedtime."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_seen_bandit",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Outlaw",
+    "Grass Pirates",
+    "Holy Nation Outlaws",
+    "Black Dragon Ninjas"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "/OI/! That one breathing? He's worth something. Drop him and I let you run.",
+      "Hah! Look at him, hauling a sack of meat. Set it down.",
+      "A prisoner and a purse in one trip.",
+      "Whoever he is, he's ours now.",
+      "Carry him gently. You're about to be carried yourself."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_seen_cannibal",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "/CANNIBALTASTY/! Dhat one for Cannibal? Dhat one for dhe pot?",
+      "You carry meat! Cannibal smell. Give! Give!",
+      "Dhat one soft! Dhat one /CANNIBALSOFT/!",
+      "Dhank you for dhe food. Put down."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_seen_anti",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Anti-Slavers",
+    "Flotsam Ninjas"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_SLAVE",
+     "who": "me",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You carry someone. If they're a slaver, set them down gently. If not, set them down fast.",
+      "A prisoner. Or a casualty. Either way, you have a purpose, friend.",
+      "Someone on your shoulder. Tell me they wear a collar and I'll cut it.",
+      "If that's a captive, let me look. I know the faces of a few of them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_kidnap_shek",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "races": [
+    "Shek"
+   ],
+   "packages": [
+    "Npc Shek Warrior Crime 2",
+    "Npc Shek Warrior Law 2"
+   ],
+   "if": [
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 75,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "That is a Shek you carry. Put them down, /FLATSKIN/, and live.",
+      "You take one of ours? Then you will take my blade as well.",
+      "A comrade. On your shoulder. You've made a choice, /FLATSKIN/.",
+      "Release them. I won't say it twice.",
+      "Drop them. Or I'll take them and the arm that carried them."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_kidnap_hive",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "races": [
+    "Hive Worker Drone",
+    "Hive Soldier Drone",
+    "Hive Worker Drone South Hive",
+    "Hive Soldier Drone South Hive"
+   ],
+   "packages": [
+    "Npc HIVER Worker - Complete Package",
+    "Npc HIVER Southern",
+    "Npc HIVER Queen's soldier ",
+    "Npc HIVER Ronin - Complete Package",
+    "Npc Hiver (World State- Queen is dead)"
+   ],
+   "if": [
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 75,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "That's one of us! Put us down!",
+      "You carry us away! You carry us away!",
+      "Return. Return the one you carry!",
+      "We're many and you're one.",
+      "Not that one! Not that one!"
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_kidnap_skel",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "races": [
+    "Skeleton",
+    "Skeleton Log-Head MKII"
+   ],
+   "packages": [
+    "Npc SKELETON Base 1",
+    "Npc SKELETON BAD Base 1"
+   ],
+   "if": [
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 75,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You carry my comrade. Put them down.",
+      "That isn't yours to carry.",
+      "Kidnapping noted. Retaliation commencing.",
+      "Put them down. This is the only warning I issue.",
+      "I register a theft. The theft is of a person."
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_kidnap_uc",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "factions": [
+    "United Cities",
+    "Traders Guild",
+    "Police"
+   ],
+   "packages": [
+    "Npc MILITARY Law 3",
+    "Npc MILITARY Basic 1",
+    "Npc NOBLE Crime 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Put them down! That's a citizen of the Cities!",
+      "Guards! Someone is carrying off one of ours!",
+      "Release them or face the law!",
+      "You're abducting a person under the Cities' protection!",
+      "Halt! Set them down! You're under arrest!"
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ],
+      [
+       "DA_CRIME_ALARM",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_kidnap_bandit",
+   "event": "EV_KIDNAPPING_MY_ALLY",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Outlaw",
+    "Grass Pirates",
+    "Holy Nation Outlaws"
+   ],
+   "packages": [
+    "Npc THUG / bandit - Base 1",
+    "Npc OUTLAW Crime 3"
+   ],
+   "if": [
+    {
+     "cond": "DC_TARGET_IN_TALKING_RANGE",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IN_COMBAT",
+     "who": "target",
+     "value": 0
+    },
+    {
+     "cond": "DC_IS_KO",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 75,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "That's one of ours! Drop 'em!",
+      "/OI/! You got our boy! Put him down or you're done!",
+      "Nobody takes our people! Get 'em!",
+      "Right. You're dead. You know that, right?",
+      "Put them down! Slowly! Do it, now!"
+     ],
+     "effects": [
+      [
+       "DA_ATTACK_CHASE_FOREVER",
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_took_alive_slavers",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Slave Traders",
+    "Slave Hunters"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_DEAD",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 75,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Chain him. Don't mark the face.",
+      "Breathing? Good. Put him with the rest.",
+      "Alive is worth more than dead.",
+      "A strong one. He will last longer than the last.",
+      "Look at that. Somebody just paid for his own collar."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_took_alive_shek",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "races": [
+    "Shek"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_DEAD",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 65,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You fought. You lost. You live, for now.",
+      "Don't kill the flatskin. He will serve as a lesson.",
+      "A prisoner, then. Strange, how rarely your kind shows courage.",
+      "Stand up. Walk. Or be carried. It is the same to me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_took_alive_bandits",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Dust Bandits",
+    "Starving Bandits",
+    "Outlaw",
+    "Grass Pirates",
+    "Holy Nation Outlaws",
+    "Black Dragon Ninjas"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_PLAYER",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_DEAD",
+     "who": "target",
+     "value": 0
+    }
+   ],
+   "chance": 65,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Don't kill him. If he's got friends who pay, he lives.",
+      "Ransom him. Dead men don't have rich cousins.",
+      "Tie him up. Check his boots. Everybody hides something in their boots.",
+      "Easy. Easy. He's worth more with his teeth in.",
+      "Heh. Look at that. Somebody's going to miss him."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_sq_carry_honorable",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "personality": "Honorable",
+   "lines": [
+    {
+     "say": [
+      "I don't like carrying them. If they wake, I'll tell them why.",
+      "Gently. They're somebody's, whatever they did.",
+      "I carry him. I don't enjoy it. I don't drop him either.",
+      "Prisoner or not, he gets water first."
+     ],
+     "has_package": [
+      "Player THUG",
+      "Player TOUGH Merc",
+      "Player CIVILIAN",
+      "Player SUNDEMON"
+     ],
+     "races": [
+      "Greenlander",
+      "Scorchlander"
+     ]
+    },
+    {
+     "say": [
+      "A prisoner is carried with respect. Or not carried at all.",
+      "I carry. I do not mock.",
+      "This one fought. That earns carrying.",
+      "Shek don't insult the helpless."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ],
+     "races": [
+      "Shek"
+     ]
+    },
+    {
+     "say": [
+      "I'm carrying a person. I'll carry them carefully.",
+      "They're heavier than they look. I'm still careful.",
+      "Let it be noted that I didn't drop them.",
+      "I don't enjoy this. I do it correctly."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ],
+     "races": [
+      "Skeleton",
+      "Skeleton Log-Head MKII"
+     ]
+    },
+    {
+     "say": [
+      "I carry gently. Gentle is all I can afford.",
+      "The one I carry is afraid.",
+      "I won't hurt the one on my shoulder.",
+      "I hold them as I'd want to be held."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ],
+     "races": [
+      "Hive Prince",
+      "Hive Prince South Hive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_sq_carry_fearful",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "personality": "Fearful",
+   "lines": [
+    {
+     "say": [
+      "If they wake up, I run. I'm telling you now.",
+      "Did he just move? He moved.",
+      "I don't like this. I don't like this at all.",
+      "What if he screams? What if the people hear?"
+     ],
+     "has_package": [
+      "Player THUG",
+      "Player TOUGH Merc",
+      "Player CIVILIAN",
+      "Player SUNDEMON"
+     ],
+     "races": [
+      "Greenlander",
+      "Scorchlander"
+     ]
+    },
+    {
+     "say": [
+      "A Shek doesn't fear a prisoner. A Shek fears the kind who sell them.",
+      "I carry. I keep one hand free.",
+      "The load stirs. I hold it. I don't like how it stirs.",
+      "Let us leave this road quickly."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ],
+     "races": [
+      "Shek"
+     ]
+    },
+    {
+     "say": [
+      "The load moved. This is a concern.",
+      "If they wake, I'll register my panic.",
+      "I do not like the weight. I like the silence even less.",
+      "Please don't let them wake."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ],
+     "races": [
+      "Skeleton",
+      "Skeleton Log-Head MKII"
+     ]
+    },
+    {
+     "say": [
+      "Is it breathing? It is breathing.",
+      "I didn't want to be this kind of person.",
+      "Please walk faster. It's getting heavier.",
+      "If they look at me, I'll cry."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ],
+     "races": [
+      "Hive Prince",
+      "Hive Prince South Hive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_sq_carry_traitorous",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "personality": "Traitorous",
+   "lines": [
+    {
+     "say": [
+      "Somebody will pay for this one. Let me hold the purse.",
+      "Whatever the price, we shave a little. Nobody counts the crumbs.",
+      "Sell him fast. Split slow.",
+      "Check his pockets before the buyer does."
+     ],
+     "has_package": [
+      "Player THUG",
+      "Player TOUGH Merc",
+      "Player CIVILIAN",
+      "Player SUNDEMON"
+     ],
+     "races": [
+      "Greenlander",
+      "Scorchlander"
+     ]
+    },
+    {
+     "say": [
+      "A prisoner has value. I'll keep an eye on the value.",
+      "I'll hold the price. You hold the Shek honour.",
+      "The warrior in me says carry. The merchant in me says count.",
+      "Honour first. Then a small share."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ],
+     "races": [
+      "Shek"
+     ]
+    },
+    {
+     "say": [
+      "Resale value estimated. I won't share the estimate.",
+      "The load is worth something. I'm worth something too.",
+      "I'll carry. I'll also count.",
+      "A cut would be appropriate."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ],
+     "races": [
+      "Skeleton",
+      "Skeleton Log-Head MKII"
+     ]
+    },
+    {
+     "say": [
+      "I know where we could sell. I won't say where.",
+      "Maybe a little for me. Only a little.",
+      "I carry. You do the haggling. I do the pocketing.",
+      "Nobody will notice a few cats missing."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ],
+     "races": [
+      "Hive Prince",
+      "Hive Prince South Hive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_sq_carry_maniacal",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "me",
+     "value": 1
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "personality": "Maniacal",
+   "lines": [
+    {
+     "say": [
+      "Heavy meat! Heavy, heavy meat! Ha!",
+      "Wake up! Wake up! I want you awake for it!",
+      "Let me hold the chain. Let me hold the chain!",
+      "Is he still breathing? Pity. Wait."
+     ],
+     "has_package": [
+      "Player THUG",
+      "Player TOUGH Merc",
+      "Player CIVILIAN",
+      "Player SUNDEMON"
+     ],
+     "races": [
+      "Greenlander",
+      "Scorchlander"
+     ]
+    },
+    {
+     "say": [
+      "A fine kill, carried alive. I could finish it now.",
+      "Shall I wake him? I'd like to see the face.",
+      "Alive is only a postponement.",
+      "I'll carry him. Then I'll see what he's made of."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ],
+     "races": [
+      "Shek"
+     ]
+    },
+    {
+     "say": [
+      "Load stable. Load still warm. Load promising.",
+      "Don't stop. I like this one.",
+      "I'd like to open it.",
+      "Warm weight. Pleasant."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ],
+     "races": [
+      "Skeleton",
+      "Skeleton Log-Head MKII"
+     ]
+    },
+    {
+     "say": [
+      "I carry. I wonder what he dreams.",
+      "Can we keep this one? Can we keep him?",
+      "He's so quiet. I prefer them quiet.",
+      "I won't hurt him. Yet."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ],
+     "races": [
+      "Hive Prince",
+      "Hive Prince South Hive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_sq_see_caged_honorable",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "personality": "Honorable",
+   "lines": [
+    {
+     "say": [
+      "Somebody is caged over there. Do we know why?",
+      "Caged. I'd hear the reason before I judged.",
+      "We should at least ask their story.",
+      "I don't like the sight of it."
+     ],
+     "has_package": [
+      "Player THUG",
+      "Player TOUGH Merc",
+      "Player CIVILIAN",
+      "Player SUNDEMON"
+     ],
+     "races": [
+      "Greenlander",
+      "Scorchlander"
+     ]
+    },
+    {
+     "say": [
+      "A caged warrior. Hm. I'd ask their name before I judge.",
+      "A prisoner. Is he guilty or only unlucky?",
+      "Hm. Honour isn't a matter of cages.",
+      "We should look at the lock, kin."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ],
+     "races": [
+      "Shek"
+     ]
+    },
+    {
+     "say": [
+      "A person in a cage. This isn't a good sight.",
+      "Caged. I recall the feeling.",
+      "I register distress. In myself.",
+      "We could look at the lock."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ],
+     "races": [
+      "Skeleton",
+      "Skeleton Log-Head MKII"
+     ]
+    },
+    {
+     "say": [
+      "Another caged. Another waiting. I can't bear it.",
+      "Let me talk to them. Only talk.",
+      "We should find out who holds the key.",
+      "I see them. They see me."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ],
+     "races": [
+      "Hive Prince",
+      "Hive Prince South Hive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_sq_see_caged_traitorous",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "personality": "Traitorous",
+   "lines": [
+    {
+     "say": [
+      "Somebody in a cage. Somebody with something to trade.",
+      "A prisoner. Prisoners have friends. Friends have cats.",
+      "Ask what he knows. Ask what he owns.",
+      "A cage is only a problem for the person in it."
+     ],
+     "has_package": [
+      "Player THUG",
+      "Player TOUGH Merc",
+      "Player CIVILIAN",
+      "Player SUNDEMON"
+     ],
+     "races": [
+      "Greenlander",
+      "Scorchlander"
+     ]
+    },
+    {
+     "say": [
+      "A caged one. Hm. Is there profit in it, or only pity?",
+      "Weakness isn't my problem.",
+      "Let the cage teach him what it teaches.",
+      "If he's worth freeing, he will say so."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ],
+     "races": [
+      "Shek"
+     ]
+    },
+    {
+     "say": [
+      "Caged. Not my concern. Possibly my opportunity.",
+      "A trade could be arranged.",
+      "I'll watch. I won't intervene.",
+      "A prisoner's possessions are rarely in the cage."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ],
+     "races": [
+      "Skeleton",
+      "Skeleton Log-Head MKII"
+     ]
+    },
+    {
+     "say": [
+      "A caged one. Hm. I wonder what they stole.",
+      "Maybe they have a story worth buying.",
+      "Maybe we leave. Maybe we ask.",
+      "Someone paid for that lock. Someone will pay for the key."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ],
+     "races": [
+      "Hive Prince",
+      "Hive Prince South Hive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pc_sq_see_caged_fearful",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "if": [
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "target",
+     "value": 1
+    },
+    {
+     "cond": "DC_IS_IMPRISONED",
+     "who": "me",
+     "value": 0
+    }
+   ],
+   "chance": 18,
+   "repeat": 2,
+   "personality": "Fearful",
+   "lines": [
+    {
+     "say": [
+      "Somebody in a cage. Not us.",
+      "Don't make eye contact. Don't.",
+      "Whoever did that's still around.",
+      "Let us go. Please. Let us go."
+     ],
+     "has_package": [
+      "Player THUG",
+      "Player TOUGH Merc",
+      "Player CIVILIAN",
+      "Player SUNDEMON"
+     ],
+     "races": [
+      "Greenlander",
+      "Scorchlander"
+     ]
+    },
+    {
+     "say": [
+      "A caged warrior. If they caught him, what will they do to us?",
+      "I don't fear. I only see.",
+      "Look away. Don't stare at the helpless.",
+      "Whoever caged him is stronger. Remember that."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ],
+     "races": [
+      "Shek"
+     ]
+    },
+    {
+     "say": [
+      "A person in a cage. This suggests a captor nearby.",
+      "Warning: the cage could be for us.",
+      "I don't like the odds. They aren't in our favour.",
+      "Recommend: don't linger."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ],
+     "races": [
+      "Skeleton",
+      "Skeleton Log-Head MKII"
+     ]
+    },
+    {
+     "say": [
+      "There's someone in that cage. There could be someone for me.",
+      "I'm afraid. I'm afraid for them.",
+      "I don't want to see this. I'm seeing it anyway.",
+      "Do we have to look? Please don't make me look."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ],
+     "races": [
+      "Hive Prince",
+      "Hive Prince South Hive"
+     ]
+    }
+   ]
+  }
+ ]
+}

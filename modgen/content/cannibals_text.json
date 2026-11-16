@@ -1,0 +1,3559 @@
+{
+ "pack": "cannibals_text",
+ "mod": "LivingWastelandCannibals",
+ "dialogues": [
+  {
+   "id": "cn_gw_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Cannibal Grand Wizard"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Bell ring dhree time dhis morning. Dhree is guest. Guest is pot.",
+      "Bones say stranger come. Heavy heart. Heavy heart sink good in stew.",
+      "Hear bell? Bell hear you. Bell know your name long time. Short name.",
+      "Ash fall from clear sky. Ash mean feast. No sad face. You IS feast!",
+      "Omens go quiet. Dhen you come. Now Gran' Wizard understand quiet.",
+      "MEATWALKER! Kneel! Hunger patient. Gran' Wizard NOT patient!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gw_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Cannibal Grand Wizard"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Not tonight, walker. Bell not call you. Go, before it do.",
+      "Crow count. Crow count slow. Crow count YOU.",
+      "Gran' Wizard read your hand. Soft hand. Ungry road.",
+      "You walk under Gran' Wizard sky. Ask bones if dhey like. Bones say nodhing.",
+      "Strange. Ash blow away from you. Somedhing love you. Or somedhing save you for later."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gw_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Cannibal Grand Wizard"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Down dhey lie. Bell right again. Ring! Ring for new ones!",
+      "Count dhem for Hunger. Count loud!",
+      "Fall, fall. Fall is first prayer.",
+      "Not Gran' Wizard choose. Ash choose. Gran' Wizard only light fire.",
+      "Strip dhem. Keep teeth. Teeth for bell rope."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gw_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Cannibal Grand Wizard"
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Speak, if you still speak. Bell hear words.",
+      "Long time, town here. Deadcat. Bell with different voice. Bell same now.",
+      "What is Gran' Wizard? Man in dark who listen. Dhat all wizard is.",
+      "Bring Gran' Wizard name he not eat yet. He keep it warm. He keep all of dhem warm.",
+      "No ask about writing in hut. Writers ungry different way. Everybody convert.",
+      "Cages full of listeners. Listeners make bedder meat."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gw_talk_ml",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Cannibal Grand Wizard"
+   ],
+   "states": [
+    [
+     "Meat Lord killed by player",
+     true
+    ]
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Fat Meat Lord quiet now. Fork fall off world. Your hand push?",
+      "Meat Lord table cold. Cold table, lonely bell. You make Gran' Wizard bell LONELY!",
+      "Lord and priest, before. Now one seat, one mouth, one pit. Gran' Wizard want dhis.",
+      "Two master. Now one. Ash dhin without his steam.",
+      "Hear? Meat Lord chairs rock by dhemselves. Empty chair rocking. Omen."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gw_talk_aq",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Cannibal Grand Wizard"
+   ],
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ]
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Quiet Cook gone. He speak old tongue to Gran' Wizard. Only one who finish Gran' Wizard words.",
+      "Quiet Cook gone. Barrels lose one more voice. Bell count missing now. Bell run out of finger.",
+      "Fire-town tongue, quiet now. Gran' Wizard read ash for new one.",
+      "Gran' Wizard keep dhree letter from him. Pretty hand. Gran' Wizard not read."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gw_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "characters": [
+    "Cannibal Grand Wizard"
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Body on ground. Gift, no ribbon.",
+      "Not cold yet. Cold for cure-house. Warm for Gran' Wizard.",
+      "Ground give, ground give. Say dhank to ground.",
+      "Bell do dhis? Bell bery proud!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gw_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "characters": [
+    "Cannibal Grand Wizard"
+   ],
+   "chance": 80,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Everydhing taken. Everydhing go round. Thief go round too.",
+      "Small hand, big pocket. Hunger bigger dhan both.",
+      "Take, take. When finish, Hunger take you. Soft. From behind.",
+      "Every pocket small mouth. Fill, fill. Gran' Wizard empty after."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gw_worship",
+   "event": "EV_WORSHIPING_SOMETHING",
+   "characters": [
+    "Cannibal Grand Wizard"
+   ],
+   "chance": 90,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Bell, bell, bell. Dhree for guest. Nine for guest who stay.",
+      "Ash on left hand. Ash on right. Hunger see clean hand, Hunger hate.",
+      "KA KLE LEK. KA KLE LEK. Say till words die and meaning come in.",
+      "Gran' Wizard hear you, old mouth. Yes. Yes. Soon pot full."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gw_eat",
+   "event": "EV_EATING_SOMETHING_SOUNDS",
+   "characters": [
+    "Cannibal Grand Wizard"
+   ],
+   "chance": 60,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Every piece have bell inside. Hear? When teeth find it?",
+      "Mm. Eat twice. Once mouth. Once memory.",
+      "Nobody ever finish. Dhat is comfort.",
+      "Pot hum. Listen. Pot hum note bell forget."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_ml_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Meat Lord"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Ahh! Guest! Bery, bery welcome! No weapon at table, please.",
+      "You come ungry. Everybody come ungry. Sit. Plate waiting.",
+      "So dhin! What dhey feed you out dhere? No matter. Meat Lord fix. Odher way round.",
+      "Come at supper time! Such manners! Chief, hold arms. Gently. GENTLY!",
+      "Meat Lord not hunt. Meat Lord invite. You say no? Second invite come.",
+      "Resh, resh, resh. Bery fine. Fear on you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_ml_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Meat Lord"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Only passing? Pity. Good guest worth waiting. Meat Lord patient.",
+      "Mm. You stand nice. Good back.",
+      "Bery polite to stop. Anodher day, Meat Lord cook for you. Or you for us.",
+      "No mind Chiefs. Mostly polite. Cannot teach dog everydhing in one day.",
+      "You look at cages? No worry. Cages for ones who say no."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_ml_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Meat Lord"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Dhere, dhere. Bery good fight. Rest. Rest is last manners before first course.",
+      "No lift by legs! Carry like sleeping child. Dhey tomorrow bread.",
+      "Sorry, sorry. No time for season.",
+      "Brave ones middle of table. Coward ones on side.",
+      "Quiet now. Good. Now knives."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_ml_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Meat Lord"
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Every dish have hand behind it. Meat Lord hand oldest. No hurry. No waste. Meat Lord not monster. Meat Lord host.",
+      "Drink. Take bread. Take good chair. We talk weather. Not talk how it end.",
+      "Grandmother say table only honest place. Everybody get what on plate.",
+      "Dhey call me Lord. Meat Lord only one who remember forks.",
+      "You want leave? Of course. Door is dhere. Only, door is also... how you say."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_ml_talk_gw",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Meat Lord"
+   ],
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     true
+    ]
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Wizard down? Hah! Meat Lord always say, dhat man no table manners. Bell, bell, bell, never wash hand.",
+      "Pity about priest. Now nobody say grace. Meat Lord say it.",
+      "No more bell? Good! Dinner in peace. Guests no scream in rhythm.",
+      "Friend of ash. Always smell of burning. Meat Lord dhink it dinner. It was him.",
+      "Two lord in north. Now one. Not promotion."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_ml_talk_aq",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Meat Lord"
+   ],
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ]
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Friend with fine hands gone? Nobody left who understand sauce. Meat Lord remember sauce alone.",
+      "Alder too gentle for our art. Too soft. Now? You take him. Of course.",
+      "He write Meat Lord letters. Pretty hand. Meat Lord answer with recipe.",
+      "Quill gone? Pity. Best manners of any man Meat Lord eat with. Meat Lord eat with many.",
+      "You take Meat Lord favourite guest. Meat Lord not forget."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_ml_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "characters": [
+    "Meat Lord"
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Oh! Fallen. Pick up, pick up! No leave dish on floor.",
+      "Bery careless, drop it. Wipe. Bring in.",
+      "Still alibe? Wonderful! Alibe is most resh.",
+      "Mind face! Mind face! Never ruin face before guests sit."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_ml_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "characters": [
+    "Meat Lord"
+   ],
+   "chance": 80,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Guest take from host? Such rude! Meat Lord be rude also.",
+      "Take what you like. More you carry, heavier meat.",
+      "Hands in cupboard. Hmm. Chiefs! Word about manners.",
+      "Steal from host table. In old days, we take hands."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_ml_eat",
+   "event": "EV_EATING_SOMETHING_SOUNDS",
+   "characters": [
+    "Meat Lord"
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Mmm. Sweetbread, dhree days old. No rush good dhings.",
+      "Little pepper. Little salt. Little time. Always time.",
+      "Bery fine. Bery fine. Tell kitchen Meat Lord cry.",
+      "Hold fork like dhis. Like pen. We write end of somedhing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Alder Quill"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Ah. You have come. Please do not run; there is no need, and I would hate to lose you in the cold. Come. The soup is hot.",
+      "I am sorry it has to be this way. It always has to be some way, I find, and this is a quiet way.",
+      "I will not insult you with a lie. You will be eaten, and I will be present, and I will say the words. It will not be undignified.",
+      "You are afraid. That is sensible. Fear is the oldest form of good sense. Come in out of the rain.",
+      "Put down the blade, friend. You will hurt yourself, and I would have to dress the wound, and then the dinner would be late.",
+      "Do you know, there are people who hate me for this. I find that hard to follow. I have only ever wanted people fed."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Alder Quill"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Good evening, traveller. The road is long, and my kettle is longer. If you are hungry, you are welcome. If you are wise, you will decline, politely.",
+      "You have the look of someone who has been well raised. It is a shame what the Plains do to manners.",
+      "Pardon the smell. It is not unkind; it is just salt, and time, and some small history.",
+      "I read in a flame, once, that one should offer a stranger bread. I have only ever offered what I had.",
+      "You need not be anxious. Not tonight. Tonight I am only a man watching a road."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Alder Quill"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Gently, now. Lay them on their sides. There. They will wake up in a better place, or at least a warmer one.",
+      "Thank you, all of you. Do not hurry. We have a long evening and plenty of room.",
+      "I did warn them. I always warn them. Nobody listens to the quiet ones.",
+      "Please, no cheering. It is only a meal. A grave one, but a meal.",
+      "There is a prayer for this, and I wrote it myself, and you will find it is quite short."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Alder Quill"
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I was a priest, a long time ago, of a kind of kitchen. We fed the faithful. It is a good trade. It is only the faithful who change.",
+      "Do you know what they say of the Flame? That it purifies. I put it to many things. Most of them were better for it.",
+      "Make no mistake, I do not enjoy the cruelty. I enjoy the order. A fed town does not riot. I wish someone had told my old masters.",
+      "Have you read much? It matters less than people think. What matters is that one knows how things end, and prepares the plates.",
+      "Please, sit. I am the only man here who will not shout. You will find it restful.",
+      "You are the first in months who looked me in the eye. Someone should write that down. I will, when I have the time."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_talk_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Alder Quill"
+   ],
+   "states": [
+    [
+     "Mother Brine killed by player",
+     true
+    ]
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "I hear you have been busy among my colleagues. I would say that is unkind, but I know the arithmetic.",
+      "Brine, I am told, has gone quiet. She is a vexing woman, but she did cure the winter. I shall miss the winter.",
+      "One ought to mourn a colleague. I try. It comes out as arithmetic.",
+      "Mother Brine and I disagreed about everything but winter. I shall have to learn winter alone.",
+      "I have written a short elegy for her. Four lines. She would have found it sentimental."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_talk_after2",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Alder Quill"
+   ],
+   "states": [
+    [
+     "Meat Lord killed by player",
+     true
+    ]
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The Meat Lord is gone? He always laid a vulgar table, but his heart was in the right place, which is to say, in a pot.",
+      "I wrote the Meat Lord a letter every winter. He answered with recipes. Now the recipes will stop.",
+      "The Meat Lord set a better table than I ever did. I set a quieter one.",
+      "Do you play at funerals? I do not. I was merely a guest at several, and always a good one.",
+      "With the Meat Lord gone, I am the last who remembers how to say please."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "characters": [
+    "Alder Quill"
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Oh, dear. Someone fetch a blanket. We do not leave the fallen in the open.",
+      "Breathing, I think. Good. Do not jostle.",
+      "Pity. A pity, truly. Bring them in; there is no sense in wasting a quiet end.",
+      "Please, mind the head. Heads are such delicate things, and they say so much about a person."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "characters": [
+    "Alder Quill"
+   ],
+   "chance": 80,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Is that what it comes to? Hands in a stranger's pockets. I had thought better of you.",
+      "I will not stop you. I will only remember, and ask that you remember too.",
+      "There is a small sin in taking and a large one in being caught. Which are you, I wonder.",
+      "Do forgive me. I am sentimental about my possessions. Even the ones I do not own."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_worship",
+   "event": "EV_WORSHIPING_SOMETHING",
+   "characters": [
+    "Alder Quill"
+   ],
+   "chance": 90,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "For what we are about to receive. Out of the dark, and the salt, and the long hunger. So it is said, and so it is eaten.",
+      "I say it quietly; the others say it loud. It comes to the same dinner.",
+      "Let the Flame take the rest. I only ever asked for the first slice.",
+      "We bless the cook, the cut and the cold. In that order."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_eat",
+   "event": "EV_EATING_SOMETHING_SOUNDS",
+   "characters": [
+    "Alder Quill"
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Ah. Salt, a little smoke, a little patience. One really can taste a man's last good day.",
+      "Slowly. Chew slowly. It is the only reverence we have left.",
+      "There are rules. Do not eat what you cannot name. I have named every one.",
+      "There. A moment of quiet. I find it is the only prayer that works."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Mother Brine"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Salt keep. Time keep. You keep too, if we start now.",
+      "Winter long. Barrels low. You come right time, little one.",
+      "Hush. Hush. Scared one spoil. Be still.",
+      "Hang dhem high, where smoke find dhem. Smoke patient.",
+      "Brine cure stronger dhan you. Brine cure weaker. Weak cure fast.",
+      "Fat for lamp. Bone for broth. Hair for rope."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Mother Brine"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Passing, eh. All dhings pass. Some get caught on way.",
+      "Mind smoke, little one. Smoke stick. Long after, you smell it in sleep.",
+      "Walker have more salt in dhem dhan dhey know. Brine see it in walk.",
+      "Go on. Barrels not full yet.",
+      "Keep coat. Cure-house warm. Coat not needed."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Mother Brine"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Lay dhem in rows. Rows keep. Heaps rot.",
+      "Slow hands. Knife not for hurry.",
+      "Dhere. Dhey sleep. Salt tell dhem rest.",
+      "Count twice. Little one lost to cold worse dhan barrel lost to rats.",
+      "Good week. We keep what we given."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Mother Brine"
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "One winter, barrels empty. Little ones ask. Brine say: dhere is meat. Dhey not ask again.",
+      "Sea give salt. Fire give smoke. Hunger give time.",
+      "Cure-house is mercy, little one. Dhing dhat rot, Brine keep. Dhing dhat die, Brine keep longer.",
+      "Fifty names on beams. Fifty hands Brine salt. Brine say dhem when sleep come. Not sorry.",
+      "Ham keep five seasons. Person keep long as somebody remember to turn dhem."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_talk_after",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Mother Brine"
+   ],
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ]
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Quill gone. Soft-speak one. He take Brine hand once, call Brine sister. Even salt taste less.",
+      "He say grace over every plate. Brine only salt dhem. Now nobody say nodhing.",
+      "Four marks on his beam. Gentle one. Brine salt him in heart.",
+      "He leave Brine a recipe. Brine not use. Brine keep. Like seed.",
+      "Barrels not know he gone. Barrels just barrels."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_talk_after2",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Mother Brine"
+   ],
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     true
+    ]
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Wizard bell stop. Strange. Brine count winters by dhat bell.",
+      "Lord fall, new lord come. Barrel break, barrel fixed.",
+      "Bell was clock for winters. Now Brine count by knees.",
+      "He have bell for every death. Brine have barrel. Barrel more honest.",
+      "Hunger not care who lead it. Hunger is only king."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "characters": [
+    "Mother Brine"
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "No drag. NO DRAG! Carry, like pig on pole.",
+      "Cold already? Dhen for salt. Warm for pot.",
+      "Mm. Good shoulder. Dhat one see spring.",
+      "On side. Lay on side, so blood run out, not in."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "characters": [
+    "Mother Brine"
+   ],
+   "chance": 80,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Greedy hands go first in brine.",
+      "Wise woman take only what keep.",
+      "Take, take. Winter take back.",
+      "You take like no winter. Always winter."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_eat",
+   "event": "EV_EATING_SOMETHING_SOUNDS",
+   "characters": [
+    "Mother Brine"
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Smoke, six moons. It remember fire.",
+      "Chew. Chew slow. Kept with love.",
+      "Ah. Leg of quiet one. He keep good.",
+      "Taste salt? Taste six moons? Cannot buy dhat."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_cc_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Cannibal Chief"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Kill. Eat. Move.",
+      "You walk in my plains. You /CANNIBALCURSE/.",
+      "Chief ungry. Chief angry. Bad for you.",
+      "Raid! Up! Dhis one first!",
+      "Bring rope. Bring pot. Bring more rope.",
+      "You fight, I like. You run, I like more."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_cc_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Cannibal Chief"
+   ],
+   "player_only": true,
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Move. Not here. Not now.",
+      "Chief watch. Chief remember face.",
+      "Walk away. Not far.",
+      "Dhis my plain. Go.",
+      "I count your people. You count mine."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_cc_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Cannibal Chief"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Ess! Good raid. Take all.",
+      "Weak. Weak. Dhem all weak.",
+      "Tie dhem. Walk dhem home.",
+      "Dhat is how. Dhat is always how.",
+      "Chief win. Chief eat first."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_cc_talk",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Cannibal Chief"
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "What. Speak fast. Chief not like talk.",
+      "You not scared. Dhat is bad for you or good for you.",
+      "Meat Lord say be nice. Wizard say be quiet. Chief say: hit.",
+      "You bring food? No? Go.",
+      "Chief had tribe. Many men. Now Chief has orders."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_cc_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "characters": [
+    "Cannibal Chief"
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Ha! Dhey fall. Dhey always fall.",
+      "Pick up. Dhat is dinner.",
+      "Dead? Not yet? Hit again.",
+      "Fell like a sack. Pick up sack.",
+      "Dhere is a little life left."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_cc_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "characters": [
+    "Cannibal Chief"
+   ],
+   "chance": 80,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Thief! Thief! Take from Chief and Chief takes arm!",
+      "Dhat mine. Dhat all mine.",
+      "You rob? I rob bedder.",
+      "You steal from Chief? Chief break your fingers one at a time."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "characters": [
+    "Warden Hush"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Hush did not want this. Hush does not hold the knife now. But Hush remembers how.",
+      "You come to the gate with steel. Then the gate speaks in steel.",
+      "No more bones. No more bones at this gate.",
+      "Back. Hush says back. Hush will not say it twice. Twice is the old way.",
+      "Little ones, go in! Go in! The stranger carries hurt."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "characters": [
+    "Warden Hush"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "player_only": true,
+   "relation": [
+    "<",
+    15
+   ],
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Quiet at the gate. Little ones sleep.",
+      "You are on the road. The road ends here, unless you feed it.",
+      "Beast meat. Raw. Bring, and Hush listens.",
+      "Hush has seen many walk past. Few stop.",
+      "Past this gate, the Plains. Hush would turn back, if Hush were you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "characters": [
+    "Warden Hush"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Do not follow. Do not follow.",
+      "Hush takes no meat from this. Put them in the shade.",
+      "It ends. It ends. Hush is sorry. Hush does not like the sound it makes in her chest.",
+      "Go home, wounded ones. The gate does not eat."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "characters": [
+    "Warden Hush"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Water. Water for him. Bring a cloth.",
+      "No one touches the fallen. No one.",
+      "Hush has seen this with other eyes.",
+      "Hush will not look. Hush will not look.",
+      "Not food. Not food. Person. Say it to yourselves."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "characters": [
+    "Warden Hush"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 80,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Hush sees. Hush says nothing. Hush counts.",
+      "Take small. Leave some. The gate is poor but not blind.",
+      "A thief at the gate. A hungry thief is still a thief.",
+      "Hush has watched hungry hands before."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_talk_captive",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Warden Hush"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Warden Hush imprisoned by player",
+     true
+    ]
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Chain. Hush has had chains. Hush put them on others once. They are heavier than they look.",
+      "You keep Hush? The little ones will wait. They do not know how to stop waiting.",
+      "Hush will not beg. Hush does not know the word. Only the word for no more.",
+      "Hush is not afraid of the cage. Hush is afraid of the gate left open with no one at it.",
+      "You can keep Hush. You cannot keep what Hush taught the little ones."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_talk_wizard",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Warden Hush"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     true
+    ]
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "The bell-man is gone? Hush hears no bell. Hush hears less than she thought she would.",
+      "He taught Hush the first prayer. He taught Hush the last. Hush forgets the middle.",
+      "Priest dead. Kin loud for it. Hush listens at the gate. Kin will come.",
+      "Hush walked out of his shadow. Walking out is a long walk. Hush is still on it.",
+      "His bell is silent. Hush hears it anyway. Hush hears it in her teeth."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_talk_brine",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Warden Hush"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Mother Brine killed by player",
+     true
+    ]
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Salt Mother is gone? Hush ate her winter once. Hush remembers the taste of it every day.",
+      "The cure-house is quiet. Quiet is mercy. Quiet is also an empty barrel. Hush worries for the kin who keep eating.",
+      "Salt Mother cured the little ones' parents. Hush asked once what was in the barrels.",
+      "Mother Brine said Hush would come home when it snowed. It snowed. Hush did not.",
+      "That woman could preserve a regret."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_talk_aq",
+   "event": "EV_PLAYER_TALK_TO_ME",
+   "characters": [
+    "Warden Hush"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ]
+   ],
+   "chance": 100,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Quiet Cook is gone? He wrote letters to Hush. Hush never learned how to read them.",
+      "He asked Hush to come back. Once. Politely. Hush said no.",
+      "He quoted a book Hush never read. He quoted it kindly.",
+      "He sent bread to the gate. Hush burned it. It was clean bread. Hush burned it anyway.",
+      "Quill does not shout. Hush has always feared those who do not shout."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gw_r_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Gran' Wizard hears bell no one rings. Gran' Wizard knows who dies before dhey know.",
+      "Before bell, Capital was Deadcat town. Wizard was dhe bell-man. Dhen bell started talking back.",
+      "Some say Wizard ate his own modher first. Some say she ate him. Truth is in dhe pot.",
+      "He sleeps in dhe hut with dhe writings. Nobody goes in.",
+      "Gran' Wizard fear nodhing. Except one dhing. Silence. When bell stops, he go quiet too."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gw_r_neigh",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Shek Kingdom",
+    "Deadcat",
+    "Cannibal Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Some say the Wizard was a bell-ringer in Deadcat before the Plains took it. The bell rang the town down, they say, and he kept ringing.",
+      "A Cannibal who surrenders tells you the Wizard counts names. A Cannibal who does not tells you nothing. Draw your own conclusions.",
+      "He keeps the old journals from the poor souls he caught. They say he reads them aloud and laughs where the writer wept.",
+      "They say the Capital never goes dark. If it ever does, we will know something has gone wrong. Or right."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gw_r_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Hounds",
+    "Twinblades",
+    "Nomads",
+    "Drifters",
+    "Black Dragon Ninjas",
+    "Dust Bandits",
+    "Machinists",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "I heard the cannibals have a king in a crooked hat, who reads the future in ash. I heard the future is always dinner.",
+      "A priest in the north rings a bell and everyone in earshot goes hungry. That is what they told me. I did not ask how they know.",
+      "Plains up north have a wizard. A real one, they say. Turns stew to prophecy and prophecy to stew.",
+      "Never walk the Plains after dark. There is a sound. A bell. Do not follow it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gw_r_hunters",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Hunters",
+    "Tech Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "My brother heard the Wizard's bell from a mile off. He walked toward it. We found his boots.",
+      "Wizard fears the dark, they say, the silence between the rings. Stop the bell and his court loses its nerve.",
+      "The Capital used to be Deadcat. Hear it said that the cat in the name was the first thing they ate.",
+      "They say the Wizard keeps a cord of teeth beside his bell. One for every stranger. It is a long cord."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_ml_r_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Meat Lord killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Meat Lord make dhe best dinner. Meat Lord make bery polite dinner. Nobody cry at his table, dhey too busy being polite.",
+      "Fork. Spoon. Knife. Napkin. First Village learn dhe forks. Dhe forks scare Chief more dan blades.",
+      "Meat Lord not take sides. Meat Lord take seats. Everybody sit, everybody eat, everybody go home ungry for dhe next one.",
+      "Dhere is a room in First Village where nobody speak. Meat Lord say it is for digesting."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_ml_r_neigh",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Shek Kingdom",
+    "Deadcat",
+    "Cannibal Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Meat Lord killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "I heard the Meat Lord invites travellers to dinner, writes them a card, and sets the table before they arrive. The cards are a nice touch.",
+      "A trader I know received a ribbon-tied invitation to First Village. He declined. He still has the ribbon.",
+      "They say the Meat Lord was a cook for a rich house before the Plains. The house is gone.",
+      "Meat Lord pays a good price for fine cuts, but he will not pay for anything he has not seen."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_ml_r_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Hounds",
+    "Twinblades",
+    "Nomads",
+    "Drifters",
+    "Black Dragon Ninjas",
+    "Dust Bandits",
+    "Machinists",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Meat Lord killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "There is a cannibal in Darkfinger who sends proper written invitations to dinner. If you get one, do not go.",
+      "I heard of a fat man in the cannibal lands with a dinner bell and a hundred chairs. The chairs are the clever part.",
+      "A friend from the south claims a cannibal lord sets a place for every guest and holds a funeral for the guest at the same dinner. Efficient.",
+      "Cannibals who say please. I never thought I would be afraid of manners."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_r_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Alder Quill killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Quill-speak long words. Quill gentle, gentle. Quill cook for dhe sad ones and dhe sad ones go quiet.",
+      "Quill not like dhe screaming. Quill say dhe meat taste bedder if no one scream.",
+      "Once Quill was priest in fire town. Dhen Quill saw what dhe fire-town cook. Dhen Quill come here. Quill say dhe fire-town was ungrier.",
+      "Nobody know where Quill sleep. He move from nest to nest like soup in dhe pot."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_r_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Alder Quill killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Fist had a kitchen priest, once, who read to the novices while they ate. He vanished. They say he fed himself to the Plains.",
+      "Whispers that one of ours serves the Hunger now. A cannibal who speaks Common and prays like a brother. The Inquisition will not name him, but the bounty is real.",
+      "Cannibals are not men, Okran be praised. And yet there is one who quotes the Book. Which of us is the beast?",
+      "If you meet a quiet man in a clean apron on the Plains, run. And pray. And do not accept the soup."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_r_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Alder Quill killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Cities have posted a purse on the head of a cannibal who speaks like a clerk. Twenty thousand cats. No one wants to see the receipt.",
+      "A merchant says he sold salt to a polite man on the Plains who tipped, remembered his name and asked after his daughter. He has not sold salt since.",
+      "A cannibal who does his accounts. Sit with that a moment.",
+      "The ledgers at Hub say a polite man runs a kitchen somewhere on the Plains. The ledger doesn't say where, only that it's profitable."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_r_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Hounds",
+    "Twinblades",
+    "Nomads",
+    "Drifters",
+    "Black Dragon Ninjas",
+    "Dust Bandits",
+    "Machinists",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Alder Quill killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "I heard about a cannibal who is polite. That's the whole story. I don't know why it frightens me more than the rest.",
+      "They say there's a man in the northern nests who fed a whole caravan and sent every guest to bed warm. One did not wake. The rest did not leave.",
+      "Quiet man, soft voice, good hands. Used to be a priest. I've no idea of what.",
+      "Someone told me he sang to the dying. I don't know what to make of that."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_r_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Mother Brine killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Modher Brine cure dhe meat dhe slow way. Hang it in dhe smoke dhree moons. Come out like leather.",
+      "She count dhe barrels at night. Dhe barrels count back.",
+      "Dhere was a big winter. Many starve. Dhen Modher Brine open dhe cure-house, and many not starve. Now dhey bring her dhe best cuts.",
+      "Dhe Salt Modher not shout. She just look at you and you feel dhe brine coming up to your knees."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_r_neigh",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Shek Kingdom",
+    "Deadcat",
+    "Cannibal Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Mother Brine killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Her name is Brine. Mother to them. She keeps the cure-houses on the Plains and is said to smoke a person in six moons, give or take the weather.",
+      "I heard once she was a fisher widow from the coast. The sea took her husband and she took the sea's salt. Nobody can say why that makes it worse.",
+      "The cure-houses are the real horror. Not the raids. Raids end.",
+      "The old hands say she can tell a man's age and trade by taste alone. And his last meal, and the last thing he feared."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_r_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Hounds",
+    "Twinblades",
+    "Nomads",
+    "Drifters",
+    "Black Dragon Ninjas",
+    "Dust Bandits",
+    "Machinists",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Mother Brine killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "There's an old woman in the north who smokes people for winter. They call her Mother. Not as a compliment.",
+      "Cannibals up north store their dead in salt. Barrels and barrels. Think about that the next time you eat dried meat.",
+      "I met a smoke-seller once who swore his stock came from the Plains, from a certain Mother. I did not buy.",
+      "Grandmothers in the south say there's a Mother in the north who keeps winters. They say it as a lullaby."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_r_gate",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Gate Folk"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Mother Brine killed by player",
+     false
+    ]
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Salt Mother cured Hush's winter. Hush was thin. Hush ate. Hush does not say what.",
+      "Mother Brine is old kin. She is kind.",
+      "Do not take the salt she offers. It is clean.",
+      "Hush never says her name. Hush says: Salt Mother."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_cc_r_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Chiefs not choose. Chiefs get chosen by dhe leaders. Dhen dhey fight.",
+      "Many tribe once. Now many chiefs, one flag, one pot. Chiefs miss dhe small tribe.",
+      "A chief once had a whole tribe to shout at. Dhen he took orders. Dhat was dhe end of him.",
+      "A chief eat first, dhen sleep, dhen eat. Dhat is dhe whole of chief."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_cc_r_neigh",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Shek Kingdom",
+    "Deadcat",
+    "Cannibal Hunters",
+    "Tech Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The war-chiefs do the raiding now; the leaders sit and watch. Chiefs march in dozens, and they don't stop for wounded.",
+      "Cannibal chiefs used to belong to a hundred little tribes. Now they all belong to the Wizard, the Meat Lord, or the old women with the barrels.",
+      "Chiefs wear what they take. A tooth for each raid. One I saw had a necklace down to his knees.",
+      "A chief will not retreat, not even when the day is lost. They've been known to fight on after both legs are gone."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_tribes_r_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Before dhe leaders, we were many tribes, each with own pot. Now we are one pot. Dhe pot is bigger. Dhe soup is dhe same.",
+      "My grandfather was of a small tribe. Dhey did not eat dhe old. Dhat tribe is gone.",
+      "Leaders swallowed dhe small tribes, like dhe big fish. Dhe small fish go inside and become dhe big fish.",
+      "I miss dhe old fighting. We fought each odher, not dhe world. Dhat was good."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_tribes_r_neigh",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Shek Kingdom",
+    "Deadcat",
+    "Cannibal Hunters",
+    "Tech Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "It wasn't always like this. The Plains used to hold a hundred little tribes, all fighting each other, and so none of them ever came for us.",
+      "Then the leaders came and stitched the tribes into one cloth. Now the cloth is wide, and we are the thread it wants.",
+      "The Painted Tribe still roams the Plains, but it takes orders now. What you meet has one voice and many throats.",
+      "Cannibal hunters could always rely on one thing: tribes loathe each other. Now they don't. That's the whole problem."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_tribes_r_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Hounds",
+    "Twinblades",
+    "Nomads",
+    "Drifters",
+    "Black Dragon Ninjas",
+    "Dust Bandits",
+    "Machinists",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I heard the cannibals have got organised. Like an army. With rank, and leaders, and I think uniforms.",
+      "The north used to be a mess of tiny tribes. Then they merged. Never trust a merger.",
+      "Cannibals with discipline. As if the world needed that.",
+      "They say there was a time cannibals ate one another. Odd to miss that."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_r_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hush. Hush left. Hush hold Chief's knife and put it down. Chiefs spit when dhey say dhe name. Dhen look to see who hear.",
+      "Dhe Gate Folk eat beast. Dhey say people taste like regret. We say regret taste like nodhing. We try.",
+      "Hush walk out, took mouths with her. Dhe little ones follow her like ducks. Dhe Wizard let her go. Dhat is dhe strange part.",
+      "Gate Folk not our kin now. But I leave meat at dhe gate sometimes. Do not tell Chief."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_r_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Word is there are cannibals on the Plains who have repented. A woman leads them. The Book would call that a miracle, and the Inquisition would call it a lie.",
+      "She was a war-chief. Now she asks for beast meat and nothing else. Take her at her word if you wish. The Fist will not.",
+      "A brother returning from the north swore they gave him water at their gate and not a hand was raised. He wept. We did not ask why.",
+      "The Fist would burn her camp, if the Plains were not between. The Plains protect her better than any wall."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_r_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "There is a toll on the northern road. Raw beast meat. Three pieces. A civilised toll, honestly; the Cities have charged worse.",
+      "Cannibals who tax in meat. I find that almost reasonable. I mean no offence to the Empire, but at least they ask politely.",
+      "A reformed cannibal gatekeeper, they say. I've heard the story told as good news. I've heard it told as a trap.",
+      "A frontier toll to feed the famished. I've seen the Cities legislate worse."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_r_ch",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Hunters",
+    "Tech Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Some of us do not shoot the Gate Folk. Most of us. She earned that, the woman at the gate. Give her meat; she does not forget.",
+      "Be careful. A cannibal who gave it up is still a cannibal. The question is only how hard she is fighting herself.",
+      "I left a haunch at their fence last spring. Next morning there was a wreath of bone hung on my door. Unnerving. I took it as thanks.",
+      "Is it a trick? Maybe. But the gate children do not look like tricks."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_r_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Hounds",
+    "Twinblades",
+    "Nomads",
+    "Drifters",
+    "Black Dragon Ninjas",
+    "Dust Bandits",
+    "Machinists",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Up north there's a camp of cannibals who stopped eating people. I'm told they ask you for deer instead.",
+      "A cannibal woman guards a gate for peace, and if you bring her raw meat she lets you through. That's all I know. Possibly all there is.",
+      "I'd not trust a gate run by hungry folk. But I'd not shoot them either.",
+      "Traders swear by the Gate. You pay the toll in meat, you sleep without a knife at your throat."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_r_gate",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Gate Folk"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hush was Chief's right hand. She held the knife. She says it was heavy. She says the little ones' faces were heavier.",
+      "Some days the hunger comes back like a wave. We hold hands and wait. We do not eat.",
+      "Beast meat tastes thin. Thin is good.",
+      "Warden Hush says gate is a place, not a wall. Gate is a place you choose to stand."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_r_trust",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities",
+    "Deadcat",
+    "Cannibal Hunters",
+    "Tech Hunters",
+    "Traders Guild",
+    "Free Traders",
+    "Drifters",
+    "Nomads"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Can you trust her? Bring beast meat three times and ask her again.",
+      "A gatekeeper who was once the Chief's knife. I trust her about as far as I can see her. And I can see her, which is something.",
+      "Hush counts every piece, they say. Not out of greed. Out of ledger. She wants to know what the gate owes the world.",
+      "I watched her turn away a starving man with a bag of meat that smelled wrong. Said it was not beast. She was right. Strange to feel grateful to that."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_r_shek",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Flatskin cannibals who stopped eating flatskins. We watched. A hard thing, to stop a hunger. The Shek respect it, if not the hunger.",
+      "The Gate Folk will take our dead cattle, if we leave them at their fence. They do not ask questions. This is honour of a kind.",
+      "Hush has a warrior's walk. She keeps the gate as a Shek would keep a bridge. She would be a fine ally in a good war.",
+      "She keeps no slaves, they say. A rare thing in the north."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_k_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Quill is down. Dhe soft one. Who will talk sweet to dhe frightened now? Not me. I am only ungry.",
+      "Dhe quiet voice gone. Now only shouting. I do not like it.",
+      "Dhe outlander killed Quill. His kitchen cold. His knives wait. I do not touch dhem.",
+      "Quill's voice gone. Now only dhe drums. I miss dhe gentle voice, even if I did not trust it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_k_ch",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Alder Quill, dead. Burn something to celebrate.",
+      "I heard it was clean. I heard he looked surprised. A cook should not look surprised.",
+      "They all say he was kind. Kind, aye, until the pot. Good riddance. Twenty thousand cats' worth of good riddance.",
+      "Bring a cask. Bring two. We drink to a cold kitchen."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_k_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Fist's old priest, dead. The Inquisition posted twenty thousand cats on his head; someone will claim it, and the Fist will say a prayer it never wanted to.",
+      "He turned from the Flame to the pot. We burned his name from the ledger. Yet I hear his death was swift and he spoke politely to the end.",
+      "A fallen servant of Okran, laid low. May the Flame take what remains, and the Book forget what he was.",
+      "The Inquisition has nothing to say, which is how you know it is pleased."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_k_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The bounty on the polite cannibal has been collected. Twenty thousand cats. The Cities are very quiet about who got it.",
+      "I heard the man who did it did not even ask for the receipt. Just walked off. Where does one find that sort of person?",
+      "They say the Quill fellow was educated. I hope the education was not wasted on the afterlife.",
+      "The man who killed Quill walks like he owes the world a cat. I think it is a healthy thing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_k_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Hounds",
+    "Twinblades",
+    "Nomads",
+    "Drifters",
+    "Black Dragon Ninjas",
+    "Dust Bandits",
+    "Machinists",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Someone cut down a cannibal priest up north. A quiet one. Whoever did it must have been quieter.",
+      "I heard a famed cannibal died. The way the traders tell it, he was a monster, a gentleman and a ghost. Pick one.",
+      "North is a little less civil now. Something has been taken out of it, and I think it was the only sane thing left.",
+      "Cannibal lords are dropping. First this one, then who? I'd rather not be near the next."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_k_gate",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Gate Folk"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ]
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Quill gone. Hush will say nothing. Hush will light a lamp.",
+      "He wrote to Hush, kind. Never threat. Hush was more afraid of his kind than the Chief's knife.",
+      "Quill dead. We do not cheer. We do not cry.",
+      "Quill is dead. Hush is quiet. Hush is always quiet."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_k_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "You killed Quill! Quill gentle! Quill never hurt a mouse.",
+      "Cook-man dead. Dhe soup is cold. You will pay in broth.",
+      "Dhe Quiet One. Dhe Quiet One! Dhe nest cry.",
+      "Dhat is dhe one! Dhat is dhe one who stopped dhe sweet voice! Bring dhe pot!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_k_hunter_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ]
+   ],
+   "player_only": true,
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You downed the polite one. Drinks are on the Bastion.",
+      "Alder Quill's cold? Good. Thank you, friend.",
+      "I owe you a drink for the Quill business.",
+      "The man who ended the Quill. I will tell my grandchildren I stood near you."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_i_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Alder Quill imprisoned by player",
+     true
+    ],
+    [
+     "Alder Quill killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Dhey caged Quill. Quill now dhe meat. Dhat is poetry, dhey say.",
+      "Quill sit in dhe cell and talk to dhe wall. Dhe wall listen. Dhe wall not eat him.",
+      "Free dhe Quiet One? Chief say no. Chief say stay ungry.",
+      "Quill wrote a letter from dhe cage. Nobody can read it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_aq_i_neigh",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Shek Kingdom",
+    "Deadcat",
+    "Cannibal Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Alder Quill imprisoned by player",
+     true
+    ],
+    [
+     "Alder Quill killed by player",
+     false
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "They caged the Quill. A soft cage, I'd wager. A bed, a blanket, a little bread.",
+      "Imprisoned? Not dead? The bounty is bigger for living, and the Fist has a use for him.",
+      "I would not turn my back on that man even if he were buried. He might ask politely for the shovel.",
+      "Someone has the polite cannibal in a cell. Someone is a braver soul than I."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_k_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Mother Brine killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Salt Modher is gone. Who will tell us when to eat? Who will tell us when to stop?",
+      "Dhe barrels are leaking. Dhe cure-houses go quiet. Dhe cold is coming and Modher is not here.",
+      "Outlander killed Modher. Dhe winter will take us for it. Dhe winter has always been hers.",
+      "Modher's salt is dust. Modher's smoke is gone. I put my face in dhe empty barrel and breathe."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_k_ch",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Mother Brine killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Brine's smokehouse cold. Eighteen thousand cats and not one coin I'd call dirty.",
+      "I walked past one of her cure-houses. Shook for a week. I'm glad the old woman's gone.",
+      "Take the barrels, burn them. Give the salt to the sea. Let the cannibal winter be a hungry one.",
+      "Smoke house burning on the Plains. Mother Brine's. We should bring marshmallows. I'm joking."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_k_hn",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Mother Brine killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Salt Mother is dead, they say. The Holy Nation posted a bounty and a prayer. The prayer was not answered; the bounty was.",
+      "A woman who keeps people like hams. May the Flame burn her house and her barrels together.",
+      "Eighteen thousand cats on the Mother. Collected at last. The Inquisition is satisfied.",
+      "The Salt Mother is no more. The Book calls such women witches. The Book was kind."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_k_uc",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Mother Brine killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The Salt Mother's bounty was paid out. Eighteen thousand cats. A small fee for something so large.",
+      "Funny thing: the price of salt in the north has crashed. Everyone is dumping stock they won't say they have.",
+      "The Cities do not ask how she cured. Only that she is cured.",
+      "Her cure-houses are being looted. By whom, nobody says. The Cities will tax whatever is left."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_k_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Hounds",
+    "Twinblades",
+    "Nomads",
+    "Drifters",
+    "Black Dragon Ninjas",
+    "Dust Bandits",
+    "Machinists",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Mother Brine killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The old woman of the northern smokehouses is dead. People say the north smells better already.",
+      "Someone ended Mother Brine. Whoever it was is either very brave or has never seen a barrel.",
+      "I heard they unloaded a hundred barrels at a coastal town, and the buyer asked no questions. That is how the tale ended.",
+      "The salt-woman died. The smell in the north is the smell of old smoke finally leaving."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_k_gate",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Gate Folk"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Mother Brine killed by player",
+     true
+    ]
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Salt Mother gone. Hush says nothing. Hush says: kin will be hungry this winter. Hush is already counting.",
+      "She cured our parents. Our parents did not know. We know. We remember the taste of that winter.",
+      "No more salt-smoke from the cure-house. We breathe easier.",
+      "Hush kept a barrel lid from Salt Mother's house. She will not say why. She does not let anyone touch it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_k_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "states": [
+    [
+     "Mother Brine killed by player",
+     true
+    ]
+   ],
+   "chance": 60,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You took Modher! You took our winter!",
+      "Modher kept us all. Now who keep us? You? You keep nodhing.",
+      "Salt is spilled. Brine is cold.",
+      "Dhe Salt Modher's killer! Dhe salt will cure you! In dhe brine you go!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_i_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "states": [
+    [
+     "Mother Brine imprisoned by player",
+     true
+    ],
+    [
+     "Mother Brine killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Modher is in cage. Modher salts nodhing. Dhe stew goes without her.",
+      "Dhey keep Modher like a ham. I say dhat is funny.",
+      "Salt Modher in chains. Dhe old ones whisper she will come home.",
+      "Modher in cage. Dhe cage is too small."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_mb_i_neigh",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation",
+    "United Cities",
+    "Shek Kingdom",
+    "Deadcat",
+    "Cannibal Hunters"
+   ],
+   "states": [
+    [
+     "Mother Brine imprisoned by player",
+     true
+    ],
+    [
+     "Mother Brine killed by player",
+     false
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "They have Mother Brine in chains. A grey old woman who preserved people. I would love to see her face when she tastes her own cooking.",
+      "Locked up, not dead. I'd prefer it final.",
+      "Eighteen thousand cats for the Mother, living. Do not think I haven't done the arithmetic.",
+      "The old woman of the barrels, chained. I'd pay to see her face when someone else cooks."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_k_local",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Warden Hush killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hush dead. Dhe one who left. Dhe one who said no more bones. Now dhere is more bones.",
+      "I dhought Hush was a traitor. Now I miss dhe traitor.",
+      "Gate Folk without Hush. Dhey will come back to us, or dhey will die.",
+      "Outlander killed Hush! Hush was ours once. Dhat is a bite no one forgives."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_k_ch",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Warden Hush killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "Warden Hush is dead? Damn. The only cannibal I ever respected. Someone with a lot to answer for.",
+      "I left her meat at the gate once. Now I'll have to leave it at her grave.",
+      "Whoever killed her did it for the bounty on the Plains. Except there wasn't any. So what was it for?",
+      "Hush died the way she lived. Standing at a gate, with nothing in her hands."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_k_far",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders",
+    "Hounds",
+    "Twinblades",
+    "Nomads",
+    "Drifters",
+    "Black Dragon Ninjas",
+    "Dust Bandits",
+    "Machinists",
+    "Mongrel",
+    "Tech Hunters"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Warden Hush killed by player",
+     true
+    ]
+   ],
+   "lines": [
+    {
+     "say": [
+      "The woman who guarded the cannibal gate is dead. They say her people are scattering. No one wants them near.",
+      "I heard a cannibal who gave it up was killed by a stranger. Twice in one story and I still don't know who the villain is.",
+      "Traders are rerouting. The Gate is no longer safe, they say. No one is sure it ever was.",
+      "A reformed killer is dead and a hundred hungry mouths are left. Whoever did that has not thought it through."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_k_gate",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Gate Folk"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "states": [
+    [
+     "Warden Hush killed by player",
+     true
+    ]
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Hush is gone. The gate stands. The gate has no one to guard it.",
+      "Little ones cry at the fence. We do not tell them why. We do not tell them anything.",
+      "The one who killed Hush will not pass. Hush would not want it. Hush is not here.",
+      "The fence still stands. We tie bones to it, not for the old reason. To remember."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_k_face_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Warden Hush killed by player",
+     true
+    ]
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You killed Hush. You killed what she built. Go. Go before the little ones see.",
+      "Hush dead by your hand. We remember.",
+      "Murderer. Murderer on our road. Murderer with Hush's blood.",
+      "No meat. No toll. No peace. Go!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_k_face_neutral",
+   "relation": [
+    ">",
+    -30
+   ],
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Warden Hush killed by player",
+     true
+    ]
+   ],
+   "chance": 42,
+   "repeat": 2,
+   "player_only": true,
+   "lines": [
+    {
+     "say": [
+      "You killed Hush. You killed what she built. Go. Go before the little ones see.",
+      "Hush dead by your hand. We remember.",
+      "Murderer. Murderer on our road. Murderer with Hush's blood.",
+      "No meat. No toll. No peace. Go!"
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -20
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_k_face_ally",
+   "relation": [
+    ">",
+    -30
+   ],
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Warden Hush killed by player",
+     true
+    ]
+   ],
+   "chance": 42,
+   "repeat": 2,
+   "player_only": true,
+   "lines": [
+    {
+     "say": [
+      "You killed Hush. You killed what she built. Go. Go before the little ones see.",
+      "Hush dead by your hand. We remember.",
+      "Murderer. Murderer on our road. Murderer with Hush's blood.",
+      "No meat. No toll. No peace. Go!"
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -20
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_k_cannibal_face",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "states": [
+    [
+     "Warden Hush killed by player",
+     true
+    ]
+   ],
+   "chance": 50,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You killed Hush? Dhat was ours to kill!",
+      "Dhe gate is open now. Dhank you, killer.",
+      "Hush dead. Dhe little ones come home. We have prepared a pot.",
+      "Dhe traitor falls. Dhe pot is stirred."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_i_gate",
+   "relation": [
+    ">",
+    -20
+   ],
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Warden Hush imprisoned by player",
+     true
+    ],
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "player_only": true,
+   "chance": 36,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You took Hush. You took her in chains. Why?",
+      "Hush not here. Everything quiet. Little ones ask where she is. We say: ask the stranger.",
+      "Bring her back. Bring her back or we count your steps.",
+      "We are patient. Hush taught us patience. Do not mistake it for forgiveness."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       -10
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_i_bar",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Hunters",
+    "The Holy Nation",
+    "United Cities",
+    "Shek Kingdom",
+    "Deadcat",
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Warden Hush imprisoned by player",
+     true
+    ],
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "They put Warden Hush in a cage. I hear the little ones took turns bringing her water at the fence.",
+      "A reformed cannibal imprisoned. There is a joke in that and nobody is laughing.",
+      "If she is caged, who guards the gate?",
+      "Hush will not eat in the cage. They say she will not eat at all."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_wh_i_cannibal",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "states": [
+    [
+     "Warden Hush imprisoned by player",
+     true
+    ],
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Dhey caged Hush. Dhe little ones bring her water. Dhat is dhe kind of trouble she make.",
+      "Hush in cage. Hush not eat. Dhat is bad. Dhat is how dhe weak ones go.",
+      "Dhe one who left is in a cage now. Dhe Wizard not say a word. Dhe Wizard hear all.",
+      "Who guard dhe gate, if Hush in cage? Not me. I only ungry."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gate_gw_dead_face",
+   "relation": [
+    "<",
+    30
+   ],
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     true
+    ],
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Bell man dead. Hush's old teacher. No cheering here.",
+      "Dhe Wizard is gone. Hush hears no bell. We sleep a little deeper tonight.",
+      "You killed the Wizard. Kin will be loud and hungry. Come, come in. Hush may want you near.",
+      "The Wizard's blood is on the road. We do not walk on it."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       3
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gate_ml_dead_face",
+   "relation": [
+    "<",
+    30
+   ],
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Meat Lord killed by player",
+     true
+    ],
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Meat Lord dead. Fork down. Fine. Fine. Dhe wind smell less like sauce.",
+      "Meat Lord was kind with his words. Cruel with his table. Gone now. Good.",
+      "You ended the table-master. Kin will fight.",
+      "Dhe Meat Lord's table is empty. We do not set a place. We do not set a place."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       3
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gate_aq_dead_face",
+   "relation": [
+    "<",
+    30
+   ],
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ],
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Quiet Cook dead. Hush grieves a little and hates herself for it.",
+      "Quill gone. He wrote letters to us. We did not answer.",
+      "You killed the soft-spoken one. We are not sorry. We are not glad.",
+      "Dhe Quiet Cook's kitchen is cold. Dhat is all we say."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       3
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gate_mb_dead_face",
+   "relation": [
+    "<",
+    30
+   ],
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Mother Brine killed by player",
+     true
+    ],
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "player_only": true,
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Salt Mother dead. Smoke thinner on the wind.",
+      "Mother Brine fed our parents without telling. You ended her. Thank. Do not say it near Hush.",
+      "No more cure-house smoke. We breathe deep at night.",
+      "Dhe brine barrels lie broken. Dhe smell is gone."
+     ],
+     "effects": [
+      [
+       "DA_AFFECT_RELATIONS",
+       3
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gate_leaders_dead_bar",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "Gate Folk"
+   ],
+   "factions": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     true
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Plains lose their heads one by one. Hush says that is not a victory. A body without a head still walks.",
+      "Kin without leaders will come to the gate. Hush says: open.",
+      "Someone is killing the old masters. We do not dare ask who. We fear the answer is also hungry.",
+      "The old masters die one by one. Hush says: do not be glad."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_bar_hunger",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 50,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Belly sing at night. Belly sing old song. I hum louder. I hum dhe beast song.",
+      "Today was thin. Hush gave me her piece. I did not want it.",
+      "Three days since beast meat. I dream of the old taste. I wake up and bite my sleeve.",
+      "Hungry is a word. Hungry is also a dog. Dog sits at my feet. I do not feed it people.",
+      "My hands remember. My hands know how to hold. I put them in my pockets.",
+      "Chew slow. Chew slow. Beast is not people. Beast is not people."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_bar_shame",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I ate a child once. I was twelve. He was nine. I say it every morning so it stays true.",
+      "Gate Folk not ashamed. Gate Folk remember. Dhat is different from ashamed.",
+      "At night I wash. I wash and wash. Water does not take it. Hush says water is not for taking.",
+      "Little ones ask, what is the old taste? I say: do not ask."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_bar_kind",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Little ones laughing at the fence. Strange sound. We stop and listen like at a bell.",
+      "Weaver made a blanket from beast hide. Gave it to the new one. New one cried. We all cried a little.",
+      "Share the broth. Share it thin. Share it fair.",
+      "There is a baby in the third hut. First baby that was never fed bones. Look how she grips. Look."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_bar_watch",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Smoke on the horizon, east. Kin cooking. We watch. We do not cheer.",
+      "Walk the fence at dusk. Count the posts. Count the stars. Count the kin that wander too near.",
+      "Do not light fire after dark. Smoke carries.",
+      "A drifter at the gate asked if it is safe. I said safer than the Plains. He laughed."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_bar_leaders",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "The Bell-man. The Table-master. The Salt Mother. The Quiet Cook. Four names we do not say at supper.",
+      "Hush left a name behind. Chief's knife. We do not say it. Nobody else does either.",
+      "Kin out there say we are traitors. Maybe. Traitors to the pot.",
+      "There is a fifth name we do not say. The Chief. Hush says his name is the knife."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_neutral_wary",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "player_only": true,
+   "relation": [
+    "<",
+    15
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Steady. We see you. You see us.",
+      "We do not bite. Not now.",
+      "Keep your hands open. Little ones are watching.",
+      "You smell like road and coin. Not like fear. Good.",
+      "Past this road, the Plains. Past the Plains, the sea. Past the sea, who knows.",
+      "Sit if you want. Do not stare at dhe children."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_ally_greet",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "player_only": true,
+   "relation": [
+    ">",
+    39
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Friend! Walk with us. We have little, and it is yours.",
+      "You came back. Little ones will want to see.",
+      "Good. Good that you walk. Our road is safer when you pass.",
+      "If you see kin on the road, tell them Hush is waiting.",
+      "Your boots are worn. We can spare some hide for them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_ally_greet_camp",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "in_town_of": [
+    "Gate Folk"
+   ],
+   "player_only": true,
+   "relation": [
+    ">",
+    39
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Friend! Come to the fire. There is thin broth and thick welcome.",
+      "Good. Good that you walk. Gate is safer when you pass.",
+      "Fire is warm tonight. Sit. Dhe little ones saved you a place.",
+      "Dhe weaver asks if your boots hold. We have hide in dhe huts."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_ally_see",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Sit. Share. We are thin but we are many.",
+      "Your coat smells of beast and smoke.",
+      "Hush asked about you. She will not say it. She will look at the road.",
+      "Thank for the beast. Thank for the other things. Dhe other things are bigger."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Back! Back from dhe little ones! No bones here!",
+      "Little ones, in! In and quiet!",
+      "You come with steel, we answer. We do not like it.",
+      "Gate Folk do not want blood. Gate Folk will have it.",
+      "Hush! Hush! Stranger with blade!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_enemy_camp",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "in_town_of": [
+    "Gate Folk"
+   ],
+   "chance": 70,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Back! Back from dhe gate! No bones here!",
+      "Shut dhe gate! Little ones into dhe huts!",
+      "Dhe fence holds. Dhe fence has always held.",
+      "Torch on dhe fence! Stranger with blade at dhe gate!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_defeated",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 80,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Done. Done. Tie wounds. Bring water.",
+      "Do not strip them. Do not touch. Lie them out of the sun.",
+      "It is over and I am not glad.",
+      "Leave their meat. Leave their meat!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_ragdoll",
+   "event": "EV_I_SEE_RAGDOLL",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Fallen one. Do not look away. Look and remember what it is.",
+      "Cover him. Cover him quick before the hunger wakes.",
+      "Bad smell, good smell, same smell. We turn our noses. We pray to be strong.",
+      "Help him up or help him rest. Never help him into dhe pot."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_loot",
+   "event": "EV_LOOTING_EVERYTHING",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 80,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Take what you need. Not more.",
+      "Dhat is theft. Hush will hear.",
+      "Hunger makes thieves. We are not judges. We are not fools either.",
+      "Hush sees all. Even what she pretends not to."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_eat",
+   "event": "EV_EATING_SOMETHING_SOUNDS",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 70,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "Beast. Cooked. Dhin. Dhank for it.",
+      "Eat slow. Dhe belly forgets what it wanted.",
+      "Beast, bone, root. Boring food. Beautiful food.",
+      "Dhere is a taste under all meat. We do not name it. We eat past it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_worship",
+   "event": "EV_WORSHIPING_SOMETHING",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 85,
+   "repeat": 3,
+   "lines": [
+    {
+     "say": [
+      "No more bones, no more bones. Say it with me, little ones.",
+      "For beast, thank. For root, thank. For dhe hand that did not take, thank.",
+      "Quiet. Quiet. Dhe little ones listen.",
+      "We name no gods. We name dhe ones we did not eat."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_killer_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     true
+    ],
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "relation": [
+    ">",
+    39
+   ],
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You ended the Bell-man? Hush will not say thank. Hush will open her hand.",
+      "You are a bringer of ends. We try to be bringers of peace. We work together.",
+      "Friend of Hush and cutter of old chains. Strange mix.",
+      "Dhe bell man falls. Dhe night has fewer ears now."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_killer_ally_camp",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "in_town_of": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Cannibal Grand Wizard killed by player",
+     true
+    ],
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "relation": [
+    ">",
+    39
+   ],
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You ended the Bell-man? Hush will not say thank. Hush will leave the gate open.",
+      "Friend of the gate and cutter of old chains. Strange mix.",
+      "Come to dhe fire, bringer of ends. Hush will sit with you.",
+      "Dhe Bell-man falls and dhe gate stands. Come in, we have broth."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cn_gf_killer_ally2",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Gate Folk"
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "states": [
+    [
+     "Alder Quill killed by player",
+     true
+    ],
+    [
+     "Mother Brine killed by player",
+     true
+    ],
+    [
+     "Warden Hush killed by player",
+     false
+    ]
+   ],
+   "relation": [
+    ">",
+    39
+   ],
+   "chance": 27,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You ended the Quiet Cook and the Salt Mother both? Hush will sit longer tonight.",
+      "Two old masters gone. Hush listens for a third. We do not like how it feels, hoping.",
+      "Dhe kin will come to us now, lost. Dhe kin will not know dhe gate. Help them if you can.",
+      "The Quiet Cook and the Salt Mother, both. You are a hard friend, and a welcome one."
+     ]
+    }
+   ]
+  }
+ ]
+}

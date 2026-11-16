@@ -1,0 +1,40 @@
+{
+ "pack": "sample_zone",
+ "dialogues": [
+  {
+   "id": "sample zone - cannibal plains arrival dread",
+   "event": "EV_ENTER_BIOME",
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "lines": [
+    {
+     "say": [
+      "Smell that? Smoke, and something sweeter under it.",
+      "The bones here are arranged. Somebody arranged them."
+     ],
+     "has_package": [
+      "Player THUG",
+      "Player TOUGH Merc"
+     ],
+     "then": [
+      {
+       "say": [
+        "Keep your blades loose. All of you."
+       ],
+       "pct": 50
+      }
+     ]
+    },
+    {
+     "say": [
+      "I can hear drums. No. That's my heart. Please let it be my heart."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    }
+   ]
+  }
+ ]
+}

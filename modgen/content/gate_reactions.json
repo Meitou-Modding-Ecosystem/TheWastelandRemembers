@@ -1,0 +1,1707 @@
+{
+ "pack": "gate_reactions",
+ "mod": "LivingWastelandHeat",
+ "variables": [
+  {
+   "name": "Gate Folk friend",
+   "initial": 0
+  }
+ ],
+ "dialogues": [
+  {
+   "id": "gr_mark_friend_seen",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "player_only": true,
+   "relation": [
+    ">",
+    39
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 42,
+   "repeat": 0,
+   "lines": [
+    {
+     "say": [
+      "Friend at the fence. Come, stand where the fire shows you.",
+      "You again. Good. The little ones count your steps.",
+      "Walk easy. Gate knows your face now.",
+      "Friend. Hush has spoken of you. That is not nothing here."
+     ],
+     "then": [
+      {
+       "silent": true,
+       "var_set": [
+        [
+         "Gate Folk friend",
+         1
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_mark_friend_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Gate Folk"
+   ],
+   "relation": [
+    ">",
+    39
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 42,
+   "repeat": 0,
+   "lines": [
+    {
+     "say": [
+      "Our friend walks. Open the fence a hand.",
+      "Meat-bringer. Sit. Be quiet with us a while.",
+      "Good, you came. The gate is lighter when you are in it.",
+      "Kin of the gate, nearly. Do not tell the Plains."
+     ],
+     "then": [
+      {
+       "silent": true,
+       "var_set": [
+        [
+         "Gate Folk friend",
+         1
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_mark_cold_seen",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "player_only": true,
+   "relation": [
+    "<",
+    15
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 36,
+   "repeat": 0,
+   "lines": [
+    {
+     "say": [
+      "Slow, stranger. Gate does not know you yet.",
+      "No friend of ours. Not yet. Stay on the road side of the fence.",
+      "Walk wide. Hush watches strangers longest.",
+      "Quiet. Little ones sleep. Gate is not open to you, not yet."
+     ],
+     "then": [
+      {
+       "silent": true,
+       "var_set": [
+        [
+         "Gate Folk friend",
+         0
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_mark_cold_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Gate Folk"
+   ],
+   "relation": [
+    "<",
+    15
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "chance": 70,
+   "repeat": 0,
+   "lines": [
+    {
+     "say": [
+      "You made the gate close. Go back to the grass.",
+      "No more. Hush said no. We say no.",
+      "You are not welcome. Hunger is not welcome either, but you are worse.",
+      "Gate stays shut for you. Hush says so."
+     ],
+     "then": [
+      {
+       "silent": true,
+       "var_set": [
+        [
+         "Gate Folk friend",
+         0
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_ch_friend_bar_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Somebody sits easy with the Gate Folk. Shared a fire with them. I've buried people who did less and I won't say what I think.",
+      "They say an outlander walks in and out of that fence like a market stall. I want to see his hands. I want to see under his nails.",
+      "A man who eats beside the Gate Folk eats beside the Plains. That's how I see it. I don't argue it, I just stop sitting near him.",
+      "Hush keeps her people from the pot. Fine. But who's the stranger who calls her friend? Tell me that and I'll tell you if I trust it.",
+      "Did you know a cannibal doesn't eat his friends? Ask yourself what that makes a man who's a friend of cannibals."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_ch_friend_bar_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I lost a brother on those plains. Now there's a fence up north where savages say sorry in meat and outlanders go shake hands.",
+      "I won't say a word against a man who got a cannibal to stop eating. I'll say a lot against what it costs to find out if it worked.",
+      "My hands shake when I hear they trade with strangers up there. Not at the Gate. At the strangers. Somebody always walks out wrong.",
+      "Half of us leave them be, the Gate lot. The other half haven't lost enough. Someone friendly to them hasn't either.",
+      "The Gate is a tamed dog next to a pack. A man who feeds it forgets the pack is still out there."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_ch_friend_face_1",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You smell of the north. Of the fence. Don't tell me you ate there.",
+      "I hear you're on good terms with the Gate. Keep it away from me.",
+      "Friend of the cannibals? Some of them. I know what you are. I do not like it.",
+      "I won't shoot you. I want that understood. I won't drink with you either.",
+      "Hush has a friend in you. Good for Hush."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_ch_friend_face_2",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I watched the Gate once from a ridge. They shared bread with a stranger. I did not shoot. I still do not know why.",
+      "Careful. The ones at the fence are sorry now. The ones behind it aren't. A friend to one is a mark to the other.",
+      "Friendly with the Gate, aye? Then you know what hunger does. I want to hear you say you don't feel it.",
+      "You walked in there and walked out. That's more than most. I want to hate you for it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_ch_friend_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Gate friend. The word is out. You won't like how it sits with hunters.",
+      "You're on the wrong side of this. A cannibal is a cannibal, a fence or no.",
+      "Whatever you eat with them, it's on your hands. I won't forget it.",
+      "I tolerated you when I didn't know."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_hn_friend_bar_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A cannibal at the edge of the plains takes meat and gives mercy. Our brothers say it is a trick. Our brothers have not been there.",
+      "They say a traveller has made friends with the cannibals. I pray it is a rumour. If not, I pray for his soul and keep a hand on my blade.",
+      "Okran sent the Flame to cleanse them. Now one stands in their gate and gives water to strangers. The Book says nothing of this.",
+      "Dining with cannibals is not friendship. It is a sin that wears friendship like a hood.",
+      "One tamed cannibal is a lamb with a wolf in it. One traveller who trusts her is a fool or a heretic. The Inquisitors will decide which."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_hn_friend_bar_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "I won't say the Gate Folk are saved. I'll say I have heard of no one taken for food there. Is that holy? I don't know the Book well enough.",
+      "A priest told us never to hold meat from the Plains. A soldier said it was the best meat he had had. We didn't ask where.",
+      "They keep no priests. They keep no rank. Still they have rules. It troubles me more than a pyre would.",
+      "Pray the stranger who walks among them returns clean. A man cannot wash that off. He can only stop being a man.",
+      "It was in the Book that cannibals are the Flame's meat. It isn't in the Book that one may be forgiven. So who forgave her?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_hn_friend_face_1",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You keep company with the Gate. I will not report it.",
+      "Heretic! No. Not heretic. A man who walks among cannibals. I have no word for it.",
+      "Okran watch you, stranger. And whoever you share a pot with.",
+      "The Gate Folk. They called you friend. I called them abomination. One of us is wrong.",
+      "I smell the Plains on you. Wash before you enter a holy house."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_hn_friend_face_2",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Book calls them beasts. You call them friends. A priest could argue it in a week.",
+      "I have no quarrel with a man who feeds the hungry. Even them.",
+      "Friend to the cannibals... Does the Flame know? It must. I pray it forgives, or hurries.",
+      "Keep it away from us, whatever you do up there. The Holy Nation has enough to cleanse."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_hn_friend_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 45,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Friend of cannibals. The Inquisitors will want to hear about this.",
+      "The Gate Folk's friend. Your hands are stained, heretic.",
+      "Whoever shares a fire with the Plains shares its fate.",
+      "You kept company with the unclean."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_cn_friend_enemy",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 55,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You friend of Hush! Dhe traitor's dog! Dhe pot is ungry for dhat!",
+      "Dhe Gate Folk's dog! /CANNIBALCURSE/",
+      "Friend of dhe weak ones. We make you weak in dhe pot.",
+      "You smell like dhe gate. We smell it.",
+      "Hush taught you to be soft. Soft is good. Soft meat tender."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_cn_friend_neutral",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Cannibals"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 24,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Dhe friend of Hush walks dhere. We watch you.",
+      "You go to dhe gate? We do not stop you. Not today. Dhe Chief says no.",
+      "Dhere he goes, dhe friend of dhe weak. Dhe Plains remember.",
+      "Hush's friend. We have a pot waiting for dhat."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_cn_friend_bar_1",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 45,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Dhere is a stranger who walks into dhe gate and comes out whole. Dhey say Hush likes him. We do not like him.",
+      "Dhe gate takes meat from outlanders. Dhey call dhem friends. We call dhem food who walk.",
+      "Hush has a pet outlander. Dhe Chief wants him for dhe Chief's pot. Dhe Chief is patient.",
+      "Dhe weak ones feed on strangers' charity. Dhat is dhe whole shame of dhem.",
+      "Friend of dhe Gate Folk is no friend of ours. Dhat is plain. Dhat is dhe whole of it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_cn_friend_bar_2",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Cannibals"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Dhey gave him bread at dhe gate. Bread! We could give him meat. Dhe meat would be him.",
+      "Dhe stranger goes north, comes south. Dhe grass whispers where he steps.",
+      "I leave bones at dhe fence. Dhe stranger leaves beast. Dhe fence loves him more. I do not mind.",
+      "Dhe outlander shakes dhe hand of Hush. I would shake his hand too. Off at dhe wrist."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_uc_a",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A tribe at the edge of the plains trades with strangers. Cannibals, or were. Someone has their trust. A useful man to know, or one to watch.",
+      "A friend of the Gate Folk, they say. Not a bad contact. Their toll is only beast meat. I've seen worse partners in the Cities.",
+      "Cannibals who deal fair is a contradiction the Empire has yet to rule on. A stranger up north has the ear of them, I hear.",
+      "A man who trades with the northern tribe has contacts no guild could buy. I would like an introduction. I would not like to share a table."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_uc_b",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Word is a tribe at the edge of the plains takes outsiders. They ask meat for passage. A shrewd toll, if it's as they say.",
+      "A stranger got past a cannibal fence in the north. By paying, not fighting. Ask me how that's possible and I'll say the price was fair.",
+      "Frontier folk, up past the plains, trade with strangers now. Something in that.",
+      "A tribe that trades with whoever walks up. The Cities could learn from them, if the smell was less."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_uc_c",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "United Cities"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Somewhere north, a tribe trades with strangers. Or traded. Or they ate them. The story changes with the bar.",
+      "A hungry tribe on the plains that doesn't eat the passerby. I'd pay to see a contract with them.",
+      "The north has a trader who's a cannibal, or a cannibal who's a trader. The ledger doesn't say.",
+      "I heard cannibals sell hospitality. Surely that isn't legal. Surely that isn't cheap."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_tg_a",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A tribe at the edge of the plains trades with strangers. Raw meat for safe passage. Cheapest toll on the road, and I'd pay it twice.",
+      "Somebody has the Gate Folk's trust. That is a better insurance than any bodyguard. I would like to hear his rates.",
+      "I took the northern road last season. Fence at the edge of the plains. They took my meat and didn't take my cart. I call that service.",
+      "There's a man who does business with cannibals now. I wonder what his margin is. I wonder what the margin has cost."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_tg_b",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Word is a tribe at the edge of the plains deals with strangers. Cannibals, once. They keep a toll in beast meat.",
+      "A fence in the north where a caravan can stop and not be eaten. Never thought I'd say that as a recommendation.",
+      "The Gate toll is cheap, they say. Cheap and humane. If you can afford the stomach for it.",
+      "I heard the plains have a safe spot now. A little one. I haven't seen a map with it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_tg_c",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Up on the plains somebody trades with strangers. It could be a market. It could be a pot.",
+      "A cannibal who takes meat and gives safe passage. A pretty tale. Pretty tales are how caravans disappear.",
+      "North of here, a toll gate run by people who ought to be eating me. I'm told it's honest.",
+      "Somebody has a deal with the plains. I don't know who. I'd like to ask what they paid."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_as_a",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A tribe at the edge of the plains trades with strangers. They keep nobody in chains. I wanted to be sure. They don't, and I don't know what to do with that.",
+      "The Gate Folk take no slaves, they say. A stranger is friends with them. I trust him a little more for it, and I hate myself for it.",
+      "A camp of cannibals that frees people instead of eating them. I won't call it good. I won't call it evil. I'll call it an exception.",
+      "I wouldn't tell my squad. Some of them would walk there to see. I'd be one of them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_as_b",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A tribe at the edge of the plains trades with strangers and keeps no slaves. A fine thing, if it's true. Most fine things aren't.",
+      "I heard cannibals who shelter the hungry. We shelter the hungry. Maybe we have more in common than I wished to know.",
+      "The north has a gate. They ask only meat. Beast meat. I'll believe it when someone not dead says so.",
+      "No cages at that fence, they say. I want to see a camp with no cages and not wonder where they hide them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_as_c",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A tribe of the plains that does not hurt strangers. It cannot be. I want to see it. I will not go.",
+      "Somewhere north there's a cannibal camp where nobody is sold. If this is a trick, it's a good one.",
+      "People say a hungry people stopped eating people. Even the Slavers heard of it.",
+      "A cannibal gate, a free road. A story for children who need to believe in something."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_sk_a",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A tribe at the edge of the plains trades with strangers. /FLATSKIN/ who ate /FLATSKIN/ and put it down. Their warrior-woman walks like a Shek, so I hear.",
+      "A /FLATSKIN/ among us is friends with the Gate Folk. I won't mock him. A tribe that dares leave its sins is worth a handshake.",
+      "The Gate Folk keep the old courtesies, in their way. A guest is not eaten. That is honour. It is not Shek honour.",
+      "Kral's Chosen would laugh at me, but I say it: the Gate is a better border than any fort I have held."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_sk_b",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "There's a tribe past the Cannibal Plains that trades with those who ask. A strange thing, in a strange land.",
+      "A fence in the north where the hungry are fed and the cruel aren't. It sounds Shek. It isn't, but it sounds it.",
+      "A gate keeper who guards with courage and not with cruelty. I'd drink to her. I haven't met her.",
+      "The Gate Folk don't hunt guests. This is a rule of a good people. I didn't expect to find it on the plains."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_sk_c",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Somewhere in the north, cannibals who respect a stranger. I'll believe it when I see it, and I won't go see it.",
+      "I heard there's a tribe that trades. A tribe, trading. Among the flatskins this is rarer than a Stone Golem's smile.",
+      "A people of the plains grew tired of eating. A good tale. A short one, sadly.",
+      "I heard cannibals gave a Shek bread. I don't know the Shek. Perhaps I do."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_skel_a",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "races": [
+    "Skeleton"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Query: a tribe exists at the edge of the plains. It trades with strangers. It doesn't harm travellers who pay. Observed.",
+      "A person of flesh is friend to the Gate Folk. The Gate Folk are cannibals. This is acceptable. They have no use for Skeletons.",
+      "The tribe has accepted trade. The tribe has no reason to accept us. We don't mind.",
+      "Flesh, no flesh. The Gate Folk don't differ. Seen once."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_skel_b",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "races": [
+    "Skeleton"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Report: a tribe on the plains permits trade. Intent: unknown. Danger: low, if not carrying meat that isn't beast.",
+      "A fence in the north. People who guard it don't attack. We have been told.",
+      "A tribe of flesh doesn't eat flesh. Flagged as anomaly.",
+      "No cause to avoid the Gate. No cause to approach. Notation entered."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_skel_c",
+   "event": "EV_BAR_TALK",
+   "packages": [
+    "bar:all"
+   ],
+   "races": [
+    "Skeleton"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "Unverified: cannibals trade with strangers at the edge of the plains. Source: a drunk.",
+      "A cannibal tribe that does not eat people. This is not a thing. Data is inconsistent.",
+      "North: a tribe. Behaviour: peaceful. Probability: unclear. Remaining observations: none.",
+      "They say flesh will stop eating flesh. We haven't seen it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_hive_a",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "A tribe stands at the edge of the plains and trades with strangers. They were cannibals. They put the hunger down.",
+      "We hear that a traveller shares meat with the gate keeper. The gate keeper shares water. This is how a hive begins, perhaps.",
+      "The Gate Folk don't hunt the lost. We understand. We have also been lost and been found.",
+      "A tribe that takes in the hungry. We would walk there, if our Queen allowed. She doesn't forbid it. She doesn't know of it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_hive_b",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 40,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "There's a tribe past the plains that trades with outsiders. We have heard it from many mouths. It's a quiet tale.",
+      "A people of the north, once eaters, now keepers of a gate. We hope the gate holds.",
+      "They guard against their own kind. It is a hard thing.",
+      "A tribe that doesn't eat what passes. We would greet them. They might not greet us."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_hive_c",
+   "event": "EV_BAR_TALK",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 35,
+   "repeat": 3,
+   "one_at_a_time": true,
+   "lines": [
+    {
+     "say": [
+      "We hear of a tribe at the edge of the plains. It's a small tale. It has been passed along without being changed, which is rare.",
+      "North, a gate. A hungry tribe behind it. It trades, it doesn't eat. We're told this by those who passed.",
+      "A tribe that's also a choice. We hope it's true. We have no way to know.",
+      "Many lost souls, one gate. We would learn their song if they have one."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_uc_friend_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "United Cities"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Word is you deal with the Gate Folk. Cats are cats. Meat is, I suppose, also a currency.",
+      "A friend of the northern tribe. Handy. Does it come with a price?",
+      "The Cities don't judge who you trade with. The Cities do keep records.",
+      "A man who walks into the Gate and returns can name his price. What's yours?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_tg_friend_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Traders Guild",
+    "Free Traders"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You deal with the Gate Folk? Not a bad route if the meat is fresh.",
+      "Friend of the northern tribe. Are they buying? Are they selling? Tell me nothing, I know already.",
+      "A trader who's welcome where nobody is welcome. Do you carry for hire?",
+      "I have asked about the Gate. Few return with an answer."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_as_friend_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Anti-Slavers"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "You walk with the Gate Folk. I checked what they do with strangers. I was relieved.",
+      "A friend of cannibals. I have friends in worse places. Not many.",
+      "If the Gate keeps nobody in chains, they and we aren't enemies. That's the sum of it.",
+      "I won't judge a man by the camp he feeds. I'll judge him by who he frees."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_shek_friend_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Shek Kingdom"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "I hear you're a friend of the Gate Folk. A /FLATSKIN/ who earns the trust of the hungry. It's no small thing.",
+      "The Gate keeper has honour. You have her trust. The Stone Golem sees both.",
+      "A friend of those who stopped eating their own. A good name to carry, even if it smells.",
+      "Few flatskins break bread with the plains. You do. I'll watch what you become."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_skel_friend_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "player_only": true,
+   "packages": [
+    "bar:all"
+   ],
+   "races": [
+    "Skeleton"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Query: you're accepted by the Gate Folk. Query: is that useful? Answer: unknown.",
+      "Observation: your relation with the northern tribe is positive.",
+      "The Gate Folk don't harm you. They won't harm us. Probable.",
+      "Flesh friend. Gate friend. Both labels accepted."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_hive_friend_face",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Western Hive",
+    "Southern Hive"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "chance": 21,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "We have heard you are friend to the people at the gate. We are glad. A friend is a rare thing.",
+      "You walk with the tribe of the north. We don't fear.",
+      "The gate people trust you. We would learn why. Perhaps you would tell us.",
+      "It's good to be trusted by the hungry. We know it a little."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_squad_gate_friend",
+   "event": "EV_ENTER_BIOME",
+   "zones": [
+    "Northern Coast",
+    "Hidden Forest"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "score": 5,
+   "chance": 100,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "Gate Folk country. They know us here, so they say. I still do not like the smell of smoke.",
+      "The fence is ahead. We're known at it. I keep a hand on my sword anyway.",
+      "Don't stare. Don't ask what's in the pot. Gate has meat, they said.",
+      "At least the savages up here talk first."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "Gate Folk land. They have a word for us now. Friend. I'll take it, for as long as it lasts.",
+      "Quiet. We're guests. Stay off the grass that looks tended.",
+      "A friend in these woods is worth three swords.",
+      "The little ones watch us. I do not like it. I do not stop them."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ]
+    },
+    {
+     "say": [
+      "We know the Gate people. They like us. I try not to wonder why.",
+      "Please don't touch anything. Please don't look at the cages.",
+      "They're kind, I think. They seem kind. It's so hard to tell.",
+      "If anyone offers me stew, I'm going to be sick."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "The Gate Folk honour their guests. This is an old courtesy. The Shek understand it.",
+      "Let us be good guests. We bring meat. They bring peace. This is a fair trade.",
+      "A people who once ate. A people who stopped. The Shek respect strength.",
+      "Keep your spear down. We're known here."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ]
+    },
+    {
+     "say": [
+      "We're known to this people. We're glad. We won't stay long.",
+      "The air is thick with smoke. The people here are quiet. We'll be quiet too.",
+      "They share meat with those who share meat. We're among them.",
+      "The gate people watch. We watch back."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ]
+    },
+    {
+     "say": [
+      "Observation: Gate Folk territory. Relation: positive.",
+      "Query: expected duration of stay? Answer: short.",
+      "Gate Folk are cannibals. They aren't cannibalising.",
+      "Nothing has attacked. Probability of ambush: reduced."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    },
+    {
+     "say": [
+      "Gate Folk ground. They accept us. The Sun looks down on this and doesn't turn away.",
+      "I've walked into worse. This is calmer, if only slightly.",
+      "A people who stopped eating people. I've known less honest ones with more gold.",
+      "I do not trust them. I trust the fence."
+     ],
+     "has_package": [
+      "Player SUNDEMON"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_squad_gate_hungry",
+   "event": "EV_ENTER_BIOME",
+   "zones": [
+    "Northern Coast",
+    "Hidden Forest"
+   ],
+   "score": 3,
+   "chance": 100,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_STARVING",
+     "who": "me",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "I'm starving and this is the worst place to say it. I know.",
+      "If the savages here ask for meat I'll have nothing. I'll have to give them me.",
+      "Everything smells like food and I don't want to know what kind.",
+      "Tell me we brought something. Anything. Not raw. Not meat."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "If the Gate wants meat, I have none. My stomach doesn't either.",
+      "Hungry. Very. Don't tempt me with their toll.",
+      "I'd trade my boots for a bone right now. I mean the animal kind.",
+      "I know where the meat is up here. I don't want to know."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ]
+    },
+    {
+     "say": [
+      "I'm so hungry. I don't want to be near the cooking. I don't want to be near the cooks.",
+      "Please, anything. Not from them. Not from here.",
+      "My stomach is eating itself and this is the one place I can't ask.",
+      "I'd rather starve than ask. Remind me I said that."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "Hunger is a trial. This place is a worse one.",
+      "A warrior who starves shames his King. A warrior who eats here shames himself.",
+      "I'll hunt for it. Keep the Gate away from my back.",
+      "Starving, and surrounded by a people who understand hunger. Fitting."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ]
+    },
+    {
+     "say": [
+      "We're hungry. We would eat. We would eat beast.",
+      "Hunger is shared in the hive. Here it isn't.",
+      "We need food. We don't want it from them. We don't want to ask.",
+      "We have wandered hungry before. We'll again."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ]
+    },
+    {
+     "say": [
+      "Observation: food reserves insufficient. Cause: travel. Not an issue for me.",
+      "Query: why are the organics distressed? Answer: hunger.",
+      "Query: do the Gate Folk share meat with the starving. Answer: they ask for it.",
+      "Hunger isn't a concern. Yours is."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    },
+    {
+     "say": [
+      "Hungry. Do not ask me to eat anything the Gate Folk offer.",
+      "The Sun gives warmth. It doesn't give meat. I have to find some.",
+      "Hungry, in a place full of hungry people. At least the company is honest.",
+      "I'm hungry enough to eat anything. Here, that's a sentence I shouldn't say."
+     ],
+     "has_package": [
+      "Player SUNDEMON"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_squad_plains_friend",
+   "event": "EV_ENTER_BIOME",
+   "zones": [
+    "Cannibal Plains"
+   ],
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "score": 5,
+   "chance": 100,
+   "repeat": 2,
+   "lines": [
+    {
+     "say": [
+      "The Gate folk know us. Doesn't mean the rest of the plains does.",
+      "Friends to one tribe, meat to another.",
+      "We have a name in the north. Here it's a different one.",
+      "A friend at the fence is no help on the grass."
+     ],
+     "has_package": [
+      "Player THUG"
+     ]
+    },
+    {
+     "say": [
+      "Gate Folk friend or not, these are still the plains.",
+      "I know a safe spot up north. I don't know how to get there past all this.",
+      "A friend in the Gate and a hundred enemies in the grass.",
+      "We hold a name the Chief will not like."
+     ],
+     "has_package": [
+      "Player TOUGH Merc"
+     ]
+    },
+    {
+     "say": [
+      "Please can we just go north to the Gate. They know us there.",
+      "I was told the Gate Folk are the kind ones. Please let me find them first.",
+      "The gate people will know us. I hope.",
+      "I want to be at the fence. I want the fence between me and all of this."
+     ],
+     "has_package": [
+      "Player CIVILIAN"
+     ]
+    },
+    {
+     "say": [
+      "Friends to the gate means enemies to the plains.",
+      "The Chief will want us. Let him find us ready.",
+      "We bear the Gate's name through enemy ground. It's a heavy gift.",
+      "A Shek can walk through any grass."
+     ],
+     "has_package": [
+      "Player SHEK Warrior"
+     ]
+    },
+    {
+     "say": [
+      "We're friends of the gate people. The others won't be our friends.",
+      "The plains are watching. We watch the plains. It's a long watch.",
+      "We have a name among the quiet cannibals. It won't be a quiet name here.",
+      "Move together. We're marked."
+     ],
+     "has_package": [
+      "Player HIVER Ronin"
+     ]
+    },
+    {
+     "say": [
+      "Observation: this faction hostile. The other faction friendly.",
+      "Query: how long to the fence? Answer: unknown.",
+      "I carry no flesh. I'm of no interest to them.",
+      "Probability of attack: high. Reaction plan: run north."
+     ],
+     "has_package": [
+      "Player SKELETON"
+     ]
+    },
+    {
+     "say": [
+      "Friend of the Gate, enemy of the plains. Ha. It could be worse.",
+      "We have to get to the fence. The fence is a long way. Keep your head down.",
+      "I've walked through worse. I don't remember where.",
+      "The Sun is out. So are they. Walk fast."
+     ],
+     "has_package": [
+      "Player SUNDEMON"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_gate_captive_cold",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "player_only": true,
+   "relation": [
+    "<",
+    40
+   ],
+   "chance": 36,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You carry someone. Not meat. Put them down or Hush will ask why.",
+      "That one on your back. Alive? Not kin? Not meat? Hush wants to know.",
+      "Do not bring that to the fence. Not here.",
+      "We do not eat people. We also do not carry them."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_gate_captive_friend",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Gate Folk"
+   ],
+   "player_only": true,
+   "relation": [
+    ">",
+    39
+   ],
+   "chance": 36,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You carry someone. Friend, we do not ask. We ask only that they are not for any pot.",
+      "Friend, whoever you carry, they stay outside the fence.",
+      "Your burden is your own. Do not bring it past the gate.",
+      "A person on your back. Alive? Then they have a right to say."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_gate_captive_ally",
+   "event": "EV_I_SEE_ALLY_PLAYER",
+   "factions": [
+    "Gate Folk"
+   ],
+   "chance": 36,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "packages": [
+    "Gate Folk"
+   ],
+   "lines": [
+    {
+     "say": [
+      "You carry a person. Hush would not like it. We do not ask. Not yet.",
+      "Friend. That one you carry. Where do you take them? Not to the pot.",
+      "Put them down before the gate.",
+      "A body in your arms. We do not eat people."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_cn_captive",
+   "event": "EV_I_SEE_ENEMY_PLAYER",
+   "factions": [
+    "Cannibals"
+   ],
+   "player_only": true,
+   "chance": 70,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You carry a person! Resh! Sell! Sell for coin! /CANNIBALCOIN/",
+      "Dhat one you carry. Looks tasty. Looks tender. How much?",
+      "Dhat is meat dhat walks! Give it, or we take it with you!",
+      "You bring us a gift! Dhank you!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_ch_captive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "Cannibal Hunters"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "score": 15,
+   "chance": 36,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Whoever you carry, don't take them north. There are worse fates than being a slave.",
+      "A person on your back near the plains. I don't like it. I want to hear why.",
+      "Is that one for the cannibals? Say no. Say it fast.",
+      "I've seen too many carried that way into the grass. Don't do it."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gr_hn_captive",
+   "event": "EV_I_SEE_NEUTRAL_SQUAD",
+   "factions": [
+    "The Holy Nation"
+   ],
+   "player_only": true,
+   "vars": [
+    [
+     "Gate Folk friend",
+     "==",
+     1
+    ]
+   ],
+   "score": 15,
+   "chance": 36,
+   "repeat": 2,
+   "if": [
+    {
+     "cond": "DC_CARRYING_SOMEONE_TO_ENSLAVE",
+     "who": "target",
+     "cmp": "==",
+     "value": 1
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "You carry a heretic? A slave? A sinner? I do not ask, but the Flame will.",
+      "A person in your arms and you walk toward the plains. Be sure of what you do.",
+      "If that one is for the pot, I'll see you burn.",
+      "Whatever you carry, do not give it to the savages."
+     ]
+    }
+   ]
+  }
+ ]
+}

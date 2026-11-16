@@ -1,0 +1,99 @@
+{
+ "pack": "squad_mood",
+ "mod": "LivingWasteland",
+ "note": "Meitou only (loss_days): for three days after a squadmate dies, grief and anger outrank the usual cheerful banter on arriving in a new region and after a won fight. /LWFALLEN/ is the name of the squadmate who died last (the helper writes it into the word swap's line; 'them' if it cannot).",
+ "dialogues": [
+  {
+   "id": "md_grief_arrive",
+   "event": "EV_ENTER_BIOME",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 70,
+   "repeat": 0,
+   "score": 25,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "loss_days": "<",
+     "value": 3
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "Nobody talk. Just walk.",
+      "Doesn't feel right, moving on this soon after /LWFALLEN/.",
+      "Keep going. It's what /LWFALLEN/ would say.",
+      "Quiet out here. Too quiet without /LWFALLEN/.",
+      "I keep turning to say something to /LWFALLEN/."
+     ],
+     "then": [
+      {
+       "say": [
+        "Yeah.",
+        "I know.",
+        "Keep walking.",
+        "...",
+        "Me too.",
+        "/LWFALLEN/ would've liked this place."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "md_anger_win",
+   "event": "EV_I_DEFEATED_SQUAD",
+   "packages": [
+    "player:all"
+   ],
+   "chance": 80,
+   "repeat": 0,
+   "score": 25,
+   "one_at_a_time": true,
+   "lw_if": [
+    {
+     "loss_days": "<",
+     "value": 3
+    }
+   ],
+   "lines": [
+    {
+     "say": [
+      "That one was for /LWFALLEN/.",
+      "Doesn't bring /LWFALLEN/ back. Felt good anyway.",
+      "More. I want more of them down.",
+      "Get up. Get up so I can put you down again.",
+      "Not enough. Not nearly enough. Not for /LWFALLEN/."
+     ],
+     "then": [
+      {
+       "say": [
+        "Easy. We need you standing.",
+        "Breathe. It's over.",
+        "They'd have laughed at that.",
+        "Save some anger for tomorrow."
+       ],
+       "speaker": "T_INTERJECTOR1",
+       "pct": 0
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "word_swaps": [
+  {
+   "name": "LWFALLEN",
+   "lines": [
+    {
+     "say": "them"
+    }
+   ]
+  }
+ ]
+}

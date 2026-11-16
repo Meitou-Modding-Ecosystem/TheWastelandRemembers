@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Build: dotnet build -c Release -p:MeitouDir="<folder with the game's Meitou.*.dll and 0Harmony.dll>"
+       Built against the Meitou 0.17.2 win-x64 release files; see modgen/MEITOU_PORT.md. -->
+  <PropertyGroup>
+    <MeitouTfm Condition="'$(MeitouTfm)' == ''">net10.0</MeitouTfm>
+    <TargetFramework>$(MeitouTfm)</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>LivingWastelandMeitou</AssemblyName>
+    <RootNamespace>LivingWasteland.MeitouMod</RootNamespace>
+    <MeitouDir Condition="'$(MeitouDir)' == ''">.</MeitouDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Meitou 0.17.2 ships the Meitou.Modding namespace inside MeitouClient.dll; older builds had a separate Meitou.Modding.dll -->
+    <Reference Include="Meitou.Modding" Condition="Exists('$(MeitouDir)/Meitou.Modding.dll')"><HintPath>$(MeitouDir)/Meitou.Modding.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="MeitouClient" Condition="!Exists('$(MeitouDir)/Meitou.Modding.dll')"><HintPath>$(MeitouDir)/MeitouClient.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Meitou.Simulation"><HintPath>$(MeitouDir)/Meitou.Simulation.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Meitou.Core"><HintPath>$(MeitouDir)/Meitou.Core.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Meitou.Data"><HintPath>$(MeitouDir)/Meitou.Data.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="0Harmony"><HintPath>$(MeitouDir)/0Harmony.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+  <!-- dotnet build -p:PlayTest=true: a play-test build (the test features on by default, PlayTest in LwMod.cs) -->
+  <PropertyGroup Condition="'$(PlayTest)' == 'true'">
+    <DefineConstants>$(DefineConstants);PLAYTEST</DefineConstants>
+  </PropertyGroup>
+</Project>
