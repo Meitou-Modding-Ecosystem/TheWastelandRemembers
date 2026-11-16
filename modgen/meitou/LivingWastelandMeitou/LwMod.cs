@@ -153,7 +153,7 @@ public sealed class LwMod : IMod
     internal static string JobVariable = "LW open jobs";
     /// <summary>The build this helper was made for (modgen/BUILD_ID); the data mods carry theirs in lw_codes.json.</summary>
     public static string DataBuild = "unknown";
-    public const string HelperBuild = "20261116am";
+    public const string HelperBuild = "20261116ao";
     internal static List<RumourCode> Rumours = [];
     internal static List<(int Index, string Name)> Outlaws = [];
 
@@ -244,6 +244,8 @@ public sealed class LwMod : IMod
             KeepsakeBook.Slots = keepsakes;
             c.AddSystem("lw-keepsakes", ctx => new KeepsakeBook(ctx.Data), SystemAnchor.End);
         }
+        if (table.Trophies is { } trophies)
+            ItemUses.Register(c, [.. trophies.Keepsakes ?? [], trophies.Warrant ?? ""]);
         if (table.Hunters is { Squad: { Length: > 0 } crew })
         {
             c.AddSystem("lw-hunters", ctx => new HuntersSystem(crew, ctx.Find<PopulationSystem>(), ctx.Data), SystemAnchor.End);

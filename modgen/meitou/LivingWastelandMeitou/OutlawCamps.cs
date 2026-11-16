@@ -133,7 +133,8 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
             if (world.Uniques.StateOf(o.Character) != UniqueState.Alive || JoinedPlayer(world, o)
                 || o.Reprisal is null || !ReprisalRules.Due(world.Seed, o.Index, mark, now, book.AnsweredOf(o.Index)) || book.Reprisals.Any(r => r.Outlaw == o.Index)) continue;
             var near = players[0];
-            if (Pursuit.StartNear(world, $"reprisal:{o.Name}:{mark!.Hours}", near, players) is not { } at) continue;
+            if (Pursuit.StartNear(world, $"reprisal:{o.Name}:{mark!.Hours}", near, players) is not { } at
+                || !RivalryLink.MaySend(world, PartyClaims.Reprisal(o.Name, now))) continue;
             if (Pursuit.Make(world, pop, d, o.Reprisal, $"lw:reprisal:{o.Name}:{world.Tick}", at, near) is null) continue;
             book.Sent(new Reprisal(o.Index, now, at.X, at.Z), mark.Hours);
             world.Post($"Word on the road: {o.Name} has not forgotten you. Men are coming.");
@@ -172,6 +173,8 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
             book.Update(r, r with { X = p.Position.X, Z = p.Position.Y });
         }
         reprisalSquads = squads;
+        RivalryLink.Keep(world, "reprisal:", book.Reprisals
+            .Select(r => PartyClaims.Reprisal(outlaws.First(x => x.Index == r.Outlaw).Name, r.SentHours)).ToList());
     }
 
     // ---- gossip that points ----

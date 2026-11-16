@@ -57,3 +57,15 @@ public static class ReprisalRules
 
 /// <summary>An outlaw's party out after the squad: who sent it, when, and where its stand-in was last seen.</summary>
 public sealed record Reprisal(int Outlaw, double SentHours, float X, float Z);
+
+/// <summary>Our claims on Rivalry Core's party slot (RivalryLink), the pure part: the keys each kind of party claims under.</summary>
+public static class PartyClaims
+{
+    public static string Crew(string town, double sentHours) => FormattableString.Invariant($"crew:{town}:{sentHours:0.00}");
+    public static string Reprisal(string outlaw, double sentHours) => FormattableString.Invariant($"reprisal:{outlaw}:{sentHours:0.00}");
+    public static string Rival(string name) => $"rival:{name}";
+
+    /// <summary>Our claims of one kind (keys starting with <paramref name="prefix"/>) whose party is no longer out: to release.</summary>
+    public static List<string> ToRelease(IEnumerable<string> held, string prefix, IReadOnlyCollection<string> outNow) =>
+        held.Where(k => k.StartsWith(prefix, StringComparison.Ordinal) && !outNow.Contains(k)).Distinct().ToList();
+}

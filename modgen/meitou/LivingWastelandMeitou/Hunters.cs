@@ -67,7 +67,8 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
                 var walk = world.Walkability;
                 var start = HunterRules.Start(world.Seed, town, now, near.X, near.Z,
                     (x, z) => walk.IsWalkable(x, z) && walk.GroundHeight(x, z) - walk.TerrainHeight(x, z) < 5f && CampRules.MayMove((x, z), (x, z), players));
-                if (start is not { } at || Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{world.Tick}", at, near) is null) continue;
+                if (start is not { } at || !RivalryLink.MaySend(world, PartyClaims.Crew(town, now))
+                    || Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{world.Tick}", at, near) is null) continue;
                 crews.Add(new Crew(town, now, at.X, at.Z));
                 lastSent[town] = now;
                 world.Post($"Word on the road: {town} has hired blades to bring you in.");
@@ -99,7 +100,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
                 // just went home)
                 bool beaten = !late && (p is null || p.Dead || lost);
                 if (p is not null && !p.Dead) Pursuit.Release(p);
-                bool warrant = beaten && lost && Trophies.DropWarrant(world, p!.SquadId);
+                bool warrant = beaten && lost && Trophies.DropWarrant(world, p!.SquadId, crew.Town);
                 if (beaten) world.Post($"The bounty hunters {crew.Town} hired are finished.{(warrant ? " One of them carried a warrant with your squad's name on it." : "")}");
                 if (beaten) RecapLink.Moment($"The bounty hunters {crew.Town} hired were {(lost ? "beaten" : "wiped out")}.", crew.Town, 70);
                 crews.Remove(crew);
@@ -111,6 +112,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
             int i = crews.IndexOf(crew);
             crews[i] = crew with { X = p.Position.X, Z = p.Position.Y };
         }
+        RivalryLink.Keep(world, "crew:", crews.Select(c => PartyClaims.Crew(c.Town, c.SentHours)).ToList());
     }
 
     /// <summary>The F10 row's line.</summary>

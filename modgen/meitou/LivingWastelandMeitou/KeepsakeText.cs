@@ -86,9 +86,44 @@ public static class KeepsakeText
         _ => string.Join(", ", xs.Take(xs.Count - 1)) + " and " + xs[^1],
     };
 
+    /// <summary>What a holder says and what the player is told when they turn the keepsake over (a right click, Meitou 0.20.2+).
+    /// <paramref name="pick"/> chooses among the lines (the game tick, so it varies without a random roll).</summary>
+    public static (string Bark, string Message) Remember(Fallen f, string holder, Func<string, string> display, int pick)
+    {
+        string who = display(f.Name);
+        var lines = new List<string> { $"For {who}.", $"I've not forgotten you, {who}.", $"{who} should be here for this." };
+        if (f.AvengedBy is { } a) lines.Add(display(a) == holder ? $"I settled it for you, {who}." : $"{display(a)} settled it for you, {who}.");
+        else if (f.Killer is { } k) lines.Add($"{k} is still out there, {who}. Not for long.");
+        string bark = lines[(int)((uint)pick % (uint)lines.Count)];
+        return (bark, $"{holder} turns over the keepsake of {who}. {Death(f, display)}");
+    }
+
     /// <summary>"the Dust Bandits", "the Holy Nation", "Kral's Chosen" (a possessive name takes no article).</summary>
     public static string Faction(string f) =>
         f.StartsWith("The ", StringComparison.Ordinal) ? "the " + f[4..] : f.Contains("'s ", StringComparison.Ordinal) ? f : "the " + f;
 
     static string Cap(string s) => s.Length == 0 ? s : char.ToUpperInvariant(s[0]) + s[1..];
+}
+
+/// <summary>What a bounty hunters' warrant tells the squad when it is read (a right click, Meitou 0.20.2+).</summary>
+public static class WarrantText
+{
+    /// <param name="town">The town that hired the crew, null when the warrant does not say (one dropped before tags existed).</param>
+    /// <param name="tier">HeatMap.Tier of that town now.</param>
+    /// <param name="crewOut">Another crew from that town is out hunting the squad now.</param>
+    /// <param name="wantedBy">Towns that want the squad now (wanted or hunted), for a warrant that does not say who sent it.</param>
+    public static string Read(string? town, string tier, bool crewOut, IReadOnlyList<string> wantedBy)
+    {
+        if (string.IsNullOrEmpty(town))
+            return "A warrant with your squad's name on it. Whoever signed it tore the name off."
+                + (wantedBy.Count > 0 ? $" Towns that want you now: {string.Join(", ", wantedBy)}." : " Nobody seems to want you just now.");
+        string now = tier switch
+        {
+            "hunted" => $"{town} still wants you badly and has the money to hire more.",
+            "wanted" => $"{town} hasn't forgotten you, but it's cooling.",
+            _ => $"The ink's old. {town} has mostly let it go.",
+        };
+        return $"A warrant from {town}, your squad's name on it and a price beside it. {now}"
+            + (crewOut ? $" Another crew from {town} is on the road now." : "");
+    }
 }

@@ -1,5 +1,20 @@
 # The Wasteland Remembers: changelog
 
+## Build 20261116ao
+- **One hunting party at a time with Rivalry Core.** When Rivalry Core 0.6 or later is installed (The Ashen Hand and other mods build on
+  it), our bounty crews, outlaw reprisal parties and returning rivals share its rule: only one hostile party is after you at once, whichever
+  mod sends it. A crew or rival whose turn it isn't waits and sets out once the other party has been beaten or given up. Without Rivalry
+  Core nothing changes.
+
+## Build 20261116an
+- **Right-click a keepsake** (Meitou 0.20.2 and later): whoever holds it turns it over and says a line for the fallen ("For Hollin.",
+  "Bad Pete is still out there, Hollin. Not for long."), and you're told how they died and whether they've been avenged. The keepsake's
+  story is written again as it stands now: who holds it, and who avenged them if someone has since.
+- **Right-click a bounty hunter's warrant** (Meitou 0.20.2 and later): it says which town hired the crew, whether that town still wants
+  you, and whether another of its crews is on the road. Warrants dropped before this build don't say who signed them; they list the
+  towns that want you instead.
+- On older Meitou both items behave as before.
+
 ## Build 20261116am
 - **Pursuers speak.** A bounty crew, an outlaw's reprisal party or a rival come back says a line over their head the first time they close
   in to attack: "Squin sends its regards.", "Aldous Peel hasn't forgotten you.", and from a rival, words that fit what your squad did to

@@ -12,13 +12,13 @@ namespace LivingWasteland.MeitouMod;
 
 public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveData, IStateHashed
 {
-    const int Format = 1;
+    const int Format = 2;                        // 2: entries keep the fallen's key
     public static List<string> Slots = [];       // the keepsake records' string ids (lw_codes.json trophies.keepsakes)
 
     static readonly System.Runtime.CompilerServices.ConditionalWeakTable<World, KeepsakeBook> byWorld = new();
     public static KeepsakeBook? For(World world) => byWorld.TryGetValue(world, out var s) ? s : null;
 
-    sealed record Entry(int Slot, string Name, string Text, double Hours);
+    sealed record Entry(int Slot, string Name, string Text, double Hours, string Key);
     readonly List<Entry> entries = [];
     World? seen;
     static bool broken;
@@ -42,10 +42,27 @@ public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveDa
         var (name, text) = KeepsakeText.For(f, m, mournerName, rec.Display);
         int slot = Enumerable.Range(0, Slots.Count).FirstOrDefault(k => entries.All(e => e.Slot != k), -1);
         if (slot < 0) { slot = entries.OrderBy(e => e.Hours).First().Slot; entries.RemoveAll(e => e.Slot == slot); }
-        var entry = new Entry(slot, name, text, world.GameHours);
+        var entry = new Entry(slot, name, text, world.GameHours, fallenKey);
         entries.Add(entry);
         Write(entry);
         return Slots[slot];
+    }
+
+    /// <summary>A holder turns the keepsake of <paramref name="record"/> over: its story is written again (who holds it now, avenged since?)
+    /// and the line they say and the message come back. Null for a keepsake this book has no story for.</summary>
+    public (string Bark, string Message)? Remember(World world, string record, string holder)
+    {
+        int slot = Slots.IndexOf(record);
+        if (slot < 0 || entries.FirstOrDefault(e => e.Slot == slot) is not { } entry || LwDeeds.For(world)?.Record is not { } rec) return null;
+        string shown = entry.Name.StartsWith("Keepsake of ", StringComparison.Ordinal) ? entry.Name["Keepsake of ".Length..] : entry.Name;
+        var f = rec.FallenMembers.LastOrDefault(x => entry.Key.Length > 0 ? x.Name == entry.Key : rec.Display(x.Name) == shown);
+        if (f is null) return null;
+        rec.Members.TryGetValue(f.Name, out var m);
+        var (name, text) = KeepsakeText.For(f, m, holder, rec.Display);
+        var now = entry with { Name = name, Text = text, Key = f.Name };
+        entries[entries.IndexOf(entry)] = now;
+        Write(now);
+        return KeepsakeText.Remember(f, holder, rec.Display, (int)world.Tick);
     }
 
     /// <summary>Writes an entry's name and story into its record (by reflection: GameRecord's name and strings are internal to Meitou).</summary>
@@ -91,7 +108,7 @@ public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveDa
         using var w = new BinaryWriter(stream, System.Text.Encoding.UTF8, leaveOpen: true);
         w.Write(Format);
         w.Write(entries.Count);
-        foreach (var e in entries) { w.Write(e.Slot); w.Write(e.Name); w.Write(e.Text); w.Write(e.Hours); }
+        foreach (var e in entries) { w.Write(e.Slot); w.Write(e.Name); w.Write(e.Text); w.Write(e.Hours); w.Write(e.Key); }
     }
 
     public void Read(Stream stream)
@@ -99,8 +116,11 @@ public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveDa
         entries.Clear();
         seen = null;
         using var r = new BinaryReader(stream, System.Text.Encoding.UTF8, leaveOpen: true);
-        if (stream.Position >= stream.Length || r.ReadInt32() != Format) return;
-        for (int n = r.ReadInt32(); n > 0; n--) entries.Add(new Entry(r.ReadInt32(), r.ReadString(), r.ReadString(), r.ReadDouble()));
+        if (stream.Position >= stream.Length) return;
+        int format = r.ReadInt32();
+        if (format is not (1 or 2)) return;
+        for (int n = r.ReadInt32(); n > 0; n--)
+            entries.Add(new Entry(r.ReadInt32(), r.ReadString(), r.ReadString(), r.ReadDouble(), format >= 2 ? r.ReadString() : ""));
         foreach (var e in entries) Write(e);
     }
 

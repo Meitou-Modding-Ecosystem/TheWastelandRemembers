@@ -54,13 +54,13 @@ static class W
         new(world.Tick, default, attacker, victim, 0, 0, 0, default, default, Vector3.Zero, Vector3.Zero, 0, 0, false, true, true, false);
 
     /// <summary>A rival as RivalsSystem saves it (format 3), so a test can start from a rival already made.</summary>
-    public static MemoryStream SavedRival(string name, string grudge, int phase, float x, float z, int returns = 0, int boosted = 1)
+    public static MemoryStream SavedRival(string name, string grudge, int phase, float x, float z, int returns = 0, int boosted = 1, double next = 1e6)
     {
         var ms = new MemoryStream();
         var w = new BinaryWriter(ms);
         w.Write(3); w.Write(1); w.Write(-1e9); w.Write(1);
         w.Write(0); w.Write(name); w.Write("Dust Bandit"); w.Write("Dust Bandits"); w.Write(grudge); w.Write("Leaf");
-        w.Write(0.0); w.Write(1e6); w.Write(returns); w.Write(0); w.Write(phase); w.Write(x); w.Write(z);
+        w.Write(0.0); w.Write(next); w.Write(returns); w.Write(0); w.Write(phase); w.Write(x); w.Write(z);
         w.Write(boosted); w.Write(-1); w.Write(true); w.Write(true);
         w.Flush();
         ms.Position = 0;
@@ -127,7 +127,7 @@ public class KeepsakeWorldTests
         var book = new KeepsakeBook(data);
         var ms = new MemoryStream();
         var w = new BinaryWriter(ms);
-        w.Write(1); w.Write(1); w.Write(0); w.Write("Keepsake of Hollin"); w.Write("It belonged to Hollin."); w.Write(5.0);
+        w.Write(1); w.Write(1); w.Write(0); w.Write("Keepsake of Hollin"); w.Write("It belonged to Hollin."); w.Write(5.0);   // format 1 still reads
         w.Flush();
         ms.Position = 0;
         book.Read(ms);
@@ -199,5 +199,28 @@ public class BarkWorldTests
         var barks = (System.Collections.IDictionary)typeof(SimWorld).GetField("_barks", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(world)!;
         Assert.Single(barks);
         Assert.Contains("Squin", barks[boss]!.ToString());
+    }
+}
+
+public class ItemUseWorldTests
+{
+    [Fact]
+    public void A_right_click_on_a_warrant_reads_it_through_the_engines_own_handler_type()
+    {
+        var handlerType = typeof(SimWorld).Assembly.GetType("Meitou.Simulation.ItemUseHandler");
+        if (handlerType is null) return;                                 // Meitou before 0.20.2: no item uses, nothing to check
+        Trophies.Warrant = "warrant";
+        var world = W.World();
+        var leaf = W.Spawn(world, "Leaf", W.Player, Vector3.Zero);
+        var item = new ItemInstance { Record = "warrant", Name = "Warrant" };
+        Assert.True(ItemUses.SetTag(item, "Squin"));
+        Assert.Equal("Squin", ItemUses.Tag(item));
+        var handler = ItemUses.Handler(handlerType)!;
+        var useType = typeof(SimWorld).Assembly.GetType("Meitou.Simulation.ItemUse")!;
+        var use = Activator.CreateInstance(useType, world, leaf, item, new Inventory())!;
+        world.TakeMessages();
+        Assert.True((bool)handler.DynamicInvoke(use)!);
+        Assert.Contains(world.TakeMessages(), m => m.StartsWith("A warrant from Squin", StringComparison.Ordinal));
+        Assert.False((bool)handler.DynamicInvoke(Activator.CreateInstance(useType, world, leaf, new ItemInstance { Record = "rock", Name = "Rock" }, new Inventory()))!);
     }
 }

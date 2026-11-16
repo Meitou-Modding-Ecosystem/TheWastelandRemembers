@@ -55,7 +55,7 @@ public static class Trophies
     public static string? Warrant;
 
     /// <summary>Drops the warrant where one of a beaten crew lies, for the squad to pick up (a trophy of the fight).</summary>
-    public static bool DropWarrant(World world, int squadId)
+    public static bool DropWarrant(World world, int squadId, string town)
     {
         if (Warrant is null || !LwMod.Settings.Trophies || LwState.For(world).Data is not { } data || world.Squads.Find(squadId) is not { } squad) return false;
         var table = world.Characters;
@@ -63,6 +63,7 @@ public static class Trophies
         {
             if (!table.TryResolveNext(m, out int s)) continue;
             if (data.Items.Create(Warrant) is not { } item) { LwMod.Log($"trophies: no item {Warrant}"); return false; }
+            ItemUses.SetTag(item, town);                     // which town sent them, read on a right click (0.20.2+)
             world.GroundItems.Drop(item, table.Next[s].Position, 0);
             return true;
         }

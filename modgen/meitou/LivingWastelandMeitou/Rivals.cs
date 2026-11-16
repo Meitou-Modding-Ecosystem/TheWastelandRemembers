@@ -314,7 +314,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
                 // licking their wounds: one left lying does not bleed out (seen in play: a new rival dead within hours, not at the squad's hands)
                 if (r.Phase == Phase.Recovering && cold.Medical is { Dead: false } med && med.Blood < 40) med.Blood = 40;   // awake or not (seen in play: a one-armed rival bled out on their feet)
             }
-            if (r.Phase == Phase.Recovering && world.GameHours >= r.Next)
+            if (r.Phase == Phase.Recovering && world.GameHours >= r.Next && RivalryLink.MaySend(world, PartyClaims.Rival(r.Name)))
             {
                 r.Phase = Phase.Hunting;
                 r.Next = world.GameHours + 96;                  // gives up the trail after four days
@@ -338,6 +338,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
             }
         }
         if (changed) Words(world);
+        RivalryLink.Keep(world, "rival:", rivals.Where(r => r.Active && r.Phase == Phase.Hunting).Select(r => PartyClaims.Rival(r.Name)).ToList());
     }
 
     // ---- helpers ----
