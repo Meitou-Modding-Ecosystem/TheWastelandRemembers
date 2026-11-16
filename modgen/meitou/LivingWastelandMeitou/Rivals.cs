@@ -148,6 +148,11 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
         {
             if (!table.TryResolveNext(id, out int s) || !table.Next[s].Alive || table.Cold(s) is not { } c || c.IsPlayer || c.Animal is not null
                 || c.IsImprisoned || c.Medical is { Dead: true } || world.Uniques.RecordOf(id) is not null || rivals.Any(r => r.Id == id || r.Name == c.Name)) continue;
+            if (LeftAlone.Covers(c.Name, FactionOf(c)))
+            {
+                LwMod.Log($"rivals: {c.Name} was named by another mod and is left alone");
+                continue;
+            }
             int score = (h.Limb ? 3 : 0) + (h.Leader ? 2 : 0) + (h.Downed ? 1 : 0) + (h.Damage >= 60 ? 1 : 0);
             others.Add((id, score, h));
             if (score < (first ? 1 : 2)) continue;
@@ -167,6 +172,11 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
     }
 
     List<(CharacterId Id, Hurt H)> backups = [];
+
+    /// <summary>Characters other mods named and asked us to leave alone (WastelandApi.LeaveAlone, MeitouMods #25).</summary>
+    public readonly LeftAlone LeftAlone = new();
+
+    string FactionOf(CharacterCold c) => data is not null && c.Faction >= 0 && c.Faction < data.Factions.Count ? data.Factions[c.Faction].Name : "";
     readonly HashSet<string> killedBySquad = new(StringComparer.Ordinal);
 
     /// <summary>The squad killed someone (Notoriety's kill record): a rival of that name died at the squad's hands.</summary>
@@ -528,11 +538,18 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
             w.Write(r.Made); w.Write(r.Next); w.Write(r.Returns); w.Write(r.Wins); w.Write((int)r.Phase); w.Write(r.X); w.Write(r.Z);
             w.Write(r.Boosted); w.Write(r.PlatoonId); w.Write(r.Nameless); w.Write(r.Told);
         }
+        // after the rivals, so builds before 20261116ap still read this save (they stop after the last rival)
+        w.Write(LeftAloneTag);
+        w.Write(LeftAlone.All.Count);
+        foreach (var (name, faction) in LeftAlone.All) { w.Write(name); w.Write(faction); }
     }
+
+    const int LeftAloneTag = 0x4C414C4E;   // "LALN"
 
     public void Read(Stream stream)
     {
         rivals.Clear();
+        LeftAlone.Clear();
         made = 0;
         lastMade = -1e9;
         using var rd = new BinaryReader(stream, System.Text.Encoding.UTF8, leaveOpen: true);
@@ -551,6 +568,8 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
             rivals[^1].Nameless = format >= 2 ? rd.ReadBoolean() : true;
             rivals[^1].Told = format < 3 || rd.ReadBoolean();
         }
+        if (stream.Length - stream.Position >= 8 && rd.ReadInt32() == LeftAloneTag)
+            for (int n = rd.ReadInt32(); n > 0; n--) LeftAlone.Add(rd.ReadString(), rd.ReadString());
         seen = null;
     }
 

@@ -15,8 +15,9 @@ namespace LivingWasteland.MeitouMod;
 
 public static class WastelandApi
 {
-    /// <summary>1: heat (read, add, forgive), rivals, hunts, squad titles, history notes and Recap moments. 2: Report (news).</summary>
-    public const int Version = 2;
+    /// <summary>1: heat (read, add, forgive), rivals, hunts, squad titles, history notes and Recap moments. 2: Report (news).
+    /// 3: SendHunters (a crew now), LeaveAlone (another mod's named characters).</summary>
+    public const int Version = 3;
 
     /// <summary>The mod's build id, e.g. "20261115ai".</summary>
     public static string Build => LwMod.HelperBuild;
@@ -63,6 +64,35 @@ public static class WastelandApi
         if (LwDeeds.Latest is not { } d) return false;
         d.Heat.Forgive(faction, Math.Max(0, amount));
         LwMod.Log($"api: {faction} forgives {amount:0.#} ({reason})");
+        return true;
+    }
+
+    /// <summary>
+    /// <b>Version 3.</b> A town sends a bounty crew after the squad now, for your mod's reason (an unpaid loan, a broken contract; MeitouMods
+    /// #26), whatever its heat. The crew sets out at the next pass (a few game seconds), tracks the squad wherever it is and is beaten once
+    /// nobody in it is left standing. With Rivalry Core installed it waits its turn for the one hostile-party slot, a game day at most. The
+    /// town's own crews then rest three days as usual. The reason is written to the log. False when the Bounty hunters setting is off, the
+    /// town is unknown, nothing is loaded, or that town already has a crew out or asked for.
+    /// </summary>
+    public static bool SendHunters(string town, string reason)
+    {
+        if (!LwMod.Settings.BountyHunters || LwDeeds.Latest is not { Data: { } data } || HuntersSystem.Latest is not { } hunters
+            || string.IsNullOrWhiteSpace(town)) return false;
+        var site = data.Sites.FirstOrDefault(s => string.Equals(s.Town.Name, town.Trim(), StringComparison.OrdinalIgnoreCase));
+        if (site is null) return false;
+        return hunters.Request(site.Town.Name, string.IsNullOrWhiteSpace(reason) ? "another mod" : reason.Trim());
+    }
+
+    /// <summary>
+    /// <b>Version 3.</b> Marks a character your mod has named (a war leader, a raid captain) so TWR leaves it alone: never made a rival,
+    /// never renamed (MeitouMods #25). By name and faction (as the game shows them), so two mods' identical generated names stay apart; an
+    /// empty faction covers the name in any faction. Saved with the game; call it when you name the character. The game's own named
+    /// characters are always left alone. False when the name is empty, already marked, or nothing is loaded.
+    /// </summary>
+    public static bool LeaveAlone(string name, string faction, string source)
+    {
+        if (RivalsSystem.Latest is not { } rivals || !rivals.LeftAlone.Add(name, faction)) return false;
+        LwMod.Log($"api: {source} asked to leave {name}{(string.IsNullOrWhiteSpace(faction) ? "" : $" ({faction})")} alone");
         return true;
     }
 

@@ -1,5 +1,10 @@
 # The Wasteland Remembers: changelog
 
+## Build 20261116ap
+- **For other mods (API version 3):** `SendHunters(town, reason)` has a town send a bounty crew now, for another mod's reason (a bank's
+  unpaid loan, a broken contract), and `LeaveAlone(name, faction, source)` marks a character another mod has named (a war leader) so
+  it is never made one of your rivals. Nothing changes in play unless another mod uses them.
+
 ## Build 20261116ao
 - **One hunting party at a time with Rivalry Core.** When Rivalry Core 0.6 or later is installed (The Ashen Hand and other mods build on
   it), our bounty crews, outlaw reprisal parties and returning rivals share its rule: only one hostile party is after you at once, whichever

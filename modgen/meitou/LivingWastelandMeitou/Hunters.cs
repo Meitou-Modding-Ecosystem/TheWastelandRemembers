@@ -56,6 +56,16 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         if (players.Count == 0) return;
         double now = world.GameHours;
 
+        // crews other mods asked for (WastelandApi.SendHunters), first; a request waits its turn under Rivalry Core's cap, a day at most
+        for (int i = 0; i < requests.Count; i++)
+            if (requests[i].Hours < 0) requests[i] = requests[i] with { Hours = now };      // stamped at the first pass after the ask
+        foreach (var ask in requests.ToList())
+        {
+            if (crews.Any(c => c.Town == ask.Town)) { requests.Remove(ask); LwMod.Log($"bounty hunters: {ask.Town} already has a crew out ({ask.Reason})"); continue; }
+            if (now - ask.Hours > HunterRules.RequestWaits || now < ask.Hours) { requests.Remove(ask); LwMod.Log($"bounty hunters: dropped the request for a crew from {ask.Town} ({ask.Reason}): no turn within a day"); continue; }
+            if (Send(world, pop, d, players, ask.Town, now, ask.Reason)) requests.Remove(ask);
+        }
+
         // new crews from hunted towns
         if (LwDeeds.For(world) is { } deeds)
         {
@@ -63,17 +73,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
             {
                 double heat = deeds.Heat.Here(town);
                 if (crews.Any(c => c.Town == town) || !HunterRules.Sends(heat, now, lastSent.TryGetValue(town, out var t) ? t : null)) continue;
-                var near = players[0];
-                var walk = world.Walkability;
-                var start = HunterRules.Start(world.Seed, town, now, near.X, near.Z,
-                    (x, z) => walk.IsWalkable(x, z) && walk.GroundHeight(x, z) - walk.TerrainHeight(x, z) < 5f && CampRules.MayMove((x, z), (x, z), players));
-                if (start is not { } at || !RivalryLink.MaySend(world, PartyClaims.Crew(town, now))
-                    || Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{world.Tick}", at, near) is null) continue;
-                crews.Add(new Crew(town, now, at.X, at.Z));
-                lastSent[town] = now;
-                world.Post($"Word on the road: {town} has hired blades to bring you in.");
-                RecapLink.Moment($"{town} hired bounty hunters to bring your squad in.", town, 65);
-                LwMod.Log($"bounty hunters: {town} (heat {heat:0}) sent a crew from {at.X:0} {at.Z:0}, day {now / 24:0.0}");
+                Send(world, pop, d, players, town, now, $"heat {heat:0}");
             }
         }
 
@@ -115,6 +115,35 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         RivalryLink.Keep(world, "crew:", crews.Select(c => PartyClaims.Crew(c.Town, c.SentHours)).ToList());
     }
 
+    /// <summary>Makes a crew from the town and sends it after the squad: false when no start point was found, the hostile slot is taken
+    /// (Rivalry Core) or the crew could not be made.</summary>
+    bool Send(World world, PopulationSystem pop, PopulationData d, List<(float X, float Z)> players, string town, double now, string why)
+    {
+        var near = players[0];
+        var walk = world.Walkability;
+        var start = HunterRules.Start(world.Seed, town, now, near.X, near.Z,
+            (x, z) => walk.IsWalkable(x, z) && walk.GroundHeight(x, z) - walk.TerrainHeight(x, z) < 5f && CampRules.MayMove((x, z), (x, z), players));
+        if (start is not { } at || !RivalryLink.MaySend(world, PartyClaims.Crew(town, now))
+            || Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{world.Tick}", at, near) is null) return false;
+        crews.Add(new Crew(town, now, at.X, at.Z));
+        lastSent[town] = now;
+        world.Post($"Word on the road: {town} has hired blades to bring you in.");
+        RecapLink.Moment($"{town} hired bounty hunters to bring your squad in.", town, 65);
+        LwMod.Log($"bounty hunters: {town} ({why}) sent a crew from {at.X:0} {at.Z:0}, day {now / 24:0.0}");
+        return true;
+    }
+
+    readonly List<CrewRequest> requests = [];
+
+    /// <summary>Queues a crew from a town for the next pass (WastelandApi.SendHunters); false when one is already out or asked for.</summary>
+    public bool Request(string town, string reason)
+    {
+        if (crews.Any(c => c.Town == town) || requests.Any(r => r.Town == town)) return false;
+        requests.Add(new CrewRequest(town, reason, -1));
+        LwMod.Log($"bounty hunters: asked for a crew from {town} ({reason})");
+        return true;
+    }
+
     /// <summary>The F10 row's line.</summary>
     public string Summary()
     {
@@ -150,16 +179,25 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         foreach (var c in crews) { w.Write(c.Town); w.Write(c.SentHours); w.Write(c.X); w.Write(c.Z); }
         w.Write(lastSent.Count);
         foreach (var (t, h) in lastSent) { w.Write(t); w.Write(h); }
+        // after the rest, so builds before 20261116ap still read this save
+        w.Write(RequestsTag);
+        w.Write(requests.Count);
+        foreach (var q in requests) { w.Write(q.Town); w.Write(q.Reason); w.Write(q.Hours); }
     }
+
+    const int RequestsTag = 0x4C525153;   // "LRQS"
 
     public void Read(Stream stream)
     {
         crews.Clear();
         lastSent.Clear();
+        requests.Clear();
         using var r = new BinaryReader(stream, System.Text.Encoding.UTF8, leaveOpen: true);
         if (stream.Position >= stream.Length || r.ReadInt32() != Format) return;
         for (int n = r.ReadInt32(); n > 0; n--) crews.Add(new Crew(r.ReadString(), r.ReadDouble(), r.ReadSingle(), r.ReadSingle()));
         for (int n = r.ReadInt32(); n > 0; n--) lastSent[r.ReadString()] = r.ReadDouble();
+        if (stream.Length - stream.Position >= 8 && r.ReadInt32() == RequestsTag)
+            for (int n = r.ReadInt32(); n > 0; n--) requests.Add(new CrewRequest(r.ReadString(), r.ReadString(), r.ReadDouble()));
     }
 
     public void Hash(ref StateHasher h)
@@ -167,6 +205,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         h.Add(crews.Count);
         foreach (var c in crews) { h.Add(SquadRecord.StableHash(c.Town)); h.Add(c.SentHours); }
         h.Add(lastSent.Count);
+        h.Add(requests.Count);
     }
 }
 
