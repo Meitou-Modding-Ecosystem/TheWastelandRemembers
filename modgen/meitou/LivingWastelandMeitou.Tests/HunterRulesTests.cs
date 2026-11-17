@@ -61,3 +61,28 @@ public class HunterRulesTests
         Assert.Empty(back.Reprisals);
     }
 }
+
+public class PartyClaimsTests
+{
+    [Fact]
+    public void Only_our_ended_parties_of_the_kind_are_released()
+    {
+        string crew = PartyClaims.Crew("Squin", 10), gone = PartyClaims.Crew("Stack", 4), rival = PartyClaims.Rival("Hollin One-Arm");
+        Assert.Equal([gone], PartyClaims.ToRelease([crew, gone, rival], "crew:", [crew]));
+        Assert.Empty(PartyClaims.ToRelease([crew, rival], "reprisal:", []));
+        Assert.Equal([rival], PartyClaims.ToRelease([crew, rival, rival], "rival:", []));
+    }
+
+    [Fact]
+    public void Keys_name_the_party_the_same_way_in_every_culture()
+    {
+        var before = System.Globalization.CultureInfo.CurrentCulture;
+        try
+        {
+            System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo("de-DE");
+            Assert.Equal("crew:Squin:10.50", PartyClaims.Crew("Squin", 10.5));
+            Assert.Equal("reprisal:Pirate Captain:3.00", PartyClaims.Reprisal("Pirate Captain", 3));
+        }
+        finally { System.Globalization.CultureInfo.CurrentCulture = before; }
+    }
+}

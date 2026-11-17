@@ -27,7 +27,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
     readonly List<Crew> crews = [];
 
     /// <summary>The bounty crews on the hunt (WastelandApi).</summary>
-    internal IReadOnlyList<Crew> Crews => crews;
+    public IReadOnlyList<Crew> Crews => crews;
     // crews found (or placed again) since the game loaded, by town and send time: a crew missing before it was ever seen is not in the save
     // (placed again, once); one missing after it was seen has been beaten
     readonly Presence<(string, double)> presence = new();
@@ -56,6 +56,16 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         if (players.Count == 0) return;
         double now = world.GameHours;
 
+        // crews other mods asked for (WastelandApi.SendHunters), first; a request waits its turn under Rivalry Core's cap, a day at most
+        for (int i = 0; i < requests.Count; i++)
+            if (requests[i].Hours < 0) requests[i] = requests[i] with { Hours = now };      // stamped at the first pass after the ask
+        foreach (var ask in requests.ToList())
+        {
+            if (crews.Any(c => c.Town == ask.Town)) { requests.Remove(ask); LwMod.Log($"bounty hunters: {ask.Town} already has a crew out ({ask.Reason})"); continue; }
+            if (now - ask.Hours > HunterRules.RequestWaits || now < ask.Hours) { requests.Remove(ask); LwMod.Log($"bounty hunters: dropped the request for a crew from {ask.Town} ({ask.Reason}): no turn within a day"); continue; }
+            if (Send(world, pop, d, players, ask.Town, now, ask.Reason)) requests.Remove(ask);
+        }
+
         // new crews from hunted towns
         if (LwDeeds.For(world) is { } deeds)
         {
@@ -63,16 +73,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
             {
                 double heat = deeds.Heat.Here(town);
                 if (crews.Any(c => c.Town == town) || !HunterRules.Sends(heat, now, lastSent.TryGetValue(town, out var t) ? t : null)) continue;
-                var near = players[0];
-                var walk = world.Walkability;
-                var start = HunterRules.Start(world.Seed, town, now, near.X, near.Z,
-                    (x, z) => walk.IsWalkable(x, z) && walk.GroundHeight(x, z) - walk.TerrainHeight(x, z) < 5f && CampRules.MayMove((x, z), (x, z), players));
-                if (start is not { } at || Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{world.Tick}", at, near) is null) continue;
-                crews.Add(new Crew(town, now, at.X, at.Z));
-                lastSent[town] = now;
-                world.Post($"Word on the road: {town} has hired blades to bring you in.");
-                RecapLink.Moment($"{town} hired bounty hunters to bring your squad in.", town, 65);
-                LwMod.Log($"bounty hunters: {town} (heat {heat:0}) sent a crew from {at.X:0} {at.Z:0}, day {now / 24:0.0}");
+                Send(world, pop, d, players, town, now, $"heat {heat:0}");
             }
         }
 
@@ -86,7 +87,11 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
             var key = (crew.Town, crew.SentHours);
             bool late = now - crew.SentHours > HunterRules.GiveUpAfter || now < crew.SentHours;
             var seen = presence.Check(world, key, p is not null);
-            if (seen == Presence<(string, double)>.Verdict.PlaceAgain && !late)
+            // killed just before a save: Meitou keeps a killed squad in the save as a dead platoon (v0.20.2-nightly.20261117, #860); it was
+            // beaten, not missing, so it is not placed again
+            if (seen == Presence<(string, double)>.Verdict.PlaceAgain && Pursuit.DeadNear(world, crewSquad, crew.X, crew.Z))
+                LwMod.Log($"bounty hunters: the crew from {crew.Town} is in the save as dead");
+            else if (seen == Presence<(string, double)>.Verdict.PlaceAgain && !late)
             {
                 p = Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{crew.Town}:{crew.SentHours:0.00}", (crew.X, crew.Z), players[0]);
                 if (p is not null) LwMod.Log($"bounty hunters: the crew from {crew.Town} was not in the save; placed again at {crew.X:0} {crew.Z:0}");
@@ -99,7 +104,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
                 // just went home)
                 bool beaten = !late && (p is null || p.Dead || lost);
                 if (p is not null && !p.Dead) Pursuit.Release(p);
-                bool warrant = beaten && lost && Trophies.DropWarrant(world, p!.SquadId);
+                bool warrant = beaten && lost && Trophies.DropWarrant(world, p!.SquadId, crew.Town);
                 if (beaten) world.Post($"The bounty hunters {crew.Town} hired are finished.{(warrant ? " One of them carried a warrant with your squad's name on it." : "")}");
                 if (beaten) RecapLink.Moment($"The bounty hunters {crew.Town} hired were {(lost ? "beaten" : "wiped out")}.", crew.Town, 70);
                 crews.Remove(crew);
@@ -107,10 +112,40 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
                 continue;
             }
             claimed.Add(p.Id);
-            Pursuit.Steer(world, p, players);
+            Pursuit.Steer(world, p, players, BarkLines.Crew(crew.Town, (int)crew.SentHours));
             int i = crews.IndexOf(crew);
             crews[i] = crew with { X = p.Position.X, Z = p.Position.Y };
         }
+        RivalryLink.Keep(world, "crew:", crews.Select(c => PartyClaims.Crew(c.Town, c.SentHours)).ToList());
+    }
+
+    /// <summary>Makes a crew from the town and sends it after the squad: false when no start point was found, the hostile slot is taken
+    /// (Rivalry Core) or the crew could not be made.</summary>
+    bool Send(World world, PopulationSystem pop, PopulationData d, List<(float X, float Z)> players, string town, double now, string why)
+    {
+        var near = players[0];
+        var walk = world.Walkability;
+        var start = HunterRules.Start(world.Seed, town, now, near.X, near.Z,
+            (x, z) => walk.IsWalkable(x, z) && walk.GroundHeight(x, z) - walk.TerrainHeight(x, z) < 5f && CampRules.MayMove((x, z), (x, z), players));
+        if (start is not { } at || !RivalryLink.MaySend(world, PartyClaims.Crew(town, now))
+            || Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{world.Tick}", at, near) is null) return false;
+        crews.Add(new Crew(town, now, at.X, at.Z));
+        lastSent[town] = now;
+        world.Post($"Word on the road: {town} has hired blades to bring you in.");
+        RecapLink.Moment($"{town} hired bounty hunters to bring your squad in.", town, 65);
+        LwMod.Log($"bounty hunters: {town} ({why}) sent a crew from {at.X:0} {at.Z:0}, day {now / 24:0.0}");
+        return true;
+    }
+
+    readonly List<CrewRequest> requests = [];
+
+    /// <summary>Queues a crew from a town for the next pass (WastelandApi.SendHunters); false when one is already out or asked for.</summary>
+    public bool Request(string town, string reason)
+    {
+        if (crews.Any(c => c.Town == town) || requests.Any(r => r.Town == town)) return false;
+        requests.Add(new CrewRequest(town, reason, -1));
+        LwMod.Log($"bounty hunters: asked for a crew from {town} ({reason})");
+        return true;
     }
 
     /// <summary>The F10 row's line.</summary>
@@ -148,16 +183,25 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         foreach (var c in crews) { w.Write(c.Town); w.Write(c.SentHours); w.Write(c.X); w.Write(c.Z); }
         w.Write(lastSent.Count);
         foreach (var (t, h) in lastSent) { w.Write(t); w.Write(h); }
+        // after the rest, so builds before 20261116ap still read this save
+        w.Write(RequestsTag);
+        w.Write(requests.Count);
+        foreach (var q in requests) { w.Write(q.Town); w.Write(q.Reason); w.Write(q.Hours); }
     }
+
+    const int RequestsTag = 0x4C525153;   // "LRQS"
 
     public void Read(Stream stream)
     {
         crews.Clear();
         lastSent.Clear();
+        requests.Clear();
         using var r = new BinaryReader(stream, System.Text.Encoding.UTF8, leaveOpen: true);
         if (stream.Position >= stream.Length || r.ReadInt32() != Format) return;
         for (int n = r.ReadInt32(); n > 0; n--) crews.Add(new Crew(r.ReadString(), r.ReadDouble(), r.ReadSingle(), r.ReadSingle()));
         for (int n = r.ReadInt32(); n > 0; n--) lastSent[r.ReadString()] = r.ReadDouble();
+        if (stream.Length - stream.Position >= 8 && r.ReadInt32() == RequestsTag)
+            for (int n = r.ReadInt32(); n > 0; n--) requests.Add(new CrewRequest(r.ReadString(), r.ReadString(), r.ReadDouble()));
     }
 
     public void Hash(ref StateHasher h)
@@ -165,6 +209,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         h.Add(crews.Count);
         foreach (var c in crews) { h.Add(SquadRecord.StableHash(c.Town)); h.Add(c.SentHours); }
         h.Add(lastSent.Count);
+        h.Add(requests.Count);
     }
 }
 
@@ -234,6 +279,15 @@ public static class Pursuit
         return best;
     }
 
+    /// <summary>Whether a dead platoon of the template lies within <paramref name="within"/> of a last known position: a squad killed before
+    /// a save, kept in it as dead (Meitou #860).</summary>
+    public static bool DeadNear(World world, string templateId, float x, float z, float within = 3000)
+    {
+        foreach (var p in world.Platoons.All)
+            if (p is { Dead: true } && p.TemplateId == templateId && Vector2.Distance(p.Position, new Vector2(x, z)) <= within) return true;
+        return false;
+    }
+
     /// <summary>Points the stand-in (or, loaded, each able member) at the nearest player character.</summary>
     static readonly Dictionary<int, Vector2> lastAt = [];
     static readonly Dictionary<int, (long Tick, string Package)> aimed = [];   // squad -> when its contract was last given, and which
@@ -278,7 +332,12 @@ public static class Pursuit
         return best;
     }   // platoon -> where it stood at the last pass (not state: rebuilt after a load)
 
-    public static void Steer(World world, Platoon p, List<(float X, float Z)> players)
+    /// <summary>Squads that have spoken their line on closing in, per loaded game (once each).</summary>
+    static readonly System.Runtime.CompilerServices.ConditionalWeakTable<World, HashSet<int>> barked = new();
+
+    /// <summary>Steers a pursuer to the nearest player character. <paramref name="bark"/>: the line one of them says over their head
+    /// (World.Bark) the first time they close in to attack; <paramref name="speakerName"/>: who says it (a rival), else whoever leads.</summary>
+    public static void Steer(World world, Platoon p, List<(float X, float Z)> players, string? bark = null, string? speakerName = null)
     {
         var target = Nearest(players, p.Position.X, p.Position.Y);
         if (p.State == PlatoonState.Unloaded)
@@ -312,7 +371,15 @@ public static class Pursuit
             {
                 float d = Vector2.Distance(p.Position, new Vector2(preyAt.X, preyAt.Z));
                 if (!aimed.ContainsKey(squad.Id) && SquadRoles.Contract(squad.Id, FollowPackage, 24f, prey)) aimed[squad.Id] = (world.Tick, FollowPackage);
-                if (d < 600f) Assault(world, squad, prey);
+                if (d < 600f)
+                {
+                    Assault(world, squad, prey);
+                    if (bark is not null && barked.GetOrCreateValue(world).Add(squad.Id) && Speaker(world, squad, speakerName) is { } who)
+                    {
+                        world.Bark(who, bark);
+                        LwMod.Log($"barks: \"{bark}\"");
+                    }
+                }
             }
             var table = world.Characters;
             foreach (var m in squad.Members)
@@ -339,6 +406,21 @@ public static class Pursuit
             if (table.Next[s].Alive && c.Medical is { Dead: false, Incapacitated: false } && !c.IsImprisoned && c.CarriedBy.IsNone) return false;
         }
         return seen > 0;
+    }
+
+    /// <summary>Who of a squad speaks: the member named <paramref name="name"/>, else the leader, else anyone standing.</summary>
+    static CharacterId? Speaker(World world, Squad squad, string? name)
+    {
+        var table = world.Characters;
+        CharacterId? first = null;
+        foreach (var m in squad.Members)
+        {
+            if (!table.TryResolveNext(m, out int s) || !table.Next[s].Alive || table.Cold(s) is not { } c || c.Medical is { Incapacitated: true }) continue;
+            if (name is not null && c.Name == name) return m;
+            if (m == squad.Leader) first = m;
+            first ??= m;
+        }
+        return name is null || first is null ? first : null;
     }
 
     /// <summary>Lets a pursuer go: no longer kept by the engine or steered.</summary>

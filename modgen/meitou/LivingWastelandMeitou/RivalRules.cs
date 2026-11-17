@@ -21,3 +21,32 @@ public static class RivalRules
         return Outcome.BeatSquad;
     }
 }
+
+/// <summary>
+/// Characters other mods have named and asked TWR to leave alone (MeitouMods #25): never made a rival, never renamed. Matched by name and
+/// faction (generated names repeat across mods), case-insensitively; an empty faction covers that name in any faction. Saved with the rivals.
+/// </summary>
+public sealed class LeftAlone
+{
+    readonly List<(string Name, string Faction)> entries = [];
+
+    public IReadOnlyList<(string Name, string Faction)> All => entries;
+
+    /// <summary>Adds a character; false for an empty name or one already covered.</summary>
+    public bool Add(string name, string faction)
+    {
+        name = (name ?? "").Trim();
+        faction = (faction ?? "").Trim();
+        if (name.Length == 0 || entries.Any(e => Same(e.Name, name) && Same(e.Faction, faction))) return false;
+        entries.Add((name, faction));
+        return true;
+    }
+
+    /// <summary>Whether a character of this name and faction is to be left alone.</summary>
+    public bool Covers(string name, string faction) =>
+        entries.Any(e => Same(e.Name, (name ?? "").Trim()) && (e.Faction.Length == 0 || Same(e.Faction, (faction ?? "").Trim())));
+
+    public void Clear() => entries.Clear();
+
+    static bool Same(string a, string b) => string.Equals(a, b, StringComparison.OrdinalIgnoreCase);
+}

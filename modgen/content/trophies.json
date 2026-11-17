@@ -2,7 +2,7 @@
  "pack": "trophies",
  "mod": "LivingWasteland",
  "meitou_only": true,
- "note": "Meitou only: things worn in the helper's neck slot (Trophies.cs, Meitou 0.18+; on 0.17 they stay in the bag). The keepsake goes to a fallen squadmate's mourner; the charms are the faction gifts' second item (gen_title_temperaments.py CHARMS); each named outlaw's token is made with the outlaw (content.py make_outlaw). The warrant is dropped by a beaten bounty hunters' crew (Hunters.cs).",
+ "note": "Meitou only: things worn in the helper's neck slot (Trophies.cs, Meitou 0.18+; on 0.17 they stay in the bag). The keepsake goes to a fallen squadmate's mourner; the charms are the faction gifts' second item (gen_title_temperaments.py CHARMS); each named outlaw's token is made with the outlaw (content.py make_outlaw). The warrant is dropped by a beaten bounty hunters' crew (Hunters.cs). keepsake_slots: copies of the keepsake the helper writes for each fallen (name and life story; Trophies.cs KeepsakeBook).",
  "keepsake": "Keepsake of the Fallen",
  "lore_items": [
   {
@@ -13,7 +13,7 @@
     "stackable": 1,
     "value": 1
    },
-   "description": "Something small that belonged to a squadmate who did not make it, kept by the one who stood over them. It is worth nothing to anyone else.\n\nWorn in the neck slot."
+   "description": "Something small that belonged to a squadmate who did not make it, kept by the one who stood over them.\n\nWorth nothing to anyone else. Worn in the neck slot."
   },
   {
    "name": "Okran's Token",
@@ -23,17 +23,17 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A small brass sun on a cord, the kind the faithful give to those who serve the Nation well. Paladins will notice it.\n\nWorn in the neck slot."
+   "description": "A small brass sun on a cord, blessed by a priest of Okran. The faithful give it to outsiders who served the Nation well. A Paladin will still ask what you are doing with it.\n\nWorn in the neck slot."
   },
   {
-   "name": "Shek Battle Knot",
+   "name": "Kral's Mark",
    "from": "Coin",
    "int": {
     "slot": 11,
     "stackable": 1,
     "value": 25
    },
-   "description": "A knot of red cord the Shek tie for warriors they respect. Wearing one you did not earn would be a quick way to die.\n\nWorn in the neck slot."
+   "description": "Red cord knotted round a sliver of horn, cut to the shape of Kral's own. The Shek tie it on outsiders who fought beside them and did not run; By Kral's way, a warrior proves their worth with a blade in hand. Wearing one you did not earn would be a quick way to die.\n\nWorn in the neck slot."
   },
   {
    "name": "Noble's Favour",
@@ -43,7 +43,7 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A lacquered tag stamped with a noble house's crest. In the Cities, being owed by the right family is worth more than cats.\n\nWorn in the neck slot."
+   "description": "A lacquered tag stamped with a noble house's crest. In the United Cities, being owed by the right family is worth more than cats, and being owed by the wrong one is worth less than nothing.\n\nWorn in the neck slot."
   },
   {
    "name": "Guild Marker",
@@ -53,7 +53,7 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A stamped trade marker the Guild hands to people it wants to keep doing business with. Opens doors, closes questions.\n\nWorn in the neck slot."
+   "description": "A stamped trade marker the Traders Guild hands to people it wants to keep doing business with. It opens doors in the Cities, and closes questions.\n\nWorn in the neck slot."
   },
   {
    "name": "Tech Hunter Pin",
@@ -63,7 +63,7 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A tarnished pin from the Tech Hunters, given to outsiders who proved useful in the field. They remember who wears one.\n\nWorn in the neck slot."
+   "description": "A tarnished pin from World's End, given to outsiders who proved useful on a dig. The Tech Hunters remember who wears one, and who sold the find instead.\n\nWorn in the neck slot."
   },
   {
    "name": "Broken Shackle Charm",
@@ -73,7 +73,7 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A link of broken chain on a leather thong. The Anti-Slavers give it to those who stood against the slavers.\n\nWorn in the neck slot."
+   "description": "One link of a slave's shackle, cut clean through and worn on a thong. Tinfist's people give it to those who stood against the slavers. Slavers know what it means too.\n\nWorn in the neck slot."
   },
   {
    "name": "Flotsam Ribbon",
@@ -83,7 +83,7 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A faded ribbon the Flotsam Ninjas tie on friends of the cause. A Holy Nation patrol would not like seeing it on you.\n\nWorn in the neck slot."
+   "description": "A faded ribbon Moll's people tie on friends of the cause. Out in the Holy Nation's lands it marks you as one of the heathens who refused to kneel, so keep it under your collar.\n\nWorn in the neck slot."
   },
   {
    "name": "Guild Coin",
@@ -93,7 +93,7 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "An old guild coin with a hole punched through it. Mercenaries give these to fighters they would stand beside.\n\nWorn in the neck slot."
+   "description": "An old Mercenary Guild coin with a hole punched through it. Mercenaries give these to fighters they would stand beside again.\n\nWorn in the neck slot."
   },
   {
    "name": "Nomad Bead String",
@@ -103,7 +103,7 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A string of carved beads from the Nomads, who give them to those who share the road with them. Each bead is a story.\n\nWorn in the neck slot."
+   "description": "Carved beads on a string, one for each stretch of road shared. The Nomads add a bead when you have travelled with them; a long string says more than a letter of passage.\n\nWorn in the neck slot."
   },
   {
    "name": "Drifter's Charm",
@@ -113,7 +113,7 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A twist of wire and glass the Drifters pass to those they trust. Worth nothing, and they will never forget who has one.\n\nWorn in the neck slot."
+   "description": "A twist of wire and coloured glass the Drifters pass to those they trust. Worth nothing in a shop, and they never forget who has one.\n\nWorn in the neck slot."
   },
   {
    "name": "Swamp Fang",
@@ -123,7 +123,7 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A swamp creature's fang on a cord. The Swampers give them to people who can handle themselves out there.\n\nWorn in the neck slot."
+   "description": "A blood spider's fang on a cord. The Swampers give them to outsiders who can handle themselves in the swamp, which is not many.\n\nWorn in the neck slot."
   },
   {
    "name": "Bounty Hunter's Warrant",
@@ -134,5 +134,6 @@
    "description": "A town's warrant with your squad's description and price on it, taken off the bounty hunters it hired to bring you in. They didn't manage it.\n\nWorth nothing to a trader. Worth keeping all the same."
   }
  ],
- "warrant": "Bounty Hunter's Warrant"
+ "warrant": "Bounty Hunter's Warrant",
+ "keepsake_slots": 12
 }

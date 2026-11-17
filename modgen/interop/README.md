@@ -36,7 +36,7 @@ writes return false. `Version` only grows; nothing is removed or changes meaning
 
 ## Planned for working together (issues welcome)
 
-1. **Incoming events.** Another mod reports something that happened (a town fell, a garrison grew, a town is short of food, a siege began,
+1. **Incoming events (built in 20261116ak: `Report`, API version 2).** Another mod reports something that happened (a town fell, a garrison grew, a town is short of food, a siege began,
    surplus squads set out); TWR turns it into town talk, rumours, the Atlas and Recap moments, near where it happened, so the world talks
    about it once.
 2. **One hunter at a time.** A shared rule for who sends squads after the player: check `SendsHunters` / `HuntUnderway()` before sending

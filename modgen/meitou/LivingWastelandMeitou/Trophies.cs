@@ -55,7 +55,7 @@ public static class Trophies
     public static string? Warrant;
 
     /// <summary>Drops the warrant where one of a beaten crew lies, for the squad to pick up (a trophy of the fight).</summary>
-    public static bool DropWarrant(World world, int squadId)
+    public static bool DropWarrant(World world, int squadId, string town)
     {
         if (Warrant is null || !LwMod.Settings.Trophies || LwState.For(world).Data is not { } data || world.Squads.Find(squadId) is not { } squad) return false;
         var table = world.Characters;
@@ -63,6 +63,7 @@ public static class Trophies
         {
             if (!table.TryResolveNext(m, out int s)) continue;
             if (data.Items.Create(Warrant) is not { } item) { LwMod.Log($"trophies: no item {Warrant}"); return false; }
+            ItemUses.SetTag(item, town);                     // which town sent them, read on a right click (0.20.2+)
             world.GroundItems.Drop(item, table.Next[s].Position, 0);
             return true;
         }
@@ -70,12 +71,14 @@ public static class Trophies
     }
 
     /// <summary>Hands the keepsake of <paramref name="fallen"/> to <paramref name="mourner"/>; dropped at their feet when the bag is full.</summary>
-    public static void GiveKeepsake(World world, CharacterId mourner, string mournerName, string fallen)
+    public static void GiveKeepsake(World world, CharacterId mourner, string mournerName, string fallen, string fallenKey)
     {
         if (Keepsake is null || !LwMod.Settings.Trophies || LwState.For(world).Data is not { } data) return;
         var table = world.Characters;
         if (!table.TryResolveNext(mourner, out int s) || table.Cold(s) is not { Inventory: { } bag }) return;
-        if (data.Items.Create(Keepsake) is not { } item) { LwMod.Log($"trophies: no item {Keepsake}"); return; }
+        // written for the one who fell (Keepsakes.cs): their name and their life with the squad on a keepsake record of its own
+        string record = KeepsakeBook.For(world)?.Take(world, fallenKey, mournerName) ?? Keepsake;
+        if (data.Items.Create(record) is not { } item) { LwMod.Log($"trophies: no item {record}"); return; }
         if (!bag.Add(item)) world.GroundItems.Drop(item, table.Next[s].Position, 0);
         world.Post($"{mournerName} keeps something of {fallen}'s.");
         if (LwMod.Settings.LogChanges) LwMod.Log($"trophies: {mournerName} keeps a keepsake of {fallen}");

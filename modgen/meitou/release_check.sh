@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Is a Meitou release safe for our code mods? Builds both mods against it, loads our shipped DLLs through the settings check, runs the
-# unit tests. For sessions (needs the .NET 10 and 11 SDKs on PATH, or DOTNET=<path to dotnet>); the user does not run this.
+# unit tests and the world tests (the mod's systems in synthetic worlds, against that release). For sessions (needs the .NET 10 and 11 SDKs on PATH, or DOTNET=<path to dotnet>); the user does not run this.
 #
 #   modgen/meitou/release_check.sh                 # the newest full release
 #   modgen/meitou/release_check.sh v0.17.5         # a given tag (nightlies too: v0.17.5-nightly.20261112)
@@ -81,6 +81,12 @@ if "$DOTNET" test "$HERE/LivingWastelandMeitou.Tests/LivingWastelandMeitou.Tests
   grep -oE "Passed: +[0-9]+" "$OUT/tests.log" | head -1 | sed 's/^/   unit tests: /'
 else
   echo "   unit tests FAILED"; grep -E "Failed |error" "$OUT/tests.log" | head -5 | sed 's/^/      /'; fail=1
+fi
+# the world tests: the mod's engine-side systems in small synthetic worlds, against this release's own DLLs
+if "$DOTNET" test "$HERE/LivingWastelandMeitou.WorldTests/LivingWastelandMeitou.WorldTests.csproj" -c Release -p:MeitouDir="$DIR" -p:MeitouTfm="$TFM" >"$OUT/worldtests.log" 2>&1; then
+  grep -oE "Passed: +[0-9]+" "$OUT/worldtests.log" | head -1 | sed 's/^/   world tests: /'
+else
+  echo "   world tests FAILED"; grep -E "\[FAIL\]|Failed |error" "$OUT/worldtests.log" | head -5 | sed 's/^/      /'; fail=1
 fi
 
 rm -rf "$OUT"

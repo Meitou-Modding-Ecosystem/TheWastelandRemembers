@@ -19,6 +19,9 @@
     <Reference Include="Meitou.Data"><HintPath>$(MeitouDir)/Meitou.Data.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="0Harmony"><HintPath>$(MeitouDir)/0Harmony.dll</HintPath><Private>false</Private></Reference>
   </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="LivingWastelandMeitou.WorldTests" />
+  </ItemGroup>
   <!-- dotnet build -p:PlayTest=true: a play-test build (the test features on by default, PlayTest in LwMod.cs) -->
   <PropertyGroup Condition="'$(PlayTest)' == 'true'">
     <DefineConstants>$(DefineConstants);PLAYTEST</DefineConstants>
