@@ -27,7 +27,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
     readonly List<Crew> crews = [];
 
     /// <summary>The bounty crews on the hunt (WastelandApi).</summary>
-    internal IReadOnlyList<Crew> Crews => crews;
+    public IReadOnlyList<Crew> Crews => crews;
     // crews found (or placed again) since the game loaded, by town and send time: a crew missing before it was ever seen is not in the save
     // (placed again, once); one missing after it was seen has been beaten
     readonly Presence<(string, double)> presence = new();
@@ -87,7 +87,11 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
             var key = (crew.Town, crew.SentHours);
             bool late = now - crew.SentHours > HunterRules.GiveUpAfter || now < crew.SentHours;
             var seen = presence.Check(world, key, p is not null);
-            if (seen == Presence<(string, double)>.Verdict.PlaceAgain && !late)
+            // killed just before a save: Meitou keeps a killed squad in the save as a dead platoon (v0.20.2-nightly.20261117, #860); it was
+            // beaten, not missing, so it is not placed again
+            if (seen == Presence<(string, double)>.Verdict.PlaceAgain && Pursuit.DeadNear(world, crewSquad, crew.X, crew.Z))
+                LwMod.Log($"bounty hunters: the crew from {crew.Town} is in the save as dead");
+            else if (seen == Presence<(string, double)>.Verdict.PlaceAgain && !late)
             {
                 p = Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{crew.Town}:{crew.SentHours:0.00}", (crew.X, crew.Z), players[0]);
                 if (p is not null) LwMod.Log($"bounty hunters: the crew from {crew.Town} was not in the save; placed again at {crew.X:0} {crew.Z:0}");
@@ -273,6 +277,15 @@ public static class Pursuit
             if (dd < bestD) { best = p; bestD = dd; }
         }
         return best;
+    }
+
+    /// <summary>Whether a dead platoon of the template lies within <paramref name="within"/> of a last known position: a squad killed before
+    /// a save, kept in it as dead (Meitou #860).</summary>
+    public static bool DeadNear(World world, string templateId, float x, float z, float within = 3000)
+    {
+        foreach (var p in world.Platoons.All)
+            if (p is { Dead: true } && p.TemplateId == templateId && Vector2.Distance(p.Position, new Vector2(x, z)) <= within) return true;
+        return false;
     }
 
     /// <summary>Points the stand-in (or, loaded, each able member) at the nearest player character.</summary>

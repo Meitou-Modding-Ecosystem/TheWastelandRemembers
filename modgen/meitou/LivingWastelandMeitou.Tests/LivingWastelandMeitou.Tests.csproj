@@ -24,6 +24,7 @@
     <Compile Include="../LivingWastelandMeitou/NewsBoard.cs" Link="NewsBoard.cs" />
     <Compile Include="../LivingWastelandMeitou/KeepsakeText.cs" Link="KeepsakeText.cs" />
     <Compile Include="../LivingWastelandMeitou/BarkLines.cs" Link="BarkLines.cs" />
+    <Compile Include="../LivingWastelandMeitou/NightlyRules.cs" Link="NightlyRules.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />

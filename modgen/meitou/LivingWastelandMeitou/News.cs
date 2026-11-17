@@ -66,8 +66,21 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
     public void SlowWorld(World world)
     {
         Latest = this;
-        if (!ReferenceEquals(seen, world)) { seen = world; byWorld.AddOrUpdate(world, this); Refresh(world); }
-        if (!LwMod.Settings.OtherModsNews || world.Tick % PassEvery != 40) return;
+        if (!ReferenceEquals(seen, world))
+        {
+            seen = world;
+            byWorld.AddOrUpdate(world, this);
+            Refresh(world);
+            if (data is not null) NightlyHooks.Towns = data.Sites.Select(s => (s.Position.X, s.Position.Z)).ToArray();
+        }
+        if (world.Tick % PassEvery != 40) return;
+        try
+        {
+            while (NightlyHooks.Asks.TryDequeue(out var who)) AnswerAsk(world, who);
+            NightlyHooks.Marks = LwMod.Settings.MapMarks ? Marks(world) : [];
+        }
+        catch (Exception e) { LwMod.Log($"news: skipped asks and map marks after an error: {e.GetBaseException().Message}"); }
+        if (!LwMod.Settings.OtherModsNews) return;
         try
         {
             while (TestReports.TryDequeue(out var t)) Report(t.Kind, t.Place, "", "", 70, "F10 test");
@@ -101,15 +114,42 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
         foreach (var n in board.Items.Where(n => !n.Heard && world.GameHours - n.Hours <= NewsBoard.LiveDays * 24))
         {
             if (!players.Any(p => CampRules.InReach(Vector2.Distance(new Vector2(p.X, p.Z), new Vector2(n.X, n.Z)), km))) continue;
-            n.Heard = true;
-            n.HeardHours = world.GameHours;
-            LwDeeds.For(world)?.Record.Note(n.Text);
-            RecapLink.Moment(n.Text, n.Place, Math.Clamp(n.Weight, 30, 80), new Vector3(n.X, 0, n.Z));
-            if (n.Weight >= PostAtWeight) world.Post("Word on the road: " + n.Text);
-            LwMod.Log($"news: the squad heard \"{n.Text}\"");
-            LogTally.Add("news heard");
+            HearOne(world, n);
         }
     }
+
+    void HearOne(World world, NewsItem n)
+    {
+        n.Heard = true;
+        n.HeardHours = world.GameHours;
+        LwDeeds.For(world)?.Record.Note(n.Text);
+        RecapLink.Moment(n.Text, n.Place, Math.Clamp(n.Weight, 30, 80), new Vector3(n.X, 0, n.Z));
+        if (n.Weight >= PostAtWeight) world.Post("Word on the road: " + n.Text);
+        LwMod.Log($"news: the squad heard \"{n.Text}\"");
+        LogTally.Add("news heard");
+    }
+
+    /// <summary>"Ask for news" chosen on someone (NightlyHooks): they say the weightiest live news within reach of them, and the squad has
+    /// heard it.</summary>
+    public void AnswerAsk(World world, CharacterId who)
+    {
+        var table = world.Characters;
+        if (!table.TryResolveNext(who, out int s) || !table.Next[s].Alive || table.Cold(s) is not { IsPlayer: false, Animal: null } cold
+            || cold.Medical is { Dead: true } or { Incapacitated: true }) return;
+        var at = table.Next[s].Position;
+        var live = LwMod.Settings.OtherModsNews ? board.Items.Where(n => world.GameHours - n.Hours <= NewsBoard.LiveDays * 24 && n.Hours <= world.GameHours + 1).ToList() : [];
+        var (line, i) = NewsAskRules.Answer(live.Select(n => (n.Text, n.X, n.Z, n.Weight, n.Hours)).ToList(), at.X, at.Z,
+            Math.Max(1, LwMod.Settings.NewsReach) * 10000f, (ulong)world.Tick ^ (ulong)s);
+        world.Bark(who, line);
+        if (i >= 0 && !live[i].Heard) HearOne(world, live[i]);
+        LwMod.Log($"ask for news: {cold.Name} said \"{line}\"");
+    }
+
+    /// <summary>The map marks (NightlyHooks): rivals about, known outlaw camps, news heard this week.</summary>
+    List<MapMark> Marks(World world) => MapMarkRules.Build(
+        RivalsSystem.Latest?.Told().Select(r => (r.Name, r.Phase, r.X, r.Z, r.Grudge)) ?? [],
+        OutlawCampsSystem.For(world)?.KnownCamps(world) ?? [],
+        board.Items.Where(n => n.Heard).Select(n => (n.Text, n.Place, n.X, n.Z, n.HeardHours)), world.GameHours);
 
     /// <summary>What a speaker's news condition sees for slot k: 1 when that news is live and the speaker is within reach of its place.</summary>
     public int SlotValue(World world, int slot, CharacterId speaker)

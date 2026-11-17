@@ -40,6 +40,15 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
     /// <summary>The system of a world (for the dialogue conditions); null before its first tick.</summary>
     public static OutlawCampsSystem? For(World world) => byWorld.TryGetValue(world, out var s) ? s : null;
 
+    /// <summary>Living outlaws with a camp whose page the Atlas shows (the squad has heard of them): name, mood, camp (map marks).</summary>
+    public IEnumerable<(string Name, string Doing, float X, float Z)> KnownCamps(World world)
+    {
+        string atlas = RecordHost.AtlasList;
+        foreach (var o in outlaws)
+            if (book.Get(o.Index) is { } e && world.Uniques.StateOf(o.Character) == UniqueState.Alive && atlas.Contains($"@@w:{o.Name}|", StringComparison.Ordinal))
+                yield return (o.Name, MapMarkRules.Doing(DoingOf(world, o.Index)), e.X, e.Z);
+    }
+
     /// <summary>The town names the camp word swaps list, in code order (set from lw_codes.json).</summary>
     internal static List<string> NewsTowns = [];
 
@@ -151,7 +160,9 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
             // as the bounty crews (Presence): a party never loaded is not in Meitou's save; after a load, place it again where it was (once)
             bool late = now - r.SentHours > ReprisalRules.GiveUpAfter || now < r.SentHours;
             var seen = parties.Check(world, (r.Outlaw, r.SentHours), p is not null);
-            if (seen == Presence<(int, double)>.Verdict.PlaceAgain && !late && o.Reprisal is not null)
+            if (seen == Presence<(int, double)>.Verdict.PlaceAgain && o.Reprisal is not null && Pursuit.DeadNear(world, o.Reprisal, r.X, r.Z))
+                LwMod.Log($"outlaw reprisal: {o.Name}'s party is in the save as dead");
+            else if (seen == Presence<(int, double)>.Verdict.PlaceAgain && !late && o.Reprisal is not null)
             {
                 p = Pursuit.Make(world, pop, d, o.Reprisal, $"lw:reprisal:{o.Name}:{r.SentHours:0.00}", (r.X, r.Z), players.Count > 0 ? players[0] : (r.X, r.Z));
                 if (p is not null) LwMod.Log($"outlaw reprisal: {o.Name}'s party was not in the save; placed again at {r.X:0} {r.Z:0}");

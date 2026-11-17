@@ -51,8 +51,8 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
     readonly List<Rival> rivals = [];
 
     /// <summary>The rivals the squad has been told about (WastelandApi).</summary>
-    internal IEnumerable<(string Name, string Faction, string Phase, float X, float Z, int Returns, int Wins)> Told() =>
-        rivals.Where(r => r.Told).Select(r => (r.Name, r.Faction, r.Phase.ToString().ToLowerInvariant(), r.X, r.Z, r.Returns, r.Wins));
+    internal IEnumerable<(string Name, string Faction, string Phase, float X, float Z, int Returns, int Wins, string Grudge)> Told() =>
+        rivals.Where(r => r.Told).Select(r => (r.Name, r.Faction, r.Phase.ToString().ToLowerInvariant(), r.X, r.Z, r.Returns, r.Wins, r.Grudge));
     int made;                       // rivals ever made in this game (the first is guaranteed)
     double lastMade = -1e9;
     bool failed;

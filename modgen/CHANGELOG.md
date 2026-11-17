@@ -1,5 +1,14 @@
 # The Wasteland Remembers: changelog
 
+## Build 20261117aq
+- **A bounty crew or reprisal party killed just before a save stays dead.** Meitou's newest nightly keeps killed squads in the save; TWR
+  now reads one as beaten instead of sending the same men after you again.
+- **Three new test features for Meitou v0.20.2-nightly.20261117 and later, all off by default** (Esc > Settings > Mod settings):
+  - *Marks on the world map:* rivals still about, outlaw camps the Atlas knows, places of news your squad heard this week.
+  - *Ask townsfolk for news:* right-click someone in a town and ask; they tell you the biggest news that has reached them.
+  - *Factions' change of heart in History:* when a faction turns against your squad or warms to it, History says why.
+- Behind the scenes: tests now make real bounty crews with the game's own population system.
+
 ## Build 20261116ap
 - **For other mods (API version 3):** `SendHunters(town, reason)` has a town send a bounty crew now, for another mod's reason (a bank's
   unpaid loan, a broken contract), and `LeaveAlone(name, faction, source)` marks a character another mod has named (a war leader) so

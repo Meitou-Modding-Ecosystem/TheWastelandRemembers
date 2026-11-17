@@ -161,6 +161,9 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
     public void Register(UiRegistration r)
     {
         reg = r;
+#if !SQUAD_RECORD_ONLY
+        NightlyHooks.RegisterUi(r, LwMod.Log);
+#endif
         toggle = r.RegisterAction("toggle", _ => open = !open);
         close = r.RegisterAction("close", _ => open = false);
         view = r.RegisterAction("view", c => { tab = c.Argument == "titles" ? 1 : c.Argument == "history" ? 2 : c.Argument == "fallen" ? 3 : c.Argument == "atlas" ? 4 : c.Argument == "settings" ? 5 : c.Argument == "squads" ? 6 : 0; page = 0; entry = null; });
