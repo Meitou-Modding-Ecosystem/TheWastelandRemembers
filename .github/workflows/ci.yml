@@ -1,9 +1,9 @@
 name: CI
 on:
   pull_request:
-    branches: [main]
+    branches: [beta, main, release]
   push:
-    branches: [main]
+    branches: [beta, main, release]
 permissions:
   contents: read
 concurrency:
@@ -19,3 +19,20 @@ jobs:
     uses: TheIvoryDisaster/GutenStructure/.github/workflows/build-python.yml@fc0507fb376b8b8ba732795c7032c9cd81464a58
     with:
       test-command: python -m compileall -q modgen server/tools
+  release-readiness:
+    name: Release readiness
+    if: always()
+    needs: [rules, python]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require all prerequisite checks
+        env:
+          RESULTS: ${{ join(needs.*.result, ',') }}
+        run: |
+          python - <<'PYCODE'
+          import os
+          results = os.environ['RESULTS'].split(',')
+          if not results or any(result != 'success' for result in results):
+              raise SystemExit('A required check failed, was cancelled, or was skipped')
+          PYCODE
