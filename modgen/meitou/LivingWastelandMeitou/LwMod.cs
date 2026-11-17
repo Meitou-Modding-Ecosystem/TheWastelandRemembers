@@ -108,6 +108,8 @@ public sealed class LwSettings
     public bool AskForNews { get; set; } = false;
     [Setting("Factions' change of heart in History (test)", Hint = "Meitou v0.20.2-nightly.20261117 and later: when a faction turns against your squad or warms to it, History says why (a killing, a crime they saw, a war).")]
     public bool RelationNews { get; set; } = false;
+    [Setting("Towns miss stolen goods", Hint = "Meitou 0.21 and later: goods your people take from a town's shops, homes and machines raise that town's heat. Seen, at once (on top of the crime itself); unseen, when the town misses them half a day later. Worth more, more heat; valuable goods go into History.")]
+    public bool TheftHeat { get; set; } = true;
     [Setting("Rivals", Hint = "Someone your squad beats and leaves alive can come back for it: renamed for what happened, stronger each time, talked about in town and listed in the Atlas.")]
     public bool Rivals { get; set; } = true;
     [Setting("Outlaw successors", Hint = "A few days after a named outlaw dies or is jailed, one of their gang takes over the same ground under a new name, with a smaller bounty and a new contract.")]
@@ -159,7 +161,7 @@ public sealed class LwMod : IMod
     internal static string JobVariable = "LW open jobs";
     /// <summary>The build this helper was made for (modgen/BUILD_ID); the data mods carry theirs in lw_codes.json.</summary>
     public static string DataBuild = "unknown";
-    public const string HelperBuild = "20261117aq";
+    public const string HelperBuild = "20261117at";
     internal static List<RumourCode> Rumours = [];
     internal static List<(int Index, string Name)> Outlaws = [];
 
@@ -253,6 +255,8 @@ public sealed class LwMod : IMod
         if (table.Trophies is { } trophies)
             ItemUses.Register(c, [.. trophies.Keepsakes ?? [], trophies.Warrant ?? ""]);
         RelationWatch.Register(c);
+        c.AddSystem("lw-thefts", _ => new TheftsSystem(), SystemAnchor.End);
+        Thefts.Register(c);
         if (table.Hunters is { Squad: { Length: > 0 } crew })
         {
             c.AddSystem("lw-hunters", ctx => new HuntersSystem(crew, ctx.Find<PopulationSystem>(), ctx.Data), SystemAnchor.End);

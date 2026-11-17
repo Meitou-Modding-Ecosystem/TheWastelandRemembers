@@ -16,8 +16,9 @@ namespace LivingWasteland.MeitouMod;
 public static class WastelandApi
 {
     /// <summary>1: heat (read, add, forgive), rivals, hunts, squad titles, history notes and Recap moments. 2: Report (news).
-    /// 3: SendHunters (a crew now), LeaveAlone (another mod's named characters).</summary>
-    public const int Version = 3;
+    /// 3: SendHunters (a crew now), LeaveAlone (another mod's named characters). 4: Outlaws, OutlawAt, HideoutStruck, TownNode, and a Node
+    /// column in HeatTowns.</summary>
+    public const int Version = 4;
 
     /// <summary>The mod's build id, e.g. "20261115ai".</summary>
     public static string Build => LwMod.HelperBuild;
@@ -37,7 +38,7 @@ public static class WastelandApi
     public static IReadOnlyList<IReadOnlyDictionary<string, object>> HeatTowns() =>
         LwMod.Settings.Heat && LwDeeds.Latest is { } d
             ? d.Heat.All().Select(t => Row(("Town", t.Town), ("Faction", t.Faction), ("Heat", Math.Min(HeatMap.Max, t.Crime + t.Blood)),
-                ("Tier", HeatMap.Tier(t.Crime + t.Blood)))).ToList()
+                ("Tier", HeatMap.Tier(t.Crime + t.Blood)), ("Node", TownNode(t.Town)))).ToList()
             : [];
 
     /// <summary>
@@ -156,6 +157,45 @@ public static class WastelandApi
     /// </summary>
     public static bool Report(string kind, string place, string faction, string text, int weight, string source) =>
         NewsSystem.Latest?.Report(kind ?? "", place ?? "", faction ?? "", text ?? "", weight, source ?? "") ?? false;
+
+    // ---- outlaws and places (version 4) ----
+
+    /// <summary>
+    /// <b>Version 4.</b> TWR's named outlaws, one row each: <c>Name</c>; <c>Faction</c>; <c>Status</c> ("alive", "succeeded" (dead or jailed,
+    /// and one of the gang has taken over), "dead", "jailed", "joined" (the player's now)); <c>Successor</c> (the name now running the gang, or
+    /// ""); <c>Mood</c> ("raiding", "lying-low", "gathering", "wounded", or "" when nobody runs the gang); <c>Bounty</c> (cats, grown);
+    /// <c>Regions</c> (their home regions' BIOME_GROUP ids, comma-separated); <c>HasCamp</c>, <c>CampX</c>, <c>CampZ</c> (a live camp, with
+    /// the "Moving outlaw camps" setting on); <c>Known</c> (the squad has heard of them). Empty before a game loads.
+    /// </summary>
+    public static IReadOnlyList<IReadOnlyDictionary<string, object>> Outlaws() =>
+        OutlawCampsSystem.Latest is { } c && c.LastWorld is { } w ? c.ApiRows(w) : [];
+
+    /// <summary><b>Version 4.</b> The outlaw (or successor) whose ground a map point is on or nearest, within <paramref name="within"/>
+    /// world units (default 2000, about 200 m); "" when none.</summary>
+    public static string OutlawAt(float x, float z, float within = 2000) =>
+        OutlawCampsSystem.Latest is { } c && c.LastWorld is { } w ? c.OutlawAt(w, x, z, within) : "";
+
+    /// <summary>
+    /// <b>Version 4.</b> Another mod's band struck an outlaw's camp (a garrison, a war band): the outlaw lies low, or licks its wounds when
+    /// <paramref name="bloodied"/>, as after the squad's blows, and no reprisal comes after the squad (it wasn't them). <paramref name="by"/>
+    /// (who did it) and <paramref name="source"/> (your mod's id) go to the log. False for an unknown or dead outlaw, or before a game loads.
+    /// </summary>
+    public static bool HideoutStruck(string name, string by, bool bloodied, string source)
+    {
+        if (OutlawCampsSystem.Latest is not { } c || c.LastWorld is not { } w || !c.StruckByOthers(w, name ?? "", bloodied)) return false;
+        LwMod.Log($"api: {source} reports {name}'s camp struck by {by}{(bloodied ? ", bloodied" : "")}");
+        return true;
+    }
+
+    /// <summary><b>Version 4.</b> A town's stable id, <c>town:&lt;InstanceId&gt;</c> (the key shared frameworks use: it doesn't change when a
+    /// town is taken over and renamed), from its name as the game shows it; "" when unknown.</summary>
+    public static string TownNode(string town)
+    {
+        if (LwDeeds.Latest is not { Data: { } data } || string.IsNullOrWhiteSpace(town)) return "";
+        foreach (var s in data.Sites)
+            if (string.Equals(s.Town.Name, town.Trim(), StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(s.InstanceId)) return "town:" + s.InstanceId;
+        return "";
+    }
 
     static IReadOnlyDictionary<string, object> Row(params (string Key, object Value)[] cells) => cells.ToDictionary(c => c.Key, c => c.Value);
 }

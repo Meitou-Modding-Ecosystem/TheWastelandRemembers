@@ -215,6 +215,9 @@ public sealed class CampBook
 
     public void Sent(Reprisal r, double beating) { reprisals.Add(r); answered[r.Outlaw] = beating; }
 
+    /// <summary>Marks a beating as answered without a reprisal (another mod's war band struck the camp: not the squad's doing).</summary>
+    public void Answer(int outlaw, double beating) => answered[outlaw] = beating;
+
     public void Update(Reprisal old, Reprisal now) { int i = reprisals.IndexOf(old); if (i >= 0) reprisals[i] = now; }
 
     public void Done(Reprisal r) => reprisals.Remove(r);
