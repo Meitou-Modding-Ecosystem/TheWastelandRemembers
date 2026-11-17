@@ -82,6 +82,29 @@ if "$DOTNET" test "$HERE/LivingWastelandMeitou.Tests/LivingWastelandMeitou.Tests
 else
   echo "   unit tests FAILED"; grep -E "Failed |error" "$OUT/tests.log" | head -5 | sed 's/^/      /'; fail=1
 fi
+# the real Rivalry Core for the party-claim world tests (RealRivalryCoreWorldTests): a pinned, published MeitouMods build, checked against
+# its SHA-256. It targets .NET 11, so only net11.0 releases run them; a failed download skips them with a note, it never fails the check.
+RIVALRY_TAG=rivalry-core-0.6.0-beta.6e6ceb3
+RIVALRY_ZIP=RivalryCore-0.6.0-beta.6e6ceb3.zip
+RIVALRY_SHA=8918d621c160f4d554c6aa5735748506d1d35127e55b1056a7ee78abc6089ca1
+unset RIVALRY_CORE_DIR
+if [ "$TFM" = net11.0 ]; then
+  RDIR="$CACHE/$RIVALRY_TAG"
+  if [ ! -f "$RDIR/RivalryCore/RivalryCore.dll" ]; then
+    mkdir -p "$RDIR"
+    if curl -fsSL -o "$RDIR/$RIVALRY_ZIP" "https://github.com/Meitou-Modding-Ecosystem/MeitouMods/releases/download/$RIVALRY_TAG/$RIVALRY_ZIP" \
+      && echo "$RIVALRY_SHA  $RDIR/$RIVALRY_ZIP" | sha256sum -c --quiet - 2>/dev/null; then
+      unzip -qo "$RDIR/$RIVALRY_ZIP" -d "$RDIR"
+    else
+      rm -rf "$RDIR"
+    fi
+  fi
+  if [ -f "$RDIR/RivalryCore/RivalryCore.dll" ]; then
+    export RIVALRY_CORE_DIR="$RDIR/RivalryCore"; echo "   Rivalry Core: $RIVALRY_TAG (checksum verified) for the party-claim world tests"
+  else
+    echo "   Rivalry Core: $RIVALRY_TAG not available (download or checksum failed); its world tests skipped"
+  fi
+fi
 # the world tests: the mod's engine-side systems in small synthetic worlds, against this release's own DLLs
 if "$DOTNET" test "$HERE/LivingWastelandMeitou.WorldTests/LivingWastelandMeitou.WorldTests.csproj" -c Release -p:MeitouDir="$DIR" -p:MeitouTfm="$TFM" >"$OUT/worldtests.log" 2>&1; then
   grep -oE "Passed: +[0-9]+" "$OUT/worldtests.log" | head -1 | sed 's/^/   world tests: /'

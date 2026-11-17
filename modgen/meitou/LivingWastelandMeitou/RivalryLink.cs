@@ -21,55 +21,51 @@ public static class RivalryLink
     /// mod stops (a crash, or the mod removed), freeing the slot for others.</summary>
     public const double ClaimHours = 6;
 
-    static readonly object gate = new();
-    static bool off, found;
-    static MethodInfo? claim, release;
-    static PropertyInfo? parties;
-    static ConstructorInfo? newClaim;
-    static object? hostile;
+    /// <summary>How to call one Rivalry Core build's state (its interface's members, found by name). One per state type: in a game there is
+    /// one; the tests meet a stand-in and the real build in one run.</summary>
+    sealed record Binding(MethodInfo Claim, MethodInfo Release, PropertyInfo? Parties, ConstructorInfo NewClaim, object Hostile);
+
+    static readonly System.Collections.Concurrent.ConcurrentDictionary<Type, Binding?> bindings = new();
     static readonly HashSet<string> refusedLogged = new(StringComparer.Ordinal);
 
-    /// <summary>Rivalry Core's state in this world, or null: not installed, not running in this world, or the link is off.</summary>
-    static object? State(World world)
+    /// <summary>Rivalry Core's state in this world and how to call it, or null: not installed, not running in this world, or the link to
+    /// that build is off.</summary>
+    static (object State, Binding B)? State(World world)
     {
-        if (off) return null;
-        object? state = null;
         foreach (var s in world.Systems)
-            if (s.GetType().GetInterface("Rivalry.IRivalryState") is not null) { state = s; break; }
-        if (state is null) return null;
-        lock (gate)
         {
-            if (!found && !Bind(state.GetType().GetInterface("Rivalry.IRivalryState")!)) return null;
+            var type = s.GetType();
+            if (type.GetInterface("Rivalry.IRivalryState") is not { } api) continue;
+            return bindings.GetOrAdd(type, _ => Bind(api)) is { } b ? (s, b) : null;
         }
-        return state;
+        return null;
     }
 
-    static bool Bind(Type api)
+    static Binding? Bind(Type api)
     {
-        claim = api.GetMethod("ClaimParty");
-        release = api.GetMethod("ReleaseParty", [typeof(string), typeof(string)]);
-        parties = api.GetProperty("Parties");
+        var claim = api.GetMethod("ClaimParty");
+        var release = api.GetMethod("ReleaseParty", [typeof(string), typeof(string)]);
         var claimType = claim?.GetParameters() is [{ } p] ? p.ParameterType : null;
-        newClaim = claimType?.GetConstructors().FirstOrDefault(c => c.GetParameters().Length == 5);
+        var newClaim = claimType?.GetConstructors().FirstOrDefault(c => c.GetParameters().Length == 5);
         var kindType = newClaim?.GetParameters()[1].ParameterType;
         if (claim is null || release is null || newClaim is null || kindType is not { IsEnum: true } || !Enum.IsDefined(kindType, "Hostile")
             || newClaim.GetParameters() is not [{ ParameterType: var a }, _, { ParameterType: var k }, { ParameterType: var h }, { ParameterType: var f }]
             || a != typeof(string) || k != typeof(string) || h != typeof(double) || f != typeof(int))
         {
-            Off("Rivalry Core is running but its ClaimParty does not look as expected");
-            return false;
+            RecordHost.Log("Rivalry Core link: Rivalry Core is running but its ClaimParty does not look as expected; our hunters are sent as before");
+            return null;
         }
-        hostile = Enum.Parse(kindType, "Hostile");
-        found = true;
         RecordHost.Log($"Rivalry Core {api.Assembly.GetName().Version} found: our hunters count under its one-hostile-party cap");
-        return true;
+        return new Binding(claim, release, api.GetProperty("Parties"), newClaim, Enum.Parse(kindType, "Hostile"));
     }
 
-    static void Off(string why)
+    static void Off(object state, string why)
     {
-        off = true;
+        bindings[state.GetType()] = null;
         RecordHost.Log($"Rivalry Core link: {why}; our hunters are sent as before");
     }
+
+    static object NewClaim(Binding b, string key) => b.NewClaim.Invoke([Source, b.Hostile, key, ClaimHours, -1]);
 
     /// <summary>
     /// Asks for the hostile slot before a party sets out (or renews a claim we hold): true when it may go, always true without Rivalry Core.
@@ -77,10 +73,10 @@ public static class RivalryLink
     /// </summary>
     public static bool MaySend(World world, string key)
     {
+        if (State(world) is not var (state, b)) return true;
         try
         {
-            if (State(world) is not { } state) return true;
-            bool held = claim!.Invoke(state, [newClaim!.Invoke([Source, hostile, key, ClaimHours, -1])]) is true;
+            bool held = b.Claim.Invoke(state, [NewClaim(b, key)]) is true;
             if (!held && refusedLogged.Add(key))
                 RecordHost.Log($"Rivalry Core: {key} waits, another hostile party is out against the player");
             if (held) refusedLogged.Remove(key);
@@ -88,7 +84,7 @@ public static class RivalryLink
         }
         catch (Exception e)
         {
-            Off($"calling Rivalry Core failed ({e.GetBaseException().Message})");
+            Off(state, $"calling Rivalry Core failed ({e.GetBaseException().Message})");
             return true;
         }
     }
@@ -99,25 +95,23 @@ public static class RivalryLink
     /// </summary>
     public static void Keep(World world, string prefix, IReadOnlyCollection<string> outNow)
     {
+        if (State(world) is not var (state, b)) return;
         try
         {
-            if (State(world) is not { } state) return;
-            foreach (var key in outNow)
-                claim!.Invoke(state, [newClaim!.Invoke([Source, hostile, key, ClaimHours, -1])]);
-            foreach (var key in PartyClaims.ToRelease(Ours(state), prefix, outNow))
-                release!.Invoke(state, [Source, key]);
+            foreach (var key in outNow) b.Claim.Invoke(state, [NewClaim(b, key)]);
+            foreach (var key in PartyClaims.ToRelease(Ours(state, b), prefix, outNow)) b.Release.Invoke(state, [Source, key]);
         }
         catch (Exception e)
         {
-            Off($"calling Rivalry Core failed ({e.GetBaseException().Message})");
+            Off(state, $"calling Rivalry Core failed ({e.GetBaseException().Message})");
         }
     }
 
     /// <summary>The keys of the claims Rivalry Core holds for us (its Parties copy: Source, What "claim", Key).</summary>
-    static List<string> Ours(object state)
+    static List<string> Ours(object state, Binding b)
     {
         var keys = new List<string>();
-        if (parties?.GetValue(state) is not IEnumerable list) return keys;
+        if (b.Parties?.GetValue(state) is not IEnumerable list) return keys;
         foreach (var v in list)
         {
             var t = v.GetType();
