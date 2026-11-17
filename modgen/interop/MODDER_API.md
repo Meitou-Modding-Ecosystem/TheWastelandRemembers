@@ -24,16 +24,16 @@ false. Only plain types are used: strings, numbers, bools, and lists of string-k
 
 `Version` goes up when something is added. Nothing is removed and nothing changes meaning, so check `Version >= n` for what you need.
 
-## Versions 1 to 3
+## Versions 1 to 4
 
 | Member | What it does |
 |---|---|
-| `int Version` (const) | 3 (2 from build 20261116ak, 1 before) |
+| `int Version` (const) | 4 (3 from build 20261116ap, 2 from 20261116ak, 1 before) |
 | `string Build` | The mod's build id, e.g. `20261115aj` |
 | `bool Ready` | A game is loaded and the mod is running |
 | `double Heat(string town)` | How much a town has it in for the player, 0 to 40. 0 when unknown or the Town heat setting is off |
 | `string HeatTier(string town)` | `quiet`, `noticed` (6+), `wanted` (14+), `hunted` (24+: the town may hire bounty hunters) |
-| `IReadOnlyList<IReadOnlyDictionary<string, object>> HeatTowns()` | Every town with heat: `Town`, `Faction`, `Heat`, `Tier` |
+| `IReadOnlyList<IReadOnlyDictionary<string, object>> HeatTowns()` | Every town with heat: `Town`, `Faction`, `Heat`, `Tier`, and (version 4) `Node`, its stable id |
 | `bool AddHeat(string town, double amount, string reason)` | Adds heat in a town (its name as the game shows it). Fades like crime heat, half every three game days. Clamped to 0 to 40; 24 makes it hunted. The reason goes to the log |
 | `bool Forgive(string faction, double amount, string reason)` | Takes heat off every town of a faction (a pardon, a paid debt) |
 | `IReadOnlyList<...> Rivals()` | Rivals the player has been told about: `Name`, `Faction`, `Phase` (`recovering`, `hunting`, `dead`, `jailed`, `lost`), `X`, `Z`, `Returns`, `Wins` |
@@ -46,6 +46,10 @@ false. Only plain types are used: strings, numbers, bools, and lists of string-k
 | `bool Report(string kind, string place, string faction, string text, int weight, string source)` | **Version 2.** Something happened in the world; towns near it talk about it. Kinds with a line of their own (leave `text` empty): `town-fell`, `siege-began`, `siege-broken`, `raid-sent`, `garrison-grew`, `town-short`, `caravan-lost`, `warlord-fell`, `warlord-rose`; any other kind needs a `text`. `place`: a town's name as the game shows it; `faction`: a faction's name or empty; `weight` 0 to 100 (the weightiest live news is talked about; 60+ is also posted when the squad hears it); `source`: your mod's id. The same kind at the same place within 12 game hours is taken once, whoever reports it. False (reason in the log) for an unknown town, nothing to say, a repeat, or the setting off |
 | `bool SendHunters(string town, string reason)` | **Version 3.** A town sends a bounty crew after the squad now, for your reason (an unpaid loan, a broken contract), whatever its heat. The crew sets out within a few game seconds, tracks the squad wherever it is and is beaten once nobody in it is left standing; with Rivalry Core installed it waits its turn for the one hostile-party slot, a game day at most. False when the Bounty hunters setting is off, the town is unknown, or that town already has a crew out or asked for |
 | `bool LeaveAlone(string name, string faction, string source)` | **Version 3.** A character your mod named (a war leader, a raid captain): TWR never makes it a rival or renames it. By name and faction as the game shows them; an empty faction covers the name in any faction. Saved with the game: call it when you name the character. The game's own named characters are always left alone |
+| `IReadOnlyList<...> Outlaws()` | **Version 4.** TWR's named outlaws: `Name`, `Faction`, `Status` (`alive`, `succeeded`: dead or jailed and one of the gang runs it now, `dead`, `jailed`, `joined`: the player's now), `Successor` (who runs the gang now, or empty), `Mood` (`raiding`, `lying-low`, `gathering`, `wounded`; empty when nobody runs it), `Bounty` (cats, grown while raiding), `Regions` (home BIOME_GROUP ids, comma-separated), `HasCamp` / `CampX` / `CampZ` (a live camp, with "Moving outlaw camps" on), `Known` (the squad has heard of them) |
+| `string OutlawAt(float x, float z, float within = 2000)` | **Version 4.** The outlaw (or successor) whose ground a map point is on or nearest, within `within` world units; empty when none |
+| `bool HideoutStruck(string name, string by, bool bloodied, string source)` | **Version 4.** Your band struck an outlaw's camp: the outlaw lies low (or licks its wounds), as after the squad's blows, and no reprisal comes after the squad. False for an unknown or dead outlaw |
+| `string TownNode(string town)` | **Version 4.** A town's stable id `town:<InstanceId>` (unchanged when a town is taken over and renamed), from its name; empty when unknown |
 
 ## Ideas it's meant for
 - A bank or a debt: on a missed payment, `SendHunters(town, "unpaid loan")` sends a crew now; `AddHeat(town, 24, "unpaid loan")` makes

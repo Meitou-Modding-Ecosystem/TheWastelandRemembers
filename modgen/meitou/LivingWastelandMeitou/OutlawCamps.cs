@@ -40,6 +40,71 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
     /// <summary>The system of a world (for the dialogue conditions); null before its first tick.</summary>
     public static OutlawCampsSystem? For(World world) => byWorld.TryGetValue(world, out var s) ? s : null;
 
+    // ---- the public API (WastelandApi version 4) ----
+
+    /// <summary>One row per named outlaw (WastelandApi.Outlaws): who, which faction, alive or not, the successor, the mood, the price, the
+    /// home regions and the camp (when moving camps keep one), and whether the squad has heard of them.</summary>
+    public List<IReadOnlyDictionary<string, object>> ApiRows(World world)
+    {
+        var rows = new List<IReadOnlyDictionary<string, object>>();
+        string atlas = RecordHost.AtlasList;
+        foreach (var o in outlaws)
+        {
+            var state = world.Uniques.StateOf(o.Character);
+            bool succeeded = o.Successor is not null && SuccessorActive(world, o.Index);
+            string status = JoinedPlayer(world, o) ? "joined" : state == UniqueState.Alive ? "alive" : succeeded ? "succeeded"
+                : state == UniqueState.Imprisoned ? "jailed" : "dead";
+            bool active = status is "alive" or "succeeded";
+            int bounty = status == "alive" ? (int)Math.Round((data?.Db.Find(o.Character)?.GetInt("bounty amount") ?? 0) * (1 + GrowthOf(world, o.Index)))
+                : succeeded ? (int)Math.Round((data?.Db.Find(o.Successor!.Character)?.GetInt("bounty amount") ?? o.Successor!.Bounty) * (1 + SuccessorGrowth(world, o.Index))) : 0;
+            var camp = book.Get(o.Index);
+            rows.Add(new Dictionary<string, object>
+            {
+                ["Name"] = o.Name, ["Faction"] = FactionOf(o), ["Status"] = status, ["Successor"] = succeeded ? o.Successor!.Name : "",
+                ["Mood"] = active ? Mood(DoingOf(world, o.Index)) : "",
+                ["Bounty"] = bounty, ["Regions"] = string.Join(",", o.Biomes), ["HasCamp"] = camp is not null,
+                ["CampX"] = camp?.X ?? 0f, ["CampZ"] = camp?.Z ?? 0f,
+                ["Known"] = atlas.Contains($"@@w:{o.Name}|", StringComparison.Ordinal),
+            });
+        }
+        return rows;
+    }
+
+    static string Mood(int doing) => doing switch
+    {
+        OutlawNews.Raiding => "raiding", OutlawNews.LyingLow => "lying-low", OutlawNews.Gathering => "gathering", OutlawNews.Wounded => "wounded", _ => "",
+    };
+
+    string FactionOf(CampCode o) =>
+        data is not null && data.Db.Find(o.Squad) is { } rec && SquadTemplate.From(rec).Faction is { } f && data.FactionIndex(f) is int i and >= 0
+            && i < data.Factions.Count ? data.Factions[i].Name : "";
+
+    /// <summary>The outlaw whose ground the point is in or nearest (camp, else the nearest cell of its regions), within
+    /// <paramref name="within"/> world units; "" when none.</summary>
+    public string OutlawAt(World world, float x, float z, float within)
+    {
+        string best = "";
+        float bestD = within;
+        foreach (var o in outlaws)
+        {
+            if (world.Uniques.StateOf(o.Character) != UniqueState.Alive && !(o.Successor is not null && SuccessorActive(world, o.Index))) continue;
+            float d = DistanceToGround(o.Index, x, z);
+            if (d <= bestD) { bestD = d; best = o.Name; }
+        }
+        return best;
+    }
+
+    /// <summary>Another mod's band struck an outlaw's camp (WastelandApi.HideoutStruck): the outlaw lies low (or licks wounds) as after the
+    /// squad's blows, but no reprisal comes after the squad. False for an unknown or dead outlaw.</summary>
+    public bool StruckByOthers(World world, string name, bool bloodied)
+    {
+        var o = outlaws.FirstOrDefault(x => string.Equals(x.Name, name, StringComparison.OrdinalIgnoreCase));
+        if (o is null || world.Uniques.StateOf(o.Character) != UniqueState.Alive && !(o.Successor is not null && SuccessorActive(world, o.Index))) return false;
+        // a new mark is the band's doing: answered, so no reprisal; one still fresh from the squad's own blows keeps its reprisal
+        if (book.Strike(o.Index, world.GameHours, bloodied)) book.Answer(o.Index, world.GameHours);
+        return true;
+    }
+
     /// <summary>Living outlaws with a camp whose page the Atlas shows (the squad has heard of them): name, mood, camp (map marks).</summary>
     public IEnumerable<(string Name, string Doing, float X, float Z)> KnownCamps(World world)
     {
@@ -60,6 +125,8 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
 
     /// <summary>The system of the world that ticked last; the F10 row reads it.</summary>
     internal static OutlawCampsSystem? Latest;
+    /// <summary>The world this system last ticked in (the API's reads).</summary>
+    internal World? LastWorld;
 
     readonly CampBook book = new();
 
@@ -445,6 +512,7 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
     public void SlowWorld(World world)
     {
         Latest = this;
+        LastWorld = world;
         seenWorld = world;
         byWorld.AddOrUpdate(world, this);
         if (blows.Count > 0) ApplyBlows(world);

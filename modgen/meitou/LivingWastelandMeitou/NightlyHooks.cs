@@ -132,32 +132,10 @@ public static class RelationWatch
         catch (Exception e) { c.Log($"relation turns: not added ({e.GetBaseException().Message})"); }
     }
 
-    /// <summary>A system type implementing ITickSystem and the engine's observer, whose RelationChanged(World, in RelationChange) boxes the
-    /// change and calls <see cref="Changed"/>. Null when the observer's shape is not the one expected.</summary>
-    public static Type? Build(Type observer)
-    {
-        var m = observer.GetMethod("RelationChanged");
-        if (m is null || m.GetParameters() is not [{ ParameterType: var w }, { ParameterType: { IsByRef: true } byRef }] || w != typeof(World)) return null;
-        var change = byRef.GetElementType()!;
-        var asm = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName("LivingWastelandRelationWatch"), AssemblyBuilderAccess.Run);
-        var tb = asm.DefineDynamicModule("RelationWatch").DefineType("LivingWasteland.MeitouMod.RelationWatchSystem",
-            TypeAttributes.Public | TypeAttributes.Sealed | TypeAttributes.Class, typeof(object), [typeof(ITickSystem), observer]);
-        tb.DefineDefaultConstructor(MethodAttributes.Public);
-        var ps = m.GetParameters();
-        var impl = tb.DefineMethod(m.Name, MethodAttributes.Public | MethodAttributes.Virtual | MethodAttributes.Final | MethodAttributes.HideBySig
-            | MethodAttributes.NewSlot, CallingConventions.HasThis, m.ReturnType, null, null, ps.Select(p => p.ParameterType).ToArray(),
-            ps.Select(p => p.GetRequiredCustomModifiers()).ToArray(), ps.Select(p => p.GetOptionalCustomModifiers()).ToArray());
-        for (int i = 0; i < ps.Length; i++) impl.DefineParameter(i + 1, ps[i].Attributes, ps[i].Name);
-        var il = impl.GetILGenerator();
-        il.Emit(OpCodes.Ldarg_1);
-        il.Emit(OpCodes.Ldarg_2);
-        il.Emit(OpCodes.Ldobj, change);
-        il.Emit(OpCodes.Box, change);
-        il.Emit(OpCodes.Call, typeof(RelationWatch).GetMethod(nameof(Changed))!);
-        il.Emit(OpCodes.Ret);
-        tb.DefineMethodOverride(impl, m);
-        return tb.CreateType();
-    }
+    /// <summary>A system type implementing ITickSystem and the engine's relation observer, forwarding each change to <see cref="Changed"/>.
+    /// Null when the observer's shape is not the one expected.</summary>
+    public static Type? Build(Type observer) =>
+        ObserverEmit.Build(observer, "RelationChanged", typeof(RelationWatch).GetMethod(nameof(Changed))!, "RelationWatchSystem");
 
     /// <summary>One relation change (the engine's RelationChange, boxed). Called serially inside the step that made it.</summary>
     public static void Changed(World world, object change)
@@ -187,5 +165,46 @@ public static class RelationWatch
             LogTally.Add("relation turns");
         }
         catch (Exception e) { LwMod.Log($"relation turns: skipped a change ({e.GetBaseException().Message})"); }
+    }
+}
+
+/// <summary>
+/// Makes, at load, a system type for an engine observer interface this mod can't name at build time (it builds against Meitou 0.17.3): it
+/// implements ITickSystem and the interface, and its one method <c>M(World, in T)</c> boxes the struct and calls a static
+/// <c>target(World, object)</c> of this mod. The engine finds observers among registered systems by interface.
+/// </summary>
+public static class ObserverEmit
+{
+    static readonly ModuleBuilder module = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName("LivingWastelandObservers"), AssemblyBuilderAccess.Run)
+        .DefineDynamicModule("Observers");
+    static readonly object gate = new();
+
+    /// <summary>The type, or null when the interface's method is not <c>void M(World, in T)</c>.</summary>
+    public static Type? Build(Type observer, string method, MethodInfo target, string name)
+    {
+        var m = observer.GetMethod(method);
+        if (m is null || m.ReturnType != typeof(void) || m.GetParameters() is not [{ ParameterType: var w }, { ParameterType: { IsByRef: true } byRef }]
+            || w != typeof(World)) return null;
+        var arg = byRef.GetElementType()!;
+        lock (gate)
+        {
+            var tb = module.DefineType($"LivingWasteland.MeitouMod.{name}{Guid.NewGuid():N}", TypeAttributes.Public | TypeAttributes.Sealed | TypeAttributes.Class,
+                typeof(object), [typeof(ITickSystem), observer]);
+            tb.DefineDefaultConstructor(MethodAttributes.Public);
+            var ps = m.GetParameters();
+            var impl = tb.DefineMethod(m.Name, MethodAttributes.Public | MethodAttributes.Virtual | MethodAttributes.Final | MethodAttributes.HideBySig
+                | MethodAttributes.NewSlot, CallingConventions.HasThis, m.ReturnType, null, null, ps.Select(p => p.ParameterType).ToArray(),
+                ps.Select(p => p.GetRequiredCustomModifiers()).ToArray(), ps.Select(p => p.GetOptionalCustomModifiers()).ToArray());
+            for (int i = 0; i < ps.Length; i++) impl.DefineParameter(i + 1, ps[i].Attributes, ps[i].Name);
+            var il = impl.GetILGenerator();
+            il.Emit(OpCodes.Ldarg_1);
+            il.Emit(OpCodes.Ldarg_2);
+            il.Emit(OpCodes.Ldobj, arg);
+            il.Emit(OpCodes.Box, arg);
+            il.Emit(OpCodes.Call, target);
+            il.Emit(OpCodes.Ret);
+            tb.DefineMethodOverride(impl, m);
+            return tb.CreateType();
+        }
     }
 }

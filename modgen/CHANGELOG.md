@@ -1,5 +1,22 @@
 # The Wasteland Remembers: changelog
 
+## Build 20261117at
+- **For other mods (API version 4):** `Outlaws()` lists TWR's named outlaws (status, successor, mood, bounty, home regions, camp),
+  `OutlawAt(x, z)` says whose ground a point is on, `HideoutStruck(...)` lets another mod's war band strike an outlaw's camp (the outlaw lies
+  low, and no reprisal comes after your squad), and `TownNode(town)` gives a town's stable id for shared frameworks. Nothing changes in play
+  unless another mod uses them.
+
+## Build 20261117as
+- **Towns miss stolen goods** (Meitou 0.21 and later; setting "Towns miss stolen goods", on). Goods your people take from a town's shops,
+  homes, storage and machines raise that town's heat, more for more valuable goods. Seen taking them: at once, on top of the crime
+  itself. Unseen: the town misses them half a day later, and heat rises then; anything worth 2000 cats or more goes into History ("Squin is
+  missing a katana and wants to know who took it."). Your own faction's goods, ownerless goods and anything under 100 cats don't count.
+
+## Build 20261117ar
+- **Meitou 0.21 support.** Meitou 0.21.0 refused the mod (its version range stopped below 0.21); the range now runs up to 0.22. Checked
+  on 0.21.0: builds, loads with all settings, and every test passes. Not play tested on 0.21 yet.
+- Behind the scenes: TWR's link to Rivalry Core is now tested against the real Rivalry Core (its published 0.6 beta), not only a stand-in.
+
 ## Build 20261117aq
 - **A bounty crew or reprisal party killed just before a save stays dead.** Meitou's newest nightly keeps killed squads in the save; TWR
   now reads one as beaten instead of sending the same men after you again.

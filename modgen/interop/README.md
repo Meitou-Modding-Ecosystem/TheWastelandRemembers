@@ -5,7 +5,7 @@ does, how to talk to it, what is planned for working together, and what we learn
 stays in its own repo; nothing here needs it.
 
 - Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=3839368189
-- Supports MeitouClient 0.17.3 up to (not including) 0.21.0. Played on 0.20.0; builds and loads checked on 0.20.1.
+- Supports MeitouClient 0.17.3 up to (not including) 0.22.0. Played on 0.20.0; builds and loads checked on 0.17.3 to 0.21.0.
 - Current build: 20261115aj (the API below is in it).
 
 ## What TWR does (and so what other mods shouldn't do twice)

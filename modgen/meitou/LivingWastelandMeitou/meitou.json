@@ -6,5 +6,5 @@
     "LivingWastelandMeitou.dll"
   ],
   "entry": "LivingWasteland.MeitouMod.LwMod",
-  "gameVersion": ">=0.17.3 <0.21.0"
+  "gameVersion": ">=0.17.3 <0.22.0"
 }

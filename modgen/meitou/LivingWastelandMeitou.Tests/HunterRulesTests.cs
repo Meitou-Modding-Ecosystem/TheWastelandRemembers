@@ -86,3 +86,19 @@ public class PartyClaimsTests
         finally { System.Globalization.CultureInfo.CurrentCulture = before; }
     }
 }
+
+public class StruckByOthersTests
+{
+    [Fact]
+    public void A_camp_struck_by_another_mods_band_brings_no_reprisal_on_the_squad()
+    {
+        var book = new CampBook();
+        Assert.True(book.Strike(7, 10, bloodied: true));
+        book.Answer(7, 10);
+        for (double now = 10; now < 300; now += 6) Assert.False(ReprisalRules.Due(1, 7, book.StruckOf(7), now, book.AnsweredOf(7)));
+
+        var squad = new CampBook();                                             // the squad's own blows: answered in time
+        Assert.True(squad.Strike(7, 10, bloodied: true));
+        Assert.Contains(Enumerable.Range(0, 50).Select(i => 10.0 + i * 6), now => ReprisalRules.Due(1, 7, squad.StruckOf(7), now, squad.AnsweredOf(7)));
+    }
+}
