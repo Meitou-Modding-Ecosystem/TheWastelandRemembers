@@ -1,5 +1,60 @@
 # The Wasteland Remembers: changelog
 
+## Build 20261117aq
+- **A bounty crew or reprisal party killed just before a save stays dead.** Meitou's newest nightly keeps killed squads in the save; TWR
+  now reads one as beaten instead of sending the same men after you again.
+- **Three new test features for Meitou v0.20.2-nightly.20261117 and later, all off by default** (Esc > Settings > Mod settings):
+  - *Marks on the world map:* rivals still about, outlaw camps the Atlas knows, places of news your squad heard this week.
+  - *Ask townsfolk for news:* right-click someone in a town and ask; they tell you the biggest news that has reached them.
+  - *Factions' change of heart in History:* when a faction turns against your squad or warms to it, History says why.
+- Behind the scenes: tests now make real bounty crews with the game's own population system.
+
+## Build 20261116ap
+- **For other mods (API version 3):** `SendHunters(town, reason)` has a town send a bounty crew now, for another mod's reason (a bank's
+  unpaid loan, a broken contract), and `LeaveAlone(name, faction, source)` marks a character another mod has named (a war leader) so
+  it is never made one of your rivals. Nothing changes in play unless another mod uses them.
+
+## Build 20261116ao
+- **One hunting party at a time with Rivalry Core.** When Rivalry Core 0.6 or later is installed (The Ashen Hand and other mods build on
+  it), our bounty crews, outlaw reprisal parties and returning rivals share its rule: only one hostile party is after you at once, whichever
+  mod sends it. A crew or rival whose turn it isn't waits and sets out once the other party has been beaten or given up. Without Rivalry
+  Core nothing changes.
+
+## Build 20261116an
+- **Right-click a keepsake** (Meitou 0.20.2 and later): whoever holds it turns it over and says a line for the fallen ("For Hollin.",
+  "Bad Pete is still out there, Hollin. Not for long."), and you're told how they died and whether they've been avenged. The keepsake's
+  story is written again as it stands now: who holds it, and who avenged them if someone has since.
+- **Right-click a bounty hunter's warrant** (Meitou 0.20.2 and later): it says which town hired the crew, whether that town still wants
+  you, and whether another of its crews is on the road. Warrants dropped before this build don't say who signed them; they list the
+  towns that want you instead.
+- On older Meitou both items behave as before.
+
+## Build 20261116am
+- **Pursuers speak.** A bounty crew, an outlaw's reprisal party or a rival come back says a line over their head the first time they close
+  in to attack: "Squin sends its regards.", "Aldous Peel hasn't forgotten you.", and from a rival, words that fit what your squad did to
+  them ("Remember me? You took my arm.", "Walked a long way on this iron leg to find you."), or a boast if they've beaten you before.
+- News from other mods reads better: "Okran's Shield has fallen to the United Cities", "A caravan of the Traders Guild went missing".
+- Behind the scenes: tests that run the mod's own systems in small synthetic game worlds against the real Meitou files (rivals getting
+  away once and surviving a save, someone else on a rival's old handle, keepsake stories written into their records, news told once and
+  heard near the place, a pursuer's line said once). They run on every Meitou release check.
+
+## Build 20261116al
+- **Keepsakes written for the fallen.** The keepsake a mourner takes from a fallen squadmate is now theirs by name ("Keepsake of
+  Hollin") and tells their story: what it is, how long they were with the squad, their titles, named kills, who they mostly fought, last
+  stands and lost limbs, how and where they fell and who avenged them, and their record (kills, fights won, knockouts, km walked).
+  Written from the squad record at the moment of death, and kept with the save. A dozen keepsakes are written at once; after that the
+  oldest story gives way to the newest.
+- **Charms from the lore.** The Shek charm is now Kral's Mark (red cord round a sliver of horn shaped like Kral's), and every faction
+  charm has a description of its own people: Tinfist's Anti-Slavers, Moll's Flotsam Ninjas, World's End's Tech Hunters, the Swampers'
+  blood spider fang.
+
+## Build 20261116ak
+- **News from other mods** (Meitou Worldbuilding issue #23). Another mod can report what happens in the world: a town falls, a siege
+  begins, a caravan is lost, a warlord rises (`WastelandApi.Report`, API version 2). Townsfolk, bar patrons and criers near the place talk
+  about it, and when your squad comes within earshot it goes into History, the Atlas's new News section and Recap (weighty news is also
+  posted as a message). The same news from two mods is told once. New setting "News from other mods" (on), and an F10 row.
+- Play-test builds: F10 "test news" reports a siege at a town you type, to try it without another mod.
+
 ## Build 20261115aj
 - For other mod makers: a small public API (`WastelandApi`, read by reflection, no hard dependency). Read and add town heat, see rivals
   and who is hunting the player, write to History, send Recap moments. Documented in "For modders - API.md" in the download.

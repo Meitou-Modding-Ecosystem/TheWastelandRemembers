@@ -51,8 +51,8 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
     readonly List<Rival> rivals = [];
 
     /// <summary>The rivals the squad has been told about (WastelandApi).</summary>
-    internal IEnumerable<(string Name, string Faction, string Phase, float X, float Z, int Returns, int Wins)> Told() =>
-        rivals.Where(r => r.Told).Select(r => (r.Name, r.Faction, r.Phase.ToString().ToLowerInvariant(), r.X, r.Z, r.Returns, r.Wins));
+    internal IEnumerable<(string Name, string Faction, string Phase, float X, float Z, int Returns, int Wins, string Grudge)> Told() =>
+        rivals.Where(r => r.Told).Select(r => (r.Name, r.Faction, r.Phase.ToString().ToLowerInvariant(), r.X, r.Z, r.Returns, r.Wins, r.Grudge));
     int made;                       // rivals ever made in this game (the first is guaranteed)
     double lastMade = -1e9;
     bool failed;
@@ -148,6 +148,11 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
         {
             if (!table.TryResolveNext(id, out int s) || !table.Next[s].Alive || table.Cold(s) is not { } c || c.IsPlayer || c.Animal is not null
                 || c.IsImprisoned || c.Medical is { Dead: true } || world.Uniques.RecordOf(id) is not null || rivals.Any(r => r.Id == id || r.Name == c.Name)) continue;
+            if (LeftAlone.Covers(c.Name, FactionOf(c)))
+            {
+                LwMod.Log($"rivals: {c.Name} was named by another mod and is left alone");
+                continue;
+            }
             int score = (h.Limb ? 3 : 0) + (h.Leader ? 2 : 0) + (h.Downed ? 1 : 0) + (h.Damage >= 60 ? 1 : 0);
             others.Add((id, score, h));
             if (score < (first ? 1 : 2)) continue;
@@ -167,6 +172,11 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
     }
 
     List<(CharacterId Id, Hurt H)> backups = [];
+
+    /// <summary>Characters other mods named and asked us to leave alone (WastelandApi.LeaveAlone, MeitouMods #25).</summary>
+    public readonly LeftAlone LeftAlone = new();
+
+    string FactionOf(CharacterCold c) => data is not null && c.Faction >= 0 && c.Faction < data.Factions.Count ? data.Factions[c.Faction].Name : "";
     readonly HashSet<string> killedBySquad = new(StringComparer.Ordinal);
 
     /// <summary>The squad killed someone (Notoriety's kill record): a rival of that name died at the squad's hands.</summary>
@@ -314,7 +324,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
                 // licking their wounds: one left lying does not bleed out (seen in play: a new rival dead within hours, not at the squad's hands)
                 if (r.Phase == Phase.Recovering && cold.Medical is { Dead: false } med && med.Blood < 40) med.Blood = 40;   // awake or not (seen in play: a one-armed rival bled out on their feet)
             }
-            if (r.Phase == Phase.Recovering && world.GameHours >= r.Next)
+            if (r.Phase == Phase.Recovering && world.GameHours >= r.Next && RivalryLink.MaySend(world, PartyClaims.Rival(r.Name)))
             {
                 r.Phase = Phase.Hunting;
                 r.Next = world.GameHours + 96;                  // gives up the trail after four days
@@ -334,10 +344,11 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
                 }
                 var p = cold is not null ? Platoon(world, cold) : null;
                 p ??= r.PlatoonId >= 0 ? world.Platoons.Find(r.PlatoonId) : null;
-                if (players.Count > 0 && p is { Dead: false }) Pursuit.Steer(world, p, players);
+                if (players.Count > 0 && p is { Dead: false }) Pursuit.Steer(world, p, players, BarkLines.Rival(r.Grudge, r.Returns, r.Wins, r.Slot + r.Returns), r.Name);
             }
         }
         if (changed) Words(world);
+        RivalryLink.Keep(world, "rival:", rivals.Where(r => r.Active && r.Phase == Phase.Hunting).Select(r => PartyClaims.Rival(r.Name)).ToList());
     }
 
     // ---- helpers ----
@@ -527,11 +538,18 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
             w.Write(r.Made); w.Write(r.Next); w.Write(r.Returns); w.Write(r.Wins); w.Write((int)r.Phase); w.Write(r.X); w.Write(r.Z);
             w.Write(r.Boosted); w.Write(r.PlatoonId); w.Write(r.Nameless); w.Write(r.Told);
         }
+        // after the rivals, so builds before 20261116ap still read this save (they stop after the last rival)
+        w.Write(LeftAloneTag);
+        w.Write(LeftAlone.All.Count);
+        foreach (var (name, faction) in LeftAlone.All) { w.Write(name); w.Write(faction); }
     }
+
+    const int LeftAloneTag = 0x4C414C4E;   // "LALN"
 
     public void Read(Stream stream)
     {
         rivals.Clear();
+        LeftAlone.Clear();
         made = 0;
         lastMade = -1e9;
         using var rd = new BinaryReader(stream, System.Text.Encoding.UTF8, leaveOpen: true);
@@ -550,6 +568,8 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
             rivals[^1].Nameless = format >= 2 ? rd.ReadBoolean() : true;
             rivals[^1].Told = format < 3 || rd.ReadBoolean();
         }
+        if (stream.Length - stream.Position >= 8 && rd.ReadInt32() == LeftAloneTag)
+            for (int n = rd.ReadInt32(); n > 0; n--) LeftAlone.Add(rd.ReadString(), rd.ReadString());
         seen = null;
     }
 

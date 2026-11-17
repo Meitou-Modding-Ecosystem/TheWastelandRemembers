@@ -7,6 +7,7 @@ public static class HunterRules
     public const double Hunted = 24;                 // the heat tier "hunted" (HeatMap.Tier)
     public const double Cooldown = 72;               // game hours between crews from one town
     public const double GiveUpAfter = 72;            // game hours a crew keeps hunting
+    public const double RequestWaits = 24;           // game hours another mod's request for a crew waits for its turn
     public const float StartMin = 25000f, StartMax = 35000f;   // 2.5 to 3.5 km from the player (world units are 0.1 m)
 
     public static bool Sends(double heat, double hoursNow, double? lastSent) =>
@@ -55,5 +56,20 @@ public static class ReprisalRules
     }
 }
 
+/// <summary>Another mod's request for a crew from a town (WastelandApi.SendHunters), waiting for the next pass.</summary>
+public sealed record CrewRequest(string Town, string Reason, double Hours);
+
 /// <summary>An outlaw's party out after the squad: who sent it, when, and where its stand-in was last seen.</summary>
 public sealed record Reprisal(int Outlaw, double SentHours, float X, float Z);
+
+/// <summary>Our claims on Rivalry Core's party slot (RivalryLink), the pure part: the keys each kind of party claims under.</summary>
+public static class PartyClaims
+{
+    public static string Crew(string town, double sentHours) => FormattableString.Invariant($"crew:{town}:{sentHours:0.00}");
+    public static string Reprisal(string outlaw, double sentHours) => FormattableString.Invariant($"reprisal:{outlaw}:{sentHours:0.00}");
+    public static string Rival(string name) => $"rival:{name}";
+
+    /// <summary>Our claims of one kind (keys starting with <paramref name="prefix"/>) whose party is no longer out: to release.</summary>
+    public static List<string> ToRelease(IEnumerable<string> held, string prefix, IReadOnlyCollection<string> outNow) =>
+        held.Where(k => k.StartsWith(prefix, StringComparison.Ordinal) && !outNow.Contains(k)).Distinct().ToList();
+}

@@ -659,6 +659,8 @@ class Compiler:
                     self.lw_marks.append((sid, "squadnear", 0, {"=": 0, "<": 1, ">": 2}[c["squad_near"]], int(c["value"])))
                 elif "raid" in c:                    # {"raid": name, "value": 1 out | 2 caught | 3 got away}: a harassment raid's state (Raids.cs)
                     self.lw_marks.append((sid, "raid:" + c["raid"], 0, 0, int(c["value"])))
+                elif "news" in c:                    # {"news": k}: news slot k (other mods' news, News.cs) is live near the speaker
+                    self.lw_marks.append((sid, f"news:{int(c['news'])}", 0, 0, 1))
                 elif "rival" in c:                  # {"rival": k, "cmp", "value"}: rival slot k (Rivals.cs): 0 none near, 1 about, 2 has beaten the squad
                     self.lw_marks.append((sid, f"rival:{int(c['rival'])}", 0, {"=": 0, "<": 1, ">": 2}[c.get("cmp", ">")], int(c.get("value", 0))))
                 elif "successor" in c:              # {"successor": outlaw}: that outlaw's successor has taken over and is alive
@@ -1357,7 +1359,13 @@ class Compiler:
                 self.make_clone(spec)
             except Exception as e:
                 self.errors.append(f"clone '{spec.get('name')}': {type(e).__name__}: {e}")
-        for spec in pack.get("lore_items", []):
+        lore_items = list(pack.get("lore_items", []))
+        # keepsake slots (Trophies.cs KeepsakeBook): copies of the keepsake whose name and description the helper rewrites for each fallen
+        if pack.get("keepsake") and int(pack.get("keepsake_slots", 1)) > 1:
+            base = next((x for x in lore_items if x.get("name") == pack["keepsake"]), None)
+            if base is not None:
+                lore_items += [dict(base, name=f"{pack['keepsake']} ({k})") for k in range(2, int(pack["keepsake_slots"]) + 1)]
+        for spec in lore_items:
             try:
                 self.make_lore_item_lw(spec)
             except Exception as e:
@@ -1434,6 +1442,8 @@ class Compiler:
                 self.errors.append(f"keepsake: no item '{pack['keepsake']}' made by this pack")
             else:
                 self.trophies = {"keepsake": sid}
+                slots = [sid] + [self.created.get(("item", f"{pack['keepsake']} ({k})")) for k in range(2, int(pack.get("keepsake_slots", 1)) + 1)]
+                self.trophies["keepsakes"] = [x for x in slots if x]
         if pack.get("warrant"):                      # what a beaten bounty hunters' crew drops (Hunters.cs)
             sid = self.created.get(("item", pack["warrant"]))
             if not sid:

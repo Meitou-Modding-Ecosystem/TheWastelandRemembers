@@ -14,7 +14,8 @@ really happened, outlaws react, rivals come back for the squad, towns hire bount
 - `modgen/*.py`: the build tools. `build_mod.py` compiles the packs into `LivingWasteland.mod` against your own game data; `meitou_target.py`
   writes the codes the C# helper reads (`lw_codes.json`).
 - `modgen/meitou/LivingWastelandMeitou`: the C# code mod (Meitou systems, settings, the squad record window). `LivingWastelandMeitou.Tests`:
-  unit tests for the engine-free rules. `SquadRecord`: the stand-alone squad record mod built from the same files.
+  unit tests for the engine-free rules. `LivingWastelandMeitou.WorldTests`: the engine-side systems run in small synthetic worlds
+  against the real Meitou DLLs. `SquadRecord`: the stand-alone squad record mod built from the same files.
 - `modgen/lua`: the older KenshiLua build of some features (not used by the Meitou release).
 - `server/tools`: the FCS file reader and writer the build uses (`fcs_reader.py`, `fcs_writer.py`, `derive_*.py`).
 
@@ -26,6 +27,7 @@ Kenshi's data files are never in this repo; the build reads your own copy.
 python3 modgen/build_mod.py "<Kenshi folder>" --target meitou --single --out <out folder>
 dotnet build modgen/meitou/LivingWastelandMeitou -c Release -p:MeitouDir="<folder with Meitou's DLLs>"
 dotnet test modgen/meitou/LivingWastelandMeitou.Tests
+dotnet test modgen/meitou/LivingWastelandMeitou.WorldTests -p:MeitouDir="<folder with Meitou's DLLs>" -p:MeitouTfm=net11.0
 python3 modgen/make_release.py "<Kenshi folder>"      # the release zip (run from the repo root)
 ```
 

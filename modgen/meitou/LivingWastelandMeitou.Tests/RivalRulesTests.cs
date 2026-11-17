@@ -31,3 +31,27 @@ public class RivalRulesTests
         Assert.Equal(O.None, RivalRules.OnFightEnd(true, false, 51, 50));
     }
 }
+
+public class LeftAloneTests
+{
+    [Fact]
+    public void A_named_leader_is_left_alone_by_name_and_faction()
+    {
+        var left = new LeftAlone();
+        Assert.True(left.Add("Zokaa the Scarred", "Shek Kingdom"));
+        Assert.True(left.Covers("zokaa the scarred", "SHEK KINGDOM"));
+        Assert.False(left.Covers("Zokaa the Scarred", "Dust Bandits"));    // the same generated name in another faction is someone else
+        Assert.False(left.Add(" Zokaa the Scarred ", "Shek Kingdom"));     // already there
+        Assert.False(left.Add("", "Shek Kingdom"));
+    }
+
+    [Fact]
+    public void An_empty_faction_covers_the_name_in_any_faction()
+    {
+        var left = new LeftAlone();
+        left.Add("Old Sorrow", "");
+        Assert.True(left.Covers("Old Sorrow", "Dust Bandits"));
+        Assert.True(left.Covers("Old Sorrow", ""));
+        Assert.False(left.Covers("Young Sorrow", "Dust Bandits"));
+    }
+}

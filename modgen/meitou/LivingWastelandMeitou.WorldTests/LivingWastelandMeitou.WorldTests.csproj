@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Tests of the mod's engine-side systems in small synthetic worlds (a few factions, open ground, the systems under test), with the real
+       Meitou files: dotnet test -p:MeitouDir="<folder with a Meitou release's DLLs>" -p:MeitouTfm=<its .NET, net10.0 or net11.0>.
+       No game files: records are made in memory. The engine-free rules have their own tests (LivingWastelandMeitou.Tests). -->
+  <PropertyGroup>
+    <MeitouTfm Condition="'$(MeitouTfm)' == ''">net11.0</MeitouTfm>
+    <TargetFramework>$(MeitouTfm)</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <MeitouDir Condition="'$(MeitouDir)' == ''">.</MeitouDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../LivingWastelandMeitou/LivingWastelandMeitou.csproj" />
+    <Reference Include="Meitou.Modding" Condition="Exists('$(MeitouDir)/Meitou.Modding.dll')"><HintPath>$(MeitouDir)/Meitou.Modding.dll</HintPath></Reference>
+    <Reference Include="MeitouClient" Condition="!Exists('$(MeitouDir)/Meitou.Modding.dll')"><HintPath>$(MeitouDir)/MeitouClient.dll</HintPath></Reference>
+    <Reference Include="Meitou.Simulation"><HintPath>$(MeitouDir)/Meitou.Simulation.dll</HintPath></Reference>
+    <Reference Include="Meitou.Core"><HintPath>$(MeitouDir)/Meitou.Core.dll</HintPath></Reference>
+    <Reference Include="Meitou.Data"><HintPath>$(MeitouDir)/Meitou.Data.dll</HintPath></Reference>
+    <Reference Include="0Harmony"><HintPath>$(MeitouDir)/0Harmony.dll</HintPath></Reference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+</Project>
