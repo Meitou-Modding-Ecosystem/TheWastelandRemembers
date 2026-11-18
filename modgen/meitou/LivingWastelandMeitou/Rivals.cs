@@ -173,7 +173,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
 
     List<(CharacterId Id, Hurt H)> backups = [];
 
-    /// <summary>Characters other mods named and asked us to leave alone (WastelandApi.LeaveAlone, MeitouMods #25).</summary>
+    /// <summary>Characters other mods named and asked us to leave alone (WastelandApi.LeaveAlone, RivalryCore #25).</summary>
     public readonly LeftAlone LeftAlone = new();
 
     string FactionOf(CharacterCold c) => data is not null && c.Faction >= 0 && c.Faction < data.Factions.Count ? data.Factions[c.Faction].Name : "";

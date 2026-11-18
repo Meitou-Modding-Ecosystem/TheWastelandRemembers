@@ -4,7 +4,7 @@ using Meitou.Simulation;
 using Rivalry;
 using Xunit;
 
-// A stand-in for Rivalry Core's state with the same names and shapes as its public surface (MeitouMods RivalryCore/IRivalryApi.cs,
+// A stand-in for Rivalry Core's state with the same names and shapes as its public surface (the RivalryCore repository's RivalryCore/IRivalryApi.cs,
 // Parties.cs): RivalryLink finds it by those names, as it finds the real one. One hostile slot, as Rivalry Core's cap.
 namespace Rivalry
 {
