@@ -54,7 +54,7 @@ the bed-rent hook and Dustlife's economy.
 
 ## Bast Front support (with the Meitou Worldbuilding group; the Dustlife brief "The Bast Front")
 A living UC vs Holy Nation war in Bast (and the Shek vs Holy Nation front at Stack), simulated by Dustlife, with town states set through an
-engine hook (MeitouMods issue #28). Our part:
+engine hook (RivalryCore issue #28). Our part:
 - **War news in:** Dustlife's events ("Okran's Shield fell to the UC", a siege began) become criers, bar talk, rumours near the front,
   Atlas entries and Recap moments (issue #23). Step aside for Dustlife's war the way we do for KUO's.
 - **Lines that assume who holds a town:** about 129 mentions of Okran's Shield in 8 content files, some assuming the Holy Nation holds it

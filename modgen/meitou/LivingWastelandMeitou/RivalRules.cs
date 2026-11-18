@@ -23,7 +23,7 @@ public static class RivalRules
 }
 
 /// <summary>
-/// Characters other mods have named and asked TWR to leave alone (MeitouMods #25): never made a rival, never renamed. Matched by name and
+/// Characters other mods have named and asked TWR to leave alone (RivalryCore #25): never made a rival, never renamed. Matched by name and
 /// faction (generated names repeat across mods), case-insensitively; an empty faction covers that name in any faction. Saved with the rivals.
 /// </summary>
 public sealed class LeftAlone
