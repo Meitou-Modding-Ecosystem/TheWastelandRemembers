@@ -69,7 +69,7 @@ public static class WastelandApi
     }
 
     /// <summary>
-    /// <b>Version 3.</b> A town sends a bounty crew after the squad now, for your mod's reason (an unpaid loan, a broken contract; MeitouMods
+    /// <b>Version 3.</b> A town sends a bounty crew after the squad now, for your mod's reason (an unpaid loan, a broken contract; RivalryCore
     /// #26), whatever its heat. The crew sets out at the next pass (a few game seconds), tracks the squad wherever it is and is beaten once
     /// nobody in it is left standing. With Rivalry Core installed it waits its turn for the one hostile-party slot, a game day at most. The
     /// town's own crews then rest three days as usual. The reason is written to the log. False when the Bounty hunters setting is off, the
@@ -86,7 +86,7 @@ public static class WastelandApi
 
     /// <summary>
     /// <b>Version 3.</b> Marks a character your mod has named (a war leader, a raid captain) so TWR leaves it alone: never made a rival,
-    /// never renamed (MeitouMods #25). By name and faction (as the game shows them), so two mods' identical generated names stay apart; an
+    /// never renamed (RivalryCore #25). By name and faction (as the game shows them), so two mods' identical generated names stay apart; an
     /// empty faction covers the name in any faction. Saved with the game; call it when you name the character. The game's own named
     /// characters are always left alone. False when the name is empty, already marked, or nothing is loaded.
     /// </summary>

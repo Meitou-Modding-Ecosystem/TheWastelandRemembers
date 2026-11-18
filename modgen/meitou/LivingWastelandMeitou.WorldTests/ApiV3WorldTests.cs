@@ -4,7 +4,7 @@ using Meitou.Simulation;
 using Meitou.Simulation.Combat;
 using Xunit;
 
-// WastelandApi version 3: another mod's named characters left alone (MeitouMods #25), a crew asked for by another mod (#26).
+// WastelandApi version 3: another mod's named characters left alone (RivalryCore #25), a crew asked for by another mod (#26).
 public class LeaveAloneWorldTests
 {
     static (Meitou.Simulation.World World, RivalsSystem Rivals, CharacterId Leaf, CharacterId Foe) Fight(string foeName, Action<RivalsSystem>? before = null)

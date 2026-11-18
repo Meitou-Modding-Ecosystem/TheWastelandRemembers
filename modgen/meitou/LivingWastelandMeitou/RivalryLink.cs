@@ -1,4 +1,4 @@
-// Rivalry Core's party caps (MeitouMods, Rivalry Core 0.6+, docs/rivalry-core.md "Party caps"; MeitouMods #24): at most one hostile party is
+// Rivalry Core's party caps (Rivalry Core 0.6+, docs/rivalry-core.md "Party caps"; RivalryCore #24): at most one hostile party is
 // out against the player at once, whichever mod sends it. A mod that runs its own parties counts them with IRivalryState.ClaimParty and
 // ReleaseParty. When Rivalry Core runs in the world, our bounty crews, outlaw reprisals and hunting rivals claim the slot before they set out
 // (refused: nothing is sent, asked again at the next pass), renew it every pass while they are out, and release it when they end. Without
