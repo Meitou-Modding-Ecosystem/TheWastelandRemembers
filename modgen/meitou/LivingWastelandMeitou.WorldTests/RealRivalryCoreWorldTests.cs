@@ -8,8 +8,8 @@ using Meitou.Simulation;
 using Xunit;
 
 // TWR's party claim (RivalryLink.cs) against the real Rivalry Core: a published, checksummed build from MeitouMods
-// (rivalry-core-<version>-beta.<commit>, see release_check.sh), loaded from RIVALRY_CORE_DIR. Rivalry Core targets .NET 11, so these run
-// only against Meitou 0.20 builds; without the variable they do nothing. The system is made as Rivalry Core's own tests make it
+// (the pinned production release rivalry-core-v<version>, see release_check.sh), loaded from RIVALRY_CORE_DIR. Rivalry Core targets .NET 11,
+// so these run only against .NET 11 Meitou builds; without the variable they return early and report as passed. The system is made as Rivalry Core's own tests make it
 // (RivalrySystem.Create, by reflection: TWR never references Rivalry Core).
 [Collection("settings")]
 public class RealRivalryCoreWorldTests
