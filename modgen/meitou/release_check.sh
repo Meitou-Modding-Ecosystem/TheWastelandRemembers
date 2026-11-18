@@ -84,9 +84,9 @@ else
 fi
 # the real Rivalry Core for the party-claim world tests (RealRivalryCoreWorldTests): a pinned, published MeitouMods build, checked against
 # its SHA-256. It targets .NET 11, so only net11.0 releases run them; a failed download skips them with a note, it never fails the check.
-RIVALRY_TAG=rivalry-core-0.6.0-beta.6e6ceb3
-RIVALRY_ZIP=RivalryCore-0.6.0-beta.6e6ceb3.zip
-RIVALRY_SHA=8918d621c160f4d554c6aa5735748506d1d35127e55b1056a7ee78abc6089ca1
+RIVALRY_TAG=rivalry-core-v0.6.0
+RIVALRY_ZIP=RivalryCore-0.6.0.zip
+RIVALRY_SHA=f2e90568678b6a8803d78ac3f254c172e024a2ebecbbc15ae1c157aaa4ebabd4
 unset RIVALRY_CORE_DIR
 if [ "$TFM" = net11.0 ]; then
   RDIR="$CACHE/$RIVALRY_TAG"
