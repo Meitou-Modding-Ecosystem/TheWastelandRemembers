@@ -11,6 +11,9 @@ public static class TheftRules
     /// <summary>Game hours before an unseen theft is missed.</summary>
     public const double MissedAfter = 12;
 
+    /// <summary>Game hours within which takes from one town and owner count as one theft (missed together, on the first take's clock).</summary>
+    public const double SameTheft = 1;
+
     /// <summary>Goods worth less than this (cats) are not missed or counted.</summary>
     public const double MinValue = 100;
 

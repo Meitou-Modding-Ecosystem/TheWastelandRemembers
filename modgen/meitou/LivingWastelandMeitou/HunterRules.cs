@@ -30,7 +30,10 @@ public static class HunterRules
 }
 
 /// <summary>One crew on the hunt: the town that hired it, when, and where its stand-in was last seen.</summary>
-public sealed record Crew(string Town, double SentHours, float X, float Z);
+public sealed record Crew(string Town, double SentHours, float X, float Z)
+{
+    public bool Tagged { get; init; }
+}
 
 
 /// <summary>Outlaw reprisals, the pure part: when an outlaw the squad bloodied (and who lived) sends men after it.</summary>

@@ -7,5 +7,5 @@
     "SquadRecord.dll"
   ],
   "entry": "LivingWasteland.MeitouMod.SquadRecordMod",
-  "gameVersion": ">=0.17.3 <0.22.0"
+  "gameVersion": ">=0.17.3 <0.23.0"
 }

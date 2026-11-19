@@ -73,14 +73,45 @@ public static class Trophies
     /// <summary>Hands the keepsake of <paramref name="fallen"/> to <paramref name="mourner"/>; dropped at their feet when the bag is full.</summary>
     public static void GiveKeepsake(World world, CharacterId mourner, string mournerName, string fallen, string fallenKey)
     {
+        // its own errors stay here: one used to stop the whole squad record for the session (the record's look calls this)
+        try { Give(world, mourner, mournerName, fallen, fallenKey); }
+        catch (Exception e) { LwMod.Log($"trophies: no keepsake of {fallen} ({e.GetBaseException().Message})"); }
+    }
+
+    static void Give(World world, CharacterId mourner, string mournerName, string fallen, string fallenKey)
+    {
         if (Keepsake is null || !LwMod.Settings.Trophies || LwState.For(world).Data is not { } data) return;
         var table = world.Characters;
         if (!table.TryResolveNext(mourner, out int s) || table.Cold(s) is not { Inventory: { } bag }) return;
         // written for the one who fell (Keepsakes.cs): their name and their life with the squad on a keepsake record of its own
         string record = KeepsakeBook.For(world)?.Take(world, fallenKey, mournerName) ?? Keepsake;
         if (data.Items.Create(record) is not { } item) { LwMod.Log($"trophies: no item {record}"); return; }
-        if (!bag.Add(item)) world.GroundItems.Drop(item, table.Next[s].Position, 0);
+        if (!InventoryCompat.Add(bag, item)) world.GroundItems.Drop(item, table.Next[s].Position, 0);
         world.Post($"{mournerName} keeps something of {fallen}'s.");
         if (LwMod.Settings.LogChanges) LwMod.Log($"trophies: {mournerName} keeps a keepsake of {fallen}");
+    }
+}
+
+/// <summary>
+/// Inventory.Add across Meitou versions. 0.21 gave it a second, optional parameter (<c>Add(ItemInstance, bool mainShut = false)</c>); an
+/// optional parameter is filled in at build time, so this DLL (built against 0.17.3) asked 0.21 for the old one-parameter method and got a
+/// MissingMethodException (seen in play: a squadmate died, no keepsake, and the squad record stopped for the session). Found by
+/// reflection once, with every parameter after the item given its default.
+/// </summary>
+public static class InventoryCompat
+{
+    static readonly System.Reflection.MethodInfo? add = typeof(Meitou.Simulation.Items.Inventory).GetMethods()
+        .Where(m => m.Name == "Add" && m.ReturnType == typeof(bool) && m.GetParameters() is [var first, ..] rest
+            && first.ParameterType == typeof(Meitou.Simulation.Items.ItemInstance) && rest.Skip(1).All(p => p.HasDefaultValue))
+        .OrderBy(m => m.GetParameters().Length).FirstOrDefault();
+
+    public static bool Add(Meitou.Simulation.Items.Inventory bag, Meitou.Simulation.Items.ItemInstance item)
+    {
+        if (add is null) return false;
+        var ps = add.GetParameters();
+        var args = new object?[ps.Length];
+        args[0] = item;
+        for (int i = 1; i < ps.Length; i++) args[i] = ps[i].DefaultValue;
+        return add.Invoke(bag, args) is true;
     }
 }

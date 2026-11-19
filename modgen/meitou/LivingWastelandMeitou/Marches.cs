@@ -14,35 +14,40 @@ namespace LivingWasteland.MeitouMod;
 
 public static class Marches
 {
-    static long cachedTick = long.MinValue;
-    static World? cachedWorld;
-    static readonly HashSet<int> marching = [];
-    static readonly Dictionary<string, (int Faction, int Site, bool Reached)> watched = new(StringComparer.Ordinal);
+    sealed class CampaignMemory
+    {
+        public long Tick = long.MinValue;
+        public readonly HashSet<int> Marching = [];
+        public readonly Dictionary<string, (int Faction, int Site, bool Reached)> Watched = new(StringComparer.Ordinal);
+    }
+
+    static readonly System.Runtime.CompilerServices.ConditionalWeakTable<World, CampaignMemory> memories = new();
 
     /// <summary>Whether <paramref name="who"/> is in a squad marching in a campaign that is not over (the lookout's army lines).</summary>
     public static bool IsMarching(World world, PopulationSystem? population, CharacterId who)
     {
         if (population is null || !world.Characters.TryResolveNext(who, out int slot) || world.Characters.Cold(slot) is not { } c) return false;
-        if (cachedTick != world.Tick || !ReferenceEquals(cachedWorld, world))
+        var memory = memories.GetOrCreateValue(world);
+        if (memory.Tick != world.Tick)
         {
-            cachedTick = world.Tick;
-            cachedWorld = world;
-            marching.Clear();
+            memory.Tick = world.Tick;
+            memory.Marching.Clear();
             foreach (var war in population.Wars)
                 foreach (var inst in war.Actives)
                 {
                     if (inst.Phase >= 2 || inst.Target.Site < 0) continue;
                     foreach (int id in inst.Platoons)
-                        if (world.Platoons.Find(id) is { } p) marching.Add(p.SquadId);
+                        if (world.Platoons.Find(id) is { } p) memory.Marching.Add(p.SquadId);
                 }
         }
-        return marching.Contains(c.SquadId);
+        return memory.Marching.Contains(c.SquadId);
     }
 
     /// <summary>Looks over the campaigns (every few seconds) and notes a march the squad broke.</summary>
     public static void Watch(World world, PopulationSystem? population, PopulationData? data)
     {
         if (population is null || data is null || LwDeeds.For(world) is not { } deeds) return;
+        var watched = memories.GetOrCreateValue(world).Watched;
         var live = new HashSet<string>(StringComparer.Ordinal);
         foreach (var war in population.Wars)
             foreach (var inst in war.Actives)

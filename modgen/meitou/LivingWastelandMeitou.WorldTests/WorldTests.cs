@@ -54,14 +54,15 @@ static class W
         new(world.Tick, default, attacker, victim, 0, 0, 0, default, default, Vector3.Zero, Vector3.Zero, 0, 0, false, true, true, false);
 
     /// <summary>A rival as RivalsSystem saves it (format 3), so a test can start from a rival already made.</summary>
-    public static MemoryStream SavedRival(string name, string grudge, int phase, float x, float z, int returns = 0, int boosted = 1, double next = 1e6)
+    public static MemoryStream SavedRival(string name, string grudge, int phase, float x, float z, int returns = 0, int boosted = 1, double next = 1e6,
+        bool told = true, int platoonId = -1)
     {
         var ms = new MemoryStream();
         var w = new BinaryWriter(ms);
         w.Write(3); w.Write(1); w.Write(-1e9); w.Write(1);
         w.Write(0); w.Write(name); w.Write("Dust Bandit"); w.Write("Dust Bandits"); w.Write(grudge); w.Write("Leaf");
         w.Write(0.0); w.Write(next); w.Write(returns); w.Write(0); w.Write(phase); w.Write(x); w.Write(z);
-        w.Write(boosted); w.Write(-1); w.Write(true); w.Write(true);
+        w.Write(boosted); w.Write(platoonId); w.Write(true); w.Write(told);
         w.Flush();
         ms.Position = 0;
         return ms;
@@ -222,5 +223,19 @@ public class ItemUseWorldTests
         Assert.True((bool)handler.DynamicInvoke(use)!);
         Assert.Contains(world.TakeMessages(), m => m.StartsWith("A warrant from Squin", StringComparison.Ordinal));
         Assert.False((bool)handler.DynamicInvoke(Activator.CreateInstance(useType, world, leaf, new ItemInstance { Record = "rock", Name = "Rock" }, new Inventory()))!);
+    }
+}
+
+// Inventory.Add across Meitou versions (InventoryCompat, Trophies.cs): 0.21 added an optional parameter, and the DLL built against 0.17.3
+// failed to find the old method (no keepsake, record stopped).
+public class InventoryCompatWorldTests
+{
+    [Fact]
+    public void An_item_goes_into_a_bag_on_this_Meitou()
+    {
+        var bag = new Inventory();
+        var item = new ItemInstance { Record = "ks-1", Name = "Keepsake of the Fallen" };
+        Assert.True(InventoryCompat.Add(bag, item));
+        Assert.Contains(item, bag.Items);
     }
 }

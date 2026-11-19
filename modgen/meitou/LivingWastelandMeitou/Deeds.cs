@@ -212,7 +212,7 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
         fallen.Add(new Fallen(name, hours, place, killer, killerFaction, killerRecord, m.Kills, served, titles, null));
         string by = killer is null ? "" : killerFaction is null or "" ? $", killed by {killer}" : $", killed by {killer} of {killerFaction}";
         Note($"{D(name)} fell at {place}{by}.");
-        OnMoment?.Invoke($"{D(name)} fell at {place}.", 80);
+        // no Recap moment: Recap shows a squadmate's death itself, with a picture (seen in play: both "Knife died in the wild" and ours)
         if (!string.IsNullOrEmpty(killerFaction)) feuds[killerFaction] = hours;
     }
 
@@ -448,8 +448,10 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
         if (fight.Quiet < FightState.QuietLooks || foesUp > 0 && fight.Quiet < FightState.StandOffLooks) return said;
 
         foreach (var n in downNow) if (fight.Fought.Contains(n)) fight.Down.Add(n);
-        bool won = fight.EnemiesDown > 0 && fight.Down.Count < fight.Fought.Count;
+        // judged by who of those who fought still stands: Down also holds squadmates who died elsewhere during the fight, and comparing the
+        // counts turned a win into a loss when one did (from a review of the code)
         var standing = fight.Fought.Where(n => !fight.Down.Contains(n)).ToList();
+        bool won = fight.EnemiesDown > 0 && standing.Count > 0;
         foreach (var n in fight.Fought)
         {
             var m = Member(n);

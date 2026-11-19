@@ -21,6 +21,7 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
 {
     const int PassEvery = 300;
     readonly RaidRecord?[] last = new RaidRecord?[raids.Count];
+    readonly Presence<(int Raid, double Sent)> parties = new();
     bool failed;
 
     /// <summary>
@@ -46,6 +47,7 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
         var table = world.Characters;
         if (!table.TryResolveNext(hit.Attacker, out int a) || table.Cold(a) is not { IsPlayer: true }
             || !table.TryResolveNext(hit.Victim, out int v) || table.Cold(v) is not { } victim) return;
+        if (ArenaLink.Sport(hit.Attacker, hit.Victim)) return;          // arena sport (Proving Grounds) breaks no party
         if (partySquads.TryGetValue(victim.SquadId, out int broken) && last[broken] is { Out: true } rb)
         {
             if (!rb.Broke) LwMod.Log($"raids: the squad struck the {raids[broken].Name} party");
@@ -77,16 +79,21 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
 
     static void Thank(World world, PopulationData d, string faction, int amount)
     {
-        int f = d.FactionIndex(faction);
-        if (f < 0 || world.Player.Faction < 0) return;
-        var (before, after) = d.Relations.Add(world.Player.Faction, f, amount);
+        int player = world.Player.Faction;
+        if (player < 0 || player >= d.Factions.Count) return;
+        var receiver = d.Factions.FirstOrDefault(f => string.Equals(f.Name, faction, StringComparison.OrdinalIgnoreCase));
+        if (receiver is null || d.FactionIndex(receiver.Id) is not (>= 0 and var f) || f == player) return;
+        var (before, after) = d.Relations.Add(f, player, amount);
         if (Meitou.Simulation.Factions.PlayerRelations.Notice(faction, before, after) is { } text) world.Post(text);
         LwMod.Log($"raids: {faction} {before:0} -> {after:0}");
     }
 
+    public readonly Published Shown = new();
+
     public void SlowWorld(World world)
     {
         Latest = this;
+        if (Published.Due(world.Tick, 16)) Shown.Set(() => Summary(null));
         byWorld.AddOrUpdate(world, this);
         if (failed || !LwMod.Settings.HarassmentRaids || world.Tick % PassEvery != 280 || population is null || data is null || KuoWars) return;
         try
@@ -114,16 +121,27 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
             {
                 var p = Pursuit.Find(world, r.Squad, rec.X, rec.Z, claimed);
                 bool over = now - rec.SentHours >= RaidRules.Lurk || now < rec.SentHours;
-                if (p is null || over)
+                var key = (i, rec.SentHours);
+                var verdict = parties.Check(world, key, p is not null);
+                bool caught = verdict == Presence<(int, double)>.Verdict.Gone ||
+                    (p is null && Pursuit.DeadNear(world, r.Squad, rec.X, rec.Z));
+                if (p is null && !caught && !over)
+                {
+                    p = RestoreParty(world, pop, d, r, rec, players);
+                    if (p is null) { parties.Forget(key); continue; }
+                    LwMod.Log($"raids: the {r.Name} party missing from the save was placed again near {TownName(rec.Town)}");
+                }
+                if (caught || over)
                 {
                     if (p is not null) Pursuit.Release(p);
-                    last[i] = rec with { EndedHours = now, Caught = p is null };
+                    last[i] = rec with { EndedHours = now, Caught = caught };
+                    parties.Forget(key);
                     Settle(world, d, i, last[i]!);
-                    LwMod.Log($"raids: the {r.Name} party near {TownName(rec.Town)} {(p is null ? "was caught" : "got away")}");
+                    LwMod.Log($"raids: the {r.Name} party near {TownName(rec.Town)} {(caught ? "was caught" : "got away")}");
                 }
                 else
                 {
-                    claimed.Add(p.Id);
+                    claimed.Add(p!.Id);
                     last[i] = rec with { X = p.Position.X, Z = p.Position.Y };
                     if (p.State == PlatoonState.Loaded && p.SquadId >= 0) squads[p.SquadId] = i;
                 }
@@ -142,10 +160,32 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
             var lurk = (X: site.X + (at.X - site.X) * 0.4f, Z: site.Z + (at.Z - site.Z) * 0.4f);    // about 1.2 km out, on the side it came from
             if (Pursuit.Make(world, pop, d, r.Squad, $"lw:raid:{r.Name}:{world.Tick}", at, lurk) is null) continue;
             last[i] = new RaidRecord(townIndex, now, at.X, at.Z);
+            parties.Check(world, (i, now), found: true);
             LwMod.Log($"raids: a {r.Name} party sets out for {TownName(townIndex)}, day {now / 24:0.0}");
         }
         partySquads.Clear();
         foreach (var (k, v) in squads) partySquads[k] = v;
+    }
+
+    static Platoon? RestoreParty(World world, PopulationSystem pop, PopulationData data, RaidCode raid, RaidRecord record,
+        List<(float X, float Z)> players)
+    {
+        var at = (record.X, record.Z);
+        if (players.Count == 0 || !CampRules.MayMove(at, at, players) ||
+            !world.Walkability.IsWalkable(record.X, record.Z) ||
+            world.Walkability.GroundHeight(record.X, record.Z) - world.Walkability.TerrainHeight(record.X, record.Z) >= 5f)
+            return null;
+
+        foreach (var (town, site) in TargetTowns(data, raid.Target))
+        {
+            if (town != record.Town) continue;
+            var delta = new Vector2(record.X - site.X, record.Z - site.Z);
+            float distance = delta.Length();
+            var toward = distance <= 12000 ? at : (site.X + delta.X * (12000 / distance), site.Z + delta.Y * (12000 / distance));
+            string key = FormattableString.Invariant($"lw:raid:{raid.Name}:{record.SentHours:R}");
+            return Pursuit.Make(world, pop, data, raid.Squad, key, at, toward);
+        }
+        return null;
     }
 
     /// <summary>The news towns held by a faction, with a position: (place in campNews.towns, its site's position).</summary>

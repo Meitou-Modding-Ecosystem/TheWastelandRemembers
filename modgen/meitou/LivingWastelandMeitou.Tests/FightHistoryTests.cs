@@ -92,4 +92,29 @@ public class FightHistoryTests
         Assert.Equal(SquadRecord.MaxHistory, r.History.Count);
         Assert.Equal("n20", r.History[0].Text);
     }
+
+    [Fact]
+    public void A_squadmate_dying_elsewhere_does_not_turn_a_won_fight_into_a_loss()
+    {
+        // from a review of the code: Died puts the dead in the fight's Down list even if they never fought, and comparing counts made one
+        // fighter standing plus one unrelated death read as a loss
+        var r = new SquadRecord(Rules);
+        r.FightLook(["Ana"], []);
+        r.Knockout("Ana");
+        r.Died("Bo", 10, "the wilds", null, null, null);            // Bo was elsewhere
+        Quiet(r);
+        Assert.Equal((1, 1), (r.Member("Ana").Fights, r.Member("Ana").FightsWon));
+        Assert.DoesNotContain(r.History, h => h.Text.StartsWith("A fight went badly"));
+    }
+
+    [Fact]
+    public void Everyone_who_fought_down_is_still_a_loss()
+    {
+        var r = new SquadRecord(Rules);
+        r.FightLook(["Ana"], []);
+        r.Knockout("Ana");
+        r.Died("Ana", 10, "the wilds", null, null, null);
+        Quiet(r, "Ana");
+        Assert.Equal((1, 0), (r.Member("Ana").Fights, r.Member("Ana").FightsWon));
+    }
 }

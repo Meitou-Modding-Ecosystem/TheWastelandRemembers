@@ -148,7 +148,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
         {
             if (!table.TryResolveNext(id, out int s) || !table.Next[s].Alive || table.Cold(s) is not { } c || c.IsPlayer || c.Animal is not null
                 || c.IsImprisoned || c.Medical is { Dead: true } || world.Uniques.RecordOf(id) is not null || rivals.Any(r => r.Id == id || r.Name == c.Name)) continue;
-            if (LeftAlone.Covers(c.Name, FactionOf(c)))
+            if (LeftAlone.Covers(c.Name, FactionOf(c)) || ArenaLink.IsTownFighter(c.Name))
             {
                 LwMod.Log($"rivals: {c.Name} was named by another mod and is left alone");
                 continue;
@@ -264,7 +264,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
         var at = table.Next[b.Slot].Position;
         (r.X, r.Z) = (at.X, at.Z);
         cold.Name = r.Name;
-        if (Platoon(world, cold) is { } pl) { pl.Persistent = true; r.PlatoonId = pl.Id; }
+        if (Platoon(world, cold) is { } pl) { pl.Persistent = true; r.PlatoonId = pl.Id; Tag(pl, r); }
         r.Told = false;
         rivals.Add(r);
         made++;
@@ -278,6 +278,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
     {
         Latest = this;
         if (!ReferenceEquals(seen, world)) { seen = world; byWorld.AddOrUpdate(world, this); Words(world); }
+        if (Published.Due(world.Tick, 12)) Shown.Set(Summary);
         if (failed || !LwMod.Settings.Rivals || world.Tick % PassEvery != 120) return;
         try { Pass(world); }
         catch (Exception e)
@@ -290,6 +291,9 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
     void Pass(World world)
     {
         var players = Pursuit.Players(world);
+        // none in view (the first ticks after a load): Announce's distance check needs one, and its throw stopped rivals for the session
+        // (from a review of the code); the whole pass waits for the next
+        if (players.Count == 0) return;
         Announce(world, players);
         bool changed = false;
         foreach (var r in rivals.Where(r => r.Active))
@@ -318,7 +322,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
             if (table.TryResolveNext(r.Id, out int s)) { var at = table.Next[s].Position; (r.X, r.Z) = (at.X, at.Z); }
             if (cold is not null)
             {
-                if (Platoon(world, cold) is { } own) { own.Persistent = true; r.PlatoonId = own.Id; }
+                if (Platoon(world, cold) is { } own) { own.Persistent = true; r.PlatoonId = own.Id; Tag(own, r); }
                 // stronger for each return, applied once the character is in the world
                 for (; r.Boosted < r.Returns + (r.Phase == Phase.Hunting ? 1 : 0); r.Boosted++) Stronger(cold, r.Boosted);
                 // licking their wounds: one left lying does not bleed out (seen in play: a new rival dead within hours, not at the squad's hands)
@@ -342,12 +346,29 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
                     LwMod.Log($"rivals: {r.Name} lost the squad's trail");
                     continue;
                 }
+                // seen in play (bb): the iron leg was fitted only at the moment the hunt began, and a rival off screen then never got it
+                // and crawled after the squad; fitted now whenever they're in the world (Mend skips a leg already fitted)
+                if (cold is not null && Mend(cold)) LwMod.Log($"rivals: {r.Name} has an iron leg now");
                 var p = cold is not null ? Platoon(world, cold) : null;
                 p ??= r.PlatoonId >= 0 ? world.Platoons.Find(r.PlatoonId) : null;
-                if (players.Count > 0 && p is { Dead: false }) Pursuit.Steer(world, p, players, BarkLines.Rival(r.Grudge, r.Returns, r.Wins, r.Slot + r.Returns), r.Name);
+                // after a load the saved platoon number means nothing (build ba drops it); the rival's own tag, which the engine saves
+                // (Meitou 0.20.2+ Platoon.ModTag), finds the platoon again. Seen in play: without it, a rival off screen after a load
+                // was never steered and sat 5 km away, "hunting", for days. Older Meitou: they wait until loaded near the squad.
+                if (p is null && TaggedPlatoon(world, r) is { } tagged) { p = tagged; r.PlatoonId = tagged.Id; }
+                if (players.Count > 0 && p is { Dead: false })
+                {
+                    Pursuit.Steer(world, p, players, BarkLines.Rival(r.Grudge, r.Returns, r.Wins, r.Slot + r.Returns), r.Name);
+                    if (!table.TryResolveNext(r.Id, out _)) (r.X, r.Z) = (p.Position.X, p.Position.Y);   // off screen: where the stand-in is
+                    onScreen[r.Slot] = p.State == PlatoonState.Loaded;
+                }
             }
         }
         if (changed) Words(world);
+        if (rivals.Any(r => r.Active && r.Phase == Phase.Hunting) && (int)world.GameHours != loggedHour)   // once a game hour, for play logs
+        {
+            loggedHour = (int)world.GameHours;
+            LwMod.Log($"rivals: {Summary()}");
+        }
         RivalryLink.Keep(world, "rival:", rivals.Where(r => r.Active && r.Phase == Phase.Hunting).Select(r => PartyClaims.Rival(r.Name)).ToList());
     }
 
@@ -414,6 +435,35 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
         float add = 5 + 3 * returns;
         foreach (var k in new[] { StatsEnumerated.Strength, StatsEnumerated.Toughness, StatsEnumerated.MeleeAttack, StatsEnumerated.MeleeDefence, StatsEnumerated.Dodge })
             st[k] = Math.Min(95, st[k] + add);
+    }
+
+    static readonly PropertyInfo? modTag = typeof(Platoon).GetProperty("ModTag") is { CanWrite: true, PropertyType: var t } pi && t == typeof(string) ? pi : null;
+
+    const string RivalTagPrefix = "lw:rival:";
+    static string TagOf(Rival r) => RivalTagPrefix + r.Name;
+
+    /// <summary>Marks the rival's platoon with a tag the engine saves (Meitou 0.20.2+; nothing on older engines).</summary>
+    static void Tag(Platoon p, Rival r)
+    {
+        if (modTag is null) return;
+        try
+        {
+            string? old = modTag.GetValue(p) as string;
+            string tag = TagOf(r);
+            if (old != tag && (string.IsNullOrEmpty(old) || old.StartsWith(RivalTagPrefix, StringComparison.Ordinal)))
+                modTag.SetValue(p, tag);
+        }
+        catch { }
+    }
+
+    /// <summary>The rival's platoon found by its saved tag, or null (no tag support, or not in this world).</summary>
+    static Platoon? TaggedPlatoon(World world, Rival r)
+    {
+        if (modTag is null) return null;
+        string tag = TagOf(r);
+        foreach (var p in world.Platoons.All)
+            if (p is { Dead: false } && modTag.GetValue(p) as string == tag) return p;
+        return null;
     }
 
     static Platoon? Platoon(World world, CharacterCold c)
@@ -521,7 +571,22 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
     }
 
     public string Summary() => rivals.Count == 0 ? (made == 0 ? "no rival yet: the first won fight that leaves someone notable alive makes one" : "no rivals")
-        : string.Join("; ", rivals.Select(r => !r.Told ? $"{r.Name}: not told yet (the squad must walk away)" : $"{r.Name}: {r.Phase.ToString().ToLowerInvariant()}{(r.Phase == Phase.Recovering ? $", back in {Math.Max(0, r.Next - (seen?.GameHours ?? 0)) / 24:0.0} days" : "")}"));
+        : string.Join("; ", rivals.Select(r => !r.Told ? $"{r.Name}: not told yet (the squad must walk away)"
+            : $"{r.Name}: {r.Phase.ToString().ToLowerInvariant()}{(r.Phase == Phase.Recovering ? $", back in {Math.Max(0, r.Next - (seen?.GameHours ?? 0)) / 24:0.0} days" : "")}{Far(r)}"));
+
+    int loggedHour = -1;
+    public readonly Published Shown = new();                // the F10 row's line
+    readonly Dictionary<int, bool> onScreen = [];
+
+    /// <summary>", about 1240 m from you, on the road (off screen)" for a rival still about; "" otherwise.</summary>
+    string Far(Rival r)
+    {
+        if (r.Phase is not (Phase.Hunting or Phase.Recovering) || seen is not { } w || Pursuit.Players(w) is not { Count: > 0 } players) return "";
+        var n = Pursuit.Nearest(players, r.X, r.Z);
+        float m = MathF.Sqrt((n.X - r.X) * (n.X - r.X) + (n.Z - r.Z) * (n.Z - r.Z)) / 10;
+        string where = r.Phase != Phase.Hunting ? "" : onScreen.TryGetValue(r.Slot, out bool on) && on ? ", in the world" : ", on the road (off screen)";
+        return $", about {m:0} m from you{where}";
+    }
 
     // ---- save ----
 
@@ -563,8 +628,11 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
             {
                 Slot = rd.ReadInt32(), Name = rd.ReadString(), OldName = rd.ReadString(), Faction = rd.ReadString(), Grudge = rd.ReadString(), By = rd.ReadString(),
                 Made = rd.ReadDouble(), Next = rd.ReadDouble(), Returns = rd.ReadInt32(), Wins = rd.ReadInt32(), Phase = (Phase)rd.ReadInt32(),
-                X = rd.ReadSingle(), Z = rd.ReadSingle(), Boosted = rd.ReadInt32(), PlatoonId = rd.ReadInt32(),
+                X = rd.ReadSingle(), Z = rd.ReadSingle(), Boosted = rd.ReadInt32(),
             });
+            // platoon ids are given anew at every load (Meitou docs): the saved one may now be another squad's, which the hunt would then
+            // steer (from a review of the code). Read and dropped; the rival's own platoon is found again from its character once loaded.
+            rd.ReadInt32();
             rivals[^1].Nameless = format >= 2 ? rd.ReadBoolean() : true;
             rivals[^1].Told = format < 3 || rd.ReadBoolean();
         }

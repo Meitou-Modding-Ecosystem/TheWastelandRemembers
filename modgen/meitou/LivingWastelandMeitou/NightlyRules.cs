@@ -34,14 +34,18 @@ public static class MapMarkRules
         foreach (var r in rivals)
             if (r.Phase is "recovering" or "hunting")
                 marks.Add(new MapMark(MarkKind.Rival, r.X, r.Z, r.Name,
-                    $"Rival\t{(r.Phase == "hunting" ? "hunting your squad" : "licking their wounds")}\nGrudge\t{r.Grudge}\nLast heard of\there", 0));
+                    $"\tRival, {(r.Phase == "hunting" ? "hunting your squad" : "licking their wounds")}\n\t{Cap(r.Grudge)}", 0));
         foreach (var o in outlaws.Take(MaxOutlaws))
-            marks.Add(new MapMark(MarkKind.Outlaw, o.X, o.Z, o.Name, $"Outlaw's camp\t{o.Doing}", 1));
+            marks.Add(new MapMark(MarkKind.Outlaw, o.X, o.Z, o.Name, $"\tOutlaw's camp, {o.Doing}", 1));
         foreach (var n in news.Where(n => hoursNow - n.HeardHours <= NewsBoard.LiveDays * 24 && hoursNow >= n.HeardHours - 1)
                      .OrderByDescending(n => n.HeardHours).Take(MaxNews))
-            marks.Add(new MapMark(MarkKind.News, n.X, n.Z, n.Place, $"News\t{n.Text}\nHeard\tday {(int)(n.HeardHours / 24) + 1}", 1));
+            marks.Add(new MapMark(MarkKind.News, n.X, n.Z, "", $"\tNews from {n.Place}, day {(int)(n.HeardHours / 24) + 1}\n\t{n.Text}", 1));
         return marks;
     }
+
+    // A tooltip row is "label<tab>value": the engine sets the value against the label with no gap, so they ran together (seen in play:
+    // "NewsKnife defeated...", then "Rivalhunting your squad"). Every row is now a value alone, with no label.
+    static string Cap(string s) => s.Length > 0 ? char.ToUpperInvariant(s[0]) + s[1..] : s;
 
     /// <summary>What an outlaw is up to, as the camp's tooltip says it (OutlawNews moods).</summary>
     public static string Doing(int mood) => mood switch
@@ -64,27 +68,62 @@ public static class NewsAskRules
 
     static readonly string[] Leads = ["Heard this: ", "Word is, ", "They're saying ", "Not long ago: "];
     static readonly string[] Nothing = ["Nothing much, these days.", "Quiet, lately.", "Haven't heard a thing.", "Same as ever."];
+    static readonly string[] AboutYou = ["You'd know better than me: ", "Everyone's on about your lot. ", "That was you, wasn't it? ",
+        "Folk won't shut up about you. ", "You're the ones, aren't you? ", "Your lot's the talk of the place. "];
+    static readonly string[] NothingNew = ["Nothing new.", "Nothing you haven't heard.", "Same as the last one told you.", "Ask someone else, I've nothing.",
+        "Nothing since the last lot.", "You've heard all I have."];
+
+    /// <summary>Game hours before the same piece of news is told again by someone asked: with only a piece or two about, three people in a row
+    /// told the squad the same thing (seen in play). News about the squad itself waits longer.</summary>
+    public const double TellAgainAfter = 6, TellOursAgainAfter = 24;
 
     /// <summary>Whether the menu offers the row: someone not of the squad, not fighting it, near a town.</summary>
     public static bool Offer(bool isPlayer, bool fightsPlayer, float distanceToTown) => !isPlayer && !fightsPlayer && distanceToTown <= AskRange;
 
     /// <summary>
     /// The answer, and which piece of news it gave (-1: none): the weightiest live piece within <paramref name="reach"/> world units of the
-    /// speaker, the newest of equal weight. <paramref name="roll"/> picks the wording.
+    /// speaker, the newest of equal weight. News that names one of <paramref name="squad"/> (the squad's own deeds, e.g. an arena win) is
+    /// told only when there is nothing else, and as news about them ("Everyone's on about your lot."). <paramref name="roll"/> picks the
+    /// wording.
     /// </summary>
     public static (string Line, int Index) Answer(IReadOnlyList<(string Text, float X, float Z, int Weight, double Hours)> live, float x, float z,
-        float reach, ulong roll)
+        float reach, ulong roll, IReadOnlyCollection<string>? squad = null, IReadOnlyList<double>? toldHours = null, double now = 0)
     {
+        bool anyInReach = false;
         int best = -1;
+        bool bestOurs = false;
         for (int i = 0; i < live.Count; i++)
         {
             var n = live[i];
             float dx = n.X - x, dz = n.Z - z;
             if (dx * dx + dz * dz > reach * reach) continue;
-            if (best < 0 || n.Weight > live[best].Weight || (n.Weight == live[best].Weight && n.Hours > live[best].Hours)) best = i;
+            anyInReach = true;
+            bool ours = Names(n.Text, squad);
+            if (toldHours is not null && i < toldHours.Count && now - toldHours[i] < (ours ? TellOursAgainAfter : TellAgainAfter)) continue;   // told lately
+            bool better = best < 0 || (bestOurs && !ours)
+                || (bestOurs == ours && (n.Weight > live[best].Weight || (n.Weight == live[best].Weight && n.Hours > live[best].Hours)));
+            if (better) { best = i; bestOurs = ours; }
         }
-        if (best < 0) return (Nothing[(int)(roll % (ulong)Nothing.Length)], -1);
-        return (Leads[(int)(roll % (ulong)Leads.Length)] + Uncap(live[best].Text), best);
+        if (best < 0) return anyInReach ? (NothingNew[(int)(roll % (ulong)NothingNew.Length)], -1) : (Nothing[(int)(roll % (ulong)Nothing.Length)], -1);
+        var leads = bestOurs ? AboutYou : Leads;
+        return (leads[(int)(roll % (ulong)leads.Length)] + (bestOurs ? live[best].Text : Uncap(live[best].Text)), best);
+    }
+
+    /// <summary>Whether a text names one of the squad (a whole word: "Knife" in "Knife defeated...", not in "Knifeman").</summary>
+    public static bool Names(string text, IReadOnlyCollection<string>? squad)
+    {
+        if (squad is null) return false;
+        foreach (var name in squad)
+        {
+            if (name.Length < 2) continue;
+            for (int at = text.IndexOf(name, StringComparison.Ordinal); at >= 0; at = text.IndexOf(name, at + 1, StringComparison.Ordinal))
+            {
+                bool start = at == 0 || !char.IsLetterOrDigit(text[at - 1]);
+                int end = at + name.Length;
+                if (start && (end == text.Length || !char.IsLetterOrDigit(text[end]))) return true;
+            }
+        }
+        return false;
     }
 
     // "Okran's Shield has fallen" keeps its capital; "A caravan of..." after "Word is, " reads "a caravan of..."

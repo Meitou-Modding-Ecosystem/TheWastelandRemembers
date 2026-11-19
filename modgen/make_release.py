@@ -26,7 +26,8 @@ README = """THE WASTELAND REMEMBERS  (early version {build})
 A Meitou mod for Kenshi. Early release: things will be rough in places, and feedback and bug reports are very welcome.
 
 REQUIREMENTS
-- MeitouClient 0.17.3 or later (0.19 or 0.20 recommended: Atlas faces and squad roles need 0.19). It does not run on plain Kenshi.
+- MeitouClient 0.17.3 to 0.22 (0.21 or later recommended: stolen goods, the right-click uses of keepsakes and warrants and the test features need
+  it; Atlas faces and squad roles need 0.19). It does not run on plain Kenshi.
 
 INSTALL
 1. Copy the "LivingWasteland" folder in "mods" into your Kenshi mods folder
@@ -47,7 +48,8 @@ REPORTING A BUG
 
 KNOWN IN THIS VERSION
 - The trophy neck slot has no label yet (Meitou's slot API has no label field).
-- Moving outlaw camps and harassment raids are still being tested and are off by default.
+- Still being tested and off by default (U > Settings, search "test"): moving outlaw camps, harassment raids, marks on the world map,
+  asking townsfolk for news, and factions' change of heart in History.
 - To see which build you have: press F10 and pick "Wasteland Remembers: squad record".
 """
 

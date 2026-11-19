@@ -161,7 +161,7 @@ public sealed class LwMod : IMod
     internal static string JobVariable = "LW open jobs";
     /// <summary>The build this helper was made for (modgen/BUILD_ID); the data mods carry theirs in lw_codes.json.</summary>
     public static string DataBuild = "unknown";
-    public const string HelperBuild = "20261117at";
+    public const string HelperBuild = "20261119bd";
     internal static List<RumourCode> Rumours = [];
     internal static List<(int Index, string Name)> Outlaws = [];
 
@@ -237,7 +237,7 @@ public sealed class LwMod : IMod
                 c.AddDialogueCondition(raids[i].Town, check => check.Compare(RaidsSystem.For(check.World)?.TownOf(check.World, k) ?? 0));
             }
             c.AddDebugCommand("Wasteland Remembers: raids", _ => !Settings.HarassmentRaids ? "raids are off (the Squad record window's Settings tab)"
-                : RaidsSystem.Latest?.Summary(null) ?? "no world yet", hasField: false);
+                : RaidsSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
         }
         if (table.Atlas is { } atlas)
             c.AddSystem("lw-atlas", ctx => new AtlasSystem(atlas, ctx.Find<Meitou.Simulation.Dialogue.DialogueSystem>(), ctx.Data), SystemAnchor.End);
@@ -257,23 +257,23 @@ public sealed class LwMod : IMod
         RelationWatch.Register(c);
         c.AddSystem("lw-thefts", _ => new TheftsSystem(), SystemAnchor.End);
         Thefts.Register(c);
+        WorldReady.Register(c);
         if (table.Hunters is { Squad: { Length: > 0 } crew })
         {
             c.AddSystem("lw-hunters", ctx => new HuntersSystem(crew, ctx.Find<PopulationSystem>(), ctx.Data), SystemAnchor.End);
             c.AddDebugCommand("Wasteland Remembers: bounty hunters", _ => !Settings.BountyHunters ? "bounty hunters are off (the Squad record window's Settings tab)"
-                : HuntersSystem.Latest?.Summary() ?? "no world yet", hasField: false);
+                : HuntersSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
         }
         // rivals (Rivals.cs): survivors the squad left alive who come back for it; their names in the town talk through word swaps
         c.AddSystem("lw-rivals", ctx =>
         {
-            Pursuit.Ai = ctx.Find<Meitou.Simulation.Ai.AiSystem>();       // for pursuers' assault orders (Pursuit.Steer)
             return new RivalsSystem(ctx.Data);
         }, SystemAnchor.End);
         c.AddDebugCommand("Wasteland Remembers: rivals", _ => !Settings.Rivals ? "rivals are off (the Squad record window's Settings tab)"
-            : RivalsSystem.Latest?.Summary() ?? "no world yet", hasField: false);
+            : RivalsSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
         // news from other mods (News.cs, WastelandApi.Report): towns near the place talk about it through word swaps
         c.AddSystem("lw-news", ctx => new NewsSystem(ctx.Data), SystemAnchor.End);
-        c.AddDebugCommand("Wasteland Remembers: news from other mods", _ => NewsSystem.Latest?.Summary() ?? "no world yet", hasField: false);
+        c.AddDebugCommand("Wasteland Remembers: news from other mods", _ => NewsSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
         if (PlayTest.On)
             c.AddDebugCommand("Wasteland Remembers: test news (type a town)", d =>
             {
@@ -470,12 +470,15 @@ public sealed class LwMod : IMod
     static void Favour(World world, CharacterId speaker, int amount, int cap)
     {
         var data = LwState.For(world).Data;
-        if (data is null || world.Player.Faction < 0 || amount <= 0 || FactionOf(world, speaker) is not { } name) return;
-        int f = data.FactionIndex(name);
-        if (f < 0 || f == world.Player.Faction) return;
-        float now = data.Relations.Get(world.Player.Faction, f);
+        var table = world.Characters;
+        if (data is null || world.Player.Faction < 0 || world.Player.Faction >= data.Factions.Count || amount <= 0 ||
+            !table.TryResolveNext(speaker, out int slot) || table.Cold(slot) is not { Faction: var f } ||
+            f < 0 || f >= data.Factions.Count || f == world.Player.Faction) return;
+        string name = data.Factions[f].Name;
+        if (name.Length == 0) return;
+        float now = data.Relations.Get(f, world.Player.Faction);
         if (now >= cap || now <= Meitou.Data.Gameplay.FactionRelations.HostileThreshold) return;
-        var (before, after) = data.Relations.Add(world.Player.Faction, f, Math.Min(amount, cap - now));
+        var (before, after) = data.Relations.Add(f, world.Player.Faction, Math.Min(amount, cap - now));
         string shown = name.StartsWith("The ", StringComparison.Ordinal) ? "the " + name[4..] : name;
         world.Post(after >= cap ? $"{char.ToUpperInvariant(shown[0])}{shown[1..]} count you as friends now. Not the kind who'd bleed for you, but friends."
             : $"{char.ToUpperInvariant(shown[0])}{shown[1..]} think a little better of you.");
@@ -500,7 +503,7 @@ public sealed class LwMod : IMod
         int given = 0;
         for (; given < count; given++)
         {
-            if (data.Items.Create(itemRecord) is not { } item || !inventory.Add(item)) break;
+            if (data.Items.Create(itemRecord) is not { } item || !InventoryCompat.Add(inventory, item)) break;
         }
         if (Settings.LogChanges) Log($"gift: {given} of {count} x {data.Db.Find(itemRecord)?.Name ?? itemRecord}");
     }
@@ -606,8 +609,8 @@ public sealed class LwMod : IMod
             c.Log($"camp news: {news.Outlaws.Count} outlaws, {news.Towns.Count} towns");
         }
         c.AddSystem("lw-camps", ctx => new OutlawCampsSystem(camps, ctx.Find<PopulationSystem>(), ctx.Data), SystemAnchor.End);
-        c.AddDebugCommand("Wasteland Remembers: outlaw camps", _ => OutlawCampsSystem.Latest?.Summary(null) ?? "no world yet", hasField: false);
-        c.AddDebugCommand("Wasteland Remembers: outlaw successors", _ => !Settings.OutlawSuccessors ? "successors are off (the Squad record window's Settings tab)" : OutlawCampsSystem.Latest?.SuccessorSummary() ?? "no world yet", hasField: false);
+        c.AddDebugCommand("Wasteland Remembers: outlaw camps", _ => OutlawCampsSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
+        c.AddDebugCommand("Wasteland Remembers: outlaw successors", _ => !Settings.OutlawSuccessors ? "successors are off (the Squad record window's Settings tab)" : OutlawCampsSystem.Latest?.ShownSuccessors.Text ?? "no world yet", hasField: false);
         c.Log($"outlaw camps: {camps.Count} outlaws, {(Settings.OutlawCamps ? "on" : "off")}");
     }
 
@@ -821,11 +824,17 @@ public sealed class LwState
             world.Post(m);
     }
 
-    /// <summary>One line for the F10 row; the full list goes to log.txt.</summary>
+    sealed record QuestSummary(string Short, string Full);
+    volatile QuestSummary jobSummary = new("not ready yet (a moment after loading)", "not ready yet");
+
+    internal void PublishSummary() => jobSummary = new(core.Summary(LwMod.Settings.JobCap), core.FullList());
+
+    /// <summary>One line for the F10 row; the full list from that tick goes to log.txt.</summary>
     public string Summary()
     {
-        LwMod.Log($"open jobs: {core.FullList()}");
-        return core.Summary(LwMod.Settings.JobCap);
+        var snapshot = jobSummary;
+        LwMod.Log($"open jobs: {snapshot.Full}");
+        return snapshot.Short;
     }
 
     public void Write(BinaryWriter w) => core.Write(w);
@@ -872,6 +881,7 @@ public sealed class LwSystem(PopulationSystem? population, DialogueSystem? talk,
 
     public void SlowWorld(World world)
     {
+        if (Published.Due(world.Tick, 15)) state.PublishSummary();
         if (world.Tick % 900 == 0) OutlawLog(world);
         if (world.Tick % 60 == 10 && LogTally.Day(world.GameHours) is { } summary) LwMod.Log(summary);
         if (!buildWarned && world.Tick > 300)
@@ -960,7 +970,7 @@ public sealed class LwSystem(PopulationSystem? population, DialogueSystem? talk,
         }
         foreach (var c in commands)
         {
-            if (c is SetEscort e) { state.Core.Set(SquadRoles.EscortKey(e.SquadId), e.Target + 1); continue; }
+            if (c is SetEscort e) { SquadRoles.SetEscortPreference(world, state.Core, e.SquadId, e.Target); continue; }
             if (c is not GiveUpJob g) continue;
             string? gone = state.Core.GiveUp(g.Which, LwMod.JobVariable);
             LwMod.Log(gone is null ? $"give up: nothing matched '{g.Which}'" : $"gave up: {gone}");
@@ -969,6 +979,11 @@ public sealed class LwSystem(PopulationSystem? population, DialogueSystem? talk,
     }
 
     public void Write(Stream stream) { using var w = new BinaryWriter(stream, System.Text.Encoding.UTF8, leaveOpen: true); state.Write(w); }
-    public void Read(Stream stream) { using var r = new BinaryReader(stream, System.Text.Encoding.UTF8, leaveOpen: true); state.Read(r); }
+    public void Read(Stream stream)
+    {
+        using var r = new BinaryReader(stream, System.Text.Encoding.UTF8, leaveOpen: true);
+        state.Read(r);
+        SquadRoles.ClearLegacyEscorts(state.Core);
+    }
     public void Hash(ref StateHasher hasher) => state.Hash(ref hasher);
 }
