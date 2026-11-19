@@ -77,6 +77,14 @@ else
   echo "   settings check skipped (it runs on net11.0 releases)"
 fi
 
+# The shipped DLL's engine calls, by name and parameter types (RefCheck): a signature this release changed breaks only the built DLL, at
+# run time, and compiling cannot see it (seen in play: 0.21's Inventory.Add gained an optional parameter; keepsakes failed).
+if "$DOTNET" run --project "$HERE/RefCheck/RefCheck.csproj" -c Release -- "$HERE/LivingWastelandMeitou/LivingWastelandMeitou.dll" "$DIR" >"$OUT/refs.log" 2>&1; then
+  echo "   shipped DLL: $(tail -1 "$OUT/refs.log")"
+else
+  echo "   shipped DLL calls engine members this release lacks:"; grep -E "MISSING|rror" "$OUT/refs.log" | head -10 | sed 's/^/      /'; fail=1
+fi
+
 if "$DOTNET" test "$HERE/LivingWastelandMeitou.Tests/LivingWastelandMeitou.Tests.csproj" -c Release >"$OUT/tests.log" 2>&1; then
   grep -oE "Passed: +[0-9]+" "$OUT/tests.log" | head -1 | sed 's/^/   unit tests: /'
 else

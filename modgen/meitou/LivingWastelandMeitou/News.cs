@@ -31,6 +31,7 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
     List<NewsItem> talked = [];
     readonly string?[] shown = new string?[NewsBoard.Slots];
     World? seen;
+    NightlyHooks.AskSession? asks;
 
     /// <summary>A report from another mod (WastelandApi.Report). False, with the reason logged, when it is not taken.</summary>
     public bool Report(string kind, string place, string faction, string text, int weight, string source)
@@ -71,12 +72,14 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
             seen = world;
             byWorld.AddOrUpdate(world, this);
             Refresh(world);
-            if (data is not null) NightlyHooks.Towns = data.Sites.Select(s => (s.Position.X, s.Position.Z)).ToArray();
+            asks = new NightlyHooks.AskSession(data?.Sites.Select(s => (s.Position.X, s.Position.Z)).ToArray() ?? []);
+            NightlyHooks.CurrentAsks = asks;
         }
+        if (Published.Due(world.Tick, 13)) Shown.Set(Summary);
         if (world.Tick % PassEvery != 40) return;
         try
         {
-            while (NightlyHooks.Asks.TryDequeue(out var who)) AnswerAsk(world, who);
+            while (asks is { } session && session.Asks.TryDequeue(out var who)) if (LwMod.Settings.AskForNews) AnswerAsk(world, who);   // not if switched off since the click
             NightlyHooks.Marks = LwMod.Settings.MapMarks ? Marks(world) : [];
         }
         catch (Exception e) { LwMod.Log($"news: skipped asks and map marks after an error: {e.GetBaseException().Message}"); }
@@ -122,8 +125,12 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
     {
         n.Heard = true;
         n.HeardHours = world.GameHours;
-        LwDeeds.For(world)?.Record.Note(n.Text);
-        RecapLink.Moment(n.Text, n.Place, Math.Clamp(n.Weight, 30, 80), new Vector3(n.X, 0, n.Z));
+        // another mod may have noted the same words already (Proving Grounds notes the squad's own arena wins and reports them as news too)
+        if (LwDeeds.For(world)?.Record is { } record && !record.History.Any(h => h.Text == n.Text && world.GameHours - h.Hours < 24))
+        {
+            record.Note(n.Text);
+            RecapLink.Moment(n.Text, n.Place, Math.Clamp(n.Weight, 30, 80), new Vector3(n.X, 0, n.Z));
+        }
         if (n.Weight >= PostAtWeight) world.Post("Word on the road: " + n.Text);
         LwMod.Log($"news: the squad heard \"{n.Text}\"");
         LogTally.Add("news heard");
@@ -138,12 +145,22 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
             || cold.Medical is { Dead: true } or { Incapacitated: true }) return;
         var at = table.Next[s].Position;
         var live = LwMod.Settings.OtherModsNews ? board.Items.Where(n => world.GameHours - n.Hours <= NewsBoard.LiveDays * 24 && n.Hours <= world.GameHours + 1).ToList() : [];
+        var squad = new List<string>();
+        var hot = table.Next;
+        for (int k = 0; k < hot.Length; k++)
+            if (hot[k].Alive && table.Cold(k) is { IsPlayer: true, Animal: null } pc) squad.Add(pc.Name);
         var (line, i) = NewsAskRules.Answer(live.Select(n => (n.Text, n.X, n.Z, n.Weight, n.Hours)).ToList(), at.X, at.Z,
-            Math.Max(1, LwMod.Settings.NewsReach) * 10000f, (ulong)world.Tick ^ (ulong)s);
+            Math.Max(1, LwMod.Settings.NewsReach) * 10000f, (ulong)world.Tick ^ (ulong)s, squad,
+            live.Select(n => toldAt.TryGetValue(n, out double h) ? h : double.MinValue).ToList(), world.GameHours);
+        if (i >= 0) toldAt[live[i]] = world.GameHours;
+        foreach (var gone in toldAt.Keys.Where(k => !board.Items.Contains(k)).ToList()) toldAt.Remove(gone);
         world.Bark(who, line);
         if (i >= 0 && !live[i].Heard) HearOne(world, live[i]);
         LwMod.Log($"ask for news: {cold.Name} said \"{line}\"");
     }
+
+    /// <summary>When each piece of news was last told to the squad by someone asked (not saved: a load starts afresh).</summary>
+    readonly Dictionary<NewsItem, double> toldAt = [];
 
     /// <summary>The map marks (NightlyHooks): rivals about, known outlaw camps, news heard this week.</summary>
     List<MapMark> Marks(World world) => MapMarkRules.Build(
@@ -168,6 +185,8 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
             "",
             $"Heard on day {(int)(n.HeardHours / 24) + 1}, near {n.Place}.",
         }));
+
+    public readonly Published Shown = new();                // the F10 row's line
 
     public string Summary() =>
         !LwMod.Settings.OtherModsNews ? "news from other mods is off (the Squad record window's Settings tab)"

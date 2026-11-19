@@ -10,6 +10,7 @@ Rules: negatives contract anywhere ("It is not." -> "It isn't."); "I am", "it is
 (never "Yes, it is." -> "it's."), and never before a comma ("That is, ..."). Capitals are kept ("Do not" -> "Don't").
 
   python contractions.py [DATA_DIR]   # rewrites content/*.json; with the game's data folder, bosses get their own faction's voice
+  python contractions.py --check      # rewrites nothing: lists the lines it would contract
 Generators call contract_pack() on what they write.
 """
 import glob
@@ -149,7 +150,9 @@ GENERATED = ("x_outlaw_gossip.json", "x_raids.json", "x_title_temperaments.json"
 
 
 def main(argv):
-    data = argv[0] if argv else None
+    check = "--check" in argv
+    args = [a for a in argv if not a.startswith("--")]
+    data = args[0] if args else None
     chars = character_factions(data) if data else {}
     total = []
     for f in sorted(glob.glob(os.path.join(HERE, "content", "*.json"))):
@@ -161,10 +164,12 @@ def main(argv):
         ch = contract_pack(pack, chars)
         if ch:
             total += [(os.path.basename(f), a, b) for a, b in ch]
+            if check:
+                continue
             with open(f, "w", encoding="utf-8") as fh:
                 json.dump(pack, fh, indent=1, ensure_ascii=False)
                 fh.write("\n")
-    print(f"{len(total)} lines contracted ({len(chars)} characters' factions known)")
+    print(f"{len(total)} lines {'would be contracted (--check: nothing written)' if check else 'contracted'} ({len(chars)} characters' factions known)")
     for f, a, b in total[:: max(1, len(total) // 20)][:20]:
         print(f"  {f}: {a!r}\n      -> {b!r}")
 

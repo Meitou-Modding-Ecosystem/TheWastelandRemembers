@@ -1,5 +1,91 @@
 # The Wasteland Remembers: changelog
 
+## Build 20261119bd
+From an outside review's third round (each with a test that failed on bc):
+- **Squad roles work on Meitou 0.22.** Choosing a role (Guard home and the others) failed: the engine's command gained new parameters.
+- **Escorts follow the same squad after a load** (Meitou with saved squad tags); an old escort setting is cleared once and chosen again.
+- **Stolen goods count for the town they were taken from**, even when the thief is standing outside it.
+- **Bounty crews keep their own identities across saves** (Meitou 0.20.2+), and a raid party that hadn't loaded yet comes back after a
+  load instead of counting as caught.
+- **Another mod's tag on a rival's squad is left alone**, and Recap no longer gets a place from the previous game.
+
+## Build 20261119bc
+From a play test of bb (lookouts and alms confirmed working):
+- **A hunting rival comes for you after a load.** Since ba, a rival out of sight after loading was never steered and sat where it was,
+  "hunting", for days. TWR now tags the rival's squad, and Meitou 0.20.2 and later keep the tag in the save. On older Meitou the rival
+  waits until you come near.
+- **A rival who lost a leg gets the iron leg whenever they're in the world.** Before, only at the moment the hunt began, so one out of
+  sight then crawled after you instead.
+- **Recap pictures:** our moments without a place of their own use where your squad is, so Recap can take a picture. A squadmate's
+  death is no longer sent twice (Recap shows it itself).
+- **World map tooltips:** rows no longer run together ("Rivalhunting your squad"); the meaningless "Last heard of here" row is gone.
+
+## Build 20261119bb
+From an outside review's second round (each tested against the old code):
+- **Lookouts call out hostiles again.** They never did on Meitou: a counter started at the lowest possible number and the first call was
+  always "too soon". A sleeping squadmate no longer takes the call from one who is awake.
+- **Contracts, alms and raid rewards warm the faction again.** The faction was looked up by its display name where the game wanted its
+  record id, so no reward ever reached it.
+- **After loading another save:** a march watched in the old game is no longer credited to the squad as broken; an "Ask for news" click
+  from the old game's menu can't be answered by someone in the new one; pursuers no longer inherit the old game's progress and orders.
+- F10's quest and raid rows read a line written in the tick, as the others already did.
+- Tests that save and load the squad record for build ba's keepsake and arena fixes.
+
+## Build 20261118ba
+Fixes from an outside review of the code (each checked against the code first; the tests fail on the old code):
+- **Rivals no longer stop for the session after a load.** A rival pass in the first ticks after loading, before the squad was in view,
+  threw an error and switched rivals off until the next start.
+- **Two bounty crews after a load each find their own squad.** A crew left out of the save could take another crew's, and that crew was
+  then placed again beside its own.
+- **A rival's saved squad number no longer steers someone else's squad** after a load (squad numbers are handed out again at every load).
+- **A won fight stays won** when a squadmate dies elsewhere during it.
+- **Keepsakes wait for someone to keep them:** if nobody is standing when the hour runs out, the keepsake waits (up to two days), and a
+  keepsake still to be given is now kept in the save.
+- **Arena sport survives a save:** a named fighter struck in a bout who bleeds out after a reload still counts as sport (no heat).
+- **An outlaw's successor whose gang wasn't in the save** is placed again once the spot is clear, not only on the first try.
+- **Stolen goods:** takes from one town and owner within an hour count as one theft; a later one waits on its own 12 hours.
+- **Ask for news:** a question asked just before a load isn't answered in the loaded game, nor after the setting is switched off.
+- **F10 rows** read a line each system writes in its own tick, instead of reading the game while it runs.
+
+## Build 20261118az
+- **After loading a save (Meitou 0.21+), bounty crews and outlaw reprisal parties the save left out come back at once**, on the first
+  tick with your squad in view, instead of at the next pass a few seconds in: the engine now says when a save has loaded. Older Meitou
+  works as before. Not play tested.
+
+## Build 20261118ay
+- **Meitou 0.22 support.** The version range now runs up to 0.23 (0.22.0 would have refused the mod). Checked on 0.22.0 and the
+  0.21.1 nightly: builds, loads with all settings, every engine call the DLL makes is there, and every test passes. Not play tested on
+  0.22 yet. Nothing else changed from ax.
+
+## Build 20261118ax
+- **Keepsakes on Meitou 0.21 (bug fix).** When a squadmate died on 0.21, no keepsake came and the squad record stopped for the rest of the
+  session: 0.21 changed the game's "add to inventory" call. Fixed, and the same for barmen's gifts. If nobody comes to the body within a
+  game hour, the nearest squadmate still gets the keepsake. Also in hotfix 20261118ai3 for the Steam version.
+- **Bounty crews that stop short now attack.** A crew on screen that gets no nearer for a while is ordered to attack (seen in play: one
+  waited 375 m away for half a day). Distances are measured from the crew's people.
+- **Rivals in F10:** the rivals row says how far a rival is and whether they're on the road or in the world; the log notes it hourly.
+- **Ask for news (test):** the same piece isn't told again for six game hours (a day for news about your squad); people say "Nothing
+  new." and the like instead. More ways to say news is about you.
+
+## Build 20261118aw
+- **Bounty crews (and rivals and outlaw reprisals) keep closing in off screen.** In play they drifted away from a squad that waited for
+  them; a hunter that goes the wrong way off screen is now walked on towards you at walking pace. The log notes where each crew is once a
+  game hour.
+- **Arena wins get their victory line again** (av had taken it away with the fight count): a Proving Grounds bout counts as a fight.
+
+## Build 20261118av
+- **News heard once:** news another mod has already written into History (Proving Grounds notes your arena wins and reports them too) no
+  longer gets a second identical line.
+- **Ask for news (test):** townsfolk tell you other news first. When the only news is something your squad did, they say so ("Everyone's
+  on about your lot.") instead of telling you about yourselves as a stranger would.
+- **Map marks (test):** news marks no longer repeat the town's name over its own label, and long texts in tooltips sit on a row of their
+  own, where they used to run into the row's label.
+
+## Build 20261117au
+- **Proving Grounds (BeatTheCount's arena, 0.2.0 and later):** a blow traded in one of its bouts, in your own arena or Scratch's, is
+  sport. Your record still keeps the knockouts, but no town's heat rises, nobody becomes a rival, no outlaw counts as struck and no raid
+  party as broken. Scratch's arena fighters are never made rivals or renamed. Nothing changes without Proving Grounds.
+
 ## Build 20261117at
 - **For other mods (API version 4):** `Outlaws()` lists TWR's named outlaws (status, successor, mood, bounty, home regions, camp),
   `OutlawAt(x, z)` says whose ground a point is on, `HideoutStruck(...)` lets another mod's war band strike an outlaw's camp (the outlaw lies

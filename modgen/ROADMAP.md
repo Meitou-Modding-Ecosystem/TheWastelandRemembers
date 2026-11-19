@@ -69,6 +69,40 @@ engine hook (RivalryCore issue #28). Our part:
 - Still to do: named outlaws should not stand in a town on day 1 (Isolde Marr patrolling the Hub). Instead: now and then, and never in the
   first couple of days, one turns up drinking in a bar in their region, a chance meeting.
 
+## Meitou 0.21 and 0.22 (ideas, not scheduled: usage is low, 2026-11-18)
+- **Recruit a beaten rival** (0.21 `PopulationSystem.JoinPlayerSquad`): a rival beaten often enough (say three times, or spared when down)
+  offers to join instead of coming back again. Their grudge becomes their backstory, their record starts with what the squad did to them.
+  Coordinate with Mazal (Rivalry Core), who wanted to shape this.
+- **Prices by reputation** (0.21 `ITradePriceFilter`): a town that has the squad marked as wanted or hunted charges more; one the squad
+  has helped (contracts, alms) gives a little off; a feared or despised title (Narko for the Holy Nation) makes its traders gouge or refuse.
+  Built on the heat and title reactions we already have.
+- **Your outpost remembered** (0.21 `PlayerTown.ModTags`, `SetSquadDormant`): the first concrete step of "Your base in the world" above:
+  towns talk about the squad's base, raiders and rivals know where it is and can come to the door instead of only finding you on the road.
+- **Squad roles, fully on their own** (0.21 `SetSquadAutonomy`, `OpenLootOrder` from a menu row): a squad given a role (guard, patrol,
+  wander) runs as an independent squad, and can still be outfitted from a right-click row. Polish for the Squad roles feature.
+- **Task bars** (0.22 `CharacterCold.ModTaskBar`, the bar the game shows while lockpicking):
+  - **Writing a keepsake:** "Remembering Hollin..." over the mourner before the keepsake appears. Only **after the fight they died in is
+    over** (the keepsake already waits for that): a bar in the middle of the same fight would read strangely.
+  - **Ask for news:** "Listening..." for a moment before the answer.
+  - Not wanted: a bar for bounty crews approaching or for a theft about to be missed (both give too much away).
+- **Endorsed by the launcher** (0.22.1 lists the Workshop ports Meitou endorses): ask to be listed once TWR has some ratings and no open
+  crash reports.
+- Done from this list: the world-ready signal (0.21 `IWorldReady`, build az): squads a save left out are placed on the first tick.
+
+## Hooks coming after Meitou 0.22.1 (the MeitouClient wiki's "Code mod hooks", 2026-11-19; not in 0.22.1, so nightlies or the next release)
+Not scheduled (usage is low). Best first:
+1. **Lasting ids** (`world.LastingIds.GetOrGive(character)`, `Find(id)`): a 64-bit id per character for life, across saves. Replaces the
+   name checks and the reused-handle workarounds (rivals, keepsake owners, crews' members); recruiting a rival needs it. Do this first:
+   it removes a class of bugs rather than adding a feature.
+2. **Deaths** (`ICharacterDeathObserver.Died`, loaded or off screen, with cause, site, killer and faction): "killed by the squad" vs
+   "died" for rivals, outlaws and the Fallen without guessing from the last blow seen; off-screen deaths of rivals and outlaws.
+3. **Crimes** (`ICrimeObserver.CrimeNoted`: pending, witnessed, booked, lapsed, expired, cleared): heat from the game's own crimes and
+   bounties; a paid-off bounty cools the town.
+4. **Key actions** (`c.AddKeyAction`): the Squad record key without the Harmony patch (`RecordHotkey.cs`), rebindable.
+5. **Sounds** (`world.PostSound`): a lookout's call, a crew arriving.
+6. **Status effects** (`c.AddStatusEffect`, saved, shown on the State line): "Grieving" after a death, "Old wound" on a returning rival.
+Not for TWR now: hit and experience filters, skills, weather, world states (Dustlife's), building actions, NPC jobs and goals.
+
 ## Meitou 0.20 (to explore)
 - Stat modifiers: a returning rival's "stronger" as a modifier that can be taken off, instead of a permanent stat change.
 - AddMedicalMeter: an old wound a rival carries from the fight with the squad.

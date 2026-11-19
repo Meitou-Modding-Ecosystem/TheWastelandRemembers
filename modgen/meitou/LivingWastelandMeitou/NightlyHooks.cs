@@ -24,11 +24,14 @@ public static class NightlyHooks
     /// <summary>The marks to draw, worked out in NewsSystem's slow tick (empty when the setting is off).</summary>
     public static volatile IReadOnlyList<MapMark> Marks = [];
 
-    /// <summary>Town centres (x, z) for the menu's "near a town" test, set when news first sees the world's data.</summary>
-    public static volatile (float X, float Z)[] Towns = [];
+    // The menu captures the queue that belongs to the town centres it saw. A callback kept across a load can only write to the old queue.
+    internal sealed class AskSession((float X, float Z)[] towns)
+    {
+        internal readonly (float X, float Z)[] Towns = towns;
+        internal readonly ConcurrentQueue<CharacterId> Asks = new();
+    }
 
-    /// <summary>People the player asked for news, waiting for NewsSystem's tick.</summary>
-    public static readonly ConcurrentQueue<CharacterId> Asks = new();
+    internal static volatile AskSession? CurrentAsks;
 
     /// <summary>Adds the map marks and the menu row where the engine has them. Never throws; logs what happened.</summary>
     public static void RegisterUi(object registration, Action<string> log)
@@ -93,24 +96,28 @@ public static class NightlyHooks
         var target = Expression.Property(ctx, targetProp!);
         var id = Expression.Property(target, "Id");
         Expression fights = snap.GetProperty("FightsPlayer") is { } f ? Expression.Property(target, f) : Expression.Constant(false);
-        var offer = Expression.Call(typeof(NightlyHooks).GetMethod(nameof(Offer), BindingFlags.NonPublic | BindingFlags.Static)!,
-            Expression.Property(target, "IsPlayer"), fights, Expression.Property(target, "Position"));
-        var choose = Expression.Lambda<Action>(Expression.Call(Expression.Constant(Asks), typeof(ConcurrentQueue<CharacterId>).GetMethod("Enqueue")!, id));
+        var noTarget = Expression.Equal(target, Expression.Constant(null, snap));
+        var choose = Expression.Variable(typeof(Action), "choose");
+        var prepare = Expression.Call(typeof(NightlyHooks).GetMethod(nameof(PrepareAsk), BindingFlags.NonPublic | BindingFlags.Static)!,
+            id, Expression.Property(target, "IsPlayer"), fights, Expression.Property(target, "Position"));
+        var empty = Expression.Constant(null, typeof(Action));
         var rows = Expression.NewArrayInit(verbType, Expression.New(verbCtor, Expression.Constant(NewsAskRules.Caption), choose));
-        var none = Expression.NewArrayInit(verbType);
-        var body = Expression.Convert(Expression.Condition(Expression.AndAlso(Expression.NotEqual(target, Expression.Constant(null, snap)), offer), rows, none),
-            funcType.GetGenericArguments()[1]);
+        var body = Expression.Block([choose],
+            Expression.Assign(choose, Expression.Condition(noTarget, empty, prepare)),
+            Expression.Convert(Expression.Condition(Expression.Equal(choose, empty), Expression.NewArrayInit(verbType), rows),
+                funcType.GetGenericArguments()[1]));
         add.Invoke(registration, [Expression.Lambda(funcType, body, ctx).Compile()]);
         log("ask for news: added to townsfolk's right-click menu (setting \"Ask townsfolk for news\")");
     }
 
-    static bool Offer(bool isPlayer, bool fightsPlayer, Vector3 at)
+    static Action? PrepareAsk(CharacterId who, bool isPlayer, bool fightsPlayer, Vector3 at)
     {
-        if (!LwMod.Settings.AskForNews) return false;
+        if (!LwMod.Settings.AskForNews || CurrentAsks is not { } session) return null;
         float best = float.MaxValue;
-        foreach (var (x, z) in Towns) best = MathF.Min(best, (x - at.X) * (x - at.X) + (z - at.Z) * (z - at.Z));
-        return NewsAskRules.Offer(isPlayer, fightsPlayer, MathF.Sqrt(best));
+        foreach (var (x, z) in session.Towns) best = MathF.Min(best, (x - at.X) * (x - at.X) + (z - at.Z) * (z - at.Z));
+        return NewsAskRules.Offer(isPlayer, fightsPlayer, MathF.Sqrt(best)) ? () => session.Asks.Enqueue(who) : null;
     }
+
 }
 
 /// <summary>Faction relation changes from the engine (IRelationChangeObserver), as History lines when one crosses a threshold.</summary>
@@ -179,13 +186,15 @@ public static class ObserverEmit
         .DefineDynamicModule("Observers");
     static readonly object gate = new();
 
-    /// <summary>The type, or null when the interface's method is not <c>void M(World, in T)</c>.</summary>
+    /// <summary>The type, or null when the interface's method is not <c>void M(World, in T)</c> or <c>void M(World, T)</c>. The second
+    /// argument reaches <paramref name="target"/> (static, <c>(World, object)</c>) boxed.</summary>
     public static Type? Build(Type observer, string method, MethodInfo target, string name)
     {
         var m = observer.GetMethod(method);
-        if (m is null || m.ReturnType != typeof(void) || m.GetParameters() is not [{ ParameterType: var w }, { ParameterType: { IsByRef: true } byRef }]
+        if (m is null || m.ReturnType != typeof(void) || m.GetParameters() is not [{ ParameterType: var w }, { ParameterType: var second }]
             || w != typeof(World)) return null;
-        var arg = byRef.GetElementType()!;
+        bool byRef = second.IsByRef;
+        var arg = byRef ? second.GetElementType()! : second;
         lock (gate)
         {
             var tb = module.DefineType($"LivingWasteland.MeitouMod.{name}{Guid.NewGuid():N}", TypeAttributes.Public | TypeAttributes.Sealed | TypeAttributes.Class,
@@ -199,8 +208,8 @@ public static class ObserverEmit
             var il = impl.GetILGenerator();
             il.Emit(OpCodes.Ldarg_1);
             il.Emit(OpCodes.Ldarg_2);
-            il.Emit(OpCodes.Ldobj, arg);
-            il.Emit(OpCodes.Box, arg);
+            if (byRef) il.Emit(OpCodes.Ldobj, arg);
+            if (arg.IsValueType) il.Emit(OpCodes.Box, arg);
             il.Emit(OpCodes.Call, target);
             il.Emit(OpCodes.Ret);
             tb.DefineMethodOverride(impl, m);

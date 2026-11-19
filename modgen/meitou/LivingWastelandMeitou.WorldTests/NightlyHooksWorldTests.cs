@@ -51,8 +51,8 @@ public class NightlyHooksWorldTests
     {
         var reg = new FakeRegistration();
         NightlyHooks.RegisterUi(reg, _ => { });
-        NightlyHooks.Towns = [(1000, 2000)];
-        while (NightlyHooks.Asks.TryDequeue(out _)) { }
+        var session = new NightlyHooks.AskSession([(1000, 2000)]);
+        NightlyHooks.CurrentAsks = session;
         var local = new FakeSnapshot { Id = new CharacterId(5, 1), Position = new Vector3(1200, 150, 2000) };
         try
         {
@@ -60,7 +60,7 @@ public class NightlyHooksWorldTests
             var verb = Assert.Single(reg.Verbs!(new FakeMenuContext(local)));
             Assert.Equal("Ask for news", verb.Caption);
             verb.Choose();
-            Assert.True(NightlyHooks.Asks.TryDequeue(out var asked) && asked == local.Id);
+            Assert.True(session.Asks.TryDequeue(out var asked) && asked == local.Id);
 
             Assert.Empty(reg.Verbs!(new FakeMenuContext(new FakeSnapshot { IsPlayer = true, Position = local.Position })));
             Assert.Empty(reg.Verbs!(new FakeMenuContext(new FakeSnapshot { FightsPlayer = true, Position = local.Position })));
@@ -69,7 +69,37 @@ public class NightlyHooksWorldTests
             LwMod.Settings.AskForNews = false;
             Assert.Empty(reg.Verbs!(new FakeMenuContext(local)));
         }
-        finally { LwMod.Settings.AskForNews = false; NightlyHooks.Towns = []; }
+        finally { LwMod.Settings.AskForNews = false; NightlyHooks.CurrentAsks = null; }
+    }
+
+    [Fact]
+    public void An_old_menu_cannot_ask_somebody_in_the_next_world()
+    {
+        var stack = new Vector3(10000, 150, 10000);
+        var data = W.Data([W.Rec("town-stack", FcsRecordType.Town, "Stack")], [new TownPlacement("i-stack", "town-stack", stack, null)]);
+        try
+        {
+            LwMod.Settings.AskForNews = true;
+            var reg = new FakeRegistration();
+            NightlyHooks.RegisterUi(reg, _ => { });
+            var first = W.World(new NewsSystem(data));
+            var old = W.Spawn(first, "Old speaker", W.Bandits, stack);
+            first.RunTicks(2);
+            var oldRow = Assert.Single(reg.Verbs!(new FakeMenuContext(new FakeSnapshot { Id = old, Position = stack })));
+
+            var next = W.World(new NewsSystem(data));
+            var replacement = W.Spawn(next, "New speaker", W.Bandits, stack);
+            Assert.Equal(old, replacement);
+            next.RunTicks(2);
+            oldRow.Choose();  // The host can still hold a callback after the new world's initial tick.
+            var barks = (System.Collections.IDictionary)typeof(SimWorld).GetField("_barks", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(next)!;
+            next.RunTicks(60);
+            Assert.False(barks.Contains(replacement));
+            Assert.Single(reg.Verbs(new FakeMenuContext(new FakeSnapshot { Id = replacement, Position = stack }))).Choose();
+            next.RunTicks(60);
+            Assert.True(barks.Contains(replacement));
+        }
+        finally { LwMod.Settings.AskForNews = false; }
     }
 
     [Fact]

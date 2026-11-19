@@ -26,9 +26,18 @@ public static class RecapLink
     static ParameterInfo[] parameters = [];
     static int sent;
 
-    /// <summary>Offers a moment to Recap; false when Recap is absent, off, refused it, or the link is off.</summary>
+    static object? squadAt;      // a boxed Vector3, written once a game second by the squad record's look (Notoriety.cs)
+
+    /// <summary>Where the squad is now (a standing member): the place of a moment that names none.</summary>
+    public static void SquadIsAt(Vector3 at) => Volatile.Write(ref squadAt, at);
+
+    internal static void ForgetSquadPlace() => Volatile.Write(ref squadAt, null);
+
+    /// <summary>Offers a moment to Recap; false when Recap is absent, off, refused it, or the link is off. With no position, where the squad is
+    /// now: Recap takes a picture only of a moment with a place (seen in play: "The bounty hunters Squin hired were wiped out." had none).</summary>
     public static bool Moment(string caption, string place, int weight, Vector3? position = null)
     {
+        position ??= Volatile.Read(ref squadAt) as Vector3?;
         try
         {
             if (!Enabled() || !Find()) return false;

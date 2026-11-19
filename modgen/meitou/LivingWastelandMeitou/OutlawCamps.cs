@@ -150,6 +150,7 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
         var table = world.Characters;
         if (!table.TryResolveNext(hit.Attacker, out int a) || table.Cold(a) is not { } attacker) return;
         if (!attacker.IsPlayer && !IsHiredBy(world, attacker)) return;
+        if (ArenaLink.Sport(hit.Attacker, hit.Victim)) return;          // a bout in Proving Grounds' arena strikes no outlaw
         if (!table.TryResolveNext(hit.Victim, out int v) || table.Cold(v) is not { IsPlayer: false } victim) return;
         bySquad ??= outlaws.ToDictionary(o => o.Squad);
         byCharacter ??= outlaws.ToDictionary(o => o.Character);
@@ -198,10 +199,13 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
 
     readonly Presence<(int, double)> parties = new();
 
+    bool reprisalsNow;                                      // a save just loaded (WorldReady): pass at the next tick the squad is seen
+
     void Reprisals(World world, PopulationSystem pop, PopulationData d)
     {
         var players = Pursuit.Players(world);
-        if (players.Count == 0) return;
+        if (players.Count == 0) return;                     // (the first ticks after a load: kept for the next tick)
+        reprisalsNow = false;
         double now = world.GameHours;
         foreach (var o in outlaws)
         {
@@ -357,13 +361,19 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
                 // a successor's squad never loaded near the squad is not in Meitou's save: after a load, place it again on the ground (once)
                 if (!ReferenceEquals(remadeIn, world)) { remadeSuccessors.Clear(); remadeIn = world; }
                 bool there = world.Platoons.All.Any(x => x is not null && !x.Dead && x.TemplateId == sc.Squad);
-                if (!there && world.Uniques.StateOf(sc.Character) == UniqueState.Alive && remadeSuccessors.Add(o.Index))
+                // the session's one placing is spent only once the gang is found or placed: a spot the squad stood on used to spend it, and
+                // the gang never came back (from a review of the code). Seen and then gone this session: beaten, not placed again.
+                if (there) remadeSuccessors.Add(o.Index);
+                else if (world.Uniques.StateOf(sc.Character) == UniqueState.Alive && !remadeSuccessors.Contains(o.Index))
                 {
                     long per = CampRules.Key(o.Index, world.GameHours, null);
                     int doingNow = CampRules.Doing(world.Seed, o.Index, world.GameHours, null);
                     if (SpotFor(world, d, o, per, doingNow) is { } spot && CampRules.MayMove(spot, spot, players)
                         && Pursuit.Make(world, pop, d, sc.Squad, "lw:succ:" + sc.Name, spot, SpotFor(world, d, o, per + 1, doingNow) ?? spot) is not null)
+                    {
+                        remadeSuccessors.Add(o.Index);
                         LwMod.Log($"outlaw successors: {sc.Name}'s gang was not in the save; placed again on {o.Name}'s ground");
+                    }
                 }
                 Roam(world, d, o, sc);
                 continue;
@@ -514,11 +524,13 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
         Latest = this;
         LastWorld = world;
         seenWorld = world;
+        if (Published.Due(world.Tick, 14)) { Shown.Set(() => Summary(null)); ShownSuccessors.Set(SuccessorSummary); }
         byWorld.AddOrUpdate(world, this);
         if (blows.Count > 0) ApplyBlows(world);
         if (world.Tick % 30 == 7 && world.GameHours < GraceHours) Grace(world);
         if (LwMod.Settings.GrowingBounties && world.Tick % PassEvery == 150) { RaiseBounties(world); RaiseSuccessorBounties(world); }
-        if (LwMod.Settings.OutlawReprisals && world.Tick % PassEvery == 250 && population is not null && data is not null) Reprisals(world, population, data);
+        if (WorldReady.TakeLoaded(world, "reprisals")) reprisalsNow = true;          // just loaded: place parties the save left out now
+        if (LwMod.Settings.OutlawReprisals && (world.Tick % PassEvery == 250 || reprisalsNow) && population is not null && data is not null) Reprisals(world, population, data);
         if (LwMod.Settings.OutlawSuccessors && world.Tick % PassEvery == 290 && population is not null && data?.Biomes is not null)
         {
             try { Successors(world, population, data); }
@@ -722,6 +734,8 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
     }
 
     /// <summary>The F10 row's line; each camp's outlaw, activity and spot go to log.txt.</summary>
+    public readonly Published Shown = new(), ShownSuccessors = new();   // the F10 rows' lines
+
     public string Summary(World? world)
     {
         foreach (var o in outlaws)

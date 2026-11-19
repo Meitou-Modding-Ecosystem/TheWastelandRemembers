@@ -6,8 +6,8 @@
 // The roles are vanilla packages (the game's own records): guard the home, guard it day and night, patrol nearby (defending only),
 // rest at home, wander from town to town; and escort another of the player's squads: the vanilla "Bodyguard" contract (what a hired
 // mercenary runs) aimed at that squad's leader, so it follows the squad and fights for it. Meitou keeps no contract target over a save and a
-// running contract cannot be re-aimed, so the escort is ours to keep: which squad escorts which is saved in LwCore ("@escort <id>"), and
-// Refresh aims it again (autonomy off and on, which drops the old contract silently, then the contract) after a load, when the leader changes
+// running contract cannot be re-aimed. We save the link in LwCore using saved squad tags on Meitou versions that expose them.
+// Older Meitou can keep the link during the current session. Refresh aims the escort again (autonomy off and on, which drops the old contract silently, then the contract) after a load, when the leader changes
 // or before the contract runs out. A home is the nearest finished building of the player's to the squad leader.
 //
 // The simulation side (Refresh, every second) only reads and publishes a snapshot; the window's buttons queue Meitou's own commands
@@ -15,6 +15,8 @@
 // so and nothing else changes.
 using System.Numerics;
 using System.Reflection;
+using System.Globalization;
+using System.Runtime.CompilerServices;
 using Meitou.Modding;
 using Meitou.Simulation;
 using Meitou.Simulation.Factions;
@@ -42,8 +44,17 @@ public static class SquadRoles
 
     public const string EscortPackage = "5090-gamedata.base";       // Bodyguard: guard and follow the mission target, protect the squad, medic
     const float EscortHours = 24 * 60;
-    public static string EscortKey(int squadId) => $"@escort {squadId}";
-    static readonly Dictionary<int, long> aimedAt = [];
+    const string LegacyEscortPrefix = "@escort ";
+    const string NextEscortId = "@escort-tag next";
+    const string ModId = "LivingWastelandMeitou";
+    public static string EscortKey(int squadId) => LegacyEscortPrefix + squadId;
+    static string TaggedEscortKey(int id) => FormattableString.Invariant($"@escort-tag {id}");
+
+    sealed class AimTick { public long Tick; }
+    static readonly ConditionalWeakTable<Squad, AimTick> aimedAt = new();
+
+    static readonly PropertyInfo? squadTags = typeof(Squad).GetProperty("ModTags") is { CanRead: true } tags &&
+        typeof(IDictionary<string, string>).IsAssignableFrom(tags.PropertyType) ? tags : null;
 
     public static volatile IReadOnlyList<Row> Squads = [];
     public static volatile string? Problem;
@@ -52,13 +63,65 @@ public static class SquadRoles
     static readonly Type? AutonomyT = Find("Meitou.Simulation.Ai.SetSquadAutonomy"), HomeT = Find("Meitou.Simulation.Ai.SetSquadHome"),
         ChangeT = Find("Meitou.Simulation.Ai.ChangeAi"), ContractT = Find("Meitou.Simulation.Ai.StartContract");
     static readonly PropertyInfo? AutonomousP = typeof(Squad).GetProperty("Autonomous"), HomeP = typeof(Squad).GetProperty("AssignedHome");
-    public static bool Available => AutonomyT is not null && HomeT is not null && ChangeT is not null && ContractT is not null && AutonomousP is not null && HomeP is not null;
+    static readonly ConstructorInfo? autonomy = AutonomyT?.GetConstructors()
+        .Where(c => c.GetParameters() is [{ ParameterType: var squad }, { ParameterType: var on }, .. var rest] &&
+            squad == typeof(int) && on == typeof(bool) && rest.All(p => p.HasDefaultValue))
+        .OrderBy(c => c.GetParameters().Length).FirstOrDefault();
+    static readonly object?[] autonomyDefaults = autonomy?.GetParameters().Skip(2).Select(p => p.DefaultValue).ToArray() ?? [];
+    public static bool Available => autonomy is not null && HomeT is not null && ChangeT is not null && ContractT is not null && AutonomousP is not null && HomeP is not null;
 
     static Type? Find(string name)
     {
         foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
             if (a.GetType(name, false) is { } t) return t;
         return typeof(Squad).Assembly.GetType(name, false);
+    }
+
+    static IDictionary<string, string>? Tags(Squad squad) => squadTags?.GetValue(squad) as IDictionary<string, string>;
+
+    static int TagOf(Squad squad) => Tags(squad) is { } tags && tags.TryGetValue(ModId, out var tag) &&
+        int.TryParse(tag, NumberStyles.None, CultureInfo.InvariantCulture, out int id) && id > 0 ? id : 0;
+
+    static int Identify(Squad squad, LwCore core, IReadOnlyList<Squad> squads)
+    {
+        int id = TagOf(squad);
+        if (id > 0) return id;
+        var tags = Tags(squad);
+        if (tags is null || tags.ContainsKey(ModId)) return 0;
+        // Account for a save that already has tags but has lost its counter.
+        id = 1 + Math.Max(core.Get(NextEscortId), squads.Select(TagOf).DefaultIfEmpty().Max());
+        if (id <= 0) return 0;
+        tags.Add(ModId, id.ToString(CultureInfo.InvariantCulture));
+        core.Set(NextEscortId, id);
+        return id;
+    }
+
+    internal static void SetEscortPreference(World world, LwCore core, int escort, int target)
+    {
+        var squads = SquadManagement.PlayerSquads(world);
+        if (escort == target || squads.FirstOrDefault(s => s.Id == escort) is not { } from) return;
+        var to = squads.FirstOrDefault(s => s.Id == target);
+        if (target >= 0 && to is null) return;
+        if (squadTags is null)
+        {
+            core.Set(EscortKey(escort), target + 1);
+            return;
+        }
+
+        int source = to is null ? TagOf(from) : Identify(from, core, squads);
+        int destination = to is null ? 0 : Identify(to, core, squads);
+        if (source > 0 && (to is null || destination > 0))
+        {
+            core.Set(TaggedEscortKey(source), destination);
+            aimedAt.Remove(from);
+        }
+    }
+
+    internal static void ClearLegacyEscorts(LwCore core)
+    {
+        // A numeric link in an old save lacks evidence of which player squads owned those numbers.
+        foreach (var (key, value) in core.Ordered())
+            if (value != 0 && key.StartsWith(LegacyEscortPrefix, StringComparison.Ordinal)) core.Set(key, 0);
     }
 
     /// <summary>The player's squads as the window shows them (read only).</summary>
@@ -70,7 +133,10 @@ public static class SquadRoles
             var rows = new List<Row>();
             var table = world.Characters;
             int player = world.Player.Faction;
-            foreach (var sq in SquadManagement.PlayerSquads(world))
+            var squads = SquadManagement.PlayerSquads(world);
+            var tagged = squadTags is null ? null : squads.Select(s => (Tag: TagOf(s), s.Id))
+                .Where(s => s.Tag > 0).GroupBy(s => s.Tag).Where(g => g.Count() == 1).ToDictionary(g => g.Key, g => g.Single().Id);
+            foreach (var sq in squads)
             {
                 int alive = 0;
                 string? leaderName = null;
@@ -89,20 +155,23 @@ public static class SquadRoles
                 if (auto && package is not null && Array.FindIndex(Roles, r => r.Package == package) < 0) role = -1;     // a package not ours
                 var (nearId, nearName) = at is { } p ? Nearest(world, player, p) : (null, null);
                 string label = sq.Name is { Length: > 0 } n ? n : $"{leaderName}'s squad";
-                int escortOf = core.Get(EscortKey(sq.Id)) - 1;
+                int escortOf = tagged is null ? core.Get(EscortKey(sq.Id)) - 1 :
+                    tagged.GetValueOrDefault(core.Get(TaggedEscortKey(TagOf(sq))), -1);
                 var lead = !sq.Leader.IsNone ? sq.Leader : sq.Members.FirstOrDefault();
                 rows.Add(new Row(sq.Id, label, alive, auto, role, home is null ? null : HomeName(world, home), nearId, nearName, lead, escortOf));
             }
-            // escorts: forget one whose target squad is gone; aim one whose contract is not aimed at its target's leader, or runs out soon
-            foreach (var r in rows.Where(r => r.EscortOf >= 0))
-            {
-                if (rows.FirstOrDefault(x => x.Id == r.EscortOf) is not { } target || target.Id == r.Id) { core.Set(EscortKey(r.Id), 0); continue; }
-                if (aimedAt.TryGetValue(r.Id, out long last) && world.Tick - last < 30 * 10 && world.Tick >= last) continue;
-                var (aim, end) = Contract(world, r.Id);
-                if (r.Autonomous && aim == target.Leader && end - world.GameHours > 24) continue;
-                aimedAt[r.Id] = world.Tick;
-                Aim(r.Id, target.Leader);
-            }
+            // A target can temporarily have no row (for example when its members are off screen). Keep its assignment.
+            if (Context is not null)
+                foreach (var r in rows.Where(r => r.EscortOf >= 0))
+                {
+                    if (rows.FirstOrDefault(x => x.Id == r.EscortOf) is not { } target || target.Id == r.Id ||
+                        world.Squads.Find(r.Id) is not { } squad) continue;
+                    if (aimedAt.TryGetValue(squad, out var last) && world.Tick >= last.Tick && world.Tick - last.Tick < 30 * 10) continue;
+                    var (aim, end) = Contract(world, r.Id);
+                    if (r.Autonomous && aim == target.Leader && end - world.GameHours > 24) continue;
+                    aimedAt.GetOrCreateValue(squad).Tick = world.Tick;
+                    Aim(r.Id, target.Leader);
+                }
             Squads = rows;
             Problem = null;
         }
@@ -120,11 +189,14 @@ public static class SquadRoles
         return (aim, end);
     }
 
+    // Meitou added optional Independent/Owner arguments. Reflection needs their defaults supplied explicitly.
+    static object? AutonomyCommand(int squadId, bool on) => autonomy?.Invoke([squadId, on, .. autonomyDefaults]);
+
     /// <summary>Aims an escort: autonomy off and on (the old contract goes without its end talk), then the Bodyguard contract on the leader.</summary>
     static void Aim(int squadId, CharacterId leader)
     {
-        Send(Activator.CreateInstance(AutonomyT!, squadId, false));
-        Send(Activator.CreateInstance(AutonomyT!, squadId, true));
+        Send(AutonomyCommand(squadId, false));
+        Send(AutonomyCommand(squadId, true));
         Send(Activator.CreateInstance(ContractT!, squadId, EscortPackage, EscortHours, (CharacterId?)leader));
     }
 
@@ -209,9 +281,9 @@ public static class SquadRoles
         }
         var role = Roles[choice];
         picked[squadId] = (role.Label, DateTime.UtcNow);
-        if (role.Package is null) { Send(Activator.CreateInstance(AutonomyT!, squadId, false)); return; }
-        if (row.EscortOf >= 0) Send(Activator.CreateInstance(AutonomyT!, squadId, false));     // drop the escort contract first
-        if (!row.Autonomous || row.EscortOf >= 0) Send(Activator.CreateInstance(AutonomyT!, squadId, true));
+        if (role.Package is null) { Send(AutonomyCommand(squadId, false)); return; }
+        if (row.EscortOf >= 0) Send(AutonomyCommand(squadId, false));     // drop the escort contract first
+        if (!row.Autonomous || row.EscortOf >= 0) Send(AutonomyCommand(squadId, true));
         Send(Activator.CreateInstance(ChangeT!, squadId, role.Package));
         if (LwMod.Settings.LogChanges) LwMod.Log($"squad roles: {row.Label} -> {role.Label} ({role.Package})");
     }

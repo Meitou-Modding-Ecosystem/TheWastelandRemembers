@@ -14,8 +14,11 @@ public class MapMarkRulesTests
             hoursNow: 48);
         Assert.Equal(["Hollin One-Arm", "Kesh Twice-Beaten"], marks.Where(m => m.Kind == MarkKind.Rival).Select(m => m.Label));
         Assert.Contains("hunting your squad", marks.First(m => m.Label == "Hollin One-Arm").Tooltip);
-        Assert.Equal("Outlaw's camp\traiding", Assert.Single(marks, m => m.Kind == MarkKind.Outlaw).Tooltip);
-        Assert.Equal("Okran's Shield", Assert.Single(marks, m => m.Kind == MarkKind.News).Label);   // last week's news only
+        Assert.Equal("\tOutlaw's camp, raiding", Assert.Single(marks, m => m.Kind == MarkKind.Outlaw).Tooltip);
+        var news = Assert.Single(marks, m => m.Kind == MarkKind.News);                              // last week's news only
+        Assert.Equal("", news.Label);                                                                // the place has a label of its own
+        Assert.Equal("\tNews from Okran's Shield, day 2\n\tOkran's Shield has fallen.", news.Tooltip);   // rows with no label
+        Assert.Equal("\tRival, hunting your squad\n\tLost an arm to your squad", marks.First(m => m.Label == "Hollin One-Arm").Tooltip);
     }
 
     [Fact]
@@ -52,6 +55,24 @@ public class NewsAskRulesTests
         Assert.Equal("Word is, a caravan of the Traders Guild went missing.", NewsAskRules.Answer(live[..1], 0, 0, 50000, 1).Line);
         Assert.Equal(-1, NewsAskRules.Answer([], 0, 0, 50000, 0).Index);
     }
+
+    [Fact]
+    public void News_about_the_squad_comes_last_and_is_told_as_such()
+    {
+        var live = new List<(string, float, float, int, double)>
+        {
+            ("Knife defeated Ressa Vane at Scratch.", 0, 0, 65, 10),
+            ("A caravan of the Traders Guild went missing.", 0, 0, 40, 5),
+        };
+        string[] squad = ["Knife", "Zoo"];
+        var (line, i) = NewsAskRules.Answer(live, 0, 0, 50000, 1, squad);
+        Assert.Equal(1, i);                                                         // other news first, though lighter
+        var (own, j) = NewsAskRules.Answer(live[..1], 0, 0, 50000, 1, squad);
+        Assert.Equal(0, j);
+        Assert.Equal("Everyone's on about your lot. Knife defeated Ressa Vane at Scratch.", own);
+        Assert.False(NewsAskRules.Names("Knifeman Pell went missing.", squad));     // whole names only
+        Assert.True(NewsAskRules.Names("They say Zoo did it.", squad));
+    }
 }
 
 public class RelationRulesTests
@@ -70,5 +91,24 @@ public class RelationRulesTests
         Assert.Null(RelationRules.Line("Shek Kingdom", true, "Debug", ""));
         Assert.Null(RelationRules.Line("Shek Kingdom", true, "SomethingNew", ""));
         Assert.Null(RelationRules.Line("", true, "Deed", "Killed"));
+    }
+}
+
+public class NewsAskRepeatTests
+{
+    [Fact]
+    public void A_piece_told_lately_is_not_told_again_and_people_say_nothing_new()
+    {
+        var live = new List<(string, float, float, int, double)> { ("A caravan of the Traders Guild went missing.", 0, 0, 40, 10) };
+        var (_, first) = NewsAskRules.Answer(live, 0, 0, 50000, 1, null, [double.MinValue], now: 20);
+        Assert.Equal(0, first);
+        var (line, again) = NewsAskRules.Answer(live, 0, 0, 50000, 1, null, [20], now: 22);      // asked two hours later, next door
+        Assert.Equal(-1, again);
+        Assert.Equal("Nothing you haven't heard.", line);
+        Assert.Equal(0, NewsAskRules.Answer(live, 0, 0, 50000, 1, null, [20], now: 20 + NewsAskRules.TellAgainAfter).Index);
+        string[] squad = ["Knife"];
+        var ours = new List<(string, float, float, int, double)> { ("Knife defeated Ressa Vane at Scratch.", 0, 0, 65, 10) };
+        Assert.Equal(-1, NewsAskRules.Answer(ours, 0, 0, 50000, 1, squad, [20], now: 20 + NewsAskRules.TellAgainAfter).Index);   // ours waits a day
+        Assert.Equal("Haven't heard a thing.", NewsAskRules.Answer([], 0, 0, 50000, 2).Line);  // nothing at all: as before
     }
 }

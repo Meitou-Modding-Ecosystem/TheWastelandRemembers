@@ -17,6 +17,7 @@
     <Compile Include="../LivingWastelandMeitou/Notoriety.cs" Link="Notoriety.cs" />
     <Compile Include="../LivingWastelandMeitou/StatsPanel.cs" Link="StatsPanel.cs" />
     <Compile Include="../LivingWastelandMeitou/RecapLink.cs" Link="RecapLink.cs" />
+    <Compile Include="../LivingWastelandMeitou/ArenaLink.cs" Link="ArenaLink.cs" />
     <Compile Include="../LivingWastelandMeitou/TransportLink.cs" Link="TransportLink.cs" />
     <Compile Include="../LivingWastelandMeitou/SettingsFile.cs" Link="SettingsFile.cs" />
     <Compile Include="../LivingWastelandMeitou/CompanionLink.cs" Link="CompanionLink.cs" />

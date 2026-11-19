@@ -146,7 +146,11 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
 
     /// <summary>What the helper knows about a victim a player character struck, kept until it dies, recovers or a game day passes.</summary>
     sealed record Struck(string Striker, string Name, string Faction, bool Leader, string? Named, string? Town, string? Owner, bool Local, double Hours,
-        string? UniqueRecord = null, System.Numerics.Vector3? At = null);
+        string? UniqueRecord = null, System.Numerics.Vector3? At = null)
+    {
+        /// <summary>Struck in an arena bout (saved with named victims: one can bleed out after a reload).</summary>
+        public bool Sport { get; init; }
+    }
 
     readonly Dictionary<CharacterId, Struck> struck = [];
 
@@ -240,8 +244,15 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         if (victim.Medical is { } vm) stumpsBefore[hit.Victim] = Stumps(vm);
         var attacker = table.TryResolveNext(hit.Attacker, out int a) ? table.Cold(a) : null;
         string? striker = attacker is { IsPlayer: true } ? deeds.Who(attacker) : null;
+        // a blow in one of Proving Grounds' arena bouts (striker and victim both in it) is sport: the record keeps it, but it is no fight the
+        // squad is in, heats no town and makes no rival (ArenaLink.cs)
+        bool sport = ArenaLink.Sport(hit.Attacker, hit.Victim);
+#if !SQUAD_RECORD_ONLY
+        if (sport) LogTally.Add("arena blows");
+#endif
         // the squad's foes in this fight (FoesUp): whoever it struck, and whoever struck it
-        if (attacker is { IsPlayer: true } && !victim.IsPlayer) foes.Add(hit.Victim);
+        if (sport) { }
+        else if (attacker is { IsPlayer: true } && !victim.IsPlayer) foes.Add(hit.Victim);
         else if (victim.IsPlayer && attacker is { IsPlayer: false }) foes.Add(hit.Attacker);
         double amount = (hit.Damage.Cut + hit.Damage.Blunt + hit.Damage.Pierce) * hit.Damage.Scale;
 
@@ -267,12 +278,12 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             RecordHost.Log($"kill credit: someone else struck {victim.Name} after your squad; no later kill credit");
 #if !SQUAD_RECORD_ONLY
         bool leads = victim.SquadId >= 0 && world.Squads.Find(victim.SquadId) is { } vsq && vsq.Leader == hit.Victim;
-        RivalsSystem.For(world)?.Hit(world, hit, victim, attacker, striker, leads);
+        if (!sport) RivalsSystem.For(world)?.Hit(world, hit, victim, attacker, striker, leads);
 #endif
         if (striker is null || victim.IsPlayer || victim.Medical is not { } med) return;
 
         lastEnemy = hit.Victim;
-        var info = Snapshot(world, hit.Victim, v, victim, striker);
+        var info = Snapshot(world, hit.Victim, v, victim, striker) with { Sport = sport };
         bool killed = hit.VictimWasAlive && med.Dead;
         bool downed = !killed && !hit.VictimWasIncapacitated && med.Incapacitated;
         if (killed)
@@ -371,7 +382,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     void TownHeat(Struck k, double amount, bool blood)
     {
 #if !SQUAD_RECORD_ONLY
-        if (!k.Local) return;
+        if (!k.Local || k.Sport) return;
         string tierBefore = HeatMap.Tier(deeds.Heat.Here(k.Town!));
         if (blood) deeds.Heat.AddBlood(k.Town!, k.Owner!, amount);
         else deeds.Heat.AddCrime(k.Town!, k.Owner!, amount);
@@ -557,8 +568,9 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             }
             last[id] = (at, down, arms, legs, fed);
             if (cold.Animal is null) squad.Add((me, id, at, down));
+            if (cold.Animal is null && !down) RecapLink.SquadIsAt(at);      // a place for Recap moments that name none
             if (down) downNow.Add(me);
-            else if (cold.InCombat && !hot[s].Dormant)
+            else if (cold.InCombat && !hot[s].Dormant)        // a Proving Grounds bout counts too: a win there gets its victory line
             {
                 fighting.Add(me);
                 fightPlace ??= townHere ?? "the wilds";
@@ -604,7 +616,26 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         var table = world.Characters;
         foreach (var (body, name, hours) in toMourn.ToList())
         {
-            if (!table.TryResolveNext(body, out int b) || world.GameHours - hours > 1) { toMourn.Remove((body, name, hours)); continue; }
+            int b = -1;
+            bool there = !body.IsNone && table.TryResolveNext(body, out b) && table.Cold(b) is { } bc && deeds.Who(bc) == name;   // a reused handle is someone else
+            if (!there || world.GameHours - hours > 1)
+            {
+                // nobody came to the body within the hour (seen in play: no keepsake at all), or the body is gone (or a save was loaded): the
+                // nearest standing squadmate still gets it, without the words over the body. Nobody standing yet: it waits (two days at most).
+                var bodyAt = there ? table.Next[b].Position : (System.Numerics.Vector3?)null;
+                var heir = squad.Where(m => !m.Down).OrderBy(m => bodyAt is { } p ? System.Numerics.Vector3.Distance(m.At, p) : 0).FirstOrDefault();
+                if (heir.Name is null)
+                {
+                    if (world.GameHours - hours > 48 || world.GameHours < hours - 1) { toMourn.Remove((body, name, hours)); RecordHost.Log($"memorial: nobody stood to keep something of {name}'s"); }
+                    continue;
+                }
+                toMourn.Remove((body, name, hours));
+#if !SQUAD_RECORD_ONLY
+                Trophies.GiveKeepsake(world, heir.Id, deeds.Record.Display(heir.Name), deeds.Record.Display(name), name);
+                RecordHost.Log($"memorial: nobody came to {name}'s body; {heir.Name} has the keepsake");
+#endif
+                continue;
+            }
             var at = table.Next[b].Position;
             var near = squad.Where(m => !m.Down).OrderBy(m => System.Numerics.Vector3.Distance(m.At, at)).FirstOrDefault();
             if (near.Name is null || System.Numerics.Vector3.Distance(near.At, at) > 2500) continue;
@@ -747,6 +778,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     void Register(World world)
     {
         if (registered) return;
+        RecapLink.ForgetSquadPlace();
         LwDeeds.Register(world, deeds);
         registered = true;
     }
@@ -763,31 +795,42 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         deeds.Heat.Write(w);
 #endif
         WriteStruck(w);
+        // keepsakes still to be given (after the struck list, so older builds stop reading before it): the body's handle doesn't survive a
+        // load, the fallen's name does (from a review of the code: a save before the fight ended lost the keepsake)
+        w.Write(MournTag);
+        w.Write(toMourn.Count);
+        foreach (var (_, name, hours) in toMourn) { w.Write(name); w.Write(hours); }
     }
+
+    const int MournTag = 0x4C4D524E;   // "LMRN"
 
     /// <summary>The named victims the squad struck last and that may still bleed out (format 1). Others cannot be found after a load.</summary>
     void WriteStruck(BinaryWriter w)
     {
         var named = struck.Values.Where(k => k.UniqueRecord is not null).GroupBy(k => k.UniqueRecord!).Select(g => g.Last())
             .Concat(pendingNamed.Values).GroupBy(k => k.UniqueRecord!).Select(g => g.First()).OrderBy(k => k.UniqueRecord, StringComparer.Ordinal).ToList();
-        w.Write(1);
+        w.Write(2);                                     // 2: each entry ends with Sport (an arena bout's blow)
         w.Write(named.Count);
         foreach (var k in named)
         {
             w.Write(k.UniqueRecord!); w.Write(k.Striker); w.Write(k.Name); w.Write(k.Faction); w.Write(k.Leader); w.Write(k.Named ?? "");
-            w.Write(k.Town ?? ""); w.Write(k.Owner ?? ""); w.Write(k.Local); w.Write(k.Hours);
+            w.Write(k.Town ?? ""); w.Write(k.Owner ?? ""); w.Write(k.Local); w.Write(k.Hours); w.Write(k.Sport);
         }
     }
 
     void ReadStruck(BinaryReader r)
     {
         pendingNamed.Clear();
-        if (r.BaseStream.Position >= r.BaseStream.Length || r.ReadInt32() != 1) return;    // a save from before this was kept
+        if (r.BaseStream.Position >= r.BaseStream.Length) return;    // a save from before this was kept
+        int format = r.ReadInt32();
+        if (format is not (1 or 2)) return;
         for (int n = r.ReadInt32(); n > 0; n--)
         {
             string rec = r.ReadString();
             var k = new Struck(r.ReadString(), r.ReadString(), r.ReadString(), r.ReadBoolean(), Blank(r.ReadString()), Blank(r.ReadString()),
                 Blank(r.ReadString()), r.ReadBoolean(), r.ReadDouble(), rec);
+            // a named fighter struck in a bout can bleed out after a reload: still sport, no heat (from a review of the code)
+            if (format >= 2) k = k with { Sport = r.ReadBoolean() };
             pendingNamed[rec] = k;
         }
 
@@ -808,6 +851,9 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             deeds.Heat.Read(r);
 #endif
             ReadStruck(r);
+            toMourn.Clear();
+            if (r.BaseStream.Length - r.BaseStream.Position >= 8 && r.ReadInt32() == MournTag)
+                for (int n = r.ReadInt32(); n > 0; n--) toMourn.Add((CharacterId.None, r.ReadString(), r.ReadDouble()));
         }
         catch (Exception e) when (e is EndOfStreamException or IOException or InvalidDataException or FormatException)
         {

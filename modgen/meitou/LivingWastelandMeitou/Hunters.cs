@@ -1,4 +1,4 @@
-// Bounty hunters (Meitou only, behind the "Bounty hunters (test)" setting, off by default). Data: content/bounty_hunters.json (the "Bounty
+// Bounty hunters (Meitou only, setting "Towns hire bounty hunters", on by default since build ai). Data: content/bounty_hunters.json (the "Bounty
 // Crews" faction, hostile to the player only, and its "Bounty crew" squad).
 //
 // While a town has the squad marked as hunted (town heat 24+, Heat.cs), it hires one crew at most every three days. The crew is a
@@ -6,7 +6,7 @@
 // (a short-range patrol job: see Pursuit.Steer) and the player's position as its point, so the population system walks it along the roads (StandIn). Every
 // pass the point follows the player; once the crew is loaded its people are walked at the nearest player character (TaskStart.Walk, as
 // Raid Commander does) and, being hostile, fight on sight. After three days, or when it is dead, the crew is let go (no longer persistent).
-// Platoon ids change on load, so crews are saved by town and last position and found again by template nearest that position.
+// Platoon ids change on load. New crews use a saved party tag where supported; old saves fall back to template and last position.
 using System.Numerics;
 using System.Reflection;
 using Meitou.Data.Gameplay;
@@ -25,6 +25,8 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
     const int Format = 1;
 
     readonly List<Crew> crews = [];
+    public readonly Published Shown = new();                // the F10 row's line
+    bool placeNow;                                          // a save just loaded (WorldReady): pass at the next tick the squad is seen
 
     /// <summary>The bounty crews on the hunt (WastelandApi).</summary>
     public IReadOnlyList<Crew> Crews => crews;
@@ -38,7 +40,9 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
     {
         Latest = this;
         seenWorld = world;
-        if (failed || !LwMod.Settings.BountyHunters || world.Tick % PassEvery != 200 || population is null || data is null) return;
+        if (Published.Due(world.Tick, 11)) Shown.Set(Summary);
+        if (crews.Count > 0 && WorldReady.TakeLoaded(world, "hunters")) placeNow = true;   // just loaded: place crews the save left out now
+        if (failed || !LwMod.Settings.BountyHunters || (world.Tick % PassEvery != 200 && !placeNow) || population is null || data is null) return;
         try
         {
             Pass(world, population, data);
@@ -53,7 +57,8 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
     void Pass(World world, PopulationSystem pop, PopulationData d)
     {
         var players = Pursuit.Players(world);
-        if (players.Count == 0) return;
+        if (players.Count == 0) return;                     // (the first ticks after a load: kept for the next tick)
+        placeNow = false;
         double now = world.GameHours;
 
         // crews other mods asked for (WastelandApi.SendHunters), first; a request waits its turn under Rivalry Core's cap, a day at most
@@ -78,10 +83,13 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         }
 
         // crews on the hunt
-        var claimed = new HashSet<int>();
-        foreach (var crew in crews.ToList())
+        var list = crews.ToList();
+        var matched = MatchCrews(world, list);
+        for (int ci = 0; ci < list.Count; ci++)
         {
-            var p = Pursuit.Find(world, crewSquad, crew.X, crew.Z, claimed);
+            var crew = list[ci];
+            var p = matched[ci];
+            bool tagged = crew.Tagged || p is not null && ReadTag(p) == Tag(crew);
             // a crew never loaded near the squad has no characters yet, and Meitou's save keeps no such squad (SaveCapture writes stored or
             // campaign platoons only): after a load it is missing, not beaten. Place it again where it was, once per session.
             var key = (crew.Town, crew.SentHours);
@@ -89,12 +97,17 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
             var seen = presence.Check(world, key, p is not null);
             // killed just before a save: Meitou keeps a killed squad in the save as a dead platoon (v0.20.2-nightly.20261117, #860); it was
             // beaten, not missing, so it is not placed again
-            if (seen == Presence<(string, double)>.Verdict.PlaceAgain && Pursuit.DeadNear(world, crewSquad, crew.X, crew.Z))
+            if (seen == Presence<(string, double)>.Verdict.PlaceAgain && (!tagged || modTag is null) &&
+                Pursuit.DeadNear(world, crewSquad, crew.X, crew.Z, eligible: IsUntagged))
                 LwMod.Log($"bounty hunters: the crew from {crew.Town} is in the save as dead");
             else if (seen == Presence<(string, double)>.Verdict.PlaceAgain && !late)
             {
                 p = Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{crew.Town}:{crew.SentHours:0.00}", (crew.X, crew.Z), players[0]);
-                if (p is not null) LwMod.Log($"bounty hunters: the crew from {crew.Town} was not in the save; placed again at {crew.X:0} {crew.Z:0}");
+                if (p is not null)
+                {
+                    tagged = Mark(p, crew);
+                    LwMod.Log($"bounty hunters: the crew from {crew.Town} was not in the save; placed again at {crew.X:0} {crew.Z:0}");
+                }
                 else { presence.Forget(key); continue; }          // try again next pass
             }
             bool lost = p is not null && !p.Dead && Pursuit.Beaten(world, p);
@@ -111,13 +124,19 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
                 LwMod.Log($"bounty hunters: the crew from {crew.Town} is {(beaten ? "gone (beaten)" : "giving up")}");
                 continue;
             }
-            claimed.Add(p.Id);
             Pursuit.Steer(world, p, players, BarkLines.Crew(crew.Town, (int)crew.SentHours));
             int i = crews.IndexOf(crew);
-            crews[i] = crew with { X = p.Position.X, Z = p.Position.Y };
+            crews[i] = crew with { X = p.Position.X, Z = p.Position.Y, Tagged = tagged };
         }
         RivalryLink.Keep(world, "crew:", crews.Select(c => PartyClaims.Crew(c.Town, c.SentHours)).ToList());
+        if (crews.Count > 0 && (int)now != loggedHour)            // once a game hour: where the crews are, for play logs
+        {
+            loggedHour = (int)now;
+            LwMod.Log($"bounty hunters: {Summary()}");
+        }
     }
+
+    int loggedHour = -1;
 
     /// <summary>Makes a crew from the town and sends it after the squad: false when no start point was found, the hostile slot is taken
     /// (Rivalry Core) or the crew could not be made.</summary>
@@ -128,13 +147,51 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         var start = HunterRules.Start(world.Seed, town, now, near.X, near.Z,
             (x, z) => walk.IsWalkable(x, z) && walk.GroundHeight(x, z) - walk.TerrainHeight(x, z) < 5f && CampRules.MayMove((x, z), (x, z), players));
         if (start is not { } at || !RivalryLink.MaySend(world, PartyClaims.Crew(town, now))
-            || Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{world.Tick}", at, near) is null) return false;
-        crews.Add(new Crew(town, now, at.X, at.Z));
+            || Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{world.Tick}", at, near) is not { } platoon) return false;
+        var crew = new Crew(town, now, at.X, at.Z);
+        crews.Add(crew with { Tagged = Mark(platoon, crew) });
         lastSent[town] = now;
         world.Post($"Word on the road: {town} has hired blades to bring you in.");
         RecapLink.Moment($"{town} hired bounty hunters to bring your squad in.", town, 65);
         LwMod.Log($"bounty hunters: {town} ({why}) sent a crew from {at.X:0} {at.Z:0}, day {now / 24:0.0}");
         return true;
+    }
+
+    static readonly PropertyInfo? modTag = typeof(Platoon).GetProperty("ModTag") is
+        { CanRead: true, CanWrite: true, PropertyType: var type } property && type == typeof(string) ? property : null;
+
+    static string Tag(Crew crew) => FormattableString.Invariant($"lw:bounty:{crew.Town}:{crew.SentHours:R}");
+
+    static string? ReadTag(Platoon platoon) => modTag?.GetValue(platoon) as string;
+
+    static bool IsUntagged(Platoon platoon) => string.IsNullOrEmpty(ReadTag(platoon));
+
+    static bool Mark(Platoon platoon, Crew crew)
+    {
+        if (modTag is null) return false;
+        modTag.SetValue(platoon, Tag(crew));
+        return true;
+    }
+
+    Platoon?[] MatchCrews(World world, IReadOnlyList<Crew> active)
+    {
+        // An exact tag also matches a dead platoon. An older save only gets the proximity fallback on untagged parties.
+        var tagged = world.Platoons.All.Where(p => p is not null && p.TemplateId == crewSquad && !IsUntagged(p))
+            .ToLookup(p => ReadTag(p!), StringComparer.Ordinal);
+        var resolved = new Platoon?[active.Count];
+        var legacy = new List<int>();
+        for (int i = 0; i < active.Count; i++)
+        {
+            var crew = active[i];
+            var exact = tagged[Tag(crew)].Take(2).ToArray();
+            if (exact.Length == 1) resolved[i] = exact[0];
+            else if (modTag is null || !crew.Tagged && exact.Length == 0) legacy.Add(i);
+        }
+        if (legacy.Count == 0) return resolved;
+
+        var near = Pursuit.Match(world, crewSquad, legacy.Select(i => (active[i].X, active[i].Z)).ToArray(), IsUntagged);
+        for (int i = 0; i < legacy.Count; i++) resolved[legacy[i]] = near[i];
+        return resolved;
     }
 
     readonly List<CrewRequest> requests = [];
@@ -154,17 +211,22 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         if (crews.Count == 0) return "no crews hunting you";
         var w = seenWorld;
         var players = w is null ? [] : Pursuit.Players(w);
-        return string.Join("; ", crews.Select(c =>
+        var matched = w is null ? null : MatchCrews(w, crews);
+        return string.Join("; ", crews.Select((c, i) =>
         {
             string far = "";
+            var found = matched?[i];
+            // loaded, its people are where it is (the platoon's own point can stay put: seen in play, 375 m for 13 game hours)
+            var at = found is { State: PlatoonState.Loaded } && w!.Squads.Find(found.SquadId) is { } sq && Pursuit.MembersAt(w, sq) is { } m
+                ? m : new Vector2(c.X, c.Z);
             if (players.Count > 0)
             {
-                var n = Pursuit.Nearest(players, c.X, c.Z);
-                far = $", about {MathF.Sqrt((n.X - c.X) * (n.X - c.X) + (n.Z - c.Z) * (n.Z - c.Z)) / 10:0} m from you";
+                var n = Pursuit.Nearest(players, at.X, at.Y);
+                far = $", about {MathF.Sqrt((n.X - at.X) * (n.X - at.X) + (n.Z - at.Y) * (n.Z - at.Y)) / 10:0} m from you";
             }
             string ago = w is null ? "" : $", sent {Math.Max(0, w.GameHours - c.SentHours):0.0} game hours ago";
-            string state = w is not null && Pursuit.Find(w, crewSquad, c.X, c.Z, []) is { } p
-                ? p.State == PlatoonState.Loaded ? (Pursuit.Stage(p.SquadId) is { } st ? $", in the world ({st})" : ", in the world (no order yet)")
+            string state = w is not null && found is { Dead: false } p
+                ? p.State == PlatoonState.Loaded ? (Pursuit.Stage(w, p.SquadId) is { } st ? $", in the world ({st})" : ", in the world (no order yet)")
                     : p.State == PlatoonState.Unloaded ? ", on the road (off screen)" : ", arriving"
                 : ", not found";
             return $"a crew from {c.Town}{far}{ago}{state}";
@@ -187,8 +249,14 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         w.Write(RequestsTag);
         w.Write(requests.Count);
         foreach (var q in requests) { w.Write(q.Town); w.Write(q.Reason); w.Write(q.Hours); }
+        if (crews.Any(c => c.Tagged))
+        {
+            w.Write(CrewTags);
+            foreach (var c in crews) w.Write(c.Tagged);
+        }
     }
 
+    const int CrewTags = 0x4C435447;
     const int RequestsTag = 0x4C525153;   // "LRQS"
 
     public void Read(Stream stream)
@@ -201,13 +269,17 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         for (int n = r.ReadInt32(); n > 0; n--) crews.Add(new Crew(r.ReadString(), r.ReadDouble(), r.ReadSingle(), r.ReadSingle()));
         for (int n = r.ReadInt32(); n > 0; n--) lastSent[r.ReadString()] = r.ReadDouble();
         if (stream.Length - stream.Position >= 8 && r.ReadInt32() == RequestsTag)
+        {
             for (int n = r.ReadInt32(); n > 0; n--) requests.Add(new CrewRequest(r.ReadString(), r.ReadString(), r.ReadDouble()));
+            if (stream.Length - stream.Position >= sizeof(int) + crews.Count && r.ReadInt32() == CrewTags)
+                for (int i = 0; i < crews.Count; i++) crews[i] = crews[i] with { Tagged = r.ReadBoolean() };
+        }
     }
 
     public void Hash(ref StateHasher h)
     {
         h.Add(crews.Count);
-        foreach (var c in crews) { h.Add(SquadRecord.StableHash(c.Town)); h.Add(c.SentHours); }
+        foreach (var c in crews) { h.Add(SquadRecord.StableHash(c.Town)); h.Add(c.SentHours); if (c.Tagged) h.Add(CrewTags); }
         h.Add(lastSent.Count);
         h.Add(requests.Count);
     }
@@ -265,7 +337,24 @@ public static class Pursuit
         return platoon;
     }
 
-    /// <summary>The living platoon of a template nearest a last known position, not already claimed this pass.</summary>
+    /// <summary>Platoons of a template for several last known points at once, closest pairs first, each platoon given once; null where none is left.</summary>
+    public static Platoon?[] Match(World world, string templateId, IReadOnlyList<(float X, float Z)> points, Func<Platoon, bool>? eligible = null)
+    {
+        var result = new Platoon?[points.Count];
+        var live = world.Platoons.All.Where(p => p is not null && !p.Dead && p.TemplateId == templateId && (eligible is null || eligible(p))).Select(p => p!).ToList();
+        var pairs = new List<(float D, int Point, Platoon P)>();
+        for (int i = 0; i < points.Count; i++)
+            foreach (var p in live) pairs.Add((Vector2.Distance(p.Position, new Vector2(points[i].X, points[i].Z)), i, p));
+        var used = new HashSet<int>();
+        foreach (var (_, i, p) in pairs.OrderBy(x => x.D))
+        {
+            if (result[i] is not null || used.Contains(p.Id)) continue;
+            result[i] = p;
+            used.Add(p.Id);
+        }
+        return result;
+    }
+
     public static Platoon? Find(World world, string templateId, float x, float z, HashSet<int> claimed)
     {
         Platoon? best = null;
@@ -281,38 +370,47 @@ public static class Pursuit
 
     /// <summary>Whether a dead platoon of the template lies within <paramref name="within"/> of a last known position: a squad killed before
     /// a save, kept in it as dead (Meitou #860).</summary>
-    public static bool DeadNear(World world, string templateId, float x, float z, float within = 3000)
+    public static bool DeadNear(World world, string templateId, float x, float z, float within = 3000, Func<Platoon, bool>? eligible = null)
     {
         foreach (var p in world.Platoons.All)
-            if (p is { Dead: true } && p.TemplateId == templateId && Vector2.Distance(p.Position, new Vector2(x, z)) <= within) return true;
+            if (p is { Dead: true } && p.TemplateId == templateId && (eligible is null || eligible(p)) && Vector2.Distance(p.Position, new Vector2(x, z)) <= within) return true;
         return false;
     }
 
     /// <summary>Points the stand-in (or, loaded, each able member) at the nearest player character.</summary>
-    static readonly Dictionary<int, Vector2> lastAt = [];
-    static readonly Dictionary<int, (long Tick, string Package)> aimed = [];   // squad -> when its contract was last given, and which
+    sealed class RoadProgress { public Vector2? Last; }
+    sealed class SquadProgress
+    {
+        public string? Package;
+        public float Best = float.MaxValue;
+        public int Still;
+    }
+    static readonly System.Runtime.CompilerServices.ConditionalWeakTable<Platoon, RoadProgress> roadProgress = new();
+    static readonly System.Runtime.CompilerServices.ConditionalWeakTable<Squad, SquadProgress> squadProgress = new();
     public const string AssaultPackage = "2666-gamedata.base";   // Assault target squad (agg): attack enemies, follow leader, assault the target
     public const string FollowPackage = "5090-gamedata.base";    // Bodyguard: follow mission target (closes the distance), attack enemies
 
-    public static Meitou.Simulation.Ai.AiSystem? Ai;
     static readonly MethodInfo? orderAssault = typeof(Meitou.Simulation.Ai.AiSystem).GetMethod("OrderAssault", BindingFlags.Public | BindingFlags.Instance);
 
     /// <summary>Every standing member not already fighting is ordered to attack the target (the order vanilla dialogue's Assault gives).</summary>
     static void Assault(World world, Squad squad, CharacterId target)
     {
-        if (Ai is null || orderAssault is null) return;
+        if (orderAssault is null || world.Systems.OfType<Meitou.Simulation.Ai.AiSystem>().FirstOrDefault() is not { } ai) return;
         var table = world.Characters;
         bool any = false;
         foreach (var m in squad.Members)
         {
             if (!table.TryResolveNext(m, out int s) || table.Cold(s) is not { } c || c.InCombat || c.Medical is { Incapacitated: true }) continue;
-            try { any |= orderAssault.Invoke(Ai, [world, m, target]) is true; } catch { return; }
+            try { any |= orderAssault.Invoke(ai, [world, m, target]) is true; } catch { return; }
         }
-        if (any) aimed[squad.Id] = (world.Tick, AssaultPackage);
+        if (any) squadProgress.GetOrCreateValue(squad).Package = AssaultPackage;
     }
 
     /// <summary>What a loaded pursuer was last told (the F10 rows): following, attacking, or null.</summary>
-    public static string? Stage(int squadId) => aimed.TryGetValue(squadId, out var a) ? (a.Package == AssaultPackage ? "attacking" : "following you") : null;
+    public static string? Stage(World world, int squadId) =>
+        world.Squads.Find(squadId) is { } squad && squadProgress.TryGetValue(squad, out var progress) && progress.Package is { } package
+            ? package == AssaultPackage ? "attacking" : "following you"
+            : null;
 
     static System.Numerics.Vector3? table0(World world, CharacterId id) =>
         world.Characters.TryResolveNext(id, out int s) ? world.Characters.Next[s].Position : null;
@@ -351,14 +449,20 @@ public static class Pursuit
             // the fallback: a stand-in the engine moves too little (a save's wild squad; or one inside the loaded area round the squad, where
             // stand-ins mostly wait to be made: seen in play crawling 70 m an hour) is walked on by hand to walking pace, 2.5 m/s (Meitou's
             // own travel pace) over the pass's ten game seconds, never closer than 30 m (from there it is loaded and walks itself)
-            if (lastAt.TryGetValue(p.Id, out var was))
+            // Judged by how much nearer it got, not how far it went: seen in play (build au), crews drifted AWAY from a squad that waited
+            // two game hours (the engine moving the stand-in elsewhere, likely home), and a stand-in that moved at all was never walked on.
+            // One that went the wrong way is walked on from where it was.
+            var progress = roadProgress.GetOrCreateValue(p);
+            if (progress.Last is { } was)
             {
-                var to = new Vector2(target.X, target.Z) - p.Position;
+                var aim = new Vector2(target.X, target.Z);
+                float closed = Vector2.Distance(was, aim) - Vector2.Distance(p.Position, aim);
+                var from = closed < 0 ? was : p.Position;
+                var to = aim - from;
                 float len = to.Length();
-                float made = Vector2.Distance(was, p.Position);
-                if (len > 300f && made < 200f) p.Position += to / len * MathF.Min(250f - made, len - 300f);
+                if (len > 300f && closed < 200f) p.Position = from + to / len * MathF.Min(closed < 0 ? 250f : 250f - closed, len - 300f);
             }
-            lastAt[p.Id] = p.Position;
+            progress.Last = p.Position;
         }
         else if (p.State == PlatoonState.Loaded && world.Squads.Find(p.SquadId) is { } squad)
         {
@@ -367,11 +471,24 @@ public static class Pursuit
             // goal walks it over (Meitou 0.19.1+ made that goal follow properly). Given once: a running contract cannot be re-aimed or
             // replaced. Close (60 m), each member gets the Assault order vanilla dialogue gives (AiSystem.OrderAssault), again each pass
             // while it is not fighting.
-            if (NearestPlayer(world, p.Position) is { } prey && table0(world, prey) is { } preyAt)
+            // The distance is from its nearest standing member, not the platoon's point: seen in play (build aw), a loaded crew's point stayed
+            // 375 m off for 13 game hours, so it never got the Assault order. One that has not got nearer for StallPasses passes is ordered
+            // to attack from wherever it is (the order walks it over).
+            if (NearestPlayer(world, MembersAt(world, squad) ?? p.Position) is { } prey && table0(world, prey) is { } preyAt)
             {
-                float d = Vector2.Distance(p.Position, new Vector2(preyAt.X, preyAt.Z));
-                if (!aimed.ContainsKey(squad.Id) && SquadRoles.Contract(squad.Id, FollowPackage, 24f, prey)) aimed[squad.Id] = (world.Tick, FollowPackage);
-                if (d < 600f)
+                var from = MembersAt(world, squad, new Vector2(preyAt.X, preyAt.Z)) ?? p.Position;
+                float d = Vector2.Distance(from, new Vector2(preyAt.X, preyAt.Z));
+                var progress = squadProgress.GetOrCreateValue(squad);
+                if (progress.Package is null && SquadRoles.Contract(squad.Id, FollowPackage, 24f, prey)) progress.Package = FollowPackage;
+                int still = progress.Still = d < progress.Best - 100f ? 0 : progress.Still + 1;
+                progress.Best = Math.Min(progress.Best, d);
+                bool stalled = still >= StallPasses;
+                if (stalled && still == StallPasses)
+                {
+                    string who = Speaker(world, squad, speakerName) is { } sp ? world.Characters.Cold(sp.Slot)?.Name ?? "a pursuer" : "a pursuer";
+                    LwMod.Log($"pursuit: {who}'s party got no nearer in {StallPasses} passes ({d / 10:0} m off): ordered to attack");
+                }
+                if (d < 600f || stalled)
                 {
                     Assault(world, squad, prey);
                     if (bark is not null && barked.GetOrCreateValue(world).Add(squad.Id) && Speaker(world, squad, speakerName) is { } who)
@@ -390,6 +507,24 @@ public static class Pursuit
                 TaskStart.Walk(world, s, new Vector2(goal.X, goal.Z), 0, TaskType.TravelToTargetPackage, TaskSource.Goal);
             }
         }
+    }
+
+    const int StallPasses = 12;                                     // two game minutes of passes without getting 10 m nearer
+
+    /// <summary>Where a loaded squad is: its standing member nearest <paramref name="to"/> (any standing member without one); null when
+    /// none stands.</summary>
+    public static Vector2? MembersAt(World world, Squad squad, Vector2? to = null)
+    {
+        var table = world.Characters;
+        Vector2? best = null;
+        foreach (var m in squad.Members)
+        {
+            if (!table.TryResolveNext(m, out int s) || !table.Next[s].Alive || table.Cold(s) is not { } c || c.Medical is { Incapacitated: true }) continue;
+            var at = new Vector2(table.Next[s].Position.X, table.Next[s].Position.Z);
+            if (to is null) return at;
+            if (best is null || Vector2.Distance(at, to.Value) < Vector2.Distance(best.Value, to.Value)) best = at;
+        }
+        return best;
     }
 
     /// <summary>A loaded pursuer with nobody left standing (all dead, down, or taken) has lost: the squad won the fight. Seen in play: a crew
