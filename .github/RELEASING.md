@@ -1,7 +1,9 @@
 # Production releases
 
-Both `main` and `release` require pull requests. Promote production work to `release`; each protected PR requires two approving reviewers, including an applicable owner from CODEOWNERS. Authors cannot approve their own PRs. Do not push directly or bypass the review requirement.
+CI runs on beta/main/release PRs and pushes. Current temporary organization policy requires one independent approval from super-maintainers on those branches, without an additional CODEOWNERS review or review bypass. Authors cannot approve themselves. CI/security remain required; Husbandry is separately excluded for custom-policy testing.
 
-Run production release workflows from the current `release` head. Release tags must point at that same commit. The central gate checks both the head and the actual enforced ruleset; a branch name alone is insufficient. Nightlies remain separate prereleases. Repositories without production packaging retain their build checks until a complete package can be produced.
+Promote tested production work through PRs to release. No complete production package/publishing workflow is introduced here. When publishing is implemented, use reviewed central verifier/package pins and tag the current protected release head; do not publish incomplete game-dependent artifacts. A passing engine-free rules test and Python syntax check do not prove game integration.
 
-Required ruleset setup and owner instructions: https://github.com/TheIvoryDisaster/GutenStructure/blob/main/docs/releases.md . Protection enforcement requires the scoped administration secret; configuration alone does not enable it.
+Use a temporary promotion/synchronization branch if a PR needs updating; never merge development into a permanent release branch just to unblock reverse history synchronization.
+
+Current interim policy: https://github.com/TheIvoryDisaster/GutenStructure/blob/main/docs/interim-review-policy.md .
