@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Every check this repository runs, offline, for an assistant working from a snapshot (CODEX_BRIEF.md section 4):
 #   1. builds the mod DLL against Meitou 0.17.3 (the oldest supported release) into LivingWastelandMeitou/, as a release does;
-#   2. release_check.sh against each bundled release: both mods compile, every setting loads, RefCheck on the built DLL, unit tests,
+#   2. release_check.sh against each bundled release: both mods compile, every setting loads, RefCheck on the built DLLs (members and
+#      engine assembly versions; RefCheck/check_versions.sh proves the version check on a real DLL), unit tests,
 #      world tests (the real Rivalry Core included);
 #   3. the Python tests of the data compiler;
 #   4. the text checks on content/*.json: valid JSON, detrope.py --check and contractions.py --check (both REWRITE every content file
@@ -39,6 +40,9 @@ echo "== 2. release checks"
 for t in "${tags[@]}"; do
   "$HERE/release_check.sh" "$t" || fail=1
 done
+
+echo "== 2b. RefCheck's engine-version check on a real DLL (RefCheck/check_versions.sh)"
+"$HERE/RefCheck/check_versions.sh" || fail=1
 
 echo "== 3. data compiler tests (python, no game files needed)"
 if (cd "$MODGEN" && python3 -m unittest -q test_meitou_target test_meitou_check >"$OUT/py.log" 2>&1); then echo "   passed"; else tail -15 "$OUT/py.log"; fail=1; fi
