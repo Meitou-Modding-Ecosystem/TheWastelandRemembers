@@ -596,14 +596,8 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
     {
         try
         {
-            const string folder = "The Wasteland Remembers";
-            string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string directory = Path.Combine(documents.Length > 0 ? documents :
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), folder);
-            Directory.CreateDirectory(directory);
             string name = $"TWR-playtest-{DateTime.UtcNow:yyyyMMdd-HHmmss}-{Guid.NewGuid().ToString("N")[..6]}.txt";
-            using var writer = new StreamWriter(Path.Combine(directory, name));
-            writer.Write(PlaytestLog.Report(StoryText()));
+            WritePlaytest(name);
             return $"Saved {name}";
         }
         catch (Exception e)
@@ -611,6 +605,24 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
             RecordHost.Log($"playtest export failed: {e.GetBaseException().Message}");
             return "Could not save the playtest log (see log.txt).";
         }
+    }
+
+    /// <summary>For tests: where playtest logs go instead of Documents\The Wasteland Remembers.</summary>
+    internal static string? PlaytestFolder;
+
+    /// <summary>Writes the playtest report to <paramref name="name"/> in Documents\The Wasteland Remembers (or Local Application Data
+    /// without a Documents folder): the button's export and the automatic one (PlaytestLog.AutoExport) share it. Throws on failure.</summary>
+    internal static string WritePlaytest(string name)
+    {
+        const string folder = "The Wasteland Remembers";
+        string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        string directory = PlaytestFolder ?? Path.Combine(documents.Length > 0 ? documents :
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), folder);
+        Directory.CreateDirectory(directory);
+        string path = Path.Combine(directory, name), temp = path + ".tmp";
+        File.WriteAllText(temp, PlaytestLog.Report(StoryText()));
+        File.Move(temp, path, overwrite: true);                  // a crash mid-write leaves the last whole copy
+        return path;
     }
 #endif
 

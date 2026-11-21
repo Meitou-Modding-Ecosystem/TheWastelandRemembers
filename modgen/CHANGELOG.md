@@ -1,5 +1,12 @@
 # The Wasteland Remembers: changelog
 
+## Build 20261121bf
+Play testing made simpler:
+- **With Collect playtest diagnostics on, the play-test log saves itself** every minute, one file per launch
+  (Documents > The Wasteland Remembers). No Export click needed; a crash or a second launch loses at most a minute.
+- **Save logs for a bug report.bat also collects the play-test logs** (the last 14 days) and TWR's settings, so one double click still
+  gathers everything.
+
 ## Build 20261121be
 **Works on Meitou's AI rewrite** (code-mod API 3, in the 0.22.2 nightlies from 21 November). On those, bounty crews, couriers and outlaw
 camps could not be made at all: the engine call that picks a squad's orders changed shape. TWR now uses whichever shape the game has, from

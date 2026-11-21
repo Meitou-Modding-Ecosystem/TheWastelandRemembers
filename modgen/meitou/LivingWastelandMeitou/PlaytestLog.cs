@@ -21,8 +21,33 @@ internal static class PlaytestLog
     internal static PlaytestJournal.Snapshot Read() => journal.Read();
 
     // Only the serial simulation thread assigns world identifiers and reads world data.
+    // The automatic export: while diagnostics are on, one file per launch (TWR-playtest-auto-<start>.txt) is rewritten every minute, so a
+    // play test needs no Export click and a crash or a second launch loses at most a minute; Save logs for a bug report.bat collects it.
+    static readonly string autoName = $"TWR-playtest-auto-{DateTime.UtcNow:yyyyMMdd-HHmmss}.txt";
+    static Timer? autoTimer;
+    static int autoWriting;
+    internal static string AutoName => autoName;
+
+    static void StartAuto()
+    {
+        if (Volatile.Read(ref autoTimer) is not null) return;
+        var timer = new Timer(_ => AutoExport(), null, Timeout.Infinite, Timeout.Infinite);
+        if (Interlocked.CompareExchange(ref autoTimer, timer, null) is null) timer.Change(TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(1));
+        else timer.Dispose();
+    }
+
+    /// <summary>Writes the automatic export now (the timer calls it each minute); false while diagnostics are off or it fails.</summary>
+    internal static bool AutoExport()
+    {
+        if (!Enabled || Interlocked.Exchange(ref autoWriting, 1) == 1) return false;
+        try { StatsUi.WritePlaytest(autoName); return true; }
+        catch (Exception e) { RecordHost.Log($"playtest auto-export failed: {e.GetBaseException().Message}"); return false; }
+        finally { Volatile.Write(ref autoWriting, 0); }
+    }
+
     static Segment Of(World world)
     {
+        StartAuto();
         if (segments.TryGetValue(world, out var segment)) return segment;
         segment = new(Interlocked.Increment(ref next));
         segments.Add(world, segment);
@@ -74,7 +99,10 @@ internal static class PlaytestLog
     }
 
     internal static void Control(string key, string phase, string detail = "")
-        => Mirror(journal.Add(null, null, null, "playtest", key, phase, detail));
+    {
+        StartAuto();
+        Mirror(journal.Add(null, null, null, "playtest", key, phase, detail));
+    }
 
     static void Mirror(PlaytestJournal.Event row)
     {

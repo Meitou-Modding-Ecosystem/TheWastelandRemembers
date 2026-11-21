@@ -71,4 +71,39 @@ public sealed class PlaytestLogWorldTests
             PlaytestLog.EngineLog = logger;
         }
     }
+
+    [Fact]
+    public void The_automatic_export_writes_one_file_per_launch_with_the_timeline_and_only_while_diagnostics_are_on()
+    {
+        var settings = LwMod.Settings;
+        bool before = settings.PlaytestDiagnostics;
+        string dir = Path.Combine(Path.GetTempPath(), "twr-auto-" + Guid.NewGuid().ToString("N"));
+        StatsUi.PlaytestFolder = dir;
+        try
+        {
+            settings.PlaytestDiagnostics = false;
+            Assert.False(PlaytestLog.AutoExport());
+            Assert.False(Directory.Exists(dir));
+
+            settings.PlaytestDiagnostics = true;
+            using var world = W.World();
+            PlaytestLog.Event(world, "test", "auto", "first row");
+            Assert.True(PlaytestLog.AutoExport());
+            PlaytestLog.Event(world, "test", "auto", "second row");
+            Assert.True(PlaytestLog.AutoExport());
+
+            string file = Assert.Single(Directory.GetFiles(dir));
+            Assert.Equal(PlaytestLog.AutoName, Path.GetFileName(file));
+            string text = File.ReadAllText(file);
+            Assert.StartsWith("THE WASTELAND REMEMBERS", text);
+            Assert.Contains("second row", text);
+            Assert.Contains("SETTINGS AT EXPORT", text);
+        }
+        finally
+        {
+            settings.PlaytestDiagnostics = before;
+            StatsUi.PlaytestFolder = null;
+            if (Directory.Exists(dir)) Directory.Delete(dir, true);
+        }
+    }
 }
