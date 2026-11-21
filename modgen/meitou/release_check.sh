@@ -85,7 +85,7 @@ for p in LivingWastelandMeitou SquadRecord; do
     echo "   shipped $p: $(tail -1 "$log")"
   else
     echo "   shipped $p failed the engine reference check:"
-    grep -E "MISSING|rror" "$log" | head -10 | sed 's/^/      /'
+    grep -E "MISSING|TOO NEW|rror" "$log" | head -10 | sed 's/^/      /'
     fail=1
   fi
 done

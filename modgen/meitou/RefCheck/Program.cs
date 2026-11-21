@@ -1,5 +1,7 @@
 // release_check.sh: lists the engine members (methods, constructors, fields) a built mod DLL references that a Meitou release lacks, by
-// name and parameter types. Usage: RefCheck <mod.dll> <folder with the release's Meitou*.dll>. Exit code 1 when any is missing.
+// name and parameter types, and engine assembly references newer than the release's own assemblies (.NET never binds a reference to an
+// older version, so the mod's types fail to load at all: Rivalry Core's zips, built against an engine stamped 1.0.0.0, were refused by
+// 0.22.1, RivalryCore#121). Usage: RefCheck <mod.dll> <folder with the release's Meitou*.dll>. Exit code 1 when either is found.
 // Lists the engine members (methods, constructors, fields) a mod DLL references that a given engine build does not have, by name and
 // parameter types. Engine = assemblies in the folder named Meitou*.dll / MeitouClient.dll.
 using System.Collections.Immutable;
@@ -41,6 +43,15 @@ using var pe = new PEReader(File.OpenRead(mod));
 var md = pe.GetMetadataReader();
 var prov = new Prov(md);
 int checkedN = 0, bad = 0;
+var shipped = engine.ToDictionary(f => Path.GetFileNameWithoutExtension(f), f => AssemblyName.GetAssemblyName(f).Version, StringComparer.OrdinalIgnoreCase);
+int versionsBad = 0;
+foreach (var h in md.AssemblyReferences)
+{
+    var a = md.GetAssemblyReference(h);
+    string an = md.GetString(a.Name);
+    if (!shipped.TryGetValue(an, out var have_) || have_ is null) continue;   // not an engine assembly of this release
+    if (a.Version > have_) { versionsBad++; Console.WriteLine($"TOO NEW {an}: the mod references {a.Version}, this release has {have_} (the mod's types will not load)"); }
+}
 foreach (var h in md.MemberReferences)
 {
     var r = md.GetMemberReference(h);
@@ -62,8 +73,8 @@ foreach (var h in md.MemberReferences)
     checkedN++;
     if (!have.Contains(key)) { bad++; Console.WriteLine("MISSING " + key); }
 }
-Console.WriteLine($"{checkedN} engine references checked, {bad} missing");
-return bad == 0 ? 0 : 1;
+Console.WriteLine($"{checkedN} engine references checked, {bad} missing" + (versionsBad > 0 ? $"; {versionsBad} engine assembly references newer than this release" : ""));
+return bad == 0 && versionsBad == 0 ? 0 : 1;
 static string TypeName(MetadataReader md, TypeReferenceHandle h)
 {
     var t = md.GetTypeReference(h);
