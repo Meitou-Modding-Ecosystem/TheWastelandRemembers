@@ -92,7 +92,7 @@ public sealed class LwSettings
     public bool Alms { get; set; } = true;
 
     [Setting("Moving outlaw camps (test)", Hint = "Named outlaws keep a camp in their regions that moves with the outlaw news: near towns when raiding, far away when lying low.")]
-    public bool OutlawCamps { get; set; } = false;
+    public bool OutlawCamps { get; set; } = PlayTest.On;
 
     [Setting("Outlaws send men after you", Hint = "An outlaw whose people your squad bloodied, and who lived, sends men after you two to four days later.")]
     public bool OutlawReprisals { get; set; } = true;
@@ -112,11 +112,11 @@ public sealed class LwSettings
     [Setting("Town handover history (test)", Hint = "Record changes of town ownership the squad witnesses or learns about. Observing changes requires a client with the town switch hook.")]
     public bool TownHandovers { get; set; } = PlayTest.On;
     [Setting("Marks on the world map (test)", Hint = "Meitou v0.20.2-nightly.20261117 and later: the world map marks rivals still about, outlaw camps the Atlas knows and places of news your squad heard this week.")]
-    public bool MapMarks { get; set; } = false;
+    public bool MapMarks { get; set; } = PlayTest.On;
     [Setting("Ask townsfolk for news (test)", Hint = "Meitou v0.20.2-nightly.20261117 and later: right-click someone in a town and ask for news. They tell you the biggest news that has reached them, and your squad has heard it.")]
-    public bool AskForNews { get; set; } = false;
+    public bool AskForNews { get; set; } = PlayTest.On;
     [Setting("Factions' change of heart in History (test)", Hint = "Meitou v0.20.2-nightly.20261117 and later: when a faction turns against your squad or warms to it, History says why (a killing, a crime they saw, a war).")]
-    public bool RelationNews { get; set; } = false;
+    public bool RelationNews { get; set; } = PlayTest.On;
     [Setting("Towns miss stolen goods", Hint = "Meitou 0.21 and later: goods your people take from a town's shops, homes and machines raise that town's heat. Seen, at once (on top of the crime itself); unseen, when the town misses them half a day later. Worth more, more heat; valuable goods go into History.")]
     public bool TheftHeat { get; set; } = true;
 
@@ -132,7 +132,7 @@ public sealed class LwSettings
     public bool BountyHunters { get; set; } = true;
 
     [Setting("Small factions raid big ones (test)", Hint = "Small factions now and then send a raiding party to lurk near a big enemy's town for two days: Flotsam against the Holy Nation, Anti-Slavers against slavers, rebel farmers against the Cities, Cannibal Hunters against cannibals. Talk follows what happened.")]
-    public bool HarassmentRaids { get; set; } = false;
+    public bool HarassmentRaids { get; set; } = PlayTest.On;
 
     [Setting("Trophies and keepsakes", Hint = "Named outlaws carry a token you can take, a fallen squadmate leaves a keepsake to the one who mourns them, and admiring barmen add their faction's charm to a gift. On Meitou 0.18 and later they are worn in a neck slot.")]
     public bool Trophies { get; set; } = true;
@@ -146,16 +146,16 @@ public sealed class LwSettings
     [Setting("Western Hive envoys (test)", Hint = "A Western Hive caravan can come to a public outpost to ask about its Queen.")]
     public bool HiveEnvoys { get; set; } = PlayTest.On;
     [Setting("Outlaw recovery parties (test)", Hint = "A Dust Bandit second may send people for a captive leader held at a known outpost.")]
-    public bool PrisonerRecovery { get; set; }
+    public bool PrisonerRecovery { get; set; } = PlayTest.On;
     [Setting("Shek gate recovery (test)", Hint = "Oshar's Kral's Chosen can march on the gate for Maruka. Requires outlaw recovery parties.")]
-    public bool ShekGateRecovery { get; set; }
+    public bool ShekGateRecovery { get; set; } = PlayTest.On;
     [Setting("Covert prisoner recovery (test)", Hint = "Kiri's Sand Ninjas can sneak in to pick the gate and cell locks. Requires outlaw recovery parties.")]
-    public bool CovertRecovery { get; set; }
+    public bool CovertRecovery { get; set; } = PlayTest.On;
     [Setting("Escorts for freed prisoners (test)", Hint = "Envoys and recovery parties can walk a freed captive home.")]
     public bool PrisonerEscorts { get; set; } = PlayTest.On;
 
     [Setting("Visible neck charms (test)", Hint = "Show the Shek and Holy Nation charms when worn in the neck slot on supported Meitou builds.")]
-    public bool VisibleNeckCharms { get; set; }
+    public bool VisibleNeckCharms { get; set; } = PlayTest.On;
 
     [Setting("Neck slot position: left (restart)", Hint = "Where the neck slot sits in the character window: pixels from its left edge. Takes effect after restarting the game.", Min = 0, Max = 800, Step = 2)]
     public int NeckSlotX { get; set; } = 420;
@@ -202,7 +202,7 @@ public sealed class LwMod : IMod
     internal static string JobVariable = "LW open jobs";
     /// <summary>The build this helper was made for (modgen/BUILD_ID); the data mods carry theirs in lw_codes.json.</summary>
     public static string DataBuild = "unknown";
-    public const string HelperBuild = "20261121be";
+    public const string HelperBuild = "20261121bf";
     internal static List<RumourCode> Rumours = [];
     internal static List<(int Index, string Name)> Outlaws = [];
 

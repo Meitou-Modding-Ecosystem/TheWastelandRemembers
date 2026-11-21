@@ -54,12 +54,15 @@ KNOWN IN THIS VERSION
 """
 
 LOG_BAT = r"""@echo off
-rem Collects the Meitou game's logs and settings into ONE zip on your Desktop, for a bug report. Run it after you quit Meitou.
+rem Collects the Meitou game's logs, TWR's settings and its play-test logs (last 14 days) into ONE zip on your Desktop, for a bug report.
+rem Run it after you quit Meitou.
 setlocal
 for /f %%i in ('powershell -NoProfile -Command "Get-Date -Format yyyyMMdd_HHmm"') do set STAMP=%%i
 set OUT=%USERPROFILE%\Desktop\WastelandRemembers_logs_%STAMP%
 mkdir "%OUT%" 2>nul
 powershell -NoProfile -Command "Get-ChildItem \"$env:LOCALAPPDATA\Meitou\versions\" -Directory -ErrorAction SilentlyContinue | ForEach-Object { $l = Join-Path $_.FullName 'log.txt'; if (Test-Path $l) { Copy-Item $l (Join-Path '%OUT%' ('log_' + $_.Name + '.txt')) } }"
+powershell -NoProfile -Command "$d = [Environment]::GetFolderPath('MyDocuments'); foreach ($f in @((Join-Path $d 'The Wasteland Remembers'), (Join-Path $env:LOCALAPPDATA 'The Wasteland Remembers'))) { Get-ChildItem $f -Filter 'TWR-playtest-*.txt' -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -gt (Get-Date).AddDays(-14) } | Copy-Item -Destination '%OUT%' }"
+copy "%LOCALAPPDATA%\Meitou\mods\*.settings.txt" "%OUT%\" >nul 2>&1
 copy "%LOCALAPPDATA%\Meitou\meitou.user.json" "%OUT%\" >nul 2>&1
 copy "%LOCALAPPDATA%\Meitou\launcher.json" "%OUT%\" >nul 2>&1
 powershell -NoProfile -Command "Compress-Archive -Path '%OUT%\*' -DestinationPath '%OUT%.zip' -Force"
