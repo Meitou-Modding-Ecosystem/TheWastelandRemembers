@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MeitouClient" HintPath="$(MeitouDir)/MeitouClient.dll" Private="false" />
+    <Reference Include="Meitou.Data" HintPath="$(MeitouDir)/Meitou.Data.dll" Private="false" />
+    <Reference Include="Meitou.Core" HintPath="$(MeitouDir)/Meitou.Core.dll" Private="false" />
+    <Reference Include="Meitou.Simulation" HintPath="$(MeitouDir)/Meitou.Simulation.dll" Private="false" />
+    <None Update="meitou.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

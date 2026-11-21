@@ -3,7 +3,8 @@
 #   1. builds the mod DLL against Meitou 0.17.3 (the oldest supported release) into LivingWastelandMeitou/, as a release does;
 #   2. release_check.sh against each bundled release: both mods compile, every setting loads, RefCheck on the built DLL, unit tests,
 #      world tests (the real Rivalry Core included);
-#   3. the text checks on content/*.json: valid JSON, detrope.py --check and contractions.py --check (both REWRITE every content file
+#   3. the Python tests of the data compiler;
+#   4. the text checks on content/*.json: valid JSON, detrope.py --check and contractions.py --check (both REWRITE every content file
 #      without --check: never run them bare).
 #
 #   modgen/meitou/codex_check.sh                    # bundled releases (meitou-releases/ beside the snapshot's modgen folder)
@@ -39,7 +40,10 @@ for t in "${tags[@]}"; do
   "$HERE/release_check.sh" "$t" || fail=1
 done
 
-echo "== 3. text checks (content/*.json)"
+echo "== 3. data compiler tests (python, no game files needed)"
+if (cd "$MODGEN" && python3 -m unittest -q test_meitou_target test_meitou_check >"$OUT/py.log" 2>&1); then echo "   passed"; else tail -15 "$OUT/py.log"; fail=1; fi
+
+echo "== 4. text checks (content/*.json)"
 bad=0
 for f in "$MODGEN"/content/*.json; do
   python3 -c "import json,sys; json.load(open(sys.argv[1], encoding='utf-8'))" "$f" 2>/dev/null || { echo "   not valid JSON: $(basename "$f")"; bad=1; }

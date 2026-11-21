@@ -17,6 +17,8 @@ public sealed class MemberRecord
     /// <summary>Wounds remembered: where this member lost a limb or was knocked down, in towns only (newest last, at most 12).</summary>
     public List<Scar> Scars { get; } = [];
     public double DamageDealt, DamageTaken, Distance, Food;
+    public double AidCharges;
+    public int AidKitsFinished;
     /// <summary>World units ridden on an animal and sailed (Meitou Transport, TransportLink.cs); not in Distance.</summary>
     public double Ridden, Sailed;
 
@@ -111,9 +113,11 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     /// <summary>The squad's story, oldest first: titles, named kills, first kills, lost limbs, big fights (and, from the helper, heat).</summary>
     public IReadOnlyList<(double Hours, string Place, string Text)> History => history;
 
-    public void Note(string text)
+    public void Note(string text) => Note(text, Hours, Place);
+
+    public void Note(string text, double hours, string place)
     {
-        history.Add((Hours, Place, text));
+        history.Add((hours, place, text));
         if (history.Count > MaxHistory) history.RemoveAt(0);
     }
     readonly List<string> crewTitles = [];
@@ -371,6 +375,14 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     {
         Member(name).TimesDowned++;
         if (fight.Active) fight.Down.Add(name);
+    }
+
+    public void UsedAid(string name, float charges, bool finished)
+    {
+        if (!float.IsFinite(charges) || charges <= 0) return;
+        var member = Member(name);
+        member.AidCharges += charges;
+        if (finished) member.AidKitsFinished++;
     }
 
     /// <summary>A bite of food worth <paramref name="amount"/> hunger points.</summary>
@@ -666,7 +678,7 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
 
     public void Write(BinaryWriter w)
     {
-        w.Write(12);
+        w.Write(13);
         WriteList(w, crewTitles);
         WriteList(w, namedDead);
         w.Write(members.Count);
@@ -696,6 +708,8 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
             foreach (var x in m.Scars) { w.Write(x.Kind); w.Write(x.Town); w.Write(x.Hours); }
             w.Write(m.Ridden);
             w.Write(m.Sailed);
+            w.Write(m.AidCharges);
+            w.Write(m.AidKitsFinished);
         }
         w.Write(history.Count);
         foreach (var (hours, place, text) in history) { w.Write(hours); w.Write(place); w.Write(text); }
@@ -723,7 +737,7 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     public bool Read(BinaryReader r)
     {
         int version = r.ReadInt32();
-        if (version is not (4 or 5 or 6 or 7 or 8 or 9 or 10 or 11 or 12)) return false;
+        if (version is not (4 or 5 or 6 or 7 or 8 or 9 or 10 or 11 or 12 or 13)) return false;
         members.Clear();
         ReadList(r, crewTitles);
         ReadList(r, namedDead);
@@ -746,6 +760,7 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
             if (version >= 8) m.Avenged = r.ReadInt32();
             if (version >= 10) for (int k = r.ReadInt32(); k > 0; k--) m.Scars.Add(new Scar(r.ReadString(), r.ReadString(), r.ReadDouble()));
             if (version >= 11) { m.Ridden = r.ReadDouble(); m.Sailed = r.ReadDouble(); }
+            if (version >= 13) { m.AidCharges = r.ReadDouble(); m.AidKitsFinished = r.ReadInt32(); }
         }
         history.Clear();
         if (version >= 5)
@@ -795,6 +810,8 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
             yield return m.Bites;
             yield return m.Crafted;
             yield return (long)m.DamageDealt;
+            yield return m.AidKitsFinished;
+            yield return BitConverter.DoubleToInt64Bits(m.AidCharges);
         }
     }
 

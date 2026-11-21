@@ -49,7 +49,9 @@ public static class WorldReady
     {
         bool save = fromSave is true;
         RecapLink.ForgetSquadPlace();
+        OutpostMemories.ResetPresentation();
         told.AddOrUpdate(world, new Told { FromSave = save });
+        PlaytestLog.Event(world, "world", "", save ? "save loaded" : "new game");
         LwMod.Log($"world ready: {(save ? "a save has loaded" : "a new game")}");
     }
 

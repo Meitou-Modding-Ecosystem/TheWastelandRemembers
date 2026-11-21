@@ -79,4 +79,55 @@ public sealed class RaidRestoreWorldTests : IDisposable
         Assert.Equal(2, loaded.StateOf(next, 0));
         Assert.Single(Parties(next));
     }
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void Saved_raids_ignore_other_parties_with_the_same_template(bool exactPartyInSave)
+    {
+        var modTag = typeof(Platoon).GetProperty("ModTag");
+        if (modTag is null) return;
+        OutlawCampsSystem.NewsTowns = ["Squin"];
+        LwMod.Settings.HarassmentRaids = true;
+        var data = Data();
+        var (first, raids) = Scene(data);
+        W.Spawn(first, "Leaf", W.Player, new Vector3(0, 150, 0));
+        first.GameHours = RaidRules.NextStart(first.Seed, 0, 0) + 1;
+        first.RunTicks(301);
+        var original = Assert.Single(Parties(first));
+        string tag = Assert.IsType<string>(modTag.GetValue(original));
+        Assert.StartsWith("lw:raid:flotsam:", tag);
+
+        using var save = new MemoryStream();
+        raids.Write(save);
+        save.Position = 0;
+        var (next, loaded) = Scene(data);
+        loaded.Read(save);
+        next.GameHours = first.GameHours;
+        W.Spawn(next, "Leaf", W.Player, new Vector3(0, 150, 0));
+
+        Platoon AddParty(string? owner, Vector2 at, bool dead = false)
+        {
+            int id = next.Platoons.NextId();
+            var party = new Platoon { Id = id, Key = (ulong)id, Origin = 0, TemplateId = RaidSquad, Position = at, Dead = dead, Persistent = true };
+            if (owner is not null) modTag.SetValue(party, owner);
+            next.Platoons.Add(party);
+            return party;
+        }
+
+        var foreign = AddParty("other-mod:raid", original.Position);
+        var untagged = AddParty(null, original.Position);
+        AddParty(null, original.Position, dead: true);
+        var exact = exactPartyInSave ? AddParty(tag, original.Position + new Vector2(6000, 0)) : null;
+        next.RunTicks(301);
+        var owned = Assert.Single(Parties(next), party => Equals(modTag.GetValue(party), tag));
+        if (exact is not null) Assert.Same(exact, owned);
+        else Assert.Equal(original.Key, owned.Key);
+        Assert.Equal(1, loaded.StateOf(next, 0));
+
+        owned.Dead = true;
+        next.RunTicks(300);
+        Assert.Equal(2, loaded.StateOf(next, 0));
+        Assert.True(foreign.Persistent);
+        Assert.True(untagged.Persistent);
+    }
 }

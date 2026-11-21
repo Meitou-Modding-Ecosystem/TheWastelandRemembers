@@ -22,6 +22,9 @@ public sealed class SquadRecordSettings
         Options = ["U", "N", "O", "Off"])]
     public string RecordHotkey { get => LivingWasteland.MeitouMod.RecordHotkey.Key; set => LivingWasteland.MeitouMod.RecordHotkey.Key = value; }
 
+    [Setting("Native record hotkey (test, restart)", Hint = "Use Settings > Controls to bind the record on supported Meitou builds. The current record hotkey choice supplies the initial default.")]
+    public bool NativeRecordHotkey { get; set; }
+
     [Setting("Notices", Hint = "Small messages that float up for a few seconds: a squad member gaining a skill level, and a faction's standing with you going up (green) or down (red).",
         Options = ["Skills and standing", "Skills only", "Standing only", "Off"])]
     public string Notices { get => LivingWasteland.MeitouMod.Notices.Mode; set => LivingWasteland.MeitouMod.Notices.Mode = value; }
@@ -56,8 +59,9 @@ public sealed class SquadRecordMod : IMod
         RecapLink.Source = "SquadRecord";
         var rules = ReadTitles(c);
         c.AddSystem("squad-record", ctx => new LwDeedsSystem(rules, ctx.Data), SystemAnchor.End);
+        AidUseWatch.Register(c);
         c.AddUi(new StatsUi("squadrecord"));
-        RecordHotkey.Install(new HarmonyLib.Harmony("squadrecord.recordhotkey"), c.Log);
+        RecordHotkey.Install(c, new HarmonyLib.Harmony("squadrecord.recordhotkey"), c.Log, Settings.NativeRecordHotkey);
         c.AddDebugCommand("Squad record", _ =>
         {
             StatsUi.open = !StatsUi.open;

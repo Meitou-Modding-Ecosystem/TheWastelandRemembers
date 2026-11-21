@@ -21,6 +21,7 @@
     <Compile Include="../LivingWastelandMeitou/RivalRules.cs" Link="RivalRules.cs" />
     <Compile Include="../LivingWastelandMeitou/Presence.cs" Link="Presence.cs" />
     <Compile Include="../LivingWastelandMeitou/LogTally.cs" Link="LogTally.cs" />
+    <Compile Include="../LivingWastelandMeitou/PlaytestJournal.cs" Link="PlaytestJournal.cs" />
     <Compile Include="../LivingWastelandMeitou/NewsBoard.cs" Link="NewsBoard.cs" />
     <Compile Include="../LivingWastelandMeitou/KeepsakeText.cs" Link="KeepsakeText.cs" />
     <Compile Include="../LivingWastelandMeitou/BarkLines.cs" Link="BarkLines.cs" />

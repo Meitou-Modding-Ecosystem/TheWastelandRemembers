@@ -9,6 +9,9 @@ namespace Recap
     {
         public static readonly List<(string Caption, string Place, Vector3? Position, int Weight, bool Picture, string Kind)> Calls = [];
 
+        public static bool AddMoment(string caption, string renderer) =>
+            throw new InvalidOperationException("The compatibility adapter selected an unrelated overload.");
+
         public static bool AddMoment(string caption, string place, Vector3? position, int weight, bool picture, string kind)
         {
             Calls.Add((caption, place, position, weight, picture, kind));

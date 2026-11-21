@@ -77,6 +77,7 @@ public static class RivalryLink
         try
         {
             bool held = b.Claim.Invoke(state, [NewClaim(b, key)]) is true;
+            PlaytestLog.Change(world, "hostile slot", key, held ? "claimed" : "held by another party");
             if (!held && refusedLogged.Add(key))
                 RecordHost.Log($"Rivalry Core: {key} waits, another hostile party is out against the player");
             if (held) refusedLogged.Remove(key);
@@ -99,7 +100,11 @@ public static class RivalryLink
         try
         {
             foreach (var key in outNow) b.Claim.Invoke(state, [NewClaim(b, key)]);
-            foreach (var key in PartyClaims.ToRelease(Ours(state, b), prefix, outNow)) b.Release.Invoke(state, [Source, key]);
+            foreach (var key in PartyClaims.ToRelease(Ours(state, b), prefix, outNow))
+            {
+                b.Release.Invoke(state, [Source, key]);
+                PlaytestLog.Change(world, "hostile slot", key, "release requested");
+            }
         }
         catch (Exception e)
         {

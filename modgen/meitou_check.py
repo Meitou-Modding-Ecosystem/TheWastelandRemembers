@@ -65,6 +65,7 @@ def handlers(build):
         conds.add(m["jobs"]["capCondition"])
     conds |= {r["code"] for r in m.get("rumours", [])}
     effects = {v["set"] for v in m["variables"]} | {v["add"] for v in m["variables"]} | {t["code"] for t in m["takeItems"]}
+    conds |= {t["code"] for t in m["takeItems"]}    # LwMod.RegisterTakes answers each take code as a condition too (how many the bag holds)
     if n := m.get("notoriety"):
         conds |= {n["heatCondition"]} | {t["code"] for t in n.get("titles", [])}
         effects.add(n["heatEffect"])

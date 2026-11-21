@@ -13,7 +13,6 @@ using System.Collections.Concurrent;
 using System.Linq.Expressions;
 using System.Numerics;
 using System.Reflection;
-using System.Reflection.Emit;
 using Meitou.Modding;
 using Meitou.Simulation;
 
@@ -172,48 +171,5 @@ public static class RelationWatch
             LogTally.Add("relation turns");
         }
         catch (Exception e) { LwMod.Log($"relation turns: skipped a change ({e.GetBaseException().Message})"); }
-    }
-}
-
-/// <summary>
-/// Makes, at load, a system type for an engine observer interface this mod can't name at build time (it builds against Meitou 0.17.3): it
-/// implements ITickSystem and the interface, and its one method <c>M(World, in T)</c> boxes the struct and calls a static
-/// <c>target(World, object)</c> of this mod. The engine finds observers among registered systems by interface.
-/// </summary>
-public static class ObserverEmit
-{
-    static readonly ModuleBuilder module = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName("LivingWastelandObservers"), AssemblyBuilderAccess.Run)
-        .DefineDynamicModule("Observers");
-    static readonly object gate = new();
-
-    /// <summary>The type, or null when the interface's method is not <c>void M(World, in T)</c> or <c>void M(World, T)</c>. The second
-    /// argument reaches <paramref name="target"/> (static, <c>(World, object)</c>) boxed.</summary>
-    public static Type? Build(Type observer, string method, MethodInfo target, string name)
-    {
-        var m = observer.GetMethod(method);
-        if (m is null || m.ReturnType != typeof(void) || m.GetParameters() is not [{ ParameterType: var w }, { ParameterType: var second }]
-            || w != typeof(World)) return null;
-        bool byRef = second.IsByRef;
-        var arg = byRef ? second.GetElementType()! : second;
-        lock (gate)
-        {
-            var tb = module.DefineType($"LivingWasteland.MeitouMod.{name}{Guid.NewGuid():N}", TypeAttributes.Public | TypeAttributes.Sealed | TypeAttributes.Class,
-                typeof(object), [typeof(ITickSystem), observer]);
-            tb.DefineDefaultConstructor(MethodAttributes.Public);
-            var ps = m.GetParameters();
-            var impl = tb.DefineMethod(m.Name, MethodAttributes.Public | MethodAttributes.Virtual | MethodAttributes.Final | MethodAttributes.HideBySig
-                | MethodAttributes.NewSlot, CallingConventions.HasThis, m.ReturnType, null, null, ps.Select(p => p.ParameterType).ToArray(),
-                ps.Select(p => p.GetRequiredCustomModifiers()).ToArray(), ps.Select(p => p.GetOptionalCustomModifiers()).ToArray());
-            for (int i = 0; i < ps.Length; i++) impl.DefineParameter(i + 1, ps[i].Attributes, ps[i].Name);
-            var il = impl.GetILGenerator();
-            il.Emit(OpCodes.Ldarg_1);
-            il.Emit(OpCodes.Ldarg_2);
-            if (byRef) il.Emit(OpCodes.Ldobj, arg);
-            if (arg.IsValueType) il.Emit(OpCodes.Box, arg);
-            il.Emit(OpCodes.Call, target);
-            il.Emit(OpCodes.Ret);
-            tb.DefineMethodOverride(impl, m);
-            return tb.CreateType();
-        }
     }
 }

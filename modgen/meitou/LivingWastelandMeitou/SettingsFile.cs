@@ -89,7 +89,7 @@ public static class SettingsFile
     /// </summary>
     public static void RecordOnly()
     {
-        string[] keep = ["RecordButton", "RecordHotkey", "NoticesPlace", "RecapMoments", "LogChanges", "TitleMessages", "JobCap", "BarTalkPause", "NeckSlotX", "NeckSlotY", "ContractReach", "NewsReach"];
+        string[] keep = ["RecordButton", "RecordHotkey", "NativeRecordHotkey", "NoticesPlace", "RecapMoments", "LogChanges", "PlaytestDiagnostics", "TitleMessages", "JobCap", "BarTalkPause", "NeckSlotX", "NeckSlotY", "ContractReach", "NewsReach"];
         foreach (var s in Group?.Settings ?? [])
         {
             if (keep.Contains(s.Key)) continue;

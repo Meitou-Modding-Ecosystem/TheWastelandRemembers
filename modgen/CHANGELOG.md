@@ -1,5 +1,25 @@
 # The Wasteland Remembers: changelog
 
+## Build 20261121be
+**Works on Meitou's AI rewrite** (code-mod API 3, in the 0.22.2 nightlies from 21 November). On those, bounty crews, couriers and outlaw
+camps could not be made at all: the engine call that picks a squad's orders changed shape. TWR now uses whichever shape the game has, from
+0.17.3 to the newest nightly. On the AI rewrite, a crew that stalls short of you is no longer ordered to charge (the order is gone); it
+keeps following.
+
+From an outside review's fourth round and a full sweep (each with a test that fails on bd):
+- **A squadmate's memorial no longer names a killer who wasn't one.**
+- **Handing in part of what a quest or toll asks for no longer counts as the whole.** The line that takes the items now checks you have
+  them all.
+- **News heard from someone keeps its own time and place**, not another event's.
+- **With town heat off, no bounty hunters come for heat.**
+- **A new game no longer shows the last game's map marks** (rivals included).
+- **Other mods passing a broken number to TWR's heat calls are refused** instead of spoiling a town's heat.
+
+**New, all off by default** (Squad record > Settings, each marked "test"): outpost history and couriers, town handover history, prices by
+reputation, recruiting a rival beaten three times, keepsake stories, prisoner cases and deals, Western Hive envoys, outlaw, Shek and covert
+recovery parties, escorts for freed prisoners, visible neck charms, a native record hotkey. **Collect playtest diagnostics** (also off)
+keeps a timeline you can export from History (Mark test point, Export playtest log) for bug reports.
+
 ## Build 20261119bd
 From an outside review's third round (each with a test that failed on bc):
 - **Squad roles work on Meitou 0.22.** Choosing a role (Guard home and the others) failed: the engine's command gained new parameters.

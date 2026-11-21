@@ -85,19 +85,25 @@ public sealed class LwCore
         return Pretty(p.Name);
     }
 
-    public string Summary(int cap)
+    public string Summary(int cap) => FormatSummary(OpenJobs(), cap);
+
+    public string FullList() => FormatFullList(OpenJobs());
+
+    internal (string Short, string Full) SummaryAndFullList(int cap)
     {
         var open = OpenJobs();
+        return (FormatSummary(open, cap), FormatFullList(open));
+    }
+
+    static string FormatSummary(List<(string Name, int Step)> open, int cap)
+    {
         if (open.Count == 0) return "no open jobs";
         string first = string.Join(", ", open.Take(3).Select((o, i) => $"{i + 1}. {Pretty(o.Name)}"));
         return $"{open.Count} open (limit {cap}): {first}{(open.Count > 3 ? ", ..." : "")} (full list in log.txt)";
     }
 
-    public string FullList()
-    {
-        var open = OpenJobs();
-        return open.Count == 0 ? "none" : string.Join("; ", open.Select((o, i) => $"{i + 1}. {Pretty(o.Name)} step {o.Step}"));
-    }
+    static string FormatFullList(List<(string Name, int Step)> open) =>
+        open.Count == 0 ? "none" : string.Join("; ", open.Select((o, i) => $"{i + 1}. {Pretty(o.Name)} step {o.Step}"));
 
     public void Write(BinaryWriter w)
     {

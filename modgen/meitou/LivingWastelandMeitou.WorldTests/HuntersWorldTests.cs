@@ -10,6 +10,7 @@ using SimWorld = Meitou.Simulation.World;
 // Bounty crews made for real: the game's population system in a synthetic world (a race, a crewman, the crew's squad template, one town),
 // so a crew is planned by the engine's SquadFactory and added as a platoon, as in play. The recipe follows MeitouClient's own population
 // tests (SyntheticTown): records made in memory, no game files.
+[Collection("settings")]
 public class HuntersWorldTests
 {
     const string Crew = "crew-t", Town = "Squin";
@@ -51,6 +52,48 @@ public class HuntersWorldTests
         world.Platoons.All.Where(p => p is not null && p.TemplateId == Crew).ToList()!;
 
     [Fact]
+    public void Matching_no_crews_reuses_the_empty_result()
+    {
+        var (world, hunters) = World(Data());
+        world.Platoons.Add(new Platoon { Id = world.Platoons.NextId(), TemplateId = "unrelated", Origin = 0, Key = 1 });
+        var method = typeof(HuntersSystem).GetMethod("MatchCrews", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!;
+        Assert.Same(Array.Empty<Platoon?>(), method.Invoke(hunters, [world, Array.Empty<Crew>()]));
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void Disabled_town_heat_blocks_automatic_hunters_but_not_an_explicit_request(bool requested)
+    {
+        var data = Data();
+        var pop = new PopulationSystem(data);
+        var deeds = new LwDeedsSystem([], data);
+        var hunters = new HuntersSystem(Crew, pop, data);
+        var world = W.World(pop, deeds, hunters);
+        W.Spawn(world, "Leaf", W.Player, new Vector3(0, 150, 0));
+        bool wasHeat = LwMod.Settings.Heat;
+        try
+        {
+            LwMod.Settings.Heat = false;
+            world.RunTicks(2);
+            var heat = LwDeeds.For(world)!.Heat;
+            heat.AddCrime(Town, "Dust Bandits", 35);
+            if (requested) Assert.True(hunters.Request(Town, "unpaid loan"));
+            world.RunTicks(301);
+            Assert.Equal(requested ? 1 : 0, Crews(world).Count);
+
+            if (!requested)
+            {
+                Assert.True(heat.Here(Town) >= HunterRules.Hunted);
+                LwMod.Settings.Heat = true;
+                world.RunTicks(300);
+                Assert.Single(Crews(world));
+            }
+        }
+        finally { LwMod.Settings.Heat = wasHeat; }
+    }
+
+    [Fact]
     public void A_crew_asked_for_by_another_mod_is_made_by_the_engine_and_hunts()
     {
         var (world, hunters) = World(Data());
@@ -63,6 +106,16 @@ public class HuntersWorldTests
         float far = Vector2.Distance(crew.Position, Vector2.Zero);
         Assert.InRange(far, HunterRules.StartMin * 0.9f, HunterRules.StartMax * 1.1f);   // out of sight, 2.5 to 3.5 km off
         Assert.False(hunters.Request(Town, "again"));                     // one crew from a town at a time
+    }
+
+    [Fact]
+    public void Nearest_player_keeps_the_first_equal_distance()
+    {
+        List<(float X, float Z)> players = [(110, 190), (101, 200), (99, 200), (100, 205)];
+        Assert.Equal(players[1], Pursuit.Nearest(players, 100, 200));
+        players.Reverse();
+        Assert.Equal((99f, 200f), Pursuit.Nearest(players, 100, 200));
+        Assert.Throws<InvalidOperationException>(() => Pursuit.Nearest([], 100, 200));
     }
 
     [Fact]

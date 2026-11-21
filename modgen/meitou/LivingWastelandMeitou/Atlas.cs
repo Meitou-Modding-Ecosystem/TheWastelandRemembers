@@ -147,6 +147,39 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             pages["p:" + name] = string.Join("\n", PlacePage(world, name, p, k));
         }
 
+        if (OutpostMemories.For(world)?.AtlasRows().ToList() is { Count: > 0 } outposts)
+        {
+            list.Add("");
+            list.Add("-- Outposts --");
+            foreach (var (key, name, page) in outposts)
+            {
+                list.Add($"@@o:{key}|{name}");
+                pages["o:" + key] = string.Join("\n", page);
+            }
+        }
+
+        if (PrisonerCases.For(world)?.AtlasRows().ToList() is { Count: > 0 } custody)
+        {
+            list.Add("");
+            list.Add("-- Prisoners --");
+            foreach (var (key, name, page) in custody)
+            {
+                list.Add($"@@c:{key}|{name}");
+                pages["c:" + key] = page;
+            }
+        }
+
+        if (NewsSystem.For(world)?.TownHistory().OrderBy(t => t.Name, StringComparer.Ordinal).ToList() is { Count: > 0 } handovers)
+        {
+            list.Add("");
+            list.Add("-- Town handovers --");
+            foreach (var (node, name, history) in handovers)
+            {
+                list.Add($"@@h:{node}|{name}");
+                pages["h:" + node] = string.Join("\n", history.Prepend(name));
+            }
+        }
+
         var personRows = people.Select(p => (p.Key, p.Value, Level: book.Level(p.Key, p.Value, p.Value.Place is { } pl && known.ContainsKey(pl))))
             .Where(r => r.Level > 0).OrderBy(r => r.Value.Outlaw).ThenBy(r => r.Key, StringComparer.Ordinal).ToList();
         // rivals (Rivals.cs): the people who have a grudge against the squad, first
@@ -210,7 +243,7 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
         yield return $"-- {name} --";
         yield return $"{Cap(p.Region)}. {(k == 2 ? "You have been there." : k == 1 ? "On your map; you have not been there yet." : "You have only heard of it.")}";
         yield return p.Known;
-        if (Owner(name) is { } owner) yield return owner;
+        if ((!LwMod.Settings.TownHandovers || !TownSwitchWatch.Available) && Owner(name) is { } owner) yield return owner;
         if (k == 2)
             foreach (var line in p.Explored ?? []) yield return line;
         if (k == 2 && LandmarkLink.Line(data, name) is { } places) yield return places;   // with Landmark Banners installed

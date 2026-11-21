@@ -2,16 +2,20 @@
 // data ships a dozen keepsake records (content/trophies.json keepsake_slots) and this book gives each fallen squadmate one of them: the
 // record's name becomes "Keepsake of <name>" and its description their life with the squad, death and record (KeepsakeText), written from
 // the squad record at the moment of death. The texts are saved here and written back into the records after every load. With more fallen
-// than records, the oldest story gives way to the newest.
+// than records, the oldest story gives way to the newest. On supported clients, an opt-in item tag lets a right click read an
+// individual story from the saved Fallen record even after the slot is reused.
 using System.Reflection;
 using Meitou.Modding;
 using Meitou.Simulation;
+using Meitou.Simulation.Items;
 using Meitou.Simulation.Population;
 
 namespace LivingWasteland.MeitouMod;
 
 public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveData, IStateHashed
 {
+    const string Provenance = "lw:keepsake:v1:";
+    static readonly MethodInfo? setItemName = typeof(ItemInstance).GetProperty("Name")?.GetSetMethod(true);
     const int Format = 2;                        // 2: entries keep the fallen's key
     public static List<string> Slots = [];       // the keepsake records' string ids (lw_codes.json trophies.keepsakes)
 
@@ -33,8 +37,12 @@ public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveDa
     }
 
     /// <summary>The keepsake record to hand over for <paramref name="fallenKey"/>, written for them; null when there is none.</summary>
-    public string? Take(World world, string fallenKey, string mournerName)
+    public string? Take(World world, string fallenKey, string mournerName) =>
+        Take(world, fallenKey, mournerName, out _);
+
+    internal string? Take(World world, string fallenKey, string mournerName, out string? tag)
     {
+        tag = null;
         if (Slots.Count == 0 || LwDeeds.For(world)?.Record is not { } rec) return null;
         var f = rec.FallenMembers.LastOrDefault(x => x.Name == fallenKey);
         if (f is null) return Slots[0];
@@ -45,6 +53,7 @@ public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveDa
         var entry = new Entry(slot, name, text, world.GameHours, fallenKey);
         entries.Add(entry);
         Write(entry);
+        if (LwMod.Settings.KeepsakeProvenance) tag = Provenance + f.Name;
         return Slots[slot];
     }
 
@@ -63,6 +72,27 @@ public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveDa
         entries[entries.IndexOf(entry)] = now;
         Write(now);
         return KeepsakeText.Remember(f, holder, rec.Display, (int)world.Tick);
+    }
+
+    internal (string Bark, string Message)? Remember(World world, ItemInstance item, string holder)
+    {
+        if (!Slots.Contains(item.Record)) return null;
+        if (FallenKey(item) is not { } key) return Remember(world, item.Record, holder);
+        if (LwDeeds.For(world)?.Record is not { } rec || rec.FallenMembers.LastOrDefault(x => x.Name == key) is not { } fallen)
+            return null;
+
+        rec.Members.TryGetValue(key, out var member);
+        var (name, story) = KeepsakeText.For(fallen, member, holder, rec.Display);
+        SetName(item, name);
+        return (KeepsakeText.Remember(fallen, holder, rec.Display, (int)world.Tick).Bark, story);
+    }
+
+    static string? FallenKey(ItemInstance item) =>
+        ItemUses.Tag(item) is { } tag && tag.StartsWith(Provenance, StringComparison.Ordinal) ? tag[Provenance.Length..] : null;
+
+    static void SetName(ItemInstance item, string name)
+    {
+        if (item.Name != name) setItemName?.Invoke(item, [name]);
     }
 
     /// <summary>Writes an entry's name and story into its record (by reflection: GameRecord's name and strings are internal to Meitou).</summary>
@@ -87,8 +117,10 @@ public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveDa
     /// ones made earlier show the plain name until this runs).</summary>
     void Rename(World world)
     {
-        if (broken || data is null || entries.Count == 0) return;
+        if (broken || data is null || Slots.Count == 0) return;
         var names = entries.Where(e => e.Slot < Slots.Count).ToDictionary(e => Slots[e.Slot], e => e.Name);
+        var record = LwDeeds.For(world)?.Record;
+        var fallen = record?.FallenMembers.Select(f => f.Name).ToHashSet(StringComparer.Ordinal);
         var table = world.Characters;
         try
         {
@@ -96,8 +128,14 @@ public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveDa
             {
                 if (table.Cold(s) is not { IsPlayer: true, Inventory: { } bag }) continue;
                 foreach (var item in bag.Items)
-                    if (names.TryGetValue(item.Record, out var n) && item.Name != n)
-                        item.GetType().GetProperty("Name")!.GetSetMethod(true)!.Invoke(item, [n]);
+                {
+                    if (!Slots.Contains(item.Record)) continue;
+                    if (FallenKey(item) is { } key)
+                    {
+                        if (fallen?.Contains(key) == true) SetName(item, "Keepsake of " + record!.Display(key));
+                    }
+                    else if (names.TryGetValue(item.Record, out var name)) SetName(item, name);
+                }
             }
         }
         catch (Exception ex) { LwMod.Log($"trophies: could not rename carried keepsakes ({ex.GetBaseException().Message})"); }
