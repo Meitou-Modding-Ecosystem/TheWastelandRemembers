@@ -58,7 +58,7 @@ public static class ItemUses
                 LwMod.Log($"item uses: {holder} read a warrant from {town ?? "(no town)"}");
                 return true;
             }
-            if (KeepsakeBook.For(world)?.Remember(world, item.Record, holder) is not { } said) return false;
+            if (KeepsakeBook.For(world)?.Remember(world, item, holder) is not { } said) return false;
             world.Bark(user, said.Bark);
             world.Post(said.Message);
             LwMod.Log($"item uses: {holder} turned over {item.Record}: \"{said.Bark}\"");

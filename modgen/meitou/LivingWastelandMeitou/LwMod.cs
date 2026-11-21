@@ -102,6 +102,15 @@ public sealed class LwSettings
 
     [Setting("News from other mods", Hint = "Other mods can report what happens in the world (a town falls, a siege begins, a caravan is lost). Townsfolk near the place talk about it, and once your squad has heard it, it goes into History, the Atlas and Recap.")]
     public bool OtherModsNews { get; set; } = true;
+
+    [Setting("Outpost history (test)", Hint = "Record a finished outpost, its first defence and what a visitor learns about the fight.")]
+    public bool RememberOutposts { get; set; } = PlayTest.On;
+
+    [Setting("Outpost couriers (test)", Hint = "A trader may carry a recent report to one of your public outposts. Needs Outpost history and News from other mods.")]
+    public bool OutpostCouriers { get; set; } = PlayTest.On;
+
+    [Setting("Town handover history (test)", Hint = "Record changes of town ownership the squad witnesses or learns about. Observing changes requires a client with the town switch hook.")]
+    public bool TownHandovers { get; set; } = PlayTest.On;
     [Setting("Marks on the world map (test)", Hint = "Meitou v0.20.2-nightly.20261117 and later: the world map marks rivals still about, outlaw camps the Atlas knows and places of news your squad heard this week.")]
     public bool MapMarks { get; set; } = false;
     [Setting("Ask townsfolk for news (test)", Hint = "Meitou v0.20.2-nightly.20261117 and later: right-click someone in a town and ask for news. They tell you the biggest news that has reached them, and your squad has heard it.")]
@@ -110,8 +119,13 @@ public sealed class LwSettings
     public bool RelationNews { get; set; } = false;
     [Setting("Towns miss stolen goods", Hint = "Meitou 0.21 and later: goods your people take from a town's shops, homes and machines raise that town's heat. Seen, at once (on top of the crime itself); unseen, when the town misses them half a day later. Worth more, more heat; valuable goods go into History.")]
     public bool TheftHeat { get; set; } = true;
+
+    [Setting("Prices by reputation (test)", Hint = "Town traders remember your squad's favours, trouble and titles, on clients that expose the trade price hook.")]
+    public bool ReputationPrices { get; set; } = PlayTest.On;
     [Setting("Rivals", Hint = "Someone your squad beats and leaves alive can come back for it: renamed for what happened, stronger each time, talked about in town and listed in the Atlas.")]
     public bool Rivals { get; set; } = true;
+    [Setting("Recruit beaten rivals (test)", Hint = "A rival you defeat three times may ask to join your squad. A rival who killed a squadmate stays an enemy.")]
+    public bool RecruitRivals { get; set; } = PlayTest.On;
     [Setting("Outlaw successors", Hint = "A few days after a named outlaw dies or is jailed, one of their gang takes over the same ground under a new name, with a smaller bounty and a new contract.")]
     public bool OutlawSuccessors { get; set; } = true;
     [Setting("Towns hire bounty hunters", Hint = "A town that has you marked as hunted hires a crew of blades to track your squad down.")]
@@ -122,6 +136,26 @@ public sealed class LwSettings
 
     [Setting("Trophies and keepsakes", Hint = "Named outlaws carry a token you can take, a fallen squadmate leaves a keepsake to the one who mourns them, and admiring barmen add their faction's charm to a gift. On Meitou 0.18 and later they are worn in a neck slot.")]
     public bool Trophies { get; set; } = true;
+    [Setting("Individual keepsake stories (test)", Hint = "New keepsakes remember who they belonged to. Turn one over to read its story.")]
+    public bool KeepsakeProvenance { get; set; } = PlayTest.On;
+
+    [Setting("Prisoner cases (test)", Hint = "Remember notable captives confirmed in your cages. Word of their capture can reach nearby towns.")]
+    public bool PrisonerCases { get; set; } = PlayTest.On;
+    [Setting("Prisoner deals (test)", Hint = "Choose a lawful delivery for a wanted captive or settle a ransom with a visiting envoy.")]
+    public bool PrisonerDeals { get; set; } = PlayTest.On;
+    [Setting("Western Hive envoys (test)", Hint = "A Western Hive caravan can come to a public outpost to ask about its Queen.")]
+    public bool HiveEnvoys { get; set; } = PlayTest.On;
+    [Setting("Outlaw recovery parties (test)", Hint = "A Dust Bandit second may send people for a captive leader held at a known outpost.")]
+    public bool PrisonerRecovery { get; set; }
+    [Setting("Shek gate recovery (test)", Hint = "Oshar's Kral's Chosen can march on the gate for Maruka. Requires outlaw recovery parties.")]
+    public bool ShekGateRecovery { get; set; }
+    [Setting("Covert prisoner recovery (test)", Hint = "Kiri's Sand Ninjas can sneak in to pick the gate and cell locks. Requires outlaw recovery parties.")]
+    public bool CovertRecovery { get; set; }
+    [Setting("Escorts for freed prisoners (test)", Hint = "Envoys and recovery parties can walk a freed captive home.")]
+    public bool PrisonerEscorts { get; set; } = PlayTest.On;
+
+    [Setting("Visible neck charms (test)", Hint = "Show the Shek and Holy Nation charms when worn in the neck slot on supported Meitou builds.")]
+    public bool VisibleNeckCharms { get; set; }
 
     [Setting("Neck slot position: left (restart)", Hint = "Where the neck slot sits in the character window: pixels from its left edge. Takes effect after restarting the game.", Min = 0, Max = 800, Step = 2)]
     public int NeckSlotX { get; set; } = 420;
@@ -140,6 +174,9 @@ public sealed class LwSettings
         Options = ["U", "N", "O", "Off"])]
     public string RecordHotkey { get => LivingWasteland.MeitouMod.RecordHotkey.Key; set => LivingWasteland.MeitouMod.RecordHotkey.Key = value; }
 
+    [Setting("Native record hotkey (test, restart)", Hint = "Use Settings > Controls to bind the record on supported Meitou builds. The current record hotkey choice supplies the initial default.")]
+    public bool NativeRecordHotkey { get; set; }
+
     [Setting("Notices", Hint = "Small messages that float up for a few seconds: a squad member gaining a skill level, and a faction's standing with you going up (green) or down (red).",
         Options = ["Skills and standing", "Skills only", "Standing only", "Off"])]
     public string Notices { get => LivingWasteland.MeitouMod.Notices.Mode; set => LivingWasteland.MeitouMod.Notices.Mode = value; }
@@ -152,6 +189,10 @@ public sealed class LwSettings
 
     [Setting("Log quest changes (for testing)", Hint = "Write every quest step change to log.txt (useful for play tests).")]
     public bool LogChanges { get; set; } = true;
+
+    volatile bool playtestDiagnostics = PlayTest.On;
+    [Setting("Collect playtest diagnostics", Hint = "Keep a timeline across saves and loads. In Squad record > History, mark a test point or export the playtest log.")]
+    public bool PlaytestDiagnostics { get => playtestDiagnostics; set => playtestDiagnostics = value; }
 }
 
 public sealed class LwMod : IMod
@@ -161,7 +202,7 @@ public sealed class LwMod : IMod
     internal static string JobVariable = "LW open jobs";
     /// <summary>The build this helper was made for (modgen/BUILD_ID); the data mods carry theirs in lw_codes.json.</summary>
     public static string DataBuild = "unknown";
-    public const string HelperBuild = "20261119bd";
+    public const string HelperBuild = "20261121be";
     internal static List<RumourCode> Rumours = [];
     internal static List<(int Index, string Name)> Outlaws = [];
 
@@ -176,14 +217,21 @@ public sealed class LwMod : IMod
         var table = JsonSerializer.Deserialize<CodeTable>(File.ReadAllText(path), new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
             ?? throw new InvalidDataException("lw_codes.json is empty");
         LwState.Initial = table.Variables.ToDictionary(v => v.Name, v => v.Initial);
-        Log = line => { LogTally.Count(line); c.Log(line); };
+        PlaytestLog.EngineLog = c.Log;
+        Log = line => { PlaytestLog.Message(line); LogTally.Count(line); c.Log(line); };
         RecordHost.Log = Log;
         SquadRoles.Context = c;
         RecordHost.LogChanges = () => Settings.LogChanges;
         RecapLink.Enabled = () => Settings.RecapMoments;
         RecapLink.Source = "LivingWasteland";
         Settings.JobCap = table.Jobs?.Cap ?? 5;
-        SettingsFile.Attach(c.AddSettings(Settings), "LivingWastelandMeitou");
+        var settings = c.AddSettings(Settings);
+        SettingsFile.Attach(settings, "LivingWastelandMeitou");
+        settings.Changed += setting =>
+        {
+            if (PlaytestLog.Enabled || setting.Key == nameof(LwSettings.PlaytestDiagnostics))
+                PlaytestLog.Control(setting.Key, "setting changed", setting.Text);
+        };
         if (table.Jobs is { } jobs) JobVariable = jobs.Variable;
 
         RegisterVariables(c, table.Variables, table.VariableMoments);
@@ -245,6 +293,7 @@ public sealed class LwMod : IMod
         {
             LivingWasteland.MeitouMod.Trophies.Keepsake = keepsake;
             LivingWasteland.MeitouMod.Trophies.AddSlot(c, Settings.NeckSlotX, Settings.NeckSlotY);
+            TrophyLooks.Register(c);
         }
         LivingWasteland.MeitouMod.Trophies.Warrant = table.Trophies?.Warrant;
         if (table.Trophies?.Keepsakes is { Count: > 0 } keepsakes)
@@ -254,7 +303,9 @@ public sealed class LwMod : IMod
         }
         if (table.Trophies is { } trophies)
             ItemUses.Register(c, [.. trophies.Keepsakes ?? [], trophies.Warrant ?? ""]);
+        AidUseWatch.Register(c);
         RelationWatch.Register(c);
+        TradeReputation.Register(c);
         c.AddSystem("lw-thefts", _ => new TheftsSystem(), SystemAnchor.End);
         Thefts.Register(c);
         WorldReady.Register(c);
@@ -267,12 +318,20 @@ public sealed class LwMod : IMod
         // rivals (Rivals.cs): survivors the squad left alive who come back for it; their names in the town talk through word swaps
         c.AddSystem("lw-rivals", ctx =>
         {
-            return new RivalsSystem(ctx.Data);
+            return new RivalsSystem(ctx.Data) { Population = ctx.Find<PopulationSystem>() };
         }, SystemAnchor.End);
+        RivalOffers.Register(c);
         c.AddDebugCommand("Wasteland Remembers: rivals", _ => !Settings.Rivals ? "rivals are off (the Squad record window's Settings tab)"
             : RivalsSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
         // news from other mods (News.cs, WastelandApi.Report): towns near the place talk about it through word swaps
         c.AddSystem("lw-news", ctx => new NewsSystem(ctx.Data), SystemAnchor.End);
+        TownSwitchWatch.Register(c);
+        PrisonerCases.Register(c, table.Camps ?? []);
+        OutpostMemories.Register(c);
+        Couriers.Register(c);
+        HiveEnvoys.Register(c);
+        PrisonerRecovery.Register(c, table.Camps ?? []);
+        PrisonerEscorts.Register(c);
         c.AddDebugCommand("Wasteland Remembers: news from other mods", _ => NewsSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
         if (PlayTest.On)
             c.AddDebugCommand("Wasteland Remembers: test news (type a town)", d =>
@@ -322,6 +381,7 @@ public sealed class LwMod : IMod
         DataBuild = data;
         c.Log(data == HelperBuild ? $"build {HelperBuild} (data and helper match)"
             : $"WARNING: data build {data} but helper build {HelperBuild}: run install_meitou.bat from the newest build folder, then restart Meitou");
+        c.Log($"engine AI calls: PlatoonJobs.For {AiCompat.JobsShape}, per-character assault {(AiCompat.CanAssault ? "available" : "gone (API 3)")}");
         c.Log($"{table.Variables.Count} quest variables, {table.TakeItems.Count} take-item codes, {Rumours.Count} rumour subjects, job limit {Settings.JobCap}, bar talk {(Settings.BarTalk ? "on" : "off")}");
     }
 
@@ -647,7 +707,7 @@ public sealed class LwMod : IMod
         c.AddDialogueCondition(n.HeatCondition, check => check.Compare(Settings.Heat ? LwDeeds.For(check.World)?.HeatFor(check.World, check.Speaker) ?? 0 : 0));
         c.AddDialogueEffect(n.HeatEffect, act => { if (Settings.Heat) LwDeeds.For(act.World)?.HeatEffect(act.World, act.Speaker, act.Effect.Value); });
         c.AddUi(new StatsUi());
-        RecordHotkey.Install(new HarmonyLib.Harmony("livingwasteland.recordhotkey"), Log);
+        RecordHotkey.Install(c, new HarmonyLib.Harmony("livingwasteland.recordhotkey"), Log, Settings.NativeRecordHotkey);
         c.AddDebugCommand("Wasteland Remembers: squad record", _ =>
         {
             StatsUi.open = !StatsUi.open;
@@ -732,16 +792,23 @@ public sealed class LwMod : IMod
         foreach (var t in takes)
         {
             string item = t.Item;
+            c.AddDialogueCondition(t.Code, check => check.Compare(ItemCount(BagOf(check.World, check.Subject), item)));
             c.AddDialogueEffect(t.Code, act => TakeItems(act, item, act.Effect.Value));
         }
     }
 
-    // Takes up to `count` units of an item record from the target's inventory (backpack included). Nothing happens if the target or
-    // the inventory cannot be resolved.
+    static Meitou.Simulation.Items.Inventory? BagOf(World world, CharacterId who) =>
+        world.Characters.TryResolveNext(who, out int slot) ? world.Characters.Cold(slot)?.Inventory : null;
+
+    static long ItemCount(Meitou.Simulation.Items.Inventory? bag, string record) =>
+        bag?.All().Where(i => i.Record == record).Sum(i => (long)i.Quantity) ?? 0;
+
+    // The same inventory is checked by the dialogue condition. A direct or stale effect may reach us
+    // without the required stock, in which case leave the items the player does have in their bag.
     static void TakeItems(DialogueAct act, string itemRecord, int count)
     {
-        var table = act.World.Characters;
-        if (!table.TryResolveNext(act.Target, out int slot) || table.Cold(slot)?.Inventory is not { } inventory) return;
+        var inventory = BagOf(act.World, act.Target);
+        if (inventory is null || count <= 0 || ItemCount(inventory, itemRecord) < count) return;
         int taken = 0;
         for (; taken < count; taken++)
         {
@@ -827,7 +894,11 @@ public sealed class LwState
     sealed record QuestSummary(string Short, string Full);
     volatile QuestSummary jobSummary = new("not ready yet (a moment after loading)", "not ready yet");
 
-    internal void PublishSummary() => jobSummary = new(core.Summary(LwMod.Settings.JobCap), core.FullList());
+    internal void PublishSummary()
+    {
+        var (summary, full) = core.SummaryAndFullList(LwMod.Settings.JobCap);
+        jobSummary = new(summary, full);
+    }
 
     /// <summary>One line for the F10 row; the full list from that tick goes to log.txt.</summary>
     public string Summary()
@@ -881,6 +952,7 @@ public sealed class LwSystem(PopulationSystem? population, DialogueSystem? talk,
 
     public void SlowWorld(World world)
     {
+        PlaytestLog.Observe(world);
         if (Published.Due(world.Tick, 15)) state.PublishSummary();
         if (world.Tick % 900 == 0) OutlawLog(world);
         if (world.Tick % 60 == 10 && LogTally.Day(world.GameHours) is { } summary) LwMod.Log(summary);
@@ -946,7 +1018,8 @@ public sealed class LwSystem(PopulationSystem? population, DialogueSystem? talk,
             bool spoke = false;
             foreach (var npc in BarPacer<CharacterId>.Order(here, world.Tick, building.Length))
             {
-                if (!bars.NpcReady(npc, world.Tick) || Sleep.Is(world, npc) || !TalkPacer.Exempt(() => talk!.FireEvent(world, npc, player, BarTalkEvent))) continue;
+                if (!bars.NpcReady(npc, world.Tick) || Sleep.Is(world, npc)) continue;
+                if (!TradeReputation.Remark(world, npc, player) && !TalkPacer.Exempt(() => talk!.FireEvent(world, npc, player, BarTalkEvent))) continue;
                 bars.Said(building, npc, world.Tick, buildingPause, npcPause);
                 spoke = true;
                 said++;
@@ -978,12 +1051,18 @@ public sealed class LwSystem(PopulationSystem? population, DialogueSystem? talk,
         }
     }
 
-    public void Write(Stream stream) { using var w = new BinaryWriter(stream, System.Text.Encoding.UTF8, leaveOpen: true); state.Write(w); }
+    public void Write(Stream stream)
+    {
+        using var w = new BinaryWriter(stream, System.Text.Encoding.UTF8, leaveOpen: true);
+        state.Write(w);
+        if (PlaytestLog.Enabled) PlaytestLog.Control("lw-state", "save section written");
+    }
     public void Read(Stream stream)
     {
         using var r = new BinaryReader(stream, System.Text.Encoding.UTF8, leaveOpen: true);
         state.Read(r);
         SquadRoles.ClearLegacyEscorts(state.Core);
+        if (PlaytestLog.Enabled) PlaytestLog.Control("lw-state", "save section read");
     }
     public void Hash(ref StateHasher hasher) => state.Hash(ref hasher);
 }

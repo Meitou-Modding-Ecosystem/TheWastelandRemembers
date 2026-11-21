@@ -19,7 +19,7 @@ public sealed record RaidCode(string Name, string Squad, string Target, int Stat
 
 public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem? population, PopulationData? data) : ICombatHitObserver, IModSaveData, IStateHashed
 {
-    const int PassEvery = 300;
+    const int PassEvery = 300, SaveFormat = 3;
     readonly RaidRecord?[] last = new RaidRecord?[raids.Count];
     readonly Presence<(int Raid, double Sent)> parties = new();
     bool failed;
@@ -119,22 +119,37 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
             var rec = last[i];
             if (rec is { Out: true })
             {
-                var p = Pursuit.Find(world, r.Squad, rec.X, rec.Z, claimed);
+                Platoon? p = null;
+                string tag = Tag(r, rec);
+                if (Pursuit.HasTags)
+                {
+                    var exact = world.Platoons.All
+                        .Where(candidate => candidate is not null && candidate.TemplateId == r.Squad && Pursuit.ReadTag(candidate) == tag)
+                        .Take(2).ToArray();
+                    if (exact.Length > 1) continue;
+                    p = exact.SingleOrDefault();
+                    if (p is not null && claimed.Contains(p.Id)) continue;
+                }
+                bool tagged = rec.Tagged || p is not null;
+                bool legacy = !Pursuit.HasTags || !tagged;
+                if (legacy) p = Pursuit.Find(world, r.Squad, rec.X, rec.Z, claimed, Pursuit.IsUntagged);
                 bool over = now - rec.SentHours >= RaidRules.Lurk || now < rec.SentHours;
                 var key = (i, rec.SentHours);
                 var verdict = parties.Check(world, key, p is not null);
-                bool caught = verdict == Presence<(int, double)>.Verdict.Gone ||
-                    (p is null && Pursuit.DeadNear(world, r.Squad, rec.X, rec.Z));
+                bool caught = verdict == Presence<(int, double)>.Verdict.Gone || p is { Dead: true } ||
+                    (legacy && p is null && Pursuit.DeadNear(world, r.Squad, rec.X, rec.Z, eligible: Pursuit.IsUntagged));
                 if (p is null && !caught && !over)
                 {
                     p = RestoreParty(world, pop, d, r, rec, players);
                     if (p is null) { parties.Forget(key); continue; }
+                    tagged = Pursuit.Mark(p, tag);
+                    parties.Check(world, key, found: true);
                     LwMod.Log($"raids: the {r.Name} party missing from the save was placed again near {TownName(rec.Town)}");
                 }
                 if (caught || over)
                 {
-                    if (p is not null) Pursuit.Release(p);
-                    last[i] = rec with { EndedHours = now, Caught = caught };
+                    if (p is { Dead: false }) Pursuit.Release(p);
+                    last[i] = rec with { EndedHours = now, Caught = caught, Tagged = tagged };
                     parties.Forget(key);
                     Settle(world, d, i, last[i]!);
                     LwMod.Log($"raids: the {r.Name} party near {TownName(rec.Town)} {(caught ? "was caught" : "got away")}");
@@ -142,7 +157,7 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
                 else
                 {
                     claimed.Add(p!.Id);
-                    last[i] = rec with { X = p.Position.X, Z = p.Position.Y };
+                    last[i] = rec with { X = p.Position.X, Z = p.Position.Y, Tagged = tagged };
                     if (p.State == PlatoonState.Loaded && p.SquadId >= 0) squads[p.SquadId] = i;
                 }
                 continue;
@@ -158,14 +173,20 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
                     (x, z) => walk.IsWalkable(x, z) && walk.GroundHeight(x, z) - walk.TerrainHeight(x, z) < 5f && CampRules.MayMove((x, z), (x, z), players))
                 is not { } at) continue;
             var lurk = (X: site.X + (at.X - site.X) * 0.4f, Z: site.Z + (at.Z - site.Z) * 0.4f);    // about 1.2 km out, on the side it came from
-            if (Pursuit.Make(world, pop, d, r.Squad, $"lw:raid:{r.Name}:{world.Tick}", at, lurk) is null) continue;
-            last[i] = new RaidRecord(townIndex, now, at.X, at.Z);
+            var next = new RaidRecord(townIndex, now, at.X, at.Z);
+            string tagAtSend = Tag(r, next);
+            var spawned = Pursuit.Make(world, pop, d, r.Squad, tagAtSend, at, lurk);
+            if (spawned is null) continue;
+            last[i] = next with { Tagged = Pursuit.Mark(spawned, tagAtSend) };
             parties.Check(world, (i, now), found: true);
             LwMod.Log($"raids: a {r.Name} party sets out for {TownName(townIndex)}, day {now / 24:0.0}");
         }
         partySquads.Clear();
         foreach (var (k, v) in squads) partySquads[k] = v;
     }
+
+    static string Tag(RaidCode raid, RaidRecord record) =>
+        FormattableString.Invariant($"lw:raid:{raid.Name}:{record.SentHours:R}");
 
     static Platoon? RestoreParty(World world, PopulationSystem pop, PopulationData data, RaidCode raid, RaidRecord record,
         List<(float X, float Z)> players)
@@ -182,8 +203,7 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
             var delta = new Vector2(record.X - site.X, record.Z - site.Z);
             float distance = delta.Length();
             var toward = distance <= 12000 ? at : (site.X + delta.X * (12000 / distance), site.Z + delta.Y * (12000 / distance));
-            string key = FormattableString.Invariant($"lw:raid:{raid.Name}:{record.SentHours:R}");
-            return Pursuit.Make(world, pop, data, raid.Squad, key, at, toward);
+            return Pursuit.Make(world, pop, data, raid.Squad, Tag(raid, record), at, toward);
         }
         return null;
     }
@@ -221,13 +241,13 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
     public void Write(Stream stream)
     {
         using var w = new BinaryWriter(stream, System.Text.Encoding.UTF8, leaveOpen: true);
-        w.Write(2);
+        w.Write(SaveFormat);
         w.Write(raids.Count);
         for (int i = 0; i < raids.Count; i++)
         {
             w.Write(raids[i].Name);
             w.Write(last[i] is not null);
-            if (last[i] is { } r) { w.Write(r.Town); w.Write(r.SentHours); w.Write(r.X); w.Write(r.Z); w.Write(r.EndedHours); w.Write(r.Caught); w.Write(r.Helped); w.Write(r.Broke); }
+            if (last[i] is { } r) { w.Write(r.Town); w.Write(r.SentHours); w.Write(r.X); w.Write(r.Z); w.Write(r.EndedHours); w.Write(r.Caught); w.Write(r.Helped); w.Write(r.Broke); w.Write(r.Tagged); }
         }
     }
 
@@ -236,12 +256,13 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
         Array.Clear(last);
         using var rd = new BinaryReader(stream, System.Text.Encoding.UTF8, leaveOpen: true);
         int format = stream.Position >= stream.Length ? 0 : rd.ReadInt32();
-        if (format is not (1 or 2)) return;
+        if (format is < 1 or > SaveFormat) return;
         for (int n = rd.ReadInt32(); n > 0; n--)
         {
             string name = rd.ReadString();
             RaidRecord? r = rd.ReadBoolean() ? new RaidRecord(rd.ReadInt32(), rd.ReadDouble(), rd.ReadSingle(), rd.ReadSingle(), rd.ReadDouble(), rd.ReadBoolean()) : null;
             if (r is not null && format >= 2) r = r with { Helped = rd.ReadBoolean(), Broke = rd.ReadBoolean() };
+            if (r is not null && format >= 3) r = r with { Tagged = rd.ReadBoolean() };
             int i = raids.ToList().FindIndex(x => x.Name == name);
             if (i >= 0) last[i] = r;
         }
@@ -249,6 +270,18 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
 
     public void Hash(ref StateHasher h)
     {
-        foreach (var r in last) { h.Add(r is null ? -1 : r.Town); h.Add(r?.SentHours ?? 0); }
+        foreach (var r in last)
+        {
+            h.Add(r?.Town ?? -1);
+            if (r is null) continue;
+            h.Add(r.SentHours);
+            h.Add(r.X);
+            h.Add(r.Z);
+            h.Add(r.EndedHours);
+            h.Add(r.Caught ? 1 : 0);
+            h.Add(r.Helped ? 1 : 0);
+            h.Add(r.Broke ? 1 : 0);
+            h.Add(r.Tagged ? 1 : 0);
+        }
     }
 }

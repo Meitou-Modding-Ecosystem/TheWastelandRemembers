@@ -71,8 +71,8 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
             if (Send(world, pop, d, players, ask.Town, now, ask.Reason)) requests.Remove(ask);
         }
 
-        // new crews from hunted towns
-        if (LwDeeds.For(world) is { } deeds)
+        // New crews from hunted towns are a reaction to heat. Explicit requests above have their own cause.
+        if (LwMod.Settings.Heat && LwDeeds.For(world) is { } deeds)
         {
             foreach (var (town, _, crime, blood) in deeds.Heat.All())
             {
@@ -89,7 +89,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         {
             var crew = list[ci];
             var p = matched[ci];
-            bool tagged = crew.Tagged || p is not null && ReadTag(p) == Tag(crew);
+            bool tagged = crew.Tagged || p is not null && Pursuit.ReadTag(p) == Tag(crew);
             // a crew never loaded near the squad has no characters yet, and Meitou's save keeps no such squad (SaveCapture writes stored or
             // campaign platoons only): after a load it is missing, not beaten. Place it again where it was, once per session.
             var key = (crew.Town, crew.SentHours);
@@ -97,8 +97,8 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
             var seen = presence.Check(world, key, p is not null);
             // killed just before a save: Meitou keeps a killed squad in the save as a dead platoon (v0.20.2-nightly.20261117, #860); it was
             // beaten, not missing, so it is not placed again
-            if (seen == Presence<(string, double)>.Verdict.PlaceAgain && (!tagged || modTag is null) &&
-                Pursuit.DeadNear(world, crewSquad, crew.X, crew.Z, eligible: IsUntagged))
+            if (seen == Presence<(string, double)>.Verdict.PlaceAgain && (!tagged || !Pursuit.HasTags) &&
+                Pursuit.DeadNear(world, crewSquad, crew.X, crew.Z, eligible: Pursuit.IsUntagged))
                 LwMod.Log($"bounty hunters: the crew from {crew.Town} is in the save as dead");
             else if (seen == Presence<(string, double)>.Verdict.PlaceAgain && !late)
             {
@@ -157,27 +157,17 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         return true;
     }
 
-    static readonly PropertyInfo? modTag = typeof(Platoon).GetProperty("ModTag") is
-        { CanRead: true, CanWrite: true, PropertyType: var type } property && type == typeof(string) ? property : null;
-
     static string Tag(Crew crew) => FormattableString.Invariant($"lw:bounty:{crew.Town}:{crew.SentHours:R}");
 
-    static string? ReadTag(Platoon platoon) => modTag?.GetValue(platoon) as string;
-
-    static bool IsUntagged(Platoon platoon) => string.IsNullOrEmpty(ReadTag(platoon));
-
-    static bool Mark(Platoon platoon, Crew crew)
-    {
-        if (modTag is null) return false;
-        modTag.SetValue(platoon, Tag(crew));
-        return true;
-    }
+    static bool Mark(Platoon platoon, Crew crew) => Pursuit.Mark(platoon, Tag(crew));
 
     Platoon?[] MatchCrews(World world, IReadOnlyList<Crew> active)
     {
+        if (active.Count == 0) return Array.Empty<Platoon?>();
+
         // An exact tag also matches a dead platoon. An older save only gets the proximity fallback on untagged parties.
-        var tagged = world.Platoons.All.Where(p => p is not null && p.TemplateId == crewSquad && !IsUntagged(p))
-            .ToLookup(p => ReadTag(p!), StringComparer.Ordinal);
+        var tagged = world.Platoons.All.Where(p => p is not null && p.TemplateId == crewSquad && !Pursuit.IsUntagged(p))
+            .ToLookup(p => Pursuit.ReadTag(p!), StringComparer.Ordinal);
         var resolved = new Platoon?[active.Count];
         var legacy = new List<int>();
         for (int i = 0; i < active.Count; i++)
@@ -185,11 +175,17 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
             var crew = active[i];
             var exact = tagged[Tag(crew)].Take(2).ToArray();
             if (exact.Length == 1) resolved[i] = exact[0];
-            else if (modTag is null || !crew.Tagged && exact.Length == 0) legacy.Add(i);
+            else if (!Pursuit.HasTags || !crew.Tagged && exact.Length == 0) legacy.Add(i);
         }
         if (legacy.Count == 0) return resolved;
 
-        var near = Pursuit.Match(world, crewSquad, legacy.Select(i => (active[i].X, active[i].Z)).ToArray(), IsUntagged);
+        var lastKnown = new (float X, float Z)[legacy.Count];
+        for (int i = 0; i < legacy.Count; i++)
+        {
+            var crew = active[legacy[i]];
+            lastKnown[i] = (crew.X, crew.Z);
+        }
+        var near = Pursuit.Match(world, crewSquad, lastKnown, Pursuit.IsUntagged);
         for (int i = 0; i < legacy.Count; i++) resolved[legacy[i]] = near[i];
         return resolved;
     }
@@ -292,6 +288,22 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
 /// </summary>
 public static class Pursuit
 {
+    static readonly PropertyInfo? modTag = typeof(Platoon).GetProperty("ModTag") is
+        { CanRead: true, CanWrite: true, PropertyType: var type } property && type == typeof(string) ? property : null;
+
+    internal static bool HasTags => modTag is not null;
+
+    internal static string? ReadTag(Platoon platoon) => modTag?.GetValue(platoon) as string;
+
+    internal static bool IsUntagged(Platoon platoon) => string.IsNullOrEmpty(ReadTag(platoon));
+
+    internal static bool Mark(Platoon platoon, string tag)
+    {
+        if (modTag is null) return false;
+        modTag.SetValue(platoon, tag);
+        return true;
+    }
+
     /// <summary>
     /// The town a placed squad counts as coming from. Meitou makes a fresh roaming squad (no saved or stored characters) at its origin town's
     /// site (PopulationSystem.FinishRoamer reads Sites[Origin], 0.17 to 0.19.1), so Origin -1 would throw when it loads. The nearest town of
@@ -318,7 +330,7 @@ public static class Pursuit
         var template = SquadTemplate.From(record);
         ulong key = Rng.StableHash(keyText);
         var plan = SquadFactory.Plan(d.Db, template, pop.Settings.SquadSizeMultiplier, world.Seed, key, pop.States);
-        var (package, _) = PlatoonJobs.For(d.Ai, template);
+        var (package, _) = AiCompat.JobsFor(d.Ai, template);
         var platoon = new Platoon
         {
             Id = world.Platoons.NextId(),
@@ -355,13 +367,16 @@ public static class Pursuit
         return result;
     }
 
-    public static Platoon? Find(World world, string templateId, float x, float z, HashSet<int> claimed)
+    public static Platoon? Find(World world, string templateId, float x, float z, HashSet<int> claimed) =>
+        Find(world, templateId, x, z, claimed, eligible: null);
+
+    internal static Platoon? Find(World world, string templateId, float x, float z, HashSet<int> claimed, Func<Platoon, bool>? eligible)
     {
         Platoon? best = null;
         float bestD = float.MaxValue;
         foreach (var p in world.Platoons.All)
         {
-            if (p is null || p.Dead || p.TemplateId != templateId || claimed.Contains(p.Id)) continue;
+            if (p is null || p.Dead || p.TemplateId != templateId || claimed.Contains(p.Id) || (eligible is not null && !eligible(p))) continue;
             float dd = Vector2.Distance(p.Position, new Vector2(x, z));
             if (dd < bestD) { best = p; bestD = dd; }
         }
@@ -390,18 +405,16 @@ public static class Pursuit
     public const string AssaultPackage = "2666-gamedata.base";   // Assault target squad (agg): attack enemies, follow leader, assault the target
     public const string FollowPackage = "5090-gamedata.base";    // Bodyguard: follow mission target (closes the distance), attack enemies
 
-    static readonly MethodInfo? orderAssault = typeof(Meitou.Simulation.Ai.AiSystem).GetMethod("OrderAssault", BindingFlags.Public | BindingFlags.Instance);
-
     /// <summary>Every standing member not already fighting is ordered to attack the target (the order vanilla dialogue's Assault gives).</summary>
     static void Assault(World world, Squad squad, CharacterId target)
     {
-        if (orderAssault is null || world.Systems.OfType<Meitou.Simulation.Ai.AiSystem>().FirstOrDefault() is not { } ai) return;
+        if (!AiCompat.CanAssault || world.Systems.OfType<Meitou.Simulation.Ai.AiSystem>().FirstOrDefault() is not { } ai) return;
         var table = world.Characters;
         bool any = false;
         foreach (var m in squad.Members)
         {
             if (!table.TryResolveNext(m, out int s) || table.Cold(s) is not { } c || c.InCombat || c.Medical is { Incapacitated: true }) continue;
-            try { any |= orderAssault.Invoke(ai, [world, m, target]) is true; } catch { return; }
+            any |= AiCompat.OrderAssault(ai, world, m, target);
         }
         if (any) squadProgress.GetOrCreateValue(squad).Package = AssaultPackage;
     }
@@ -561,8 +574,29 @@ public static class Pursuit
     /// <summary>Lets a pursuer go: no longer kept by the engine or steered.</summary>
     public static void Release(Platoon p) { p.Persistent = false; p.Point = null; }
 
-    public static (float X, float Z) Nearest(List<(float X, float Z)> players, float x, float z) =>
-        players.OrderBy(p => (p.X - x) * (p.X - x) + (p.Z - z) * (p.Z - z)).First();
+    public static (float X, float Z) Nearest(List<(float X, float Z)> players, float x, float z)
+    {
+        ArgumentNullException.ThrowIfNull(players, "source");
+        if (players.Count == 0) throw new InvalidOperationException("Sequence contains no elements");
+
+        var nearest = players[0];
+        float best = SquaredDistance(nearest, x, z);
+        for (int i = 1; i < players.Count; i++)
+        {
+            var candidate = players[i];
+            float distance = SquaredDistance(candidate, x, z);
+            if (distance.CompareTo(best) >= 0) continue;
+            nearest = candidate;
+            best = distance;
+        }
+        return nearest;
+
+        static float SquaredDistance((float X, float Z) at, float x, float z)
+        {
+            float dx = at.X - x, dz = at.Z - z;
+            return dx * dx + dz * dz;
+        }
+    }
 
     public static List<(float X, float Z)> Players(World world)
     {

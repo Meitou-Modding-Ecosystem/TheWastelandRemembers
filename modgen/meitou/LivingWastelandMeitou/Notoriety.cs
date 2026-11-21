@@ -39,11 +39,13 @@ public sealed class LwDeeds(IReadOnlyList<TitleRule> rules, PopulationData? data
     }
 
     /// <summary>The town (by name) a position is in, and the faction (by name) that owns it; nulls outside every town.</summary>
-    public (string? Town, string? Owner) TownAt(System.Numerics.Vector3 at)
+    public (string? Town, string? Owner) TownAt(System.Numerics.Vector3 at) => TownAtSite(data?.TownAt(at) ?? -1);
+
+    internal (string? Town, string? Owner) TownAtSite(int site)
     {
-        if (data is null || data.TownAt(at) is not (>= 0 and var t) || t >= data.Sites.Count) return (null, null);
-        int f = t < data.SiteFactions.Count ? data.SiteFactions[t] : -1;
-        return (data.Sites[t].Town.Name, f >= 0 && f < data.Factions.Count ? data.Factions[f].Name : null);
+        if (data is null || site < 0 || site >= data.Sites.Count) return (null, null);
+        int f = site < data.SiteFactions.Count ? data.SiteFactions[site] : -1;
+        return (data.Sites[site].Town.Name, f >= 0 && f < data.Factions.Count ? data.Factions[f].Name : null);
     }
 
     public string FactionName(int f) => data is not null && f >= 0 && f < data.Factions.Count ? data.Factions[f].Name : "";
@@ -52,6 +54,8 @@ public sealed class LwDeeds(IReadOnlyList<TitleRule> rules, PopulationData? data
     public string? SiteName(int site) => data is not null && site >= 0 && site < data.Sites.Count ? data.Sites[site].Town.Name : null;
 
 #if !SQUAD_RECORD_ONLY
+    internal string PriceNode(int site) => data is not null && site >= 0 && site < data.Sites.Count ? NewsSystem.NodeOf(data.Sites[site]) : "";
+
     /// <summary>The heat a speaker feels: its town's, or the echo of its faction's hottest town.</summary>
     public double HeatFor(World world, CharacterId speaker)
     {
@@ -72,8 +76,9 @@ public sealed class LwDeeds(IReadOnlyList<TitleRule> rules, PopulationData? data
             if (RecordHost.LogChanges()) RecordHost.Log($"heat: {faction} forgives {-value}");
             return;
         }
-        string town = TownAt(table.Next[s].Position).Town ?? $"{faction} lands";
-        Heat.AddCrime(town, faction, value);
+        int site = data?.TownAt(table.Next[s].Position) ?? -1;
+        string town = SiteName(site) ?? $"{faction} lands";
+        Heat.AddCrime(town, faction, value, PriceNode(site));
         if (RecordHost.LogChanges()) RecordHost.Log($"heat: +{value} in {town} ({Heat.Here(town):0.0})");
     }
 #endif
@@ -101,6 +106,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     const double KillBlood = 6, KnockoutCrime = 2;  // heat per townsperson killed / knocked down
 
     readonly LwDeeds deeds = Linked(new LwDeeds(rules, data));
+    internal LwDeeds Deeds => deeds;
 
 #if !SQUAD_RECORD_ONLY
     /// <summary>The dialogue system, for the "I defeated your squad" lines Meitou does not fire by itself (event 15). Set by the helper.</summary>
@@ -140,6 +146,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     bool registered;
 #if !SQUAD_RECORD_ONLY
     double lastFadeHours = double.NaN;
+    readonly HashSet<string> occupiedPriceNodes = new(StringComparer.Ordinal);
 #endif
 
     #region hits
@@ -150,12 +157,12 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     {
         /// <summary>Struck in an arena bout (saved with named victims: one can bleed out after a reload).</summary>
         public bool Sport { get; init; }
+#if !SQUAD_RECORD_ONLY
+        public string PriceNode { get; init; } = "";
+#endif
     }
 
     readonly Dictionary<CharacterId, Struck> struck = [];
-
-    /// <summary>Who last hit each squadmate (for the memorial: the killer, and a feud with their faction).</summary>
-    readonly Dictionary<CharacterId, (string Name, string Faction, string? Record, double Hours)> lastHitBy = [];
 
     /// <summary>Squadmates who just died, waiting for a standing squadmate to mourn them by name once the fight is over.</summary>
     readonly List<(CharacterId Body, string Name, double Hours)> toMourn = [];
@@ -257,8 +264,14 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         double amount = (hit.Damage.Cut + hit.Damage.Blunt + hit.Damage.Pierce) * hit.Damage.Scale;
 
         deeds.Record.Damage(striker, victim.IsPlayer ? deeds.Who(victim) : null, amount);
-        if (victim.IsPlayer && attacker is { IsPlayer: false })
-            lastHitBy[hit.Victim] = (attacker.Name, deeds.FactionName(attacker.Faction), world.Uniques.RecordOf(hit.Attacker), world.GameHours);
+        // The hit observer can name a killer only when this blow took a living squadmate to dead.
+#if !SQUAD_RECORD_ONLY
+        if (victim.IsPlayer && attacker is { IsPlayer: false } && hit.VictimWasAlive && victim.Medical is { Dead: true })
+            RivalsSystem.For(world)?.ConfirmedSquadmateKill(hit.Attacker, attacker);
+#endif
+        if (!sport && victim.IsPlayer && attacker is { IsPlayer: false } && hit.VictimWasAlive && victim.Medical is { Dead: true })
+            RecordFallen(world, hit.Victim, victim, deeds.TownAt(table.Next[v].Position).Town,
+                attacker.Name, deeds.FactionName(attacker.Faction), world.Uniques.RecordOf(hit.Attacker));
         // Mercenaries the player hired are on the squad's side: their blows never take the squad's claim away, and a kill they make belongs
         // to the squad as a whole (no member credit).
         if (striker is null && attacker is not null && IsHired(world, attacker))
@@ -320,11 +333,17 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         string? unique = world.Uniques.RecordOf(id);
         string? named = unique is { } rec ? data?.Db.Find(rec)?.Name ?? victim.Name : TitleTarget(victim);
         string faction = deeds.FactionName(victim.Faction);
-        var (town, owner) = deeds.TownAt(world.Characters.Next[slot].Position);
+        var at = world.Characters.Next[slot].Position;
+        int site = data?.TownAt(at) ?? -1;
+        var (town, owner) = deeds.TownAtSite(site);
         bool lives = victim.SquadId >= 0 && world.Squads.Find(victim.SquadId) is { Town: >= 0 } s && data is not null
             && s.Town < data.Sites.Count && data.Sites[s.Town].Town.Name == town;
         bool local = town is not null && owner is not null && (faction == owner || lives);
-        return new Struck(striker, victim.Name, faction, leader, named, town, owner, local, world.GameHours, unique, world.Characters.Next[slot].Position);
+        var result = new Struck(striker, victim.Name, faction, leader, named, town, owner, local, world.GameHours, unique, at);
+#if !SQUAD_RECORD_ONLY
+        result = result with { PriceNode = deeds.PriceNode(site) };
+#endif
+        return result;
     }
 
     /// <summary>A victim the engine does not register as unique still counts as named when its record is a title's target (the bosses).</summary>
@@ -384,8 +403,8 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
 #if !SQUAD_RECORD_ONLY
         if (!k.Local || k.Sport) return;
         string tierBefore = HeatMap.Tier(deeds.Heat.Here(k.Town!));
-        if (blood) deeds.Heat.AddBlood(k.Town!, k.Owner!, amount);
-        else deeds.Heat.AddCrime(k.Town!, k.Owner!, amount);
+        if (blood) deeds.Heat.AddBlood(k.Town!, k.Owner!, amount, k.PriceNode);
+        else deeds.Heat.AddCrime(k.Town!, k.Owner!, amount, k.PriceNode);
         string tierNow = HeatMap.Tier(deeds.Heat.Here(k.Town!));
         if (tierNow != tierBefore)
         {
@@ -510,12 +529,30 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         if (world.Tick % (LookEvery * 600) == 0) Prune(world);
     }
 
+    void RecordFallen(World world, CharacterId id, CharacterCold member, string? town,
+        string? killer = null, string? faction = null, string? killerRecord = null)
+    {
+        if (member.Animal is not null) return;
+        string name = deeds.Who(member);
+        if (deeds.Record.FallenMembers.Any(f => f.Name == name)) return;
+        string place = town ?? "the wilds";
+        deeds.Record.Hours = world.GameHours;
+        deeds.Record.Place = place;
+        deeds.Record.Died(name, world.GameHours, place, killer, faction, killerRecord);
+        RecordHost.Log($"memorial: {member.Name} fell at {place}{(killer is null ? "" : $", killed by {killer} ({faction})")}");
+        toMourn.Add((id, name, world.GameHours));
+    }
+
     /// <summary>Every player character: time on its task, distance walked, falling down, limbs lost. Returns the towns they are in.</summary>
     HashSet<string> Look(World world)
     {
         var table = world.Characters;
         var hot = table.Previous;
         var occupied = new HashSet<string>(StringComparer.Ordinal);
+#if !SQUAD_RECORD_ONLY
+        occupiedPriceNodes.Clear();
+        bool trackNodes = deeds.Heat.HasOwnedHeat;
+#endif
         var fighting = new List<string>();
         var downNow = new List<string>();
         var squad = new List<(string Name, CharacterId Id, System.Numerics.Vector3 At, bool Down)>();
@@ -526,23 +563,22 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             if (!hot[s].Alive || table.Cold(s) is not { IsPlayer: true } cold) continue;
             var id = table.IdOf(s);
             var at = hot[s].Position;
-            string? townHere = deeds.TownAt(at).Town;
+            int site = data?.TownAt(at) ?? -1;
+            string? townHere = deeds.SiteName(site);
             string me = deeds.Who(cold);
             if (cold.Medical is { Dead: true })
             {
-                if (cold.Animal is null && !deeds.Record.FallenMembers.Any(f => f.Name == me))
-                {
-                    var by = lastHitBy.TryGetValue(id, out var h) && world.GameHours - h.Hours < 24 ? h : default;
-                    deeds.Record.Hours = world.GameHours;
-                    deeds.Record.Place = townHere ?? "the wilds";
-                    deeds.Record.Died(me, world.GameHours, townHere ?? "the wilds", by.Name, by.Faction, by.Record);
-                    RecordHost.Log($"memorial: {cold.Name} fell at {townHere ?? "the wilds"}{(by.Name is null ? "" : $", killed by {by.Name} ({by.Faction})")}");
-                    toMourn.Add((id, me, world.GameHours));
-                }
+                RecordFallen(world, id, cold, townHere);
                 continue;
             }
             if (cold.Animal is null) deeds.Record.Seen(me, world.GameHours);
-            if (townHere is not null) occupied.Add(townHere);
+            if (townHere is not null)
+            {
+                occupied.Add(townHere);
+#if !SQUAD_RECORD_ONLY
+                if (trackNodes) occupiedPriceNodes.Add(deeds.PriceNode(site));
+#endif
+            }
             deeds.Record.Hours = world.GameHours;
             deeds.Record.Place = townHere ?? "the wilds";
 
@@ -760,7 +796,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         if (double.IsNaN(lastFadeHours) || world.GameHours < lastFadeHours) lastFadeHours = world.GameHours;
         double hours = world.GameHours - lastFadeHours;
         if (hours < 1.0 / 60) return;
-        deeds.Heat.Fade(hours, occupied);
+        deeds.Heat.Fade(hours, occupied, occupiedPriceNodes);
         lastFadeHours = world.GameHours;
     }
 #endif
@@ -772,7 +808,6 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         foreach (var k in stumpsBefore.Keys.Where(k => !table.IsAlive(k)).ToList()) stumpsBefore.Remove(k);
         if (struck.Count > 4096) struck.Clear();
         foreach (var k in last.Keys.Where(k => !table.IsAlive(k)).ToList()) last.Remove(k);
-        foreach (var k in lastHitBy.Where(p => world.GameHours - p.Value.Hours > 24).Select(p => p.Key).ToList()) lastHitBy.Remove(k);
     }
 
     void Register(World world)
@@ -800,21 +835,31 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         w.Write(MournTag);
         w.Write(toMourn.Count);
         foreach (var (_, name, hours) in toMourn) { w.Write(name); w.Write(hours); }
+#if !SQUAD_RECORD_ONLY
+        deeds.Heat.WriteOwners(w);
+#endif
     }
 
     const int MournTag = 0x4C4D524E;   // "LMRN"
 
-    /// <summary>The named victims the squad struck last and that may still bleed out (format 1). Others cannot be found after a load.</summary>
+    /// <summary>The named victims the squad struck last and that may still bleed out. Others cannot be found after a load.</summary>
     void WriteStruck(BinaryWriter w)
     {
         var named = struck.Values.Where(k => k.UniqueRecord is not null).GroupBy(k => k.UniqueRecord!).Select(g => g.Last())
             .Concat(pendingNamed.Values).GroupBy(k => k.UniqueRecord!).Select(g => g.First()).OrderBy(k => k.UniqueRecord, StringComparer.Ordinal).ToList();
-        w.Write(2);                                     // 2: each entry ends with Sport (an arena bout's blow)
+#if SQUAD_RECORD_ONLY
+        w.Write(2);
+#else
+        w.Write(3);                                     // 3: placed town identity at the time of the hit
+#endif
         w.Write(named.Count);
         foreach (var k in named)
         {
             w.Write(k.UniqueRecord!); w.Write(k.Striker); w.Write(k.Name); w.Write(k.Faction); w.Write(k.Leader); w.Write(k.Named ?? "");
             w.Write(k.Town ?? ""); w.Write(k.Owner ?? ""); w.Write(k.Local); w.Write(k.Hours); w.Write(k.Sport);
+#if !SQUAD_RECORD_ONLY
+            w.Write(k.PriceNode);
+#endif
         }
     }
 
@@ -823,7 +868,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         pendingNamed.Clear();
         if (r.BaseStream.Position >= r.BaseStream.Length) return;    // a save from before this was kept
         int format = r.ReadInt32();
-        if (format is not (1 or 2)) return;
+        if (format is < 1 or > 3) return;
         for (int n = r.ReadInt32(); n > 0; n--)
         {
             string rec = r.ReadString();
@@ -831,6 +876,13 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
                 Blank(r.ReadString()), r.ReadBoolean(), r.ReadDouble(), rec);
             // a named fighter struck in a bout can bleed out after a reload: still sport, no heat (from a review of the code)
             if (format >= 2) k = k with { Sport = r.ReadBoolean() };
+            if (format >= 3)
+            {
+                string node = r.ReadString();
+#if !SQUAD_RECORD_ONLY
+                k = k with { PriceNode = node };
+#endif
+            }
             pendingNamed[rec] = k;
         }
 
@@ -853,7 +905,12 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             ReadStruck(r);
             toMourn.Clear();
             if (r.BaseStream.Length - r.BaseStream.Position >= 8 && r.ReadInt32() == MournTag)
+            {
                 for (int n = r.ReadInt32(); n > 0; n--) toMourn.Add((CharacterId.None, r.ReadString(), r.ReadDouble()));
+#if !SQUAD_RECORD_ONLY
+                deeds.Heat.ReadOwners(r);
+#endif
+            }
         }
         catch (Exception e) when (e is EndOfStreamException or IOException or InvalidDataException or FormatException)
         {
@@ -866,6 +923,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         foreach (long v in deeds.Record.HashParts()) hasher.Add(v);
 #if !SQUAD_RECORD_ONLY
         foreach (long v in deeds.Heat.HashParts()) hasher.Add(v);
+        foreach (long v in deeds.Heat.OwnerHashParts()) hasher.Add(v);
 #endif
     }
 

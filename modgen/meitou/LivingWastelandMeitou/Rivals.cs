@@ -7,7 +7,7 @@
 // A rival recovers for two to four days, then hunts the squad (its squad walks after the nearest player character, as the bounty crews do),
 // a little stronger each time. If it beats the squad it boasts and goes away to recover; if it loses and lives it gets away again; if it dies
 // or is jailed, it is over. Townsfolk near a rival talk about it (word swaps LWRIVAL_k carry the live name), and the Atlas lists rivals.
-// The character is resolved by its handle, and after a load by name and faction (names are saved with the character).
+// Lasting IDs identify known actors across loads where available. Older saves use name and faction until there is firmer evidence.
 using System.Numerics;
 using System.Reflection;
 using Meitou.Data.Gameplay.Bodies;
@@ -23,20 +23,24 @@ namespace LivingWasteland.MeitouMod;
 
 public sealed record RivalTable(List<int> Codes, List<string> Tokens);
 
-public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveData, IStateHashed
+public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveData, IStateHashed
 {
     public const int Slots = 3;
     const int PassEvery = 300;
     const int Format = 3;
     const float TalkKm = 7;
 
-    public enum Phase { Recovering = 0, Hunting = 1, Dead = 2, Jailed = 3, Lost = 4 }
+    public enum Phase { Recovering = 0, Hunting = 1, Dead = 2, Jailed = 3, Lost = 4, Recruited = 5 }
 
     public sealed class Rival
     {
         public int Slot;
         public string Name = "", OldName = "", Faction = "", Grudge = "", By = "";
         public double Made, Next;
+        internal ulong ActorId;
+        internal string RecruitPortrait = "";
+        internal int Defeats, LastOfferDefeats;
+        internal double LastDefeat = double.MinValue, OfferUntil;
         public double LastCounted = double.MinValue;   // game hour of the last fight end that counted (not saved: a reload starts a new fight)
         public int Returns, Wins, Boosted, PlatoonId = -1;
         public bool Nameless;          // the old name was only a type ("Dust Bandit"): "Once a Dust Bandit."
@@ -52,13 +56,13 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
 
     /// <summary>The rivals the squad has been told about (WastelandApi).</summary>
     internal IEnumerable<(string Name, string Faction, string Phase, float X, float Z, int Returns, int Wins, string Grudge)> Told() =>
-        rivals.Where(r => r.Told).Select(r => (r.Name, r.Faction, r.Phase.ToString().ToLowerInvariant(), r.X, r.Z, r.Returns, r.Wins, r.Grudge));
+        rivals.Where(r => r.Told && r.Phase != Phase.Recruited).Select(r => (r.Name, r.Faction, r.Phase.ToString().ToLowerInvariant(), r.X, r.Z, r.Returns, r.Wins, r.Grudge));
     int made;                       // rivals ever made in this game (the first is guaranteed)
     double lastMade = -1e9;
     bool failed;
 
     // this fight: enemies the squad hurt, and rivals that took part
-    sealed class Hurt { public double Damage; public bool Limb, Arm, Leg, Downed, Leader; public string By = ""; }
+    sealed class Hurt { public double Damage; public bool Limb, Arm, Leg, Downed, Defeated, Leader; public string By = ""; }
     readonly Dictionary<CharacterId, Hurt> hurt = [];
     readonly HashSet<int> inFight = [];
 
@@ -85,6 +89,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
         h.By = striker;
         h.Leader |= leader;
         if (med.Incapacitated) h.Downed = true;
+        if (med.Incapacitated && !med.Dead && !hit.VictimWasIncapacitated) h.Defeated = true;
         if (hit.Part >= 0 && hit.Part < med.Parts.Count && med.Parts[hit.Part].Limb == LimbState.Stump)
         {
             h.Limb = true;
@@ -118,6 +123,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
                 }
                 else
                 {
+                    if (hurt.TryGetValue(r.Id, out var injury) && injury.Defeated) RecordDefeat(world, r);
                     r.Returns++;
                     r.Phase = Phase.Recovering;
                     r.Next = world.GameHours + 48 + Spread(r.Name, r.Returns, 48);
@@ -260,7 +266,10 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
             Slot = slot, OldName = cold.Name, Name = $"{first2} {epithet}", Faction = data is not null && cold.Faction >= 0 && cold.Faction < data.Factions.Count
                 ? data.Factions[cold.Faction].Name : "no faction", Grudge = grudge, By = by, Made = world.GameHours,
             Next = world.GameHours + 24 + Spread(cold.Name, 0, 24), Phase = Phase.Recovering, Id = b.Id, Nameless = !lastNamed,
+            ActorId = LastingActors.Grant(world, b.Id),
         };
+        BindRecruitment(r, cold);
+        if (h.Defeated) RecordDefeat(world, r);
         var at = table.Next[b.Slot].Position;
         (r.X, r.Z) = (at.X, at.Z);
         cold.Name = r.Name;
@@ -277,7 +286,14 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
     public void SlowWorld(World world)
     {
         Latest = this;
-        if (!ReferenceEquals(seen, world)) { seen = world; byWorld.AddOrUpdate(world, this); Words(world); }
+        if (!ReferenceEquals(seen, world))
+        {
+            seen = world;
+            byWorld.AddOrUpdate(world, this);
+            offerWorld = new object();
+            RivalOffers.Publish([], 0);
+            Words(world);
+        }
         if (Published.Due(world.Tick, 12)) Shown.Set(Summary);
         if (failed || !LwMod.Settings.Rivals || world.Tick % PassEvery != 120) return;
         try { Pass(world); }
@@ -293,7 +309,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
         var players = Pursuit.Players(world);
         // none in view (the first ticks after a load): Announce's distance check needs one, and its throw stopped rivals for the session
         // (from a review of the code); the whole pass waits for the next
-        if (players.Count == 0) return;
+        if (players.Count == 0) { RivalOffers.Publish([], 0); return; }
         Announce(world, players);
         bool changed = false;
         foreach (var r in rivals.Where(r => r.Active))
@@ -328,6 +344,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
                 // licking their wounds: one left lying does not bleed out (seen in play: a new rival dead within hours, not at the squad's hands)
                 if (r.Phase == Phase.Recovering && cold.Medical is { Dead: false } med && med.Blood < 40) med.Blood = 40;   // awake or not (seen in play: a one-armed rival bled out on their feet)
             }
+            if (HoldOffer(world, r, cold)) continue;
             if (r.Phase == Phase.Recovering && world.GameHours >= r.Next && RivalryLink.MaySend(world, PartyClaims.Rival(r.Name)))
             {
                 r.Phase = Phase.Hunting;
@@ -370,6 +387,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
             LwMod.Log($"rivals: {Summary()}");
         }
         RivalryLink.Keep(world, "rival:", rivals.Where(r => r.Active && r.Phase == Phase.Hunting).Select(r => PartyClaims.Rival(r.Name)).ToList());
+        PublishOffers(world);
     }
 
     // ---- helpers ----
@@ -461,9 +479,14 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
     {
         if (modTag is null) return null;
         string tag = TagOf(r);
+        Platoon? found = null;
         foreach (var p in world.Platoons.All)
-            if (p is { Dead: false } && modTag.GetValue(p) as string == tag) return p;
-        return null;
+        {
+            if (p is not { Dead: false } || modTag.GetValue(p) as string != tag) continue;
+            if (found is not null) return null;
+            found = p;
+        }
+        return found;
     }
 
     static Platoon? Platoon(World world, CharacterCold c)
@@ -474,25 +497,46 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
         return null;
     }
 
-    /// <summary>Finds the rival's character again after a load (handles change): by its name, nearest its last place.</summary>
-    static void Resolve(World world, Rival r)
+    /// <summary>A known actor uses its engine identity, even when another character has the same name.</summary>
+    void Resolve(World world, Rival r)
     {
         var table = world.Characters;
-        if (table.TryResolveNext(r.Id, out int s) && table.Cold(s)?.Name == r.Name) return;
-        CharacterId best = CharacterId.None;
-        float bestD = float.MaxValue;
-        for (int i = 0; i < table.HighWater; i++)
+        if (r.ActorId != 0 && LastingActors.Available)
         {
-            if (table.Cold(i) is not { } c || c.Name != r.Name) continue;
-            var at = table.Next[i].Position;
-            float d = (at.X - r.X) * (at.X - r.X) + (at.Z - r.Z) * (at.Z - r.Z);
-            if (d < bestD) { bestD = d; best = table.IdOf(i); }
+            r.Id = LastingActors.Find(world, r.ActorId);
+            if (!IsRival(world, r, r.Id)) r.Id = CharacterId.None;
+            return;
         }
-        r.Id = best;
+        if (IsRival(world, r, r.Id)) return;
+
+        CharacterId found = CharacterId.None;
+        bool ambiguous = false;
+        var party = TaggedPlatoon(world, r);
+        for (int slot = 0; slot < table.HighWater; slot++)
+        {
+            if (table.Cold(slot) is not { } cold || !LegacyMatch(r, cold)) continue;
+            var candidate = table.IdOf(slot);
+            if (party is { State: PlatoonState.Loaded, SquadId: >= 0 } && cold.SquadId == party.SquadId &&
+                world.Squads.Find(party.SquadId) is { Leader: var leader } && leader == candidate)
+            {
+                r.Id = candidate;
+                r.ActorId = LastingActors.Grant(world, candidate);
+                BindRecruitment(r, cold);
+                return;
+            }
+            if (!found.IsNone) ambiguous = true;
+            found = candidate;
+        }
+        r.Id = ambiguous ? CharacterId.None : found;
     }
 
-    static bool IsRival(World world, Rival r, CharacterId id) =>
-        world.Characters.TryResolveNext(id, out int s) && world.Characters.Cold(s)?.Name == r.Name;
+    bool IsRival(World world, Rival r, CharacterId id) =>
+        world.Characters.TryResolveNext(id, out int slot) && world.Characters.Cold(slot) is { IsPlayer: false } cold &&
+        (r.ActorId != 0 && LastingActors.Available ? LastingActors.Of(cold) == r.ActorId : LegacyMatch(r, cold));
+
+    bool LegacyMatch(Rival r, CharacterCold cold) => !cold.IsPlayer && cold.Animal is null && cold.Name == r.Name &&
+        (data is null || r.Faction == FactionOf(cold) || (r.Faction == "no faction" && FactionOf(cold).Length == 0)) &&
+        (r.RecruitPortrait.Length == 0 || r.RecruitPortrait == PortraitKey(cold));
 
     static bool Alive(World world, Rival r, out CharacterCold? cold)
     {
@@ -548,7 +592,7 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
             string state = r.Phase switch
             {
                 Phase.Hunting => "out looking for your squad", Phase.Recovering => "licking their wounds", Phase.Dead => "dead",
-                Phase.Jailed => "in chains", _ => "not seen in a long while",
+                Phase.Jailed => "in chains", Phase.Recruited => "joined your squad", _ => "not seen in a long while",
             };
             var page = new List<string>
             {
@@ -607,8 +651,17 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
         w.Write(LeftAloneTag);
         w.Write(LeftAlone.All.Count);
         foreach (var (name, faction) in LeftAlone.All) { w.Write(name); w.Write(faction); }
+        var identified = rivals.Where(r => r.ActorId != 0).ToList();
+        if (identified.Count > 0 || HasRecruitmentState)
+        {
+            w.Write(ActorTag);
+            w.Write(identified.Count);
+            foreach (var r in identified) { w.Write(r.Slot); w.Write(r.ActorId); }
+        }
+        WriteOffers(w);
     }
 
+    const int ActorTag = 0x4C524944;   // "LRID"
     const int LeftAloneTag = 0x4C414C4E;   // "LALN"
 
     public void Read(Stream stream)
@@ -638,6 +691,16 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
         }
         if (stream.Length - stream.Position >= 8 && rd.ReadInt32() == LeftAloneTag)
             for (int n = rd.ReadInt32(); n > 0; n--) LeftAlone.Add(rd.ReadString(), rd.ReadString());
+        if (stream.Length - stream.Position >= 8 && rd.ReadInt32() == ActorTag)
+        {
+            for (int n = rd.ReadInt32(); n > 0; n--)
+            {
+                int slot = rd.ReadInt32();
+                ulong actor = rd.ReadUInt64();
+                if (rivals.Find(r => r.Slot == slot) is { } rival) rival.ActorId = actor;
+            }
+        }
+        ReadOffers(rd);
         seen = null;
     }
 
@@ -645,7 +708,8 @@ public sealed class RivalsSystem(PopulationData? data) : ITickSystem, IModSaveDa
     {
         h.Add(made);
         h.Add(rivals.Count);
-        foreach (var r in rivals) { h.Add(SquadRecord.StableHash(r.Name)); h.Add((int)r.Phase); h.Add(r.Returns); h.Add(r.Wins); }
+        foreach (var r in rivals) { h.Add(SquadRecord.StableHash(r.Name)); h.Add((int)r.Phase); h.Add(r.Returns); h.Add(r.Wins); if (r.ActorId != 0) h.Add(r.ActorId); }
+        HashOffers(ref h);
     }
 }
 

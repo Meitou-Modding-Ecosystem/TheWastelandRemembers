@@ -88,7 +88,7 @@ public class TheftsWorldTests
         var loaded = new TheftsSystem();
         loaded.Read(saved);
         var p = Assert.Single(loaded.Waiting);
-        Assert.Equal(("Squin", "2 Katana", 6000.0), (p.Town, p.Items, p.Value));
+        Assert.Equal(("Squin", "2 Katana", 6000.0, "town:i-squin"), (p.Town, p.Items, p.Value, p.Node));
     }
 
     [Fact]
@@ -161,5 +161,7 @@ public class TheftsWorldTests
             thefts.Settle(world, world.GameHours + TheftRules.MissedAfter);
         }
         Assert.Equal(TheftRules.Heat(3000, caught), Heat(world), 3);
+        var deeds = LwDeeds.For(world)!;
+        Assert.Equal(TheftRules.Heat(3000, caught), deeds.Heat.HereOwned("town:i-squin", deeds.FactionName(W.Bandits)), 3);
     }
 }

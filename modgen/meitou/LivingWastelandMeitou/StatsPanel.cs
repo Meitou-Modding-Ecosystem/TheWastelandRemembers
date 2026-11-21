@@ -86,6 +86,8 @@ public static class StatsPanel
 
         var time = Shown.Where(a => m.SecondsOf(a) >= 60).Select(a => $"{a} {Hours(m.SecondsOf(a))}").ToList();
         if (time.Count > 0) yield return "Time spent:   " + string.Join("   ", time);
+        if (m.AidCharges > 0)
+            yield return $"First aid:   {m.AidCharges:0.##} kit charges used   {N(m.AidKitsFinished, "kit finished", "kits finished")}";
 
         if (m.Bites > 0 || m.Crafted > 0)
         {
@@ -148,6 +150,7 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
     string? aboutKey;
 #if !SQUAD_RECORD_ONLY
     string roleAct = "", homeAct = "", pickAct = "";
+    string exportPlaytest = "", markPlaytest = "";
     int? roleMenu;          // the squad whose role drop-down is open
 #endif       // the setting whose description was clicked (the hover box without a mouse)
     string lastQuery = "";
@@ -163,6 +166,9 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
         reg = r;
 #if !SQUAD_RECORD_ONLY
         NightlyHooks.RegisterUi(r, LwMod.Log);
+        RivalOffers.RegisterUi(r);
+        PrisonerMenu.Register(r);
+        OutpostTownPanel.Register(r, LwMod.Log);
 #endif
         toggle = r.RegisterAction("toggle", _ => open = !open);
         close = r.RegisterAction("close", _ => open = false);
@@ -177,6 +183,13 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
         clear = r.RegisterAction("clear", _ => { UiInput.Query = ""; UiInput.Typing = false; });
         about = r.RegisterAction("about", c => aboutKey = aboutKey == c.Argument ? null : c.Argument);
 #if !SQUAD_RECORD_ONLY
+        markPlaytest = r.RegisterAction("mark-playtest", _ =>
+        {
+            if (!PlaytestLog.Enabled) return;
+            PlaytestLog.Control("", "player marked test point");
+            exported = "Test point marked.";
+        });
+        exportPlaytest = r.RegisterAction("export-playtest", _ => exported = ExportPlaytest());
         roleAct = r.RegisterAction("role", c => { if (int.TryParse(c.Argument, out int id)) roleMenu = roleMenu == id ? null : id; });
         pickAct = r.RegisterAction("pickrole", c =>
         {
@@ -286,6 +299,12 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
         win.Children.Add(Node(10 * s, 82 * s, w - 20 * s, 1 * s, Style("line", s)));
 #if !SQUAD_RECORD_ONLY
         if (tab == 6) return SquadsPage(win, w, h, s);
+        if (tab == 2)
+        {
+            win.Children.Add(Node(w - 214 * s, 6 * s, 160 * s, 28 * s, Style("button", s), UiNodeKind.Button, "Export playtest log", exportPlaytest));
+            if (PlaytestLog.Enabled)
+                win.Children.Add(Node(w - 354 * s, 6 * s, 132 * s, 28 * s, Style("button", s), UiNodeKind.Button, "Mark test point", markPlaytest));
+        }
 #endif
         if (tab == 5) return SettingsPage(win, w, h, s, (screen.Width - w) / 2, (screen.Height - h) / 2);
 
@@ -562,9 +581,7 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
             string folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Folder);
             Directory.CreateDirectory(folder);
             string file = Path.Combine(folder, $"Squad story {DateTime.Now:yyyy-MM-dd HHmm}.txt");
-            File.WriteAllText(file, string.Join(Environment.NewLine + Environment.NewLine,
-                "THE SQUAD" + Environment.NewLine + RecordHost.Panel, "TITLES" + Environment.NewLine + RecordHost.CatalogText,
-                "HISTORY" + Environment.NewLine + RecordHost.HistoryText, "THE FALLEN" + Environment.NewLine + RecordHost.FallenText));
+            File.WriteAllText(file, StoryText());
             return $"Saved to Documents\\{Folder}\\{Path.GetFileName(file)}";
         }
         catch (Exception e)
@@ -572,6 +589,46 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
             RecordHost.Log($"save as text failed: {e.GetBaseException().Message}");
             return "Could not save the file (see log.txt).";
         }
+    }
+
+#if !SQUAD_RECORD_ONLY
+    static string ExportPlaytest()
+    {
+        try
+        {
+            const string folder = "The Wasteland Remembers";
+            string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string directory = Path.Combine(documents.Length > 0 ? documents :
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), folder);
+            Directory.CreateDirectory(directory);
+            string name = $"TWR-playtest-{DateTime.UtcNow:yyyyMMdd-HHmmss}-{Guid.NewGuid().ToString("N")[..6]}.txt";
+            using var writer = new StreamWriter(Path.Combine(directory, name));
+            writer.Write(PlaytestLog.Report(StoryText()));
+            return $"Saved {name}";
+        }
+        catch (Exception e)
+        {
+            RecordHost.Log($"playtest export failed: {e.GetBaseException().Message}");
+            return "Could not save the playtest log (see log.txt).";
+        }
+    }
+#endif
+
+    internal static string StoryText()
+    {
+        string line = Environment.NewLine;
+        List<string> chapters =
+        [
+            "THE SQUAD" + line + RecordHost.Panel,
+            "TITLES" + line + RecordHost.CatalogText,
+            "HISTORY" + line + RecordHost.HistoryText,
+            "THE FALLEN" + line + RecordHost.FallenText,
+        ];
+#if !SQUAD_RECORD_ONLY
+        string outposts = OutpostMemories.Chronicle;
+        if (outposts.Length > 0) chapters.Add("OUTPOSTS" + line + outposts);
+#endif
+        return string.Join(line + line, chapters);
     }
 
     // Meitou 0.19 image nodes, found by name so older versions (no faces) still load: UiNodeKind.Image and UiNode.Portrait.

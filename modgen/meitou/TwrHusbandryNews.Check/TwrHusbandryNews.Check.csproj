@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../TwrHusbandryNews/TwrHusbandryNews.csproj" />
+    <Reference Include="MeitouClient" HintPath="$(MeitouDir)/MeitouClient.dll" />
+    <Reference Include="Meitou.Data" HintPath="$(MeitouDir)/Meitou.Data.dll" />
+    <Reference Include="Meitou.Core" HintPath="$(MeitouDir)/Meitou.Core.dll" />
+    <Reference Include="Meitou.Simulation" HintPath="$(MeitouDir)/Meitou.Simulation.dll" />
+  </ItemGroup>
+</Project>

@@ -59,4 +59,20 @@ public class ApiV4WorldTests
         Assert.Equal("town:i-squin", WastelandApi.TownNode("squin"));
         Assert.Equal("", WastelandApi.TownNode("Nowhere"));
     }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void An_invalid_amount_cannot_poison_a_towns_heat(bool forgive)
+    {
+        var (world, _) = Make();
+        var heat = LwDeeds.For(world)!.Heat;
+        heat.AddCrime("Squin", "Shek Kingdom", 12);
+
+        Assert.False(forgive ? WastelandApi.Forgive("Shek Kingdom", double.NaN, "test")
+            : WastelandApi.AddHeat("Squin", double.NaN, "test"));
+        Assert.Equal(12d, heat.Here("Squin"));
+        Assert.True(WastelandApi.Forgive("Shek Kingdom", 2, "test"));
+        Assert.Equal(10d, heat.Here("Squin"));
+    }
 }

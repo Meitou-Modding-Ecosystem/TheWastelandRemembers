@@ -11,11 +11,21 @@ public sealed class QuestSummaryWorldTests
         var world = W.World(new LwSystem(null, null, null));
         world.RunTicks(60);
         var state = LwState.For(world);
-        Assert.Equal("no open jobs", state.Summary());
-        state.Core.Set("Quest Help Squin", 1);
-        Assert.Equal("no open jobs", state.Summary());
-        world.RunTicks(60);
-        Assert.Contains("Help Squin", state.Summary());
+        var messages = new List<string>();
+        var previous = LwMod.Log;
+        try
+        {
+            LwMod.Log = messages.Add;
+            Assert.Equal("no open jobs", state.Summary());
+            state.Core.Set("Quest Help Squin", 1);
+            state.Core.Set("Quest Aid Admag", 2);
+            Assert.Equal("no open jobs", state.Summary());
+            Assert.Equal("open jobs: none", messages[^1]);
+            world.RunTicks(60);
+            Assert.Contains("1. Aid Admag, 2. Help Squin", state.Summary());
+            Assert.Equal("open jobs: 1. Aid Admag step 2; 2. Help Squin step 1", messages[^1]);
+        }
+        finally { LwMod.Log = previous; }
     }
 
     [Fact]

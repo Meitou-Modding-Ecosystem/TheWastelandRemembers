@@ -943,6 +943,24 @@ class Compiler:
                 rep["ref"]["faction"] = list(squad["ref"]["faction"])
             self.b.add(rep)
             camp["reprisal"] = rep["sid"]
+            if name == "Sayo of the Grey Ribbon" and squad["ref"].get("faction"):
+                # Reserved ids leave every previously shipped outlaw, dialogue and equipment id in place.
+                scout = self.clone(tmpl[-1], "Grey Ribbon Infiltrator", f"950000-{self.b.file}")
+                scout["bool"].update({"unique": 0, "named": 0})
+                scout["float"]["faction importance"] = 0.0
+                scout["int"].update({"combat stats": 52, "stealth stats": 65, "bounty amount": 0, "bounty chance": 0})
+                scout["ref"].pop("stats", None)
+                self.b.add(scout)
+                cell = self.clone(sq_t[-1], "Grey Ribbon Recovery Cell", f"950001-{self.b.file}")
+                cell["ref"] = {
+                    "faction": list(squad["ref"]["faction"]),
+                    "leader": [(scout["sid"], 1, 0, 0)],
+                    "squad": [(scout["sid"], 0, 1, 0)],
+                }
+                cell["bool"] = {"dont multiply": 1}
+                cell["int"] = {}
+                self.b.add(cell)
+                camp["infiltrators"] = cell["sid"]
             # the successor (Meitou only, OutlawCamps.cs): some days after the outlaw dies or is jailed, one of the gang takes over the same
             # ground under their own name. A unique character and squad of its own, never in a spawn list: only the helper places it.
             if o.get("successor"):

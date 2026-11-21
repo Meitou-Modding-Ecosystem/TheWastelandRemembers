@@ -47,6 +47,30 @@ public class NightlyHooksWorldTests
     }
 
     [Fact]
+    public void Map_marks_use_only_the_current_worlds_rivals()
+    {
+        bool enabled = LwMod.Settings.MapMarks;
+        var previous = NightlyHooks.Marks;
+        try
+        {
+            LwMod.Settings.MapMarks = true;
+            var rivals = new RivalsSystem(null);
+            using var rivalSave = W.SavedRival("Hollin One-Arm", "lost an arm", 1, 1000, 2000);
+            rivals.Read(rivalSave);
+            using var first = W.World(rivals, new NewsSystem(null));
+            first.RunTicks(42);
+            Assert.Contains(NightlyHooks.Marks, mark => mark is { Kind: MarkKind.Rival, Label: "Hollin One-Arm" });
+
+            using var next = W.World(new NewsSystem(null));
+            next.RunTicks(2);
+            Assert.Empty(NightlyHooks.Marks);
+            next.RunTicks(40);
+            Assert.Empty(NightlyHooks.Marks);
+        }
+        finally { LwMod.Settings.MapMarks = enabled; NightlyHooks.Marks = previous; }
+    }
+
+    [Fact]
     public void Townsfolk_offer_ask_for_news_and_choosing_it_queues_the_ask()
     {
         var reg = new FakeRegistration();

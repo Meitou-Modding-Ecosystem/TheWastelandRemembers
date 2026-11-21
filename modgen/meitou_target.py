@@ -150,10 +150,10 @@ def convert(builders, recent_marks=(), lw_marks=(), titles=(), camps=(), lw_effe
     for b in builders:
         cond_cache, act_cache = {}, {}
 
-        def cond_sid(code, compare_by):
-            key = (code, compare_by)
+        def cond_sid(code, compare_by, who=0):
+            key = (code, compare_by, who)
             if key not in cond_cache:
-                cond_cache[key] = _condition_record(b, code, compare_by)
+                cond_cache[key] = _condition_record(b, code, compare_by, who)
             return cond_cache[key]
 
         def act_sid(code):
@@ -186,10 +186,19 @@ def convert(builders, recent_marks=(), lw_marks=(), titles=(), camps=(), lw_effe
             for e in ref.pop("add to variable", []):
                 effects.append((act_sid(ADD_BASE + variables[e[0]][0]), e[1], 0, 0))
                 stats["adds"] += 1
+            required_items = {}
             for key in ("take item", "take item from squad"):
-                for e in ref.pop(key, []):
-                    effects.append((act_sid(TAKE_BASE + item_index(e[0])), e[1], 0, 0))
+                for item, count, *_ in ref.pop(key, []):
+                    code = TAKE_BASE + item_index(item)
+                    effects.append((act_sid(code), count, 0, 0))
+                    required_items[code] = required_items.get(code, 0) + count
                     stats["takes"] += 1
+            # Vanilla's target-has-item list only checks presence. Check the exact amount on the line
+            # that consumes it, after any native retargeting on the dialogue root. The condition and
+            # effect registries are separate, so both can use the manifest's existing item code.
+            for code, count in required_items.items():
+                if count > 0:
+                    conds.append((cond_sid(code, 2, who=1), count - 1, 0, 0))
             for key in ("destroy item", "destroy item from squad"):
                 ref.pop(key, None)
             if conds:
@@ -411,7 +420,8 @@ def convert(builders, recent_marks=(), lw_marks=(), titles=(), camps=(), lw_effe
         # moving outlaw camps (OutlawCamps.cs): the index is the outlaw-news index when the outlaw has news lines, so the camp and the
         # gossip agree on what the outlaw is doing; outlaws without news lines get indexes after those
         "camps": [{"index": outlaws[c["name"]] - OUTLAW_BASE if c["name"] in outlaws else len(outlaws) + i,
-                   "name": c["name"], "character": c["character"], "squad": c["squad"], "reprisal": c.get("reprisal"), "biomes": c["biomes"], "successor": c.get("successor")}
+                   "name": c["name"], "character": c["character"], "squad": c["squad"], "reprisal": c.get("reprisal"), "biomes": c["biomes"], "successor": c.get("successor"),
+                   **({"infiltrators": c["infiltrators"]} if "infiltrators" in c else {})}
                   for i, c in enumerate(camps)],
         "gossip": {"code": GOSSIP_CODE, "dialogues": gossip},
         "notoriety": {"heatCondition": HEAT_CONDITION, "heatEffect": HEAT_EFFECT,

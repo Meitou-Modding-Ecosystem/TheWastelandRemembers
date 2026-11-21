@@ -21,7 +21,7 @@ namespace LivingWasteland.MeitouMod;
 
 /// <summary>One outlaw's camp entry from lw_codes.json: its news index, name, character and squad template ids, region (biome group) ids.</summary>
 public sealed record CampCode(int Index, string Name, string Character, string Squad, List<string> Biomes, string? Reprisal = null,
-    SuccessorCode? Successor = null);
+    SuccessorCode? Successor = null, string? Infiltrators = null);
 
 /// <summary>One of the gang who takes over the outlaw's ground some days after the outlaw dies or is jailed: a unique character of its own and
 /// its squad, placed only by the helper (never in a spawn list).</summary>
@@ -691,7 +691,7 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
         }
         var template = SquadTemplate.From(record);
         var plan = SquadFactory.Plan(d.Db, template, pop.Settings.SquadSizeMultiplier, world.Seed, KeyOf(o), pop.States);
-        var (package, job) = PlatoonJobs.For(d.Ai, template);
+        var (package, job) = AiCompat.JobsFor(d.Ai, template);
         var platoon = new Platoon
         {
             Id = world.Platoons.NextId(),

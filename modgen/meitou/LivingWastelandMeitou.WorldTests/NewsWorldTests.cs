@@ -38,4 +38,27 @@ public class NewsHeardOnceWorldTests
         Assert.Equal(1, Lines(world, won));
         Assert.Equal(1, Lines(world, other));                                                 // control: news it didn't have is noted
     }
+    [Fact]
+    public void Asked_news_records_the_time_it_was_heard_and_the_place_in_the_report()
+    {
+        var world = Town();
+        var speaker = W.Spawn(world, "Local", W.Bandits, Scratch);
+        world.RunTicks(2);
+        var news = NewsSystem.For(world)!;
+        const string text = "The gate at Scratch closed at dawn.";
+        Assert.True(news.Report("gate-closed", "Scratch", "Dust Bandits", text, 65, "test"));
+        var record = LwDeeds.For(world)!.Record;
+        world.GameHours += 3;
+        record.Hours = world.GameHours - 1;
+        record.Place = "Stack";
+
+        news.AnswerAsk(world, speaker);
+
+        var entry = Assert.Single(record.History, row => row.Text == text);
+        Assert.Equal(world.GameHours, entry.Hours);
+        Assert.Equal("Scratch", entry.Place);
+        Assert.Equal(world.GameHours - 1, record.Hours);
+        Assert.Equal("Stack", record.Place);
+    }
+
 }

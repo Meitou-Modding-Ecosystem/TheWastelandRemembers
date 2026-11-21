@@ -44,25 +44,31 @@ public static class WastelandApi
     /// <summary>
     /// Adds heat in a town (by its name, as the game shows it) for the player's squad, e.g. an unpaid loan or a broken contract. It fades like
     /// crime heat (half in three game days). <paramref name="amount"/> is clamped to 0-40; 24 makes the town "hunted". The reason is written
-    /// to the log. False when the town is unknown, nothing is loaded, or the Town heat setting is off.
+    /// to the log. False when the amount is NaN, the town is unknown, nothing is loaded, or the Town heat setting is off.
     /// </summary>
     public static bool AddHeat(string town, double amount, string reason)
     {
-        if (!LwMod.Settings.Heat || LwDeeds.Latest is not { Data: { } data } d || string.IsNullOrWhiteSpace(town)) return false;
+        if (double.IsNaN(amount) || !LwMod.Settings.Heat || LwDeeds.Latest is not { Data: { } data } d || string.IsNullOrWhiteSpace(town))
+            return false;
         int site = -1;
+        bool ambiguous = false;
         for (int i = 0; i < data.Sites.Count; i++)
-            if (string.Equals(data.Sites[i].Town.Name, town, StringComparison.OrdinalIgnoreCase)) { site = i; break; }
+        {
+            if (!string.Equals(data.Sites[i].Town.Name, town, StringComparison.OrdinalIgnoreCase)) continue;
+            if (site >= 0) { ambiguous = true; break; }
+            site = i;
+        }
         if (site < 0) return false;
         int f = site < data.SiteFactions.Count ? data.SiteFactions[site] : -1;
-        d.Heat.AddCrime(data.Sites[site].Town.Name, d.FactionName(f), Math.Clamp(amount, 0, HeatMap.Max));
+        d.Heat.AddCrime(data.Sites[site].Town.Name, d.FactionName(f), Math.Clamp(amount, 0, HeatMap.Max), ambiguous ? "" : d.PriceNode(site));
         LwMod.Log($"api: heat +{amount:0.#} in {data.Sites[site].Town.Name} ({reason})");
         return true;
     }
 
-    /// <summary>Takes heat off every town of a faction (a pardon, a paid debt). False when nothing is loaded.</summary>
+    /// <summary>Takes heat off every town of a faction (a pardon, a paid debt). False when the amount is NaN or nothing is loaded.</summary>
     public static bool Forgive(string faction, double amount, string reason)
     {
-        if (LwDeeds.Latest is not { } d) return false;
+        if (double.IsNaN(amount) || LwDeeds.Latest is not { } d) return false;
         d.Heat.Forgive(faction, Math.Max(0, amount));
         LwMod.Log($"api: {faction} forgives {amount:0.#} ({reason})");
         return true;
@@ -157,6 +163,10 @@ public static class WastelandApi
     /// </summary>
     public static bool Report(string kind, string place, string faction, string text, int weight, string source) =>
         NewsSystem.Latest?.Report(kind ?? "", place ?? "", faction ?? "", text ?? "", weight, source ?? "") ?? false;
+
+    /// <summary>Reports news at a specific placed town. The node is the exact town:&lt;InstanceId&gt; returned by TownNode.</summary>
+    public static bool ReportAtNode(string node, string kind, string faction, string text, int weight, string source) =>
+        NewsSystem.Latest?.ReportAtNode(node ?? "", kind ?? "", faction ?? "", text ?? "", weight, source ?? "") ?? false;
 
     // ---- outlaws and places (version 4) ----
 

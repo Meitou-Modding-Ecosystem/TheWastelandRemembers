@@ -63,49 +63,56 @@ public static class RecapLink
                 .Select(a => a.GetType("Recap.RecapApi", throwOnError: false))
                 .FirstOrDefault(t => t is not null);
             if (type is null) return false;     // Recap not installed, or older than 1.2: nothing to say
-            add = type.GetMethods(BindingFlags.Public | BindingFlags.Static).FirstOrDefault(m => m.Name == "AddMoment");
-            if (add is null)
+            var selected = type.GetMethods(BindingFlags.Public | BindingFlags.Static)
+                .Where(m => m.Name == "AddMoment" && m.ReturnType == typeof(bool) && !m.IsGenericMethod)
+                .Select(m => (Method: m, Args: m.GetParameters()))
+                .Where(x => x.Args.Any(p => FieldOf(p) == Field.Caption) && x.Args.All(p => FieldOf(p) != Field.Unknown || p.HasDefaultValue))
+                .OrderByDescending(x => x.Args.Count(p => FieldOf(p) != Field.Unknown))
+                .ThenBy(x => x.Args.Length)
+                .FirstOrDefault();
+            if (selected.Method is null)
             {
-                Off("Recap is installed but has no AddMoment call");
+                Off("Recap has no compatible public AddMoment overload");
                 return false;
             }
-            parameters = add.GetParameters();
-            var unknown = parameters.Where(p => !Fillable(p)).Select(p => $"{p.ParameterType.Name} {p.Name}").ToList();
-            if (unknown.Count > 0)
-            {
-                Off($"Recap's AddMoment has parameters we do not know ({string.Join(", ", unknown)})");
-                return false;
-            }
+            add = selected.Method;
+            parameters = selected.Args;
             RecordHost.Log($"Recap {type.Assembly.GetName().Version} found: titles and other moments will be offered to it");
             return true;
         }
     }
 
-    static bool Fillable(ParameterInfo p)
+    enum Field { Unknown, Caption, Place, Position, Weight, Picture, Source }
+
+    static Field FieldOf(ParameterInfo p)
     {
         var t = Nullable.GetUnderlyingType(p.ParameterType) ?? p.ParameterType;
-        return t == typeof(string) || t == typeof(int) || t == typeof(float) || t == typeof(double) || t == typeof(bool) || t == typeof(Vector3)
-            || t.IsEnum || p.HasDefaultValue;
+        var name = (p.Name ?? "").ToLowerInvariant();
+        if (t == typeof(string) && (name.Contains("caption") || name.Contains("text"))) return Field.Caption;
+        if (t == typeof(string) && name.Contains("place")) return Field.Place;
+        if (t == typeof(Vector3) && (name.Contains("position") || name is "at" or "point")) return Field.Position;
+        if ((t == typeof(int) || t == typeof(float) || t == typeof(double)) && name.Contains("weight")) return Field.Weight;
+        if (t == typeof(bool) && name.Contains("picture")) return Field.Picture;
+        if ((t.IsEnum || t == typeof(string)) && (name.Contains("kind") || name.Contains("source"))) return Field.Source;
+        return Field.Unknown;
     }
 
     static object? Arg(ParameterInfo p, string caption, string place, int weight, Vector3? position)
     {
-        string name = (p.Name ?? "").ToLowerInvariant();
         var type = p.ParameterType;
-        var t = Nullable.GetUnderlyingType(type) ?? type;
-        bool nullable = !type.IsValueType || Nullable.GetUnderlyingType(type) is not null;
-
-        if (t == typeof(Vector3)) return position is { } v ? v : nullable ? null : p.HasDefaultValue ? p.DefaultValue : Vector3.Zero;
-        if (name.Contains("caption") || name.Contains("text")) return caption;
-        if (name.Contains("place")) return place;
-        if (name.Contains("weight")) return Convert.ChangeType(weight, t);
-        if (name.Contains("picture") && t == typeof(bool)) return position is not null;   // a picture only where there is a place to aim at
-        if (name.Contains("kind") || name.Contains("source"))
+        var underlying = Nullable.GetUnderlyingType(type);
+        var t = underlying ?? type;
+        return FieldOf(p) switch
         {
-            if (t == typeof(string)) return Source;
-            if (t.IsEnum) return EnumValue(t);
-        }
-        return p.HasDefaultValue ? p.DefaultValue : t.IsValueType ? Activator.CreateInstance(t) : null;
+            Field.Caption => caption,
+            Field.Place => place,
+            Field.Position => position is { } at ? at : underlying is not null ? null :
+                p.HasDefaultValue ? p.DefaultValue : Vector3.Zero,
+            Field.Weight => Convert.ChangeType(weight, t),
+            Field.Picture => position is not null,
+            Field.Source => t.IsEnum ? EnumValue(t) : Source,
+            _ => p.DefaultValue,
+        };
     }
 
     static object EnumValue(Type t)

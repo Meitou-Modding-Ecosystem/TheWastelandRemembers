@@ -49,19 +49,19 @@ public static class Thefts
             double value = (rec is not null && rec.Ints.TryGetValue("value", out int v) ? v : 0) * (double)units;
             if (value < TheftRules.MinValue) return;
 
-            string? town = TownOfTake(world, deeds, data, site, taker);
+            var (town, node) = TownOfTake(world, deeds, data, site, taker);
             if (town is null) return;                                     // out in the wilds: no town to miss it
             string faction = deeds.FactionName(owner);
             string item = rec?.Name ?? record;
             if (caught)
             {
                 double h = TheftRules.Heat(value, seen: true);
-                deeds.Heat.AddCrime(town, faction, h);
+                deeds.Heat.AddCrime(town, faction, h, node);
                 LwMod.Log($"thefts: seen taking {item} x{units} ({value:0} cats) in {town}: heat +{h:0.0}");
             }
             else
             {
-                system.Pending(town, faction, item, units, value, world.GameHours);
+                system.Pending(town, faction, item, units, value, world.GameHours, node);
                 LwMod.Log($"thefts: took {item} x{units} ({value:0} cats) in {town} unseen; missed in {TheftRules.MissedAfter:0} game hours");
             }
             LogTally.Add(caught ? "thefts seen" : "thefts unseen");
@@ -69,27 +69,33 @@ public static class Thefts
         catch (Exception e) { LwMod.Log($"thefts: skipped a take ({e.GetBaseException().Message})"); }
     }
 
-    static string? TownOfTake(World world, LwDeeds deeds, PopulationData data, string site, CharacterId taker)
+    static (string? Town, string Node) TownOfTake(World world, LwDeeds deeds, PopulationData data, string site, CharacterId taker)
     {
+        (string?, string) FromPosition(System.Numerics.Vector3 position) => FromSite(data.TownAt(position));
+        (string?, string) FromSite(int index) => (deeds.SiteName(index), deeds.PriceNode(index));
+
         if (site.Length > 0)
         {
-            // GoodsTaken.Site is an engine fixture or machine instance key. A registered fixture can belong to a town even at its edge.
+            // GoodsTaken.Site is normally a fixture or machine key. A registered fixture can belong to a town even at its edge.
             if (world.Fixtures.Find(site) is { } fixture)
-                return deeds.SiteName(fixture.Site) ?? deeds.TownAt(fixture.Position).Town;
+                return deeds.SiteName(fixture.Site) is not null ? FromSite(fixture.Site) : FromPosition(fixture.Position);
             if (world.Machines.Find(site) is { } machine)
-                return deeds.TownAt(machine.Position).Town;
+                return FromPosition(machine.Position);
             foreach (var s in data.Sites)
-                if (s.InstanceId == site || string.Equals(s.Town.Name, site, StringComparison.OrdinalIgnoreCase) ||
-                    string.Equals(s.Record.Name, site, StringComparison.OrdinalIgnoreCase)) return s.Town.Name;
+                if (s.InstanceId == site) return (s.Town.Name, NewsSystem.NodeOf(s));
+            var matches = data.Sites.Where(s => string.Equals(s.Town.Name, site, StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(s.Record.Name, site, StringComparison.OrdinalIgnoreCase)).Take(2).ToArray();
+            if (matches.Length == 1) return (matches[0].Town.Name, NewsSystem.NodeOf(matches[0]));
+            if (matches.Length > 1) return (matches[0].Town.Name, "");
         }
-        return world.Characters.TryResolveNext(taker, out int slot) ? deeds.TownAt(world.Characters.Next[slot].Position).Town : null;
+        return world.Characters.TryResolveNext(taker, out int slot) ? FromPosition(world.Characters.Next[slot].Position) : (null, "");
     }
 }
 
 /// <summary>Unseen thefts waiting to be missed, per town; saved with the game.</summary>
 public sealed class TheftsSystem : ITickSystem, IModSaveData, IStateHashed
 {
-    const int PassEvery = 300, Format = 1;
+    const int PassEvery = 300, Format = 2;
     static readonly ConditionalWeakTable<World, TheftsSystem> byWorld = new();
     readonly SortedDictionary<string, PendingTheft> pending = new(StringComparer.Ordinal);
     World? seen;
@@ -101,15 +107,19 @@ public sealed class TheftsSystem : ITickSystem, IModSaveData, IStateHashed
     /// <summary>A take joins a waiting batch of the same town and owner taken within <see cref="TheftRules.SameTheft"/> game hours of the batch's
     /// first take; otherwise it waits on its own clock (one batch per town used to make a later take missed on the first one's clock, and
     /// kept the first owner after a takeover; from a review of the code).</summary>
-    public void Pending(string town, string faction, string item, int units, double value, double hours)
+    public void Pending(string town, string faction, string item, int units, double value, double hours) =>
+        Pending(town, faction, item, units, value, hours, "");
+
+    internal void Pending(string town, string faction, string item, int units, double value, double hours, string node)
     {
-        var batch = pending.Values.FirstOrDefault(p => p.Town == town && p.Faction == faction && hours >= p.TakenHours && hours - p.TakenHours <= TheftRules.SameTheft);
+        var batch = pending.Values.FirstOrDefault(p => p.Town == town && p.Faction == faction && p.Node == node &&
+            hours >= p.TakenHours && hours - p.TakenHours <= TheftRules.SameTheft);
         if (batch is not null) pending.Remove(Key(batch));
-        var next = TheftRules.Add(batch, town, faction, item, units, value, hours);
+        var next = TheftRules.Add(batch, town, faction, item, units, value, hours) with { Node = node };
         pending[Key(next)] = next;
     }
 
-    static string Key(PendingTheft p) => $"{p.Town}|{p.Faction}|{p.TakenHours:R}";
+    static string Key(PendingTheft p) => FormattableString.Invariant($"{p.Town}|{p.Faction}|{p.TakenHours:R}|{p.Node}");
 
     public void SlowWorld(World world)
     {
@@ -128,7 +138,7 @@ public sealed class TheftsSystem : ITickSystem, IModSaveData, IStateHashed
             pending.Remove(Key(p));
             double h = TheftRules.Heat(p.Value, seen: false);
             string tierBefore = HeatMap.Tier(deeds.Heat.Here(p.Town));
-            deeds.Heat.AddCrime(p.Town, p.Faction, h);
+            deeds.Heat.AddCrime(p.Town, p.Faction, h, p.Node);
             if (TheftRules.Line(p) is { } line) { deeds.Record.Note(line); RecapLink.Moment(line, p.Town, 55); }
             LwMod.Log($"thefts: {p.Town} missed {p.Items} ({p.Value:0} cats): heat +{h:0.0} ({tierBefore} to {HeatMap.Tier(deeds.Heat.Here(p.Town))})");
         }
@@ -139,17 +149,20 @@ public sealed class TheftsSystem : ITickSystem, IModSaveData, IStateHashed
         using var w = new BinaryWriter(stream, System.Text.Encoding.UTF8, leaveOpen: true);
         w.Write(Format);
         w.Write(pending.Count);
-        foreach (var p in pending.Values) { w.Write(p.Town); w.Write(p.Faction); w.Write(p.Items); w.Write(p.Value); w.Write(p.TakenHours); }
+        foreach (var p in pending.Values) { w.Write(p.Town); w.Write(p.Faction); w.Write(p.Items); w.Write(p.Value); w.Write(p.TakenHours); w.Write(p.Node); }
     }
 
     public void Read(Stream stream)
     {
         pending.Clear();
         using var r = new BinaryReader(stream, System.Text.Encoding.UTF8, leaveOpen: true);
-        if (stream.Position >= stream.Length || r.ReadInt32() != Format) return;
+        if (stream.Position >= stream.Length) return;
+        int format = r.ReadInt32();
+        if (format is < 1 or > Format) return;
         for (int n = r.ReadInt32(); n > 0; n--)
         {
             var p = new PendingTheft(r.ReadString(), r.ReadString(), r.ReadString(), r.ReadDouble(), r.ReadDouble());
+            if (format >= 2) p = p with { Node = r.ReadString() };
             pending[Key(p)] = p;
         }
     }
@@ -157,6 +170,14 @@ public sealed class TheftsSystem : ITickSystem, IModSaveData, IStateHashed
     public void Hash(ref StateHasher h)
     {
         h.Add(pending.Count);
-        foreach (var p in pending.Values) { h.Add(SquadRecord.StableHash(p.Town)); h.Add(p.TakenHours); }
+        foreach (var p in pending.Values)
+        {
+            h.Add(SquadRecord.StableHash(p.Town));
+            h.Add(SquadRecord.StableHash(p.Faction));
+            h.Add(SquadRecord.StableHash(p.Node));
+            h.Add(SquadRecord.StableHash(p.Items));
+            h.Add(p.Value);
+            h.Add(p.TakenHours);
+        }
     }
 }

@@ -1,11 +1,12 @@
 // A key that opens and closes the Squad record window (the "Record hotkey" setting; shared by the Living Wasteland helper and Squad Record).
-// Meitou has no hotkey API, so this is a Harmony postfix (Lib.Harmony, which the game ships for mods) on PlayerInterface.UiKey(key, ctrl,
-// shift), the way docs/modding-practice.md describes: it acts only when the interface did not take the key (__result false: edit boxes,
+// The native Controls action is opt-in on builds that expose it. The fallback is a Harmony postfix on PlayerInterface.UiKey(key, ctrl,
+// shift): it acts only when the interface did not take the key (__result false: edit boxes,
 // Esc and the game's windows come first) and only on the bare key and while the HUD shows, so it runs before the game's key bindings without stealing a used one.
 // The default keys (U, N, O) are bound by neither Kenshi's default controls nor Meitou. The method is looked up by name in one place; if it
 // is missing or the patch fails, the hotkey is off with one log line and the button still works. Only the window's open flag is touched.
 using System.Reflection;
 using HarmonyLib;
+using Meitou.Modding;
 
 namespace LivingWasteland.MeitouMod;
 
@@ -26,11 +27,11 @@ public static class RecordHotkey
             ? target : null;
     }
 
-    /// <summary>Patches PlayerInterface.UiKey; false (and a log line) when it cannot. Also installs the Settings tab's mouse and typing
-    /// (UiInput.cs).</summary>
-    public static bool Install(Harmony harmony, Action<string> log)
+    /// <summary>Installs the Settings input and one hotkey path.</summary>
+    public static bool Install(ModContext context, Harmony harmony, Action<string> log, bool useNative)
     {
         UiInput.Install(harmony, log);
+        if (useNative && TryRegisterNative(context, log)) return true;
         try
         {
             if (UiKeyMethod() is not { } target)
@@ -46,6 +47,52 @@ public static class RecordHotkey
             log($"record hotkey: patching failed ({e.GetBaseException().Message}); the hotkey is off (the button still works)");
             return false;
         }
+    }
+
+    internal static bool TryRegisterNative(ModContext context, Action<string> log)
+    {
+        try
+        {
+            var add = typeof(ModContext).GetMethod("AddKeyAction");
+            if (add?.GetParameters() is not
+                [{ ParameterType: var name }, { ParameterType: var label },
+                 { ParameterType: var pressed }, { ParameterType: var bindings }] ||
+                name != typeof(string) || label != typeof(string) || !pressed.IsGenericType ||
+                pressed.GetGenericTypeDefinition() != typeof(Action<>) || bindings.GetElementType() is not { } binding ||
+                !bindings.IsSZArray)
+            {
+                log("record hotkey: native Controls action unavailable; using the legacy hotkey");
+                return false;
+            }
+
+            string preferred = Key;
+            bool hasDefault = preferred != "Off" && Keys.Contains(preferred);
+            var defaults = Array.CreateInstance(binding, hasDefault ? 1 : 0);
+            if (hasDefault)
+            {
+                var keyType = binding.Assembly.GetType("Meitou.Game.Host.Input.Key", throwOnError: true)!;
+                var of = binding.GetMethod("Of", BindingFlags.Public | BindingFlags.Static, [keyType])
+                    ?? throw new MissingMethodException(binding.FullName, "Of(Key)");
+                defaults.SetValue(of.Invoke(null, [Enum.Parse(keyType, preferred)]), 0);
+            }
+
+            var press = typeof(RecordHotkey).GetMethod(nameof(NativePress), BindingFlags.Static | BindingFlags.NonPublic)!
+                .MakeGenericMethod(pressed.GetGenericArguments()[0]).CreateDelegate(pressed);
+            add.Invoke(context, ["squad-record", "Toggle Squad record", press, defaults]);
+        }
+        catch (Exception e)
+        {
+            log($"record hotkey: native registration failed ({e.GetBaseException().Message}); using the legacy hotkey");
+            return false;
+        }
+        log("record hotkey: registered in Settings > Controls");
+        return true;
+    }
+
+    static void NativePress<T>(T _)
+    {
+        if (RecordHost.Off || StatsUi.open && UiInput.Typing) return;
+        StatsUi.open = !StatsUi.open;
     }
 
     static PropertyInfo? visible;

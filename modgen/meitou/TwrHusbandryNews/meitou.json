@@ -1,0 +1,10 @@
+{
+  "id": "TwrHusbandryNews",
+  "version": "0.1.0",
+  "apiVersion": 2,
+  "assemblies": ["TwrHusbandryNews.dll"],
+  "entry": "TwrHusbandryNews.HusbandryNews",
+  "gameVersion": ">=0.22.2 <0.23.0",
+  "dependencies": ["LivingWastelandMeitou"],
+  "loadAfter": ["husbandry"]
+}

@@ -84,8 +84,10 @@ public static class Trophies
         var table = world.Characters;
         if (!table.TryResolveNext(mourner, out int s) || table.Cold(s) is not { Inventory: { } bag }) return;
         // written for the one who fell (Keepsakes.cs): their name and their life with the squad on a keepsake record of its own
-        string record = KeepsakeBook.For(world)?.Take(world, fallenKey, mournerName) ?? Keepsake;
+        string? tag = null;
+        string record = KeepsakeBook.For(world)?.Take(world, fallenKey, mournerName, out tag) ?? Keepsake;
         if (data.Items.Create(record) is not { } item) { LwMod.Log($"trophies: no item {record}"); return; }
+        if (tag is not null) ItemUses.SetTag(item, tag);
         if (!InventoryCompat.Add(bag, item)) world.GroundItems.Drop(item, table.Next[s].Position, 0);
         world.Post($"{mournerName} keeps something of {fallen}'s.");
         if (LwMod.Settings.LogChanges) LwMod.Log($"trophies: {mournerName} keeps a keepsake of {fallen}");

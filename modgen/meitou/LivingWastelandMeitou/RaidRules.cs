@@ -4,6 +4,8 @@ namespace LivingWasteland.MeitouMod;
 /// <summary>A raid out now, or the last one: where (its town's place in the news towns), when it set out, how it ended.</summary>
 public sealed record RaidRecord(int Town, double SentHours, float X, float Z, double EndedHours = -1, bool Caught = false, bool Helped = false, bool Broke = false)
 {
+    internal bool Tagged { get; init; }
+
     public bool Out => EndedHours < 0;
 }
 

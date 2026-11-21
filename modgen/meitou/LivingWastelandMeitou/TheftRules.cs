@@ -4,7 +4,10 @@
 namespace LivingWasteland.MeitouMod;
 
 /// <summary>Goods taken unseen from a town, waiting to be missed: the town, its owner faction, what was taken (summed), when first taken.</summary>
-public sealed record PendingTheft(string Town, string Faction, string Items, double Value, double TakenHours);
+public sealed record PendingTheft(string Town, string Faction, string Items, double Value, double TakenHours)
+{
+    internal string Node { get; init; } = "";
+}
 
 public static class TheftRules
 {
