@@ -47,7 +47,7 @@ public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveDa
         var f = rec.FallenMembers.LastOrDefault(x => x.Name == fallenKey);
         if (f is null) return Slots[0];
         rec.Members.TryGetValue(fallenKey, out var m);
-        var (name, text) = KeepsakeText.For(f, m, mournerName, rec.Display);
+        var (name, text) = KeepsakeText.For(f, m, mournerName, rec.Display, LostAtTheEnd(rec, f));
         int slot = Enumerable.Range(0, Slots.Count).FirstOrDefault(k => entries.All(e => e.Slot != k), -1);
         if (slot < 0) { slot = entries.OrderBy(e => e.Hours).First().Slot; entries.RemoveAll(e => e.Slot == slot); }
         var entry = new Entry(slot, name, text, world.GameHours, fallenKey);
@@ -67,7 +67,7 @@ public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveDa
         var f = rec.FallenMembers.LastOrDefault(x => entry.Key.Length > 0 ? x.Name == entry.Key : rec.Display(x.Name) == shown);
         if (f is null) return null;
         rec.Members.TryGetValue(f.Name, out var m);
-        var (name, text) = KeepsakeText.For(f, m, holder, rec.Display);
+        var (name, text) = KeepsakeText.For(f, m, holder, rec.Display, LostAtTheEnd(rec, f));
         var now = entry with { Name = name, Text = text, Key = f.Name };
         entries[entries.IndexOf(entry)] = now;
         Write(now);
@@ -82,9 +82,16 @@ public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveDa
             return null;
 
         rec.Members.TryGetValue(key, out var member);
-        var (name, story) = KeepsakeText.For(fallen, member, holder, rec.Display);
+        var (name, story) = KeepsakeText.For(fallen, member, holder, rec.Display, LostAtTheEnd(rec, fallen));
         SetName(item, name);
         return (KeepsakeText.Remember(fallen, holder, rec.Display, (int)world.Tick).Bark, story);
+    }
+
+    /// <summary>Limbs the fallen lost within the game hour before they died (History's "X lost an arm" lines; no time is kept per limb).</summary>
+    static int LostAtTheEnd(SquadRecord rec, Fallen f)
+    {
+        string lead = rec.Display(f.Name) + " lost a";
+        return rec.History.Count(h => h.Text.StartsWith(lead, StringComparison.Ordinal) && h.Hours <= f.Hours + 0.01 && f.Hours - h.Hours <= 1);
     }
 
     static string? FallenKey(ItemInstance item) =>

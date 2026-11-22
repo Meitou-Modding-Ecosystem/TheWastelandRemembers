@@ -127,7 +127,9 @@ public static class NewsAskRules
     }
 
     // "Okran's Shield has fallen" keeps its capital; "A caravan of..." after "Word is, " reads "a caravan of..."
-    static string Uncap(string s) => s.Length > 1 && s[0] == 'A' && s[1] == ' ' ? "a" + s[1..] : s.Length > 3 && s.StartsWith("The ", StringComparison.Ordinal) ? "the" + s[3..] : s;
+    // "The caravan" reads "the caravan", but a name keeps its capital: "The Queen", "The Hub" (play test of bg: "Not long ago: the Queen")
+    static string Uncap(string s) => s.Length > 1 && s[0] == 'A' && s[1] == ' ' ? "a" + s[1..]
+        : s.Length > 4 && s.StartsWith("The ", StringComparison.Ordinal) && char.IsLower(s[4]) ? "the" + s[3..] : s;
 }
 
 /// <summary>A faction changing its mind about the squad (the engine's relation change with its cause), as a History line.</summary>

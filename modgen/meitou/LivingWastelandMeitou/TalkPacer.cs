@@ -23,6 +23,9 @@ public static class TalkPacer
         finally { exempt--; }
     }
 
+    /// <summary>Whether one of our own FireEvent calls is running (a line fired on purpose).</summary>
+    public static bool Exempting => exempt > 0;
+
     public static bool Allow(World world, CharacterId speaker)
     {
         if (exempt > 0) return true;
