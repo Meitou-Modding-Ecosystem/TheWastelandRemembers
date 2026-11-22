@@ -736,13 +736,20 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
     /// <summary>The F10 row's line; each camp's outlaw, activity and spot go to log.txt.</summary>
     public readonly Published Shown = new(), ShownSuccessors = new();   // the F10 rows' lines
 
+    // A camp's line goes to log.txt when it changes, not every time the row is refreshed: logged each refresh, 36 camps filled a play
+    // test's log.txt and the play-test timeline (4,095 of its 4,096 rows, 386,673 older events lost; build bf).
+    readonly Dictionary<int, string> campLogged = [];
+
     public string Summary(World? world)
     {
         foreach (var o in outlaws)
         {
             if (book.Get(o.Index) is not { } e) continue;
             var (cx, cz) = CampRules.CellOf(e.X, e.Z);
-            LwMod.Log($"outlaw camp: {o.Name}, {DoingNames[e.Doing]}, at {e.X:0} {e.Z:0} (map cell {cx},{cz}), stretch {e.Period}");
+            string line = $"outlaw camp: {o.Name}, {DoingNames[e.Doing]}, at {e.X:0} {e.Z:0} (map cell {cx},{cz}), stretch {e.Period}";
+            if (campLogged.TryGetValue(o.Index, out var last) && last == line) continue;
+            campLogged[o.Index] = line;
+            LwMod.Log(line);
         }
         if (!LwMod.Settings.OutlawReprisals) return lastSummary;
         var senders = book.Reprisals.Select(r => outlaws.FirstOrDefault(o => o.Index == r.Outlaw)?.Name ?? "?").ToList();

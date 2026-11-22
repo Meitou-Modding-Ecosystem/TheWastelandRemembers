@@ -77,7 +77,7 @@ public static class RecapLink
             }
             add = selected.Method;
             parameters = selected.Args;
-            RecordHost.Log($"Recap {type.Assembly.GetName().Version} found: titles and other moments will be offered to it");
+            RecordHost.Log($"Recap {(System.Reflection.CustomAttributeExtensions.GetCustomAttribute<System.Reflection.AssemblyInformationalVersionAttribute>(type.Assembly)?.InformationalVersion.Split('+')[0] ?? type.Assembly.GetName().Version?.ToString())} found: titles and other moments will be offered to it");
             return true;
         }
     }

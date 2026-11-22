@@ -32,7 +32,8 @@ public static class StatsPanel
         var present = new HashSet<string>(StringComparer.Ordinal);
         var hot = here.Previous;
         for (int s = 0; s < hot.Length; s++)
-            if (hot[s].Alive && here.Cold(s) is { IsPlayer: true } c) present.Add(record.KeyFor(LwDeeds.Identity(c), c.Name));
+            // a body stays in the world (Alive) until it is cleared away; the dead are on the Fallen tab at once (play test of bf: Saint stayed)
+            if (hot[s].Alive && here.Cold(s) is { IsPlayer: true, Medical.Dead: false } c && !OtherModsPeople.Runs(world, c)) present.Add(record.KeyFor(LwDeeds.Identity(c), c.Name));
 
         foreach (var (name, m) in record.Members.Where(p => present.Contains(p.Key)))
         {

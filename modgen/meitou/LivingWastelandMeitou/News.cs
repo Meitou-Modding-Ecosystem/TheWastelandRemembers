@@ -104,11 +104,14 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
         return true;
     }
 
-    internal void ReportPrisoner(string node, int episode, string outcome, string text, int weight)
+    internal void ReportPrisoner(string node, string place, int episode, string outcome, string text, int weight)
     {
         if (!LwMod.Settings.PrisonerCases || seen is not { } world || SiteOf(node) is not { } site) return;
-        var report = board.Accept($"custody:{episode}:{outcome}", site.Town.Name, "", text, PrisonerSource, weight,
-            world.GameHours, site.Position.X, site.Position.Z, out _, node);
+        // from the outpost holding the captive when it is the squad's own (its name and spot), carried along the roads from the node
+        var own = world.Buildings.Towns.FirstOrDefault(t => t.Owner == world.Player.Faction && t.Name == place);
+        var at = own?.Position ?? site.Position;
+        var report = board.Accept($"custody:{episode}:{outcome}", own?.Name ?? site.Town.Name, "", text, PrisonerSource, weight,
+            world.GameHours, at.X, at.Z, out _, node);
         if (report is not null) Refresh(world);
     }
 
@@ -248,8 +251,17 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
         var table = world.Characters;
         if (!table.TryResolveNext(who, out int s) || !table.Next[s].Alive || table.Cold(s) is not { IsPlayer: false, Animal: null } cold
             || cold.Medical is { Dead: true } or { Incapacitated: true }) return;
+        // a captive is in no mood to pass on news to the one holding them (play test of bf: the caged Queen told the squad she'd been taken)
+        if (cold.IsImprisoned)
+        {
+            world.Bark(who, "Open the cage and I might remember something.");
+            LwMod.Log($"ask for news: {cold.Name} is a captive and said nothing");
+            return;
+        }
         var at = table.Next[s].Position;
-        var live = board.Items.Where(n => Enabled(n) && world.GameHours - n.Hours <= NewsBoard.LiveDays * 24 && n.Hours <= world.GameHours + 1).ToList();
+        // and nobody passes on news about themselves
+        var live = board.Items.Where(n => Enabled(n) && world.GameHours - n.Hours <= NewsBoard.LiveDays * 24 && n.Hours <= world.GameHours + 1
+            && !(cold.Name.Length >= 4 && n.Text.Contains(cold.Name, StringComparison.OrdinalIgnoreCase))).ToList();
         var squad = new List<string>();
         var hot = table.Next;
         for (int k = 0; k < hot.Length; k++)
@@ -290,7 +302,7 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
         {
             n.Text,
             "",
-            $"Heard on day {(int)(n.HeardHours / 24) + 1}, near {n.Place}.",
+            $"Heard on day {(int)(n.HeardHours / 24)}, near {n.Place}.",
         }));
 
     internal IEnumerable<(string Node, string Name, IEnumerable<string> History)> TownHistory() =>
@@ -299,7 +311,7 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
             {
                 var entries = group.OrderByDescending(n => n.Hours).ThenByDescending(n => n.Id).ToList();
                 return (group.Key, SiteOf(group.Key)?.Town.Name ?? entries[0].Place,
-                    entries.Select(n => $"Day {(int)(n.Hours / 24) + 1}: {n.Text}"));
+                    entries.Select(n => $"Day {(int)(n.Hours / 24)}: {n.Text}"));
             })
             : [];
 

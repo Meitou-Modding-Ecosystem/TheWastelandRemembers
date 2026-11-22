@@ -95,7 +95,7 @@ internal static class PlaytestLog
         if (!Enabled) return;
         int split = line.IndexOf(':');
         string system = split is > 0 and <= 48 ? line[..split] : "TWR";
-        journal.Add(null, null, null, system, "", "mod log", split is > 0 and <= 48 ? line[(split + 1)..].TrimStart() : line);
+        journal.Add(null, null, null, system, "", PlaytestJournal.ModLog, split is > 0 and <= 48 ? line[(split + 1)..].TrimStart() : line);
     }
 
     internal static void Control(string key, string phase, string detail = "")

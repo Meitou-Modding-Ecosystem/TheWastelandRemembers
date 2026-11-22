@@ -158,10 +158,10 @@ public sealed class LwSettings
     public bool VisibleNeckCharms { get; set; } = PlayTest.On;
 
     [Setting("Neck slot position: left (restart)", Hint = "Where the neck slot sits in the character window: pixels from its left edge. Takes effect after restarting the game.", Min = 0, Max = 800, Step = 2)]
-    public int NeckSlotX { get; set; } = 420;
+    public int NeckSlotX { get; set; } = 336;
 
     [Setting("Neck slot position: top (restart)", Hint = "Where the neck slot sits in the character window: pixels from its top edge. Takes effect after restarting the game.", Min = 0, Max = 800, Step = 2)]
-    public int NeckSlotY { get; set; } = 255;
+    public int NeckSlotY { get; set; } = 224;
 
     [Setting("Atlas tab", Hint = "The Atlas tab: places you know and the people talked about, filled by the gossip your squad overhears.")]
     public bool Atlas { get; set; } = true;
@@ -202,7 +202,7 @@ public sealed class LwMod : IMod
     internal static string JobVariable = "LW open jobs";
     /// <summary>The build this helper was made for (modgen/BUILD_ID); the data mods carry theirs in lw_codes.json.</summary>
     public static string DataBuild = "unknown";
-    public const string HelperBuild = "20261121bf";
+    public const string HelperBuild = "20261122bg";
     internal static List<RumourCode> Rumours = [];
     internal static List<(int Index, string Name)> Outlaws = [];
 

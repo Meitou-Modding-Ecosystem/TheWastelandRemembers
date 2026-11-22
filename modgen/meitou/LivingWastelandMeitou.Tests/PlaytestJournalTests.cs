@@ -38,4 +38,18 @@ public sealed class PlaytestJournalTests
         Assert.Equal(0, saved.Discarded);
         Assert.Equal(Enumerable.Range(1, count).Select(n => (long)n), saved.Events.Select(row => row.Number));
     }
+
+    [Fact]
+    public void A_flood_of_mod_log_lines_cannot_push_out_a_features_own_rows()
+    {
+        // Seen in a play test of bf: outlaw-camp log lines filled the whole timeline and every custody and outpost row was lost.
+        var journal = new PlaytestJournal(capacity: 3);
+        journal.Add(1, 10, 1.0, "prisoner case", "custody:1", "recorded", "The Queen");
+        for (int i = 0; i < 50; i++) journal.Add(null, null, null, "outlaw camp", "", PlaytestJournal.ModLog, $"line {i}");
+        var saved = journal.Read();
+        Assert.Contains(saved.Events, row => row.System == "prisoner case" && row.Phase == "recorded");
+        Assert.Equal(3, saved.Events.Count(row => row.Phase == PlaytestJournal.ModLog));
+        Assert.Equal(47, saved.Discarded);
+        Assert.True(saved.Events.Zip(saved.Events.Skip(1)).All(p => p.First.Number < p.Second.Number));
+    }
 }

@@ -247,9 +247,11 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         Register(world);
         var table = world.Characters;
         if (!table.TryResolveNext(hit.Victim, out int v) || table.Cold(v) is not { } victim) return;
+        if (victim.IsPlayer && OtherModsPeople.Runs(world, victim)) return;   // a blow on another mod's people is not one on the squad
         bool knewStumps = stumpsBefore.TryGetValue(hit.Victim, out ulong before);
         if (victim.Medical is { } vm) stumpsBefore[hit.Victim] = Stumps(vm);
         var attacker = table.TryResolveNext(hit.Attacker, out int a) ? table.Cold(a) : null;
+        if (attacker is { IsPlayer: true } && OtherModsPeople.Runs(world, attacker)) attacker = null;    // another mod's people are not the squad
         string? striker = attacker is { IsPlayer: true } ? deeds.Who(attacker) : null;
         // a blow in one of Proving Grounds' arena bouts (striker and victim both in it) is sport: the record keeps it, but it is no fight the
         // squad is in, heats no town and makes no rival (ArenaLink.cs)
@@ -560,7 +562,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         float seconds = LookEvery * world.TickSeconds;
         for (int s = 0; s < hot.Length; s++)
         {
-            if (!hot[s].Alive || table.Cold(s) is not { IsPlayer: true } cold) continue;
+            if (!hot[s].Alive || table.Cold(s) is not { IsPlayer: true } cold || OtherModsPeople.Runs(world, cold)) continue;
             var id = table.IdOf(s);
             var at = hot[s].Position;
             int site = data?.TownAt(at) ?? -1;
@@ -928,4 +930,23 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     }
 
     #endregion
+}
+
+/// <summary>
+/// Player-faction characters another mod runs on its own (Fiefdom's townspeople and guards: squads of the player's faction that run
+/// themselves, Squad.Independent, and carry that mod's Squad.ModTags key). They are not the squad: no record, no keepsake, no rival, no
+/// fight. Both properties are Meitou 0.21+ (read by reflection: built against 0.17.3); without them nobody is excluded.
+/// </summary>
+internal static class OtherModsPeople
+{
+    const string OurTag = "LivingWastelandMeitou";
+    static readonly System.Reflection.PropertyInfo? independent = typeof(Meitou.Simulation.Factions.Squad).GetProperty("Independent");
+    static readonly System.Reflection.PropertyInfo? tags = typeof(Meitou.Simulation.Factions.Squad).GetProperty("ModTags");
+
+    internal static bool Runs(World world, CharacterCold c)
+    {
+        if (!c.IsPlayer || world.Squads.Find(c.SquadId) is not { } squad) return false;
+        if (independent?.GetValue(squad) is true) return true;
+        return tags?.GetValue(squad) is IDictionary<string, string> t && t.Keys.Any(k => k != OurTag);
+    }
 }

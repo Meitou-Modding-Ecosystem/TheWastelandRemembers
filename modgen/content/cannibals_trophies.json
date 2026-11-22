@@ -31,7 +31,10 @@
     "stackable": 1,
     "value": 700
    },
-   "description": "The Meat Lord's own fork, worn smooth, on a cord through a hole in its handle. He said forks were everything. Whoever wears it is a guest who did not stay for dinner.\n\nWorn in the neck slot."
+   "description": "The Meat Lord's own fork, worn smooth, on a cord through a hole in its handle. He said forks were everything. Whoever wears it is a guest who did not stay for dinner.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\items\\icons\\Animal Claw.png"
+   }
   },
   {
    "name": "Alder Quill's Token",
@@ -41,7 +44,10 @@
     "stackable": 1,
     "value": 2000
    },
-   "description": "A kitchen priest's medal of the Holy Nation, its sun scratched out and a fork cut in its place. Alder Quill wore it under his robe. The Cities and the Nation both paid for his end.\n\nWorn in the neck slot."
+   "description": "A kitchen priest's medal of the Holy Nation, its sun scratched out and a fork cut in its place. Alder Quill wore it under his robe. The Cities and the Nation both paid for his end.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\gui\\money.png"
+   }
   },
   {
    "name": "Mother Brine's Token",
@@ -61,7 +67,10 @@
     "stackable": 1,
     "value": 10
    },
-   "description": "A knot of beast sinew the Gate Folk tie on the ones who feed the gate. Hush wears one. Past the gate the cannibals know what it means, and hate it.\n\nWorn in the neck slot."
+   "description": "A knot of beast sinew the Gate Folk tie on the ones who feed the gate. Hush wears one. Past the gate the cannibals know what it means, and hate it.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\items\\icons\\Animal Claw.png"
+   }
   }
  ],
  "changes": [

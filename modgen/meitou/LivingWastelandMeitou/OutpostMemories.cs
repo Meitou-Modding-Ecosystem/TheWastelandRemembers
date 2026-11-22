@@ -124,8 +124,10 @@ internal sealed class OutpostMemories(PopulationData? data, PopulationSystem? po
             var shelters = sites.Where(IsShelter).Select(s => s.Id).ToHashSet(StringComparer.Ordinal);
             if (!tags.TryGetValue(modId, out var key))
             {
+                // a finished shelter is enough; one with furniture inside is preferred (play test of bf: an empty storm house and a cage
+                // never counted until a bed went in)
                 string? anchor = sites.Where(s => IsIndoorItem(s) && shelters.Contains(s.Parent!))
-                    .Select(s => s.Parent).Order(StringComparer.Ordinal).FirstOrDefault();
+                    .Select(s => s.Parent).Order(StringComparer.Ordinal).FirstOrDefault() ?? shelters.Order(StringComparer.Ordinal).FirstOrDefault();
                 if (anchor is null) continue;
                 key = Prefix + anchor;
                 tags.Add(modId, key);

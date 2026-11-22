@@ -9,7 +9,7 @@ using Meitou.Simulation;
 
 namespace LivingWasteland.MeitouMod;
 
-internal sealed class TrophyLooks(IReadOnlyDictionary<string, object> looks) : ITickSystem
+internal sealed class TrophyLooks(IReadOnlyDictionary<string, object> resolved) : ITickSystem
 {
     const string Key = "livingwasteland.neck";
     static readonly Type? meshType = typeof(CharacterCold).Assembly.GetType("Meitou.Simulation.BoneMesh");
@@ -32,7 +32,10 @@ internal sealed class TrophyLooks(IReadOnlyDictionary<string, object> looks) : I
             var fits = JsonSerializer.Deserialize<Fit?[]>(File.ReadAllText(path),
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? [];
             context.AddSystem("lw-neck-meshes", ctx =>
-                new TrophyLooks(Resolve(ctx.Data.Db, context.Folder, fits)), SystemAnchor.End);
+                Latest = new TrophyLooks(Resolve(ctx.Data.Db, context.Folder, fits)), SystemAnchor.End);
+            // the fit is a first guess until seen in game: this row moves every charm at once, live, so the right numbers can be found
+            context.AddDebugCommand("Wasteland Remembers: neck charm fit (x y z yaw pitch roll)", d => Latest?.Retune(d.Field) ?? "no world yet",
+                hasField: true);
             context.Log("trophies: neck meshes available in Squad record settings");
         }
         catch (Exception e) { context.Log($"trophies: neck meshes unavailable ({e.GetBaseException().Message})"); }
@@ -59,9 +62,36 @@ internal sealed class TrophyLooks(IReadOnlyDictionary<string, object> looks) : I
         return result;
     }
 
+    internal static TrophyLooks? Latest;
+    IReadOnlyDictionary<string, object> looks = resolved;
+    int generation;
+    readonly ConditionalWeakTable<CharacterCold, StrongBox<int>> appliedAt = new();
+
+    /// <summary>The F10 row: new offsets (and rotations, in degrees) for every charm; worn charms are hung again with them.</summary>
+    internal string Retune(string field)
+    {
+        var parts = field.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
+        var n = new float[6];
+        if (parts.Length is not (3 or 6) || parts.Select((t, i) => float.TryParse(t, System.Globalization.NumberStyles.Float,
+                System.Globalization.CultureInfo.InvariantCulture, out n[i])).Contains(false) || n.Any(v => !float.IsFinite(v)))
+            return "type x y z (and optionally yaw pitch roll in degrees), e.g. 0 -0.35 1.1";
+        if (meshType?.GetProperty("Mesh") is not { } meshProp || meshType.GetProperty("Bone") is not { } boneProp) return "no bone meshes here";
+        const float radians = MathF.PI / 180f;
+        var turned = Quaternion.CreateFromYawPitchRoll(n[3] * radians, n[4] * radians, n[5] * radians);
+        var next = looks.ToDictionary(p => p.Key, p => make!.Invoke([Key, meshProp.GetValue(p.Value), boneProp.GetValue(p.Value),
+            new Vector3(n[0], n[1], n[2]), turned]));
+        Volatile.Write(ref looks, next);
+        Interlocked.Increment(ref generation);
+        string text = FormattableString.Invariant($"neck charms now at {n[0]} {n[1]} {n[2]}, turned {n[3]} {n[4]} {n[5]}");
+        LwMod.Log($"trophies: {text}");
+        return text;
+    }
+
     public void SlowWorld(World world)
     {
+        var looks = Volatile.Read(ref this.looks);
         if (!Available || looks.Count == 0 || world.Tick % 30 != 9) return;
+        int gen = Volatile.Read(ref generation);
         bool enabled = LwMod.Settings.VisibleNeckCharms && LwMod.Settings.Trophies;
         var table = world.Characters;
         for (int i = 0; i < table.HighWater; i++)
@@ -73,8 +103,10 @@ internal sealed class TrophyLooks(IReadOnlyDictionary<string, object> looks) : I
                 ? inventory.Items.Find(item => item.Section == Trophies.Section)?.Record : null;
             if (current is not null && looks.TryGetValue(current, out var mesh))
             {
-                if (previous?.Record == current) continue;
+                var at = appliedAt.GetValue(character, _ => new StrongBox<int>(-1));
+                if (previous?.Record == current && at.Value == gen) continue;
                 set!.Invoke(character, [mesh]);
+                at.Value = gen;
                 if (previous is null) applied.Add(character, new Applied(current));
                 else previous.Record = current;
             }
