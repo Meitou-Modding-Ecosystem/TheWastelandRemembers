@@ -55,7 +55,7 @@ public static class RivalryLink
             RecordHost.Log("Rivalry Core link: Rivalry Core is running but its ClaimParty does not look as expected; our hunters are sent as before");
             return null;
         }
-        RecordHost.Log($"Rivalry Core {api.Assembly.GetName().Version} found: our hunters count under its one-hostile-party cap");
+        RecordHost.Log($"Rivalry Core {(System.Reflection.CustomAttributeExtensions.GetCustomAttribute<System.Reflection.AssemblyInformationalVersionAttribute>(api.Assembly)?.InformationalVersion.Split('+')[0] ?? api.Assembly.GetName().Version?.ToString())} found: our hunters count under its one-hostile-party cap");
         return new Binding(claim, release, api.GetProperty("Parties"), newClaim, Enum.Parse(kindType, "Hostile"));
     }
 

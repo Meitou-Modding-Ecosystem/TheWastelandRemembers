@@ -13,7 +13,10 @@
     "stackable": 1,
     "value": 1
    },
-   "description": "Something small that belonged to a squadmate who did not make it, kept by the one who stood over them.\n\nWorth nothing to anyone else. Worn in the neck slot."
+   "description": "Something small that belonged to a squadmate who did not make it, kept by the one who stood over them.\n\nWorth nothing to anyone else. Worn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\items\\icons\\Letter.png"
+   }
   },
   {
    "name": "Okran's Token",
@@ -23,7 +26,10 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A small brass sun on a cord, blessed by a priest of Okran. The faithful give it to outsiders who served the Nation well. A Paladin will still ask what you are doing with it.\n\nWorn in the neck slot."
+   "description": "A small brass sun on a cord, blessed by a priest of Okran. The faithful give it to outsiders who served the Nation well. A Paladin will still ask what you are doing with it.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\gui\\money.png"
+   }
   },
   {
    "name": "Kral's Mark",
@@ -33,7 +39,10 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "Red cord knotted round a sliver of horn, cut to the shape of Kral's own. The Shek tie it on outsiders who fought beside them and did not run; By Kral's way, a warrior proves their worth with a blade in hand. Wearing one you did not earn would be a quick way to die.\n\nWorn in the neck slot."
+   "description": "Red cord knotted round a sliver of horn, cut to the shape of Kral's own. The Shek tie it on outsiders who fought beside them and did not run; By Kral's way, a warrior proves their worth with a blade in hand. Wearing one you did not earn would be a quick way to die.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\items\\icons\\Animal Teeth.png"
+   }
   },
   {
    "name": "Noble's Favour",
@@ -43,7 +52,10 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A lacquered tag stamped with a noble house's crest. In the United Cities, being owed by the right family is worth more than cats, and being owed by the wrong one is worth less than nothing.\n\nWorn in the neck slot."
+   "description": "A lacquered tag stamped with a noble house's crest. In the United Cities, being owed by the right family is worth more than cats, and being owed by the wrong one is worth less than nothing.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\gui\\money.png"
+   }
   },
   {
    "name": "Guild Marker",
@@ -53,7 +65,10 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A stamped trade marker the Traders Guild hands to people it wants to keep doing business with. It opens doors in the Cities, and closes questions.\n\nWorn in the neck slot."
+   "description": "A stamped trade marker the Traders Guild hands to people it wants to keep doing business with. It opens doors in the Cities, and closes questions.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\items\\icons\\Letter.png"
+   }
   },
   {
    "name": "Tech Hunter Pin",
@@ -63,7 +78,10 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A tarnished pin from World's End, given to outsiders who proved useful on a dig. The Tech Hunters remember who wears one, and who sold the find instead.\n\nWorn in the neck slot."
+   "description": "A tarnished pin from World's End, given to outsiders who proved useful on a dig. The Tech Hunters remember who wears one, and who sold the find instead.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\items\\icons\\Letter.png"
+   }
   },
   {
    "name": "Broken Shackle Charm",
@@ -73,7 +91,10 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "One link of a slave's shackle, cut clean through and worn on a thong. Tinfist's people give it to those who stood against the slavers. Slavers know what it means too.\n\nWorn in the neck slot."
+   "description": "One link of a slave's shackle, cut clean through and worn on a thong. Tinfist's people give it to those who stood against the slavers. Slavers know what it means too.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\items\\icons\\Letter.png"
+   }
   },
   {
    "name": "Flotsam Ribbon",
@@ -83,7 +104,10 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A faded ribbon Moll's people tie on friends of the cause. Out in the Holy Nation's lands it marks you as one of the heathens who refused to kneel, so keep it under your collar.\n\nWorn in the neck slot."
+   "description": "A faded ribbon Moll's people tie on friends of the cause. Out in the Holy Nation's lands it marks you as one of the heathens who refused to kneel, so keep it under your collar.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\items\\icons\\Letter.png"
+   }
   },
   {
    "name": "Guild Coin",
@@ -93,7 +117,10 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "An old Mercenary Guild coin with a hole punched through it. Mercenaries give these to fighters they would stand beside again.\n\nWorn in the neck slot."
+   "description": "An old Mercenary Guild coin with a hole punched through it. Mercenaries give these to fighters they would stand beside again.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\gui\\money.png"
+   }
   },
   {
    "name": "Nomad Bead String",
@@ -103,7 +130,10 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "Carved beads on a string, one for each stretch of road shared. The Nomads add a bead when you have travelled with them; a long string says more than a letter of passage.\n\nWorn in the neck slot."
+   "description": "Carved beads on a string, one for each stretch of road shared. The Nomads add a bead when you have travelled with them; a long string says more than a letter of passage.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\items\\icons\\Letter.png"
+   }
   },
   {
    "name": "Drifter's Charm",
@@ -113,7 +143,10 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A twist of wire and coloured glass the Drifters pass to those they trust. Worth nothing in a shop, and they never forget who has one.\n\nWorn in the neck slot."
+   "description": "A twist of wire and coloured glass the Drifters pass to those they trust. Worth nothing in a shop, and they never forget who has one.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\items\\icons\\Letter.png"
+   }
   },
   {
    "name": "Swamp Fang",
@@ -123,7 +156,10 @@
     "stackable": 1,
     "value": 25
    },
-   "description": "A blood spider's fang on a cord. The Swampers give them to outsiders who can handle themselves in the swamp, which is not many.\n\nWorn in the neck slot."
+   "description": "A blood spider's fang on a cord. The Swampers give them to outsiders who can handle themselves in the swamp, which is not many.\n\nWorn in the neck slot.",
+   "file": {
+    "icon": ".\\data\\items\\icons\\Animal Teeth.png"
+   }
   },
   {
    "name": "Bounty Hunter's Warrant",

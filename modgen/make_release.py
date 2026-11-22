@@ -51,6 +51,9 @@ KNOWN IN THIS VERSION
 - Still being tested and off by default (U > Settings, search "test"): moving outlaw camps, harassment raids, marks on the world map,
   asking townsfolk for news, and factions' change of heart in History.
 - To see which build you have: press F10 and pick "Wasteland Remembers: squad record".
+
+CREDITS
+- The Shek charm and Holy Nation beads worn at the neck (setting "Visible neck charms") are 3D models by Mazal Tofuson.
 """
 
 LOG_BAT = r"""@echo off
@@ -101,6 +104,12 @@ def main(argv):
             if os.path.exists(wid):
                 t = re.sub(r"<id>\d+</id>", f"<id>{open(wid, encoding='utf-8').read().strip()}</id>", t, count=1)
             open(info, "w", encoding="utf-8").write(t)
+    # the neck charm models (assets/neck_charms, by Mazal Tofuson): game files only, beside the helper (Meitou finds a bone mesh by bare
+    # file name in the mods' folders); shown only with "Visible neck charms" on
+    charms = os.path.join(HERE, "assets", "neck_charms")
+    for f in sorted(os.listdir(charms)) if os.path.isdir(charms) else []:      # the public repository has no models
+        if f.endswith((".mesh", ".dds", ".material", ".json")):
+            shutil.copy2(os.path.join(charms, f), os.path.join(pack, "mods", MODS[0]))
     with open(os.path.join(pack, "README.txt"), "w", encoding="utf-8", newline="\r\n") as fh:
         fh.write(README.format(build=build))
     with open(os.path.join(pack, "Save logs for a bug report.bat"), "w", encoding="utf-8", newline="\r\n") as fh:

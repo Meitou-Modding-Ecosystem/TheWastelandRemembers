@@ -11,25 +11,35 @@ internal sealed class PlaytestJournal(int capacity = 4096)
         string System, string Key, string Phase, string Detail);
     internal sealed record Snapshot(Event[] Events, long Discarded);
 
-    readonly Queue<Event> events = new();
+    // Two queues of `capacity` each: the general mod log ("mod log" rows) and everything else (each feature's own rows, marks, settings).
+    // One queue let a chatty system push out the whole session: in a play test of bf 36 outlaw-camp lines per refresh left 4,095 of
+    // 4,096 rows to the camps and lost every custody, outpost and news row.
+    readonly Queue<Event> events = new(), messages = new();
     readonly object gate = new();
     long sequence;
+
+    internal const string ModLog = "mod log";
 
     internal Event Add(int? world, long? tick, double? hours, string system, string key, string phase, string detail)
     {
         if (detail.Length > MaxDetail) detail = detail[..MaxDetail] + " [truncated]";
         lock (gate)
         {
-            if (events.Count == capacity) events.Dequeue();
+            var queue = phase == ModLog && world is null ? messages : events;
+            if (queue.Count == capacity) queue.Dequeue();
             var row = new Event(++sequence, DateTimeOffset.UtcNow, world, tick, hours, system, key, phase, detail);
-            events.Enqueue(row);
+            queue.Enqueue(row);
             return row;
         }
     }
 
     internal Snapshot Read()
     {
-        lock (gate) return new(events.ToArray(), sequence - events.Count);
+        lock (gate)
+        {
+            var all = events.Concat(messages).OrderBy(e => e.Number).ToArray();
+            return new(all, sequence - all.Length);
+        }
     }
 
     internal static string Format(Snapshot snapshot)

@@ -96,8 +96,11 @@ public sealed partial class PrisonerCases(PopulationData? data, IReadOnlyList<Ca
 
         var anchor = data?.Sites.Where(town => NewsSystem.NodeOf(town).Length > 0)
             .MinBy(town => Vector2.DistanceSquared(new(site.Position.X, site.Position.Z), new(town.Position.X, town.Position.Z)));
+        // the place is the player's own outpost where the cage stands; the node (the nearest town on the news roads) only carries the news
+        // (play test of bf: "News from Rebel Base" for a Queen caged at the squad's outpost)
+        string place = world.Buildings.FindTown(site.Town)?.Name is { Length: > 0 } own ? own : anchor?.Town.Name ?? "the wastes";
         return new Case(nextEpisode++, record, data?.Db.Find(record)?.Name ?? captive.Name, deeds.FactionName(captive.Faction),
-            cage.Id, anchor is null ? "" : NewsSystem.NodeOf(anchor), anchor?.Town.Name ?? "the wastes", world.GameHours, warrant);
+            cage.Id, anchor is null ? "" : NewsSystem.NodeOf(anchor), place, world.GameHours, warrant);
     }
 
     public void SlowWorld(World world)
@@ -141,7 +144,7 @@ public sealed partial class PrisonerCases(PopulationData? data, IReadOnlyList<Ca
 
         PublishLawful(world);
         Volatile.Write(ref summary, $"{foreground.Count} foreground, {cases.Count} recorded"
-            + string.Concat(foreground.Select(c => $"\n{c.Name}{(c.Warrant.Length > 0 ? $" (warrant from {c.Warrant})" : "")}")));
+            + string.Concat(foreground.Select(c => $"; {c.Name}{(c.Warrant.Length > 0 ? $" (warrant from {c.Warrant})" : "")}")));
     }
 
     static End Recheck(World world, Case c)
@@ -188,7 +191,7 @@ public sealed partial class PrisonerCases(PopulationData? data, IReadOnlyList<Ca
             _ => $"{c.Name} has been taken alive.",
         };
         Record(world, deeds, c, line, leader ? 95 : 50);
-        NewsSystem.For(world)?.ReportPrisoner(c.Node, c.Episode, "held", rumour, leader ? 80 : 50);
+        NewsSystem.For(world)?.ReportPrisoner(c.Node, c.Place, c.Episode, "held", rumour, leader ? 80 : 50);
         if (c.Warrant.Length > 0) world.Post($"There's still a warrant for {c.Name} from {KeepsakeText.Faction(c.Warrant)}.");
     }
 
@@ -202,7 +205,7 @@ public sealed partial class PrisonerCases(PopulationData? data, IReadOnlyList<Ca
         Record(world, deeds, c, line, outcome is End.Executed or End.Ransomed or End.Recovered ? 80 : 45,
             offerRecap: outcome is not (End.Ransomed or End.Recovered));
         if (outcome == End.Executed)
-            NewsSystem.For(world)?.ReportPrisoner(c.Node, c.Episode, "executed", $"{c.Name} was executed after being taken alive.", 75);
+            NewsSystem.For(world)?.ReportPrisoner(c.Node, c.Place, c.Episode, "executed", $"{c.Name} was executed after being taken alive.", 75);
     }
 
     static string CustodyLine(Case c, End outcome) => outcome switch
@@ -242,12 +245,9 @@ public sealed partial class PrisonerCases(PopulationData? data, IReadOnlyList<Ca
     internal bool QueenAt(World world, out int episode, out int town)
     {
         episode = town = 0;
-        if (world.Uniques.Find(WesternQueen) is not { } unique || cases.GetValueOrDefault(WesternQueen) is not { Outcome: End.Open } current ||
-            !world.Characters.TryResolveNext(unique.Handle, out int slot) || world.Characters.Cold(slot) is not { Medical: { Dead: false }, InWhat: { } id } captive ||
-            world.Fixtures.Find(id) is not { } cage || PlayerCage(world, unique.Handle, captive, cage) is not { Town: > 0 } site)
-            return false;
-        episode = current.Episode;
-        town = site.Town;
+        if (!TryHeld(world, WesternQueen, out var held) || held.Site.Town <= 0) return false;
+        episode = held.Episode;
+        town = held.Site.Town;
         return true;
     }
 

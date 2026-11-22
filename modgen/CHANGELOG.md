@@ -1,9 +1,28 @@
 # The Wasteland Remembers: changelog
 
+## Build 20261122bg
+From a play test of bf (a new save, every test feature on):
+- **Keepsakes and charms show in the bag.** They were copied from a coin record with no icon, so they were invisible. Each now has an
+  icon of its own.
+- **A fallen squadmate leaves the Record page at once**, not when the body is cleared away.
+- **An empty shelter is enough to found an outpost.** Before, it needed a piece of furniture inside.
+- **News of a captive comes from your outpost**, not from the nearest town ("News from Rebel Base").
+- **Captives can't be asked for news, and nobody tells you news about themselves.** The caged Queen had told the squad she'd been taken.
+- **The Western Hive envoy and the ransom find the Queen in your cage** by who she is, as the prisoner case does.
+- **Day numbers agree.** Keepsakes and heard news counted a day ahead of History and the game's own clock.
+- **The neck slot sits clear of the inventory** (under the weight box), and an F10 row moves the neck charms live to find their fit.
+- **Play-test logs keep the whole session.** The outlaw camps wrote a line per camp every refresh, which filled the log and pushed
+  every other event out of the timeline; now a camp's line is written when it changes, and the general log can no longer push out a
+  feature's own rows.
+- **Fiefdom (and mods like it):** a town mod's residents and guards are left out of the squad record, its fights, keepsakes and rivals.
+- F10 rows with line breaks showed "?"; Rivalry Core and Recap are logged with their own version numbers.
+
 ## Build 20261121bf
 Play testing made simpler:
 - **With Collect playtest diagnostics on, the play-test log saves itself** every minute, one file per launch
   (Documents > The Wasteland Remembers). No Export click needed; a crash or a second launch loses at most a minute.
+- **The visible neck charms have their models** (setting "Visible neck charms", off by default): a Shek charm on Kral's Mark and Holy
+  Nation beads on Okran's Token, 3D models by **Mazal Tofuson**. Their fit is a first guess until a play test.
 - **Save logs for a bug report.bat also collects the play-test logs** (the last 14 days) and TWR's settings, so one double click still
   gathers everything.
 

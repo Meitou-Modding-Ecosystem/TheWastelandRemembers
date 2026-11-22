@@ -16,7 +16,7 @@ public class KeepsakeTextTests
         Assert.Contains("Hollin was with the squad 40 days. Known as the Hard Hand and the Walker. Killed Dolan Pike.", text);
         Assert.Contains("Most of their kills were Dust Bandits.", text);
         Assert.Contains("Once stood alone when the rest were down.", text);
-        Assert.Contains("Fell on day 42 at Squin, killed by Kral's Chosen Warrior of Kral's Chosen. Avenged by Beep.", text);
+        Assert.Contains("Fell on day 41 at Squin, killed by Kral's Chosen Warrior of Kral's Chosen. Avenged by Beep.", text);
         Assert.Contains("Their record: 23 kills, 14 of 17 fights won, 412 km walked.", text);
         Assert.Equal(text, KeepsakeText.For(f, m, "Ruka", s => s).Description);          // the same record, the same text
     }
@@ -35,7 +35,7 @@ public class KeepsakeTextTests
         var f = new Fallen("Shaku", 30, "the Hub", null, null, null, 0, 1.2, [], null);
         var (_, text) = KeepsakeText.For(f, null, "Leaf", s => s);
         Assert.Contains("Shaku was with the squad only 1 day.", text);
-        Assert.Contains("Died on day 2 at the Hub. Not yet avenged.", text);
+        Assert.Contains("Died on day 1 at the Hub. Not yet avenged.", text);      // hour 30: the game's Day 1, as History says
         Assert.Contains("Their record: 0 kills.", text);
     }
 }
@@ -65,7 +65,7 @@ public class ItemUseTextTests
         Assert.Contains("For Hollin.", lines);
         Assert.Contains("Bad Pete is still out there, Hollin. Not for long.", lines);
         var (_, message) = KeepsakeText.Remember(Hollin, "Ruka", s => s, 0);
-        Assert.Equal("Ruka turns over the keepsake of Hollin. Fell on day 42 at Squin, killed by Bad Pete of the Dust Bandits. Not yet avenged.", message);
+        Assert.Equal("Ruka turns over the keepsake of Hollin. Fell on day 41 at Squin, killed by Bad Pete of the Dust Bandits. Not yet avenged.", message);
         var avenged = Enumerable.Range(0, 8).Select(i => KeepsakeText.Remember(Hollin with { AvengedBy = "Ruka" }, "Ruka", s => s, i).Bark).ToList();
         Assert.Contains("I settled it for you, Hollin.", avenged);
         Assert.DoesNotContain(avenged, l => l.Contains("still out there"));

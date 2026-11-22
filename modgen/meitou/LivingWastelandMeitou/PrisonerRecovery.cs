@@ -38,8 +38,8 @@ internal sealed class PrisonerRecovery(PopulationData data, PopulationSystem pop
     sealed record Inspection(string Stage, Approach Method, string Captive, string Outpost, string Fixture, int RouteLength)
     {
         public override string ToString() => Captive.Length == 0 ? Stage :
-            $"{Stage}\n{Method} · {Captive}\nOutpost {Outpost} · {RouteLength} recorded passages" +
-            (Fixture.Length == 0 ? "" : $"\nFixture {Fixture}");
+            $"{Stage}; {Method}, {Captive}; outpost {Outpost}, {RouteLength} recorded passages" +   // one line: F10 shows a line break as ?
+            (Fixture.Length == 0 ? "" : $"; fixture {Fixture}");
     }
 
     static Inspection inspection = new("no world yet", default, "", "", "", 0);

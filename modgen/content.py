@@ -776,7 +776,8 @@ class Compiler:
     # ---- lore items: new books/notes cloned from a vanilla item, placed in vanilla item lists ----------
     def make_lore_item_lw(self, spec):
         """{"id": "li_x", "name": "...", "from": "vanilla item to copy", "description": "...", "int"/"float"/"bool": {...},
-        "place": [["item list name", weight], ...]}. The copy keeps the template's icon, mesh, size and sound.
+        "place": [["item list name", weight], ...]}. The copy keeps the template's icon, mesh, size and sound;
+        "file": {"icon": ...} replaces the icon (a template with none, such as Coin, otherwise leaves the item invisible in the bag).
         A placement adds the item to an existing item list (type 49: shop stock, house contents, loot); the number is its
         weight against that list's other entries (vanilla books use 100; lower is rarer)."""
         name = spec["name"]
@@ -795,6 +796,9 @@ class Compiler:
         r["str"] = dict(r["str"])
         r["str"].update(spec.get("str", {}))
         r["str"]["description"] = desc.replace("\r\n", "\n").replace("\n", "\r\n")
+        if spec.get("file"):                                 # e.g. {"icon": ...}: Coin has no icon, so its copies showed blank
+            r["file"] = dict(r["file"])
+            r["file"].update(spec["file"])
         self.b.add(r)
         self.created[("item", name)] = r["sid"]
         self.stats["clones"] = self.stats.get("clones", 0) + 1

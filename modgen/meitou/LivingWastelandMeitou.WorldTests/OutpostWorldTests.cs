@@ -131,8 +131,10 @@ public sealed class OutpostWorldTests : IDisposable
     }
 
     [Fact]
-    public void Founding_requires_a_completed_player_built_shelter_and_a_completed_indoor_item()
+    public void Founding_requires_a_completed_player_built_shelter_furnished_or_not()
     {
+        // A completed shelter is enough (play test of bf: an empty storm house never counted until a bed went in); an unfinished one,
+        // furniture outdoors, or the setting off are still not.
         Assert.False(new LwSettings().RememberOutposts);
         var data = Data();
         var outposts = new OutpostMemories(data, null, ModId);
@@ -146,12 +148,6 @@ public sealed class OutpostWorldTests : IDisposable
         Assert.Empty(outposts.AtlasRows());
 
         shack.Complete = true;
-        Build(world, town, 4, "bed", parent: shack.Id, owner: data.FactionIndex("60-t"));
-        var halfBed = Build(world, town, 5, "bed", complete: false, parent: shack.Id);
-        world.RunTicks(150);
-        Assert.Empty(outposts.AtlasRows());
-
-        halfBed.Complete = true;
         LwMod.Settings.RememberOutposts = false;
         world.RunTicks(150);
         Assert.Empty(outposts.AtlasRows());
@@ -1246,7 +1242,7 @@ public sealed class OutpostWorldTests : IDisposable
                 cold.Stats[StatsEnumerated.Lockpicking] = 0;
                 world.RunTicks(20);
                 Assert.Contains("scout reached lock but cannot pick it", PrisonerRecovery.Inspect());
-                Assert.Contains("Fixture entry", PrisonerRecovery.Inspect());
+                Assert.Contains("fixture entry", PrisonerRecovery.Inspect());
                 Assert.True(gate.Lock.EffectivelyLocked);
                 gate.Lock.Level = 15;
                 cold.Stats[StatsEnumerated.Lockpicking] = 95;

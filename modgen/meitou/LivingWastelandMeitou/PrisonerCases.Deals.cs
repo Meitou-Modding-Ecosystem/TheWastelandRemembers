@@ -18,12 +18,27 @@ public sealed partial class PrisonerCases
     internal bool TryHeld(World world, string record, out Held held)
     {
         held = default;
-        if (cases.GetValueOrDefault(record) is not { Outcome: End.Open } c || world.Uniques.Find(record) is not { } unique ||
-            unique.State == Meitou.Simulation.Factions.UniqueState.Dead || !world.Characters.TryResolveNext(unique.Handle, out int slot) ||
-            world.Characters.Cold(slot) is not { Medical.Dead: false, IsPlayer: false, InWhat: { } id } captive ||
-            world.Fixtures.Find(id) is not { } cage || PlayerCage(world, unique.Handle, captive, cage) is not { } site) return false;
-        held = new Held(c.Episode, record, c.Name, c.Place, c.Since, unique.Handle, captive, cage, site);
-        return true;
+        if (cases.GetValueOrDefault(record) is not { Outcome: End.Open } c) return false;
+        if (world.Uniques.Find(record) is { } unique && unique.State != Meitou.Simulation.Factions.UniqueState.Dead &&
+            world.Characters.TryResolveNext(unique.Handle, out int slot) &&
+            world.Characters.Cold(slot) is { Medical.Dead: false, IsPlayer: false, InWhat: { } id } captive &&
+            world.Fixtures.Find(id) is { } cage && PlayerCage(world, unique.Handle, captive, cage) is { } site)
+        {
+            held = new Held(c.Episode, record, c.Name, c.Place, c.Since, unique.Handle, captive, cage, site);
+            return true;
+        }
+        // whoever of this record is in one of the squad's cages, as the case found them (the registry's handle can be another of them:
+        // play test of bf, a debug-spawned Queen in the cage while the registry pointed at the one on her throne)
+        foreach (var other in world.Fixtures.All)
+        {
+            if (other.Kind != FixtureKind.Cage || other.Owner != world.Player.Faction || other.Occupant.IsNone ||
+                world.Uniques.RecordOf(other.Occupant) != record || !world.Characters.TryResolveNext(other.Occupant, out int s) ||
+                world.Characters.Cold(s) is not { Medical.Dead: false, IsPlayer: false } caged ||
+                PlayerCage(world, other.Occupant, caged, other) is not { } at) continue;
+            held = new Held(c.Episode, record, c.Name, c.Place, c.Since, other.Occupant, caged, other, at);
+            return true;
+        }
+        return false;
     }
 
     internal static bool PlayerNear(World world, IEnumerable<CharacterId> people, Vector3 at, float range) =>
