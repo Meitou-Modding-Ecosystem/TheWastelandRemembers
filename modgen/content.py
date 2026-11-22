@@ -799,6 +799,8 @@ class Compiler:
         if spec.get("file"):                                 # e.g. {"icon": ...}: Coin has no icon, so its copies showed blank
             r["file"] = dict(r["file"])
             r["file"].update(spec["file"])
+            if spec["file"].get("icon"):                     # else the game draws the icon from the mesh (Coin's: nothing in Meitou)
+                r["bool"]["auto icon image"] = 0
         self.b.add(r)
         self.created[("item", name)] = r["sid"]
         self.stats["clones"] = self.stats.get("clones", 0) + 1

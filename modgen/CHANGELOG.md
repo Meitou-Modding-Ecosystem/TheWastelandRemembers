@@ -1,5 +1,17 @@
 # The Wasteland Remembers: changelog
 
+## Build 20261122bh
+From a second play test (bg):
+- **Keepsake and charm icons, really this time.** The items still told the game to draw their icon from the coin's 3D model, which shows
+  as nothing; with their own icon set, they now use it.
+- **Captives answer in their own voice.** Ask a caged Shek, a Holy Nation zealot, a bandit, a skeleton, a ninja, a hiver or a cannibal for
+  news and each refuses in their own way; a Hive Queen screams.
+- **Names keep their capital in news** ("Not long ago: The Queen was taken alive", not "the Queen").
+- **"Lost a limb and kept going" only when they did.** A limb lost in the hour before death no longer counts.
+- **Victory and mourning lines play whenever talk is on.** At the default talk amount most of them were silently dropped; the amount now
+  thins only gossip, reactions and banter.
+- **The Hive envoy's F10 row says what holds it back** (her cage, the outpost, the hive's mood), so a missing envoy can be traced.
+
 ## Build 20261122bg
 From a play test of bf (a new save, every test feature on):
 - **Keepsakes and charms show in the bag.** They were copied from a coin record with no icon, so they were invisible. Each now has an

@@ -87,17 +87,30 @@ internal sealed partial class HiveEnvoys(PopulationData data, PopulationSystem p
             return;
         }
 
-        if (!Enabled || world.GameHours < retry || world.Player.Faction < 0 || PrisonerCases.For(world) is not { } prisoners ||
-            !prisoners.QueenAt(world, out int episode, out int number) || episode <= dispatched ||
-            prisoners.RouteOf(PrisonerCases.WesternQueen) != PrisonerCases.Route.Open ||
-            OutpostMemories.For(world)?.CourierTowns(world).FirstOrDefault(t => t.Town.Number == number) is not { Town: { } destination } outpost)
+        if (!Enabled || world.GameHours < retry || world.Player.Faction < 0 || PrisonerCases.For(world) is not { } prisoners) return;
+        // the F10 row says what holds the envoy back (play test of bg: "no enquiry" for hours, with no way to tell why)
+        if (!prisoners.QueenAt(world, out int episode, out int number)) { Wait("no enquiry: the Queen is not in one of your cages"); return; }
+        if (episode <= dispatched) { Wait("no enquiry: an envoy already came for this capture"); return; }
+        if (prisoners.RouteOf(PrisonerCases.WesternQueen) != PrisonerCases.Route.Open) { Wait("no enquiry: her case is already settled"); return; }
+        if (OutpostMemories.For(world)?.CourierTowns(world).FirstOrDefault(t => t.Town.Number == number) is not { Town: { } destination } outpost)
+        {
+            Wait("no enquiry: her cage is not in a recorded outpost that is open to the public");
             return;
+        }
 
         retry = world.GameHours + RetryHours;
         templates ??= Couriers.SafeTraders(data).Where(t => data.Factions[t.Faction].Name == "Western Hive").ToList();
         var (template, faction) = templates.FirstOrDefault(t => data.Relations.Get(t.Faction, world.Player.Faction) > -30);
-        if (template is null || world.Platoons.All.Any(p => p is not null && !p.Dead &&
-            Pursuit.ReadTag(p)?.StartsWith(Prefix, StringComparison.Ordinal) == true)) return;
+        if (template is null)
+        {
+            Wait(templates.Count == 0 ? "no enquiry: no Western Hive trader to send" : "no enquiry: the Western Hive is hostile to you");
+            return;
+        }
+        if (world.Platoons.All.Any(p => p is not null && !p.Dead && Pursuit.ReadTag(p)?.StartsWith(Prefix, StringComparison.Ordinal) == true))
+        {
+            Wait("no enquiry: an envoy party is still out");
+            return;
+        }
 
         var home = Enumerable.Range(0, Math.Min(data.Sites.Count, data.SiteFactions.Count))
             .Where(i => data.SiteFactions[i] == faction && NewsSystem.NodeOf(data.Sites[i]).Length > 0)
@@ -105,7 +118,10 @@ internal sealed partial class HiveEnvoys(PopulationData data, PopulationSystem p
             .ThenBy(i => data.Sites[i].InstanceId, StringComparer.Ordinal).DefaultIfEmpty(-1).First();
         int price = DealsAvailable && prisoners.CanRansom(PrisonerCases.WesternQueen, episode) ? RansomCats : 0;
         if (home < 0 || Couriers.Dispatch(world, population, faction, template, home, Couriers.Flat(data.Sites[home].Position), price) is not { } spawned)
+        {
+            Wait(home < 0 ? "no enquiry: no Western Hive home to send from" : "no enquiry: the envoy party could not be made (next try in 12 hours)");
             return;
+        }
 
         active = new Visit(episode, outpost.Key, NewsSystem.NodeOf(data.Sites[home]), world.GameHours + JourneyHours, price);
         dispatched = episode;
@@ -202,5 +218,12 @@ internal sealed partial class HiveEnvoys(PopulationData data, PopulationSystem p
         h.Add(trip.Until);
         h.Add(trip.Price);
         h.Add(trip.Contacted ? 1 : 0);
+    }
+
+    void Wait(string why)
+    {
+        if (Volatile.Read(ref shown) == why) return;
+        Volatile.Write(ref shown, why);
+        LwMod.Log($"Hive envoy: {why}");
     }
 }

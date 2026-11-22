@@ -24,6 +24,7 @@
     <Compile Include="../LivingWastelandMeitou/PlaytestJournal.cs" Link="PlaytestJournal.cs" />
     <Compile Include="../LivingWastelandMeitou/NewsBoard.cs" Link="NewsBoard.cs" />
     <Compile Include="../LivingWastelandMeitou/KeepsakeText.cs" Link="KeepsakeText.cs" />
+    <Compile Include="../LivingWastelandMeitou/CaptiveTalk.cs" Link="CaptiveTalk.cs" />
     <Compile Include="../LivingWastelandMeitou/BarkLines.cs" Link="BarkLines.cs" />
     <Compile Include="../LivingWastelandMeitou/NightlyRules.cs" Link="NightlyRules.cs" />
     <Compile Include="../LivingWastelandMeitou/TheftRules.cs" Link="TheftRules.cs" />

@@ -254,7 +254,8 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
         // a captive is in no mood to pass on news to the one holding them (play test of bf: the caged Queen told the squad she'd been taken)
         if (cold.IsImprisoned)
         {
-            world.Bark(who, "Open the cage and I might remember something.");
+            // in their own people's voice (CaptiveTalk); a Hive Queen screams
+            world.Bark(who, CaptiveTalk.Line(world.Uniques.RecordOf(who), LwDeeds.For(world)?.FactionName(cold.Faction), (ulong)world.Tick));
             LwMod.Log($"ask for news: {cold.Name} is a captive and said nothing");
             return;
         }

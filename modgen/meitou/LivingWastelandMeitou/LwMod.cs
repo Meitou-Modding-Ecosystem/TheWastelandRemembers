@@ -32,7 +32,7 @@ public static class PlayTest
 /// <summary>the Squad record window's Settings tab.</summary>
 public sealed class LwSettings
 {
-    [Setting("Added talk amount (%)", Hint = "How much of our added talk you hear: bar talk, gossip, reactions, banter, victory and mourning lines. 100 is as written, 0 is none (vanilla talk is untouched). Conversations you start are not affected.",
+    [Setting("Added talk amount (%)", Hint = "How much of our added talk you hear from people around you: gossip, reactions and banter. Victory and mourning lines, bar talk and criers always play unless this is 0. 100 is as written, 0 is none (vanilla talk is untouched). Conversations you start are not affected.",
         Min = 0, Max = 100, Step = 10)]
     public int Talk { get; set; } = 40;
 
@@ -202,7 +202,7 @@ public sealed class LwMod : IMod
     internal static string JobVariable = "LW open jobs";
     /// <summary>The build this helper was made for (modgen/BUILD_ID); the data mods carry theirs in lw_codes.json.</summary>
     public static string DataBuild = "unknown";
-    public const string HelperBuild = "20261122bg";
+    public const string HelperBuild = "20261122bh";
     internal static List<RumourCode> Rumours = [];
     internal static List<(int Index, string Name)> Outlaws = [];
 
@@ -362,7 +362,9 @@ public sealed class LwMod : IMod
         if (table.Talk is { Code: > 0 } t)
         {
             c.AddDialogueCondition(t.Code, check => check.Matches(TalkPacer.Allow(check.World, check.Speaker)
-                && (Settings.Talk >= 100 || GossipRoll(check, 0x5A17) < Settings.Talk / 100.0)));
+                // lines fired on purpose (victory, mourning, criers) play unless the amount is 0; the amount thins the rest (play test of
+                // bg: at the default 40% a lone fighter's victory lines were mostly lost to the roll)
+                && (Settings.Talk >= 100 || (TalkPacer.Exempting && Settings.Talk > 0) || GossipRoll(check, 0x5A17) < Settings.Talk / 100.0)));
             foreach (var (feature, code) in t.Features ?? [])
             {
                 Func<bool> on = feature switch { "jobs" => () => Settings.Jobs, "titles" => () => Settings.TitleReactions, "memorials" => () => Settings.Memorials, "alms" => () => Settings.Alms, _ => () => true };

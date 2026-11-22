@@ -23,14 +23,16 @@ public static class KeepsakeText
     ];
 
     /// <summary>The item's name and description. <paramref name="display"/> turns record keys into the names the player sees.</summary>
-    public static (string Name, string Description) For(Fallen f, MemberRecord? m, string mourner, Func<string, string> display)
+    /// <param name="lostAtTheEnd">Limbs lost within the last game hour before the death: not "kept going" (play test of bg: a limb lost
+    /// seconds before dying read "Lost a limb and kept going.").</param>
+    public static (string Name, string Description) For(Fallen f, MemberRecord? m, string mourner, Func<string, string> display, int lostAtTheEnd = 0)
     {
         string who = display(f.Name);
         int pick = (int)((uint)SquadRecord.StableHash(f.Name) % (uint)Things.Length);
         var parts = new List<string>
         {
             $"{Cap(Things[pick])}. It belonged to {who}; {mourner} has kept it since.",
-            Life(f, m, who),
+            Life(f, m, who, lostAtTheEnd),
             Death(f, display),
         };
         if (Record(f, m) is { Length: > 0 } rec) parts.Add(rec);
@@ -38,7 +40,7 @@ public static class KeepsakeText
         return ($"Keepsake of {who}", string.Join("\n\n", parts));
     }
 
-    static string Life(Fallen f, MemberRecord? m, string who)
+    static string Life(Fallen f, MemberRecord? m, string who, int lostAtTheEnd = 0)
     {
         int days = Math.Max(1, (int)Math.Round(f.DaysServed));
         var s = new List<string> { days < 3 ? $"{who} was with the squad only {days} day{(days == 1 ? "" : "s")}." : $"{who} was with the squad {days} days." };
@@ -52,7 +54,8 @@ public static class KeepsakeText
                 s.Add(top.Value * 2 >= f.Kills ? $"Most of their kills were {top.Key}." : $"Fought everyone, the {top.Key} most of all.");
             }
             if (m.LastStands > 0) s.Add(m.LastStands == 1 ? "Once stood alone when the rest were down." : $"Stood alone {m.LastStands} times when the rest were down.");
-            if (m.LimbsLost > 0) s.Add(m.LimbsLost == 1 ? "Lost a limb and kept going." : $"Lost {m.LimbsLost} limbs and kept going.");
+            int kept = m.LimbsLost - Math.Max(0, lostAtTheEnd);
+            if (kept > 0) s.Add(kept == 1 ? "Lost a limb and kept going." : $"Lost {kept} limbs and kept going.");
             if (m.TimesDowned >= 5) s.Add($"Knocked down {m.TimesDowned} times, and got up every time but the last.");
         }
         return string.Join(" ", s);

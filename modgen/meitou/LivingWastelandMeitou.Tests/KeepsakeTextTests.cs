@@ -38,6 +38,17 @@ public class KeepsakeTextTests
         Assert.Contains("Died on day 1 at the Hub. Not yet avenged.", text);      // hour 30: the game's Day 1, as History says
         Assert.Contains("Their record: 0 kills.", text);
     }
+
+    [Fact]
+    public void A_limb_lost_just_before_the_death_is_not_kept_going()
+    {
+        // play test of bg: a limb lost seconds before dying read "Lost a limb and kept going."
+        var f = new Fallen("Flashbox", 30, "the Hub", null, null, null, 0, 1.2, [], null);
+        var m = new MemberRecord { LimbsLost = 1 };
+        Assert.DoesNotContain("kept going", KeepsakeText.For(f, m, "Hiroto", s => s, lostAtTheEnd: 1).Description);
+        Assert.Contains("Lost a limb and kept going.", KeepsakeText.For(f, m, "Hiroto", s => s).Description);
+        Assert.Contains("Lost a limb and kept going.", KeepsakeText.For(f, new MemberRecord { LimbsLost = 2 }, "Hiroto", s => s, lostAtTheEnd: 1).Description);
+    }
 }
 
 public class BarkLinesTests
