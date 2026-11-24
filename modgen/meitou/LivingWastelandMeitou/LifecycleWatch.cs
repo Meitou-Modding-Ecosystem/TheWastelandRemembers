@@ -1,0 +1,134 @@
+// The engine's character lifecycle notices (Meitou after 0.22.2-nightly.20261124.3, VlcekM/MeitouClient#1370): knockouts, limbs lost,
+// cages and beds entered and left, joining or leaving a faction, a character leaving the world. TWR reads them for its play-test log
+// (CLAUDE.md: everything a system does should be logged), so a play test on the nightly shows what happened to the squad and its captives
+// in the engine's own words, and for one rule: a character who joins the player's faction is first seen by the squad record at that moment.
+// Each is built by reflection (ObserverEmit) and added only where the client has it; the 0.17.3 build loads everywhere.
+// Logged: the squad's knockouts and limbs, and named characters leaving the world, with Collect playtest diagnostics on; cages entered or
+// left, and joins and departures, with Log quest changes (on by default: both are rare).
+using System.Reflection;
+using Meitou.Modding;
+using Meitou.Simulation;
+
+namespace LivingWasteland.MeitouMod;
+
+public static class LifecycleWatch
+{
+    static readonly Assembly engine = typeof(World).Assembly;
+
+    /// <summary>The notices this mod reads: interface, its method, the payload type, and this class's handler.</summary>
+    static readonly (string Interface, string Method, string Payload, string Handler)[] hooks =
+    [
+        ("Meitou.Simulation.Bodies.IKnockoutObserver", "KnockoutChanged", "Meitou.Simulation.Bodies.KnockoutChange", nameof(Knockout)),
+        ("Meitou.Simulation.Bodies.ILimbObserver", "LimbChanged", "Meitou.Simulation.Bodies.LimbChange", nameof(Limb)),
+        ("Meitou.Simulation.Locks.IHeldStateObserver", "HeldStateChanged", "Meitou.Simulation.Locks.HeldStateChange", nameof(Held)),
+        ("Meitou.Simulation.Factions.IRecruitObserver", "RecruitChanged", "Meitou.Simulation.Factions.RecruitChange", nameof(Recruit)),
+        ("Meitou.Simulation.Bodies.ICharacterRemovedObserver", "Removed", "Meitou.Simulation.Bodies.CharacterRemoved", nameof(Removed)),
+    ];
+
+    /// <summary>The emitted systems for the notices this client has (by the handler's name), none on older clients.</summary>
+    internal static Dictionary<string, Type> BuildWatches()
+    {
+        var built = new Dictionary<string, Type>(StringComparer.Ordinal);
+        foreach (var (iface, method, payload, handler) in hooks)
+        {
+            if (engine.GetType(iface) is not { } observer || engine.GetType(payload) is null) continue;
+            if (ObserverEmit.Build(observer, method, typeof(LifecycleWatch).GetMethod(handler)!, "Lifecycle" + handler) is { } type)
+                built[handler] = type;
+        }
+        return built;
+    }
+
+    internal static void Register(ModContext c)
+    {
+        var built = BuildWatches();
+        foreach (var (handler, type) in built)
+            c.AddSystem("lw-lifecycle-" + handler.ToLowerInvariant(), _ => (ITickSystem)Activator.CreateInstance(type)!, SystemAnchor.End);
+        c.Log(built.Count == 0 ? "lifecycle notices: this Meitou has none (nightlies after 2026-11-24 do)"
+            : $"lifecycle notices: {string.Join(", ", built.Keys).ToLowerInvariant()}");
+    }
+
+    static T? Read<T>(object o, string property) => o.GetType().GetProperty(property)?.GetValue(o) is T v ? v : default;
+
+    static CharacterCold? Cold(World world, CharacterId id) =>
+        world.Characters.TryResolveNext(id, out int s) ? world.Characters.Cold(s) : null;
+
+    static string NameOf(World world, CharacterId id, CharacterCold c) =>
+        c.IsPlayer && LwDeeds.For(world) is { } deeds ? deeds.Who(c) : c.Name;
+
+    static bool Squad(World world, CharacterCold c) => c is { IsPlayer: true, Animal: null } && !OtherModsPeople.Runs(world, c);
+
+    static void Log(string line, bool rare)
+    {
+        if (rare ? LwMod.Settings.LogChanges || LwMod.Settings.PlaytestDiagnostics : LwMod.Settings.PlaytestDiagnostics) LwMod.Log("lifecycle: " + line);
+    }
+
+    /// <summary>Knocked out or waking (the squad's own).</summary>
+    public static void Knockout(World world, object change)
+    {
+        try
+        {
+            var id = Read<CharacterId>(change, "Character");
+            if (Cold(world, id) is not { } c || !Squad(world, c)) return;
+            bool down = Read<bool>(change, "Unconscious");
+            Log(down ? $"{NameOf(world, id, c)} knocked out{(Read<bool>(change, "Coma") ? " (in a coma)" : $" for {Read<float>(change, "KoTimer"):0} s")}"
+                : $"{NameOf(world, id, c)} came round", rare: false);
+        }
+        catch (Exception e) { LwMod.Log($"lifecycle: knockout notice: {e.GetBaseException().Message}"); }
+    }
+
+    /// <summary>A limb lost or replaced (the squad's own, and named characters').</summary>
+    public static void Limb(World world, object change)
+    {
+        try
+        {
+            var id = Read<CharacterId>(change, "Character");
+            if (Cold(world, id) is not { } c) return;
+            if (!Squad(world, c) && world.Uniques.RecordOf(id) is null) return;
+            string part = Read<string>(change, "PartName") ?? "a limb";
+            string after = change.GetType().GetProperty("After")?.GetValue(change)?.ToString() ?? "";
+            Log($"{NameOf(world, id, c)}: {part} {after.ToLowerInvariant()}", rare: false);
+        }
+        catch (Exception e) { LwMod.Log($"lifecycle: limb notice: {e.GetBaseException().Message}"); }
+    }
+
+    /// <summary>A cage, bed or restraint entered or left: logged for cages (captives: Meitou#1271), with the fixture.</summary>
+    public static void Held(World world, object change)
+    {
+        try
+        {
+            string before = change.GetType().GetProperty("Before")?.GetValue(change)?.ToString() ?? "", after = change.GetType().GetProperty("After")?.GetValue(change)?.ToString() ?? "";
+            if (!before.Contains("Cage", StringComparison.OrdinalIgnoreCase) && !after.Contains("Cage", StringComparison.OrdinalIgnoreCase)) return;
+            var id = Read<CharacterId>(change, "Character");
+            if (Cold(world, id) is not { } c) return;
+            Log($"{NameOf(world, id, c)}{(world.Uniques.RecordOf(id) is null ? "" : " (named)")}: {before} to {after} at {Read<string>(change, "Fixture") ?? "no fixture"}", rare: true);
+        }
+        catch (Exception e) { LwMod.Log($"lifecycle: held notice: {e.GetBaseException().Message}"); }
+    }
+
+    /// <summary>Someone joined or left the player's faction: a joiner is first seen by the squad record now ("served N days").</summary>
+    public static void Recruit(World world, object change)
+    {
+        try
+        {
+            var id = Read<CharacterId>(change, "Character");
+            if (Cold(world, id) is not { Animal: null } c) return;
+            bool joined = Read<bool>(change, "Joined");
+            if (joined && LwDeeds.For(world) is { } deeds) deeds.Record.Seen(deeds.Who(c), world.GameHours);
+            Log($"{NameOf(world, id, c)} {(joined ? "joined the squad" : "left the squad")}", rare: true);
+        }
+        catch (Exception e) { LwMod.Log($"lifecycle: recruit notice: {e.GetBaseException().Message}"); }
+    }
+
+    /// <summary>A named character left the world (unloaded, or dead and taken away).</summary>
+    public static void Removed(World world, object removed)
+    {
+        try
+        {
+            var id = Read<CharacterId>(removed, "Character");
+            if (Read<string>(removed, "Record") is not { Length: > 0 }) return;
+            if (world.Uniques.RecordOf(id) is null || Cold(world, id) is not { } c) return;
+            Log($"{c.Name} left the world{(Read<bool>(removed, "Dead") ? " (dead)" : "")}", rare: false);
+        }
+        catch (Exception e) { LwMod.Log($"lifecycle: removal notice: {e.GetBaseException().Message}"); }
+    }
+}

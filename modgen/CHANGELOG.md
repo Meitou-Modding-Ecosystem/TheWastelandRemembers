@@ -1,5 +1,34 @@
 # The Wasteland Remembers: changelog
 
+## Next build (not built yet)
+- **Ready for Meitou's next nightly** (the character lifecycle notices, MeitouClient#1370): with Collect playtest diagnostics on, the log
+  notes the squad's knockouts and limbs lost, named characters leaving the world, and (with Log quest changes) anyone put in or let out
+  of a cage and anyone joining or leaving the squad. Someone who joins is counted as with the squad from that moment. Older Meitou: no
+  change. Tested against a build of Meitou's main branch (`preview_meitou.sh`).
+
+## Build 20261124bk (Steam release)
+Build bj plus, on Meitou's 0.22.2 nightlies (each needs a hook the nightlies added; 0.22.1 and older play exactly as bj):
+- **The Fallen say how they died.** One who bled out after the fight, starved, or was shot, executed or eaten was "Cause of death
+  unknown" on the Fallen page, their grave and their keepsake. The game's own death notice now says how ("Bled out on day 3 at Squin"),
+  and names a killer the squad record didn't see strike (a crossbow bolt, an execution). Kept in the save (record format 14).
+- **A bounty crew the game removes is no longer "finished".** Any crew that vanished counted as beaten by your squad. The game now says
+  why a squad left the world: one it took out for its own reasons is placed again and keeps hunting; one beaten on the road by someone
+  else is no win of yours ("The road finished them first").
+
+## Build 20261123bj (Steam release candidate, not uploaded)
+Build bi plus:
+- **Ask townsfolk for news is on by default** and no longer a test feature (Meitou 0.20.2 and later: right-click someone in a town).
+- **The Hub's crier speaks**, and so do the criers of the United Cities' prosperous towns (Heft, Heng, Bark and the rest in their good
+  times). Those towns belong to factions with no news lines of their own, so their criers never had anything to say; they now pass on
+  what their neighbours hear (the drifters' news in the Hub, the United Cities' in the peasants' towns).
+- **On Meitou's AI rewrite (the 0.22.2 nightlies), a bounty crew that stops short of you attacks again.** The order the game used to
+  give was removed in the rewrite; TWR now gives the rewrite's own Assault order through the order queue. Older Meitou is unchanged.
+
+## Build 20261123bi (Steam release candidate, not uploaded)
+Build bh's code, released to the Workshop (the first upload since 20261115ai). Test features stay off by default; Collect playtest
+diagnostics is off. Checked on Meitou 0.17.3, 0.22.1 and v0.22.2-nightly.20261123 (build, settings, engine references, unit and world
+tests); not play tested as a build of its own.
+
 ## Build 20261122bh
 From a second play test (bg):
 - **Keepsake and charm icons, really this time.** The items still told the game to draw their icon from the coin's 3D model, which shows

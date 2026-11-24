@@ -74,5 +74,27 @@ class RecoveryCells(unittest.TestCase):
         self.assertEqual("4-fixture.mod", camp["reprisal"])
 
 
+class Criers(unittest.TestCase):
+    def test_a_crier_copy_reaches_towns_whose_faction_has_no_news_of_its_own(self):
+        # The Hub (Holy Nation Outlaws) and the prosperous United Cities towns (Empire Peasants) had no crier lines: their criers stayed
+        # silent in play. A news line for drifters or the United Cities is now called out there too.
+        class NoDb:
+            def find(self, kind, name):
+                return []
+
+        compiler = content.Compiler(builder.ModBuilder("fixture"), NoDb(), tokens=set())
+        compiler.target = "meitou"
+        copies = []
+        compiler.build_dialogue = copies.append          # the copy is built through self: catch it instead
+        news = {"id": "wn_test_march", "event": "EV_I_SEE_NEUTRAL_SQUAD", "factions": ["Drifters", "United Cities"],
+                "lines": [{"say": ["The Holy Nation marches."]}]}
+        try:
+            content.Compiler.build_dialogue(compiler, news)
+        except Exception:
+            pass                                         # building the news line itself needs game records; only its copy is checked
+        self.assertEqual(1, len(copies))
+        self.assertEqual(["Drifters", "United Cities", "Holy Nation Outlaws", "Empire Peasants"], copies[0]["factions"])
+        self.assertEqual(["Drifters", "United Cities"], news["factions"])
+
 if __name__ == "__main__":
     unittest.main()

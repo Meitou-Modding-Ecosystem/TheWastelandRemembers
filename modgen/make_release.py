@@ -49,7 +49,9 @@ REPORTING A BUG
 KNOWN IN THIS VERSION
 - The trophy neck slot has no label yet (Meitou's slot API has no label field).
 - Still being tested and off by default (U > Settings, search "test"): moving outlaw camps, harassment raids, marks on the world map,
-  asking townsfolk for news, and factions' change of heart in History.
+  factions' change of heart in History, outpost history and couriers, town handovers, prices by reputation, recruiting beaten
+  rivals, keepsake stories, prisoner cases, deals and recovery parties, Western Hive envoys, and visible neck charms.
+- A squad running at very high Athletics can outpace bounty crews: they walk.
 - To see which build you have: press F10 and pick "Wasteland Remembers: squad record".
 
 CREDITS

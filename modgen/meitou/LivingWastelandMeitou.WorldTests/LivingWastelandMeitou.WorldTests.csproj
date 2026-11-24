@@ -18,6 +18,8 @@
     <Reference Include="Meitou.Core"><HintPath>$(MeitouDir)/Meitou.Core.dll</HintPath></Reference>
     <Reference Include="Meitou.Data"><HintPath>$(MeitouDir)/Meitou.Data.dll</HintPath></Reference>
     <Reference Include="0Harmony"><HintPath>$(MeitouDir)/0Harmony.dll</HintPath></Reference>
+    <Reference Include="Silk.NET.Core" Condition="Exists('$(MeitouDir)/Silk.NET.Core.dll')"><HintPath>$(MeitouDir)/Silk.NET.Core.dll</HintPath></Reference>
+    <Reference Include="Silk.NET.Maths" Condition="Exists('$(MeitouDir)/Silk.NET.Maths.dll')"><HintPath>$(MeitouDir)/Silk.NET.Maths.dll</HintPath></Reference>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
     <PackageReference Include="xunit" Version="2.9.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />

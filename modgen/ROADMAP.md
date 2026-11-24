@@ -89,6 +89,35 @@ engine hook (RivalryCore issue #28). Our part:
   crash reports.
 - Done from this list: the world-ready signal (0.21 `IWorldReady`, build az): squads a save left out are placed on the first tick.
 
+## Meitou 0.22.2 hooks for the fundamentals (2026-11-24; in the 0.22.2 nightlies, not in 0.22.1)
+Each behind a check of the client, so 0.22.1 and older play as before. Most useful first:
+1. **Despawn veto** (`IRemovalVeto.Keep`: `PlatoonDespawned`, `PlatoonOrphaned`): keep our crews', reprisal parties' and hunting rivals'
+   squads from being taken out off screen, instead of noticing and placing them again (Presence, `Pursuit.Make`). That re-placing has
+   caused more bugs than anything else (crews mixed up after a load, killed crews coming back, rivals sitting still). Do it once a
+   release has it and a play test can watch a crew across a long walk and a load.
+2. **Squad notices** (`IPlatoonObserver`: Removed with `Despawned`, `LostFight` and the winner, `NoMembers`; Loaded, Unloaded).
+   **Done for bounty crews in build bk** (`PlatoonFates.cs`): a crew the engine took out is placed again, one beaten far off by someone
+   else is not the squad's win. Still to do: outlaw reprisal parties (`OutlawCamps`), raid parties (`Raids`), hunting rivals.
+3. **Death notices** (`ICharacterDeathObserver`: cause, site, killer). **Done in build bk** (`DeathNotices.cs`): the Fallen, their grave
+   and keepsake say how they died (bled out, shot dead, executed, starved), and a killer the hit feed missed is named. Still to do: rivals
+   and named outlaws who die off screen (credit only when the squad's blow came first).
+4. **Character panel lines** (`AddCharacterPanelLines`): each character's titles, kills and fights won in the game's own character panel,
+   without opening U.
+5. **Item tooltip lines** (`AddItemTooltipLines`, up to 8 one-line rows): on a keepsake, "Fell on day 41 at Squin. Avenged by Leaf.";
+   on a warrant, which town signed it. Adds to the full story in the description, doesn't replace it.
+6. **Character lifecycle observers** (merged 2026-11-24, VlcekM/MeitouClient#1370 by PZA; in the next nightly). **Started** (`LifecycleWatch.cs`,
+   after bk): knockouts, limbs, cages, joins and named removals in the play-test log; a joiner is first seen on joining. The rules below are next:
+   - `ILimbObserver` (severed, crushed, prosthetic fitted): the exact moment a limb is lost, for "lost a limb and kept going" (now read from
+     History lines) and a rival's "you took my arm".
+   - `IKnockoutObserver` (out, waking, coma): when a downed foe gets back up, for judging a fight over (CLAUDE.md: downed foes get up).
+   - `IHeldStateObserver` (cage, bed, restraint in and out, with the fixture): prisoner cases from the engine's own word, not a cage scan;
+     may also show what Meitou #1271 (captives vanishing on load) does to them.
+   - `ICharacterRemovedObserver` (a character leaving the table, still readable): forget a tracked handle at once, before it is reused.
+   - `IRecruitObserver`: when someone joins or leaves the squad, for "served N days" and the record's first sighting.
+   - `IDialogueChoiceFilter`: "Ask for news" as a reply in the game's own dialogue window, not only the right-click row.
+Also noted, not planned: item names (#1332, not in the docs yet), shown text (#1354), placing characters and real bounties (#1283),
+off-screen fight rules. Done earlier: lasting ids (rivals, `LastingActors`), stalled crews attack through the order queue (bj).
+
 ## Hooks coming after Meitou 0.22.1 (the MeitouClient wiki's "Code mod hooks", 2026-11-19; not in 0.22.1, so nightlies or the next release)
 Not scheduled (usage is low). Best first:
 1. **Lasting ids** (`world.LastingIds.GetOrGive(character)`, `Find(id)`): a 64-bit id per character for life, across saves. Replaces the

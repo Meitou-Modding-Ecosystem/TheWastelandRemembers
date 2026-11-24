@@ -150,6 +150,28 @@ public class HuntersWorldTests
         Assert.Single(Crews(world));                                      // still the one dead platoon: no new crew made
     }
 
+    // Meitou 0.22.2+ tells why a squad left the world. A crew the engine took out (here: removed for no fight) was not beaten by the squad:
+    // it is placed again and hunts on. Before, every vanished crew was "finished", and the player was told so. Older clients keep that rule.
+    [Fact]
+    public void A_crew_the_engine_took_out_is_placed_again_not_counted_as_beaten()
+    {
+        var data = Data();
+        var pop = new PopulationSystem(data);
+        var hunters = new HuntersSystem(Crew, pop, data);
+        var watch = PlatoonFates.BuildWatch();
+        Assert.Equal(PlatoonFates.Available, watch is not null);
+        var world = watch is null ? W.World(pop, hunters) : W.World(pop, hunters, (Meitou.Simulation.ITickSystem)Activator.CreateInstance(watch)!);
+        W.Spawn(world, "Leaf", W.Player, new Vector3(0, 150, 0));
+        hunters.Request(Town, "unpaid loan");
+        world.RunTicks(301);
+        var first = Assert.Single(Crews(world));
+        Assert.True(world.Platoons.Remove(first.Id));                    // gone, for no fight of the squad's
+        world.RunTicks(600);                                              // two passes: the engine's word comes after the first
+        if (watch is null) { Assert.Empty(hunters.Crews); return; }      // an older client: counted as beaten, as before
+        Assert.Single(hunters.Crews);
+        Assert.NotEqual(first.Id, Assert.Single(Crews(world)).Id);       // placed again
+    }
+
     [Fact]
     public void A_crew_killed_just_before_a_save_stays_dead_after_the_load()
     {

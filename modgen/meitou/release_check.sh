@@ -29,6 +29,8 @@ if [ ! -f "$DIR/MeitouClient.dll" ]; then
     echo "FAIL: no win-x64 zip for $TAG"; exit 2
   fi
   unzip -qjo "$DIR/m.zip" '*/MeitouClient.dll' '*/Meitou.Simulation.dll' '*/Meitou.Core.dll' '*/Meitou.Data.dll' '*/0Harmony.dll' -d "$DIR" || { echo "FAIL: unexpected zip layout"; exit 2; }
+  # newer releases' simulation needs Silk.NET's core types (0.22.2 nightlies from 20261122.2); the world tests load it from here
+  unzip -qjo "$DIR/m.zip" '*/Silk.NET.Core.dll' '*/Silk.NET.Maths.dll' -d "$DIR" 2>/dev/null || true
   rm -f "$DIR/m.zip"
 fi
 
@@ -97,9 +99,16 @@ else
 fi
 # the real Rivalry Core for the party-claim world tests (RealRivalryCoreWorldTests): a pinned, published RivalryCore build, checked against
 # its SHA-256. It targets .NET 11, so only net11.0 releases run them; a failed download skips them with a note, it never fails the check.
-RIVALRY_TAG=rivalry-core-v0.6.0
-RIVALRY_ZIP=RivalryCore-0.6.0.zip
-RIVALRY_SHA=f2e90568678b6a8803d78ac3f254c172e024a2ebecbbc15ae1c157aaa4ebabd4
+# 0.6.7 is the port to Meitou 0.22.2 (its engine references are 0.22.2's); releases before 0.22.2 keep 0.6.0.
+if [ "$(printf '%s\n' 0.22.2 "${VER%%-*}" | sort -V | head -1)" = 0.22.2 ]; then
+  RIVALRY_TAG=rivalry-core-v0.6.7
+  RIVALRY_ZIP=RivalryCore-0.6.7.zip
+  RIVALRY_SHA=e503ddf5d959448d8f13735dbd712c738d1fde0d3245b167345dfdfa466575d7
+else
+  RIVALRY_TAG=rivalry-core-v0.6.0
+  RIVALRY_ZIP=RivalryCore-0.6.0.zip
+  RIVALRY_SHA=f2e90568678b6a8803d78ac3f254c172e024a2ebecbbc15ae1c157aaa4ebabd4
+fi
 unset RIVALRY_CORE_DIR
 if [ "$TFM" = net11.0 ]; then
   RDIR="$CACHE/$RIVALRY_TAG"

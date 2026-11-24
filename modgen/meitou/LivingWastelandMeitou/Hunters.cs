@@ -33,6 +33,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
     // crews found (or placed again) since the game loaded, by town and send time: a crew missing before it was ever seen is not in the save
     // (placed again, once); one missing after it was seen has been beaten
     readonly Presence<(string, double)> presence = new();
+    readonly HashSet<string> waitedFor = new(StringComparer.Ordinal);   // crews missing for one pass, waiting for the engine's reason
     readonly SortedDictionary<string, double> lastSent = new(StringComparer.Ordinal);
     bool failed;
 
@@ -109,6 +110,33 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
                     LwMod.Log($"bounty hunters: the crew from {crew.Town} was not in the save; placed again at {crew.X:0} {crew.Z:0}");
                 }
                 else { presence.Forget(key); continue; }          // try again next pass
+            }
+            // Meitou 0.22.2+ says why a squad left the world: one the engine took out was not beaten (place it again), and one beaten far
+            // off by someone else was no win of the squad's (PlatoonFates)
+            string? gone = null;
+            if (p is null && !late && PlatoonFates.Available)
+            {
+                // the engine tells why after the systems' pass of the tick it happened in: wait one pass for its word before judging
+                gone = PlatoonFates.Take(world, Tag(crew));
+                if (gone is null && waitedFor.Add(Tag(crew))) continue;
+            }
+            waitedFor.Remove(Tag(crew));
+            if (gone is not null)
+            {
+                if (PlatoonFates.NotBeaten(gone))
+                {
+                    p = Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{crew.Town}:{crew.SentHours:0.00}", (crew.X, crew.Z), players[0]);
+                    if (p is not null) tagged = Mark(p, crew);
+                    LwMod.Log($"bounty hunters: the crew from {crew.Town} was taken out by the game ({gone}); {(p is null ? "placing it again next pass" : $"placed again at {crew.X:0} {crew.Z:0}")}");
+                    if (p is null) { PlatoonFates.Tell(world, Tag(crew), gone); continue; }
+                }
+                else if (PlatoonFates.KilledByOthers(gone))
+                {
+                    crews.Remove(crew);
+                    world.Post($"The bounty hunters {crew.Town} hired never reached you. The road finished them first.");
+                    LwMod.Log($"bounty hunters: the crew from {crew.Town} was beaten far off by someone else");
+                    continue;
+                }
             }
             bool lost = p is not null && !p.Dead && Pursuit.Beaten(world, p);
             if (p is null || p.Dead || late || lost)
@@ -408,13 +436,14 @@ public static class Pursuit
     /// <summary>Every standing member not already fighting is ordered to attack the target (the order vanilla dialogue's Assault gives).</summary>
     static void Assault(World world, Squad squad, CharacterId target)
     {
-        if (!AiCompat.CanAssault || world.Systems.OfType<Meitou.Simulation.Ai.AiSystem>().FirstOrDefault() is not { } ai) return;
+        if (!AiCompat.CanOrderAttack) return;
+        var ai = world.Systems.OfType<Meitou.Simulation.Ai.AiSystem>().FirstOrDefault();
         var table = world.Characters;
         bool any = false;
         foreach (var m in squad.Members)
         {
             if (!table.TryResolveNext(m, out int s) || table.Cold(s) is not { } c || c.InCombat || c.Medical is { Incapacitated: true }) continue;
-            any |= AiCompat.OrderAssault(ai, world, m, target);
+            any |= AiCompat.OrderAttack(ai, world, m, target);
         }
         if (any) squadProgress.GetOrCreateValue(squad).Package = AssaultPackage;
     }

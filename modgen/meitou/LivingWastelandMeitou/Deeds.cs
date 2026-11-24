@@ -209,11 +209,17 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     public void Died(string name, double hours, string place, string? killer, string? killerFaction, string? killerRecord)
     {
         if (fallen.Any(f => f.Name == name)) return;
+        string? cause = null;
+        if (noted.Remove(name, out var n))                   // the engine told of this death first (Meitou 0.22.2+): its cause, and its killer if no blow was seen
+        {
+            cause = n.Cause;
+            if (killer is null && n.Killer is not null) (killer, killerFaction, killerRecord) = (n.Killer, n.KillerFaction, n.KillerRecord);
+        }
         if (fight.Active) fight.Down.Add(name);              // the dead are not "still standing" when the fight is judged
         var m = Member(name);
         double served = firstSeen.TryGetValue(name, out var since) ? Math.Max(0, (hours - since) / 24) : 0;
         var titles = m.Titles.Select(TitleName).Concat(crewTitles.Select(TitleName)).Distinct().ToList();
-        fallen.Add(new Fallen(name, hours, place, killer, killerFaction, killerRecord, m.Kills, served, titles, null));
+        fallen.Add(new Fallen(name, hours, place, killer, killerFaction, killerRecord, m.Kills, served, titles, null, cause));
         string by = killer is null ? "" : killerFaction is null or "" ? $", killed by {killer}" : $", killed by {killer} of {killerFaction}";
         Note($"{D(name)} fell at {place}{by}.");
         // no Recap moment: Recap shows a squadmate's death itself, with a picture (seen in play: both "Knife died in the wild" and ours)
@@ -247,6 +253,51 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     /// <summary>Where the most recent loss happened ("the wilds" outside towns); null when nobody has fallen.</summary>
     public string? LastLossPlace => fallen.Count == 0 ? null : fallen[^1].Place;
 
+    readonly Dictionary<string, (string? Cause, string? Killer, string? KillerFaction, string? KillerRecord)> noted = new(StringComparer.Ordinal);
+
+    /// <summary>
+    /// The engine's own word on a member's death (Meitou 0.22.2+, its death notice): how they died (<see cref="CausePhrase"/>), and the killer
+    /// when a blow killed them that the squad record did not see (a bolt, an execution). Fills in a fallen member already recorded; before
+    /// that, it waits for <see cref="Died"/>. Never replaces a killer the record already has.
+    /// </summary>
+    public void DeathNoted(string name, string? cause, string? killer, string? killerFaction, string? killerRecord)
+    {
+        int i = fallen.FindIndex(f => f.Name == name);
+        if (i < 0) { noted[name] = (cause, killer, killerFaction, killerRecord); return; }
+        var f = fallen[i];
+        if (f.Killer is null && killer is not null)
+        {
+            f = f with { Killer = killer, KillerFaction = killerFaction, KillerRecord = killerRecord };
+            if (!string.IsNullOrEmpty(killerFaction)) feuds[killerFaction] = f.Hours;
+        }
+        fallen[i] = f with { Cause = f.Cause ?? cause };
+    }
+
+    /// <summary>
+    /// How a member died, from the engine's death notice (the names of its DeathCause and DeathSite): "Bled out", "Executed"... Null for a
+    /// plain blow or a cause it doesn't name (a killer, when known, says enough).
+    /// </summary>
+    public static string? CausePhrase(string cause, string site) => site switch
+    {
+        "Execution" => "Executed",
+        "Bolt" => "Shot dead",
+        "Rack" => "Died on the rack",
+        "Eaten" => "Eaten alive",
+        "Butchered" => "Butchered where they lay",
+        "OffScreenFight" => "Killed in a fight far from the squad",
+        _ => cause switch
+        {
+            "BloodLoss" => "Bled out",
+            "Starvation" => "Starved",
+            "Butchered" => "Butchered where they lay",
+            "Eaten" => "Eaten alive",
+            "VitalPart" when site != "Melee" => "Died of their wounds",
+            _ => null,
+        },
+    };
+
+    static string LowerFirst(string s) => s.Length == 0 ? s : char.ToLowerInvariant(s[0]) + s[1..];
+
     /// <summary>The Fallen page: one paragraph per member, newest first.</summary>
     public List<string> FallenLines()
     {
@@ -254,7 +305,9 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
         var lines = new List<string>();
         foreach (var f in fallen.AsEnumerable().Reverse())
         {
-            lines.Add($"{D(f.Name)}: fell on day {(int)(f.Hours / 24)} at {f.Place}{(f.Killer is null ? "" : $", killed by {f.Killer}{(string.IsNullOrEmpty(f.KillerFaction) ? "" : " of " + f.KillerFaction)}")}.");
+            lines.Add(f.Killer is null && f.Cause is { } how
+                ? $"{D(f.Name)}: {LowerFirst(how)} on day {(int)(f.Hours / 24)} at {f.Place}."
+                : $"{D(f.Name)}: fell on day {(int)(f.Hours / 24)} at {f.Place}{(f.Killer is null ? "" : $", killed by {f.Killer}{(string.IsNullOrEmpty(f.KillerFaction) ? "" : " of " + f.KillerFaction)}")}.");
             lines.Add($"   served {f.DaysServed:0} days, {f.Kills} kills{(f.Titles.Count > 0 ? ", known as " + string.Join(", ", f.Titles) : "")}{(f.AvengedBy is null ? "" : $". Avenged by {D(f.AvengedBy)}")}.");
             lines.Add($"   \"{Epitaph(f)}\"");
         }
@@ -268,7 +321,7 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
         if (f.Titles.Count > 0) return $"Known as {f.Titles[^1]}.";
         if (f.Kills >= 10) return $"{f.Kills} kills in {Math.Max(1, (int)f.DaysServed)} days with the squad.";
         if (f.DaysServed < 3) return "Joined the squad only days before.";
-        if (f.Killer is null) return "Cause of death unknown.";
+        if (f.Killer is null) return f.Cause is { } how ? how + "." : "Cause of death unknown.";
         return $"With the squad for {Math.Max(1, (int)f.DaysServed)} days.";
     }
 
@@ -678,7 +731,7 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
 
     public void Write(BinaryWriter w)
     {
-        w.Write(13);
+        w.Write(14);
         WriteList(w, crewTitles);
         WriteList(w, namedDead);
         w.Write(members.Count);
@@ -731,13 +784,16 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
         foreach (var (k, v) in crewStats) { w.Write(k); w.Write(v); }
         w.Write(events.Count);
         foreach (var e in events) w.Write(e);
+        var causes = fallen.Where(f => f.Cause is not null).ToList();       // format 14: how the fallen died
+        w.Write(causes.Count);
+        foreach (var f in causes) { w.Write(f.Name); w.Write(f.Cause!); }
     }
 
     /// <summary>Reads a saved record; false (nothing read past the version) for a format this build does not know.</summary>
     public bool Read(BinaryReader r)
     {
         int version = r.ReadInt32();
-        if (version is not (4 or 5 or 6 or 7 or 8 or 9 or 10 or 11 or 12 or 13)) return false;
+        if (version is not (4 or 5 or 6 or 7 or 8 or 9 or 10 or 11 or 12 or 13 or 14)) return false;
         members.Clear();
         ReadList(r, crewTitles);
         ReadList(r, namedDead);
@@ -791,6 +847,14 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
             for (int n = r.ReadInt32(); n > 0; n--) crewStats[r.ReadString()] = r.ReadDouble();
             for (int n = r.ReadInt32(); n > 0; n--) events.Add(r.ReadString());
         }
+        noted.Clear();
+        if (version >= 14)
+            for (int n = r.ReadInt32(); n > 0; n--)
+            {
+                string name = r.ReadString(), how = r.ReadString();
+                int i = fallen.FindIndex(f => f.Name == name);
+                if (i >= 0) fallen[i] = fallen[i] with { Cause = how };
+            }
         return true;
     }
 
@@ -843,7 +907,7 @@ public sealed record Scar(string Kind, string Town, double Hours);
 
 /// <summary>A squadmate who died: when, where, who killed them, what they had done, and who avenged them.</summary>
 public sealed record Fallen(string Name, double Hours, string Place, string? Killer, string? KillerFaction, string? KillerRecord, int Kills,
-    double DaysServed, IReadOnlyList<string> Titles, string? AvengedBy);
+    double DaysServed, IReadOnlyList<string> Titles, string? AvengedBy, string? Cause = null);
 
 /// <summary>What the engine side reports through: the log and whether to log every change (each mod sets these in Initialize).</summary>
 public static class RecordHost

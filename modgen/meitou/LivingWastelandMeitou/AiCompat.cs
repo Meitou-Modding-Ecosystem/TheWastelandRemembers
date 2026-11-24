@@ -3,8 +3,11 @@
 //   PlatoonJobs.For(ai, template, savedPackage)                  0.17.3 .. 0.22.2-nightly.20261119
 //   PlatoonJobs.For(ai, template, factionId, restored, saved)    API 3 (the faction's AI fallback packages join the platoon's)
 //   AiMind.ForcedAssault, AiSystem.OrderAssault                  gone in API 3: callers check CanAssault and do without
+//   World.GiveOrder(actor, TaskType.DefeatSquad, target, ...)    API 3: the same Assault order (row 101) through the order queue; a
+//                                                                stalled bounty crew is ordered to attack with it (OrderAttack)
 // A call compiled straight against the old signature fails on API 3 with MissingMethodException the first time its method runs (seen by
 // RefCheck on 0.22.2-nightly.20261121.2: hunters, couriers and outlaw camps would never have got a package).
+using System.Numerics;
 using System.Reflection;
 using Meitou.Data.Gameplay;
 using Meitou.Data.Gameplay.Ai;
@@ -19,7 +22,10 @@ internal static class AiCompat
     static readonly PropertyInfo? forcedAssault = typeof(AiMind).GetProperty("ForcedAssault", BindingFlags.Public | BindingFlags.Instance);
     static readonly MethodInfo? orderAssault = typeof(AiSystem).GetMethod("OrderAssault", BindingFlags.Public | BindingFlags.Instance, null,
         [typeof(World), typeof(CharacterId), typeof(CharacterId)], null);
-    static int told;
+    static readonly MethodInfo? giveOrder = typeof(World).GetMethod("GiveOrder", BindingFlags.Public | BindingFlags.Instance, null,
+        [typeof(CharacterId), typeof(TaskType), typeof(CharacterId?), typeof(string), typeof(Vector3), typeof(bool)], null);
+    static readonly TaskType? defeatSquad = Enum.TryParse<TaskType>("DefeatSquad", out var row) ? row : null;
+    static int told, toldOrder;
 
     static AiCompat()
     {
@@ -54,6 +60,33 @@ internal static class AiCompat
 
     static string? FactionOf(SquadTemplate template) =>
         typeof(SquadTemplate).GetProperty("Faction")?.GetValue(template) as string;
+
+    /// <summary>How this client orders one character to attack another's squad, for the load log line and the tests.</summary>
+    internal static string AttackOrder => CanAssault ? "assault" : CanGiveOrder ? "order queue (DefeatSquad)" : "none";
+
+    static bool CanGiveOrder => giveOrder is not null && defeatSquad is not null;
+
+    /// <summary>Whether a character can be ordered to attack on this client: the old assault order, or API 3's order queue.</summary>
+    internal static bool CanOrderAttack => CanAssault || CanGiveOrder;
+
+    /// <summary>
+    /// Orders <paramref name="who"/> to attack <paramref name="target"/>'s squad, as vanilla dialogue's Assault does: the old per-character
+    /// order where the client has it, else (API 3) the same row through the order queue, which the engine plans again after each blow until
+    /// the target's squad is down. Serial phases only. False where neither exists, or the engine drops the order at once.
+    /// </summary>
+    internal static bool OrderAttack(AiSystem? ai, World world, CharacterId who, CharacterId target)
+    {
+        if (CanAssault && ai is not null) return OrderAssault(ai, world, who, target);
+        if (!CanGiveOrder) { Tell("this client has no way to order an attack: stalled crews keep following"); return false; }
+        try
+        {
+            var check = giveOrder!.Invoke(world, [who, defeatSquad!.Value, (CharacterId?)target, null, default(Vector3), false]);
+            bool given = check?.GetType().GetProperty("Verdict")?.GetValue(check)?.ToString() is { } verdict && verdict != "Gone";
+            if (Interlocked.Exchange(ref toldOrder, 1) == 0) RecordHost.Log($"engine AI: first attack order through the order queue: {check}");
+            return given;
+        }
+        catch (Exception e) { Tell($"GiveOrder threw ({e.GetBaseException().Message})"); return false; }
+    }
 
     /// <summary>Whether this client still has the per-character assault order (gone in API 3).</summary>
     internal static bool CanAssault => forcedAssault is not null && orderAssault is not null;

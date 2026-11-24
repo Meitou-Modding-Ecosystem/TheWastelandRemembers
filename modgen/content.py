@@ -489,6 +489,11 @@ class Compiler:
     CRIER_OPENERS = ["Hear the news! Hear it!", "News from the roads, for any with ears!", "Listen! Word has come.",
                      "Gather round. Here's what's being said.", "Hear this, travellers!", "News! Fresh news!"]
 
+    # Towns whose own faction has no news lines of its own: their criers pass on what their neighbours hear. The Hub belongs to the Holy
+    # Nation Outlaws (its people talk like the drifters around it), and the United Cities' prosperous towns (Heft, Heng, Bark...) to the
+    # Empire Peasants. Without these their criers had nothing to say (seen in play: the Hub's crier was silent).
+    CRIER_ALIASES = {"United Cities": ["Empire Peasants"], "Drifters": ["Holy Nation Outlaws"]}
+
     NATION_HEADS = ("Holy Lord Phoenix", "Emperor Tengu", "Esata the Stone Golem")
     _anchors = None
 
@@ -532,6 +537,9 @@ class Compiler:
         if (getattr(self, "target", "kenshi") == "meitou" and d.get("event") == "EV_I_SEE_NEUTRAL_SQUAD" and not d.get("_cry")
                 and self.crier_news(str(d.get("id", "")))):
             cry = {k: v for k, v in d.items() if k not in ("lines",)}
+            facs = list(d.get("factions") or [])
+            if facs:
+                cry["factions"] = facs + [a for f in facs for a in self.CRIER_ALIASES.get(f, []) if a not in facs]
             cry.update({"id": f"{d['id']}_cry", "event": "EV_I_SEE_PLAYER_NICE_BUILDING", "chance": 100, "repeat": 24, "score": 10, "_cry": True,
                         "lines": [{"say": self.CRIER_OPENERS, "then": [dict(ln) for ln in d["lines"]]}]})
             self.build_dialogue(cry)
