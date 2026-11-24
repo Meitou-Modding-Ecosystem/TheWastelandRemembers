@@ -1,12 +1,16 @@
 # The Wasteland Remembers: changelog
 
-## Next build (not built yet)
-- **Ready for Meitou's next nightly** (the character lifecycle notices, MeitouClient#1370): with Collect playtest diagnostics on, the log
+## Build 20261125bl (Steam release)
+- **Meitou 0.23 support.** 0.23.0 refused the mod (its version range stopped below 0.23); the range now runs up to 0.24. Checked on 0.23.0:
+  builds, loads with every setting, every engine call the DLL makes is there, and every test passes. Not play tested on 0.23 yet.
+- **What bk did on the 0.22.2 nightlies now works on 0.23.0**, the first release with Meitou's AI rewrite: stalled bounty crews attack,
+  the Fallen say how they died, and a crew the game removes keeps hunting.
+- **Meitou 0.23's character lifecycle notices** (MeitouClient#1370): with Collect playtest diagnostics on, the log
   notes the squad's knockouts and limbs lost, named characters leaving the world, and (with Log quest changes) anyone put in or let out
   of a cage and anyone joining or leaving the squad. Someone who joins is counted as with the squad from that moment. Older Meitou: no
-  change. Tested against a build of Meitou's main branch (`preview_meitou.sh`).
+  change.
 
-## Build 20261124bk (Steam release)
+## Build 20261124bk (Steam release candidate, not uploaded)
 Build bj plus, on Meitou's 0.22.2 nightlies (each needs a hook the nightlies added; 0.22.1 and older play exactly as bj):
 - **The Fallen say how they died.** One who bled out after the fight, starved, or was shot, executed or eaten was "Cause of death
   unknown" on the Fallen page, their grave and their keepsake. The game's own death notice now says how ("Bled out on day 3 at Squin"),

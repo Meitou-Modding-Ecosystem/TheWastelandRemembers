@@ -136,7 +136,7 @@ MADE TO FIT OTHER MEITOU MODS
 
 REQUIREMENTS
 ------------
-- MeitouClient 0.17.3 to 0.22 (0.21 or later recommended: stolen goods and the right-click uses
+- MeitouClient 0.17.3 to 0.23 (0.23 recommended; 0.21 or later: stolen goods and the right-click uses
   need it; faces and squad roles need 0.19).
 - One mod: LivingWasteland (the code and the data in one folder), below your other mods.
 - A new game is recommended; in an existing save your record starts from zero.

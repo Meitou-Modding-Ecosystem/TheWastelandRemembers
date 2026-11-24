@@ -26,7 +26,7 @@ README = """THE WASTELAND REMEMBERS  (early version {build})
 A Meitou mod for Kenshi. Early release: things will be rough in places, and feedback and bug reports are very welcome.
 
 REQUIREMENTS
-- MeitouClient 0.17.3 to 0.22 (0.21 or later recommended: stolen goods, the right-click uses of keepsakes and warrants and the test features need
+- MeitouClient 0.17.3 to 0.23 (0.23 recommended; 0.21 or later: stolen goods, the right-click uses of keepsakes and warrants and the test features need
   it; Atlas faces and squad roles need 0.19). It does not run on plain Kenshi.
 
 INSTALL
