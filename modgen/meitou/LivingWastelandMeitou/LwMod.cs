@@ -113,8 +113,8 @@ public sealed class LwSettings
     public bool TownHandovers { get; set; } = PlayTest.On;
     [Setting("Marks on the world map (test)", Hint = "Meitou v0.20.2-nightly.20261117 and later: the world map marks rivals still about, outlaw camps the Atlas knows and places of news your squad heard this week.")]
     public bool MapMarks { get; set; } = PlayTest.On;
-    [Setting("Ask townsfolk for news (test)", Hint = "Meitou v0.20.2-nightly.20261117 and later: right-click someone in a town and ask for news. They tell you the biggest news that has reached them, and your squad has heard it.")]
-    public bool AskForNews { get; set; } = PlayTest.On;
+    [Setting("Ask townsfolk for news", Hint = "Meitou 0.20.2 and later: right-click someone in a town and ask for news. They tell you the biggest news that has reached them, and your squad has heard it.")]
+    public bool AskForNews { get; set; } = true;
     [Setting("Factions' change of heart in History (test)", Hint = "Meitou v0.20.2-nightly.20261117 and later: when a faction turns against your squad or warms to it, History says why (a killing, a crime they saw, a war).")]
     public bool RelationNews { get; set; } = PlayTest.On;
     [Setting("Towns miss stolen goods", Hint = "Meitou 0.21 and later: goods your people take from a town's shops, homes and machines raise that town's heat. Seen, at once (on top of the crime itself); unseen, when the town misses them half a day later. Worth more, more heat; valuable goods go into History.")]
@@ -202,7 +202,7 @@ public sealed class LwMod : IMod
     internal static string JobVariable = "LW open jobs";
     /// <summary>The build this helper was made for (modgen/BUILD_ID); the data mods carry theirs in lw_codes.json.</summary>
     public static string DataBuild = "unknown";
-    public const string HelperBuild = "20261122bh";
+    public const string HelperBuild = "20261124bk";
     internal static List<RumourCode> Rumours = [];
     internal static List<(int Index, string Name)> Outlaws = [];
 
@@ -327,6 +327,9 @@ public sealed class LwMod : IMod
         c.AddSystem("lw-news", ctx => new NewsSystem(ctx.Data), SystemAnchor.End);
         TownSwitchWatch.Register(c);
         PrisonerCases.Register(c, table.Camps ?? []);
+        DeathNotices.Register(c);
+        PlatoonFates.Register(c);
+        LifecycleWatch.Register(c);
         OutpostMemories.Register(c);
         Couriers.Register(c);
         HiveEnvoys.Register(c);
@@ -383,7 +386,7 @@ public sealed class LwMod : IMod
         DataBuild = data;
         c.Log(data == HelperBuild ? $"build {HelperBuild} (data and helper match)"
             : $"WARNING: data build {data} but helper build {HelperBuild}: run install_meitou.bat from the newest build folder, then restart Meitou");
-        c.Log($"engine AI calls: PlatoonJobs.For {AiCompat.JobsShape}, per-character assault {(AiCompat.CanAssault ? "available" : "gone (API 3)")}");
+        c.Log($"engine AI calls: PlatoonJobs.For {AiCompat.JobsShape}, attack orders by {AiCompat.AttackOrder}");
         c.Log($"{table.Variables.Count} quest variables, {table.TakeItems.Count} take-item codes, {Rumours.Count} rumour subjects, job limit {Settings.JobCap}, bar talk {(Settings.BarTalk ? "on" : "off")}");
     }
 

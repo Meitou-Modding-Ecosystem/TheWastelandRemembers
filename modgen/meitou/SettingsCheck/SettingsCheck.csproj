@@ -14,6 +14,9 @@
     <Reference Include="Meitou.Simulation"><HintPath>$(MeitouDir)/Meitou.Simulation.dll</HintPath></Reference>
     <Reference Include="Meitou.Core"><HintPath>$(MeitouDir)/Meitou.Core.dll</HintPath></Reference>
     <Reference Include="Meitou.Data"><HintPath>$(MeitouDir)/Meitou.Data.dll</HintPath></Reference>
+    <!-- newer releases load Silk.NET as the client starts (0.22.2 nightlies from 20261122.2) -->
+    <Reference Include="Silk.NET.Core" Condition="Exists('$(MeitouDir)/Silk.NET.Core.dll')"><HintPath>$(MeitouDir)/Silk.NET.Core.dll</HintPath></Reference>
+    <Reference Include="Silk.NET.Maths" Condition="Exists('$(MeitouDir)/Silk.NET.Maths.dll')"><HintPath>$(MeitouDir)/Silk.NET.Maths.dll</HintPath></Reference>
     <Reference Include="LivingWastelandMeitou"><HintPath>../LivingWastelandMeitou/LivingWastelandMeitou.dll</HintPath></Reference>
     <Reference Include="SquadRecord"><HintPath>../SquadRecord/SquadRecord.dll</HintPath></Reference>
   </ItemGroup>

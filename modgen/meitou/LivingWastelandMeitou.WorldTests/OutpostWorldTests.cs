@@ -363,7 +363,8 @@ public sealed class OutpostWorldTests : IDisposable
         const BindingFlags instance = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
         var hostType = registrationType.Assembly.GetType("Meitou.Game.Ui.UiHost", throwOnError: true)!;
         var host = Activator.CreateInstance(hostType, nonPublic: true)!;
-        using var registration = (UiRegistration)registrationType.GetConstructors(instance).Single().Invoke([host, ModId]);
+        var make = registrationType.GetConstructors(instance).Single();      // (host, id), and from the 24 Nov nightly an optional mod folder
+        using var registration = (UiRegistration)make.Invoke([host, ModId, .. make.GetParameters().Skip(2).Select(p => p.HasDefaultValue ? p.DefaultValue : null)]);
         var logs = new List<string>();
         Assert.True(OutpostTownPanel.Register(registration, logs.Add), string.Join(", ", logs));
         var lines = hostType.GetMethod("TownLines", instance)!;

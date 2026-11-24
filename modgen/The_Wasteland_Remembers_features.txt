@@ -89,10 +89,21 @@ OUTLAWS AND WORK
   a town may hire bounty hunters. They follow you across the map and attack; beat them and one
   carries a warrant with your squad's name on it. Hurt a named outlaw's people and they may send
   men after you too.
+- Towns miss stolen goods (Meitou 0.21+): seen, their heat rises at once; unseen, half a day later,
+  and anything valuable goes into History.
 - Trophies and keepsakes worn in a new neck slot: an outlaw's token, a fallen friend's keepsake,
-  a faction's charm.
-- Optional, off by default (still being tested): moving outlaw camps, harassment raids (small
-  factions harass big ones; nothing changes hands).
+  a faction's charm. A keepsake is written for the one who fell: how long they rode with you, their
+  titles and named kills, how and where they died, and who avenged them. Right-click it (Meitou
+  0.20.2+) and the holder says a line for them; right-click a bounty hunter's warrant to see who
+  signed it.
+- News from other mods: when another mod reports a town falling, a siege or a lost caravan, people
+  near it talk about it and your squad's History keeps it once heard.
+- Ask townsfolk for news (Meitou 0.20.2+): right-click someone in a town and ask. They tell you the
+  biggest news that has reached them, and your squad remembers it.
+- Optional, off by default (still being tested, search "test" in Settings): moving outlaw camps,
+  harassment raids, marks on the world map, factions' change of heart in History, outpost history
+  and couriers, town handovers, prices by reputation, recruiting beaten rivals, keepsake stories,
+  prisoner cases, deals and recovery parties, Western Hive envoys, and visible neck charms.
 
 
 SQUAD ROLES (Meitou 0.19+)
@@ -106,6 +117,10 @@ up again afterwards. Saved with your game.
 
 MADE TO FIT OTHER MEITOU MODS
 -----------------------------
+- Proving Grounds: arena bouts are sport (no heat, no rivals from the ring); pit wins become news.
+- Rivalry Core (The Ashen Hand and others): one hostile party after you at a time, whichever mod
+  sends it.
+- Fiefdom and other town mods: their townspeople and guards stay out of your squad record.
 - Recap: titles, last stands, avenged squadmates, broken marches and more appear in its
   "Previously on your adventure".
 - Kenshi Ultimate Overhaul: its armies march for real; your lookouts know an army from a patrol,
@@ -121,7 +136,8 @@ MADE TO FIT OTHER MEITOU MODS
 
 REQUIREMENTS
 ------------
-- MeitouClient 0.17.3 or later (0.19 recommended: faces and squad roles need it).
+- MeitouClient 0.17.3 to 0.22 (0.21 or later recommended: stolen goods and the right-click uses
+  need it; faces and squad roles need 0.19).
 - One mod: LivingWasteland (the code and the data in one folder), below your other mods.
 - A new game is recommended; in an existing save your record starts from zero.
 

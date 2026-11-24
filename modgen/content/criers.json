@@ -48,7 +48,8 @@
    "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
    "factions": [
     "United Cities",
-    "Traders Guild"
+    "Traders Guild",
+    "Empire Peasants"
    ],
    "player_only": true,
    "chance": 50,
@@ -236,7 +237,8 @@
    "id": "cr_dr",
    "event": "EV_I_SEE_PLAYER_NICE_BUILDING",
    "factions": [
-    "Drifters"
+    "Drifters",
+    "Holy Nation Outlaws"
    ],
    "player_only": true,
    "chance": 50,

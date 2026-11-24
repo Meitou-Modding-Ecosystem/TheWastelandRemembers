@@ -93,7 +93,7 @@ public class NightlyHooksWorldTests
             LwMod.Settings.AskForNews = false;
             Assert.Empty(reg.Verbs!(new FakeMenuContext(local)));
         }
-        finally { LwMod.Settings.AskForNews = false; NightlyHooks.CurrentAsks = null; }
+        finally { LwMod.Settings.AskForNews = true; NightlyHooks.CurrentAsks = null; }
     }
 
     [Fact]
@@ -123,7 +123,7 @@ public class NightlyHooksWorldTests
             next.RunTicks(60);
             Assert.True(barks.Contains(replacement));
         }
-        finally { LwMod.Settings.AskForNews = false; }
+        finally { LwMod.Settings.AskForNews = true; }
     }
 
     [Fact]

@@ -64,7 +64,7 @@ public static class KeepsakeText
     static string Death(Fallen f, Func<string, string> display)
     {
         int day = (int)(f.Hours / 24);                      // as History and the game's own Day counter (play test of bf: day 2 here, Day 1 there)
-        string how = f.Killer is null ? $"Died on day {day} at {f.Place}." :
+        string how = f.Killer is null ? $"{f.Cause ?? "Died"} on day {day} at {f.Place}." :
             $"Fell on day {day} at {f.Place}, killed by {f.Killer}{(string.IsNullOrEmpty(f.KillerFaction) ? "" : " of " + Faction(f.KillerFaction))}.";
         return how + (f.AvengedBy is null ? " Not yet avenged." : $" Avenged by {display(f.AvengedBy)}.");
     }
