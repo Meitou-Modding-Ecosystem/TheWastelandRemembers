@@ -119,33 +119,38 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
             var rec = last[i];
             if (rec is { Out: true })
             {
-                Platoon? p = null;
                 string tag = Tag(r, rec);
-                if (Pursuit.HasTags)
-                {
-                    var exact = world.Platoons.All
-                        .Where(candidate => candidate is not null && candidate.TemplateId == r.Squad && Pursuit.ReadTag(candidate) == tag)
-                        .Take(2).ToArray();
-                    if (exact.Length > 1) continue;
-                    p = exact.SingleOrDefault();
-                    if (p is not null && claimed.Contains(p.Id)) continue;
-                }
-                bool tagged = rec.Tagged || p is not null;
-                bool legacy = !Pursuit.HasTags || !tagged;
-                if (legacy) p = Pursuit.Find(world, r.Squad, rec.X, rec.Z, claimed, Pursuit.IsUntagged);
+                var (p, ambiguous, legacyDead) = Pursuit.MatchParty(world, r.Squad, tag, rec.X, rec.Z, rec.Tagged, claimed);
+                if (ambiguous) continue;
+                bool tagged = rec.Tagged;
+                if (p is { Dead: false }) tagged = Pursuit.Mark(p, tag) || tagged;
                 bool over = now - rec.SentHours >= RaidRules.Lurk || now < rec.SentHours;
                 var key = (i, rec.SentHours);
-                var verdict = parties.Check(world, key, p is not null);
-                bool caught = verdict == Presence<(int, double)>.Verdict.Gone || p is { Dead: true } ||
-                    (legacy && p is null && Pursuit.DeadNear(world, r.Squad, rec.X, rec.Z, eligible: Pursuit.IsUntagged));
-                if (p is null && !caught && !over)
+                var verdict = parties.Check(world, key, p is not null, waitForNotice: tagged && !over && PlatoonFates.Available);
+                string? gone = p is null && tagged ? PlatoonFates.Take(world, tag) : null;
+                if (gone is null && verdict == Presence<(int, double)>.Verdict.AwaitNotice) continue;
+
+                if (gone is not null && PlatoonFates.KilledByOthers(gone))
+                {
+                    FinishWipe(world, i, rec, tag);
+                    continue;
+                }
+                bool replace = gone is not null ? PlatoonFates.NotBeaten(gone) : verdict == Presence<(int, double)>.Verdict.PlaceAgain && !legacyDead;
+                if (p is null && replace && !over)
                 {
                     p = RestoreParty(world, pop, d, r, rec, players);
-                    if (p is null) { parties.Forget(key); continue; }
-                    tagged = Pursuit.Mark(p, tag);
+                    if (p is null)
+                    {
+                        if (gone is not null) PlatoonFates.Tell(world, tag, gone);
+                        else parties.Forget(key);
+                        continue;
+                    }
+                    tagged = Pursuit.Mark(p, tag) || tagged;
                     parties.Check(world, key, found: true);
-                    LwMod.Log($"raids: the {r.Name} party missing from the save was placed again near {TownName(rec.Town)}");
+                    if (gone is null) LwMod.Log($"raids: the {r.Name} party missing from the save was placed again near {TownName(rec.Town)}");
+                    else PlaytestLog.Event(world, "raid", tag, "restored after removal", gone);
                 }
+                bool caught = p is { Dead: true } || p is null && !replace;
                 if (caught || over)
                 {
                     if (p is { Dead: false }) Pursuit.Release(p);
@@ -183,6 +188,27 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
         }
         partySquads.Clear();
         foreach (var (k, v) in squads) partySquads[k] = v;
+    }
+
+    // A save can be taken as soon as Meitou broadcasts a wipe, before the next raid pass.
+    internal bool PartyWipedOut(World world, Platoon platoon, string tag)
+    {
+        for (int i = 0; i < last.Length; i++)
+        {
+            if (last[i] is not { Out: true } raid || raids[i].Squad != platoon.TemplateId || Tag(raids[i], raid) != tag) continue;
+            FinishWipe(world, i, raid, tag);
+            return true;
+        }
+        return false;
+    }
+
+    void FinishWipe(World world, int index, RaidRecord raid, string tag)
+    {
+        last[index] = raid with { EndedHours = world.GameHours, Caught = true, Tagged = true };
+        parties.Forget((index, raid.SentHours));
+        string town = TownName(raid.Town);
+        world.Post($"Word from {town}: the {raids[index].Name} raiders are gone. The road finished them first.");
+        PlaytestLog.Event(world, "raid", tag, "wiped out off screen", town);
     }
 
     static string Tag(RaidCode raid, RaidRecord record) =>

@@ -37,6 +37,13 @@ static class W
         return world;
     }
 
+    public static bool RemovePlatoon(SimWorld world, int id, string reason, int winner = -1)
+    {
+        var gone = typeof(Platoon).Assembly.GetType("Meitou.Simulation.Factions.PlatoonGone")!;
+        var remove = world.Platoons.GetType().GetMethod("Remove", [typeof(int), gone, typeof(int)])!;
+        return remove.Invoke(world.Platoons, [id, Enum.Parse(gone, reason), winner]) is true;
+    }
+
     public static CharacterId Spawn(SimWorld world, string name, int faction, Vector3 at, Inventory? bag = null, int squad = -1) =>
         world.Characters.Spawn(new CharacterHot { Alive = true, Position = at },
             new CharacterCold { Name = name, Faction = faction, IsPlayer = faction == Player, RecordId = "r-" + name, Medical = new MedicalState([]),

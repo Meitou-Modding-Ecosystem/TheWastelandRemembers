@@ -165,6 +165,8 @@ public class HuntersWorldTests
         hunters.Request(Town, "unpaid loan");
         world.RunTicks(301);
         var first = Assert.Single(Crews(world));
+        if (typeof(Platoon).GetProperty("ModTags") is not null)
+            typeof(Platoon).GetProperty("ModTag")!.SetValue(first, "other-mod:shared");
         Assert.True(world.Platoons.Remove(first.Id));                    // gone, for no fight of the squad's
         world.RunTicks(600);                                              // two passes: the engine's word comes after the first
         if (watch is null) { Assert.Empty(hunters.Crews); return; }      // an older client: counted as beaten, as before
@@ -290,6 +292,110 @@ public class HuntersWorldTests
         Assert.Equal(2, crews.Count);
         Assert.Contains(crews, p => Vector2.Distance(p.Position, far) < 3000);            // Stack's placed again where it was
         Assert.Single(crews, p => Vector2.Distance(p.Position, survivor.Position) < 3000);  // and Squin's not doubled
+    }
+
+    [Fact]
+    public void A_native_crew_survives_an_engine_save_before_it_first_loads()
+    {
+        if (typeof(Platoon).GetProperty("ModSpawned") is not { } native ||
+            !typeof(PopulationSystem).GetMethods().Any(m => m.Name == "SpawnPlatoon" && m.GetParameters().Length == 9)) return;
+        string? physics = Environment.GetEnvironmentVariable("TWR_TEST_MEITOU_PHYSICS");
+        if (string.IsNullOrWhiteSpace(physics)) return;   // Like the escort save test, this requires a full release DLL directory.
+
+        foreach (string name in new[] { "BepuUtilities", "BepuPhysics" })
+            if (!AppDomain.CurrentDomain.GetAssemblies().Any(a => a.GetName().Name == name))
+                System.Runtime.Loader.AssemblyLoadContext.Default.LoadFromAssemblyPath(Path.Combine(physics, name + ".dll"));
+
+        var data = Data();
+        var (before, hunters) = World(data);
+        using var first = before;
+        Assert.True(hunters.Request(Town, "test native pursuit"));
+        before.RunTicks(301);
+        var crew = Assert.Single(Crews(before));
+        Assert.Equal(PlatoonState.Unloaded, crew.State);
+        Assert.Null(crew.Stored);
+        var save = Meitou.Simulation.Saving.SaveCapture.Capture(before, data, new Meitou.Simulation.Saving.SaveClock(1, 13, 0));
+
+        using var state = new MemoryStream();
+        hunters.Write(state);
+        state.Position = 0;
+        var nextPopulation = new PopulationSystem(data) { KeepRoamers = false };
+        var loaded = new HuntersSystem(Crew, nextPopulation, data);
+        using var next = W.World(nextPopulation, loaded);
+        Meitou.Simulation.Saving.SaveLoader.Load(next, save, data);
+        W.Spawn(next, "Leaf", W.Player, new Vector3(0, 150, 0)); // The fixture player was never in a saved squad.
+        next.GameHours = before.GameHours;
+        loaded.Read(state);
+        var restored = Assert.Single(Crews(next));
+        Assert.Equal(crew.Key, restored.Key);
+        Assert.Equal(Pursuit.ReadTag(crew), Pursuit.ReadTag(restored));
+        Assert.True((bool)native.GetValue(restored)!);
+
+        var at = restored.Position;
+        next.RunTicks(301);
+        Assert.Same(restored, Assert.Single(Crews(next)));
+        Assert.Single(loaded.Crews);
+        Assert.NotNull(restored.Point);
+        Assert.True(Vector2.Distance(restored.Position, Vector2.Zero) < Vector2.Distance(at, Vector2.Zero));
+    }
+
+    [Fact]
+    public void An_expired_crew_releases_its_native_keep_flag()
+    {
+        if (typeof(Platoon).GetProperty("ModSpawned") is not { } native ||
+            !typeof(PopulationSystem).GetMethods().Any(m => m.Name == "SpawnPlatoon" && m.GetParameters().Length == 9)) return;
+        var (world, hunters) = World(Data());
+        using var first = world;
+        Assert.True(hunters.Request(Town, "test native pursuit"));
+        world.RunTicks(301);
+        var crew = Assert.Single(Crews(world));
+        Assert.True((bool)native.GetValue(crew)!);
+        world.GameHours += HunterRules.GiveUpAfter + 1;
+
+        world.RunTicks(200); // Stop just after the release pass at tick 500, before ordinary engine patrol resumes.
+
+        Assert.Empty(hunters.Crews);
+        Assert.False((bool)native.GetValue(crew)!);
+        Assert.False(crew.Persistent);
+        Assert.Null(crew.Point);
+    }
+
+    [Fact]
+    public void A_crew_load_finds_the_namespaced_party_after_the_shared_tag_changes()
+    {
+        var tags = typeof(Platoon).GetProperty("ModTags");
+        var legacy = typeof(Platoon).GetProperty("ModTag");
+        if (tags is null || legacy is null) return;
+        var data = Data();
+        var (first, hunters) = World(data);
+        using var firstWorld = first;
+        Assert.True(hunters.Request(Town, "test"));
+        first.RunTicks(301);
+        var original = Assert.Single(Crews(first));
+        var tag = Assert.IsType<string>(legacy.GetValue(original));
+        Assert.Equal(tag, ((IDictionary<string, string>)tags.GetValue(original)!)["LivingWastelandMeitou"]);
+
+        using var save = new MemoryStream();
+        hunters.Write(save);
+        save.Position = 0;
+        var (next, loaded) = World(data);
+        using var nextWorld = next;
+        next.GameHours = first.GameHours;
+        loaded.Read(save);
+        var restored = new Platoon { Id = next.Platoons.NextId(), Origin = original.Origin, TemplateId = Crew,
+            Faction = original.Faction, Key = original.Key, Size = original.Size, Position = original.Position };
+        var entries = (IDictionary<string, string>)tags.GetValue(restored)!;
+        entries["LivingWastelandMeitou"] = tag;
+        entries["OtherMod"] = "traveller";
+        legacy.SetValue(restored, "other-mod:shared");
+        next.Platoons.Add(restored);
+
+        next.RunTicks(301);
+
+        Assert.Same(restored, Assert.Single(Crews(next)));
+        Assert.Single(loaded.Crews);
+        Assert.Equal("traveller", entries["OtherMod"]);
+        Assert.Equal("other-mod:shared", legacy.GetValue(restored));
     }
 
     [Theory]

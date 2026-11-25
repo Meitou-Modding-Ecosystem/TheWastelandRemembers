@@ -2,6 +2,8 @@ using System.Numerics;
 using LivingWasteland.MeitouMod;
 using Meitou.Data.Fcs;
 using Meitou.Data.World;
+using Meitou.Simulation;
+using Meitou.Simulation.Combat;
 using Meitou.Simulation.Factions;
 using Meitou.Simulation.Population;
 using Xunit;
@@ -38,6 +40,91 @@ public sealed class RaidRestoreWorldTests : IDisposable
     }
 
     static IEnumerable<Platoon> Parties(SimWorld world) => world.Platoons.All.Where(p => p is not null && p.TemplateId == RaidSquad);
+
+    [Theory]
+    [InlineData("Despawned", true)]
+    [InlineData("LostFight", false)]
+    public void Raid_removals_preserve_the_party_or_report_an_offscreen_wipe(string reason, bool restored)
+    {
+        if (!PlatoonFates.Available) return;
+        OutlawCampsSystem.NewsTowns = ["Squin"];
+        LwMod.Settings.HarassmentRaids = true;
+        var data = Data();
+        var (world, raids) = Scene(data);
+        using var running = world;
+        var player = W.Spawn(world, "Leaf", W.Player, new Vector3(0, 150, 0));
+        world.GameHours = RaidRules.NextStart(world.Seed, 0, 0) + 1;
+        world.RunTicks(301);
+        var first = Assert.Single(Parties(world));
+        var tag = Assert.IsType<string>(Pursuit.ReadTag(first));
+        if (!restored)
+        {
+            // An earlier hit must not earn credit for a subsequent off-screen wipe by somebody else.
+            first.State = PlatoonState.Loaded;
+            first.SquadId = 77;
+            var raider = W.Spawn(world, "Raider", W.Bandits, new Vector3(20, 150, 20), squad: first.SquadId);
+            world.RunTicks(300);
+            var hit = new CombatHit(world.Tick, CombatHitSource.Melee, player, raider, 0, 0, 0,
+                default, default, default, default, 0, -1, false, false, false, false);
+            raids.HitResolved(world, in hit);
+        }
+        var relationBefore = data.Relations.Get(W.Bandits, W.Player);
+        Assert.True(world.Platoons.Remove(first.Id));
+
+        // The engine queues the notice after the slow-world pass, so leave one pass without a cause.
+        world.RunTicks(300);
+        Assert.Equal(1, raids.StateOf(world, 0));
+        PlatoonFates.Tell(world, tag, reason);
+        world.RunTicks(300);
+
+        if (restored)
+        {
+            var replacement = Assert.Single(Parties(world));
+            Assert.NotEqual(first.Id, replacement.Id);
+            Assert.Equal(tag, Pursuit.ReadTag(replacement));
+            Assert.Equal(1, raids.StateOf(world, 0));
+        }
+        else
+        {
+            Assert.Empty(Parties(world));
+            Assert.Equal(2, raids.StateOf(world, 0));
+            Assert.Equal(relationBefore, data.Relations.Get(W.Bandits, W.Player));
+            Assert.Single(world.TakeMessages(), line => line.Contains("The road finished them first."));
+            world.RunTicks(600);
+            Assert.Empty(Parties(world));
+            Assert.Empty(world.TakeMessages());
+        }
+    }
+
+    [Fact]
+    public void An_observed_offscreen_raid_wipe_is_recorded_before_the_next_pass()
+    {
+        if (PlatoonFates.BuildWatch() is not { } watch) return;
+        OutlawCampsSystem.NewsTowns = ["Squin"];
+        LwMod.Settings.HarassmentRaids = true;
+        var data = Data();
+        var raids = new RaidsSystem(Codes, new PopulationSystem(data), data);
+        using var world = W.World(raids, (ITickSystem)Activator.CreateInstance(watch)!);
+        W.Spawn(world, "Leaf", W.Player, new Vector3(0, 150, 0));
+        world.GameHours = RaidRules.NextStart(world.Seed, 0, 0) + 1;
+        world.RunTicks(301);
+        Assert.True(W.RemovePlatoon(world, Assert.Single(Parties(world)).Id, "LostFight"));
+        world.RunTicks(1); // Deliver the notice without running another raid pass.
+
+        using var save = new MemoryStream();
+        raids.Write(save);
+        save.Position = 0;
+        var (next, loaded) = Scene(data);
+        using var restored = next;
+        W.Spawn(next, "Leaf", W.Player, new Vector3(0, 150, 0));
+        next.GameHours = world.GameHours;
+        loaded.Read(save);
+        next.RunTicks(301);
+
+        Assert.Empty(Parties(next));
+        Assert.Equal(2, loaded.StateOf(next, 0));
+        Assert.Single(world.TakeMessages(), line => line.Contains("The road finished them first."));
+    }
 
     [Fact]
     public void A_raid_missing_before_it_ever_loaded_is_restored_without_being_reported_caught()

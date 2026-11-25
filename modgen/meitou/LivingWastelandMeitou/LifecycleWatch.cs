@@ -6,14 +6,23 @@
 // Logged: the squad's knockouts and limbs, and named characters leaving the world, with Collect playtest diagnostics on; cages entered or
 // left, and joins and departures, with Log quest changes (on by default: both are rare).
 using System.Reflection;
+using Meitou.Data.Gameplay.Bodies;
 using Meitou.Modding;
 using Meitou.Simulation;
+using Meitou.Simulation.Bodies;
 
 namespace LivingWasteland.MeitouMod;
 
 public static class LifecycleWatch
 {
     static readonly Assembly engine = typeof(World).Assembly;
+    static readonly Type? knockoutPayload = engine.GetType("Meitou.Simulation.Bodies.KnockoutChange");
+    static readonly PropertyInfo? knockedCharacter = knockoutPayload?.GetProperty("Character"),
+        unconscious = knockoutPayload?.GetProperty("Unconscious"), koTimer = knockoutPayload?.GetProperty("KoTimer"), coma = knockoutPayload?.GetProperty("Coma");
+    static readonly Type? limbPayload = engine.GetType("Meitou.Simulation.Bodies.LimbChange");
+    static readonly PropertyInfo? limbCharacter = limbPayload?.GetProperty("Character"), limbPart = limbPayload?.GetProperty("Part"),
+        limbBefore = limbPayload?.GetProperty("Before"), limbAfter = limbPayload?.GetProperty("After");
+    static readonly PropertyInfo? removedCharacter = engine.GetType("Meitou.Simulation.Bodies.CharacterRemoved")?.GetProperty("Character");
 
     /// <summary>The notices this mod reads: interface, its method, the payload type, and this class's handler.</summary>
     static readonly (string Interface, string Method, string Payload, string Handler)[] hooks =
@@ -26,16 +35,30 @@ public static class LifecycleWatch
     ];
 
     /// <summary>The emitted systems for the notices this client has (by the handler's name), none on older clients.</summary>
-    internal static Dictionary<string, Type> BuildWatches()
+    internal static IReadOnlyDictionary<string, Type> BuildWatches() => watches.Value;
+
+    static readonly Lazy<Dictionary<string, Type>> watches = new(BuildAdapters);
+
+    static Dictionary<string, Type> BuildAdapters()
     {
         var built = new Dictionary<string, Type>(StringComparer.Ordinal);
         foreach (var (iface, method, payload, handler) in hooks)
         {
             if (engine.GetType(iface) is not { } observer || engine.GetType(payload) is null) continue;
+            if (handler == nameof(Limb) && (limbCharacter?.PropertyType != typeof(CharacterId) || limbPart?.PropertyType != typeof(int)
+                || limbBefore?.PropertyType != typeof(LimbState) || limbAfter?.PropertyType != typeof(LimbState))) continue;
             if (ObserverEmit.Build(observer, method, typeof(LifecycleWatch).GetMethod(handler)!, "Lifecycle" + handler) is { } type)
                 built[handler] = type;
         }
         return built;
+    }
+
+    internal static bool TracksLimbs(World world)
+    {
+        if (!watches.IsValueCreated || !watches.Value.TryGetValue(nameof(Limb), out var adapter)) return false;
+        foreach (var system in world.Systems)
+            if (system.GetType() == adapter) return true;
+        return false;
     }
 
     internal static void Register(ModContext c)
@@ -62,15 +85,20 @@ public static class LifecycleWatch
         if (rare ? LwMod.Settings.LogChanges || LwMod.Settings.PlaytestDiagnostics : LwMod.Settings.PlaytestDiagnostics) LwMod.Log("lifecycle: " + line);
     }
 
-    /// <summary>Knocked out or waking (the squad's own).</summary>
+    /// <summary>Tracks brief knockouts of nearby foes and logs the squad's own transitions.</summary>
     public static void Knockout(World world, object change)
     {
         try
         {
-            var id = Read<CharacterId>(change, "Character");
-            if (Cold(world, id) is not { } c || !Squad(world, c)) return;
-            bool down = Read<bool>(change, "Unconscious");
-            Log(down ? $"{NameOf(world, id, c)} knocked out{(Read<bool>(change, "Coma") ? " (in a coma)" : $" for {Read<float>(change, "KoTimer"):0} s")}"
+            if (knockedCharacter?.GetValue(change) is not CharacterId id || Cold(world, id) is not { } c) return;
+            bool down = unconscious?.GetValue(change) is true;
+            if (!c.IsPlayer)
+            {
+                LwDeeds.For(world)?.Tracker?.FoeKnockout(id, down && coma?.GetValue(change) is false && koTimer?.GetValue(change) is float and > 0f);
+                return;
+            }
+            if (!LwMod.Settings.PlaytestDiagnostics || !Squad(world, c)) return;
+            Log(down ? $"{NameOf(world, id, c)} knocked out{(coma?.GetValue(change) is true ? " (in a coma)" : $" for {koTimer?.GetValue(change):0} s")}"
                 : $"{NameOf(world, id, c)} came round", rare: false);
         }
         catch (Exception e) { LwMod.Log($"lifecycle: knockout notice: {e.GetBaseException().Message}"); }
@@ -81,12 +109,27 @@ public static class LifecycleWatch
     {
         try
         {
-            var id = Read<CharacterId>(change, "Character");
-            if (Cold(world, id) is not { } c) return;
-            if (!Squad(world, c) && world.Uniques.RecordOf(id) is null) return;
-            string part = Read<string>(change, "PartName") ?? "a limb";
-            string after = change.GetType().GetProperty("After")?.GetValue(change)?.ToString() ?? "";
-            Log($"{NameOf(world, id, c)}: {part} {after.ToLowerInvariant()}", rare: false);
+            if (limbCharacter?.GetValue(change) is not CharacterId id || Cold(world, id) is not { } c) return;
+            if (limbPart?.GetValue(change) is int part && c.Medical is { Dead: false } med && part >= 0 && part < med.Parts.Count &&
+                limbBefore?.GetValue(change) is LimbState.Original or LimbState.Crushed &&
+                limbAfter?.GetValue(change) is LimbState.Stump)
+            {
+                string? kind = med.Parts[part].Template.Type switch
+                {
+                    BodyPartType.Arm => "arm",
+                    BodyPartType.Leg => "leg",
+                    _ => null,
+                };
+                if (kind is not null)
+                {
+                    if (Squad(world, c)) LwDeeds.For(world)?.Tracker?.LimbLost(world, id, c, kind);
+                    else if (!c.IsPlayer) RivalsSystem.For(world)?.LimbObserved(world, id, kind);
+                }
+            }
+            if (!LwMod.Settings.PlaytestDiagnostics || !Squad(world, c) && world.Uniques.RecordOf(id) is null) return;
+            string name = Read<string>(change, "PartName") ?? "a limb";
+            string after = limbAfter?.GetValue(change)?.ToString() ?? "";
+            Log($"{NameOf(world, id, c)}: {name} {after.ToLowerInvariant()}", rare: false);
         }
         catch (Exception e) { LwMod.Log($"lifecycle: limb notice: {e.GetBaseException().Message}"); }
     }
@@ -119,13 +162,17 @@ public static class LifecycleWatch
         catch (Exception e) { LwMod.Log($"lifecycle: recruit notice: {e.GetBaseException().Message}"); }
     }
 
-    /// <summary>A named character left the world (unloaded, or dead and taken away).</summary>
+    /// <summary>Drop live handles as a character leaves the table, while retaining records keyed by lasting identity.</summary>
     public static void Removed(World world, object removed)
     {
         try
         {
-            var id = Read<CharacterId>(removed, "Character");
-            if (Read<string>(removed, "Record") is not { Length: > 0 }) return;
+            if (removedCharacter?.GetValue(removed) is not CharacterId id || id.IsNone) return;
+            LwDeeds.For(world)?.Tracker?.ForgetCharacter(id);
+            PanelLines.Forget(world, id);
+            RivalsSystem.For(world)?.ForgetCharacter(id);
+
+            if (!LwMod.Settings.PlaytestDiagnostics || Read<string>(removed, "Record") is not { Length: > 0 }) return;
             if (world.Uniques.RecordOf(id) is null || Cold(world, id) is not { } c) return;
             Log($"{c.Name} left the world{(Read<bool>(removed, "Dead") ? " (dead)" : "")}", rare: false);
         }

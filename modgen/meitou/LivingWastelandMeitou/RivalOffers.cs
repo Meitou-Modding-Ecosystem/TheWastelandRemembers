@@ -18,6 +18,7 @@ internal static class RivalOffers
     static PropertyInfo? target, id, name, selected, tick;
     static MethodInfo? enqueue;
     static string summary = "no world yet";
+    static int barredCount;
 
     internal static bool CanJoin => join?.ReturnType == typeof(bool);
     internal static bool Available => CanJoin && Volatile.Read(ref verb) is not null;
@@ -30,9 +31,19 @@ internal static class RivalOffers
 
     internal static void Publish(Dictionary<CharacterId, Offer> rows, int barred)
     {
+        barredCount = barred;
         Volatile.Write(ref offers, rows);
         Volatile.Write(ref summary, !LwMod.Settings.RecruitRivals ? "off" :
             $"{rows.Count} offers within reach, {barred} rivals barred for a squadmate's death");
+    }
+
+    internal static void Forget(CharacterId id, object worldKey)
+    {
+        var current = Volatile.Read(ref offers);
+        if (!current.TryGetValue(id, out var offer) || !ReferenceEquals(offer.WorldKey, worldKey)) return;
+        var remaining = new Dictionary<CharacterId, Offer>(current);
+        remaining.Remove(id);
+        Publish(remaining, barredCount);
     }
 
     internal static void RegisterUi(object registration)

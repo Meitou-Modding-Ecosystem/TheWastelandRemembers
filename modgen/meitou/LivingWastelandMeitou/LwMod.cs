@@ -208,7 +208,7 @@ public sealed class LwMod : IMod
     internal static string JobVariable = "LW open jobs";
     /// <summary>The build this helper was made for (modgen/BUILD_ID); the data mods carry theirs in lw_codes.json.</summary>
     public static string DataBuild = "unknown";
-    public const string HelperBuild = "20261125bn";
+    public const string HelperBuild = "20261125bp";
     internal static List<RumourCode> Rumours = [];
     internal static List<(int Index, string Name)> Outlaws = [];
 

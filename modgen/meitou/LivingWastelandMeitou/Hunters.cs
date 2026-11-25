@@ -90,9 +90,11 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         {
             var crew = list[ci];
             var p = matched[ci];
-            bool tagged = crew.Tagged || p is not null && Pursuit.ReadTag(p) == Tag(crew);
-            // a crew never loaded near the squad has no characters yet, and Meitou's save keeps no such squad (SaveCapture writes stored or
-            // campaign platoons only): after a load it is missing, not beaten. Place it again where it was, once per session.
+            string tag = Tag(crew);
+            bool matchedTag = p is not null && Pursuit.ReadTag(p) == tag;
+            bool tagged = crew.Tagged || matchedTag;
+            if (matchedTag && !p!.Dead) Pursuit.Mark(p, tag);  // also promote a legacy-only match on current clients
+            // Old saves and the fallback spawner may omit a crew that has never loaded. Restore it where it was, once per session.
             var key = (crew.Town, crew.SentHours);
             bool late = now - crew.SentHours > HunterRules.GiveUpAfter || now < crew.SentHours;
             var seen = presence.Check(world, key, p is not null);
@@ -103,7 +105,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
                 LwMod.Log($"bounty hunters: the crew from {crew.Town} is in the save as dead");
             else if (seen == Presence<(string, double)>.Verdict.PlaceAgain && !late)
             {
-                p = Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{crew.Town}:{crew.SentHours:0.00}", (crew.X, crew.Z), players[0]);
+                p = Pursuit.MakeCrew(world, pop, d, crewSquad, $"lw:crew:{crew.Town}:{crew.SentHours:0.00}", (crew.X, crew.Z), players[0]);
                 if (p is not null)
                 {
                     tagged = Mark(p, crew);
@@ -117,18 +119,18 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
             if (p is null && !late && PlatoonFates.Available)
             {
                 // the engine tells why after the systems' pass of the tick it happened in: wait one pass for its word before judging
-                gone = PlatoonFates.Take(world, Tag(crew));
-                if (gone is null && waitedFor.Add(Tag(crew))) continue;
+                gone = PlatoonFates.Take(world, tag);
+                if (gone is null && waitedFor.Add(tag)) continue;
             }
-            waitedFor.Remove(Tag(crew));
+            waitedFor.Remove(tag);
             if (gone is not null)
             {
                 if (PlatoonFates.NotBeaten(gone))
                 {
-                    p = Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{crew.Town}:{crew.SentHours:0.00}", (crew.X, crew.Z), players[0]);
+                    p = Pursuit.MakeCrew(world, pop, d, crewSquad, $"lw:crew:{crew.Town}:{crew.SentHours:0.00}", (crew.X, crew.Z), players[0]);
                     if (p is not null) tagged = Mark(p, crew);
                     LwMod.Log($"bounty hunters: the crew from {crew.Town} was taken out by the game ({gone}); {(p is null ? "placing it again next pass" : $"placed again at {crew.X:0} {crew.Z:0}")}");
-                    if (p is null) { PlatoonFates.Tell(world, Tag(crew), gone); continue; }
+                    if (p is null) { PlatoonFates.Tell(world, tag, gone); continue; }
                 }
                 else if (PlatoonFates.KilledByOthers(gone))
                 {
@@ -144,7 +146,8 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
                 // seen this session and now gone, dead, or nobody left standing: beaten. Out of time: let go (no Recap moment for a crew that
                 // just went home)
                 bool beaten = !late && (p is null || p.Dead || lost);
-                if (p is not null && !p.Dead) Pursuit.Release(p);
+                if (p is not null && !p.Dead)
+                    Pursuit.ReleaseCrew(p, tag);
                 bool warrant = beaten && lost && Trophies.DropWarrant(world, p!.SquadId, crew.Town);
                 if (beaten) world.Post($"The bounty hunters {crew.Town} hired are finished.{(warrant ? " One of them carried a warrant with your squad's name on it." : "")}");
                 if (beaten) RecapLink.Moment($"The bounty hunters {crew.Town} hired were {(lost ? "beaten" : "wiped out")}.", crew.Town, 70);
@@ -175,7 +178,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         var start = HunterRules.Start(world.Seed, town, now, near.X, near.Z,
             (x, z) => walk.IsWalkable(x, z) && walk.GroundHeight(x, z) - walk.TerrainHeight(x, z) < 5f && CampRules.MayMove((x, z), (x, z), players));
         if (start is not { } at || !RivalryLink.MaySend(world, PartyClaims.Crew(town, now))
-            || Pursuit.Make(world, pop, d, crewSquad, $"lw:crew:{world.Tick}", at, near) is not { } platoon) return false;
+            || Pursuit.MakeCrew(world, pop, d, crewSquad, $"lw:crew:{world.Tick}", at, near) is not { } platoon) return false;
         var crew = new Crew(town, now, at.X, at.Z);
         crews.Add(crew with { Tagged = Mark(platoon, crew) });
         lastSent[town] = now;
@@ -194,8 +197,10 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         if (active.Count == 0) return Array.Empty<Platoon?>();
 
         // An exact tag also matches a dead platoon. An older save only gets the proximity fallback on untagged parties.
-        var tagged = world.Platoons.All.Where(p => p is not null && p.TemplateId == crewSquad && !Pursuit.IsUntagged(p))
-            .ToLookup(p => Pursuit.ReadTag(p!), StringComparer.Ordinal);
+        var tagged = world.Platoons.All.Where(p => p is not null && p.TemplateId == crewSquad)
+            .Select(p => (Party: p!, Tag: Pursuit.ReadTag(p!)))
+            .Where(entry => !string.IsNullOrEmpty(entry.Tag))
+            .ToLookup(entry => entry.Tag, entry => entry.Party, StringComparer.Ordinal);
         var resolved = new Platoon?[active.Count];
         var legacy = new List<int>();
         for (int i = 0; i < active.Count; i++)
@@ -316,20 +321,48 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
 /// </summary>
 public static class Pursuit
 {
+    const string TagNamespace = "LivingWastelandMeitou";
+    static readonly PropertyInfo? modTags = typeof(Platoon).GetProperty("ModTags") is { CanRead: true } map
+        && typeof(IDictionary<string, string>).IsAssignableFrom(map.PropertyType) ? map : null;
     static readonly PropertyInfo? modTag = typeof(Platoon).GetProperty("ModTag") is
         { CanRead: true, CanWrite: true, PropertyType: var type } property && type == typeof(string) ? property : null;
 
-    internal static bool HasTags => modTag is not null;
+    internal static bool HasTags => modTags is not null || modTag is not null;
 
-    internal static string? ReadTag(Platoon platoon) => modTag?.GetValue(platoon) as string;
+    static IDictionary<string, string>? Tags(Platoon platoon) => modTags?.GetValue(platoon) as IDictionary<string, string>;
 
-    internal static bool IsUntagged(Platoon platoon) => string.IsNullOrEmpty(ReadTag(platoon));
+    internal static bool IsTwrTag(string? tag) => tag?.StartsWith("lw:", StringComparison.Ordinal) == true;
+
+    /// <summary>The namespaced mark takes precedence. Older saves and clients still use the shared mark.</summary>
+    internal static string? ReadTag(Platoon platoon) =>
+        Tags(platoon)?.TryGetValue(TagNamespace, out var own) == true && !string.IsNullOrEmpty(own)
+            ? own : modTag?.GetValue(platoon) as string;
+
+    // Proximity fallback must also exclude squads marked exclusively in another mod's namespace.
+    internal static bool IsUntagged(Platoon platoon) =>
+        Tags(platoon) is not { Count: > 0 } && string.IsNullOrEmpty(modTag?.GetValue(platoon) as string);
 
     internal static bool Mark(Platoon platoon, string tag)
     {
-        if (modTag is null) return false;
-        modTag.SetValue(platoon, tag);
-        return true;
+        var tags = Tags(platoon);
+        string? old = null;
+        tags?.TryGetValue(TagNamespace, out old);
+        string? shared = modTag?.GetValue(platoon) as string;
+
+        // Update the old mirror only while it is ours. Another mod may have replaced the shared value.
+        bool canMirror = modTag is not null && (string.IsNullOrEmpty(shared) ||
+            (old is not null ? shared == old : IsTwrTag(shared)));
+        if (tag.Length == 0)
+        {
+            tags?.Remove(TagNamespace);
+            if (canMirror && !string.IsNullOrEmpty(shared)) modTag!.SetValue(platoon, "");
+            return tags is not null || canMirror;
+        }
+
+        bool scoped = tags is not null && IsTwrTag(tag);
+        if (scoped && old != tag) tags![TagNamespace] = tag;
+        if (canMirror && shared != tag) modTag!.SetValue(platoon, tag);
+        return scoped || canMirror;
     }
 
     /// <summary>
@@ -352,25 +385,51 @@ public static class Pursuit
         return best >= 0 ? best : any;
     }
 
-    public static Platoon? Make(World world, PopulationSystem pop, PopulationData d, string templateId, string keyText, (float X, float Z) at, (float X, float Z) toward)
+    static readonly MethodInfo? spawnCrew = typeof(PopulationSystem).GetMethod("SpawnPlatoon",
+        [typeof(World), typeof(int), typeof(string), typeof(int), typeof(Vector2), typeof(float), typeof(float), typeof(long), typeof(int)]);
+    static readonly PropertyInfo? modSpawned = typeof(Platoon).GetProperty("ModSpawned") is
+        { CanRead: true, CanWrite: true, PropertyType: var propertyType } property && propertyType == typeof(bool) ? property : null;
+
+    public static Platoon? Make(World world, PopulationSystem pop, PopulationData d, string templateId, string keyText,
+        (float X, float Z) at, (float X, float Z) toward) => Make(world, pop, d, templateId, keyText, at, toward, native: false);
+
+    internal static Platoon? MakeCrew(World world, PopulationSystem pop, PopulationData d, string templateId, string keyText,
+        (float X, float Z) at, (float X, float Z) toward) => Make(world, pop, d, templateId, keyText, at, toward, native: true);
+
+    static Platoon? Make(World world, PopulationSystem pop, PopulationData d, string templateId, string keyText,
+        (float X, float Z) at, (float X, float Z) toward, bool native)
     {
         if (d.Db.Find(templateId) is not { } record) { LwMod.Log($"pursuit: squad {templateId} is not in the game data"); return null; }
         var template = SquadTemplate.From(record);
+        int faction = template.Faction is { } f ? d.FactionIndex(f) : -1;
+        int origin = OriginFor(d, at.X, at.Z, faction);
+        var goal = new Vector2(toward.X, toward.Z);
+        // Meitou's native spawner saves the stand-in before it first loads. Use the start point the hunt already chose.
+        if (native && spawnCrew is not null && modSpawned is not null && HasTags &&
+            spawnCrew.Invoke(pop, [world, faction, templateId, origin, new Vector2(at.X, at.Z), 0f, 0f, 0L, 0]) is int id &&
+            id >= 0 && world.Platoons.Find(id) is { } savedCrew)
+        {
+            savedCrew.Persistent = true;
+            savedCrew.Job = PlatoonJob.PatrolShortRange;
+            savedCrew.Point = goal;
+            return savedCrew;
+        }
+
         ulong key = Rng.StableHash(keyText);
         var plan = SquadFactory.Plan(d.Db, template, pop.Settings.SquadSizeMultiplier, world.Seed, key, pop.States);
         var (package, _) = AiCompat.JobsFor(d.Ai, template);
         var platoon = new Platoon
         {
             Id = world.Platoons.NextId(),
-            Origin = OriginFor(d, at.X, at.Z, template.Faction is { } f0 ? d.FactionIndex(f0) : -1),
+            Origin = origin,
             TemplateId = template.Id,
-            Faction = template.Faction is { } f ? d.FactionIndex(f) : -1,
+            Faction = faction,
             Key = key,
             Size = Math.Max(2, plan.TotalMembers),
             Position = new Vector2(at.X, at.Z),
             Package = package?.Id,
             Job = PlatoonJob.PatrolShortRange,         // see Steer: the one job that walks a persistent stand-in to the point
-            Point = new Vector2(toward.X, toward.Z),
+            Point = goal,
             Persistent = true,
         };
         world.Platoons.Add(platoon);
@@ -409,6 +468,38 @@ public static class Pursuit
             if (dd < bestD) { best = p; bestD = dd; }
         }
         return best;
+    }
+
+    /// <summary>Matches a managed party by exact tag, using proximity only for a record that predates tagging.</summary>
+    internal static (Platoon? Party, bool Ambiguous, bool LegacyDead) MatchParty(World world, string templateId, string tag,
+        float x, float z, bool tagged, HashSet<int> claimed)
+    {
+        Platoon? exact = null, nearest = null;
+        float best = float.MaxValue;
+        bool deadNear = false;
+        var at = new Vector2(x, z);
+        foreach (var p in world.Platoons.All)
+        {
+            if (p.TemplateId != templateId) continue;
+            if (HasTags && ReadTag(p) == tag)
+            {
+                if (exact is not null || claimed.Contains(p.Id)) return (null, true, false);
+                exact = p;
+                continue;
+            }
+            if (HasTags && tagged || !IsUntagged(p)) continue;
+            float distance = Vector2.DistanceSquared(at, p.Position);
+            if (p.Dead)
+            {
+                if (distance <= 3000 * 3000) deadNear = true;
+            }
+            else if (distance < best && !claimed.Contains(p.Id))
+            {
+                best = distance;
+                nearest = p;
+            }
+        }
+        return (exact ?? nearest, false, deadNear);
     }
 
     /// <summary>Whether a dead platoon of the template lies within <paramref name="within"/> of a last known position: a squad killed before
@@ -602,6 +693,13 @@ public static class Pursuit
 
     /// <summary>Lets a pursuer go: no longer kept by the engine or steered.</summary>
     public static void Release(Platoon p) { p.Persistent = false; p.Point = null; }
+
+    internal static void ReleaseCrew(Platoon p, string tag)
+    {
+        if (modSpawned?.GetValue(p) is true && ReadTag(p) == tag)
+            modSpawned.SetValue(p, false);
+        Release(p);
+    }
 
     public static (float X, float Z) Nearest(List<(float X, float Z)> players, float x, float z)
     {

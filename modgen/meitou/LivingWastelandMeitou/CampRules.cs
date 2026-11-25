@@ -239,7 +239,7 @@ public sealed record CampEntry(float X, float Z, long Period, int Doing);
 /// <summary>The camps of one world, by outlaw index. Saved and hashed; platoon ids are not kept (they change on every load).</summary>
 public sealed class CampBook
 {
-    const int Format = 3;
+    const int Format = 3, TaggedReprisals = 0x4C525054;   // "LRPT", optional trailer after the format-3 book
     readonly SortedDictionary<int, CampEntry> camps = [];
     readonly SortedDictionary<int, StruckMark> struck = [];
 
@@ -299,6 +299,11 @@ public sealed class CampBook
         foreach (var r in reprisals) { w.Write(r.Outlaw); w.Write(r.SentHours); w.Write(r.X); w.Write(r.Z); }
         w.Write(answered.Count);
         foreach (var (k, h) in answered) { w.Write(k); w.Write(h); }
+        if (reprisals.Any(r => r.Tagged))
+        {
+            w.Write(TaggedReprisals);
+            foreach (var r in reprisals) w.Write(r.Tagged);
+        }
     }
 
     public void Read(BinaryReader r)
@@ -309,7 +314,7 @@ public sealed class CampBook
         answered.Clear();
         if (r.BaseStream.Position >= r.BaseStream.Length) return;    // a save from before camps existed
         int format = r.ReadInt32();
-        if (format is not (1 or 2 or Format)) return;
+        if (format is < 1 or > Format) return;
         int n = r.ReadInt32();
         for (int i = 0; i < n; i++)
         {
@@ -321,5 +326,8 @@ public sealed class CampBook
         if (format < 3) return;
         for (int count = r.ReadInt32(), i = 0; i < count; i++) reprisals.Add(new Reprisal(r.ReadInt32(), r.ReadDouble(), r.ReadSingle(), r.ReadSingle()));
         for (int count = r.ReadInt32(), i = 0; i < count; i++) { int k = r.ReadInt32(); answered[k] = r.ReadDouble(); }
+        if (r.BaseStream.Length - r.BaseStream.Position < sizeof(int) + reprisals.Count || r.ReadInt32() != TaggedReprisals) return;
+        for (int i = 0; i < reprisals.Count; i++)
+            if (r.ReadBoolean()) reprisals[i] = reprisals[i] with { Tagged = true };
     }
 }

@@ -18,3 +18,9 @@ the top), `gamedb.py` (loads game data and decodes dialogues: `python gamedb.py 
 (re-creates the real game files byte for byte: `python fcs_writer.py roundtrip FILE`).
 
 Never commit Kenshi's data files; this repo only holds our own content and tools.
+
+### Bug reports on Linux and macOS
+
+Quit Meitou first, then run `bash save-logs.sh` from the unpacked release, or `bash modgen/save-logs.sh` from this checkout. The script prints where it put the ZIP. It collects Meitou logs, launcher and mod settings, and TWR playtest reports from the last 14 days.
+
+For a custom launcher installation, append its Meitou folder as an argument. The script also reads Kenshi's Proton prefix in registered Steam libraries and honours `STEAM_COMPAT_DATA_PATH`.

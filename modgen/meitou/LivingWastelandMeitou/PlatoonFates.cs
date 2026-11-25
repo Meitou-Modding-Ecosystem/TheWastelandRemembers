@@ -16,7 +16,7 @@ public static class PlatoonFates
 {
     static readonly Type? observer = typeof(World).Assembly.GetType("Meitou.Simulation.Factions.IPlatoonObserver");
     static readonly Type? payload = typeof(World).Assembly.GetType("Meitou.Simulation.Factions.PlatoonNotice");
-    static readonly PropertyInfo? kindOf = payload?.GetProperty("Kind"), platoonOf = payload?.GetProperty("Platoon"), goneOf = payload?.GetProperty("Gone");
+    static readonly PropertyInfo? kindOf = payload?.GetProperty("Kind"), platoonOf = payload?.GetProperty("Platoon"), goneOf = payload?.GetProperty("Gone"), byOf = payload?.GetProperty("By");
     static readonly ConditionalWeakTable<World, Dictionary<string, string>> fates = new();
 
     /// <summary>Whether this client tells why a platoon left the world.</summary>
@@ -43,8 +43,15 @@ public static class PlatoonFates
         try
         {
             if (kindOf!.GetValue(notice)?.ToString() != "Removed" || platoonOf!.GetValue(notice) is not Platoon platoon) return;
-            if (Pursuit.ReadTag(platoon) is not { } tag || !tag.StartsWith("lw:", StringComparison.Ordinal)) return;
+            if (Pursuit.ReadTag(platoon) is not { } tag || !Pursuit.IsTwrTag(tag)) return;
             string gone = goneOf!.GetValue(notice)?.ToString() ?? "Other";
+            if (tag!.StartsWith("lw:rival:", StringComparison.Ordinal) && RivalsSystem.For(world) is { } rivals &&
+                rivals.PartyRemoved(world, platoon, tag, gone, byOf?.GetValue(notice) is int winner ? winner : -1)) return;
+            if (KilledByOthers(gone))
+            {
+                if (tag.StartsWith("lw:raid:", StringComparison.Ordinal) && RaidsSystem.For(world)?.PartyWipedOut(world, platoon, tag) == true) return;
+                if (tag.StartsWith("lw:reprisal:", StringComparison.Ordinal) && OutlawCampsSystem.For(world)?.ReprisalWipedOut(world, platoon, tag) == true) return;
+            }
             lock (fates) fates.GetOrCreateValue(world)[tag] = gone;
             LwMod.Log($"platoon notices: {tag} left the world ({gone})");
         }

@@ -42,8 +42,11 @@ IN GAME
 
 REPORTING A BUG
 1. Quit Meitou (before starting it again: the log is kept only until the next start).
-2. Double-click "Save logs for a bug report.bat". It puts one zip on your Desktop.
-   It holds Meitou's log and settings (the paths in them include your Windows user name).
+2. On Windows, double-click "Save logs for a bug report.bat". On Linux or macOS, run "bash save-logs.sh" in a terminal.
+   The collector prints where it saved the zip. The Linux/macOS script uses the Desktop when available and your home folder otherwise.
+   It finds native Meitou installations and Kenshi's Steam Proton prefix, including registered Steam libraries.
+   For a custom launcher install, pass its folder with "bash save-logs.sh /path/to/Meitou". The script uses the zip command.
+   The archive contains Meitou's logs and settings, plus recent TWR playtest reports. Paths in the original files may include your user name.
 3. Send that zip with a few words on what happened, and a screenshot if you have one.
 
 KNOWN IN THIS VERSION
@@ -84,7 +87,8 @@ def main(argv):
     ap.add_argument("data")
     ap.add_argument("--out", default=os.path.join(HERE, "release"))
     a = ap.parse_args(argv)
-    build = open(os.path.join(HERE, "BUILD_ID"), encoding="utf-8").read().strip()
+    with open(os.path.join(HERE, "BUILD_ID"), encoding="utf-8") as fh:
+        build = fh.read().strip()
     stage = os.path.join(a.out, "stage")
     shutil.rmtree(stage, ignore_errors=True)
     built = os.path.join(stage, "built")
@@ -116,6 +120,7 @@ def main(argv):
         fh.write(README.format(build=build))
     with open(os.path.join(pack, "Save logs for a bug report.bat"), "w", encoding="utf-8", newline="\r\n") as fh:
         fh.write(LOG_BAT)
+    shutil.copy2(os.path.join(HERE, "save-logs.sh"), os.path.join(pack, "save-logs.sh"))
     shutil.copy2(os.path.join(HERE, "The_Wasteland_Remembers_features.txt"), os.path.join(pack, "Features.txt"))
     shutil.copy2(os.path.join(HERE, "MODDER_API.md"), os.path.join(pack, "For modders - API.md"))
     zpath = os.path.join(a.out, f"TheWastelandRemembers_{build}.zip")

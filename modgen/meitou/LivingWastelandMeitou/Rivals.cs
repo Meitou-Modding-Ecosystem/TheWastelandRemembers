@@ -59,7 +59,7 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
         rivals.Where(r => r.Told && r.Phase != Phase.Recruited).Select(r => (r.Name, r.Faction, r.Phase.ToString().ToLowerInvariant(), r.X, r.Z, r.Returns, r.Wins, r.Grudge));
     int made;                       // rivals ever made in this game (the first is guaranteed)
     double lastMade = -1e9;
-    bool failed;
+    bool failed, wordsDirty;
 
     // this fight: enemies the squad hurt, and rivals that took part
     sealed class Hurt { public double Damage; public bool Limb, Arm, Leg, Downed, Defeated, Leader; public string By = ""; }
@@ -311,7 +311,8 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
         // (from a review of the code); the whole pass waits for the next
         if (players.Count == 0) { RivalOffers.Publish([], 0); return; }
         Announce(world, players);
-        bool changed = false;
+        bool changed = wordsDirty;
+        wordsDirty = false;
         foreach (var r in rivals.Where(r => r.Active))
         {
             Resolve(world, r);
@@ -371,9 +372,13 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
                 var p = cold is not null ? Platoon(world, cold) : null;
                 p ??= r.PlatoonId >= 0 ? world.Platoons.Find(r.PlatoonId) : null;
                 // after a load the saved platoon number means nothing (build ba drops it); the rival's own tag, which the engine saves
-                // (Meitou 0.20.2+ Platoon.ModTag), finds the platoon again. Seen in play: without it, a rival off screen after a load
-                // was never steered and sat 5 km away, "hunting", for days. Older Meitou: they wait until loaded near the squad.
-                if (p is null && TaggedPlatoon(world, r) is { } tagged) { p = tagged; r.PlatoonId = tagged.Id; }
+                // finds it again. Older Meitou without tags waits until the rival loads near the squad.
+                if (p is null && TaggedPlatoon(world, r) is { } tagged)
+                {
+                    p = tagged;
+                    r.PlatoonId = tagged.Id;
+                    Pursuit.Mark(tagged, TagOf(r)); // Promote a legacy-only match.
+                }
                 if (players.Count > 0 && p is { Dead: false })
                 {
                     var (faction, tier, arm, leg) = Fitted(cold);
@@ -474,34 +479,97 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
             st[k] = Math.Min(95, st[k] + add);
     }
 
-    static readonly PropertyInfo? modTag = typeof(Platoon).GetProperty("ModTag") is { CanWrite: true, PropertyType: var t } pi && t == typeof(string) ? pi : null;
-
     const string RivalTagPrefix = "lw:rival:";
     static string TagOf(Rival r) => RivalTagPrefix + r.Name;
 
-    /// <summary>Marks the rival's platoon with a tag the engine saves (Meitou 0.20.2+; nothing on older engines).</summary>
-    static void Tag(Platoon p, Rival r)
+    internal void LimbObserved(World world, CharacterId id, string kind)
     {
-        if (modTag is null) return;
-        try
+        if (!PlaytestLog.Enabled) return;
+        foreach (var rival in rivals)
         {
-            string? old = modTag.GetValue(p) as string;
-            string tag = TagOf(r);
-            if (old != tag && (string.IsNullOrEmpty(old) || old.StartsWith(RivalTagPrefix, StringComparison.Ordinal)))
-                modTag.SetValue(p, tag);
+            if (!rival.Active || !IsRival(world, rival, id) || rival.ActorId == 0 && rival.Id != id) continue;
+            PlaytestLog.Event(world, "rival", TagOf(rival), "limb lost", kind);
+            return;
         }
-        catch { }
     }
 
-    /// <summary>The rival's platoon found by its saved tag, or null (no tag support, or not in this world).</summary>
+    internal void ForgetCharacter(CharacterId id)
+    {
+        hurt.Remove(id);
+        unkeyedKillers.Remove(id);
+        foreach (var rival in rivals)
+            if (rival.Id == id) rival.Id = CharacterId.None;
+
+        RivalOffers.Forget(id, offerWorld);
+    }
+
+    internal void OutsideDeath(World world, CharacterId victim, CharacterCold cold, Vector3 at, int killerFaction)
+    {
+        ulong identity = LastingActors.Of(cold);
+        var rival = rivals.FirstOrDefault(r => r.Active &&
+            (r.ActorId != 0 ? r.ActorId == identity : r.Id == victim && LegacyMatch(r, cold)));
+        if (rival is null || LwDeeds.For(world) is not { } deeds) return;
+
+        rival.Phase = Phase.Dead;
+        (rival.X, rival.Z) = (at.X, at.Z);
+        string faction = deeds.FactionName(killerFaction);
+        string? town = deeds.TownAt(at).Town;
+        string description = $"{rival.Name} was killed{(faction.Length > 0 ? $" by {faction}" : " in a fight")}{(town is not null ? $" near {town}" : "")}.";
+        deeds.Record.Note(description, world.GameHours, town ?? "the wastes");
+        deeds.Pending.Add("Word on the road: " + description);
+        PlaytestLog.Event(world, "rival", TagOf(rival), "killed by another party", faction);
+        wordsDirty = true;
+    }
+
+    internal bool PartyRemoved(World world, Platoon party, string tag, string reason, int winner)
+    {
+        var r = rivals.FirstOrDefault(r => r.Active && TagOf(r) == tag);
+        if (r is null) return false;
+        if (r.PlatoonId == party.Id)
+        {
+            r.PlatoonId = -1;
+            onScreen.Remove(r.Slot);
+        }
+        if (!PlatoonFates.KilledByOthers(reason) || r.ActorId == 0 || party.State != PlatoonState.Unloaded ||
+            !LastingActors.Find(world, r.ActorId).IsNone) return true;
+
+        // A tag identifies a party, which the rival could have left. Require the lasting ID in the party's roster.
+        bool present = party.Stored is { } stored
+            ? stored.Members.Any(m => LastingActors.Of(m.Cold) == r.ActorId)
+            : party.Saved?.Members.Any(m => !m.Gone && LastingActors.OfSaved(m) == r.ActorId) == true;
+        if (!present) return true;
+
+        r.Phase = Phase.Dead;
+        (r.X, r.Z) = (party.Position.X, party.Position.Y);
+        var at = new Vector3(r.X, 0, r.Z);
+        string? town = data?.TownAt(at) is >= 0 and var site && site < data.Sites.Count ? data.Sites[site].Town.Name : null;
+        string? faction = winner >= 0 && world.Platoons.Find(winner) is { Faction: >= 0 and var by } && data is not null && by < data.Factions.Count
+            ? data.Factions[by].Name : null;
+        string description = $"{r.Name} was killed{(string.IsNullOrEmpty(faction) ? " in a fight" : $" by {faction}")}{(town is null ? " on the road" : $" near {town}")}.";
+        world.Post($"Word on the road: {description} The road finished them first.");
+        LwDeeds.For(world)?.Record.Note(description, world.GameHours, town ?? "the road");
+        PlaytestLog.Event(world, "rival", tag, "killed off screen", faction ?? "");
+        Words(world);
+        return true;
+    }
+
+    /// <summary>Marks the known actor's platoon, preserving other TWR roles and foreign marks.</summary>
+    static void Tag(Platoon p, Rival r)
+    {
+        string? old = Pursuit.ReadTag(p);
+        if (Pursuit.IsTwrTag(old) && !old!.StartsWith(RivalTagPrefix, StringComparison.Ordinal)) return;
+        Pursuit.Mark(p, TagOf(r));
+    }
+
+    /// <summary>The rival's platoon found by its saved tag, or null if absent or ambiguous.</summary>
     static Platoon? TaggedPlatoon(World world, Rival r)
     {
-        if (modTag is null) return null;
+        if (!Pursuit.HasTags) return null;
         string tag = TagOf(r);
         Platoon? found = null;
         foreach (var p in world.Platoons.All)
         {
-            if (p is not { Dead: false } || modTag.GetValue(p) as string != tag) continue;
+            if (p is not { Dead: false } || Pursuit.ReadTag(p) != tag) continue;
             if (found is not null) return null;
             found = p;
         }

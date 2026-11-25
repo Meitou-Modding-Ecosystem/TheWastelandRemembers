@@ -14,7 +14,9 @@ public static class PanelLines
     /// <summary>One row: label, value (or none), tooltip (or none).</summary>
     public readonly record struct Row(string Label, string? Value, string? Tooltip = null);
 
-    static volatile IReadOnlyDictionary<CharacterId, IReadOnlyList<Row>> squad = new Dictionary<CharacterId, IReadOnlyList<Row>>();
+    static WeakReference<World>? squadWorld;  // The serial publisher owns the snapshot; UI reads only the immutable rows.
+    static readonly IReadOnlyDictionary<CharacterId, IReadOnlyList<Row>> noMembers = new Dictionary<CharacterId, IReadOnlyList<Row>>();
+    static volatile IReadOnlyDictionary<CharacterId, IReadOnlyList<Row>> squad = noMembers;
     static volatile IReadOnlyDictionary<string, IReadOnlyList<Row>> fallen = new Dictionary<string, IReadOnlyList<Row>>(StringComparer.Ordinal);
 
     // ---- what the panels show (pure: the squad record only) ----
@@ -60,12 +62,14 @@ public static class PanelLines
                 if (table.Cold(s) is { IsPlayer: true, Animal: null } c && c.Medical is not { Dead: true } && !OtherModsPeople.Runs(world, c))
                     members.Add((table.IdOf(s), deeds.Who(c)));
         }
-        Publish(deeds.Record, members);
+        Publish(deeds.Record, members, world);
     }
 
-    internal static void Publish(SquadRecord record, List<(CharacterId Id, string Key)> members)
+    internal static void Publish(SquadRecord record, List<(CharacterId Id, string Key)> members, World world)
     {
-        if (!LwMod.Settings.RecordInPanels) { squad = new Dictionary<CharacterId, IReadOnlyList<Row>>(); return; }
+        if (!LwMod.Settings.RecordInPanels) { squad = noMembers; return; }
+        if (squadWorld is null) squadWorld = new WeakReference<World>(world);
+        else if (!squadWorld.TryGetTarget(out var publisher) || !ReferenceEquals(publisher, world)) squadWorld.SetTarget(world);
         var next = new Dictionary<CharacterId, IReadOnlyList<Row>>();
         foreach (var (id, key) in members)
         {
@@ -81,6 +85,14 @@ public static class PanelLines
         }
         squad = next;
         fallen = dead;
+    }
+
+    internal static void Forget(World world, CharacterId id)
+    {
+        if (squadWorld?.TryGetTarget(out var publisher) != true || !ReferenceEquals(publisher, world) || !squad.ContainsKey(id)) return;
+        var remaining = new Dictionary<CharacterId, IReadOnlyList<Row>>(squad);
+        remaining.Remove(id);
+        squad = remaining;
     }
 
     internal static IReadOnlyList<Row>? ForCharacter(CharacterId id) => squad.TryGetValue(id, out var rows) ? rows : null;

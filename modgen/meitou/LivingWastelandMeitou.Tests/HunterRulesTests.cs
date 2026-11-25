@@ -46,11 +46,29 @@ public class HunterRulesTests
     {
         var book = new CampBook();
         book.Strike(4, 100, true);
-        var r = new Reprisal(4, 160, 12.5f, -3f);
+        var r = new Reprisal(4, 160, 12.5f, -3f) { Tagged = true };
         book.Sent(r, 100);
         book.Update(r, r with { X = 20f });
         var ms = new MemoryStream();
         using (var w = new BinaryWriter(ms, System.Text.Encoding.UTF8, leaveOpen: true)) book.Write(w);
+        using (var old = new BinaryReader(ms, System.Text.Encoding.UTF8, leaveOpen: true))
+        {
+            ms.Position = 0;
+            Assert.Equal(3, old.ReadInt32());
+            Assert.Equal(0, old.ReadInt32()); // camps
+            Assert.Equal(1, old.ReadInt32()); // struck
+            Assert.Equal(4, old.ReadInt32());
+            Assert.Equal(100, old.ReadDouble());
+            Assert.True(old.ReadBoolean());
+            Assert.Equal(1, old.ReadInt32()); // reprisals
+            Assert.Equal(4, old.ReadInt32());
+            Assert.Equal(160, old.ReadDouble());
+            Assert.Equal(20f, old.ReadSingle());
+            Assert.Equal(-3f, old.ReadSingle());
+            Assert.Equal(1, old.ReadInt32()); // answered
+            Assert.Equal(4, old.ReadInt32());
+            Assert.Equal(100, old.ReadDouble());
+        }
         ms.Position = 0;
         var back = new CampBook();
         using (var rd = new BinaryReader(ms)) back.Read(rd);
