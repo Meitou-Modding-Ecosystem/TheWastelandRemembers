@@ -183,7 +183,7 @@ internal sealed class Couriers(PopulationData data, PopulationSystem population)
     internal static void Release(World world, Platoon party, bool clearTraderVisit = true)
     {
         LeaveVisit(world, party, clearTraderVisit);
-        tag!.SetValue(party, "");
+        Pursuit.Mark(party, "");
         modSpawned!.SetValue(party, false);
     }
 

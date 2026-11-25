@@ -29,3 +29,19 @@ Run old and new builds alternately, several times each: the first case after a c
 bm, before the fixes: crier 119 µs, Atlas 1,170 µs, squad sample with panels 72 µs.
 **A new build regresses if any case is clearly slower than this (more than about 20%, after repeats) or allocates more per pass.**
 The content digests (`details`) must match between builds unless the change was meant to alter what the Atlas shows.
+
+## Tier 1 lifecycle checkpoint (2026-11-25, Meitou 0.23.2)
+
+Public beta plus patches 01–04 compared with that same source plus 06–08. The native-dispatch preview (05) has its own benchmark. Three alternating repeats used the same BN data and Meitou runtime.
+
+| Case | Through 04, median µs | Lifecycle, median µs | Bytes per pass or tick |
+|---|---:|---:|---:|
+| Crier pass, 2,000 NPCs | 56.44 | 56.13 | 1,384 both |
+| Full Atlas publication | 334.76 | 331.88 | 348,880 both |
+| Atlas reusing existing details | 145.77 | 144.16 | 191,416 both |
+| Squad sample and panels | 67.46 | 62.87 | 80,062 both |
+| Ordinary squad sample | 8.06 | 7.75 | 5,472 both |
+| Disabled panel snapshot, including reflection | 0.05 | 0.03 | 112 before, 32 after |
+| Whole synthetic world tick | 250.16 | 241.18 | 76,062 both |
+
+The content digests match. Whole-world p99 was 522.30 µs before and 515.90 µs after. The checkpoint clears the timing and allocation gate. The scenario measures the normal crowded-world tick. It does not model sustained NPC removals or large fights. Small differences in the timings should be interpreted in light of repeat-to-repeat variation.

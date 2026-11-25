@@ -21,6 +21,7 @@ public sealed class LwDeeds(IReadOnlyList<TitleRule> rules, PopulationData? data
 
 #if !SQUAD_RECORD_ONLY
     public HeatMap Heat { get; } = new();
+    internal LwDeedsSystem? Tracker { get; set; }
 #endif
 
     public PopulationData? Data => data;
@@ -148,6 +149,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     readonly HashSet<string> presentInRecord = new(StringComparer.Ordinal);
 #if !SQUAD_RECORD_ONLY
     readonly List<(CharacterId Id, string Key)> nativePanelMembers = [];
+    bool observeLimbs;
 #endif
 #if !SQUAD_RECORD_ONLY
     double lastFadeHours = double.NaN;
@@ -225,6 +227,15 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     }
 
     readonly HashSet<CharacterId> foes = [];
+#if !SQUAD_RECORD_ONLY
+    readonly HashSet<CharacterId> wakingFoes = [];
+
+    internal void FoeKnockout(CharacterId id, bool temporary)
+    {
+        if (temporary && foes.Contains(id)) wakingFoes.Add(id);
+        else wakingFoes.Remove(id);
+    }
+#endif
 
     /// <summary>How many of the squad's foes in this fight are on their feet within 50 m of a standing squad member (the fight is not over
     /// while any are: Deeds.FightLook). The dead, the gone and the taken drop out.</summary>
@@ -238,9 +249,18 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             if (!table.TryResolveNext(id, out int s) || !table.Next[s].Alive || table.Cold(s) is not { } c || c.Medical is not { Dead: false } med)
             {
                 foes.Remove(id);
+#if !SQUAD_RECORD_ONLY
+                wakingFoes.Remove(id);
+#endif
                 continue;
             }
-            if (med.Incapacitated || c.IsImprisoned || !c.CarriedBy.IsNone) continue;
+            if (c.IsImprisoned || !c.CarriedBy.IsNone) continue;
+#if !SQUAD_RECORD_ONLY
+            bool temporarilyDown = wakingFoes.Contains(id) && med.Unconscious && !med.Coma && med.KoTimer > 0f;
+            if (med.Incapacitated && !temporarilyDown) continue;
+#else
+            if (med.Incapacitated) continue;
+#endif
             var at = table.Next[s].Position;
             if (squad.Any(m => !m.Down && System.Numerics.Vector3.DistanceSquared(m.At, at) < 500f * 500f)) up++;
         }
@@ -253,6 +273,9 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         var table = world.Characters;
         if (!table.TryResolveNext(hit.Victim, out int v) || table.Cold(v) is not { } victim) return;
         if (victim.IsPlayer && OtherModsPeople.Runs(world, victim)) return;   // a blow on another mod's people is not one on the squad
+        // A returning named actor may be hit before the squad look rebinds the saved claim. This hit replaces it.
+        if (pendingNamed.Count > 0 && world.Uniques.RecordOf(hit.Victim) is { } record)
+            pendingNamed.Remove(record);
         bool knewStumps = stumpsBefore.TryGetValue(hit.Victim, out ulong before);
         if (victim.Medical is { } vm) stumpsBefore[hit.Victim] = Stumps(vm);
         var attacker = table.TryResolveNext(hit.Attacker, out int a) ? table.Cold(a) : null;
@@ -331,7 +354,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
 
     /// <summary>Whether a character belongs to a squad the player hired (AI contract signal 12: follow and fight for the player; 15: guard the
     /// player's base), the same test Meitou's aggro uses for a squad's employer.</summary>
-    static bool IsHired(World world, CharacterCold c) =>
+    internal static bool IsHired(World world, CharacterCold c) =>
         c.SquadId >= 0 && world.Squads.Find(c.SquadId)?.Ai?.Contract?.Signal is 12 or 15;
 
     Struck Snapshot(World world, CharacterId id, int slot, CharacterCold victim, string striker)
@@ -426,6 +449,44 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         if (tierNow != tierBefore && RecordHost.LogChanges()) RecordHost.Log($"heat: {k.Town} now {deeds.Heat.Here(k.Town!):0.0} ({tierNow})");   // only when the level changes
 #endif
     }
+
+#if !SQUAD_RECORD_ONLY
+    internal void LimbLost(World world, CharacterId id, CharacterCold cold, string kind)
+    {
+        if (!observeLimbs) return;
+        string name = deeds.Who(cold);
+        string? town = deeds.TownAt(world.Characters.Next[id.Slot].Position).Town;
+        deeds.Record.LimbLost(name, kind, town, world.GameHours, town ?? "the wilds");
+        Say(deeds.Record.Award(name));
+    }
+
+    internal void ForgetCharacter(CharacterId id)
+    {
+        if (lastEnemy == id) lastEnemy = CharacterId.None;
+        last.Remove(id);
+        stumpsBefore.Remove(id);
+        foes.Remove(id);
+        wakingFoes.Remove(id);
+        if (struck.Remove(id, out var hit) && hit.UniqueRecord is { } record)
+            pendingNamed[record] = hit;
+
+        for (int i = 0; i < toMourn.Count; i++)
+        {
+            var (body, name, hours) = toMourn[i];
+            if (body == id) toMourn[i] = (CharacterId.None, name, hours);
+        }
+    }
+
+    // A death with a confirmed outside killer supersedes older hits, including claims carried through a save.
+    internal void OutsideDeath(CharacterId victim, string? unique)
+    {
+        if (!victim.IsNone) struck.Remove(victim);
+        if (unique is null) return;
+        pendingNamed.Remove(unique);
+        foreach (var (id, claim) in struck)
+            if (claim.UniqueRecord == unique) struck.Remove(id);
+    }
+#endif
 
     /// <summary>Victims the squad struck last that have died since (bled out, off screen too for named ones): the last player striker gets the
     /// kill. A later blow by anyone else has already removed the victim from <see cref="struck"/>.</summary>
@@ -569,7 +630,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
 #endif
         }
 #if !SQUAD_RECORD_ONLY
-        PanelLines.Publish(deeds.Record, nativePanelMembers);
+        PanelLines.Publish(deeds.Record, nativePanelMembers, world);
 #endif
     }
 
@@ -630,8 +691,13 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             deeds.Record.Place = townHere ?? "the wilds";
 
             bool down = cold.Medical?.Incapacitated == true;
-            int arms = cold.Medical?.Parts.Count(p => p.Limb == LimbState.Stump && p.Template.Type == Meitou.Data.Gameplay.Bodies.BodyPartType.Arm) ?? 0;
-            int legs = cold.Medical?.Parts.Count(p => p.Limb == LimbState.Stump && p.Template.Type == Meitou.Data.Gameplay.Bodies.BodyPartType.Leg) ?? 0;
+#if !SQUAD_RECORD_ONLY
+            bool sampleLimbs = !observeLimbs;
+#else
+            const bool sampleLimbs = true;
+#endif
+            int arms = sampleLimbs ? cold.Medical?.Parts.Count(p => p.Limb == LimbState.Stump && p.Template.Type == Meitou.Data.Gameplay.Bodies.BodyPartType.Arm) ?? 0 : 0;
+            int legs = sampleLimbs ? cold.Medical?.Parts.Count(p => p.Limb == LimbState.Stump && p.Template.Type == Meitou.Data.Gameplay.Bodies.BodyPartType.Leg) ?? 0 : 0;
             float fed = cold.Medical?.Fed ?? 0;
             double moved = 0;
             if (last.TryGetValue(id, out var before))
@@ -676,7 +742,13 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             DefeatLines(world, squad);
 #endif
             Say(deeds.Record.FightLook(fighting, downNow, FoesUp(world, squad)));
-            if (!deeds.Record.InFight) foes.Clear();
+            if (!deeds.Record.InFight)
+            {
+                foes.Clear();
+#if !SQUAD_RECORD_ONLY
+                wakingFoes.Clear();
+#endif
+            }
         }
 #if !SQUAD_RECORD_ONLY
         VictoryLine(world, squad);
@@ -861,6 +933,10 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     {
         if (registered) return;
         RecapLink.ForgetSquadPlace();
+#if !SQUAD_RECORD_ONLY
+        deeds.Tracker = this;
+        observeLimbs = LifecycleWatch.TracksLimbs(world);
+#endif
         LwDeeds.Register(world, deeds);
         registered = true;
     }

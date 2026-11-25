@@ -3,9 +3,12 @@
 // the Fallen page, the epitaph and the keepsake then say instead of "Cause of death unknown", and names the killer of a blow the hit feed
 // did not see (a bolt, an execution). Built by reflection (ObserverEmit, as PrisonerCases' watch) so the 0.17.3 build still loads; older
 // clients have no notice and keep what the hit feed sees.
+using System.Numerics;
 using System.Reflection;
+using Meitou.Data.Gameplay;
 using Meitou.Modding;
 using Meitou.Simulation;
+using Meitou.Simulation.Factions;
 
 namespace LivingWasteland.MeitouMod;
 
@@ -14,7 +17,10 @@ public static class DeathNotices
     static readonly Type? observer = typeof(World).Assembly.GetType("Meitou.Simulation.Bodies.ICharacterDeathObserver");
     static readonly Type? payload = typeof(World).Assembly.GetType("Meitou.Simulation.Bodies.CharacterDeath");
     static readonly PropertyInfo? victimOf = payload?.GetProperty("Victim"), killerOf = payload?.GetProperty("Killer"),
-        killerFactionOf = payload?.GetProperty("KillerFaction"), causeOf = payload?.GetProperty("Cause"), siteOf = payload?.GetProperty("Site");
+        killerFactionOf = payload?.GetProperty("KillerFaction"), recordOf = payload?.GetProperty("Record"),
+        platoonOf = payload?.GetProperty("Platoon"), causeOf = payload?.GetProperty("Cause"), siteOf = payload?.GetProperty("Site");
+    static readonly object? offscreenFight = siteOf?.PropertyType is { IsEnum: true } kind &&
+        Enum.TryParse(kind, "OffScreenFight", out object? value) ? value : null;
 
     /// <summary>Whether this client has the notice in the shape this mod reads.</summary>
     internal static bool Available => observer is not null && victimOf?.PropertyType == typeof(CharacterId) &&
@@ -35,16 +41,34 @@ public static class DeathNotices
         c.Log("death notices: the Fallen say how they died");
     }
 
-    /// <summary>One death (any character): passed on to the squad record when it was one of the squad's.</summary>
+    /// <summary>Passes a death to the squad record or the systems tracking a confirmed outside kill.</summary>
     public static void Died(World world, object death)
     {
         try
         {
             if (victimOf!.GetValue(death) is not CharacterId victim || LwDeeds.For(world) is not { } deeds) return;
+            object? site = siteOf!.GetValue(death);
+            if (offscreenFight is not null && offscreenFight.Equals(site))
+            {
+                OffscreenDeath(world, death, deeds);
+                return;
+            }
             var table = world.Characters;
-            if (!table.TryResolveNext(victim, out int v) || table.Cold(v) is not { IsPlayer: true, Animal: null } cold
+            if (!table.TryResolveNext(victim, out int v) || table.Cold(v) is not { Animal: null } cold
                 || OtherModsPeople.Runs(world, cold)) return;
-            string? cause = SquadRecord.CausePhrase(causeOf!.GetValue(death)?.ToString() ?? "", siteOf!.GetValue(death)?.ToString() ?? "");
+            if (!cold.IsPlayer)
+            {
+                if (killerOf!.GetValue(death) is CharacterId other && !other.IsNone && !ArenaLink.Sport(other, victim) &&
+                    table.TryResolveNext(other, out int attackerSlot) && table.Cold(attackerSlot) is { IsPlayer: false } attacker &&
+                    !LwDeedsSystem.IsHired(world, attacker))
+                {
+                    deeds.Tracker?.OutsideDeath(victim, world.Uniques.RecordOf(victim));
+                    int otherFaction = killerFactionOf!.GetValue(death) is int reported && reported >= 0 ? reported : attacker.Faction;
+                    RivalsSystem.For(world)?.OutsideDeath(world, victim, cold, table.Next[v].Position, otherFaction);
+                }
+                return;
+            }
+            string? cause = SquadRecord.CausePhrase(causeOf!.GetValue(death)?.ToString() ?? "", site?.ToString() ?? "");
             string? killer = null, faction = null, record = null;
             if (killerOf!.GetValue(death) is CharacterId k && !k.IsNone && !ArenaLink.Sport(k, victim)
                 && table.TryResolveNext(k, out int ks) && table.Cold(ks) is { IsPlayer: false } by)
@@ -58,5 +82,17 @@ public static class DeathNotices
             if (LwMod.Settings.LogChanges) LwMod.Log($"death notice: {cold.Name}: {cause ?? "a blow"}{(killer is null ? "" : $", by {killer}")}");
         }
         catch (Exception e) { LwMod.Log($"death notices: {e.GetBaseException().Message}"); }
+    }
+
+    static void OffscreenDeath(World world, object death, LwDeeds deeds)
+    {
+        // The winner's faction is explicit, but an unloaded actor has no handle. Only a unique record identifies an individual here.
+        if (killerFactionOf!.GetValue(death) is not int killerFaction || killerFaction < 0 || killerFaction == world.Player.Faction ||
+            recordOf?.GetValue(death) is not string { Length: > 0 } record || !UniqueCharacters.IsUnique(deeds.Data?.Db.Find(record))) return;
+
+        deeds.Tracker?.OutsideDeath(CharacterId.None, record);
+        Vector3? at = platoonOf?.GetValue(death) is int id && id >= 0 && world.Platoons.Find(id) is { } party
+            ? new Vector3(party.Position.X, 0, party.Position.Y) : null;
+        OutlawCampsSystem.For(world)?.OutsideDeath(world, record, deeds, killerFaction, at);
     }
 }

@@ -1,6 +1,24 @@
 # The Wasteland Remembers: changelog
 
 ## Next build (not built yet)
+
+## Build 20261125bp (beta, not on Steam)
+bn plus the performance changes (Steam hotfix bo) and Codex's Tier 1 batch:
+- **Collect bug-report logs on Linux and macOS.** The release includes a terminal command that bundles Meitou and recent TWR logs.
+- **Limb losses reach the squad record when they happen.** On current Meitou, the record gives credit for a new loss once and leaves
+  prosthetic changes out of that tally.
+- **One fight through a brief knockout.** A nearby opponent coming round can still be part of the same fight on current Meitou.
+- **The squad record clears stale entries as characters leave the world.** A named enemy's last-hit claim still follows them off
+  screen and gives way if someone strikes them when they return.
+- **History names who got there first.** When Meitou identifies the faction that killed a known outlaw off screen or names another
+  character who killed your rival, the news credits them. An earlier hit from your squad no longer claims a confirmed outside kill.
+- **The road can finish a raid or outlaw reprisal first.** News says when another party wiped them out off screen, and your squad
+  gets no credit for it. If Meitou simply removed the party, it can pick up where it left off. Rivals confirmed among the dead of a
+  wiped-out party are remembered in History.
+- **Bounty crews stay on the road through a save.** On current Meitou, a new crew is saved even if it has yet to come into view.
+  The same crew keeps hunting when you load.
+- **Rivals and bounty crews can be found again after loading** even if another mod uses the same squad's old shared tag. Their old tags
+  still work on earlier versions of Meitou.
 - **Lighter on the game** (after a player found TWR laggy on a big mod list): town criers do far less work when nobody is close
   enough to hear them; the Atlas builds its pages about three times faster and reuses a person's page until something on it changes;
   the Squad record panels share one look at the squad instead of each scanning everyone. Nothing plays differently.

@@ -233,8 +233,9 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
             var near = players[0];
             if (Pursuit.StartNear(world, $"reprisal:{o.Name}:{mark!.Hours}", near, players) is not { } at
                 || !RivalryLink.MaySend(world, PartyClaims.Reprisal(o.Name, now))) continue;
-            if (Pursuit.Make(world, pop, d, o.Reprisal, $"lw:reprisal:{o.Name}:{world.Tick}", at, near) is null) continue;
-            book.Sent(new Reprisal(o.Index, now, at.X, at.Z), mark.Hours);
+            if (Pursuit.Make(world, pop, d, o.Reprisal, $"lw:reprisal:{o.Name}:{world.Tick}", at, near) is not { } party) continue;
+            var reprisal = new Reprisal(o.Index, now, at.X, at.Z);
+            book.Sent(reprisal with { Tagged = Pursuit.Mark(party, ReprisalTag(reprisal)) }, mark.Hours);
             world.Post($"Word on the road: {o.Name} has not forgotten you. Men are coming.");
             LwMod.Log($"outlaw reprisal: {o.Name} sent a party from {at.X:0} {at.Z:0}, day {now / 24:0.0}");
             RecapLink.Moment($"{o.Name} sent men after your squad.", "the road", 70);
@@ -245,37 +246,83 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
         foreach (var r in book.Reprisals.ToList())
         {
             var o = outlaws.First(x => x.Index == r.Outlaw);
-            var p = o.Reprisal is null ? null : Pursuit.Find(world, o.Reprisal, r.X, r.Z, claimed);
-            // as the bounty crews (Presence): a party never loaded is not in Meitou's save; after a load, place it again where it was (once)
+            string tag = ReprisalTag(r);
+            var (p, ambiguous, legacyDead) = o.Reprisal is null ? (null, false, false)
+                : Pursuit.MatchParty(world, o.Reprisal, tag, r.X, r.Z, r.Tagged, claimed);
+            if (ambiguous) continue;
+            bool tagged = r.Tagged;
+            if (p is { Dead: false }) tagged = Pursuit.Mark(p, tag) || tagged;
             bool late = now - r.SentHours > ReprisalRules.GiveUpAfter || now < r.SentHours;
-            var seen = parties.Check(world, (r.Outlaw, r.SentHours), p is not null);
-            if (seen == Presence<(int, double)>.Verdict.PlaceAgain && o.Reprisal is not null && Pursuit.DeadNear(world, o.Reprisal, r.X, r.Z))
-                LwMod.Log($"outlaw reprisal: {o.Name}'s party is in the save as dead");
-            else if (seen == Presence<(int, double)>.Verdict.PlaceAgain && !late && o.Reprisal is not null)
+            var key = (r.Outlaw, r.SentHours);
+            var seen = parties.Check(world, key, p is not null, waitForNotice: tagged && !late && PlatoonFates.Available);
+            string? gone = p is null && tagged ? PlatoonFates.Take(world, tag) : null;
+            if (gone is null && seen == Presence<(int, double)>.Verdict.AwaitNotice) continue;
+
+            if (gone is not null && PlatoonFates.KilledByOthers(gone))
             {
-                p = Pursuit.Make(world, pop, d, o.Reprisal, $"lw:reprisal:{o.Name}:{r.SentHours:0.00}", (r.X, r.Z), players.Count > 0 ? players[0] : (r.X, r.Z));
-                if (p is not null) LwMod.Log($"outlaw reprisal: {o.Name}'s party was not in the save; placed again at {r.X:0} {r.Z:0}");
-                else { parties.Forget((r.Outlaw, r.SentHours)); continue; }
+                FinishReprisalWipe(world, r, tag, o.Name);
+                continue;
+            }
+            bool replace = gone is not null ? PlatoonFates.NotBeaten(gone) : seen == Presence<(int, double)>.Verdict.PlaceAgain && !legacyDead;
+            if (p is null && replace && !late && o.Reprisal is not null)
+            {
+                var at = (r.X, r.Z);
+                if (CampRules.MayMove(at, at, players))
+                    p = Pursuit.Make(world, pop, d, o.Reprisal, $"lw:reprisal:{o.Name}:{r.SentHours:0.00}", at, players[0]);
+                if (p is null)
+                {
+                    if (gone is not null) PlatoonFates.Tell(world, tag, gone);
+                    else parties.Forget(key);
+                    continue;
+                }
+                tagged = Pursuit.Mark(p, tag) || tagged;
+                parties.Check(world, key, found: true);
+                if (gone is null) LwMod.Log($"outlaw reprisal: {o.Name}'s party missing from the save was placed again at {r.X:0} {r.Z:0}");
+                else PlaytestLog.Event(world, "outlaw reprisal", tag, "restored after removal", gone);
             }
             bool lost = p is not null && !p.Dead && Pursuit.Beaten(world, p);
             if (p is null || p.Dead || late || lost)
             {
                 bool beaten = !late && (p is null || p.Dead || lost);
                 if (p is not null && !p.Dead) Pursuit.Release(p);
-                if (beaten) RecapLink.Moment($"The men {o.Name} sent after your squad were cut down.", "the road", 70);
                 book.Done(r);
+                parties.Forget(key);
+                if (beaten) RecapLink.Moment($"The men {o.Name} sent after your squad were cut down.", "the road", 70);
                 LwMod.Log($"outlaw reprisal: {o.Name}'s party is {(beaten ? "gone (beaten)" : "giving up")}");
                 continue;
             }
             claimed.Add(p.Id);
             Pursuit.Steer(world, p, players, BarkLines.Reprisal(o.Name, (int)r.SentHours));
             if (p.State == PlatoonState.Loaded && p.SquadId >= 0) squads[p.SquadId] = o.Index;
-            book.Update(r, r with { X = p.Position.X, Z = p.Position.Y });
+            book.Update(r, r with { X = p.Position.X, Z = p.Position.Y, Tagged = tagged });
         }
         reprisalSquads = squads;
         RivalryLink.Keep(world, "reprisal:", book.Reprisals
             .Select(r => PartyClaims.Reprisal(outlaws.First(x => x.Index == r.Outlaw).Name, r.SentHours)).ToList());
     }
+
+    internal bool ReprisalWipedOut(World world, Platoon platoon, string tag)
+    {
+        foreach (var reprisal in book.Reprisals)
+        {
+            if (ReprisalTag(reprisal) != tag) continue;
+            var outlaw = outlaws.FirstOrDefault(o => o.Index == reprisal.Outlaw);
+            if (outlaw?.Reprisal != platoon.TemplateId) return false;
+            FinishReprisalWipe(world, reprisal, tag, outlaw.Name);
+            return true;
+        }
+        return false;
+    }
+
+    void FinishReprisalWipe(World world, Reprisal reprisal, string tag, string outlaw)
+    {
+        book.Done(reprisal);
+        parties.Forget((reprisal.Outlaw, reprisal.SentHours));
+        world.Post($"The men {outlaw} sent after your squad are gone. The road finished them first.");
+        PlaytestLog.Event(world, "outlaw reprisal", tag, "wiped out off screen", outlaw);
+    }
+
+    static string ReprisalTag(Reprisal r) => FormattableString.Invariant($"lw:reprisal:{r.Outlaw}:{r.SentHours:R}");
 
     // ---- gossip that points ----
 
@@ -322,6 +369,25 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
     readonly HashSet<int> remadeSuccessors = [];
     object? remadeIn;                                  // the world remadeSuccessors belongs to (a game loaded in the same run starts again)
     public const double SuccessorDelayHours = 72;     // three game days after the outlaw is first seen dead or jailed
+    static string RoadDeathKey(int index) => $"@outlaw road death {index}";
+
+    internal void OutsideDeath(World world, string record, LwDeeds deeds, int killerFaction, Vector3? at)
+    {
+        var outlaw = outlaws.FirstOrDefault(o => o.Character == record);
+        if (outlaw is null || !RecordHost.AtlasList.Contains($"@@w:{outlaw.Name}|", StringComparison.Ordinal)) return;
+        var core = LwState.For(world).Core;
+        string key = RoadDeathKey(outlaw.Index);
+        if (core.Get(key) != 0) return;
+        core.Set(key, 1);
+
+        string faction = deeds.FactionName(killerFaction);
+        string? town = at is { } point ? deeds.TownAt(point).Town : null;
+        string description = $"{outlaw.Name} was killed{(faction.Length > 0 ? $" by {faction}" : "")}{(town is null ? " on the road" : $" near {town}")}.";
+        deeds.Record.Note(description, world.GameHours, town ?? "the road");
+        deeds.Pending.Add("Word on the road: " + description);
+        PlaytestLog.Event(world, "outlaw", record, "killed off screen", faction);
+    }
+
     static string DownKey(int index) => $"@succdown {index}";
     static string UpKey(int index) => $"@succup {index}";
     static string AtKey(int index) => $"@succat {index}";
@@ -370,7 +436,7 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
                 bool bySquad = SquadKilled.Contains(o.Character);
                 LwMod.Log($"outlaw successors: {o.Name} is gone (day {day}{(bySquad ? ", killed by the squad" : "")}); {sc.Name} takes over in a few days");
                 // killed by someone else: say so, once the squad has heard of them (the squad's own kills are in its record already)
-                if (!bySquad && world.Uniques.StateOf(o.Character) == UniqueState.Dead && RecordHost.AtlasList.Contains($"@@w:{o.Name}|", StringComparison.Ordinal))
+                if (!bySquad && core.Get(RoadDeathKey(o.Index)) == 0 && world.Uniques.StateOf(o.Character) == UniqueState.Dead && RecordHost.AtlasList.Contains($"@@w:{o.Name}|", StringComparison.Ordinal))
                     world.Post($"Word on the road: {o.Name} is dead, and not by your hand. Someone else got there first.");
                 continue;
             }

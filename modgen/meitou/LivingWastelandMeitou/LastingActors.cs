@@ -12,6 +12,7 @@ internal static class LastingActors
     static readonly PropertyInfo? value = id?.GetProperty("Value");
     static readonly ConstructorInfo? wrap = id?.GetConstructor([typeof(ulong)]);
     static readonly MethodInfo? find = id is null ? null : registry?.PropertyType.GetMethod("Find", [id]);
+    static readonly PropertyInfo? savedCold = typeof(Meitou.Simulation.Saving.SavedMember).GetProperty("Cold");
     static readonly PropertyInfo? actorId = typeof(CharacterCold).GetProperty("LastingId");
 
     internal static bool Available { get; } = actorId is not null && actorId.PropertyType == id &&
@@ -22,6 +23,9 @@ internal static class LastingActors
 
     internal static ulong Of(CharacterCold actor) => Available && actorId!.GetValue(actor) is { } token &&
         value!.GetValue(token) is ulong n ? n : 0UL;
+
+    internal static ulong OfSaved(Meitou.Simulation.Saving.SavedMember member) =>
+        Available && savedCold?.GetValue(member) is CharacterCold cold ? Of(cold) : 0UL;
 
     internal static CharacterId Find(World world, ulong assigned) => Available && assigned != 0 &&
         find!.Invoke(registry!.GetValue(world), [wrap!.Invoke([assigned])]) is CharacterId actor ? actor : CharacterId.None;

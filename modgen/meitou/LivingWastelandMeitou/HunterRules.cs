@@ -63,7 +63,10 @@ public static class ReprisalRules
 public sealed record CrewRequest(string Town, string Reason, double Hours);
 
 /// <summary>An outlaw's party out after the squad: who sent it, when, and where its stand-in was last seen.</summary>
-public sealed record Reprisal(int Outlaw, double SentHours, float X, float Z);
+public sealed record Reprisal(int Outlaw, double SentHours, float X, float Z)
+{
+    internal bool Tagged { get; init; }
+}
 
 /// <summary>Our claims on Rivalry Core's party slot (RivalryLink), the pure part: the keys each kind of party claims under.</summary>
 public static class PartyClaims

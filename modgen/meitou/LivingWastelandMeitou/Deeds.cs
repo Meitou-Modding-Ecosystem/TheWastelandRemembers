@@ -459,12 +459,14 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     public void LimbLost(string name) => LimbLost(name, "limb", null);
 
     /// <summary>A member lost an arm or a leg (<paramref name="kind"/> "arm", "leg" or "limb"); in a town it is a scar they remember there.</summary>
-    public void LimbLost(string name, string kind, string? town)
+    public void LimbLost(string name, string kind, string? town) => LimbLost(name, kind, town, Hours, Place);
+
+    internal void LimbLost(string name, string kind, string? town, double hours, string place)
     {
         var m = Member(name);
         m.LimbsLost++;
-        Note($"{D(name)} lost a{(kind == "arm" ? "n" : "")} {kind}{(town is null ? "" : $" at {town}")}.");
-        if (town is not null && kind is "arm" or "leg") AddScar(m, new Scar(kind, town, Hours));
+        Note($"{D(name)} lost a{(kind == "arm" ? "n" : "")} {kind}{(town is null ? "" : $" at {town}")}.", hours, place);
+        if (town is not null && kind is "arm" or "leg") AddScar(m, new Scar(kind, town, hours));
     }
 
     /// <summary>A member was knocked down in a town: remembered there (once per town).</summary>
@@ -493,8 +495,8 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     /// after <see cref="FightState.QuietLooks"/> quiet looks. At its end every member who fought counts a fight; it is won when the squad brought
     /// at least one enemy down and not everyone who fought is down; a won fight of three or more where only one fighter stayed up is that
     /// member's last stand. Big fights (four or more down) and lost ones go into the history.
-    /// <paramref name="foesUp"/>: of those the squad fought in this fight (struck or was struck by), how many stand within 50 m. The fight is not
-    /// over while any do (learnt in play: the fight "ended" while the beaten lay down; they got up and fought on, and each end counted
+    /// <paramref name="foesUp"/>: of those the squad fought in this fight, how many stand within 50 m or are coming round from a brief knockout.
+    /// The fight stays open while any do (learnt in play: the fight "ended" while the beaten lay down; they got up and fought on, and each end counted
     /// again). Only the squad's own foes count, so other hostiles about (a busy road, a high population) never hold a fight open; a stand-off
     /// with foes up but nobody fighting ends after <see cref="FightState.StandOffLooks"/> looks.
     /// </summary>
