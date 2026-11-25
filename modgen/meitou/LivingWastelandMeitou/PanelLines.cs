@@ -52,21 +52,32 @@ public static class PanelLines
     /// <summary>Called from the squad look: what the panels may show until the next look.</summary>
     internal static void Publish(World world, LwDeeds deeds)
     {
-        if (!LwMod.Settings.RecordInPanels) { squad = new Dictionary<CharacterId, IReadOnlyList<Row>>(); return; }
-        var table = world.Characters;
-        var next = new Dictionary<CharacterId, IReadOnlyList<Row>>();
-        for (int s = 0; s < table.HighWater; s++)
+        var members = new List<(CharacterId Id, string Key)>();
+        if (LwMod.Settings.RecordInPanels)
         {
-            if (table.Cold(s) is not { IsPlayer: true, Animal: null } c || c.Medical is { Dead: true } || OtherModsPeople.Runs(world, c)) continue;
-            var rows = MemberRows(deeds.Record, deeds.Who(c));
-            if (rows.Count > 0) next[table.IdOf(s)] = rows;
+            var table = world.Characters;
+            for (int s = 0; s < table.HighWater; s++)
+                if (table.Cold(s) is { IsPlayer: true, Animal: null } c && c.Medical is not { Dead: true } && !OtherModsPeople.Runs(world, c))
+                    members.Add((table.IdOf(s), deeds.Who(c)));
+        }
+        Publish(deeds.Record, members);
+    }
+
+    internal static void Publish(SquadRecord record, List<(CharacterId Id, string Key)> members)
+    {
+        if (!LwMod.Settings.RecordInPanels) { squad = new Dictionary<CharacterId, IReadOnlyList<Row>>(); return; }
+        var next = new Dictionary<CharacterId, IReadOnlyList<Row>>();
+        foreach (var (id, key) in members)
+        {
+            var rows = MemberRows(record, key);
+            if (rows.Count > 0) next[id] = rows;
         }
         var dead = new Dictionary<string, IReadOnlyList<Row>>(StringComparer.Ordinal);
-        foreach (var f in deeds.Record.FallenMembers)
+        foreach (var f in record.FallenMembers)
         {
-            var rows = FallenRows(f, deeds.Record.Display);
+            var rows = FallenRows(f, record.Display);
             dead[f.Name] = rows;                                             // by key (a keepsake's tag)
-            dead["Keepsake of " + deeds.Record.Display(f.Name)] = rows;      // by the keepsake's name
+            dead["Keepsake of " + record.Display(f.Name)] = rows;              // by the keepsake's name
         }
         squad = next;
         fallen = dead;

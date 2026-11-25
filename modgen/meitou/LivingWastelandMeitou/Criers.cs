@@ -40,23 +40,39 @@ public static class Criers
         if (owner < 0 || owner == world.Player.Faction || data.Relations.Get(world.Player.Faction, owner) <= -30) return;
         if (lastCall.TryGetValue(town, out long last) && world.Tick - last < Every) return;
 
-        // the crier: a local of the owner's faction, the nearest one in reach
+        if (FindCrier(world, owner, squad) is not { } b) return;
+        lastCall[town] = world.Tick;
+        bool said = TalkPacer.Exempt(() => talk.FireEvent(world, b.Crier, b.Listener, CrierEvent));
+        if (LwMod.Settings.LogChanges) LwMod.Log($"crier: {(said ? "called out" : "had nothing to say")} in {data.Sites[town].Town.Name}");
+    }
+
+    // The nearest local in reach. Resolve sleep only when a local could be picked.
+    internal static (CharacterId Crier, CharacterId Listener, float D)? FindCrier(World world, int owner,
+        List<(CharacterId Id, Vector3 At)> squad)
+    {
+        var table = world.Characters;
+        var hot = table.Previous;
         (CharacterId Crier, CharacterId Listener, float D)? best = null;
         for (int s = 0; s < hot.Length; s++)
         {
             if (!hot[s].Alive || table.Cold(s) is not { IsPlayer: false, Animal: null } c || c.Faction != owner) continue;
             if (c.InCombat || c.IsImprisoned || !c.CarriedBy.IsNone || c.Medical is { Incapacitated: true }) continue;
-            if (Sleep.Is(world, table.IdOf(s))) continue;      // asleep (Meitou 0.19.1 lets no sleeper talk): pick someone awake
             var at = hot[s].Position;
+            var listener = CharacterId.None;
+            float distance = best?.D ?? float.PositiveInfinity;
             foreach (var (id, p) in squad)
             {
                 float d = Vector3.Distance(p, at);
-                if (d >= Near && d <= Far && (best is null || d < best.Value.D)) best = (table.IdOf(s), id, d);
+                if (d >= Near && d <= Far && d < distance)
+                {
+                    listener = id;
+                    distance = d;
+                }
             }
+            if (listener.IsNone) continue;
+            var candidate = table.IdOf(s);
+            if (!Sleep.Is(world, candidate)) best = (candidate, listener, distance);
         }
-        if (best is not { } b) return;
-        lastCall[town] = world.Tick;
-        bool said = TalkPacer.Exempt(() => talk.FireEvent(world, b.Crier, b.Listener, CrierEvent));
-        if (LwMod.Settings.LogChanges) LwMod.Log($"crier: {(said ? "called out" : "had nothing to say")} in {data.Sites[town].Town.Name}");
+        return best;
     }
 }

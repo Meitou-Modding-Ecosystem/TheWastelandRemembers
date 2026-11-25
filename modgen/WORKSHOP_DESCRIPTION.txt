@@ -68,6 +68,12 @@ Quit Meitou (before starting it again: the log is kept only until then), run [b]
 [h2]Made with generative AI[/h2]
 Made largely with Claude Code.
 
+[h2]Troubleshooting[/h2]
+[list]
+[*][b]"Script mod not loaded: built for Meitou ..." after an update:[/b] Steam sometimes keeps the old download, even through unsubscribing and resubscribing. Unsubscribe, delete [i]steamapps/workshop/content/233860/3839368189[/i], then subscribe again.
+[*]Anything else: "Save logs for a bug report" in the download puts everything in one zip; post it in the comments or on the Meitou Discord.
+[/list]
+
 [h2]Credits and thanks[/h2]
 [list]
 [*][b]VlcekM and the MeitouClient contributors[/b], and the Meitou Discord.

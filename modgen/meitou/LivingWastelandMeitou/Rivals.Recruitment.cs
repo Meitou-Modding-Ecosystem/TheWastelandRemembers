@@ -60,7 +60,7 @@ public sealed partial class RivalsSystem
 
     bool Eligible(Rival r) => r.Active && r.Phase == Phase.Recovering && OfferKey(r).Length > 0 && r.Defeats >= 3 &&
         !Barred(r) && CanRecruitFrom(r.Faction) &&
-        !LeftAlone.Covers(r.OldName, r.Faction) && !LeftAlone.Covers(r.Name, r.Faction) &&
+        !LeftAlone.Covers(r.OldName, r.Faction) && !LeftAlone.Covers(r.Name, r.Faction) && !LeftAlone.CoversId(r.ActorId) &&
         !ArenaLink.IsTownFighter(r.OldName) && !ArenaLink.IsTownFighter(r.Name);
 
     static bool CanTalk(CharacterCold? cold) => cold is

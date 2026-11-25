@@ -5,6 +5,7 @@
 // within earshot of a squad member are matched against our gossip lines; a match is noted under the person it is about and under every
 // known place it names. People the squad has stood near are "met". Hidden people (the Bugmaster and the like) show as a blur after one
 // rumour, with their place after two, and in full once met. The pages are built here in the tick; the window only shows them.
+using System.Globalization;
 using System.Numerics;
 using Meitou.Modding;
 using Meitou.Simulation;
@@ -23,8 +24,15 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
 
     readonly Dictionary<string, AtlasPlace> places = table.Places ?? [];
     readonly Dictionary<string, AtlasPerson> people = table.People ?? [];
+    readonly ILookup<string, KeyValuePair<string, AtlasPerson>> peopleByPlace =
+        (table.People ?? []).Where(person => person.Value.Place is not null)
+            .ToLookup(person => person.Value.Place!, StringComparer.Ordinal);
     readonly AtlasBook book = new();
+    readonly Dictionary<string, (PersonPageInputs Inputs, string Text)> personPages = new(StringComparer.Ordinal);
+    CultureInfo? pageCulture;
     readonly Dictionary<(CharacterId, string), double> lastSeen = [];
+    static readonly IReadOnlyDictionary<string, string> EmptyPages = new Dictionary<string, string>();
+    IReadOnlyDictionary<string, string> lastPages = EmptyPages;
     AtlasMatcher? matcher;
     bool failed;
 
@@ -34,7 +42,8 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
         if (!LwMod.Settings.Atlas)
         {
             RecordHost.AtlasList = "The Atlas is off (this window's Settings tab).";
-            RecordHost.AtlasPages = new Dictionary<string, string>();
+            lastPages = RecordHost.AtlasPages = EmptyPages;
+            RecordHost.AtlasPortraits = EmptyPages;
             return;
         }
         try
@@ -46,7 +55,9 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
                 Listen(world, players);
                 if (world.Tick % 150 == 7) Look(world, players);
             }
-            if (world.Tick % 60 == 7) Publish(world);
+            // Outlaw logic reads the index. Its timing stays fixed when detail pages refresh less often.
+            if (world.Tick % 60 == 7)
+                Publish(world, !LwMod.Settings.LighterChecks || world.Tick % 120 == 7);
         }
         catch (Exception e)
         {
@@ -129,12 +140,44 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
 
     // ---- the pages ----
 
-    void Publish(World world)
+    void Publish(World world, bool refreshDetails)
     {
+        if (!Equals(pageCulture, CultureInfo.CurrentCulture))
+        {
+            personPages.Clear();
+            pageCulture = CultureInfo.CurrentCulture;
+        }
+
+        // Ownership can change at any time. Share the lookup within this publication.
+        var owners = new Dictionary<string, string?>(StringComparer.Ordinal);
+        string? PublishedOwner(string town)
+        {
+            if (!owners.TryGetValue(town, out var owner)) owners[town] = owner = Owner(town);
+            return owner;
+        }
+
+        List<(string Name, string Owner)>? leaders = null;
+        List<(string Name, string Owner)> Leaders()
+        {
+            if (leaders is not null) return leaders;
+            leaders = [];
+            foreach (var (name, person) in people)
+                if (person.Place is { } place && places.ContainsKey(place) && PublishedOwner(place) is { } owner)
+                    leaders.Add((name, owner));
+            return leaders;
+        }
+
         var known = Known(world);
         var pages = new Dictionary<string, string>(StringComparer.Ordinal);
         var portraits = new Dictionary<string, string>(StringComparer.Ordinal);
         var list = new List<string>();
+
+        bool ReusePage(string key)
+        {
+            if (refreshDetails || !lastPages.TryGetValue(key, out var text)) return false;
+            pages[key] = text;
+            return true;
+        }
 
         var placeRows = places.Where(p => known.ContainsKey(p.Key) || book.CountOf("@" + p.Key) > 0)
             .OrderBy(p => p.Value.Region, StringComparer.Ordinal).ThenBy(p => p.Key, StringComparer.Ordinal).ToList();
@@ -144,7 +187,8 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
         {
             int k = known.GetValueOrDefault(name);
             list.Add($"@@p:{name}|{name}  ({(k == 2 ? "visited" : k == 1 ? "on your map" : "only heard of")}, {p.Region})");
-            pages["p:" + name] = string.Join("\n", PlacePage(world, name, p, k));
+            string pageKey = "p:" + name;
+            if (!ReusePage(pageKey)) pages[pageKey] = string.Join("\n", PlacePage(world, name, p, k, (!LwMod.Settings.TownHandovers || !TownSwitchWatch.Available) ? PublishedOwner(name) : null));
         }
 
         if (OutpostMemories.For(world)?.AtlasRows().ToList() is { Count: > 0 } outposts)
@@ -154,7 +198,8 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             foreach (var (key, name, page) in outposts)
             {
                 list.Add($"@@o:{key}|{name}");
-                pages["o:" + key] = string.Join("\n", page);
+                string pageKey = "o:" + key;
+                if (!ReusePage(pageKey)) pages[pageKey] = string.Join("\n", page);
             }
         }
 
@@ -165,7 +210,8 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             foreach (var (key, name, page) in custody)
             {
                 list.Add($"@@c:{key}|{name}");
-                pages["c:" + key] = page;
+                string pageKey = "c:" + key;
+                if (!ReusePage(pageKey)) pages[pageKey] = page;
             }
         }
 
@@ -176,7 +222,8 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             foreach (var (node, name, history) in handovers)
             {
                 list.Add($"@@h:{node}|{name}");
-                pages["h:" + node] = string.Join("\n", history.Prepend(name));
+                string pageKey = "h:" + node;
+                if (!ReusePage(pageKey)) pages[pageKey] = string.Join("\n", history.Prepend(name));
             }
         }
 
@@ -190,7 +237,8 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             foreach (var (rn, row, page) in rivalRows)
             {
                 list.Add($"@@r:{rn}|{row}");
-                pages["r:" + rn] = string.Join("\n", page);
+                string pageKey = "r:" + rn;
+                if (!ReusePage(pageKey)) pages[pageKey] = string.Join("\n", page);
             }
         }
         // news from other mods (News.cs): what the squad has heard happen in the world
@@ -201,7 +249,8 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             foreach (var (id, row, page) in newsRows)
             {
                 list.Add($"@@n:{id}|{row}");
-                pages["n:" + id] = string.Join("\n", page);
+                string pageKey = "n:" + id;
+                if (!ReusePage(pageKey)) pages[pageKey] = string.Join("\n", page);
             }
         }
         list.Add("");
@@ -210,8 +259,10 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
         foreach (var (name, p, level) in personRows)
         {
             string label = level == 1 ? "someone talked about" : p.Epithet;
-            list.Add($"@@w:{name}|{(level == 1 ? "? " : "")}{name}, {label}{Fate(world, name, p, level)}");
-            pages["w:" + name] = string.Join("\n", PersonPage(world, name, p, level, known));
+            string fate = Fate(world, name, p, level);
+            list.Add($"@@w:{name}|{(level == 1 ? "? " : "")}{name}, {label}{fate}");
+            string pageKey = "w:" + name;
+            if (!ReusePage(pageKey)) pages[pageKey] = PersonText(world, name, p, level, known, fate);
             if (level >= 2 && p.Id is { Length: > 0 } rid) portraits["w:" + name] = rid;
         }
         // factions the player has met: how they stand with the squad, their wars, what they think of its titles, the towns that remember it
@@ -227,28 +278,29 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
                 {
                     float rel = data.Relations.Get(world.Player.Faction, f);
                     list.Add($"@@f:{fname}|{fname}  ({Standing(rel)})");
-                    pages["f:" + fname] = string.Join("\n", FactionPage(world, f, fname, rel, met));
+                    string pageKey = "f:" + fname;
+                    if (!ReusePage(pageKey)) pages[pageKey] = string.Join("\n", FactionPage(world, f, fname, rel, met, Leaders()));
                 }
             }
         }
         RecordHost.AtlasList = string.Join("\n", list);
-        RecordHost.AtlasPages = pages;
+        lastPages = RecordHost.AtlasPages = pages;
         RecordHost.AtlasPortraits = portraits;
     }
 
     static string Cap(string s) => s.Length > 0 ? char.ToUpperInvariant(s[0]) + s[1..] : s;
 
-    IEnumerable<string> PlacePage(World world, string name, AtlasPlace p, int k)
+    IEnumerable<string> PlacePage(World world, string name, AtlasPlace p, int k, string? owner)
     {
         yield return $"-- {name} --";
         yield return $"{Cap(p.Region)}. {(k == 2 ? "You have been there." : k == 1 ? "On your map; you have not been there yet." : "You have only heard of it.")}";
         yield return p.Known;
-        if ((!LwMod.Settings.TownHandovers || !TownSwitchWatch.Available) && Owner(name) is { } owner) yield return owner;
+        if (owner is not null) yield return owner;
         if (k == 2)
             foreach (var line in p.Explored ?? []) yield return line;
         if (k == 2 && LandmarkLink.Line(data, name) is { } places) yield return places;   // with Landmark Banners installed
-        var here = people.Where(x => x.Value.Place == name).ToList();
-        if (k == 2 && here.Count > 0)
+        var here = peopleByPlace[name];
+        if (k == 2 && here.Any())
         {
             yield return "";
             yield return "-- Who is there --";
@@ -327,7 +379,8 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
         return rank <= 0 || pos == 0 ? null : rec.GetString($"{p}{Math.Min(rank, pos - 1)}");
     }
 
-    IEnumerable<string> FactionPage(World world, int f, string name, float rel, List<(int Index, string Name)> met)
+    IEnumerable<string> FactionPage(World world, int f, string name, float rel, List<(int Index, string Name)> met,
+        List<(string Name, string Owner)> peopleWithOwner)
     {
         yield return $"-- {name} --";
         yield return $"With your squad: {Standing(rel)} ({rel:0}).";
@@ -345,13 +398,29 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             var hot = deeds.Heat.All().Where(h => h.Faction == name && deeds.Heat.Here(h.Town) >= 1).Select(h => h.Town).Distinct().ToList();
             if (hot.Count > 0) yield return "Towns of theirs that remember your squad's crimes: " + string.Join(", ", hot) + ".";
         }
-        var leaders = people.Where(p => p.Value.Place is { } pl && places.ContainsKey(pl) && Owner(pl) is { } o && o.Contains(name)).Select(p => p.Key).Take(6).ToList();
+        var leaders = peopleWithOwner.Where(person => person.Owner.Contains(name, StringComparison.Ordinal))
+            .Select(person => person.Name).Take(6).ToList();
         if (leaders.Count > 0) yield return "Their people of note you may know of: " + string.Join(", ", leaders) + ".";
         foreach (var l in HeardLines("#" + name)) yield return l;
     }
 
-    IEnumerable<string> PersonPage(World world, string name, AtlasPerson p, int level, Dictionary<string, int> known)
+    readonly record struct PersonPageInputs(int Level, bool KnowsPlace, string Fate, string? Bounty,
+        string? SeenPlace, double SeenDay, int HeardCount);
+
+    string PersonText(World world, string name, AtlasPerson person, int level, Dictionary<string, int> known, string fate)
     {
+        var sighting = level == 3 ? book.LastSeen(name) : null;
+        var inputs = new PersonPageInputs(level, person.Place is { } place && known.ContainsKey(place), fate,
+            level > 1 ? Bounty(world, person) : null, sighting?.Place, Math.Floor((sighting?.Hours ?? 0) / 24), book.CountOf(name));
+        if (personPages.TryGetValue(name, out var cached) && cached.Inputs == inputs) return cached.Text;
+        string text = string.Join("\n", PersonPage(name, person, inputs, sighting));
+        personPages[name] = (inputs, text);
+        return text;
+    }
+
+    IEnumerable<string> PersonPage(string name, AtlasPerson p, PersonPageInputs inputs, Heard? sighting)
+    {
+        int level = inputs.Level;
         if (level == 1)
         {
             yield return "-- Someone talked about --";
@@ -362,16 +431,15 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
         }
         yield return $"-- {name}, {p.Epithet} --";
         yield return p.About;
-        string where = p.Place is { } pl ? (known.ContainsKey(pl) ? $"Found at {pl}" + (p.Region is { Length: > 0 } r ? $", {r}." : ".") : $"Somewhere in {places.GetValueOrDefault(pl)?.Region ?? "the wastes"}.")
+        string where = p.Place is { } pl ? (inputs.KnowsPlace ? $"Found at {pl}" + (p.Region is { Length: > 0 } r ? $", {r}." : ".") : $"Somewhere in {places.GetValueOrDefault(pl)?.Region ?? "the wastes"}.")
             : $"Seen in {p.Region ?? "the wastes"}.";
         if (p.Outlaw) where = $"Roams {p.Region}.";
         yield return where;
-        string fate = Fate(world, name, p, level);
-        if (fate.Length > 0) yield return "Now:" + fate.TrimStart(',') + ".";
-        if (Bounty(world, p) is { } b) yield return b;
+        if (inputs.Fate.Length > 0) yield return "Now:" + inputs.Fate.TrimStart(',') + ".";
+        if (inputs.Bounty is { } b) yield return b;
         if (p.WantedFor is { Length: > 0 } w) yield return w;
         if (level == 3)
-            yield return book.LastSeen(name) is { } ls ? $"Last seen by your squad: {AtlasBook.When(ls)}." : "Your squad has met them.";
+            yield return sighting is { } ls ? $"Last seen by your squad: {AtlasBook.When(ls)}." : "Your squad has met them.";
         foreach (var l in HeardLines(name)) yield return l;
     }
 
@@ -418,6 +486,8 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
     {
         using var r = new BinaryReader(stream, System.Text.Encoding.UTF8, leaveOpen: true);
         book.Read(r);
+        personPages.Clear();
+        lastPages = EmptyPages;
     }
 
     public void Hash(ref StateHasher h) => h.Add(book.HashCount);

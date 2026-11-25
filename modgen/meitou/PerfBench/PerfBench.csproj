@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net11.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MeitouClient" HintPath="$(Engine)/MeitouClient.dll" Private="false"/>
+    <Reference Include="Meitou.Simulation" HintPath="$(Engine)/Meitou.Simulation.dll" Private="false"/>
+    <Reference Include="Meitou.Core" HintPath="$(Engine)/Meitou.Core.dll" Private="false"/>
+    <Reference Include="Meitou.Data" HintPath="$(Engine)/Meitou.Data.dll" Private="false"/>
+  </ItemGroup>
+</Project>

@@ -75,4 +75,29 @@ public class ApiV4WorldTests
         Assert.True(WastelandApi.Forgive("Shek Kingdom", 2, "test"));
         Assert.Equal(10d, heat.Here("Squin"));
     }
+
+    // Version 6: when another mod may strike an outlaw (RivalryCore#59 decision 17). Unknown to the squad: no. Known, under 7 days since
+    // the game began: too soon. After 7 days: yes; struck once by another mod: cooldown for 30 days (and wounded, when bloodied).
+    [Fact]
+    public void Strike_answers_follow_the_wait_the_cooldown_and_what_the_squad_knows()
+    {
+        var (world, _) = Make();
+        LwState.Register(world, new LwState());                           // the store the game's main system registers (strike times live there)
+        string atlas = RecordHost.AtlasList;
+        try
+        {
+            Assert.Equal("not-known", WastelandApi.StrikeAnswer("Bad Pete"));
+            RecordHost.AtlasList = "@@w:Bad Pete|";
+            Assert.Equal("too-soon", WastelandApi.StrikeAnswer("bad pete"));
+            Assert.Equal(CampRules.StrikeWaitHours, WastelandApi.StrikableAfter("Bad Pete"));
+            world.GameHours = 8 * 24;
+            Assert.Contains(WastelandApi.StrikeAnswer("Bad Pete"), new[] { "yes", "wounded" });   // mood is drawn; struck yet by no one
+            Assert.True(WastelandApi.HideoutStruck("Bad Pete", "a war band", bloodied: false, "test"));
+            Assert.Equal("cooldown", WastelandApi.StrikeAnswer("Bad Pete"));
+            Assert.Equal(8 * 24 + CampRules.StrikeCooldownHours, WastelandApi.StrikableAfter("Bad Pete"), 0);
+            Assert.Equal("unknown", WastelandApi.StrikeAnswer("Nobody"));
+            Assert.Equal(-1, WastelandApi.StrikableAfter("Nobody"));
+        }
+        finally { RecordHost.AtlasList = atlas; }
+    }
 }

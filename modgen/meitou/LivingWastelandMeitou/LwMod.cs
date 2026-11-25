@@ -169,6 +169,9 @@ public sealed class LwSettings
     [Setting("Atlas tab", Hint = "The Atlas tab: places you know and the people talked about, filled by the gossip your squad overhears.")]
     public bool Atlas { get; set; } = true;
 
+    [Setting("Lighter checks", Hint = "Refresh existing Atlas detail pages and the Squad Record panels half as often. The squad still records events and hears news at the usual rate.")]
+    public bool LighterChecks { get; set; }
+
     [Setting("Squad record button position", Hint = "Where the Squad record button sits, if it covers another button.",
         Options = ["Top, beside Feedback", "Top right, lower", "Top right", "Top left, lower", "Top left"])]
     public string RecordButton { get => StatsUi.Position; set => StatsUi.Position = value; }
@@ -205,7 +208,7 @@ public sealed class LwMod : IMod
     internal static string JobVariable = "LW open jobs";
     /// <summary>The build this helper was made for (modgen/BUILD_ID); the data mods carry theirs in lw_codes.json.</summary>
     public static string DataBuild = "unknown";
-    public const string HelperBuild = "20261125bm";
+    public const string HelperBuild = "20261125bn";
     internal static List<RumourCode> Rumours = [];
     internal static List<(int Index, string Name)> Outlaws = [];
 

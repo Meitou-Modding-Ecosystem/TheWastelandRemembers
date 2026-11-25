@@ -23,7 +23,7 @@ public static class RivalRules
 }
 
 /// <summary>
-/// Characters other mods have named and asked TWR to leave alone (RivalryCore #25): never made a rival, never renamed. Matched by name and
+/// Characters other mods have named and asked TWR to leave alone (MeitouMods #25): never made a rival, never renamed. Matched by name and
 /// faction (generated names repeat across mods), case-insensitively; an empty faction covers that name in any faction. Saved with the rivals.
 /// </summary>
 public sealed class LeftAlone
@@ -41,6 +41,15 @@ public sealed class LeftAlone
         entries.Add((name, faction));
         return true;
     }
+
+    /// <summary>The name an id-based entry is kept under (so builds before API version 6 read it as a name no character has).</summary>
+    public static string IdEntry(ulong lastingId) => "#lasting:" + lastingId.ToString(System.Globalization.CultureInfo.InvariantCulture);
+
+    /// <summary>Adds a character by its Meitou lasting id (0.23+); false for 0 or one already covered.</summary>
+    public bool AddId(ulong lastingId) => lastingId != 0 && Add(IdEntry(lastingId), "");
+
+    /// <summary>Whether the character with this lasting id is to be left alone (0: nobody).</summary>
+    public bool CoversId(ulong lastingId) => lastingId != 0 && entries.Any(e => e.Name == IdEntry(lastingId));
 
     /// <summary>Whether a character of this name and faction is to be left alone.</summary>
     public bool Covers(string name, string faction) =>
