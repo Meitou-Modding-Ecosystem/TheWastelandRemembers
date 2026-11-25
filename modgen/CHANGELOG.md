@@ -1,6 +1,13 @@
 # The Wasteland Remembers: changelog
 
-## Build 20261125bl (Steam release)
+## Build 20261125bm (Steam release)
+Build bl plus, on Meitou 0.23 (setting "Squad record in the game's panels", on):
+- **Titles and record in the character panel.** Under a squad member's stats: the title they are known by (all of them on hover) and
+  their kills and fights won.
+- **Keepsakes and warrants on hover.** A keepsake's tooltip says how and where its owner fell and whether they were avenged; a bounty
+  hunter's warrant, which town signed it.
+
+## Build 20261125bl (Steam release candidate, not uploaded)
 - **Meitou 0.23 support.** 0.23.0 refused the mod (its version range stopped below 0.23); the range now runs up to 0.24. Checked on 0.23.0:
   builds, loads with every setting, every engine call the DLL makes is there, and every test passes. Not play tested on 0.23 yet.
 - **What bk did on the 0.22.2 nightlies now works on 0.23.0**, the first release with Meitou's AI rewrite: stalled bounty crews attack,

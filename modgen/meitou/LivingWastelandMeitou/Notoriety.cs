@@ -523,6 +523,9 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
 #endif
         if (world.Tick % PanelEvery == 0)
         {
+#if !SQUAD_RECORD_ONLY
+            PanelLines.Publish(world, deeds);
+#endif
             RecordHost.Panel = StatsPanel.Text(deeds, world, occupied);
             RecordHost.CatalogText = string.Join("\n", deeds.Record.Catalog());
             RecordHost.HistoryText = string.Join("\n", deeds.Record.HistoryLines());

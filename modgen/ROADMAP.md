@@ -97,13 +97,13 @@ Each behind a check of the client, so 0.22.1 and older play as before. Most usef
    release has it and a play test can watch a crew across a long walk and a load.
 2. **Squad notices** (`IPlatoonObserver`: Removed with `Despawned`, `LostFight` and the winner, `NoMembers`; Loaded, Unloaded).
    **Done for bounty crews in build bk** (`PlatoonFates.cs`): a crew the engine took out is placed again, one beaten far off by someone
-   else is not the squad's win. Still to do: outlaw reprisal parties (`OutlawCamps`), raid parties (`Raids`), hunting rivals.
+   else is not the squad's win. Still to do: outlaw reprisal parties (`OutlawCamps`; they carry no tag of ours yet, found by position: tag them first), raid parties (`Raids`), hunting rivals.
 3. **Death notices** (`ICharacterDeathObserver`: cause, site, killer). **Done in build bk** (`DeathNotices.cs`): the Fallen, their grave
    and keepsake say how they died (bled out, shot dead, executed, starved), and a killer the hit feed missed is named. Still to do: rivals
    and named outlaws who die off screen (credit only when the squad's blow came first).
-4. **Character panel lines** (`AddCharacterPanelLines`): each character's titles, kills and fights won in the game's own character panel,
+4. **Done in bm** (`PanelLines.cs`). **Character panel lines** (`AddCharacterPanelLines`): each character's titles, kills and fights won in the game's own character panel,
    without opening U.
-5. **Item tooltip lines** (`AddItemTooltipLines`, up to 8 one-line rows): on a keepsake, "Fell on day 41 at Squin. Avenged by Leaf.";
+5. **Done in bm** (`PanelLines.cs`). **Item tooltip lines** (`AddItemTooltipLines`, up to 8 one-line rows): on a keepsake, "Fell on day 41 at Squin. Avenged by Leaf.";
    on a warrant, which town signed it. Adds to the full story in the description, doesn't replace it.
 6. **Character lifecycle observers** (merged 2026-11-24, VlcekM/MeitouClient#1370 by PZA; in the next nightly). **Started** (`LifecycleWatch.cs`,
    after bk): knockouts, limbs, cages, joins and named removals in the play-test log; a joiner is first seen on joining. The rules below are next:
