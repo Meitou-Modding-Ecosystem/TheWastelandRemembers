@@ -144,6 +144,11 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     readonly Dictionary<string, Dictionary<string, int>> benchOutput = new(StringComparer.Ordinal);
     long benchVersion = -1;
     bool registered;
+    readonly List<int> panelSlots = [];
+    readonly HashSet<string> presentInRecord = new(StringComparer.Ordinal);
+#if !SQUAD_RECORD_ONLY
+    readonly List<(CharacterId Id, string Key)> nativePanelMembers = [];
+#endif
 #if !SQUAD_RECORD_ONLY
     double lastFadeHours = double.NaN;
     readonly HashSet<string> occupiedPriceNodes = new(StringComparer.Ordinal);
@@ -515,23 +520,57 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
 #endif
         if (world.Tick % LookEvery != 0) return;
 
+        int panelEvery = PanelEvery;
+#if !SQUAD_RECORD_ONLY
+        if (LwMod.Settings.LighterChecks) panelEvery *= 2;
+#endif
+        List<int>? panelPlayers = world.Tick % panelEvery == 0 ? panelSlots : null;
+        panelPlayers?.Clear();
+
         LaterDeaths(world);
-        var occupied = Look(world);
+        var occupied = Look(world, panelPlayers);
         Benches(world);
 #if !SQUAD_RECORD_ONLY
         Fade(world, occupied);
 #endif
-        if (world.Tick % PanelEvery == 0)
+        if (panelPlayers is not null)
         {
-#if !SQUAD_RECORD_ONLY
-            PanelLines.Publish(world, deeds);
-#endif
-            RecordHost.Panel = StatsPanel.Text(deeds, world, occupied);
+            PublishPanelPlayers(world, panelPlayers);
+            RecordHost.Panel = StatsPanel.Text(deeds, occupied, presentInRecord);
             RecordHost.CatalogText = string.Join("\n", deeds.Record.Catalog());
             RecordHost.HistoryText = string.Join("\n", deeds.Record.HistoryLines());
             RecordHost.FallenText = string.Join("\n", deeds.Record.FallenLines());
         }
         if (world.Tick % (LookEvery * 600) == 0) Prune(world);
+    }
+
+    void PublishPanelPlayers(World world, List<int> slots)
+    {
+        presentInRecord.Clear();
+#if !SQUAD_RECORD_ONLY
+        nativePanelMembers.Clear();
+        bool nativePanels = LwMod.Settings.RecordInPanels;
+#endif
+        var table = world.Characters;
+        var hot = table.Previous;
+        foreach (int slot in slots)
+        {
+            if (table.Cold(slot) is not { IsPlayer: true } cold || cold.Medical is { Dead: true }
+                || OtherModsPeople.Runs(world, cold)) continue;
+            bool inRecord = hot[slot].Alive && cold.Medical is not null;
+#if !SQUAD_RECORD_ONLY
+            bool inNativePanel = nativePanels && cold.Animal is null;
+            if (!inRecord && !inNativePanel) continue;
+            string key = deeds.Who(cold);
+            if (inNativePanel) nativePanelMembers.Add((table.IdOf(slot), key));
+            if (inRecord) presentInRecord.Add(key);
+#else
+            if (inRecord) presentInRecord.Add(deeds.Who(cold));
+#endif
+        }
+#if !SQUAD_RECORD_ONLY
+        PanelLines.Publish(deeds.Record, nativePanelMembers);
+#endif
     }
 
     void RecordFallen(World world, CharacterId id, CharacterCold member, string? town,
@@ -549,7 +588,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     }
 
     /// <summary>Every player character: time on its task, distance walked, falling down, limbs lost. Returns the towns they are in.</summary>
-    HashSet<string> Look(World world)
+    HashSet<string> Look(World world, List<int>? panelPlayers)
     {
         var table = world.Characters;
         var hot = table.Previous;
@@ -565,7 +604,10 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         float seconds = LookEvery * world.TickSeconds;
         for (int s = 0; s < hot.Length; s++)
         {
-            if (!hot[s].Alive || table.Cold(s) is not { IsPlayer: true } cold || OtherModsPeople.Runs(world, cold)) continue;
+            if (!hot[s].Alive && panelPlayers is null) continue;
+            if (table.Cold(s) is not { IsPlayer: true } cold) continue;
+            panelPlayers?.Add(s);
+            if (!hot[s].Alive || OtherModsPeople.Runs(world, cold)) continue;
             var id = table.IdOf(s);
             var at = hot[s].Position;
             int site = data?.TownAt(at) ?? -1;

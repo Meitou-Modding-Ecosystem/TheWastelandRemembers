@@ -100,7 +100,12 @@ fi
 # the real Rivalry Core for the party-claim world tests (RealRivalryCoreWorldTests): a pinned, published RivalryCore build, checked against
 # its SHA-256. It targets .NET 11, so only net11.0 releases run them; a failed download skips them with a note, it never fails the check.
 # 0.6.7 is the port to Meitou 0.22.2 (its engine references are 0.22.2's); releases before 0.22.2 keep 0.6.0.
-if [ "$(printf '%s\n' 0.22.2 "${VER%%-*}" | sort -V | head -1)" = 0.22.2 ]; then
+if [ "$(printf '%s\n' 0.23.0 "${VER%%-*}" | sort -V | head -1)" = 0.23.0 ]; then
+  # 0.6.8 is built on Meitou 0.23.0 (engine 50673ec)
+  RIVALRY_TAG=rivalry-core-v0.6.8
+  RIVALRY_ZIP=RivalryCore-0.6.8.zip
+  RIVALRY_SHA=1bb6321dc2ef0132c3416e50de4f0c9cf2340893b3609a50454371a87c8cfe35
+elif [ "$(printf '%s\n' 0.22.2 "${VER%%-*}" | sort -V | head -1)" = 0.22.2 ]; then
   RIVALRY_TAG=rivalry-core-v0.6.7
   RIVALRY_ZIP=RivalryCore-0.6.7.zip
   RIVALRY_SHA=e503ddf5d959448d8f13735dbd712c738d1fde0d3245b167345dfdfa466575d7

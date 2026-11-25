@@ -102,7 +102,25 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
         if (o is null || world.Uniques.StateOf(o.Character) != UniqueState.Alive && !(o.Successor is not null && SuccessorActive(world, o.Index))) return false;
         // a new mark is the band's doing: answered, so no reprisal; one still fresh from the squad's own blows keeps its reprisal
         if (book.Strike(o.Index, world.GameHours, bloodied)) book.Answer(o.Index, world.GameHours);
+        LwState.For(world).Core.Set(OtherStrikeKey(o.Index), (int)world.GameHours + 1);
         return true;
+    }
+
+    /// <summary>When and whether another mod may strike an outlaw (WastelandApi version 6): the row's status, mood and Known, when they
+    /// rose (a successor's takeover, else the game's start), the last strike by another mod, and whether their men are out after the squad.</summary>
+    public (double After, string Answer) StrikeRules(World world, string name)
+    {
+        var o = outlaws.FirstOrDefault(x => string.Equals(x.Name, name, StringComparison.OrdinalIgnoreCase)
+            || string.Equals(x.Successor?.Name, name, StringComparison.OrdinalIgnoreCase));
+        if (o is null) return (-1, "unknown");
+        var row = ApiRows(world).First(r => (string)r["Name"] == o.Name);
+        string status = (string)row["Status"];
+        var core = LwState.For(world).Core;
+        double rose = status == "succeeded" && core.Get(AtKey(o.Index)) is > 0 and var at ? at - 1 : 0;
+        double? last = core.Get(OtherStrikeKey(o.Index)) is > 0 and var h ? h - 1 : null;
+        bool story = book.Reprisals.Any(r => r.Outlaw == o.Index);
+        return (CampRules.StrikableAfter(status, rose, last),
+            CampRules.StrikeAnswer(status, (bool)row["Known"], (string)row["Mood"], story, world.GameHours, rose, last));
     }
 
     /// <summary>Living outlaws with a camp whose page the Atlas shows (the squad has heard of them): name, mood, camp (map marks).</summary>
@@ -307,6 +325,7 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
     static string DownKey(int index) => $"@succdown {index}";
     static string UpKey(int index) => $"@succup {index}";
     static string AtKey(int index) => $"@succat {index}";
+    static string OtherStrikeKey(int index) => $"@otherstrike {index}";   // game hour + 1 of the last strike by another mod (0: none)
 
     /// <summary>
     /// How much a successor's price has grown since they took over (0 to 1: up to double): a tenth for each stretch the gang spent raiding

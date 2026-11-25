@@ -154,7 +154,7 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
         {
             if (!table.TryResolveNext(id, out int s) || !table.Next[s].Alive || table.Cold(s) is not { } c || c.IsPlayer || c.Animal is not null
                 || c.IsImprisoned || c.Medical is { Dead: true } || world.Uniques.RecordOf(id) is not null || rivals.Any(r => r.Id == id || r.Name == c.Name)) continue;
-            if (LeftAlone.Covers(c.Name, FactionOf(c)) || ArenaLink.IsTownFighter(c.Name))
+            if (LeftAlone.Covers(c.Name, FactionOf(c)) || LeftAlone.CoversId(LastingActors.Of(c)) || ArenaLink.IsTownFighter(c.Name))
             {
                 LwMod.Log($"rivals: {c.Name} was named by another mod and is left alone");
                 continue;
@@ -179,7 +179,7 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
 
     List<(CharacterId Id, Hurt H)> backups = [];
 
-    /// <summary>Characters other mods named and asked us to leave alone (WastelandApi.LeaveAlone, RivalryCore #25).</summary>
+    /// <summary>Characters other mods named and asked us to leave alone (WastelandApi.LeaveAlone, MeitouMods #25).</summary>
     public readonly LeftAlone LeftAlone = new();
 
     string FactionOf(CharacterCold c) => data is not null && c.Faction >= 0 && c.Faction < data.Factions.Count ? data.Factions[c.Faction].Name : "";
@@ -349,9 +349,10 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
             {
                 r.Phase = Phase.Hunting;
                 r.Next = world.GameHours + 96;                  // gives up the trail after four days
-                // one who lost a leg comes back on a cheap prosthetic, never crawling after the squad for days
-                bool legged = cold is not null && Mend(cold);
-                Tell(world, $"Word on the road: {r.Name} is hunting your squad{(legged ? ", on a new iron leg" : "")}.", null, 0);
+                // one who lost a leg comes back on a prosthetic, never crawling after the squad for days; what kind, and whether a lost
+                // arm is restored too, depends on what their people can afford (ProstheticRules)
+                (bool Leg, bool Arm, ProstheticRules.Tier Tier) mended = cold is not null ? Mend(cold) : (false, false, ProstheticRules.Tier.Poor);
+                Tell(world, $"Word on the road: {r.Name} is hunting your squad{ProstheticRules.Arrival(mended.Tier, mended.Leg, mended.Arm)}.", null, 0);
                 LwMod.Log($"rivals: {r.Name} is hunting the squad (return {r.Returns + 1})");
             }
             else if (r.Phase == Phase.Hunting)
@@ -365,7 +366,8 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
                 }
                 // seen in play (bb): the iron leg was fitted only at the moment the hunt began, and a rival off screen then never got it
                 // and crawled after the squad; fitted now whenever they're in the world (Mend skips a leg already fitted)
-                if (cold is not null && Mend(cold)) LwMod.Log($"rivals: {r.Name} has an iron leg now");
+                if (cold is not null && Mend(cold) is { } m && (m.Leg || m.Arm))
+                    LwMod.Log($"rivals: {r.Name} was fitted{(m.Leg ? " a leg" : "")}{(m.Leg && m.Arm ? " and" : "")}{(m.Arm ? " an arm" : "")} ({m.Tier.ToString().ToLowerInvariant()})");
                 var p = cold is not null ? Platoon(world, cold) : null;
                 p ??= r.PlatoonId >= 0 ? world.Platoons.Find(r.PlatoonId) : null;
                 // after a load the saved platoon number means nothing (build ba drops it); the rival's own tag, which the engine saves
@@ -374,7 +376,8 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
                 if (p is null && TaggedPlatoon(world, r) is { } tagged) { p = tagged; r.PlatoonId = tagged.Id; }
                 if (players.Count > 0 && p is { Dead: false })
                 {
-                    Pursuit.Steer(world, p, players, BarkLines.Rival(r.Grudge, r.Returns, r.Wins, r.Slot + r.Returns), r.Name);
+                    var (faction, tier, arm, leg) = Fitted(cold);
+                    Pursuit.Steer(world, p, players, BarkLines.Rival(r.Grudge, r.Returns, r.Wins, r.Slot + r.Returns, faction, tier, arm, leg), r.Name);
                     if (!table.TryResolveNext(r.Id, out _)) (r.X, r.Z) = (p.Position.X, p.Position.Y);   // off screen: where the stand-in is
                     onScreen[r.Slot] = p.State == PlatoonState.Loaded;
                 }
@@ -415,33 +418,49 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
         return Firsts[start];
     }
 
-    // the cheap hiver-made prosthetic legs every shop sells (Newwworld.mod), by limb slot: 2 left leg, 3 right leg
-    static readonly Dictionary<int, string> EconomyLegs = new() { [2] = "96136-Newwworld.mod", [3] = "96135-Newwworld.mod" };
-
     /// <summary>
-    /// A rival who lost a leg comes back on an Economy Leg (fitted as Meitou fits the prosthetics an NPC spawns with: the item in the limb's
-    /// section and on the part). An arm lost stays lost. True when a leg was fitted.
+    /// A rival who lost limbs comes back with what their people can afford (ProstheticRules: a shoddy Economy Leg for the poor; a standard
+    /// leg and arm for the middling; a high-grade Skeleton leg and arm for the wealthy), fitted as Meitou fits the prosthetics an NPC spawns
+    /// with: the item in the limb's section and on the part. A limb already replaced is left alone. Says what was fitted.
     /// </summary>
-    bool Mend(CharacterCold c)
+    (bool Leg, bool Arm, ProstheticRules.Tier Tier) Mend(CharacterCold c)
     {
-        if (data is null || c.Medical is not { } med || c.Inventory is not { } inv) return false;
-        bool fitted = false;
+        var tier = ProstheticRules.Of(data is not null && c.Faction >= 0 && c.Faction < data.Factions.Count ? data.Factions[c.Faction].Name : null);
+        if (data is null || c.Medical is not { } med || c.Inventory is not { } inv) return (false, false, tier);
+        bool leg = false, arm = false;
         try
         {
             foreach (var part in med.Parts.ToList())
             {
-                if (part.Limb != LimbState.Stump || part.Template.Type != BodyPartType.Leg || part.Replacement is not null) continue;
+                if (part.Limb != LimbState.Stump || part.Replacement is not null) continue;
+                if (part.Template.Type is not (BodyPartType.Leg or BodyPartType.Arm)) continue;
                 int slot = part.Template.LimbSlot;
-                if (!EconomyLegs.TryGetValue(slot, out var id) || data.Items.Limb(id) is not { } limb || data.Items.Create(id) is not { } item) continue;
-                item.Level = 20;
+                if (ProstheticRules.Limb(tier, slot) is not { } pick || data.Items.Limb(pick.Record) is not { } limb
+                    || data.Items.Create(pick.Record) is not { } item) continue;
+                item.Level = pick.Level;
                 if (!med.FitReplacement(limb, item)) continue;
                 (item.Section, item.X, item.Y) = (Meitou.Data.Gameplay.Bodies.LimbReplacement.SlotOf(slot), 0, 0);
                 inv.Items.Add(item);
-                fitted = true;
+                if (part.Template.Type == BodyPartType.Leg) leg = true; else arm = true;
             }
         }
-        catch (Exception e) { LwMod.Log($"rivals: could not fit a leg ({e.GetBaseException().Message})"); }
-        return fitted;
+        catch (Exception e) { LwMod.Log($"rivals: could not fit a limb ({e.GetBaseException().Message})"); }
+        return (leg, arm, tier);
+    }
+
+    /// <summary>The rival's faction, what it can afford, and whether an arm and a leg have been replaced (for what they say).</summary>
+    (string? Faction, ProstheticRules.Tier Tier, bool Arm, bool Leg) Fitted(CharacterCold? c)
+    {
+        string? faction = c is not null && data is not null && c.Faction >= 0 && c.Faction < data.Factions.Count ? data.Factions[c.Faction].Name : null;
+        bool arm = false, leg = false;
+        if (c?.Medical is { } med)
+            foreach (var part in med.Parts)
+            {
+                if (part.Replacement is null) continue;
+                if (part.Template.Type == BodyPartType.Arm) arm = true;
+                else if (part.Template.Type == BodyPartType.Leg) leg = true;
+            }
+        return (faction, ProstheticRules.Of(faction), arm, leg);
     }
 
     static int Spread(string key, long n, int range) => (int)((ulong)SquadRecord.StableHash(key + "#" + n) % (ulong)Math.Max(1, range));

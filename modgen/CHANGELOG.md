@@ -1,5 +1,33 @@
 # The Wasteland Remembers: changelog
 
+## Next build (not built yet)
+- **Lighter on the game** (after a player found TWR laggy on a big mod list): town criers do far less work when nobody is close
+  enough to hear them; the Atlas builds its pages about three times faster and reuses a person's page until something on it changes;
+  the Squad record panels share one look at the squad instead of each scanning everyone. Nothing plays differently.
+- **New setting "Lighter checks"** (off): existing Atlas pages and the Squad record panels refresh half as often, for big mod lists.
+  What the squad sees, hears and does is still noticed at the usual rate.
+
+## Build 20261125bo (Steam hotfix, built from bm's source, not from bn)
+bm plus the four performance changes listed under "Next build" above ("Lighter on the game" and "Lighter checks"), nothing else.
+
+## Build 20261125bn (beta, not on Steam)
+- **Rivals come back with what their people can afford.** A rival who lost a leg used to return on a shoddy Economy Leg whoever they were,
+  and a lost arm stayed lost. Now their faction decides: starving and hungry bandits, Dust Bandits and the like still limp back on a shoddy
+  Economy Leg and stay one-armed; the nations, the hives, the ninjas and the bigger gangs come back on a standard Economy Leg and with a
+  lost arm replaced too; Tech Hunters, traders, nobles, the guilds and slavers on a high-grade Skeleton leg and arm. Word on the road says
+  which ("on a fine skeleton leg").
+- **Wealthy rivals talk about their new limbs**, in their own people's voice, when they close in: a Tech Hunter's ancient work from World's
+  End, the Traders Guild putting it on your account, a slaver who sold three of your sort to pay for it (each names the arm or leg). A rival whose arm was replaced no
+  longer says "One arm's enough for you lot."
+- **The neck slot works beside NUE.** NUE's inventory claims the game's neck slot for itself and hides it, which left TWR without one
+  (trophies and keepsakes couldn't be worn). On Meitou 0.23 TWR now adds its neck as a second neck section in its usual place.
+- **For other mods (API version 6):** `LeaveAloneId` leaves another mod's named character alone by Meitou 0.23's lasting id, so a rename
+  doesn't undo it (asked for on RivalryCore#25); `StrikableAfter` and `StrikeAnswer` tell a war mod when it may strike a named outlaw's
+  camp: 7 game days after they rose, once per 30 game days, never while wounded, unknown to the squad, or with their men out after it
+  (RivalryCore#59).
+- **For other mods (API version 5):** `Titles(character)` gives one squad member's titles with their names, so a mod like PZA's Service
+  Record can show them beside its own numbers.
+
 ## Build 20261125bm (Steam release)
 Build bl plus, on Meitou 0.23 (setting "Squad record in the game's panels", on):
 - **Titles and record in the character panel.** Under a squad member's stats: the title they are known by (all of them on hover) and

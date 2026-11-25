@@ -14,6 +14,19 @@ public static class StatsPanel
     /// <summary>The panel's lines: one block per member, then the crew, then heat.</summary>
     public static string Text(LwDeeds deeds, World world, ISet<string> occupied)
     {
+        var here = world.Characters;
+        var present = new HashSet<string>(StringComparer.Ordinal);
+        var hot = here.Previous;
+        for (int s = 0; s < hot.Length; s++)
+            // A body stays in the world after death. Its record belongs on the Fallen tab.
+            if (hot[s].Alive && here.Cold(s) is { IsPlayer: true, Medical.Dead: false } c && !OtherModsPeople.Runs(world, c))
+                present.Add(deeds.Who(c));
+
+        return Text(deeds, occupied, present);
+    }
+
+    internal static string Text(LwDeeds deeds, ISet<string> occupied, ISet<string> present)
+    {
         var record = deeds.Record;
         var lines = new List<string>();
 #if !SQUAD_RECORD_ONLY
@@ -28,13 +41,6 @@ public static class StatsPanel
             lines.Add("");
         }
 #endif
-        var here = world.Characters;
-        var present = new HashSet<string>(StringComparer.Ordinal);
-        var hot = here.Previous;
-        for (int s = 0; s < hot.Length; s++)
-            // a body stays in the world (Alive) until it is cleared away; the dead are on the Fallen tab at once (play test of bf: Saint stayed)
-            if (hot[s].Alive && here.Cold(s) is { IsPlayer: true, Medical.Dead: false } c && !OtherModsPeople.Runs(world, c)) present.Add(record.KeyFor(LwDeeds.Identity(c), c.Name));
-
         foreach (var (name, m) in record.Members.Where(p => present.Contains(p.Key)))
         {
             lines.AddRange(Member(record, name, m));

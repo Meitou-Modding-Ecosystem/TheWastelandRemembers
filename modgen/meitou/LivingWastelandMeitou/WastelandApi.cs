@@ -17,8 +17,9 @@ public static class WastelandApi
 {
     /// <summary>1: heat (read, add, forgive), rivals, hunts, squad titles, history notes and Recap moments. 2: Report (news).
     /// 3: SendHunters (a crew now), LeaveAlone (another mod's named characters). 4: Outlaws, OutlawAt, HideoutStruck, TownNode, and a Node
-    /// column in HeatTowns.</summary>
-    public const int Version = 4;
+    /// column in HeatTowns. 5: Titles (one squad member's titles, with their names). 6: LeaveAloneId (by Meitou's lasting id),
+    /// StrikableAfter and StrikeAnswer (when another mod may strike an outlaw).</summary>
+    public const int Version = 6;
 
     /// <summary>The mod's build id, e.g. "20261115ai".</summary>
     public static string Build => LwMod.HelperBuild;
@@ -75,7 +76,7 @@ public static class WastelandApi
     }
 
     /// <summary>
-    /// <b>Version 3.</b> A town sends a bounty crew after the squad now, for your mod's reason (an unpaid loan, a broken contract; RivalryCore
+    /// <b>Version 3.</b> A town sends a bounty crew after the squad now, for your mod's reason (an unpaid loan, a broken contract; MeitouMods
     /// #26), whatever its heat. The crew sets out at the next pass (a few game seconds), tracks the squad wherever it is and is beaten once
     /// nobody in it is left standing. With Rivalry Core installed it waits its turn for the one hostile-party slot, a game day at most. The
     /// town's own crews then rest three days as usual. The reason is written to the log. False when the Bounty hunters setting is off, the
@@ -92,7 +93,7 @@ public static class WastelandApi
 
     /// <summary>
     /// <b>Version 3.</b> Marks a character your mod has named (a war leader, a raid captain) so TWR leaves it alone: never made a rival,
-    /// never renamed (RivalryCore #25). By name and faction (as the game shows them), so two mods' identical generated names stay apart; an
+    /// never renamed (MeitouMods #25). By name and faction (as the game shows them), so two mods' identical generated names stay apart; an
     /// empty faction covers the name in any faction. Saved with the game; call it when you name the character. The game's own named
     /// characters are always left alone. False when the name is empty, already marked, or nothing is loaded.
     /// </summary>
@@ -100,6 +101,17 @@ public static class WastelandApi
     {
         if (RivalsSystem.Latest is not { } rivals || !rivals.LeftAlone.Add(name, faction)) return false;
         LwMod.Log($"api: {source} asked to leave {name}{(string.IsNullOrWhiteSpace(faction) ? "" : $" ({faction})")} alone");
+        return true;
+    }
+
+    /// <summary>
+    /// <b>Version 6.</b> As <see cref="LeaveAlone"/>, by the character's Meitou lasting id (0.23+: <c>world.LastingIds.GetOrGive(character)</c>,
+    /// its <c>Value</c>), which survives renames, saves and unloads. False for 0, one already marked, or before a game loads.
+    /// </summary>
+    public static bool LeaveAloneId(ulong lastingId, string source)
+    {
+        if (RivalsSystem.Latest is not { } rivals || !rivals.LeftAlone.AddId(lastingId)) return false;
+        LwMod.Log($"api: {source} asked to leave character {lastingId} alone");
         return true;
     }
 
@@ -136,6 +148,21 @@ public static class WastelandApi
     /// <summary>The titles held by the squad as a whole and by any member (ids as in the record, e.g. "narko").</summary>
     public static IReadOnlyList<string> SquadTitles() =>
         LwDeeds.Latest is { Record: var r } ? r.CrewTitles.Concat(r.Members.Values.SelectMany(m => m.Titles)).Distinct().ToList() : [];
+
+    /// <summary>
+    /// <b>Version 5.</b> The titles one squad member holds, by their name as the game shows it, one row each: <c>Id</c> (as in
+    /// <see cref="SquadTitles"/>), <c>Name</c> (as the squad record shows it, e.g. "the Hard Hand") and <c>Squad</c> (true for a title the
+    /// whole squad holds, which every member shares). Earned order, the member's own first. Empty for someone TWR doesn't know.
+    /// </summary>
+    public static IReadOnlyList<IReadOnlyDictionary<string, object>> Titles(string character)
+    {
+        if (LwDeeds.Latest is not { Record: var r } || string.IsNullOrEmpty(character)) return [];
+        string? key = r.Members.ContainsKey(character) ? character : r.Members.Keys.FirstOrDefault(k => r.Display(k) == character);
+        if (key is null || !r.Members.TryGetValue(key, out var m)) return [];
+        IReadOnlyDictionary<string, object> Row(string id, bool squad) =>
+            new Dictionary<string, object> { ["Id"] = id, ["Name"] = r.TitleName(id), ["Squad"] = squad };
+        return m.Titles.Select(id => Row(id, false)).Concat(r.CrewTitles.Where(id => !m.Titles.Contains(id)).Select(id => Row(id, true))).ToList();
+    }
 
     /// <summary>Writes a line to the squad's History (U > History), e.g. "Stack's bank called in the loan." False when nothing is loaded.</summary>
     public static bool Note(string text)
@@ -196,6 +223,24 @@ public static class WastelandApi
         LwMod.Log($"api: {source} reports {name}'s camp struck by {by}{(bloodied ? ", bloodied" : "")}");
         return true;
     }
+
+    /// <summary>
+    /// <b>Version 6.</b> From when another mod may strike a named outlaw's camp (<see cref="HideoutStruck"/>), in game hours (the world's
+    /// <c>GameHours</c>): 7 game days after they rose (a successor's takeover, else the game's start) and 30 game days after the last strike
+    /// by another mod, whichever is later. -1 when never (dead, jailed, the player's) or the name is unknown. By the outlaw's or successor's
+    /// name. Time only: ask <see cref="StrikeAnswer"/> for everything else.
+    /// </summary>
+    public static double StrikableAfter(string outlaw) =>
+        OutlawCampsSystem.Latest is { } c && c.LastWorld is { } w ? c.StrikeRules(w, outlaw ?? "").After : -1;
+
+    /// <summary>
+    /// <b>Version 6.</b> Whether another mod may strike a named outlaw now: "yes", or the reason not to: "dead", "jailed", "players" or
+    /// "unknown" (never); "not-known" (the squad hasn't heard of them yet), "too-soon", "cooldown" (see <see cref="StrikableAfter"/>),
+    /// "wounded" (already licking their wounds), "story" (their men are out after the squad). On anything but "yes", don't ask about that
+    /// outlaw again for a game day. "" before a game loads.
+    /// </summary>
+    public static string StrikeAnswer(string outlaw) =>
+        OutlawCampsSystem.Latest is { } c && c.LastWorld is { } w ? c.StrikeRules(w, outlaw ?? "").Answer : "";
 
     /// <summary><b>Version 4.</b> A town's stable id, <c>town:&lt;InstanceId&gt;</c> (the key shared frameworks use: it doesn't change when a
     /// town is taken over and renamed), from its name as the game shows it; "" when unknown.</summary>

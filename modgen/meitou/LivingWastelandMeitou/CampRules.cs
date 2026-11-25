@@ -4,6 +4,45 @@ namespace LivingWasteland.MeitouMod;
 
 public static class CampRules
 {
+    // ---- when another mod may strike an outlaw (WastelandApi.StrikableAfter / StrikeAnswer, RivalryCore#59 decision 17, #126) ----
+
+    /// <summary>Game hours an outlaw is left alone after rising (or a successor taking over): 7 game days.</summary>
+    public const double StrikeWaitHours = 7 * 24;
+
+    /// <summary>Game hours between two strikes by other mods on the same outlaw: 30 game days.</summary>
+    public const double StrikeCooldownHours = 30 * 24;
+
+    /// <summary>
+    /// From when another mod may strike an outlaw, in game hours: <see cref="StrikeWaitHours"/> after they rose and
+    /// <see cref="StrikeCooldownHours"/> after the last such strike, whichever is later. -1 when never (dead, jailed, the player's).
+    /// </summary>
+    public static double StrikableAfter(string status, double roseHours, double? lastOtherStrike) =>
+        status is "alive" or "succeeded"
+            ? Math.Max(roseHours + StrikeWaitHours, lastOtherStrike is { } last ? last + StrikeCooldownHours : double.MinValue)
+            : -1;
+
+    /// <summary>
+    /// Whether another mod may strike an outlaw now: "yes", or why not: "dead", "jailed", "players" (never); "not-known" (the squad hasn't
+    /// heard of them), "too-soon" (they rose under 7 days ago), "cooldown" (struck by another mod under 30 days ago), "wounded" (already
+    /// licking their wounds), "story" (their men are out after the squad). Checked in that order.
+    /// </summary>
+    public static string StrikeAnswer(string status, bool known, string mood, bool storyUnderway, double hoursNow, double roseHours, double? lastOtherStrike)
+    {
+        switch (status)
+        {
+            case "dead": return "dead";
+            case "jailed": return "jailed";
+            case "joined": return "players";
+            case not ("alive" or "succeeded"): return "dead";
+        }
+        if (!known) return "not-known";
+        if (hoursNow < roseHours + StrikeWaitHours) return "too-soon";
+        if (lastOtherStrike is { } last && hoursNow < last + StrikeCooldownHours) return "cooldown";
+        if (mood == "wounded") return "wounded";
+        if (storyUnderway) return "story";
+        return "yes";
+    }
+
     /// <summary>Meitou's region map: 64 x 64 cells of 4608 units, cell 32 starting at 0 (WeatherAreas.CellRect).</summary>
     public const float CellSize = 4608f;
     public const int Cells = 64, Origin = 32;

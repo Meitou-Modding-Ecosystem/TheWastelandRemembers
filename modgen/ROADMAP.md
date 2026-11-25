@@ -17,6 +17,76 @@ From the Meitou Discord after build ai:
   early, weak rival (a hungry bandit) can hunt a new squad and it stays manageable.
 - **Hostile rival bounty hunters:** crews that go after the same bounties as the squad, and sometimes after the squad.
 
+## Kindness remembered (suggested by Lodred on the Workshop, 2026-11-25)
+**When any of this ships: reply to Lodred in the Workshop comments ("@Lodred") and credit the idea in the change note.**
+The other half of rivals: rivals come back to settle a score, the people the squad saved come back to settle a debt. Same machinery
+(a few remembered people at a time, a name and a story, town talk, the Atlas, History and Recap), the other way round.
+
+**The deed (what gets remembered).** Two kinds, both moments Kenshi already has:
+- **Freed:** shackles or a cage someone else put them in, opened by the squad (Meitou 0.23 `IHeldStateObserver`: held to free, a squad
+  member at the lock or the cage). Where (Rebirth, a slaver camp, a police cell, a bandit hideout) and who held them.
+- **Saved:** patched up while dying (unconscious and bleeding out, or blood near the end) by a squad member's first aid (`AidUseWatch`),
+  or carried to a bed. Not someone the squad itself knocked down: mending your own damage earns nothing.
+What's kept per person, at the moment of the deed: their name and record, faction, `LastingId` (0.23: the same person across saves and
+unloads), the place, the day, which squad member did it, and a snapshot of their skills (to measure growth later).
+
+**Not every one becomes a story (Rebirth starts free dozens).** Like rivals, only a few are remembered at once (say 6), and the most
+telling ones win the slot: someone dying when found, someone held a long time, a named character, someone freed alone rather than in a
+crowd. The rest still count: a mass escape is one deed the world talks about ("someone broke a dozen slaves out of Rebirth"), and the
+squad's tally of freed and saved feeds titles (the Unchainers, the Field Surgeons).
+
+**The reunion (the heart of it).** When a remembered person is near the squad, alive, not hostile and not fighting, they walk up and say
+exactly what happened, so the player doesn't have to remember:
+- "Leaf? You broke my shackles at Rebirth, 35 days ago. I couldn't lift a pick then. Look at me now."
+- "You're the one who stitched me up outside Squin. I'd bled half out on the sand."
+- **Never the game's day number** ("on day 12", "day 4": the player's own calendar). How long ago is fine, from how long it really was,
+  as a person would put it: "35 days ago", "a few days back", "a month or so".
+- Growth from the snapshot, in plain words by how much: "twice as strong", "learned to hold a blade", "made sergeant". What became of
+  them: joined the Anti-Slavers, opened a stall in the Hub, went back to the Holy Nation, still drifting.
+- Escaped together (a Rebirth start, the squad were slaves too): "We ran from Rebirth together, you and I."
+- In their faction's voice; silent factions stay silent (a freed animal or a skeleton just follows a while).
+
+**What they give back** (one, rarely, sized by what they can afford, like the rivals' prosthetics):
+- **Word:** a tip that matters to TWR's other systems: an outlaw camp's place, bounty hunters on the squad's trail, a rival recovering
+  nearby, a town that's turned on you.
+- **A gift:** food, cats, a keepsake-style token ("a carved cat from Rebirth's quarry"), from the poor; a good item from the wealthy.
+- **A hand:** if a fight breaks out near them, they join on the squad's side for that fight.
+- **A place:** rarely, someone saved twice or owed a great deal asks to join the squad (as a rival beaten three times does).
+
+**The world remembers it too.**
+- Town talk where they live ("A woman at Spring says your lot pulled her out of Rebirth").
+- The Atlas lists "People who owe you", next to the rivals.
+- History and Recap note the deed and the reunion.
+- Factions: a slave freed who reaches Anti-Slaver ground warms Tinfist's people; the Holy Nation thinks a freed mine slave stolen
+  property; slavers already treat it as a crime.
+- Healing a Holy Nation paladin is Okran's mercy to them; healing a Shek is a debt of honour.
+
+**Endings, good and bad:** a debtor who dies is noted ("Ruka, whom you freed at Rebirth, was killed by Dust Bandits near Squin"), and a
+keepsake-style item may reach the squad. One caught and enslaved again can be freed again, and the second time binds them for good.
+
+**They don't hunt the squad down.** Unlike a rival, someone who owes you stays where life took them. Each has a home ground (the town
+or region they settled in, from where they are on their own after the deed) and a radius; only when the squad comes inside it do they
+notice and walk over. Meeting one is the luck of the road, not a pursuit.
+
+**Agreed (2026-11-25):** six remembered at once; at most one reunion every few days; pay-offs start with word and gifts (a hand in a
+fight and joining the squad after a play test); the squad's own escape from a Rebirth start counts ("we ran together").
+
+**Settings:** "Kindness remembered" (on), and how often reunions happen. Meitou 0.23+ (the cage notices and lasting ids).
+
+## PZA's bar games (MeitouMinigames, released; ideas to raise with PZA)
+No conflicts (no blows, no crimes, its own save data). To make them fit:
+- **Their side:** call `WastelandApi.Note` / `Report` by reflection for big moments: a big pot, a long hot chain, a busted Looter's Rights
+  raid, beating Squin's arm-wrestling champion.
+- **A small read API:** ledger totals (hands, staked, paid, biggest pot, best chain, raids) and each character's arm-wrestling record.
+  TWR could then give titles ("Card Sharp", "Cleaned Out", "Squin's Grip") and bar gossip about the squad's luck.
+- **Ours:** leave a dealer or challenger out of bar talk and criers while a game runs (they'd tag them).
+
+## PZA's Moonscript (Lua packs, released)
+Unlocks reach, not new engine features (its HUD, camera, scan and item calls sit on Meitou hooks TWR already uses from C#).
+- **A read-only "twr" capability** (`IPackExtensionHost.RegisterPackCapability`, found by reflection, no dependency): heat, rivals,
+  hunts, titles, recent news. Players and modders could write a heat meter, rival compass, hunt strip or news ticker in Lua.
+- **"/twr" terminal commands** for play tests (heat, rivals, crews, outposts) instead of F10 rows.
+
 ## Your base in the world (the next big theme)
 Long saves spend mid and late game at the base, where today the mod has little to say. Same idea as rivals and heat: the world notices your
 base, and your base remembers. Others in the Meitou Worldbuilding group make things happen to bases (Rivalry Core's raids, burglars (Rivalry Core), Dustlife's economy); TWR is how the world and your own people talk about it and remember it.
@@ -88,6 +158,59 @@ engine hook (RivalryCore issue #28). Our part:
 - **Endorsed by the launcher** (0.22.1 lists the Workshop ports Meitou endorses): ask to be listed once TWR has some ratings and no open
   crash reports.
 - Done from this list: the world-ready signal (0.21 `IWorldReady`, build az): squads a save left out are placed on the first tick.
+
+## Meitou 0.23 / 0.23.1 follow-ups (2026-11-25, from the 0.23.0 release notes and the 0.23 modding docs)
+0.23 is the first release with the unified AI chooser and real order queues, feature parity with the base game, Linux and macOS builds,
+and the full set of hooks TWR has been preparing for. Small and soon first (suggested to start with: the Linux/macOS log script and "Ask for news" in the conversation window):
+- **Bug reports on Linux and macOS.** "Save logs for a bug report.bat" is Windows-only; ship a `save-logs.sh` beside it that collects the
+  same files (Meitou's log, TWR's settings, the play-test logs) from the Linux and macOS paths.
+- **"Ask for news" as a reply in the conversation window** (`AddDialogueReplies`, 0.23): "Heard any news?" offered when talking to a
+  townsperson, beside the right-click row. Simpler than the `IDialogueChoiceFilter` route noted below.
+- **Sounds** (`world.PostSound`): a short call when a lookout spots hostiles, a bell for a town crier, a sting when a rival is sighted.
+- **The game's own fixes toggles:** 0.23 adds optional fixes (raid progress, guard body passing, caged idles...). Re-test the play-test
+  oddities against them (bodies not cleared by Remove Intruder jobs; the Hive Attack counted as an outpost's defence) and note which
+  toggle covers what.
+- **Rescued allies:** NPCs now carry downed allies to beds. A beaten foe carried off by their mates is a natural rival birth ("dragged
+  off by their own"), and the squad's knockout credit must not count a carried foe as dying.
+- **Measure TWR's cost** with Meitou's built-in benchmarks (the launcher has them now) on 0.23's faster frame: the look every second,
+  the news, crier and lookout passes, and the panel publishing. Stagger anything that shows up.
+- **Squad roles vs 0.23's own autonomy:** 0.23 adds per-squad AI options, autonomous outpost guards and "player squads on AI packages".
+  Check where TWR's Squad roles (built on 0.19 hooks) now duplicate the game's, and step aside where the game does it better.
+- **Settings:** Meitou's Settings window now has mod search and filters. TWR's own Settings tab (U) could become a shortcut to it.
+Bigger, worth it:
+- **Outposts that feel lived in** (test features): 0.23 has wandering traders visiting outposts, shoppers at counters, guards on duty
+  and raids that ransack houses. Outpost couriers can ride on the game's own traders instead of spawning ours; outpost history can record
+  a ransacked house and a guard who held the gate.
+- **World states** (`AddWorldState`): TWR could claim a few states the vanilla dialogue already checks ("player killed X") so the
+  game's own lines react to what TWR tracks, or new ones other mods (Dustlife, Realpolitik-style overhauls) can read.
+- **The data phase** (`IModDataPhase`, 0.23): add records at load time from the player's actual load order, like RadiantQuests does.
+  Town criers and gossip for modded factions and towns; titles for modded bosses; keepsakes for modded races. Today TWR's data is
+  compiled offline from the base game only.
+- **Translations:** Meitou 0.23 runs in all nine of Kenshi's languages. Translate TWR's interface (the U window, settings, notices and
+  F10 rows) first; the dialogue is far larger and comes later, if at all.
+- **The launcher's replacement list:** the launcher now suggests Meitou replacements and compatibility patches for RE_Kenshi mods and can
+  subscribe to them. Ask to have TWR listed where it fits (and as endorsed, see "Endorsed by the launcher" above).
+- **Shown-text, effects and glow hooks** (0.23): small touches, e.g. a faint glow on a keepsake, a named outlaw's name tinted on screen.
+
+## New org mods (2026-11-25: Kenshi Races, Bathhouse, Way of the Fist, Husbandry, Wildlife)
+None clash with TWR. Worth doing, or borrowing the idea of (never the code):
+- Per-mod platoon tags: Kenshi Races writes `Platoon.ModTags[modId]`; TWR's rivals and crews use the single shared `Platoon.ModTag`
+  (Bathhouse does too). Move to `ModTags` by reflection where the client has it, keeping `ModTag` as the fallback, so no other mod can
+  overwrite our tag and lose a rival after a load. Needs a world test (a rival found again after a load by its ModTags key).
+- Race recruits (Kenshi Races, Beep Tofuson) join an ordinary player squad, so the squad record, keepsakes and titles already cover them.
+  Later, if the races catch on (BeatTheCount plans to use them): a few lines that notice one in the squad, only where lore fits.
+- Bathhouse customers (Drifters, traders, bounty hunters, Shek duelists) are held by that mod: check in a play test that lookouts and
+  "Ask for news" leave them alone, and that a bounty-hunter customer isn't taken for one of our crews.
+- Kenshi Races' "introducer at the bar, for a fee" has the same shape as Kindness remembered (a person with a home ground you go to);
+  its docs/depending-on-kenshi-races.md, with a skill for dependent mods, is a good pattern for our MODDER_API.md.
+- Way of the Fist: gauntlets fight as Martial Arts. If titles ever count unarmed kills, gauntlet kills should count too.
+- Wildlife's birds are client-side only (not world characters): nothing for lookouts or rivals to react to.
+
+## Promised to other modders (built, API version 6: ships in the next build)
+- **`LeaveAlone` by lasting id** (RivalryCore#25): another mod's named leader stays off the rival list even when renamed. API version 6.
+- **`StrikableAfter(outlaw)` and a "not now" answer** (RivalryCore#59 decision 17, #126): when an outlaw may be struck (known to the
+  squad, and 7 game days since they rose or a successor took over), at most once per 30 game days, and "not now" while wounded, dead,
+  jailed, the player's, or in a story under way. Dustlife's bridge asks TWR instead of guessing.
 
 ## Meitou 0.22.2 hooks for the fundamentals (2026-11-24; in the 0.22.2 nightlies, not in 0.22.1)
 Each behind a check of the client, so 0.22.1 and older play as before. Most useful first:

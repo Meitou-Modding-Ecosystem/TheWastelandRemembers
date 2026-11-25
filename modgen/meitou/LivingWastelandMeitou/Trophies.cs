@@ -39,8 +39,21 @@ public static class Trophies
                     slot = ctor.Invoke([Section, NeckSlot, 2, 2, x, y]);
             }
             if (slot is null) { c.Log("trophies: the engine's slot type changed; no neck slot"); return; }
-            method.Invoke(c, [slot]);
-            c.Log($"trophies: neck slot added at {x},{y}");
+            try
+            {
+                method.Invoke(c, [slot]);
+                c.Log($"trophies: neck slot added at {x},{y}");
+            }
+            catch (TargetInvocationException e) when (e.InnerException is ArgumentException taken
+                && taken.Message.Contains("is taken by section", StringComparison.Ordinal)
+                && slotType.GetProperty("Secondary") is { CanWrite: true } secondary)
+            {
+                // another mod already owns the neck slot (NUE's inventory registers "nue.neck" and hides it): ours becomes a second neck
+                // section (Meitou 0.23 ModSlot.Secondary), still shown at our place, that takes trophies when they're dragged into it
+                secondary.SetValue(slot, true);
+                method.Invoke(c, [slot]);
+                c.Log($"trophies: another mod has the neck slot ({taken.Message}); ours added as a second neck section at {x},{y}");
+            }
         }
         catch (Exception e)
         {
