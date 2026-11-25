@@ -170,6 +170,7 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
         RivalOffers.RegisterUi(r);
         PrisonerMenu.Register(r);
         OutpostTownPanel.Register(r, LwMod.Log);
+        PanelLines.Register(r, LwMod.Log);
 #endif
         toggle = r.RegisterAction("toggle", _ => open = !open);
         close = r.RegisterAction("close", _ => open = false);

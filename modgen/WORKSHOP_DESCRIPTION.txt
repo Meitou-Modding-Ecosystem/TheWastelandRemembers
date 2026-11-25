@@ -1,67 +1,80 @@
 [h1]The Wasteland Remembers[/h1]
 [i]Towns talk, outlaws react, your squad keeps its own story.[/i]
 
-The Wasteland Remembers is meant as [b]vanilla-plus[/b]: the Kenshi you know, with a world that notices you. No new super weapons, no new races, no rewritten factions. Just more life, more memory and more consequences, written to fit the lore.
+[b]Vanilla-plus[/b]: the Kenshi you know, with a world that notices you. No super weapons, no new races, no rewritten factions. More life, more memory and more consequences, written to fit the lore.
 
-[b]Nearly every part of this mod can be switched off.[/b] Open the [b]Squad record[/b] window (press [b]U[/b], or the button near the top right) and go to its [b]Settings[/b] tab: features have On/Off buttons (search them by typing, hover over one to see what it does), and a single slider sets how much of the added talk you hear, from all of it down to none. One click on [b]Record only[/b] turns everything off except your squad's record. Changes apply at once and are kept between sessions. (The same settings are also under Esc > Settings > Mods.)
+[b]Nearly everything can be switched off.[/b] Press [b]U[/b] for the Squad record window and open [b]Settings[/b]: every feature has a switch (search by typing, hover for what it does), one slider sets how much of the new talk you hear, and [b]Record only[/b] turns everything off except your squad's record. (Also under Esc > Settings > Mods.)
 
-[b]Early version.[/b] It has been play tested, but by few people so far: expect rough edges. [b]Feedback and bug reports are very welcome[/b]: tell me what you liked, what felt off and what broke (see [b]Reporting a bug[/b] below). Every report helps.
+[b]Early version:[/b] play tested, by few people so far. Feedback and bug reports are very welcome (see the end).
 
 [h2]Your squad's story[/h2]
 [list]
-[*][b]Squad record[/b] (press [b]U[/b]): kills by faction, knockouts, limbs taken and lost, damage, fights won, last stands, distance walked, ridden and sailed, crafting, and hours on every kind of work.
-[*][b]75 titles[/b] from real deeds: the Hard Hand, Bonepicker, the Headsman, the Walker... Kill the Holy Lord Phoenix and you become [b]Narko[/b].
-[*][b]Factions react to your titles[/b]: some admire, some fear, some despise and won't hire you. An admiring barman may give you a drink on the house.
-[*][b]History[/b] and [b]the Fallen[/b]: who died, where, who killed them, whether they were avenged, and an epitaph. [b]Save as text[/b] keeps it all.
-[*][b]Notices[/b] for skill levels and faction standing (+3 green, -3 red). Your people mourn the fallen by name, and grieve for days.
+[*][b]Squad record:[/b] each character's kills by faction, knockouts, limbs taken and lost, fights won, last stands, distance walked, ridden and sailed, and time spent on every kind of work.
+[*][b]Titles[/b] earned from real deeds (the Hard Hand, Bonepicker, the Headsman, the Walker...) and named kills: kill the Holy Lord Phoenix and you become [b]Narko[/b]. Factions react to your titles by their own nature.
+[*][b]History[/b] and [b]the Fallen[/b]: who died, where, who killed them, whether they were avenged, an epitaph each. Save it all as text.
+[*][b]Keepsakes:[/b] when someone falls, a squadmate keeps "Keepsake of <name>", which tells their story. Right-click it and the holder says a line for them.
+[*][b]Notices[/b] for skill levels and for a faction's standing with you rising or falling.
 [/list]
 
 [h2]A world that talks[/h2]
 [list]
 [*]Thousands of new lines, checked against the lore, for townsfolk, bosses and factions vanilla barely voices.
-[*][b]Bar talk[/b], [b]town criers[/b] with the real news of your world, [b]lookouts[/b] who call out hostiles by name, and rumours about what actually happened: who you killed, which outlaw took a beating, which town is at war. News stays near where it happened.
-[*][b]The Atlas[/b]: the places you know and the people talked about, filled by the gossip your squad really overhears. Every faction you've met, how it stands with you and its own title for you (from Heathen to The Devil). With Meitou 0.19, each person's page shows their face.
+[*][b]Bar talk[/b], [b]town criers[/b] calling out the real news of your world, and [b]rumours[/b] about what actually happened.
+[*][b]Lookouts[/b] call out hostiles by name; a squad that grieves for days after a death.
+[*][b]The Atlas:[/b] places and people you've heard of, filled by gossip you really overhear, with faces (Meitou 0.19+) and how every faction you've met stands with you.
+[*][b]Ask for news:[/b] right-click someone in a town (Meitou 0.20.2+) and they tell you the biggest news that has reached them.
+[*][b]News from other mods:[/b] when another mod reports a town falling or an upset in the arena, people near it talk about it.
 [/list]
 
-[h2]Rivals: the ones who got away[/h2]
-Win a fight and leave someone alive, and they may not let it go. The survivor, the actual person your squad beat, takes a new name for what you did to them: [i]Hollin One-Arm[/i], [i]Tesk Crutch[/i], [i]Mara the Unbowed[/i]. Once you've walked away, word reaches you that they crawled off and swore to come back.
-[list]
-[*]A day or two later they come [b]hunting your squad[/b], across the map, a little stronger each time. One who lost a leg comes back on an iron leg.
-[*]Beat them and they may get away again. Lose, and they'll boast about it in every bar.
-[*]Kill them or put them in chains to end it for good.
-[*]Townsfolk near a rival talk about them by name, the Atlas keeps their story, and your History and Recap note every turn.
-[/list]
-With no rival about, your next won fight that leaves someone notable alive always makes one. With one about, now and then more, at most three at a time.
+[h2]Rivals and pursuers[/h2]
+Win a fight and leave someone alive, and they may come back: renamed for what you did ([i]Hollin One-Arm[/i]), stronger each time, talked about in town, listed in the Atlas, and with something to say when they find you. Lose to one and they'll boast about it.
 
-[h2]Outlaws and work[/h2]
+[h2]Outlaws, crime and work[/h2]
 [list]
-[*][b]36 named outlaws[/b] who roam their own ground (when one falls, someone from their gang takes over a few days later under a new name, with a backstory and a bounty of their own), with contracts, bounties that grow while they raid, and pay that rises with the distance. Finished contracts warm the faction that posted them (up to friendly, never allied).
-[*][b]Quests and errands[/b] from townsfolk, [b]alms and offerings[/b] for the Empire's poor, Okran's temple or the Anti-Slavers, and [b]town heat[/b]: towns remember your crimes, and it fades with time.
+[*][b]36 named outlaws[/b] with contracts and bounties that grow while they raid. When one falls, someone from their gang takes over under a new name. Hurt their people and they lie low, lick their wounds, or send men after you.
+[*][b]Town heat:[/b] towns remember your crimes and it fades with time. [b]Stolen goods[/b] are missed (0.21): seen, at once; unseen, half a day later. Push a town too far and it hires [b]bounty hunters[/b] who track you down.
+[*][b]Quests and errands[/b] from townsfolk, and [b]alms and offerings[/b] that warm a faction towards you.
 [*][b]Trophies and keepsakes[/b] in a new neck slot.
-[*][b]Bounty hunters[/b]: make a town hunt you and it hires a crew to bring you in. They follow you across the map and attack. Beat them and one carries a warrant with your squad's name on it. Hurt a named outlaw's people and they may send men after you too.
-[*][b]Squad roles[/b] (Meitou 0.19): give a squad a routine from the game's own NPC AI (guard your base, patrol, rest, wander) or have it [b]escort[/b] another squad. Your orders always come first.
+[*][b]Test features, off by default[/b] (search "test" in Settings): moving outlaw camps, harassment raids, marks on the world map, History saying why a faction turned, outpost history, prisoner cases and deals, Western Hive envoys, recruiting beaten rivals and more. Try them if you like; reports welcome.
 [/list]
 
 [h2]Requirements and install[/h2]
 [list]
-[*][b]MeitouClient 0.17.3 or later[/b] (0.19 or 0.20 recommended). Subscribe, then tick [b]LivingWasteland[/b] (the working name) in the Meitou launcher, below your other mods.
-[*]Nearly every feature can be switched off in the Settings tab (press U). New game recommended.
-[/list]
-
-[h2]Reporting a bug[/h2]
-Quit Meitou, then send [b]log.txt[/b] from %LOCALAPPDATA%\Meitou\versions\<your version> in the comments or on Discord, with a few words on what happened. (The log is replaced the next time Meitou starts.) Press F10 and pick "Wasteland Remembers: squad record" to see which build you have.
-
-[h2]Known in this version[/h2]
-[list]
-[*]The neck slot has no label yet (Meitou's slot API has none).
-[*]Moving outlaw camps and harassment raids are still in testing and [b]off by default[/b].
-[*]Rivals, bounty hunters, outlaw reprisals and outlaw successors are new: on by default, and each can be switched off in Settings if anything looks wrong.
+[*][b]MeitouClient 0.17.3 to 0.23 (0.23 recommended).[/b] Faces and squad roles need 0.19; stolen goods and the test features need 0.21; right-clicking keepsakes and warrants needs 0.20.2.
+[*]Subscribe, then tick [b]LivingWasteland[/b] in the Meitou launcher, [b]below[/b] your other mods.
+[*]New game recommended: in an existing save your record starts from zero.
 [/list]
 
 [h2]Plays well with[/h2]
-[b]Recap[/b] (our titles, last stands and more join its story), [b]Execution[/b] and [b]Brutality[/b] (every finishing blow and severed limb counts), [b]Guild & Quests[/b], [b]Raid Commander[/b], [b]Quest Log & Town Map[/b], [b]Meitou Transport[/b] and [b]Kenshi Ultimate Overhaul[/b] (its armies march for real; our raids step aside). With [b]Landmark Banners[/b] the Atlas lists what each town you visited has (a bar, a doctor, a police station). With [b]TimeLight Map[/b], both sit top right by default: move the map (console: topcam corner bottom-right) or our button (Settings > Squad record button position).
+[list]
+[*][b]Proving Grounds for Meitou:[/b] arena bouts are sport (no heat, no rivals from the ring); wins in the pit become news and get a victory line.
+[*][b]Recap:[/b] titles, last stands, avenged squadmates, bounty hunters and more appear in its "Previously on".
+[*][b]Rivalry Core[/b] (The Ashen Hand and others): one hostile party after you at a time, whichever mod sends it.
+[*][b]Fiefdom[/b] and other town mods: their townspeople and guards stay out of your squad record, fights and rivals.
+[*][b]Kenshi Ultimate Overhaul:[/b] its armies march for real and your lookouts know an army from a patrol; our small raids step aside.
+[*][b]Guild & Quests[/b], [b]Raid Commander[/b], [b]Quest Log & Town Map[/b]: ranks, seals, beaten raids and our outlaws show up where they belong.
+[*][b]Execution[/b], [b]Brutality[/b], [b]Meitou Transport[/b]: finishing blows, severed limbs, rides and voyages all count in the record.
+[/list]
 
-[h2]Credits[/h2]
-[b]VlcekM[/b] and the MeitouClient contributors; [b]BeatTheCount[/b] (Recap, Quest Log & Town Map, Raid Commander, Guild & Quests, KUO); [b]Jame[/b] (Execution), [b]mattresspad[/b] (Meitou Transport), [b]dxseba[/b] (Brutality). Ideas, not code: [b]Walnuts[/b]' Level Up Notifications, [b]Azamat97El[/b]'s Social lives and Live Streets, the [b]Squad Autonomy[/b] plugin. The Kenshi Wiki, kenshimap.com, and [b]Lo-Fi Games[/b]. No code from other mods is included.
+[h2]Reporting a bug[/h2]
+Quit Meitou (before starting it again: the log is kept only until then), run [b]Save logs for a bug report.bat[/b] from the download (or grab log.txt from %LOCALAPPDATA%\Meitou\versions\<version>), and post the zip in the comments or on Discord with a few words and a screenshot.
 
-Made largely with Claude Code (generative AI).
+[h2]Known in this version[/h2]
+[list]
+[*]The neck slot has no label yet (Meitou's slot API has none). It sits under the weight box; if it overlaps anything on your screen, move it with the two "Neck slot position" settings (restart after).
+[*]A squad running at very high Athletics can outpace bounty crews: they walk.
+[/list]
+
+[h2]Made with generative AI[/h2]
+Made largely with Claude Code.
+
+[h2]Credits and thanks[/h2]
+[list]
+[*][b]VlcekM and the MeitouClient contributors[/b], and the Meitou Discord.
+[*][b]BeatTheCount[/b], for Recap, Proving Grounds for Meitou, Quest Log & Town Map, Raid Commander, Guild & Quests and Kenshi Ultimate Overhaul, and for the hooks they added when asked.
+[*][b]Mazal Tofuson[/b], for Rivalry Core and the 3D models of the Shek charm and Holy Nation beads worn at the neck (test feature "Visible neck charms").
+[*][b]Jame[/b] (Execution), [b]mattresspad[/b] (Meitou Transport), [b]dxseba[/b] (Brutality), and the Meitou Worldbuilding group.
+[*]Ideas, not code: Walnuts' Level Up Notifications, Azamat97El's Social lives and Live Streets, the Squad Autonomy plugin.
+[*]The [b]Kenshi Wiki[/b] editors and [b]kenshimap.com[/b]; [b]Lo-Fi Games[/b], for Kenshi.
+[/list]
+No code from other mods is included.

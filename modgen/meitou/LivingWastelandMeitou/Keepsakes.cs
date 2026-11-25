@@ -94,8 +94,11 @@ public sealed class KeepsakeBook(PopulationData? data) : ITickSystem, IModSaveDa
         return rec.History.Count(h => h.Text.StartsWith(lead, StringComparison.Ordinal) && h.Hours <= f.Hours + 0.01 && f.Hours - h.Hours <= 1);
     }
 
-    static string? FallenKey(ItemInstance item) =>
-        ItemUses.Tag(item) is { } tag && tag.StartsWith(Provenance, StringComparison.Ordinal) ? tag[Provenance.Length..] : null;
+    static string? FallenKey(ItemInstance item) => FallenKeyOf(ItemUses.Tag(item));
+
+    /// <summary>The fallen squadmate a keepsake's tag names, or null (an untagged keepsake, or another mod's tag).</summary>
+    internal static string? FallenKeyOf(string? tag) =>
+        tag is not null && tag.StartsWith(Provenance, StringComparison.Ordinal) ? tag[Provenance.Length..] : null;
 
     static void SetName(ItemInstance item, string name)
     {
