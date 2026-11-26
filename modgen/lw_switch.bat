@@ -59,7 +59,7 @@ if exist "%BACKUP%\kenshi" (
 ) else (
   echo No saved Kenshi setup found: rebuilding the Kenshi build. Your mod list is NOT restored, so tick the mods again in Kenshi's launcher.
   call :clear
-  python "%~dp0build_mod.py" "%KENSHI%" --install --with-lua
+  python "%~dp0build_mod.py" "%KENSHI%" --install
   if errorlevel 1 goto :failed
 )
 >"%BACKUP%\current.txt" echo kenshi

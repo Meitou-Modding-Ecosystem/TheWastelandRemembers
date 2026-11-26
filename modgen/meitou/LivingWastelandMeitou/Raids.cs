@@ -90,11 +90,17 @@ public sealed class RaidsSystem(IReadOnlyList<RaidCode> raids, PopulationSystem?
 
     public readonly Published Shown = new();
 
+    World? registeredWorld;
+
     public void SlowWorld(World world)
     {
         Latest = this;
         if (Published.Due(world.Tick, 16)) Shown.Set(() => Summary(null));
-        byWorld.AddOrUpdate(world, this);
+        if (!ReferenceEquals(registeredWorld, world))
+        {
+            byWorld.AddOrUpdate(world, this);
+            registeredWorld = world;
+        }
         if (failed || !LwMod.Settings.HarassmentRaids || world.Tick % PassEvery != 280 || population is null || data is null || KuoWars) return;
         try
         {

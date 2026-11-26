@@ -66,6 +66,10 @@ public static class NewsAskRules
 
     public const string Caption = "Ask for news";
 
+    // Preserve the groups that faction_voices.json intentionally leaves without TWR lines.
+    internal static bool NoConversationNews(string faction) => faction is "Thrall Masters" or "Skeleton Legion" or "Second Empire Exile"
+        or "Fishmen" or "Skimmers" or "Okranites" or "Medics Guild" or "Cannibals" or "Fogmen";
+
     static readonly string[] Leads = ["Heard this: ", "Word is, ", "They're saying ", "Not long ago: "];
     static readonly string[] Nothing = ["Nothing much, these days.", "Quiet, lately.", "Haven't heard a thing.", "Same as ever."];
     static readonly string[] AboutYou = ["You'd know better than me: ", "Everyone's on about your lot. ", "That was you, wasn't it? ",

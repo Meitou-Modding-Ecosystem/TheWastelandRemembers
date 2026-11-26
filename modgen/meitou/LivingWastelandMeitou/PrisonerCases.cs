@@ -55,7 +55,7 @@ public sealed partial class PrisonerCases(PopulationData? data, IReadOnlyList<Ca
         context.AddSystem("lw-prisoner-cases", ctx => new PrisonerCases(ctx.Data, outlaws), SystemAnchor.End);
         if (BuildDeathWatch() is { } watcher)
             context.AddSystem("lw-prisoner-deaths", _ => (ITickSystem)Activator.CreateInstance(watcher)!, SystemAnchor.End);
-        context.AddDebugCommand("Wasteland Remembers: prisoner cases",
+        context.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: prisoner cases"),
             _ => LwMod.Settings.PrisonerCases ? Volatile.Read(ref summary) : "prisoner cases are off", hasField: false);
     }
 
@@ -103,22 +103,35 @@ public sealed partial class PrisonerCases(PopulationData? data, IReadOnlyList<Ca
             cage.Id, anchor is null ? "" : NewsSystem.NodeOf(anchor), place, world.GameHours, warrant);
     }
 
+    World? registeredWorld;
+
     public void SlowWorld(World world)
     {
         StartDealWorld(world);
-        if (world.Tick % 150 != 115 || !LwMod.Settings.PrisonerCases || LwDeeds.For(world) is not { } deeds) return;
-        systems.AddOrUpdate(world, this);
+        if (world.Tick % 150 != 115) return;
+        bool casesOn = LwMod.Settings.PrisonerCases, leadersOn = LwMod.Settings.FallenLeaderStories;
+        if (!casesOn && !leadersOn || LwDeeds.For(world) is not { } deeds) return;
+        if (casesOn && !ReferenceEquals(registeredWorld, world))
+        {
+            systems.AddOrUpdate(world, this);
+            registeredWorld = world;
+        }
         var held = new HashSet<string>(StringComparer.Ordinal);
         var table = world.Characters;
         foreach (var cage in world.Fixtures.All)
         {
             if (cage.Kind != FixtureKind.Cage || cage.Owner != world.Player.Faction || cage.Occupant.IsNone ||
-                !table.TryResolveNext(cage.Occupant, out int slot) || table.Cold(slot) is not { Medical: { Dead: false } } captive ||
-                Observe(world, deeds, cage.Occupant, captive, cage) is not { } found) continue;
+                !table.TryResolveNext(cage.Occupant, out int slot) || table.Cold(slot) is not { Medical: { Dead: false } } captive) continue;
+            if (leadersOn && !captive.IsPlayer && captive.Animal is null &&
+                world.Uniques.RecordOf(cage.Occupant) is { } leader && LeaderStories.Tracks(leader) &&
+                PlayerCage(world, cage.Occupant, captive, cage) is { } site)
+                LeaderStories.Confirm(world, deeds, leader, captured: true, site.Position);
+            if (!casesOn || Observe(world, deeds, cage.Occupant, captive, cage) is not { } found) continue;
             cases[found.Record] = found;
             held.Add(found.Record);
         }
 
+        if (!casesOn) return;
         ConfirmNativeClaims(world, deeds);
         foreach (var entry in cases.Values.ToArray())
         {

@@ -23,8 +23,12 @@ public static class PlatoonFates
     internal static bool Available => observer is not null && kindOf is not null && goneOf is not null && platoonOf?.PropertyType == typeof(Platoon);
 
     /// <summary>The emitted observer system's type, or null on a client without the notice.</summary>
-    internal static Type? BuildWatch() => Available
-        ? ObserverEmit.Build(observer!, "PlatoonChanged", typeof(PlatoonFates).GetMethod(nameof(Changed))!, "SquadFateWatch") : null;
+    internal static Type? BuildWatch() => watch.Value;
+
+    // Both hooks use the same registered system. A second idle system still costs work in Meitou's tick driver.
+    static readonly Lazy<Type?> watch = new(() => Available
+        ? ObserverEmit.Build(observer!, "PlatoonChanged", typeof(PlatoonFates).GetMethod(nameof(Changed))!, "SquadFateWatch", PlatoonRetention.Hook)
+        : null);
 
     internal static void Register(ModContext c)
     {
@@ -42,7 +46,9 @@ public static class PlatoonFates
     {
         try
         {
-            if (kindOf!.GetValue(notice)?.ToString() != "Removed" || platoonOf!.GetValue(notice) is not Platoon platoon) return;
+            if (kindOf!.GetValue(notice)?.ToString() is not { } kind || platoonOf!.GetValue(notice) is not Platoon platoon) return;
+            NewsSystem.For(world)?.BathhouseParty(world, platoon, kind);
+            if (kind != "Removed") return;
             if (Pursuit.ReadTag(platoon) is not { } tag || !Pursuit.IsTwrTag(tag)) return;
             string gone = goneOf!.GetValue(notice)?.ToString() ?? "Other";
             if (tag!.StartsWith("lw:rival:", StringComparison.Ordinal) && RivalsSystem.For(world) is { } rivals &&

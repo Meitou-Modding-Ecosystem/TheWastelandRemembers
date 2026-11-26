@@ -16,8 +16,10 @@
     <Compile Include="../LivingWastelandMeitou/Deeds.cs" Link="Deeds.cs" />
     <Compile Include="../LivingWastelandMeitou/AidUseWatch.cs" Link="AidUseWatch.cs" />
     <Compile Include="../LivingWastelandMeitou/ObserverEmit.cs" Link="ObserverEmit.cs" />
+    <Compile Include="../LivingWastelandMeitou/FightResume.cs" Link="FightResume.cs" />
     <Compile Include="../LivingWastelandMeitou/Notoriety.cs" Link="Notoriety.cs" />
     <Compile Include="../LivingWastelandMeitou/StatsPanel.cs" Link="StatsPanel.cs" />
+    <Compile Include="../LivingWastelandMeitou/UiLanguage.cs" Link="UiLanguage.cs" />
     <Compile Include="../LivingWastelandMeitou/RecapLink.cs" Link="RecapLink.cs" />
     <Compile Include="../LivingWastelandMeitou/ArenaLink.cs" Link="ArenaLink.cs" />
     <Compile Include="../LivingWastelandMeitou/TransportLink.cs" Link="TransportLink.cs" />

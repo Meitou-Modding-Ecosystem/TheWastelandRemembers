@@ -23,6 +23,12 @@ public sealed class RecordHotkeyWorldTests
         return (ModContext)ctor.Invoke([mod, registry, new GameDatabase(), W.Data([]), (Func<World?>)(() => null), null]);
     }
 
+    [Fact]
+    public void New_Wasteland_settings_prefer_the_native_record_key()
+    {
+        Assert.True(new LwSettings().NativeRecordHotkey);
+    }
+
     [Theory]
     [InlineData("N")]
     [InlineData("Off")]

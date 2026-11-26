@@ -45,7 +45,7 @@ def main():
             "* Event reactions (re_): fail an assassination near a guard; carry off a captive in front of a witness; steal in view of a shopkeeper.",
             "* Bribery and tolls (gb_): carry a backpack past Dust Bandits or a Holy Nation paladin as a woman alone, then with a man.",
             "* Boss voices (bv_): talk to Esata, Bayan, Phoenix, Tengu or Grim at low and high relations (Bayan's alliance menu must stay reachable).",
-            "* Lua body module (optional): set body = true in lw/config.lua; get a squad member to lose a limb or bleed.", ""]
+            ""]
     out += ["## Play Test Squad starts (pick one on the new-game screen: Hub, Ashlands, Gate, Drifter's Last (Dust Bandits))", "",
             "Four characters (fighter, medic, scout, crafter) with 95 in every stat starting together (Hub by default, or Dome II, Flotsam Village or Drifter's Last for the copies) with 15,000 cats each, bandages, food and 6 Raw Meat. Locations cannot differ per member in a start, so use the Cheat Menu teleport:",
             "",

@@ -26,7 +26,7 @@ internal sealed partial class HiveEnvoys(PopulationData data, PopulationSystem p
     {
         if (!Couriers.Available) return;
         context.AddSystem("lw-hive-envoys", ctx => ctx.Find<PopulationSystem>() is { } pop ? new HiveEnvoys(ctx.Data, pop) : null!, SystemAnchor.End);
-        context.AddDebugCommand("Wasteland Remembers: Hive envoy", _ => LwMod.Settings.HiveEnvoys ? Volatile.Read(ref shown) : "off", hasField: false);
+        context.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: Hive envoy"), _ => LwMod.Settings.HiveEnvoys ? Volatile.Read(ref shown) : "off", hasField: false);
     }
 
     public void SlowWorld(World world)

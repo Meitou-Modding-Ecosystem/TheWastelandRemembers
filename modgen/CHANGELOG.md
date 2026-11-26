@@ -2,8 +2,70 @@
 
 ## Next build (not built yet)
 
+## Build 20261126bs (beta, not on Steam)
+
+- Newer Meitou builds can remember a known outlaw successor even with Growing bounties switched off.
+
+- The squad record can pick up a saved opponent who appears a little after the squad loads.
+
+- Character-panel titles join Meitou’s display-text system only when enabled at startup.
+
+- The What’s active page uses the interface catalogue for feature names and status messages.
+
+- Tracking characters by their lasting identities takes less work on supported Meitou builds.
+
+- Titles in character names (test) can show a squadmate's latest title in their own panels on newer Meitou builds.
+
+- Live Atlas portraits (test) can show the current face of a known person or rival while they are nearby.
+
+- On newer Meitou builds, an outlaw successor keeps their TWR identity if their name or squad changes.
+
+- On newer Meitou builds, the squad and its enemies skip repeat victory lines when the game has already called for one.
+
+- Visiting traders and couriers wait for someone from your squad to hear their outpost news.
+- Outpost defence record (test) remembers the raids your squad fought and who fell during recent defences.
+- Outpost defences credit the squad for its own fighting and casualties.
+- Animal companions remembered (test) gives fallen squad animals a memorial and seasoned companions a title.
+- Witnesses remember faces (test) lets someone who saw a crime recognise the culprit on their return to town.
+- Squadmates remember each other (test) adds occasional words for a friend they lost or avenged.
+- Anniversaries (test) remember the squad’s first milestones and its fallen friends when another year comes round.
+- Fallen leaders remembered (test) records verified deeds and gives their old towns weeks of news about your squad.
+- Leader news only credits the squad for a fatal blow it was seen to land.
+- Light, Standard and Full in Squad Record Settings switch between lighter checks, the usual features and the preview features.
+- Archived the first Lua test notes and linked them to the current Meitou play-test guide.
+- Outpost histories share one pass over nearby people when several settlements are being watched.
+- The Squad Record keeps a fight’s progress when you save and load before it ends.
+- What’s active in the Squad Record shows which features are on and why an enabled feature may be unavailable.
+
+## Build 20261126br (beta, not on Steam)
+- Couriers retain their route when a companion mod uses the shared platoon tag.
+- Daily playtest summaries restart their counts when you load a world.
+- Long playtest logs keep their first feature events as well as the most recent ones.
+- History names only the squadmates who actually went down in a fight.
+- Silent factions stay quiet when asked for news through the character menu.
+- A few lines put right: "Honour" and "adviser", the old empire's famine told as the rumour it is, and no promised deadline for
+  Grayflayer Village.
+- Prisoner news can reach the squad when all other sources of news are off.
+- The escort menu keeps the named target when a different squad leaves the roster.
+- Bodyguards and base defenders only count as your hired blades when their contract serves your faction.
+- Couriers, Western Hive envoys, prisoner recovery parties and escorts can start on Meitou 0.23.2.
+
+## Build 20261126bq (beta, not on Steam)
+- On Meitou clients with the new Controls hook, the Squad Record key is rebindable by default.
+- Keepsake heirs can show Grieving, and returning rivals can show Old wound. The two status lines leave stats alone.
+- The Atlas keeps a page for people the squad helped. History remembers a reunion or a confirmed death.
+- A person who remembers your help may pass on nearby news or give what they can spare.
+- Someone you helped may recall the deed when your squad comes back to where they settled.
+- Kindness remembered can keep track of where someone settled after the squad helped them.
+- Kindness remembered keeps the story of a prisoner the squad verifiably releases from another faction’s cage.
+- When you talk to a townsperson, you can ask “Heard any news?” on Meitou clients that support conversation replies.
+- Cage entry and release now appear in the play-test journal when Meitou reports them.
+- Kindness remembered begins keeping the names and deeds of strangers the squad tends in a life-threatening moment. Thanks to Lodred for the idea.
+- Bathhouse patrons are left out of lookout calls and town news menus. Added world checks for Bathhouse parties and Kenshi Races recruits.
+- **Active pursuits stay on the road.** Bounty crews, outlaw reprisals and hunting rivals keep their party when Meitou would otherwise remove it between loaded areas.
+
 ## Build 20261125bp (beta, not on Steam)
-bn plus the performance changes (Steam hotfix bo) and Codex's Tier 1 batch:
+Everything in bn and the bo performance hotfix, plus:
 - **Collect bug-report logs on Linux and macOS.** The release includes a terminal command that bundles Meitou and recent TWR logs.
 - **Limb losses reach the squad record when they happen.** On current Meitou, the record gives credit for a new loss once and leaves
   prosthetic changes out of that tally.

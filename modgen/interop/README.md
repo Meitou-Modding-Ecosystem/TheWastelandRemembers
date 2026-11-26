@@ -73,3 +73,20 @@ Useful to anyone moving squads or tracking characters. Checked in play, but engi
 ## Contact
 
 The Wasteland Remembers' thread on the Meitou Discord, or issues here.
+
+## Interface translations
+
+Both helpers load `ui_locales.json` beside their DLL on clients with Meitou's language catalogue. The file is shared between the builds. Add one JSON object per Kenshi locale and use the exact English caption, option or hint as its key. For example, a `de` translation can supply common German text and `de_DE` can override particular phrases. Blank or missing entries fall back to the general language and then the game's catalogue or written English.
+The **What’s active** page also reads this catalogue. Use the displayed English feature name or state as its key.
+For warnings that name a missing hook or setting, keep the `{0}` placeholder, for example in `Off, turn on {0}`.
+The load-time feature list in the log uses English so it is easy to search.
+
+Meitou uses the catalogue for authored node captions, menu entries, key actions and native settings. A manually rendered label can use `UiLanguage.Text` before display. Keep option values, IDs, player names, logs and save data as written. "F10" command captions share the catalogue. The skill notice uses the key `{0}   {1} {2}`, with the squad member, skill label and level as its arguments. A translation can reorder those placeholders. An invalid template falls back to the English pattern.
+
+[Meitou code-mod translation API](https://github.com/VlcekM/MeitouClient/blob/v0.23.2/docs/modding.md#settings-and-translations)
+
+## Optional Moonscript readout
+
+Moonscript 0.5 through 0.x can provide the optional dependency `pza.moonscript`. TWR registers the opt-in `twr.read` capability. A pack that declares it and receives the player's grant can call `twr.heat()`, `twr.hunters()`, `twr.news()`, `twr.rivals()` and `twr.titles()`. They return the immutable text already published for F10 or the squad record. The API is suitable for diagnostics and HUD readouts. Titles and news may still be empty while the new world publishes its first copy.
+
+[Moonscript 0.7.3](https://github.com/PZA-Mods/MeitouMoonscript/releases/tag/v0.7.3)

@@ -147,7 +147,10 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
                 // just went home)
                 bool beaten = !late && (p is null || p.Dead || lost);
                 if (p is not null && !p.Dead)
+                {
+                    PlatoonRetention.Release(world, p, tag);
                     Pursuit.ReleaseCrew(p, tag);
+                }
                 bool warrant = beaten && lost && Trophies.DropWarrant(world, p!.SquadId, crew.Town);
                 if (beaten) world.Post($"The bounty hunters {crew.Town} hired are finished.{(warrant ? " One of them carried a warrant with your squad's name on it." : "")}");
                 if (beaten) RecapLink.Moment($"The bounty hunters {crew.Town} hired were {(lost ? "beaten" : "wiped out")}.", crew.Town, 70);
@@ -155,6 +158,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
                 LwMod.Log($"bounty hunters: the crew from {crew.Town} is {(beaten ? "gone (beaten)" : "giving up")}");
                 continue;
             }
+            PlatoonRetention.Track(world, p, tag, PlatoonRetention.Kind.Crew, crew.SentHours, crew.SentHours + HunterRules.GiveUpAfter);
             Pursuit.Steer(world, p, players, BarkLines.Crew(crew.Town, (int)crew.SentHours));
             int i = crews.IndexOf(crew);
             crews[i] = crew with { X = p.Position.X, Z = p.Position.Y, Tagged = tagged };
@@ -326,6 +330,8 @@ public static class Pursuit
         && typeof(IDictionary<string, string>).IsAssignableFrom(map.PropertyType) ? map : null;
     static readonly PropertyInfo? modTag = typeof(Platoon).GetProperty("ModTag") is
         { CanRead: true, CanWrite: true, PropertyType: var type } property && type == typeof(string) ? property : null;
+
+    internal static string? SharedTag(Platoon platoon) => modTag?.GetValue(platoon) as string;
 
     internal static bool HasTags => modTags is not null || modTag is not null;
 
@@ -568,7 +574,10 @@ public static class Pursuit
 
     /// <summary>Steers a pursuer to the nearest player character. <paramref name="bark"/>: the line one of them says over their head
     /// (World.Bark) the first time they close in to attack; <paramref name="speakerName"/>: who says it (a rival), else whoever leads.</summary>
-    public static void Steer(World world, Platoon p, List<(float X, float Z)> players, string? bark = null, string? speakerName = null)
+    public static void Steer(World world, Platoon p, List<(float X, float Z)> players, string? bark = null, string? speakerName = null) =>
+        Steer(world, p, players, bark, speakerName, rivalCue: false);
+
+    internal static void Steer(World world, Platoon p, List<(float X, float Z)> players, string? bark, string? speakerName, bool rivalCue)
     {
         var target = Nearest(players, p.Position.X, p.Position.Y);
         if (p.State == PlatoonState.Unloaded)
@@ -627,6 +636,7 @@ public static class Pursuit
                     if (bark is not null && barked.GetOrCreateValue(world).Add(squad.Id) && Speaker(world, squad, speakerName) is { } who)
                     {
                         world.Bark(who, bark);
+                        if (rivalCue && d < 600f) StorySounds.Rival(world);
                         LwMod.Log($"barks: \"{bark}\"");
                     }
                 }

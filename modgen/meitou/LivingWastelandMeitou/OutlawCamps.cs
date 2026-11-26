@@ -284,7 +284,11 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
             if (p is null || p.Dead || late || lost)
             {
                 bool beaten = !late && (p is null || p.Dead || lost);
-                if (p is not null && !p.Dead) Pursuit.Release(p);
+                if (p is not null && !p.Dead)
+                {
+                    PlatoonRetention.Release(world, p, tag);
+                    Pursuit.Release(p);
+                }
                 book.Done(r);
                 parties.Forget(key);
                 if (beaten) RecapLink.Moment($"The men {o.Name} sent after your squad were cut down.", "the road", 70);
@@ -292,6 +296,7 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
                 continue;
             }
             claimed.Add(p.Id);
+            PlatoonRetention.Track(world, p, tag, PlatoonRetention.Kind.Reprisal, r.SentHours, r.SentHours + ReprisalRules.GiveUpAfter);
             Pursuit.Steer(world, p, players, BarkLines.Reprisal(o.Name, (int)r.SentHours));
             if (p.State == PlatoonState.Loaded && p.SquadId >= 0) squads[p.SquadId] = o.Index;
             book.Update(r, r with { X = p.Position.X, Z = p.Position.Y, Tagged = tagged });
@@ -499,6 +504,7 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
     void Roam(World world, PopulationData d, CampCode o, SuccessorCode sc)
     {
         if (world.Uniques.StateOf(sc.Character) != UniqueState.Alive) return;
+        MarkSuccessor(world, sc);
         Platoon? p = null;
         foreach (var x in world.Platoons.All)
             if (x is not null && !x.Dead && x.TemplateId == sc.Squad) { p = x; break; }
@@ -556,15 +562,27 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
         }
     }
 
-    /// <summary>Raises the live bounty on each placed successor to its grown price (never lowers one).</summary>
-    void RaiseSuccessorBounties(World world)
+    static void MarkSuccessor(World world, SuccessorCode successor)
+    {
+        if (!OwnedCharacterTags.Available) return;
+        var table = world.Characters;
+        if (world.Uniques.Find(successor.Character) is { Handle: var actor } && table.TryResolveNext(actor, out int slot) &&
+            table.Cold(slot) is { IsPlayer: false } cold && cold.RecordId == successor.Character)
+            OwnedCharacterTags.Mark(world, actor, "successor:", successor.Character);
+    }
+
+    /// <summary>Rebinds placed successors and, if enabled, raises their bounties to the grown price.</summary>
+    void UpdateSuccessorDetails(World world, bool growBounties)
     {
         var table = world.Characters;
         foreach (var o in outlaws)
         {
             if (o.Successor is not { } sc || !SuccessorActive(world, o.Index)) continue;
             if (world.Uniques.Find(sc.Character) is not { } u || u.Handle.IsNone || !table.TryResolveNext(u.Handle, out int s)
-                || table.Cold(s) is not { Bounties: { } ledger } || data?.Db.Find(sc.Character) is not { } record) continue;
+                || table.Cold(s) is not { } cold) continue;
+            if (!cold.IsPlayer && cold.RecordId == sc.Character)
+                OwnedCharacterTags.Mark(world, u.Handle, "successor:", sc.Character);
+            if (!growBounties || cold.Bounties is not { } ledger || data?.Db.Find(sc.Character) is not { } record) continue;
             int target = (int)Math.Round(record.GetInt("bounty amount") * (1 + SuccessorGrowth(world, o.Index)));
             foreach (var e in ledger.Entries)
             {
@@ -608,12 +626,21 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
     {
         Latest = this;
         LastWorld = world;
-        seenWorld = world;
+        if (!ReferenceEquals(seenWorld, world))
+        {
+            byWorld.AddOrUpdate(world, this);
+            seenWorld = world;
+        }
         if (Published.Due(world.Tick, 14)) { Shown.Set(() => Summary(null)); ShownSuccessors.Set(SuccessorSummary); }
-        byWorld.AddOrUpdate(world, this);
         if (blows.Count > 0) ApplyBlows(world);
         if (world.Tick % 30 == 7 && world.GameHours < GraceHours) Grace(world);
-        if (LwMod.Settings.GrowingBounties && world.Tick % PassEvery == 150) { RaiseBounties(world); RaiseSuccessorBounties(world); }
+        if (world.Tick % PassEvery == 150)
+        {
+            bool growBounties = LwMod.Settings.GrowingBounties;
+            if (growBounties) RaiseBounties(world);
+            if (growBounties || (LwMod.Settings.OutlawSuccessors && OwnedCharacterTags.Available))
+                UpdateSuccessorDetails(world, growBounties);
+        }
         if (WorldReady.TakeLoaded(world, "reprisals")) reprisalsNow = true;          // just loaded: place parties the save left out now
         if (LwMod.Settings.OutlawReprisals && (world.Tick % PassEvery == 250 || reprisalsNow) && population is not null && data is not null) Reprisals(world, population, data);
         if (LwMod.Settings.OutlawSuccessors && world.Tick % PassEvery == 290 && population is not null && data?.Biomes is not null)

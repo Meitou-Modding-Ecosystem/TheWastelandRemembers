@@ -15,13 +15,17 @@ internal sealed class Couriers(PopulationData data, PopulationSystem population)
 {
     const string Prefix = "lw:courier:";
     const double DispatchInterval = 24, JourneyHours = 72;
-    static readonly MethodInfo? spawn = typeof(PopulationSystem).GetMethod("SpawnPlatoon",
-        [typeof(World), typeof(int), typeof(string), typeof(int), typeof(Vector2), typeof(float), typeof(float), typeof(long)]);
+    static readonly Type[] spawnParameters =
+        [typeof(World), typeof(int), typeof(string), typeof(int), typeof(Vector2), typeof(float), typeof(float), typeof(long)];
+    static readonly MethodInfo? spawnWithPopulation = typeof(PopulationSystem).GetMethod("SpawnPlatoon", [.. spawnParameters, typeof(int)])
+        is { ReturnType: var result } expanded && result == typeof(int) &&
+        expanded.GetParameters()[^1] is { HasDefaultValue: true, DefaultValue: int } ? expanded : null;
+    static readonly MethodInfo? spawn = spawnWithPopulation ?? typeof(PopulationSystem).GetMethod("SpawnPlatoon", spawnParameters);
+    static readonly object? populationDefault = spawnWithPopulation?.GetParameters()[^1].DefaultValue;
     static readonly MethodInfo? hold = typeof(PopulationSystem).GetMethod("HoldPlatoon", [typeof(World), typeof(int), typeof(bool)]);
     static readonly MethodInfo? send = typeof(PopulationSystem).GetMethod("SendPlatoon", [typeof(World), typeof(int), typeof(Vector2?)]);
     static readonly ConstructorInfo? visit = typeof(PopulationSystem).Assembly.GetType("Meitou.Simulation.Ai.VisitTown")
         ?.GetConstructor([typeof(int), typeof(int), typeof(float)]);
-    static readonly PropertyInfo? tag = typeof(Platoon).GetProperty("ModTag");
     static readonly PropertyInfo? modSpawned = typeof(Platoon).GetProperty("ModSpawned");
 
     sealed record Trip(int Report, string Town, double Until)
@@ -34,8 +38,8 @@ internal sealed class Couriers(PopulationData data, PopulationSystem population)
     int orderedSquad = -1, orderedTown;
     List<(string Template, int Faction)>? templates;
 
-    internal static bool Available => spawn is not null && hold is not null && send is not null && visit is not null &&
-        tag is { CanWrite: true, PropertyType: var t } && t == typeof(string) &&
+    internal static bool Available => spawn?.ReturnType == typeof(int) && hold is not null && send is not null && visit is not null &&
+        Pursuit.HasTags &&
         modSpawned is { CanWrite: true, PropertyType: var m } && m == typeof(bool);
 
     internal static void Register(ModContext c)
@@ -49,7 +53,7 @@ internal sealed class Couriers(PopulationData data, PopulationSystem population)
         if (!Available || world.Tick % 60 != 49) return;
         if (trip is { } active)
         {
-            var party = world.Platoons.All.FirstOrDefault(p => p is not null && (string?)tag!.GetValue(p) == active.Tag);
+            var party = world.Platoons.All.FirstOrDefault(p => p is not null && Pursuit.ReadTag(p) == active.Tag);
             var town = OutpostMemories.For(world)?.CourierTowns(world).FirstOrDefault(x => x.Key == active.Town).Town;
             var news = NewsSystem.For(world);
             var report = news?.CourierReport(world.GameHours, active.Report);
@@ -78,7 +82,7 @@ internal sealed class Couriers(PopulationData data, PopulationSystem population)
         var target = outposts.CourierTowns(world).OrderBy(t => Vector2.DistanceSquared(source, Flat(t.Town.Position)))
             .ThenBy(t => t.Key, StringComparer.Ordinal).FirstOrDefault();
         if (target.Town is not { } destination || world.Platoons.All.Any(p => p is not null && !p.Dead &&
-            tag!.GetValue(p) is string owner && owner.StartsWith(Prefix, StringComparison.Ordinal))) return;
+            Pursuit.ReadTag(p) is { } owner && owner.StartsWith(Prefix, StringComparison.Ordinal))) return;
 
         next = world.GameHours + DispatchInterval;
         templates ??= SafeTraders(data).Where(t => data.Factions[t.Faction].Name is "Nomads" or "Traders Guild").ToList();
@@ -87,7 +91,7 @@ internal sealed class Couriers(PopulationData data, PopulationSystem population)
 
         if (Dispatch(world, population, faction, template, home, source) is not { } spawned) return;
         trip = new(candidate.Id, target.Key, world.GameHours + JourneyHours);
-        tag!.SetValue(spawned, trip.Tag);
+        if (!Pursuit.Mark(spawned, trip.Tag)) { End(world, spawned, "the party could not be marked"); return; }
         if (!Route(world, spawned, destination)) { End(world, spawned, "the route was refused"); return; }
         if (PlaytestLog.Enabled)
             PlaytestLog.Event(world, "courier", trip.Tag, "dispatched", $"report {trip.Report}, {candidate.Place} to {trip.Town} ({destination.Name})");
@@ -97,7 +101,10 @@ internal sealed class Couriers(PopulationData data, PopulationSystem population)
     internal static Platoon? Dispatch(World world, PopulationSystem population, int faction, string template, int home, Vector2 source, long money = 0)
     {
         if (!Available) return null;
-        int id = (int)spawn!.Invoke(population, [world, faction, template, home, source, 900f, 1600f, money])!;
+        object?[] args = spawnWithPopulation is null
+            ? [world, faction, template, home, source, 900f, 1600f, money]
+            : [world, faction, template, home, source, 900f, 1600f, money, populationDefault];
+        int id = (int)spawn!.Invoke(population, args)!;
         return id >= 0 ? world.Platoons.Find(id) : null;
     }
 

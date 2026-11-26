@@ -24,19 +24,26 @@ public static class NightlyHooks
     public static volatile IReadOnlyList<MapMark> Marks = [];
 
     // The menu captures the queue that belongs to the town centres it saw. A callback kept across a load can only write to the old queue.
-    internal sealed class AskSession((float X, float Z)[] towns)
+
+    internal sealed class AskSession((float X, float Z)[] towns, IReadOnlySet<int>? silentFactions = null)
     {
         internal readonly (float X, float Z)[] Towns = towns;
+        internal readonly IReadOnlySet<int>? SilentFactions = silentFactions;
         internal readonly ConcurrentQueue<CharacterId> Asks = new();
+        // Written only by the simulation, never changed once handed to the UI.
+        internal volatile IReadOnlySet<CharacterId>? Guests;
     }
 
     internal static volatile AskSession? CurrentAsks;
+    internal static volatile bool MarksRegistered, AskRegistered, ConversationAskRegistered;
 
     /// <summary>Adds the map marks and the menu row where the engine has them. Never throws; logs what happened.</summary>
     public static void RegisterUi(object registration, Action<string> log)
     {
+        MarksRegistered = AskRegistered = ConversationAskRegistered = false;
         try { RegisterMarks(registration, log); } catch (Exception e) { log($"map marks: not added ({e.GetBaseException().Message})"); }
         try { RegisterAsk(registration, log); } catch (Exception e) { log($"ask for news: not added ({e.GetBaseException().Message})"); }
+        try { RegisterConversationAsk(registration, log); } catch (Exception e) { log($"conversation news: not added ({e.GetBaseException().Message})"); }
     }
 
     // ---- map marks ----
@@ -61,6 +68,7 @@ public static class NightlyHooks
         var marks = Expression.Call(typeof(NightlyHooks).GetMethod(nameof(Markers), BindingFlags.NonPublic | BindingFlags.Static)!, Expression.Constant(make));
         var cast = Expression.Call(typeof(Enumerable).GetMethod(nameof(Enumerable.Cast))!.MakeGenericMethod(markerType), marks);
         add.Invoke(registration, [Expression.Lambda(funcType, cast, ctx).Compile()]);
+        MarksRegistered = true;
         log("map marks: added (setting \"Marks on the world map\")");
     }
 
@@ -95,26 +103,79 @@ public static class NightlyHooks
         var target = Expression.Property(ctx, targetProp!);
         var id = Expression.Property(target, "Id");
         Expression fights = snap.GetProperty("FightsPlayer") is { } f ? Expression.Property(target, f) : Expression.Constant(false);
+        Expression faction = snap.GetProperty("Faction") is { PropertyType: var type } field && type == typeof(int)
+            ? Expression.Property(target, field) : Expression.Constant(-1);
         var noTarget = Expression.Equal(target, Expression.Constant(null, snap));
-        var choose = Expression.Variable(typeof(Action), "choose");
         var prepare = Expression.Call(typeof(NightlyHooks).GetMethod(nameof(PrepareAsk), BindingFlags.NonPublic | BindingFlags.Static)!,
-            id, Expression.Property(target, "IsPlayer"), fights, Expression.Property(target, "Position"));
-        var empty = Expression.Constant(null, typeof(Action));
-        var rows = Expression.NewArrayInit(verbType, Expression.New(verbCtor, Expression.Constant(NewsAskRules.Caption), choose));
-        var body = Expression.Block([choose],
-            Expression.Assign(choose, Expression.Condition(noTarget, empty, prepare)),
-            Expression.Convert(Expression.Condition(Expression.Equal(choose, empty), Expression.NewArrayInit(verbType), rows),
-                funcType.GetGenericArguments()[1]));
-        add.Invoke(registration, [Expression.Lambda(funcType, body, ctx).Compile()]);
+            id, Expression.Property(target, "IsPlayer"), fights, Expression.Property(target, "Position"), faction);
+        AddAskSource(registration, add, ctx, Expression.Condition(noTarget, Expression.Constant(null, typeof(Action)), prepare), verbCtor, NewsAskRules.Caption);
+        AskRegistered = true;
         log("ask for news: added to townsfolk's right-click menu (setting \"Ask townsfolk for news\")");
     }
 
-    static Action? PrepareAsk(CharacterId who, bool isPlayer, bool fightsPlayer, Vector3 at)
+    static void AddAskSource(object registration, MethodInfo add, ParameterExpression ctx, Expression prepare, ConstructorInfo ctor, string caption)
     {
-        if (!LwMod.Settings.AskForNews || CurrentAsks is not { } session) return null;
+        var funcType = add.GetParameters()[0].ParameterType;
+        var choose = Expression.Variable(typeof(Action), "choose");
+        var verbType = ctor.DeclaringType!;
+        var empty = Expression.Constant(null, typeof(Action));
+        var rows = Expression.NewArrayInit(verbType, Expression.New(ctor, Expression.Constant(caption), choose));
+        var body = Expression.Block([choose],
+            Expression.Assign(choose, prepare),
+            Expression.Convert(Expression.Condition(Expression.Equal(choose, empty), Expression.NewArrayInit(verbType), rows),
+                funcType.GetGenericArguments()[1]));
+        add.Invoke(registration, [Expression.Lambda(funcType, body, ctx).Compile()]);
+    }
+
+    static void RegisterConversationAsk(object registration, Action<string> log)
+    {
+        if (registration.GetType().GetMethod("AddDialogueReplies") is not { } add) return;
+        var func = add.GetParameters()[0].ParameterType;
+        var types = func.GetGenericArguments();
+        var ctx = Expression.Parameter(types[0], "context");
+        var ctor = types[1].GetGenericArguments()[0].GetConstructor([typeof(string), typeof(Action)]);
+        var npc = ctx.Type.GetProperty("Npc");
+        var conversation = ctx.Type.GetProperty("Conversation");
+        if (ctor is null || npc is null || conversation?.PropertyType.GetProperty("PlayerStarted") is not { } started ||
+            ctx.Type.GetMethod("Leave", Type.EmptyTypes) is not { } leave)
+        {
+            log("conversation news: dialogue types changed; not added");
+            return;
+        }
+
+        var target = Expression.Property(ctx, npc);
+        var nullableTarget = Expression.Equal(target, Expression.Constant(null, npc.PropertyType));
+        var playerStarted = Expression.Property(Expression.Property(ctx, conversation), started);
+        var skip = Expression.OrElse(nullableTarget, Expression.Not(playerStarted));
+        Expression fights = npc.PropertyType.GetProperty("FightsPlayer") is { } f ? Expression.Property(target, f) : Expression.Constant(false);
+        var prepare = Expression.Call(typeof(NightlyHooks).GetMethod(nameof(PrepareConversationAsk), BindingFlags.NonPublic | BindingFlags.Static)!,
+            Expression.Property(target, "Id"), Expression.Property(target, "IsPlayer"), fights, Expression.Property(target, "Position"),
+            Expression.Property(target, "Faction"), Expression.Lambda<Action>(Expression.Call(ctx, leave)));
+
+        AddAskSource(registration, add, ctx, Expression.Condition(skip, Expression.Constant(null, typeof(Action)), prepare), ctor, "Heard any news?");
+        ConversationAskRegistered = true;
+        log("conversation news: added the town news reply");
+    }
+
+    static Action? PrepareAsk(CharacterId who, bool isPlayer, bool fightsPlayer, Vector3 at, int faction) =>
+        Prepare(who, isPlayer, fightsPlayer, at, faction, null);
+
+    static Action? PrepareConversationAsk(CharacterId who, bool isPlayer, bool fightsPlayer, Vector3 at, int faction, Action leave) =>
+        Prepare(who, isPlayer, fightsPlayer, at, faction, leave);
+
+    static Action? Prepare(CharacterId who, bool isPlayer, bool fightsPlayer, Vector3 at, int faction, Action? leave)
+    {
+        if (!LwMod.Settings.AskForNews || CurrentAsks is not { } session || session.Guests?.Contains(who) == true ||
+            session.SilentFactions?.Contains(faction) == true) return null;
         float best = float.MaxValue;
         foreach (var (x, z) in session.Towns) best = MathF.Min(best, (x - at.X) * (x - at.X) + (z - at.Z) * (z - at.Z));
-        return NewsAskRules.Offer(isPlayer, fightsPlayer, MathF.Sqrt(best)) ? () => session.Asks.Enqueue(who) : null;
+        if (!NewsAskRules.Offer(isPlayer, fightsPlayer, MathF.Sqrt(best))) return null;
+        return () =>
+        {
+            if (!ReferenceEquals(CurrentAsks, session) || !LwMod.Settings.AskForNews) return;
+            session.Asks.Enqueue(who);
+            leave?.Invoke();  // Conversations pause the simulation. The ordinary news reply arrives on its next pass.
+        };
     }
 
 }

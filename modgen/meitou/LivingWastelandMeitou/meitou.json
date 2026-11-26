@@ -6,5 +6,8 @@
     "LivingWastelandMeitou.dll"
   ],
   "entry": "LivingWasteland.MeitouMod.LwMod",
+  "dependencies": [
+    { "id": "pza.moonscript", "version": ">=0.5.0 <1.0.0", "optional": true }
+  ],
   "gameVersion": ">=0.17.3 <0.24.0"
 }

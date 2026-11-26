@@ -1,6 +1,6 @@
 # Living Wasteland on Meitou: port status
 
-Meitou (https://github.com/VlcekM/MeitouClient) is an open-source reimplementation of the Kenshi engine. Its owner decided it does NOT load RE_Kenshi plugins, so KenshiLua, BFrizz's Extra Extensions and our Lua mod are all ignored there. Reading notes: `plugin/MEITOU_REFERENCE_NOTES.md`.
+Meitou (https://github.com/VlcekM/MeitouClient) is an open-source reimplementation of the Kenshi engine. Its owner decided it does NOT load RE_Kenshi plugins, so KenshiLua, and BFrizz's Extra Extensions are all ignored there. Reading notes: `plugin/MEITOU_REFERENCE_NOTES.md`.
 
 **Nothing in this port has been run in Meitou yet.** The data side builds and checks clean here. The C# helper **compiles** (2026-11-10) against the Meitou 0.17.2 win-x64 release files, with no errors or warnings, and the build copies `LivingWastelandMeitou.dll` into the mod folder.
 
@@ -37,7 +37,7 @@ Meitou (https://github.com/VlcekM/MeitouClient) is an open-source reimplementati
 
 1. Install the Meitou launcher from its releases page; point it at your Kenshi folder; let it install the game.
 2. Run `install_meitou.bat` (or copy `build/*` after `python build_mod.py "<Kenshi>" --target meitou`). You do not need the DLL for this test.
-3. In the Meitou launcher tick LivingWasteland, Cannibals, Outlaws, Heat (not KenshiLua, BFrizz or the Lua mod). Start a new game from one of our starts.
+3. In the Meitou launcher tick LivingWasteland, Cannibals, Outlaws, Heat (leave KenshiLua and BFrizz disabled). Start a new game from one of our starts.
 4. Check: does it load; do our 8 starts show; are barks and the Gate Folk camp there; do barmen and shopkeepers trade; do bounty offers appear (they should NOT appear until the code mod's DLL is installed, since their conditions have no handler); do trade menus still work.
 5. Send me the game's log and what you saw.
 
@@ -328,8 +328,10 @@ Meitou's `DialogueDatabase` follows the original's rules (each cited to the exe 
   (ATTACH_NECK), 2x2 cells, placed by the settings "Neck slot left/top (restart)" (default 12, 60: a guess, the Kenshi character
   window's layout file is not here). Checked: a scratch probe against the 0.18.0 DLLs registers `ModSlot { lw_neck, 11, 2, 2, 12, 60 }`;
   on 0.17.4 it logs "no mod equipment slots" and the items stay in the bag (an ITEM with an unknown slot is not worn there).
-  Items (ITEM, slot 11, stackable 1): each named outlaw carries "<name>'s Token" (copy of Animal Teeth, value bounty / 10) in its
-  `inventory` list, not `death items` (Meitou kills a downed character whose death item is taken); "Keepsake of the Fallen" (copy of
+  Items (ITEM, slot 11, stackable 1): the 36 named outlaws and their successors carry named tokens in `inventory` (a copy of Animal Teeth,
+  valued at a tenth of the bounty). Original token record IDs stay at their existing allocation points. The successor token IDs are
+  reserved in the content packs so other records keep their IDs. The inventory route avoids Meitou's death-item behaviour, where taking
+  a death item kills a downed character. "Keepsake of the Fallen" (copy of
   Coin) goes into the mourner's bag when a squadmate dies (the nearest standing squadmate after the fight, Notoriety.cs Mourn); 11
   faction charms ("Okran's Token", "Nomad Bead String"...) go with an admiring barman's gift (gen_title_temperaments.py, _charms.json).
   `content/trophies.json` is meitou_only; the tokens are made on the Meitou target only. Kenshi build byte-identical.

@@ -3,6 +3,7 @@
  "outlaws": [
   {
    "name": "Orsa Quillon",
+   "token": {"name": "Orsa's Knotted Toll Rope", "description": "The knots mark stretches of road where Orsa charged a toll. The last is worn flat by a thumb."},
    "template": "Dust Boss",
    "squad_template": "Dust Bandit squad",
    "faction": "Dust Bandits",
@@ -33,6 +34,7 @@
    "female": true,
    "successor": {
     "name": "Benna Quillon",
+    "token": {"name": "Benna's Re-knotted Toll Rope", "id": 951100},
     "female": true,
     "relation": "her niece",
     "story": "Grew up minding her aunt's rope on the Hub road and learned the toll trade before she could count. She moved the rope a mile east the week Orsa fell and went on charging the caravans."
@@ -40,6 +42,7 @@
   },
   {
    "name": "Ferrant Dray",
+   "token": {"name": "Dray's Dented Pay Chit", "description": "A punched brass chit from Dray's company. Someone struck out the promised pay and wrote in a smaller sum."},
    "template": "Mercenary Captain",
    "squad_template": "Mercenary wanderers",
    "faction": "Outlaw",
@@ -74,6 +77,7 @@
    "female": false,
    "successor": {
     "name": "Coll Varrick",
+    "token": {"name": "Varrick's Pay Ledger Clasp", "id": 951101},
     "female": false,
     "relation": "his lieutenant",
     "story": "A deserter from the United Cities' samurai who sold Dray his sword for a share. He kept the company's books, so the men followed the man who knew where the money was."
@@ -81,6 +85,7 @@
   },
   {
    "name": "Hask Morrow",
+   "token": {"name": "Morrow's Mended Prayer Cord", "description": "A prayer cord mended with common thread. The cut end still carries the wax of an old seal."},
    "template": "Holy Sentinel",
    "squad_template": "Holy Army bandits (override) diaspora",
    "faction": "Holy Nation Outlaws",
@@ -111,6 +116,7 @@
    "female": false,
    "successor": {
     "name": "Tobin Ashe",
+    "token": {"name": "Ashe's Unsigned Prayer Slip", "id": 951102},
     "female": false,
     "relation": "his sworn man",
     "story": "A former Holy Nation acolyte who ran away with Morrow rather than face the Inquisition. He still prays every morning, though he no longer says to whom."
@@ -118,6 +124,7 @@
   },
   {
    "name": "Sarn Ashvael",
+   "token": {"name": "Ashvael's Tin Ration Tag", "description": "A ration tag stamped with a bowl. Ashvael scraped the issuing mark off and kept the piece."},
    "template": "Hungry bandit leader",
    "squad_template": "Starving bandit mob",
    "faction": "Starving Bandits",
@@ -149,6 +156,7 @@
    "female": false,
    "successor": {
     "name": "Gristle Mott",
+    "token": {"name": "Mott's Pot Hook", "id": 951103},
     "female": false,
     "relation": "his cook, of all people",
     "story": "Fed Ashvael's starving band for years on whatever the roads gave up. When the leader was gone, the hungry went with the one who held the pot."
@@ -156,6 +164,7 @@
   },
   {
    "name": "Veldt Harrow",
+   "token": {"name": "Harrow's Iron Ledger Clasp", "description": "A clasp from Harrow's chain ledger. Scratches on the back mark lots sent down the road."},
    "template": "Slaver Boss",
    "squad_template": "slave hunters (S)",
    "faction": "Slave Traders",
@@ -187,6 +196,7 @@
    "female": false,
    "successor": {
     "name": "Sella Harrow",
+    "token": {"name": "Sella's Buyer Tally", "id": 951104},
     "female": true,
     "relation": "his widow",
     "story": "Ran the ledgers and the buyers while her husband ran the chains. Most of his old clients never noticed the change in management."
@@ -194,6 +204,7 @@
   },
   {
    "name": "Borun Vahl",
+   "token": {"name": "Vahl's Cracked Horn Ring", "description": "A ring cut from a broken horn. Borun left the crack where it opened in the fight."},
    "template": "Berserker",
    "squad_template": "Berserker squad",
    "faction": "Berserkers",
@@ -223,6 +234,7 @@
    "female": false,
    "successor": {
     "name": "Ruk Vahl",
+    "token": {"name": "Ruk's Notched Horn Band", "id": 951105},
     "female": false,
     "relation": "his brother",
     "story": "Borun's younger brother, quieter and worse. He fought his way to the front of the berserkers inside a day."
@@ -230,6 +242,7 @@
   },
   {
    "name": "Ilsa Hearthmourn",
+   "token": {"name": "Hearthmourn's Well Stone", "description": "A smooth stone drilled for a cord. Hearthmourn carried it between the wells where she preached."},
    "template": "Holy Pacifier",
    "squad_template": "Holy Army bandits (override) diaspora",
    "faction": "Holy Nation Outlaws",
@@ -258,6 +271,7 @@
    "female": true,
    "successor": {
     "name": "Brother Caddoc",
+    "token": {"name": "Caddoc's Well Cup Handle", "id": 951106},
     "female": false,
     "relation": "her first convert",
     "story": "Hearthmourn's first convert, a farmhand who heard her preach at a well and walked off his master's field that night. He preaches her words badly but loudly."
@@ -265,6 +279,7 @@
   },
   {
    "name": "Hodd Crake",
+   "token": {"name": "Crake's Snare Toggle", "description": "A bone toggle from one of Crake's snares. The grooves are cut to hold the line without a knot."},
    "template": "Cannibal Hunter",
    "squad_template": "cannibal hunter patrol",
    "faction": "Outlaw",
@@ -302,6 +317,7 @@
    "female": false,
    "successor": {
     "name": "Wenna Crake",
+    "token": {"name": "Wenna's Track Marker", "id": 951107},
     "female": true,
     "relation": "his daughter",
     "story": "Raised in her father's hunting camps on the edge of the Cannibal Plains. She reads tracks better than he did and takes fewer prisoners."
@@ -309,6 +325,7 @@
   },
   {
    "name": "Pim Sillery",
+   "token": {"name": "Sillery's Cache Marker", "description": "A scrap of metal with a crooked arrow. Sillery kept it tied away from the maps he sold."},
    "template": "Tech Hunter",
    "squad_template": "Treasure hunters aggressive",
    "faction": "Outlaw",
@@ -340,6 +357,7 @@
    "female": false,
    "successor": {
     "name": "Doss Kettering",
+    "token": {"name": "Kettering's Cache Key", "id": 951108},
     "female": false,
     "relation": "his digging partner",
     "story": "Sillery's digging partner for ten years and the only one who knew where the good caches were buried. He's been digging them up one by one ever since."
@@ -347,6 +365,7 @@
   },
   {
    "name": "Teshin Ro",
+   "token": {"name": "Teshin's Practice Guard", "description": "A guard off an old practice sword. There are more marks on the inside than on the edge."},
    "template": "Samurai Rogue",
    "squad_template": "yabuta outlaw roaming",
    "faction": "Outlaw",
@@ -376,6 +395,7 @@
    "female": false,
    "successor": {
     "name": "Aiko Ro",
+    "token": {"name": "Aiko's Grave Binding", "id": 951109},
     "female": true,
     "relation": "his student",
     "story": "Teshin's only student, who learned the sword by losing to him every day for four years. She took his blade from the grave and his reputation from the road."
@@ -383,6 +403,7 @@
   },
   {
    "name": "Ysolde Gorehollow",
+   "token": {"name": "Gorehollow's Pit Cord", "description": "A short cord doubled through two teeth. Gorehollow kept a long knot at one end for a second hand."},
    "template": "Blood Raider",
    "squad_template": "Blood bandits nest",
    "faction": "Bloodraiders",
@@ -412,6 +433,7 @@
    "female": true,
    "successor": {
     "name": "Marrow Jess",
+    "token": {"name": "Jess's Blood-Sister Knot", "id": 951110},
     "female": true,
     "relation": "her blood-sister",
     "story": "Swore blood-sisterhood with Gorehollow in a cannibal pit they both climbed out of. The raiders say she's the reason Ysolde ever came back from a fight."
@@ -419,6 +441,7 @@
   },
   {
    "name": "Marta Cull",
+   "token": {"name": "Cull's Crew Tally", "description": "A crew tally cut from water-dark wood. The names change where the oldest marks were scraped away."},
    "template": "Mercenary Heavy",
    "squad_template": "reaver patrol",
    "faction": "Reavers",
@@ -449,6 +472,7 @@
    "female": true,
    "successor": {
     "name": "Fenn Cull",
+    "token": {"name": "Fenn's Crew Ring", "id": 951111},
     "female": false,
     "relation": "her son",
     "story": "Born on one of his mother's ships and never set foot in a town until he was twelve. He runs the crew like she did, only younger and with less patience."
@@ -456,6 +480,7 @@
   },
   {
    "name": "Teodric Clackjaw",
+   "token": {"name": "Clackjaw's Split Pincer", "description": "A crab pincer broken across the joint. Clackjaw bound the halves together with copper wire."},
    "template": "Crab Raider",
    "squad_template": "crab raiders patrol",
    "faction": "Crab Raiders",
@@ -486,6 +511,7 @@
    "female": false,
    "successor": {
     "name": "Snapper Dunne",
+    "token": {"name": "Snapper's Beach Whistle", "id": 951112},
     "female": false,
     "relation": "his loudest raider",
     "story": "The loudest of Clackjaw's raiders and the first one up the beach every time. He took over by shouting longer than anyone else."
@@ -493,6 +519,7 @@
   },
   {
    "name": "Maruka Tal-Khesh",
+   "token": {"name": "Maruka's Shield Rivet", "description": "A flattened rivet from Maruka's shield. The rim still carries paint where the blows missed it."},
    "template": "Kral's Chosen",
    "squad_template": "krals chosen",
    "faction": "Kral's Chosen",
@@ -523,6 +550,7 @@
    "female": true,
    "successor": {
     "name": "Oshar Tal-Khesh",
+    "token": {"name": "Oshar's Shield Strap Buckle", "id": 951113},
     "female": false,
     "relation": "her shield-bearer",
     "story": "Carried Maruka's shield for six years and her name since she fell. The exiles follow him because he never once dropped it."
@@ -530,6 +558,7 @@
   },
   {
    "name": "Aldous Peel",
+   "token": {"name": "Peel's Skinning Hook", "description": "A little hook honed on both sides. Peel kept the handle wrapped in cloth for grip."},
    "template": "Skin bandit",
    "squad_template": "skin bandit patrol",
    "faction": "Skin Bandits",
@@ -559,6 +588,7 @@
    "female": false,
    "successor": {
     "name": "Merrin Stitch",
+    "token": {"name": "Merrin's Curved Needle", "id": 951114},
     "female": false,
     "relation": "his apprentice",
     "story": "Peel took him off a slaver's cart as a boy and taught him the needle instead of the knife. He finished his master's last coat himself."
@@ -566,6 +596,7 @@
   },
   {
    "name": "Mister Tuppence",
+   "token": {"name": "Tuppence's Two-Cat Counter", "description": "A mundane brass counter stamped twice. Tuppence used it to mark a ledger that never quite balanced."},
    "template": "Skeleton Bandit",
    "squad_template": "Skeleton bandits patrol",
    "faction": "Skeleton Bandits",
@@ -596,6 +627,7 @@
    "female": false,
    "successor": {
     "name": "Mister Ha'penny",
+    "token": {"name": "Ha'penny's Loose Coin Slot", "id": 951115},
     "female": false,
     "relation": "the bones he built to follow him",
     "story": "A skeleton Tuppence built from scavenged parts to carry his loot. Nobody told it to stop when its maker fell, so it picked up the ledger and carried on."
@@ -603,6 +635,7 @@
   },
   {
    "name": "Ulla Weeper",
+   "token": {"name": "Ulla's Split Reed", "description": "A reed bound with thread at the root. The split opens when the reed is held back to the light."},
    "template": "Outlaw",
    "squad_template": "shrieking squad",
    "faction": "Shrieking Bandits",
@@ -633,6 +666,7 @@
    "female": true,
    "successor": {
     "name": "Keening Bel",
+    "token": {"name": "Bel's Forest Reed", "id": 951116},
     "female": true,
     "relation": "her loudest shrieker",
     "story": "The shrieker whose voice carries furthest in the forest. Ulla's band follows the sound now, the way they used to follow Ulla."
@@ -640,6 +674,7 @@
   },
   {
    "name": "Dunmar Quell",
+   "token": {"name": "Quell's Swamp Toll Tag", "description": "A waxed wooden toll tag. Some marks are set deeper where a village paid twice."},
    "template": "Red Sabre Boss",
    "squad_template": "Bandit raid small",
    "faction": "Red Sabres",
@@ -670,6 +705,7 @@
    "female": false,
    "successor": {
     "name": "Sabre Hollis",
+    "token": {"name": "Hollis's Swamp Ledger Tag", "id": 951117},
     "female": false,
     "relation": "his tax collector",
     "story": "Quell's tax collector, who knew every village in the swamp and what each one could pay. The Red Sabres decided he was too useful to lose."
@@ -677,6 +713,7 @@
   },
   {
    "name": "Gammer Tuck",
+   "token": {"name": "Gammer's Bent Sickle Tip", "description": "A snapped sickle tip worn into a smooth curve. It still carries a little earth in the socket."},
    "template": "Rebel Captain",
    "squad_template": "empire rebel farmers small",
    "faction": "Rebel Farmers",
@@ -706,6 +743,7 @@
    "female": false,
    "successor": {
     "name": "Nan Tuck",
+    "token": {"name": "Nan's Kitchen Tally", "id": 951118},
     "female": true,
     "relation": "his wife",
     "story": "Gammer's wife, who planned most of the farm raids from their kitchen table while he took the credit. She doesn't bother hiding it now."
@@ -713,6 +751,7 @@
   },
   {
    "name": "Sayo of the Grey Ribbon",
+   "token": {"name": "Sayo's Worn Grey Ribbon", "description": "A grey ribbon faded almost white at the fold. Sayo kept the same knot until it wore through."},
    "template": "Sand Ninja",
    "squad_template": "Sand ninja cell",
    "faction": "Sand ninjas",
@@ -744,6 +783,7 @@
    "female": true,
    "successor": {
     "name": "Kiri of the Torn Ribbon",
+    "token": {"name": "Kiri's Half Ribbon", "id": 951119},
     "female": true,
     "relation": "her pupil",
     "story": "Sayo's last pupil, who tore her own grey ribbon in half the day her teacher was taken. She still takes work from the people who used to hire Sayo."
@@ -751,6 +791,7 @@
   },
   {
    "name": "Cuddy Pell",
+   "token": {"name": "Cuddy's Floodline Marker", "description": "A section of marker shaved off above the last flood line. The lower edge is soft from standing in water."},
    "template": "Mongrel crazy",
    "squad_template": "Drifter squad",
    "faction": "Mongrel",
@@ -781,6 +822,7 @@
    "female": false,
    "successor": {
     "name": "Little Pell",
+    "token": {"name": "Little Pell's Tide Notch", "id": 951120},
     "female": false,
     "relation": "nobody's sure, maybe his son",
     "story": "Nobody's sure if he's Cuddy's son, his brother or just someone who started dressing like him. The flooded coast doesn't seem to care which."
@@ -788,6 +830,7 @@
   },
   {
    "name": "Tchik of Seven Voices",
+   "token": {"name": "Tchik's Seven-Notch Pendant", "description": "Seven shallow notches run across the face. Three have gone smooth where Tchik held the pendant."},
    "template": "Hive Bandit Leader",
    "squad_template": "hive diaspora bandits",
    "faction": "Outlaw",
@@ -819,6 +862,7 @@
    "female": false,
    "successor": {
     "name": "Tchak of Three Voices",
+    "token": {"name": "Tchak's Three-Notch Pendant", "id": 951121},
     "female": false,
     "relation": "the drone that followed him",
     "story": "A drone that followed Tchik out of the hive and learned to speak in his manner. It hasn't learned all seven voices yet, but the band follows the three it has."
@@ -826,6 +870,7 @@
   },
   {
    "name": "Elric Vosk",
+   "token": {"name": "Vosk's Brass Contract Pin", "description": "A contract pin with a plain head. Vosk threaded it through the folded corner of his agreements."},
    "template": "Mercenary Heavy",
    "squad_template": "Mercenary patrol",
    "faction": "Outlaw",
@@ -857,6 +902,7 @@
    "female": false,
    "successor": {
     "name": "Garrow Vosk",
+    "token": {"name": "Garrow's Discounted Contract", "id": 951122},
     "female": false,
     "relation": "his cousin",
     "story": "Elric's cousin, who joined the company to pay off a debt and stayed because the pay was better than farming. He takes the contracts Elric used to take, for a little less."
@@ -864,6 +910,7 @@
   },
   {
    "name": "Pyke Ludlow",
+   "token": {"name": "Ludlow's Chain Wedge", "description": "A short wedge made from a broken link. Its working edge shows where someone kept driving it under a catch."},
    "template": "Anti-Slaver Jonin",
    "squad_template": "anti-slaver town patrol",
    "faction": "Outlaw",
@@ -894,6 +941,7 @@
    "female": false,
    "successor": {
     "name": "Esme Ludlow",
+    "token": {"name": "Esme's Cut Chain Link", "id": 951123},
     "female": true,
     "relation": "his sister",
     "story": "Pyke's sister, who handled the freed slaves while he handled the slavers. She still hits the caravans, and the Anti-Slavers still pretend not to know her."

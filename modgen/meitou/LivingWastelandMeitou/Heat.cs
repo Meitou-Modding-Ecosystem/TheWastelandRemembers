@@ -19,23 +19,36 @@ public sealed class HeatMap
     }
 
     readonly SortedDictionary<string, Town> towns = new(StringComparer.Ordinal);
+    readonly Dictionary<string, double> factionHeat = new(StringComparer.Ordinal);
     // Trade uses the current owner's share. The original town total remains the source for heat, hunts and API v4.
     readonly SortedDictionary<string, SortedDictionary<string, Town>> owners = new(StringComparer.Ordinal);
 
     internal bool HasOwnedHeat => owners.Count > 0;
 
     internal double HereOwned(string node, string faction) =>
-        owners.TryGetValue(faction, out var places) && places.TryGetValue(node, out var t) ? Math.Min(Max, t.Crime + t.Blood) : 0;
+        owners.TryGetValue(faction, out var places) && places.TryGetValue(node, out var t) ? Total(t) : 0;
 
-    public double Here(string town) => towns.TryGetValue(town, out var t) ? Math.Min(Max, t.Crime + t.Blood) : 0;
+    public double Here(string town) => towns.TryGetValue(town, out var t) ? Total(t) : 0;
 
     /// <summary>What a speaker in <paramref name="town"/> (or outside every town: null) of <paramref name="faction"/> feels: its own town's heat,
     /// or the echo of its faction's hottest town, whichever is more.</summary>
-    public double For(string? town, string faction)
+    public double For(string? town, string faction) =>
+        Math.Max(town is null ? 0 : Here(town), factionHeat.GetValueOrDefault(faction) * Echo);
+
+    static double Total(Town town) => Math.Min(Max, town.Crime + town.Blood);
+
+    void NoteHeat(Town town)
     {
-        double own = town is null ? 0 : Here(town);
-        double sister = towns.Where(p => p.Value.Faction == faction).Select(p => Here(p.Key)).DefaultIfEmpty(0).Max();
-        return Math.Max(own, sister * Echo);
+        double total = Total(town);
+        if (!factionHeat.TryGetValue(town.Faction, out double hottest) || total > hottest || double.IsNaN(hottest))
+            factionHeat[town.Faction] = total;
+    }
+
+    void Recount(string faction)
+    {
+        factionHeat.Remove(faction);
+        foreach (var town in towns.Values)
+            if (town.Faction == faction) NoteHeat(town);
     }
 
     public void AddCrime(string town, string faction, double amount) => AddCrime(town, faction, amount, "");
@@ -49,8 +62,14 @@ public sealed class HeatMap
     void Add(string town, string faction, double amount, string node, bool blood)
     {
         if (!towns.TryGetValue(town, out var t)) towns[town] = t = new Town();
+        string previously = t.Faction;
+        double before = Total(t);
         if (faction.Length > 0) t.Faction = faction;
         AddTo(t, amount, blood);
+        if ((previously != t.Faction || !(Total(t) >= before)) &&
+            factionHeat.TryGetValue(previously, out double highest) && before.Equals(highest))
+            Recount(previously);
+        NoteHeat(t);
         if (faction.Length == 0 || node.Length == 0) return;
         if (!owners.TryGetValue(faction, out var places)) owners[faction] = places = new(StringComparer.Ordinal);
         if (!places.TryGetValue(node, out var owned)) places[node] = owned = new Town();
@@ -66,18 +85,22 @@ public sealed class HeatMap
     /// <summary>A pardon or a bribe: takes <paramref name="amount"/> off every town of the faction (crime first, then blood).</summary>
     public void Forgive(string faction, double amount)
     {
-        Forgive(towns.Values.Where(t => t.Faction == faction), amount);
-        if (owners.TryGetValue(faction, out var places)) Forgive(places.Values, amount);
+        factionHeat.Remove(faction);
+        foreach (var town in towns.Values)
+        {
+            if (town.Faction != faction) continue;
+            Forgive(town, amount);
+            NoteHeat(town);
+        }
+        if (owners.TryGetValue(faction, out var places))
+            foreach (var town in places.Values) Forgive(town, amount);
     }
 
-    static void Forgive(IEnumerable<Town> places, double amount)
+    static void Forgive(Town town, double amount)
     {
-        foreach (var t in places)
-        {
-            double fromCrime = Math.Min(t.Crime, amount);
-            t.Crime -= fromCrime;
-            t.Blood = Math.Max(0, t.Blood - (amount - fromCrime));
-        }
+        double fromCrime = Math.Min(town.Crime, amount);
+        town.Crime -= fromCrime;
+        town.Blood = Math.Max(0, town.Blood - (amount - fromCrime));
     }
 
     /// <summary>Fades every town nobody of the player's is in by <paramref name="hours"/> game hours.</summary>
@@ -85,18 +108,22 @@ public sealed class HeatMap
 
     internal void Fade(double hours, ISet<string> occupied, ISet<string>? occupiedNodes)
     {
-        Fade(towns, hours, occupied);
+        factionHeat.Clear();
+        Fade(towns, hours, occupied, recordEcho: true);
         foreach (var places in owners.Values) Fade(places, hours, occupiedNodes);
         foreach (var empty in owners.Where(group => group.Value.Count == 0).Select(group => group.Key).ToArray()) owners.Remove(empty);
     }
 
-    void Fade(SortedDictionary<string, Town> places, double hours, ISet<string>? occupied)
+    void Fade(SortedDictionary<string, Town> places, double hours, ISet<string>? occupied, bool recordEcho = false)
     {
         foreach (var (name, t) in places)
         {
-            if (occupied?.Contains(name) == true) continue;
-            t.Crime = Decay(t.Crime, hours, CrimeHalfLife);
-            t.Blood = Decay(t.Blood, hours, BloodHalfLife);
+            if (occupied?.Contains(name) != true)
+            {
+                t.Crime = Decay(t.Crime, hours, CrimeHalfLife);
+                t.Blood = Decay(t.Blood, hours, BloodHalfLife);
+            }
+            if (recordEcho && !(t.Crime + t.Blood < 0.05)) NoteHeat(t);
         }
         foreach (var k in places.Where(p => p.Value.Crime + p.Value.Blood < 0.05).Select(p => p.Key).ToList()) places.Remove(k);
     }
@@ -121,8 +148,16 @@ public sealed class HeatMap
         owners.Clear();
         if (r.ReadInt32() != 1) return;
         towns.Clear();
-        for (int n = r.ReadInt32(); n > 0; n--)
-            towns[r.ReadString()] = new Town { Faction = r.ReadString(), Crime = r.ReadDouble(), Blood = r.ReadDouble() };
+        factionHeat.Clear();
+        try
+        {
+            for (int n = r.ReadInt32(); n > 0; n--)
+                towns[r.ReadString()] = new Town { Faction = r.ReadString(), Crime = r.ReadDouble(), Blood = r.ReadDouble() };
+        }
+        finally
+        {
+            foreach (var town in towns.Values) NoteHeat(town);
+        }
     }
 
     const int OwnersTag = 0x4C57484F;
@@ -142,7 +177,12 @@ public sealed class HeatMap
 
     internal void ReadOwners(BinaryReader reader)
     {
-        if (reader.BaseStream.Length - reader.BaseStream.Position < sizeof(int) * 2 || reader.ReadInt32() != OwnersTag) return;
+        if (reader.BaseStream.Length - reader.BaseStream.Position < sizeof(int) * 2) return;
+        if (reader.ReadInt32() != OwnersTag)
+        {
+            reader.BaseStream.Position -= sizeof(int);
+            return;
+        }
         for (int n = reader.ReadInt32(); n > 0; n--)
         {
             string faction = reader.ReadString();

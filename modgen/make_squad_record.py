@@ -84,6 +84,7 @@ def main():
     os.makedirs(folder)
     shutil.copy(dll, folder)
     shutil.copy(os.path.join(SRC, "meitou.json"), folder)
+    shutil.copy(os.path.join(SRC, "..", "LivingWastelandMeitou", "ui_locales.json"), folder)
     with open(os.path.join(folder, "titles.json"), "w", encoding="utf-8") as fh:
         json.dump(out_titles, fh, indent=1, ensure_ascii=False)
     with open(os.path.join(folder, "README.txt"), "w", encoding="utf-8") as fh:

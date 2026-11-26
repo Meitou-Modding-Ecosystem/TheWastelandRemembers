@@ -11,7 +11,7 @@ using Meitou.Simulation.Population;
 
 if (args.Length < 2)
 {
-    Console.Error.WriteLine("Usage: Check <Meitou DLL folder> <TWR mod folder> [profile|profile-full|bench|details|held|held-transitions|review-probes]");
+    Console.Error.WriteLine("Usage: Check <Meitou DLL folder> <TWR mod folder> [profile|profile-full|retention|kindness|bench|details|busy|busy-budget|trade|heat|held|held-transitions|review-probes]");
     return 2;
 }
 
@@ -31,9 +31,14 @@ static int RunReview(string[] args)
     var build = table.RootElement.GetProperty("build").GetString();
     var file = FcsReader.ReadFile(Path.Combine(release, "LivingWasteland.mod"));
     var mod = AssemblyLoadContext.Default.LoadFromAssemblyPath(binary);
+    if (args.Length > 1 && args[1] == "kindness") return Bench.RememberedPeople(mod);
+    if (args.Length > 1 && args[1] == "retention") return Bench.PartyRetention(mod);
     if (args.Length > 1 && args[1] == "bench") return Bench.Run(mod);
     if (args.Length > 1 && args[1] == "held") return Bench.ObserveHeld();
     if (args.Length > 1 && args[1] == "details") return DetailBench.Run(mod);
+    if (args.Length > 1 && args[1] is "busy" or "busy-budget") return BusyBench.Run(mod, args[1] == "busy-budget");
+    if (args.Length > 1 && args[1] == "trade") return Bench.TradeQuotes(mod);
+    if (args.Length > 1 && args[1] == "heat") return Bench.HeatEcho(mod);
     if (args.Length > 1 && args[1] == "held-transitions") return DetailBench.HeldTransitions();
     if (args.Length > 1 && args[1] == "review-probes") return Bench.ReviewProbes(mod);
     var entry = mod.GetType("LivingWasteland.MeitouMod.LwMod", throwOnError: true)!;

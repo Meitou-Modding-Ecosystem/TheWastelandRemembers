@@ -27,7 +27,6 @@ def main(argv=None):
     ap.add_argument("--author", default="")
     ap.add_argument("--install", action="store_true", help="copy the built mod folders into <Kenshi>/mods (data_dir must be your Kenshi folder)")
     ap.add_argument("--skip", action="append", default=[], help="leave out a mod file by name, e.g. LivingWastelandHeat")
-    ap.add_argument("--with-lua", action="store_true", help="also install the LivingWastelandLua probe scripts (needs RE_Kenshi and KenshiLua)")
     ap.add_argument("--target", choices=("kenshi", "meitou"), default="kenshi",
                     help="kenshi (default): RE_Kenshi + BFrizz's Extra Extensions. meitou: the Meitou engine, quest state in the LivingWastelandMeitou code mod (meitou_target.py)")
     ap.add_argument("--release", action="store_true", help="leave out play-test helpers (clones marked test_only: the Play Test Squad starts)")
@@ -153,15 +152,6 @@ def main(argv=None):
                 shutil.copytree(os.path.join(a.out, "LivingWastelandMeitou"), dest)
                 has_dll = os.path.isfile(os.path.join(dest, "LivingWastelandMeitou.dll"))
                 print(f"installed {dest}" + ("" if has_dll else " (WARNING: LivingWastelandMeitou.dll is missing: quests will not work)"))
-            if a.with_lua:
-                src = os.path.join(HERE, "lua", "LivingWastelandLua")
-                dest = os.path.join(mods_dir, "LivingWastelandLua")
-                if os.path.isdir(dest):
-                    shutil.rmtree(dest)
-                shutil.copytree(src, dest)
-                lm = B.ModBuilder("LivingWastelandLua", author=a.author, depends=["gamedata.base"], description="Lua probe scripts (needs KenshiLua).")
-                lm.write(mods_dir)      # a header-only .mod so the launcher lists it
-                print(f"installed {dest} (tick it AFTER KenshiLua)")
             print("Start Kenshi, tick the new mods in the launcher (they need to load AFTER your other mods) and click OK.")
     print(f"\n{comp.stats}")
     print(f"talk dialogues with a random chance made always-eligible: {getattr(comp, 'forced_talk', 0)}")

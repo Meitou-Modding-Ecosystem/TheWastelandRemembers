@@ -48,8 +48,16 @@ public static class WorldReady
     public static void Ready(World world, object fromSave)
     {
         bool save = fromSave is true;
+        ActiveFeatures.Clear();
         RecapLink.ForgetSquadPlace();
         OutpostMemories.ResetPresentation();
+        AtlasLiveFaces.Publish(null);
+        CharacterTitleDisplay.Clear();
+        PanelLines.Reset();
+        RecordHost.Panel = RecordHost.CatalogText = RecordHost.HistoryText = RecordHost.FallenText = "No world yet.";
+        HuntersSystem.Latest = null;
+        RivalsSystem.Latest = null;
+        NewsSystem.Latest = null;
         told.AddOrUpdate(world, new Told { FromSave = save });
         PlaytestLog.Event(world, "world", "", save ? "save loaded" : "new game");
         LwMod.Log($"world ready: {(save ? "a save has loaded" : "a new game")}");

@@ -11,6 +11,7 @@
     <Compile Include="../LivingWastelandMeitou/LwCore.cs" Link="LwCore.cs" />
     <Compile Include="../LivingWastelandMeitou/BarTalk.cs" Link="BarTalk.cs" />
     <Compile Include="../LivingWastelandMeitou/Deeds.cs" Link="Deeds.cs" />
+    <Compile Include="../LivingWastelandMeitou/KindnessRules.cs" Link="KindnessRules.cs" />
     <Compile Include="../LivingWastelandMeitou/Heat.cs" Link="Heat.cs" />
     <Compile Include="../LivingWastelandMeitou/OutlawNews.cs" Link="OutlawNews.cs" />
     <Compile Include="../LivingWastelandMeitou/RecapLink.cs" Link="RecapLink.cs" />

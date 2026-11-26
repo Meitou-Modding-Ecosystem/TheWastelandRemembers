@@ -863,6 +863,15 @@ class Compiler:
         r["tail"] = 0
         return r
 
+    def _outlaw_token(self, template, holder, name, story, bounty, sid=None):
+        token = self.clone(template, name, sid)
+        token["int"] = dict(token["int"], **{"slot": 11, "stackable": 1, "value": max(50, bounty // 10)})
+        token["str"] = dict(token["str"], description=story + "\r\n\r\nWorn in the neck slot.")
+        self.b.add(token)
+        self.created[("item", name)] = token["sid"]
+        self.b_ref_add(holder, "inventory", (token["sid"], 1, 0, 0))
+        return token["sid"]
+
     def make_outlaw(self, o):
         """A named, unique character with a bounty, its roaming squad, and spawn entries in the zones' ground biomes."""
         ctx = f"outlaw '{o.get('name')}'"
@@ -939,13 +948,19 @@ class Compiler:
             # character kills them), worn in the helper's neck slot (FCS slot 11, ATTACH_NECK)
             src = self.db.find("item", "Animal Teeth")
             if src:
-                tok = self.clone(src[-1], f"{name}'s Token")
-                tok["int"] = dict(tok["int"], **{"slot": 11, "stackable": 1, "value": max(50, int(o.get("bounty", 1000)) // 10)})
-                tok["str"] = dict(tok["str"], description=(f"A cord of teeth and stamped brass that {name} wore at the throat. Proof enough "
-                                                           "for any bounty clerk, and a warning to anyone who sees it on you.\r\n\r\nWorn in the neck slot."))
-                self.b.add(tok)
-                self.created[("item", tok["name"])] = tok["sid"]
-                self.b_ref_add(ch, "inventory", (tok["sid"], 1, 0, 0))
+                legacy_name = f"{name}'s Token"
+                details = o.get("token") or {}
+                if not isinstance(details, dict):
+                    self.errors.append(f"{ctx}: token must be an object with a name and description")
+                    details = {}
+                token_name = details.get("name") or legacy_name
+                story = details.get("description") or (
+                    f"A cord of teeth and stamped brass that {name} wore at the throat. Proof enough "
+                    "for any bounty clerk, and a warning to anyone who sees it on you."
+                )
+                # Keep the same allocation point and slot so existing saves still refer to this item.
+                self.created[("item", legacy_name)] = self._outlaw_token(
+                    src[-1], ch, token_name, story, int(o.get("bounty", 1000)))
             else:
                 self.errors.append(f"{ctx}: no item 'Animal Teeth' for the outlaw's token")
             # the men an outlaw sends after the squad (outlaw reprisals, OutlawCamps.cs): the outlaw's own squad without the outlaw, so
@@ -993,6 +1008,17 @@ class Compiler:
                         sch["ref"][key] = list(ch["ref"][key])
                 self.b.add(sch)
                 self.created[("character", sc["name"])] = sch["sid"]
+                if src and (token := sc.get("token")) is not None:
+                    number = token.get("id") if isinstance(token, dict) else None
+                    if type(number) is not int or not (951100 <= number < 952000) or not token.get("name"):
+                        self.errors.append(f"{ctx}: successor token requires a name and an id from 951100 to 951999")
+                    else:
+                        sid = f"{number}-{self.b.file}"
+                        if any(record["sid"] == sid for record in self.b.records):
+                            self.errors.append(f"{ctx}: duplicate successor token id '{sid}'")
+                        else:
+                            story = token.get("description") or sc.get("story") or f"{sc['name']} carried it after taking over the gang."
+                            self._outlaw_token(src[-1], sch, token["name"], story, sb, sid)
                 ssq = self.clone(sq_t[-1], f"{sc['name']} squad")
                 ssq["ref"]["leader"] = [(sch["sid"], 1, 0, 0)]
                 for key in ("squad", "faction"):

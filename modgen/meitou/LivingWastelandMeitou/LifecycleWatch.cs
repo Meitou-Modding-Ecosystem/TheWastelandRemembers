@@ -10,6 +10,7 @@ using Meitou.Data.Gameplay.Bodies;
 using Meitou.Modding;
 using Meitou.Simulation;
 using Meitou.Simulation.Bodies;
+using Meitou.Simulation.Locks;
 
 namespace LivingWasteland.MeitouMod;
 
@@ -47,7 +48,11 @@ public static class LifecycleWatch
             if (engine.GetType(iface) is not { } observer || engine.GetType(payload) is null) continue;
             if (handler == nameof(Limb) && (limbCharacter?.PropertyType != typeof(CharacterId) || limbPart?.PropertyType != typeof(int)
                 || limbBefore?.PropertyType != typeof(LimbState) || limbAfter?.PropertyType != typeof(LimbState))) continue;
-            if (ObserverEmit.Build(observer, method, typeof(LifecycleWatch).GetMethod(handler)!, "Lifecycle" + handler) is { } type)
+            var target = typeof(LifecycleWatch).GetMethod(handler)!;
+            Type? combined = handler == nameof(Held) && KindnessReleases.Observer is { } crime
+                ? ObserverEmit.BuildPair(observer, method, target, "LifecycleCustody", crime, "CrimeNoted", typeof(LifecycleWatch).GetMethod(nameof(Crime))!)
+                : null;
+            if ((combined ?? ObserverEmit.Build(observer, method, target, "Lifecycle" + handler)) is { } type)
                 built[handler] = type;
         }
         return built;
@@ -134,16 +139,33 @@ public static class LifecycleWatch
         catch (Exception e) { LwMod.Log($"lifecycle: limb notice: {e.GetBaseException().Message}"); }
     }
 
+    /// <summary>Shares the native crime notice between the independent release and eyewitness records.</summary>
+    public static void Crime(World world, object crime)
+    {
+        KindnessReleases.Crime(world, crime);
+        WitnessMemories.Crime(world, crime);
+    }
+
     /// <summary>A cage, bed or restraint entered or left: logged for cages (captives: Meitou#1271), with the fixture.</summary>
     public static void Held(World world, object change)
     {
         try
         {
-            string before = change.GetType().GetProperty("Before")?.GetValue(change)?.ToString() ?? "", after = change.GetType().GetProperty("After")?.GetValue(change)?.ToString() ?? "";
-            if (!before.Contains("Cage", StringComparison.OrdinalIgnoreCase) && !after.Contains("Cage", StringComparison.OrdinalIgnoreCase)) return;
+            if (!LwMod.Settings.LogChanges && !LwMod.Settings.PlaytestDiagnostics && !KindnessReleases.Enabled) return;
+            var before = Read<HeldState>(change, "Before");
+            var after = Read<HeldState>(change, "After");
+            if (before != HeldState.Imprisoned && after != HeldState.Imprisoned) return;
             var id = Read<CharacterId>(change, "Character");
             if (Cold(world, id) is not { } c) return;
-            Log($"{NameOf(world, id, c)}{(world.Uniques.RecordOf(id) is null ? "" : " (named)")}: {before} to {after} at {Read<string>(change, "Fixture") ?? "no fixture"}", rare: true);
+            string? fixtureId = Read<string>(change, "Fixture");
+            if (before == HeldState.Imprisoned && after == HeldState.None && fixtureId is not null)
+                KindnessReleases.Released(world, id, c, fixtureId);
+            if (!LwMod.Settings.LogChanges && !LwMod.Settings.PlaytestDiagnostics) return;
+            var unique = world.Uniques.RecordOf(id);
+            string fixture = fixtureId ?? "no fixture";
+            string detail = $"{NameOf(world, id, c)}{(unique is null ? "" : " (named)")}: {before} to {after} at {fixture}";
+            if (PlaytestLog.Enabled) PlaytestLog.Event(world, "custody", unique ?? id.ToString(), "held state changed", detail);
+            else Log(detail, rare: true);
         }
         catch (Exception e) { LwMod.Log($"lifecycle: held notice: {e.GetBaseException().Message}"); }
     }

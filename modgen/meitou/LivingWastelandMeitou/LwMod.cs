@@ -55,6 +55,9 @@ public sealed class LwSettings
     [Setting("Lookouts call out hostiles", Hint = "When hostile people come within about 150 m, the nearest of your squad calls them out by name (\"Dust Bandits on the ridge!\") and a squadmate may answer. Once per enemy squad every few hours, never mid-fight.")]
     public bool LookoutCalls { get; set; } = true;
 
+    [Setting("Story alert sounds", Hint = "Play a short vanilla notification when a lookout calls out or a rival confronts your squad nearby.")]
+    public bool StoryAlertSounds { get; set; }
+
     [Setting("Town criers", Hint = "Now and then, in a town that is not hostile to you, a local calls out fresh news from the roads that their faction would care about (wars and marches, outlaws raiding, raids beaten off, big deaths), or now and then their faction's proclamation. About every six minutes per town; each piece of news once a day.")]
     public bool TownCriers { get; set; } = true;
 
@@ -103,8 +106,26 @@ public sealed class LwSettings
     [Setting("News from other mods", Hint = "Other mods can report what happens in the world (a town falls, a siege begins, a caravan is lost). Townsfolk near the place talk about it, and once your squad has heard it, it goes into History, the Atlas and Recap.")]
     public bool OtherModsNews { get; set; } = true;
 
+    [Setting("Animal companions remembered (test)", Hint = "Squad animals have their own memorials and can earn a title by coming through fights.")]
+    public bool AnimalCompanions { get; set; } = PlayTest.On;
+
+    [Setting("Witnesses remember faces (test)", Hint = "Someone who saw a crime may recognise the same culprit on their return to town.")]
+    public bool WitnessesRememberFaces { get; set; } = PlayTest.On;
+
+    [Setting("Squadmates remember each other (test)", Hint = "In quiet moments a squadmate may speak about a friend they lost or avenged.")]
+    public bool SquadMemories { get; set; } = PlayTest.On;
+
+    [Setting("Anniversaries (test)", Hint = "The squad remembers its first milestones and the friends it lost when another year comes round.")]
+    public bool Anniversaries { get; set; } = PlayTest.On;
+
+    [Setting("Fallen leaders remembered (test)", Hint = "Verified captures and kills spread as local news and are remembered in History and the Atlas.")]
+    public bool FallenLeaderStories { get; set; } = PlayTest.On;
+
     [Setting("Outpost history (test)", Hint = "Record a finished outpost, its first defence and what a visitor learns about the fight.")]
     public bool RememberOutposts { get; set; } = PlayTest.On;
+
+    [Setting("Outpost defence record (test)", Hint = "Record the raids your squad fought at its outposts and remember the people who fell there.")]
+    public bool OutpostDefenceRecord { get; set; } = PlayTest.On;
 
     [Setting("Outpost couriers (test)", Hint = "A trader may carry a recent report to one of your public outposts. Needs Outpost history and News from other mods.")]
     public bool OutpostCouriers { get; set; } = PlayTest.On;
@@ -163,11 +184,23 @@ public sealed class LwSettings
     [Setting("Neck slot position: top (restart)", Hint = "Where the neck slot sits in the character window: pixels from its top edge. Takes effect after restarting the game.", Min = 0, Max = 800, Step = 2)]
     public int NeckSlotY { get; set; } = 224;
 
+    [Setting("Kindness remembered", Hint = "Remember people the squad helps in a life-threatening moment. Needs Meitou 0.23 or later.")]
+    public bool KindnessRemembered { get; set; } = true;
+
+    [Setting("Days between kindness reunions", Hint = "Give an old kindness time to be remembered before another person speaks.", Min = 1, Max = 14, Step = 1)]
+    public int KindnessReunionDays { get; set; } = 3;
+
     [Setting("Squad record in the game's panels", Hint = "Meitou 0.23 and later: each squad member's titles and record in the character panel, how a keepsake's owner fell when you hover over it, and which town signed a bounty hunter's warrant.")]
     public bool RecordInPanels { get; set; } = true;
 
     [Setting("Atlas tab", Hint = "The Atlas tab: places you know and the people talked about, filled by the gossip your squad overhears.")]
     public bool Atlas { get; set; } = true;
+
+    [Setting("Live Atlas portraits (test)", Hint = "Show the current face and clothing of known people nearby, when Meitou can draw them.")]
+    public bool LiveAtlasPortraits { get; set; } = PlayTest.On;
+
+    [Setting("Titles in character names (test, restart)", Hint = "Show a squadmate's latest earned title beside their name in their own panels. Restart Meitou after turning this on.")]
+    public bool TitlesInCharacterNames { get; set; } = PlayTest.On;
 
     [Setting("Lighter checks", Hint = "Refresh existing Atlas detail pages and the Squad Record panels half as often. The squad still records events and hears news at the usual rate.")]
     public bool LighterChecks { get; set; }
@@ -180,8 +213,8 @@ public sealed class LwSettings
         Options = ["U", "N", "O", "Off"])]
     public string RecordHotkey { get => LivingWasteland.MeitouMod.RecordHotkey.Key; set => LivingWasteland.MeitouMod.RecordHotkey.Key = value; }
 
-    [Setting("Native record hotkey (test, restart)", Hint = "Use Settings > Controls to bind the record on supported Meitou builds. The current record hotkey choice supplies the initial default.")]
-    public bool NativeRecordHotkey { get; set; }
+    [Setting("Native record hotkey (restart)", Hint = "Use Settings > Controls to bind the record on supported Meitou builds. The current record hotkey choice supplies the initial default.")]
+    public bool NativeRecordHotkey { get; set; } = true;
 
     [Setting("Notices", Hint = "Small messages that float up for a few seconds: a squad member gaining a skill level, and a faction's standing with you going up (green) or down (red).",
         Options = ["Skills and standing", "Skills only", "Standing only", "Off"])]
@@ -208,12 +241,13 @@ public sealed class LwMod : IMod
     internal static string JobVariable = "LW open jobs";
     /// <summary>The build this helper was made for (modgen/BUILD_ID); the data mods carry theirs in lw_codes.json.</summary>
     public static string DataBuild = "unknown";
-    public const string HelperBuild = "20261125bp";
+    public const string HelperBuild = "20261126bs";
     internal static List<RumourCode> Rumours = [];
     internal static List<(int Index, string Name)> Outlaws = [];
 
     public void Initialize(ModContext c)
     {
+        ActiveFeatures.Clear();
         string path = Path.Combine(c.Folder, "lw_codes.json");
         if (!File.Exists(path))
         {
@@ -231,6 +265,8 @@ public sealed class LwMod : IMod
         RecapLink.Enabled = () => Settings.RecapMoments;
         RecapLink.Source = "LivingWasteland";
         Settings.JobCap = table.Jobs?.Cap ?? 5;
+        UiLanguage.Register(c);
+        MoonscriptLink.Register(c);
         var settings = c.AddSettings(Settings);
         SettingsFile.Attach(settings, "LivingWastelandMeitou");
         settings.Changed += setting =>
@@ -290,7 +326,7 @@ public sealed class LwMod : IMod
                 c.AddDialogueCondition(raids[i].State, check => check.Compare(RaidsSystem.For(check.World)?.StateOf(check.World, k) ?? 0));
                 c.AddDialogueCondition(raids[i].Town, check => check.Compare(RaidsSystem.For(check.World)?.TownOf(check.World, k) ?? 0));
             }
-            c.AddDebugCommand("Wasteland Remembers: raids", _ => !Settings.HarassmentRaids ? "raids are off (the Squad record window's Settings tab)"
+            c.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: raids"), _ => !Settings.HarassmentRaids ? "raids are off (the Squad record window's Settings tab)"
                 : RaidsSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
         }
         if (table.Atlas is { } atlas)
@@ -310,6 +346,9 @@ public sealed class LwMod : IMod
         if (table.Trophies is { } trophies)
             ItemUses.Register(c, [.. trophies.Keepsakes ?? [], trophies.Warrant ?? ""]);
         AidUseWatch.Register(c);
+        if (KindnessWatch.Available) KindnessVoices.Load(c.Folder, c.Log);
+        c.Log(KindnessWatch.Available ? "kindness remembered: recording verified deeds"
+            : "kindness remembered: needs Meitou 0.23 or later");
         RelationWatch.Register(c);
         TradeReputation.Register(c);
         c.AddSystem("lw-thefts", _ => new TheftsSystem(), SystemAnchor.End);
@@ -318,7 +357,7 @@ public sealed class LwMod : IMod
         if (table.Hunters is { Squad: { Length: > 0 } crew })
         {
             c.AddSystem("lw-hunters", ctx => new HuntersSystem(crew, ctx.Find<PopulationSystem>(), ctx.Data), SystemAnchor.End);
-            c.AddDebugCommand("Wasteland Remembers: bounty hunters", _ => !Settings.BountyHunters ? "bounty hunters are off (the Squad record window's Settings tab)"
+            c.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: bounty hunters"), _ => !Settings.BountyHunters ? "bounty hunters are off (the Squad record window's Settings tab)"
                 : HuntersSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
         }
         // rivals (Rivals.cs): survivors the squad left alive who come back for it; their names in the town talk through word swaps
@@ -327,13 +366,14 @@ public sealed class LwMod : IMod
             return new RivalsSystem(ctx.Data) { Population = ctx.Find<PopulationSystem>() };
         }, SystemAnchor.End);
         RivalOffers.Register(c);
-        c.AddDebugCommand("Wasteland Remembers: rivals", _ => !Settings.Rivals ? "rivals are off (the Squad record window's Settings tab)"
+        c.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: rivals"), _ => !Settings.Rivals ? "rivals are off (the Squad record window's Settings tab)"
             : RivalsSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
         // news from other mods (News.cs, WastelandApi.Report): towns near the place talk about it through word swaps
         c.AddSystem("lw-news", ctx => new NewsSystem(ctx.Data), SystemAnchor.End);
         TownSwitchWatch.Register(c);
         PrisonerCases.Register(c, table.Camps ?? []);
         DeathNotices.Register(c);
+        StoryStatuses.Register(c);
         PlatoonFates.Register(c);
         LifecycleWatch.Register(c);
         OutpostMemories.Register(c);
@@ -341,9 +381,9 @@ public sealed class LwMod : IMod
         HiveEnvoys.Register(c);
         PrisonerRecovery.Register(c, table.Camps ?? []);
         PrisonerEscorts.Register(c);
-        c.AddDebugCommand("Wasteland Remembers: news from other mods", _ => NewsSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
+        c.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: news from other mods"), _ => NewsSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
         if (PlayTest.On)
-            c.AddDebugCommand("Wasteland Remembers: test news (type a town)", d =>
+            c.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: test news (type a town)"), d =>
             {
                 if (string.IsNullOrWhiteSpace(d.Field)) return "type a town's name, e.g. Stack; it is reported as besieged (as another mod would)";
                 NewsSystem.TestReports.Enqueue(("siege-began", d.Field.Trim()));
@@ -381,8 +421,8 @@ public sealed class LwMod : IMod
             }
         }
         c.AddSystem("lw-state", ctx => new LwSystem(ctx.Find<PopulationSystem>(), ctx.Find<DialogueSystem>(), ctx.Data), SystemAnchor.End);
-        c.AddDebugCommand("Wasteland Remembers: quests", _ => LwState.Latest?.Summary() ?? "no world yet", hasField: false);
-        c.AddDebugCommand("Wasteland Remembers: give up job (number or name)", d =>
+        c.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: quests"), _ => LwState.Latest?.Summary() ?? "no world yet", hasField: false);
+        c.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: give up job (number or name)"), d =>
         {
             if (string.IsNullOrWhiteSpace(d.Field)) return "type the job's number from the quests row, or part of its name";
             d.Enqueue(new GiveUpJob(d.Field) { Tick = d.Tick });
@@ -680,8 +720,8 @@ public sealed class LwMod : IMod
             c.Log($"camp news: {news.Outlaws.Count} outlaws, {news.Towns.Count} towns");
         }
         c.AddSystem("lw-camps", ctx => new OutlawCampsSystem(camps, ctx.Find<PopulationSystem>(), ctx.Data), SystemAnchor.End);
-        c.AddDebugCommand("Wasteland Remembers: outlaw camps", _ => OutlawCampsSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
-        c.AddDebugCommand("Wasteland Remembers: outlaw successors", _ => !Settings.OutlawSuccessors ? "successors are off (the Squad record window's Settings tab)" : OutlawCampsSystem.Latest?.ShownSuccessors.Text ?? "no world yet", hasField: false);
+        c.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: outlaw camps"), _ => OutlawCampsSystem.Latest?.Shown.Text ?? "no world yet", hasField: false);
+        c.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: outlaw successors"), _ => !Settings.OutlawSuccessors ? "successors are off (the Squad record window's Settings tab)" : OutlawCampsSystem.Latest?.ShownSuccessors.Text ?? "no world yet", hasField: false);
         c.Log($"outlaw camps: {camps.Count} outlaws, {(Settings.OutlawCamps ? "on" : "off")}");
     }
 
@@ -719,7 +759,7 @@ public sealed class LwMod : IMod
         c.AddDialogueEffect(n.HeatEffect, act => { if (Settings.Heat) LwDeeds.For(act.World)?.HeatEffect(act.World, act.Speaker, act.Effect.Value); });
         c.AddUi(new StatsUi());
         RecordHotkey.Install(c, new HarmonyLib.Harmony("livingwasteland.recordhotkey"), Log, Settings.NativeRecordHotkey);
-        c.AddDebugCommand("Wasteland Remembers: squad record", _ =>
+        c.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: squad record"), _ =>
         {
             StatsUi.open = !StatsUi.open;
             c.Log("squad record:\n" + RecordHost.Panel + "\n\n" + RecordHost.CatalogText + "\n\nhistory:\n" + RecordHost.HistoryText);
@@ -876,6 +916,8 @@ public sealed class LwState
     /// <summary>The state of a world: the one its system registered on the first tick, else a fresh one (a preview before the first tick).</summary>
     public static LwState For(World world) => byWorld.TryGetValue(world, out var s) ? s : new LwState();
 
+    internal static LwState? RegisteredIn(World world) => byWorld.TryGetValue(world, out var state) ? state : null;
+
     internal static void Register(World world, LwState state)
     {
         byWorld.AddOrUpdate(world, state);
@@ -883,6 +925,8 @@ public sealed class LwState
     }
 
     public LwCore Core => core;
+    internal WitnessMemories? Witnesses { get; set; }
+    internal CompanionMemorials? Companions { get; set; }
 
     /// <summary>The world's population system and data (set by LwSystem; the war conditions read them).</summary>
     public PopulationSystem? Population { get; internal set; }
@@ -919,15 +963,27 @@ public sealed class LwState
         return snapshot.Short;
     }
 
-    public void Write(BinaryWriter w) => core.Write(w);
+    public void Write(BinaryWriter w)
+    {
+        core.Write(w);
+        Witnesses?.Write(w);
+        Companions?.Write(w);
+    }
 
-    public void Read(BinaryReader r) => core.Read(r);
+    public void Read(BinaryReader r)
+    {
+        core.Read(r);
+        Witnesses = WitnessMemories.Read(r);
+        Companions = CompanionMemorials.Read(r);
+    }
 
     internal void Hash(ref StateHasher h)
     {
         var all = core.Ordered();
         h.Add(all.Count);
         foreach (var (k, v) in all) { h.Add(Rng.StableHash(k)); h.Add(v); }
+        Witnesses?.Hash(ref h);
+        Companions?.Hash(ref h);
     }
 }
 
@@ -960,13 +1016,25 @@ public sealed class LwSystem(PopulationSystem? population, DialogueSystem? talk,
     }
 
     bool buildWarned;
+    int lastAnniversaryDay = -1;
 
     public void SlowWorld(World world)
     {
         PlaytestLog.Observe(world);
+        if (data is not null) state.Witnesses?.Look(world, data);
         if (Published.Due(world.Tick, 15)) state.PublishSummary();
         if (world.Tick % 900 == 0) OutlawLog(world);
         if (world.Tick % 60 == 10 && LogTally.Day(world.GameHours) is { } summary) LwMod.Log(summary);
+        if (world.Tick % 60 == 19 && (LwMod.Settings.Anniversaries || LwMod.Settings.SquadMemories) && LwDeeds.For(world) is { } deeds)
+        {
+            int day = (int)(world.GameHours / 24);
+            if (day != lastAnniversaryDay)
+            {
+                lastAnniversaryDay = day;
+                if (LwMod.Settings.Anniversaries) Anniversaries.Look(world, deeds.Record);
+                if (LwMod.Settings.SquadMemories) SquadMemories.Look(world, deeds);
+            }
+        }
         if (!buildWarned && world.Tick > 300)
         {
             buildWarned = true;
@@ -1048,6 +1116,8 @@ public sealed class LwSystem(PopulationSystem? population, DialogueSystem? talk,
         if (!registered)
         {
             LwState.Register(world, state);
+            LogTally.BeginWorld(world.GameHours);
+            ActiveFeatures.Publish(world);
             state.Population = population;
             state.Data = data;
             registered = true;

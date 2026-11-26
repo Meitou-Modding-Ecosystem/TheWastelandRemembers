@@ -22,8 +22,8 @@ public sealed class SquadRecordSettings
         Options = ["U", "N", "O", "Off"])]
     public string RecordHotkey { get => LivingWasteland.MeitouMod.RecordHotkey.Key; set => LivingWasteland.MeitouMod.RecordHotkey.Key = value; }
 
-    [Setting("Native record hotkey (test, restart)", Hint = "Use Settings > Controls to bind the record on supported Meitou builds. The current record hotkey choice supplies the initial default.")]
-    public bool NativeRecordHotkey { get; set; }
+    [Setting("Native record hotkey (restart)", Hint = "Use Settings > Controls to bind the record on supported Meitou builds. The current record hotkey choice supplies the initial default.")]
+    public bool NativeRecordHotkey { get; set; } = true;
 
     [Setting("Notices", Hint = "Small messages that float up for a few seconds: a squad member gaining a skill level, and a faction's standing with you going up (green) or down (red).",
         Options = ["Skills and standing", "Skills only", "Standing only", "Off"])]
@@ -51,6 +51,7 @@ public sealed class SquadRecordMod : IMod
             return;
         }
 
+        UiLanguage.Register(c);
         SettingsFile.Attach(c.AddSettings(Settings), "SquadRecord");
         RecordHost.Log = c.Log;
         RecordHost.LogChanges = () => Settings.LogChanges;
@@ -62,7 +63,7 @@ public sealed class SquadRecordMod : IMod
         AidUseWatch.Register(c);
         c.AddUi(new StatsUi("squadrecord"));
         RecordHotkey.Install(c, new HarmonyLib.Harmony("squadrecord.recordhotkey"), c.Log, Settings.NativeRecordHotkey);
-        c.AddDebugCommand("Squad record", _ =>
+        c.AddDebugCommand(UiLanguage.Text("Squad record"), _ =>
         {
             StatsUi.open = !StatsUi.open;
             c.Log("squad record:\n" + RecordHost.Panel + "\n\n" + RecordHost.CatalogText + "\n\nhistory:\n" + RecordHost.HistoryText);

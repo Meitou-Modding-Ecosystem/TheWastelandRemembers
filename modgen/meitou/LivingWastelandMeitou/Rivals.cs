@@ -125,6 +125,7 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
                 {
                     if (hurt.TryGetValue(r.Id, out var injury) && injury.Defeated) RecordDefeat(world, r);
                     r.Returns++;
+                    Anniversaries.WonAgainstARival(world);
                     r.Phase = Phase.Recovering;
                     r.Next = world.GameHours + 48 + Spread(r.Name, r.Returns, 48);
                     Tell(world, $"{r.Name} got away again.", $"{r.Name} lost again and got away again.", 55, new Vector3(r.X, 0, r.Z));
@@ -341,7 +342,9 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
             {
                 if (Platoon(world, cold) is { } own) { own.Persistent = true; r.PlatoonId = own.Id; Tag(own, r); }
                 // stronger for each return, applied once the character is in the world
+                int before = r.Boosted;
                 for (; r.Boosted < r.Returns + (r.Phase == Phase.Hunting ? 1 : 0); r.Boosted++) Stronger(cold, r.Boosted);
+                if (r.Phase == Phase.Hunting && r.Boosted > before) StoryStatuses.Returned(world, r.Id);
                 // licking their wounds: one left lying does not bleed out (seen in play: a new rival dead within hours, not at the squad's hands)
                 if (r.Phase == Phase.Recovering && cold.Medical is { Dead: false } med && med.Blood < 40) med.Blood = 40;   // awake or not (seen in play: a one-armed rival bled out on their feet)
             }
@@ -381,8 +384,9 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
                 }
                 if (players.Count > 0 && p is { Dead: false })
                 {
+                    PlatoonRetention.Track(world, p, TagOf(r), PlatoonRetention.Kind.Rival, double.NegativeInfinity, r.Next, r);
                     var (faction, tier, arm, leg) = Fitted(cold);
-                    Pursuit.Steer(world, p, players, BarkLines.Rival(r.Grudge, r.Returns, r.Wins, r.Slot + r.Returns, faction, tier, arm, leg), r.Name);
+                    Pursuit.Steer(world, p, players, BarkLines.Rival(r.Grudge, r.Returns, r.Wins, r.Slot + r.Returns, faction, tier, arm, leg), r.Name, rivalCue: true);
                     if (!table.TryResolveNext(r.Id, out _)) (r.X, r.Z) = (p.Position.X, p.Position.Y);   // off screen: where the stand-in is
                     onScreen[r.Slot] = p.State == PlatoonState.Loaded;
                 }
@@ -669,6 +673,18 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
             var r = rivals.FirstOrDefault(x => x.Slot == k && x.Active);
             WordSwap.Set(data, Tokens[k], r?.Name ?? "someone");
         }
+    }
+
+    internal CharacterId? AtlasPortrait(World world, string name)
+    {
+        ulong actor = 0;
+        foreach (var rival in rivals)
+        {
+            if (!rival.Told || rival.Name != name) continue;
+            if (actor != 0 || rival.Phase == Phase.Dead || rival.ActorId == 0) return null;
+            actor = rival.ActorId;
+        }
+        return actor == 0 ? null : AtlasLiveFaces.Living(world, LastingActors.Find(world, actor));
     }
 
     /// <summary>The Atlas's rivals: (name, the list line, the page).</summary>

@@ -50,7 +50,6 @@ public sealed class ReputationWorldTests
         var elsewhere = new Squad { Id = world.Squads.NextId(), TemplateId = "other-shek-shop", Faction = before, Town = 1 };
         world.Squads.Add(elsewhere);
         var clerk = W.Spawn(world, "Shopkeeper", after, TownAt, squad: trader2.Id);
-        world.RunTicks(31);
 
         var flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
         var filters = typeof(SimWorld).GetProperty("TradePriceFilters", flags)!.GetValue(world)!;
@@ -60,10 +59,12 @@ public sealed class ReputationWorldTests
         long Quote(Squad squad, bool sell = false, long @base = 100) =>
             (long)pass.Invoke(filters, [world, Activator.CreateInstance(dealType, world.Tick, "item", 1, sell, player, squad.Id), @base])!;
         var oldViews = LwMod.TitleViews;
-        bool previous = LwMod.Settings.ReputationPrices;
+        bool previous = LwMod.Settings.ReputationPrices, reactions = LwMod.Settings.TitleReactions;
         try
         {
             LwMod.TitleViews = new() { [OldOwner] = new() { ["fears"] = [title.Name] } };
+            LwMod.Settings.TitleReactions = true;
+            world.RunTicks(31);
             var record = LwDeeds.For(world)!;
             record.Record.SetCrewStat("kills", 1);
             Assert.True(WastelandApi.AddHeat(Town, 40, "ambiguous name"));
@@ -79,6 +80,24 @@ public sealed class ReputationWorldTests
             Assert.Equal(130, Quote(trader));
             Assert.Equal(273, Quote(trader, @base: 200));
             Assert.Equal(108, Quote(elsewhere));  // the title travels, local heat does not
+            var fixedDeal = Activator.CreateInstance(dealType, world.Tick, "item", 1, false, player, elsewhere.Id)!;
+            long AllocatedPerQuote()
+            {
+                const int runs = 500;
+                _ = TradeReputation.Filter(world, fixedDeal, 100);
+                long start = GC.GetAllocatedBytesForCurrentThread();
+                for (int i = 0; i < runs; i++) _ = TradeReputation.Filter(world, fixedDeal, 100);
+                return (GC.GetAllocatedBytesForCurrentThread() - start) / runs;
+            }
+            long withTitles = AllocatedPerQuote();
+            LwMod.Settings.TitleReactions = false;
+            Assert.Equal(100, Quote(elsewhere));
+            long withoutTitles = AllocatedPerQuote();
+            LwMod.Settings.TitleReactions = true;
+            Assert.InRange(withTitles - withoutTitles, 0, 112);
+            LwMod.TitleViews = new() { [OldOwner] = new() { ["fears"] = ["A title nobody holds"] } };
+            Assert.Equal(100, Quote(elsewhere));  // an explicit change of content is still read live
+
             Assert.Equal(long.MaxValue, Quote(trader, @base: long.MaxValue));
             Assert.Equal(100, Quote(trader, sell: true));
 
@@ -94,7 +113,75 @@ public sealed class ReputationWorldTests
         finally
         {
             LwMod.Settings.ReputationPrices = previous;
+            LwMod.Settings.TitleReactions = reactions;
             LwMod.TitleViews = oldViews;
+        }
+    }
+
+    [Theory]
+    [InlineData(1, 8)]
+    [InlineData(24, 200)]
+    [InlineData(168, 8)]
+    public void Only_completed_reputation_priced_purchases_get_bounded_journal_rows(int hours, int purchasesPerHour)
+    {
+        var sim = typeof(SimWorld).Assembly;
+        var observer = sim.GetType("Meitou.Simulation.Trading.ITradeObserver");
+        if (observer is null || TradeReputation.Build() is not { } adapter) return;
+        Assert.True(observer.IsAssignableFrom(adapter));
+        var dispatch = sim.GetType("Meitou.Simulation.Trading.TradeObservers")!
+            .GetMethod("Report", BindingFlags.Static | BindingFlags.NonPublic)!;
+        Type kind = dispatch.GetParameters()[1].ParameterType, party = dispatch.GetParameters()[5].ParameterType;
+        var data = Data();
+        int owner = data.FactionIndex("f-old");
+        using var world = W.World(new LwDeedsSystem([], data), new TradeReputation(data), (ITickSystem)Activator.CreateInstance(adapter)!);
+        var buyer = W.Spawn(world, "Leaf", W.Player, TownAt);
+        var shop = new Squad { Id = world.Squads.NextId(), TemplateId = "test-shop", Faction = owner, Town = 0 };
+        world.Squads.Add(shop);
+        world.RunTicks(31);
+        LwDeeds.For(world)!.Heat.AddCrime(Town, OldOwner, 35, Node);
+
+        bool prices = LwMod.Settings.ReputationPrices, diagnostics = LwMod.Settings.PlaytestDiagnostics;
+        long start = PlaytestLog.Read().Events.LastOrDefault()?.Number ?? 0;
+        void Sale(string type, bool buyback = false)
+        {
+            var customer = Activator.CreateInstance(party, buyer, -1, W.Player);
+            var trader = Activator.CreateInstance(party, CharacterId.None, shop.Id, owner);
+            dispatch.Invoke(null, [world, Enum.Parse(kind, type), "trade-test-item", 2, 122L, customer, trader, "", true, buyback]);
+        }
+
+        try
+        {
+            LwMod.Settings.ReputationPrices = true;
+            LwMod.Settings.PlaytestDiagnostics = true;
+            Sale("Shopping");
+            Sale("WindowSell");
+            Sale("WindowBuy", buyback: true);
+            PlaytestLog.Event(world, "playtest fixture", "day start", "marked");
+            double firstHour = world.GameHours;
+            for (int hour = 0; hour < hours; hour++)
+            {
+                world.GameHours = firstHour + hour;
+                for (int i = 0; i < purchasesPerHour; i++) Sale("WindowBuy");
+                PlaytestLog.Event(world, "playtest fixture", $"hour:{hour}", "other feature event");
+            }
+
+            var segment = PlaytestLog.Read().Events.Where(e => e.Number > start).ToArray();
+            Assert.Contains(segment, row => row.System == "playtest fixture" && row.Key == "day start");
+            Assert.Equal(hours, segment.Count(row => row.Phase == "other feature event"));
+            var rows = segment.Where(row => row.System == "shop reputation").ToArray();
+            Assert.Equal(4 * hours, rows.Length);
+            Assert.All(rows, row =>
+            {
+                Assert.Equal(Node, row.Key);
+                Assert.Equal("purchase completed", row.Phase);
+                Assert.Contains("122 cats paid", row.Detail);
+                Assert.Contains("+22%", row.Detail);
+            });
+        }
+        finally
+        {
+            LwMod.Settings.ReputationPrices = prices;
+            LwMod.Settings.PlaytestDiagnostics = diagnostics;
         }
     }
 

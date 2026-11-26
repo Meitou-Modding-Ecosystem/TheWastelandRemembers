@@ -105,6 +105,45 @@ public static class SettingsFile
         }
     }
 
+#if !SQUAD_RECORD_ONLY
+    static readonly HashSet<string> PreviewSwitches =
+    [
+        nameof(LwSettings.AnimalCompanions), nameof(LwSettings.WitnessesRememberFaces), nameof(LwSettings.SquadMemories), nameof(LwSettings.Anniversaries), nameof(LwSettings.FallenLeaderStories), nameof(LwSettings.OutlawCamps), nameof(LwSettings.RememberOutposts), nameof(LwSettings.OutpostDefenceRecord), nameof(LwSettings.OutpostCouriers),
+        nameof(LwSettings.TownHandovers), nameof(LwSettings.MapMarks), nameof(LwSettings.RelationNews),
+        nameof(LwSettings.ReputationPrices), nameof(LwSettings.RecruitRivals), nameof(LwSettings.HarassmentRaids),
+        nameof(LwSettings.KeepsakeProvenance), nameof(LwSettings.PrisonerCases), nameof(LwSettings.PrisonerDeals),
+        nameof(LwSettings.HiveEnvoys), nameof(LwSettings.PrisonerRecovery), nameof(LwSettings.ShekGateRecovery),
+        nameof(LwSettings.CovertRecovery), nameof(LwSettings.PrisonerEscorts), nameof(LwSettings.VisibleNeckCharms), nameof(LwSettings.LiveAtlasPortraits), nameof(LwSettings.TitlesInCharacterNames)
+    ];
+
+    internal static void ApplyProfile(ModSettingsGroup group, string name)
+    {
+        if (name is not ("light" or "standard" or "full")) return;
+        bool wasLoading = loading;
+        loading = true; // ModSetting still updates its listeners, but write the settings file once.
+        try
+        {
+            foreach (var setting in group.Settings)
+            {
+                if (setting.Kind != ModSettingKind.Switch) continue;
+                bool? value = setting.Key switch
+                {
+                    nameof(LwSettings.BarTalk) or nameof(LwSettings.TownCriers) or nameof(LwSettings.LookoutCalls)
+                        or nameof(LwSettings.RecordInPanels) => name != "light",
+                    nameof(LwSettings.LighterChecks) => name == "light",
+                    _ => PreviewSwitches.Contains(setting.Key) ? name == "full" : null,
+                };
+                if (value is { } desired && setting.Get() is bool current && current != desired) setting.Set(desired);
+            }
+        }
+        finally
+        {
+            loading = wasLoading;
+            if (ReferenceEquals(Group, group)) Save();
+        }
+    }
+#endif
+
     /// <summary>One click on a setting's control: a switch flips, a slider moves one step (dir -1 or +1), a list goes to its next choice.</summary>
     public static void Step(string key, int dir)
     {
