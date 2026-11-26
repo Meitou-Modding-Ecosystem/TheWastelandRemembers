@@ -17,7 +17,7 @@ public sealed class PlaytestJournalTests
         Assert.Equal(1L, latest.Discarded);
         Assert.Equal(new long[] { 2, 3 }, latest.Events.Select(row => row.Number));
         var rows = PlaytestJournal.Format(latest).Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
-        Assert.Contains("Older events discarded 1", rows[0]);
+        Assert.Contains("Events omitted 1", rows[0]);
         Assert.Equal(4, rows.Length);
         Assert.Equal(9, rows[2].Split('\t').Length);
         Assert.EndsWith("line\\t1\\r\\nline\\\\2", rows[2]);

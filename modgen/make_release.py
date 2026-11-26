@@ -7,9 +7,11 @@ saver for bug reports, in one zip.
 * data built with --release (the Play Test starts and other test-only records are left out);
 * the code mod ships its DLL, manifest and codes only (its C# sources stay in the repository);
 * each mod's .info gets a readable title;
-* the build id (BUILD_ID) is in the zip's name and in lw_codes.json, and the log says it at start.
+* the build id (BUILD_ID) is in the zip's name and in lw_codes.json, and the log says it at start;
+* the source DLL's stamp must match BUILD_ID, and a sibling folder holds the SteamCMD VDF and full change note.
 """
 import argparse
+from pathlib import Path
 import os
 import re
 import shutil
@@ -82,6 +84,93 @@ pause
 """
 
 
+def read_build_stamp(dll, entry):
+    """Read the compiled constant from metadata, with no Meitou DLLs or executable mod code."""
+    project = Path(HERE) / "meitou" / "BuildStamp" / "BuildStamp.csproj"
+    try:
+        run = subprocess.run(
+            [os.environ.get("DOTNET", "dotnet"), "run", "--project", str(project),
+             "-c", "Release", "--", str(dll), entry],
+            capture_output=True, text=True,
+        )
+    except OSError as error:
+        raise SystemExit(f"Cannot check the build stamp in {dll.name}: {error}") from error
+    stamps = [line.removeprefix("HelperBuild=") for line in run.stdout.splitlines()
+              if line.startswith("HelperBuild=")]
+    if run.returncode or len(stamps) != 1:
+        raise SystemExit(f"Cannot check the build stamp in {dll.name}: {run.stderr.strip() or run.stdout.strip()}")
+    return stamps[0]
+
+
+def check_dll(dll, build, required):
+    if not dll.is_file():
+        if required:
+            raise SystemExit(f"Missing {dll}. Build the release DLL first.")
+        return
+    entry = "LwMod" if required else "SquadRecordMod"
+    stamp = read_build_stamp(dll, entry)
+    if stamp != build and (required or stamp):
+        raise SystemExit(f"{dll.name} has HelperBuild {stamp or '<missing>'}, expected {build}. Rebuild before packaging.")
+
+
+def workshop_notes(changelog, build):
+    """Use the section stamped for this build, including any wrapped bullets."""
+    section = re.search(rf"^## Build {re.escape(build)}(?:[ \t]+[^\n]*)?\r?\n(.*?)(?=^## |\Z)",
+                        changelog, re.MULTILINE | re.DOTALL)
+    if section is None:
+        raise SystemExit(f"Add a '## Build {build}' section to CHANGELOG.md before packaging.")
+    rows = []
+    for raw in section.group(1).splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        if line.startswith("- "):
+            rows.append((True, line[2:]))
+        elif rows and raw.startswith((" ", "\t")):
+            bullet, text = rows[-1]
+            rows[-1] = (bullet, text + " " + line)
+        else:
+            rows.append((False, line))
+    if not rows:
+        raise SystemExit(f"The changelog section for {build} is empty.")
+
+    first = next((line for bullet, line in rows if bullet), rows[0][1])
+    short = first.replace("**", "").replace(chr(96), "")
+    full = [f"[b]Build {build}[/b]"]
+    in_list = False
+    for bullet, line in rows:
+        if bullet != in_list:
+            full.append("[list]" if bullet else "[/list]")
+            in_list = bullet
+        text = re.sub(r"\*\*(.+?)\*\*", r"[b]\1[/b]", line).replace(chr(96), "")
+        full.append(("[*]" if bullet else "") + text)
+    if in_list:
+        full.append("[/list]")
+    full.extend(["", "If something looks wrong, send the build and Meitou version with a log from "
+                     "Save logs for a bug report.bat (Windows) or save-logs.sh (Linux, macOS and Proton).",
+                 "", TROUBLESHOOTING])
+    return short, "\n".join(full) + "\n"
+
+
+# Every Steam posting carries this (CLAUDE.md): Steam can keep an old download through a resubscribe.
+TROUBLESHOOTING = ("[b]Troubleshooting:[/b] if Meitou says \"Script mod not loaded: built for Meitou ...\" after an update, Steam has "
+                   "kept the old download. Unsubscribe, delete [i]steamapps/workshop/content/233860/3839368189[/i], then subscribe again.")
+
+
+def workshop_files(directory, item, short_note, full_note):
+    directory.mkdir(parents=True, exist_ok=True)
+    # TWR_STEAM_FOLDER: where the zip will be unpacked on the uploading PC (e.g. C:\TWR); without it, the folder beside the zip.
+    upload_root = os.environ.get("TWR_STEAM_FOLDER", "").strip().rstrip("\\/")
+    content = (upload_root + "\\mods\\LivingWasteland" if "\\" in upload_root or ":" in upload_root
+               else upload_root + "/mods/LivingWasteland") if upload_root \
+        else (directory / "mods" / "LivingWasteland").resolve().as_posix()
+    escaped = short_note.replace("\\", "\\\\").replace('"', '\\"')
+    vdf = f'"workshopitem"\n{{\n    "appid" "233860"\n    "publishedfileid" "{item}"\n' \
+          f'    "contentfolder" "{content}"\n    "changenote" "{escaped}"\n}}\n'
+    (directory / "twr.vdf").write_text(vdf, encoding="utf-8")
+    (directory / "change-note.bbcode.txt").write_text(full_note, encoding="utf-8")
+
+
 def main(argv):
     ap = argparse.ArgumentParser()
     ap.add_argument("data")
@@ -89,6 +178,17 @@ def main(argv):
     a = ap.parse_args(argv)
     with open(os.path.join(HERE, "BUILD_ID"), encoding="utf-8") as fh:
         build = fh.read().strip()
+    root = Path(HERE)
+    try:
+        workshop = (root / "WORKSHOP_ID").read_text(encoding="utf-8").strip()
+    except OSError as error:
+        raise SystemExit(f"Cannot read WORKSHOP_ID: {error}") from error
+    if not re.fullmatch(r"[1-9][0-9]*", workshop):
+        raise SystemExit("WORKSHOP_ID must contain the existing Steam Workshop item number.")
+    short_note, full_note = workshop_notes((root / "CHANGELOG.md").read_text(encoding="utf-8"), build)
+    template = root / "meitou" / "LivingWastelandMeitou"
+    check_dll(template / "LivingWastelandMeitou.dll", build, required=True)
+    check_dll(template / "SquadRecord.dll", build, required=False)
     stage = os.path.join(a.out, "stage")
     shutil.rmtree(stage, ignore_errors=True)
     built = os.path.join(stage, "built")
@@ -98,18 +198,18 @@ def main(argv):
     pack = os.path.join(stage, "pack")
     for m in MODS:
         src, dst = os.path.join(built, m), os.path.join(pack, "mods", m)
+        check_dll(Path(src) / "LivingWastelandMeitou.dll", build, required=True)
+        check_dll(Path(src) / "SquadRecord.dll", build, required=False)
         os.makedirs(dst)
         for f in os.listdir(src):
             if f.endswith(CODE_KEEP):
                 shutil.copy2(os.path.join(src, f), dst)
-        info = os.path.join(dst, f"_{m}.info")
-        if os.path.exists(info):
-            t = open(info, encoding="utf-8").read().replace(f"<title>{m}</title>", f"<title>{TITLES[m]}</title>")
+        info = Path(dst) / f"_{m}.info"
+        if info.exists():
+            t = info.read_text(encoding="utf-8").replace(f"<title>{m}</title>", f"<title>{TITLES[m]}</title>")
             # the Workshop item this mod is uploaded to (WORKSHOP_ID), so FCS updates it instead of making a new item
-            wid = os.path.join(HERE, "WORKSHOP_ID")
-            if os.path.exists(wid):
-                t = re.sub(r"<id>\d+</id>", f"<id>{open(wid, encoding='utf-8').read().strip()}</id>", t, count=1)
-            open(info, "w", encoding="utf-8").write(t)
+            t = re.sub(r"<id>\d+</id>", f"<id>{workshop}</id>", t, count=1)
+            info.write_text(t, encoding="utf-8")
     # the neck charm models (assets/neck_charms, by Mazal Tofuson): game files only, beside the helper (Meitou finds a bone mesh by bare
     # file name in the mods' folders); shown only with "Visible neck charms" on
     charms = os.path.join(HERE, "assets", "neck_charms")
@@ -129,8 +229,12 @@ def main(argv):
             for f in files:
                 p = os.path.join(root, f)
                 z.write(p, os.path.relpath(p, pack))
+    upload = Path(zpath).with_suffix("")
+    workshop_files(upload, workshop, short_note, full_note)
     shutil.rmtree(stage)
     print(zpath)
+    print(f"Extract the zip into {upload} before using {upload / 'twr.vdf'}.")
+    print(f"Steam change note: {upload / 'change-note.bbcode.txt'}")
 
 
 if __name__ == "__main__":

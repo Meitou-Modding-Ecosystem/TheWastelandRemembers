@@ -78,7 +78,7 @@ internal sealed class PrisonerRecovery(PopulationData data, PopulationSystem pop
         context.AddSystem("lw-recovery-clues", _ => new RecoveryClues(), SystemAnchor.End);
         context.AddSystem("lw-prisoner-recovery", ctx => ctx.Find<PopulationSystem>() is { } pop
             ? new PrisonerRecovery(ctx.Data, pop, outlaws) : null!, SystemAnchor.End);
-        context.AddDebugCommand("Wasteland Remembers: prisoner recovery", _ => Inspect(), hasField: false);
+        context.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: prisoner recovery"), _ => Inspect(), hasField: false);
     }
 
     static bool Enabled => LwMod.Settings.PrisonerCases && LwMod.Settings.RememberOutposts && LwMod.Settings.PrisonerRecovery;

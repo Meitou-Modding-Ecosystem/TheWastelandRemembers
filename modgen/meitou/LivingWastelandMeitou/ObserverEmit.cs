@@ -16,7 +16,24 @@ public static class ObserverEmit
     static readonly object gate = new();
 
     /// <summary>Adapts a two-argument observer or three-argument price filter. Boxes the payload and passes the price through unchanged.</summary>
-    public static Type? Build(Type observer, string method, MethodInfo target, string name)
+    public static Type? Build(Type observer, string method, MethodInfo target, string name) =>
+        Build(observer, method, target, name, null);
+
+    internal static Type? Build(Type observer, string method, MethodInfo target, string name, (Type Hook, MethodInfo Target)? removal)
+    {
+        if (NoticeForwarder(observer, method, target) is not { } main) return null;
+        return Emit(observer, main.Method, name, main.Body, removal is { } veto ? RemovalForwarder(veto.Hook, veto.Target) : null);
+    }
+
+    internal static Type? BuildPair(Type observer, string method, MethodInfo target, string name,
+        Type secondary, string secondaryMethod, MethodInfo secondaryTarget)
+    {
+        if (NoticeForwarder(observer, method, target) is not { } first || NoticeForwarder(secondary, secondaryMethod, secondaryTarget) is not { } second)
+            return null;
+        return Emit(observer, first.Method, name, first.Body, second);
+    }
+
+    static Forwarder? NoticeForwarder(Type observer, string method, MethodInfo target)
     {
         var m = observer.GetMethod(method);
         bool priceFilter = target.ReturnType == typeof(long);
@@ -27,25 +44,68 @@ public static class ObserverEmit
         var second = ps[1].ParameterType;
         bool byRef = second.IsByRef;
         var arg = byRef ? second.GetElementType()! : second;
-        lock (gate)
+        return new Forwarder(m, il =>
         {
-            var tb = module.DefineType($"LivingWasteland.MeitouMod.{name}{Guid.NewGuid():N}", TypeAttributes.Public | TypeAttributes.Sealed | TypeAttributes.Class,
-                typeof(object), [typeof(ITickSystem), observer]);
-            tb.DefineDefaultConstructor(MethodAttributes.Public);
-            var impl = tb.DefineMethod(m.Name, MethodAttributes.Public | MethodAttributes.Virtual | MethodAttributes.Final | MethodAttributes.HideBySig
-                | MethodAttributes.NewSlot, CallingConventions.HasThis, m.ReturnType, null, null, ps.Select(p => p.ParameterType).ToArray(),
-                ps.Select(p => p.GetRequiredCustomModifiers()).ToArray(), ps.Select(p => p.GetOptionalCustomModifiers()).ToArray());
-            for (int i = 0; i < ps.Length; i++) impl.DefineParameter(i + 1, ps[i].Attributes, ps[i].Name);
-            var il = impl.GetILGenerator();
             il.Emit(OpCodes.Ldarg_1);
             il.Emit(OpCodes.Ldarg_2);
             if (byRef) il.Emit(OpCodes.Ldobj, arg);
             if (arg.IsValueType) il.Emit(OpCodes.Box, arg);
             if (priceFilter) il.Emit(OpCodes.Ldarg_3);
             il.Emit(OpCodes.Call, target);
-            il.Emit(OpCodes.Ret);
-            tb.DefineMethodOverride(impl, m);
+        });
+    }
+
+    readonly record struct Forwarder(MethodInfo Method, Action<ILGenerator> Body);
+
+    /// <summary>Adapts the removal hook without boxing its payload in the off-screen population step.</summary>
+    static Forwarder? RemovalForwarder(Type observer, MethodInfo target)
+    {
+        var m = observer.GetMethod("Keep");
+        if (m?.ReturnType != typeof(bool) || m.GetParameters() is not [var world, var request] ||
+            world.ParameterType != typeof(World) || request.ParameterType.GetElementType() is not { IsValueType: true } ask ||
+            !request.ParameterType.IsByRef) return null;
+        if (ask.GetProperty("Kind") is not { PropertyType.IsEnum: true, GetMethod: { } kind } ||
+            ask.GetProperty("Platoon") is not { GetMethod: { } platoon } id || id.PropertyType != typeof(int)) return null;
+
+        return new Forwarder(m, il =>
+        {
+            il.Emit(OpCodes.Ldarg_1);
+            il.Emit(OpCodes.Ldarg_2);
+            il.Emit(OpCodes.Call, kind);
+            il.Emit(OpCodes.Conv_I4);
+            il.Emit(OpCodes.Ldarg_2);
+            il.Emit(OpCodes.Call, platoon);
+            il.Emit(OpCodes.Call, target);
+        });
+    }
+
+    static Type Emit(Type observer, MethodInfo m, string name, Action<ILGenerator> body, Forwarder? extra)
+    {
+        lock (gate)
+        {
+            var tb = module.DefineType($"LivingWasteland.MeitouMod.{name}{Guid.NewGuid():N}", TypeAttributes.Public | TypeAttributes.Sealed | TypeAttributes.Class,
+                typeof(object), [typeof(ITickSystem), observer]);
+            tb.DefineDefaultConstructor(MethodAttributes.Public);
+            DefineForwarder(tb, m, body);
+            if (extra is { } forwarder)
+            {
+                tb.AddInterfaceImplementation(forwarder.Method.DeclaringType!);
+                DefineForwarder(tb, forwarder.Method, forwarder.Body);
+            }
             return tb.CreateType();
         }
+    }
+
+    static void DefineForwarder(TypeBuilder tb, MethodInfo method, Action<ILGenerator> body)
+    {
+        var ps = method.GetParameters();
+        var impl = tb.DefineMethod(method.Name, MethodAttributes.Public | MethodAttributes.Virtual | MethodAttributes.Final | MethodAttributes.HideBySig
+            | MethodAttributes.NewSlot, CallingConventions.HasThis, method.ReturnType, null, null, ps.Select(p => p.ParameterType).ToArray(),
+            ps.Select(p => p.GetRequiredCustomModifiers()).ToArray(), ps.Select(p => p.GetOptionalCustomModifiers()).ToArray());
+        for (int i = 0; i < ps.Length; i++) impl.DefineParameter(i + 1, ps[i].Attributes, ps[i].Name);
+        var il = impl.GetILGenerator();
+        body(il);
+        il.Emit(OpCodes.Ret);
+        tb.DefineMethodOverride(impl, method);
     }
 }

@@ -23,6 +23,22 @@ tags=("$@")
 [ ${#tags[@]} -gt 0 ] || tags=(v0.22.1 v0.17.3)
 fail=0
 
+# Each world-test run checks both directions against the actual previous Steam DLL when it is in the release cache.
+# A provided path or a release check requiring rollback must fail visibly if the file is missing.
+export TWR_PREVIOUS_STEAM_BUILD="${TWR_PREVIOUS_STEAM_BUILD:-20261125bo}"
+rollback_candidate="${TWR_PREVIOUS_STEAM_DLL:-$CACHE/twr-steam-$TWR_PREVIOUS_STEAM_BUILD/LivingWastelandMeitou.dll}"
+if [ -f "$rollback_candidate" ]; then
+  export TWR_PREVIOUS_STEAM_DLL="$rollback_candidate"
+  echo "== Save rollback: helper $TWR_PREVIOUS_STEAM_BUILD ($rollback_candidate)"
+  echo "   SHA-256: $(sha256sum "$rollback_candidate" | cut -d' ' -f1)"
+elif [ -n "${TWR_PREVIOUS_STEAM_DLL:-}" ] || [ "${TWR_REQUIRE_ROLLBACK:-0}" = 1 ]; then
+  echo "FAIL: save rollback requires $rollback_candidate"
+  exit 2
+else
+  echo "== Save rollback: previous Steam DLL unavailable at $rollback_candidate"
+  echo "   Running current save fixtures only. Use TWR_REQUIRE_ROLLBACK=1 for a release."
+fi
+
 echo "== 1. the mod DLL, built against Meitou 0.17.3"
 if [ ! -f "$CACHE/0.17.3/MeitouClient.dll" ]; then echo "FAIL: no Meitou 0.17.3 DLLs in $CACHE/0.17.3"; exit 2; fi
 OUT="$(mktemp -d)"
@@ -44,8 +60,8 @@ done
 echo "== 2b. RefCheck's engine-version check on a real DLL (RefCheck/check_versions.sh)"
 "$HERE/RefCheck/check_versions.sh" || fail=1
 
-echo "== 3. data compiler tests (python, no game files needed)"
-if (cd "$MODGEN" && python3 -m unittest -q test_meitou_target test_meitou_check >"$OUT/py.log" 2>&1); then echo "   passed"; else tail -15 "$OUT/py.log"; fail=1; fi
+echo "== 3. data compiler, packaging and log collector tests (python, no game files needed)"
+if (cd "$MODGEN" && python3 -m unittest -q test_meitou_target test_meitou_check test_make_release test_save_logs >"$OUT/py.log" 2>&1); then echo "   passed"; else tail -15 "$OUT/py.log"; fail=1; fi
 
 echo "== 4. text checks (content/*.json)"
 bad=0

@@ -52,6 +52,12 @@ public static class StatsPanel
 #if !SQUAD_RECORD_ONLY
         lines.Add("");
         lines.AddRange(Heat(deeds.Heat, occupied));
+        if (OutpostMemories.DefenceSummary is { Length: > 0 } defence)
+        {
+            lines.Add("");
+            lines.Add("-- Outpost defences --");
+            lines.Add(defence);
+        }
 #endif
         return string.Join("\n", lines);
     }
@@ -140,7 +146,7 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
     static volatile bool earnedOnly;   // the Titles page: only the titles someone holds
     static volatile int tab;   // 0 record, 1 titles, 2 history, 3 fallen
     static int page;
-    static readonly string[] TabArgs = ["record", "titles", "history", "fallen", "atlas", "settings", "squads"];   // tab number -> its argument
+    static readonly string[] TabArgs = ["record", "titles", "history", "fallen", "atlas", "settings", "squads", "active"];   // tab number -> its argument
 
     /// <summary>Where the button sits (a settings choice). "Top right, lower" sits below the FEEDBACK button and other mods' top-right buttons.</summary>
     public static readonly string[] Positions = ["Top, beside Feedback", "Top right, lower", "Top right", "Top left, lower", "Top left"];
@@ -154,6 +160,7 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
     readonly Dictionary<string, string> styles = [];
     UiRegistration? reg;
     string toggle = "", close = "", view = "", turn = "", pick = "", change = "", preset = "", export = "", earned = "", search = "", clear = "", about = "";
+    string exportChronicle = "";
     string? aboutKey;
 #if !SQUAD_RECORD_ONLY
     string roleAct = "", homeAct = "", pickAct = "";
@@ -161,7 +168,7 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
     int? roleMenu;          // the squad whose role drop-down is open
 #endif       // the setting whose description was clicked (the hover box without a mouse)
     string lastQuery = "";
-    string? exported;       // where the last "Save as text" went (or why it did not)
+    string? exported;       // where the last export went (or why it did not)
     string? entry;          // the Atlas entry open, null for the list
     int listPage;
     int ids;
@@ -177,13 +184,22 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
         PrisonerMenu.Register(r);
         OutpostTownPanel.Register(r, LwMod.Log);
         PanelLines.Register(r, LwMod.Log);
+        CharacterTitleDisplay.Register(r);
 #endif
         toggle = r.RegisterAction("toggle", _ => open = !open);
         close = r.RegisterAction("close", _ => open = false);
-        view = r.RegisterAction("view", c => { tab = c.Argument == "titles" ? 1 : c.Argument == "history" ? 2 : c.Argument == "fallen" ? 3 : c.Argument == "atlas" ? 4 : c.Argument == "settings" ? 5 : c.Argument == "squads" ? 6 : 0; page = 0; entry = null; });
-        export = r.RegisterAction("export", _ => exported = Export());
+        view = r.RegisterAction("view", c => { tab = Math.Max(0, Array.IndexOf(TabArgs, c.Argument)); page = 0; entry = null; });
+        export = r.RegisterAction("export", _ => exported = Export(chronicle: false));
+        exportChronicle = r.RegisterAction("export-chronicle", _ => exported = Export(chronicle: true));
         earned = r.RegisterAction("earned", _ => { earnedOnly = !earnedOnly; page = 0; });
-        preset = r.RegisterAction("preset", c => { if (c.Argument == "record") SettingsFile.RecordOnly(); else SettingsFile.Defaults(); });
+        preset = r.RegisterAction("preset", c =>
+        {
+            if (c.Argument == "record") SettingsFile.RecordOnly();
+            else if (c.Argument == "defaults") SettingsFile.Defaults();
+#if !SQUAD_RECORD_ONLY
+            else if (SettingsFile.Group is { } group) SettingsFile.ApplyProfile(group, c.Argument);
+#endif
+        });
         change = r.RegisterAction("set", c => { int bar = c.Argument.LastIndexOf('|'); if (bar > 0) SettingsFile.Step(c.Argument[..bar], c.Argument[(bar + 1)..] == "-" ? -1 : 1); });
         pick = r.RegisterAction("atlas", c => { entry = c.Argument.Length == 0 ? null : c.Argument; listPage = entry is null ? listPage : page; page = entry is null ? listPage : 0; });
         turn = r.RegisterAction("page", c => page = Math.Max(0, page + (c.Argument == "next" ? 1 : -1)));
@@ -294,16 +310,17 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
 
         // header: title, close, the two views
         win.Children.Add(Node(0, 0, w, 40 * s, Style("header", s)));
-        string[] titles = ["Squad record", "Squad record - titles", "Squad record - history", "Squad record - the fallen", "Atlas", "Settings", "Squads - roles"];
+        string[] titles = ["Squad record", "Squad record - titles", "Squad record - history", "Squad record - the fallen", "Atlas", "Settings", "Squads - roles", "What’s active"];
         win.Children.Add(Node(0, 0, w - 50 * s, 40 * s, Style("title", s), UiNodeKind.Label, titles[tab]));
         win.Children.Add(Node(w - 44 * s, 6 * s, 36 * s, 28 * s, Style("button", s), UiNodeKind.Button, "X", close));
 #if SQUAD_RECORD_ONLY
         string[] names = ["Record", "Titles", "History", "Fallen", "Settings"], args = ["record", "titles", "history", "fallen", "settings"];
 #else
-        string[] names = ["Record", "Titles", "History", "Fallen", "Atlas", "Squads", "Settings"], args = ["record", "titles", "history", "fallen", "atlas", "squads", "settings"];
+        string[] names = ["Record", "Titles", "History", "Fallen", "Atlas", "Squads", "Settings", "What’s active"], args = ["record", "titles", "history", "fallen", "atlas", "squads", "settings", "active"];
 #endif
+        float tabWidth = Math.Min(112 * s, (w - 20 * s) / names.Length);
         for (int i = 0; i < names.Length; i++)
-            win.Children.Add(Node((10 + i * 112) * s, 48 * s, 106 * s, 28 * s, Style(tab == Array.IndexOf(TabArgs, args[i]) ? "tabOn" : "button", s), UiNodeKind.Button, names[i], view, args[i]));
+            win.Children.Add(Node(10 * s + i * tabWidth, 48 * s, tabWidth - 6 * s, 28 * s, Style(tab == Array.IndexOf(TabArgs, args[i]) ? "tabOn" : "button", s), UiNodeKind.Button, names[i], view, args[i]));
         win.Children.Add(Node(10 * s, 82 * s, w - 20 * s, 1 * s, Style("line", s)));
 #if !SQUAD_RECORD_ONLY
         if (tab == 6) return SquadsPage(win, w, h, s);
@@ -325,19 +342,25 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
             4 => entry is null ? RecordHost.AtlasList : RecordHost.AtlasPages.GetValueOrDefault(entry, "Nothing more is known."),
             _ => RecordHost.Panel,
         }).Split('\n');
+#if !SQUAD_RECORD_ONLY
+        if (tab == 7) all = ActiveFeatures.Lines().SelectMany(line => Wrap(line, Math.Max(24, (int)((w - 20 * s) / (8.4f * s))), 3)).ToArray();
+#endif
         if (tab == 1)
         {
             if (earnedOnly) all = EarnedOnly(all);
             win.Children.Add(Node(w - 170 * s, h - 40 * s, 156 * s, 28 * s, Style("button", s), UiNodeKind.Button, earnedOnly ? "Show all" : "Earned only", earned));
         }
         if (tab is 2 or 3)
+        {
+            win.Children.Add(Node(w - 338 * s, h - 40 * s, 156 * s, 28 * s, Style("button", s), UiNodeKind.Button, "Save chronicle", exportChronicle));
             win.Children.Add(Node(w - 170 * s, h - 40 * s, 156 * s, 28 * s, Style("button", s), UiNodeKind.Button, "Save as text", export));
+        }
         if (tab == 4 && entry is not null)
             win.Children.Add(Node(w - 134 * s, h - 40 * s, 120 * s, 28 * s, Style("button", s), UiNodeKind.Button, "< Atlas", pick, ""));
         // an Atlas person page shows the person's portrait at the top right (Meitou 0.19+ image nodes); the text wraps to the room left
         float textW = w - 20 * s;
-        if (tab == 4 && entry is not null && RecordHost.AtlasPortraits.GetValueOrDefault(entry) is { } face
-            && PortraitNode(w - Math.Min(180 * s, h * 0.3f) - 14 * s, top, Math.Min(180 * s, h * 0.3f), face) is { } portrait)
+        if (tab == 4 && entry is not null
+            && PortraitNode(w - Math.Min(180 * s, h * 0.3f) - 14 * s, top, Math.Min(180 * s, h * 0.3f), entry) is { } portrait)
         {
             float size = Math.Min(180 * s, h * 0.3f);
             win.Children.Add(Node(w - size - 16 * s, top - 2 * s, size + 4 * s, size + 4 * s, Style("line", s)));
@@ -500,6 +523,13 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
         }
 
         float rowH = 30 * s, top = 120 * s, bottom = h - 46 * s, valueW = 220 * s;
+#if !SQUAD_RECORD_ONLY
+        string[] profiles = ["Light", "Standard", "Full"];
+        for (int i = 0; i < profiles.Length; i++)
+            win.Children.Add(Node((10 + i * 106) * s, top, 100 * s, 26 * s, Style("button", s),
+                UiNodeKind.Button, profiles[i], preset, profiles[i].ToLowerInvariant()));
+        top += 32 * s;
+#endif
         int perPage = Math.Max(1, (int)((bottom - top) / rowH));
         int pages = Math.Max(1, (rows.Count + perPage - 1) / perPage);
         page = Math.Min(page, pages - 1);
@@ -574,10 +604,8 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
         return [.. keep];
     }
 
-    /// "Save as text": the squad's whole story (record, titles, history, the fallen) as a plain text file in Documents (The Wasteland Remembers, or Squad Record), to keep
-    /// or share. Written from the copies the tick already made, so it never touches the world.
-    /// </summary>
-    static string Export()
+    // Export only the text published by the tick. The UI callback never reads the world.
+    static string Export(bool chronicle)
     {
         try
         {
@@ -586,15 +614,19 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
 #else
             const string Folder = "The Wasteland Remembers";
 #endif
-            string folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Folder);
-            Directory.CreateDirectory(folder);
-            string file = Path.Combine(folder, $"Squad story {DateTime.Now:yyyy-MM-dd HHmm}.txt");
-            File.WriteAllText(file, StoryText());
-            return $"Saved to Documents\\{Folder}\\{Path.GetFileName(file)}";
+            string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string directory = Path.Combine(documents.Length > 0 ? documents :
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Folder);
+            Directory.CreateDirectory(directory);
+            string name = chronicle ? $"Squad chronicle {DateTime.Now:yyyy-MM-dd HHmmssfff}.html"
+                : $"Squad story {DateTime.Now:yyyy-MM-dd HHmm}.txt";
+            string file = Path.Combine(directory, name);
+            File.WriteAllText(file, chronicle ? ChronicleHtml() : StoryText());
+            return $"Saved to {file}";
         }
         catch (Exception e)
         {
-            RecordHost.Log($"save as text failed: {e.GetBaseException().Message}");
+            RecordHost.Log($"story export failed: {e.GetBaseException().Message}");
             return "Could not save the file (see log.txt).";
         }
     }
@@ -634,21 +666,68 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
     }
 #endif
 
-    internal static string StoryText()
+    static List<(string Title, string Body)> StoryChapters()
     {
-        string line = Environment.NewLine;
-        List<string> chapters =
+        List<(string, string)> chapters =
         [
-            "THE SQUAD" + line + RecordHost.Panel,
-            "TITLES" + line + RecordHost.CatalogText,
-            "HISTORY" + line + RecordHost.HistoryText,
-            "THE FALLEN" + line + RecordHost.FallenText,
+            ("The squad", RecordHost.Panel),
+            ("Titles", RecordHost.CatalogText),
+            ("History", RecordHost.HistoryText),
+            ("The fallen", RecordHost.FallenText),
         ];
 #if !SQUAD_RECORD_ONLY
         string outposts = OutpostMemories.Chronicle;
-        if (outposts.Length > 0) chapters.Add("OUTPOSTS" + line + outposts);
+        if (outposts.Length > 0) chapters.Add(("Outposts", outposts));
 #endif
-        return string.Join(line + line, chapters);
+        return chapters;
+    }
+
+    internal static string StoryText()
+    {
+        string line = Environment.NewLine;
+        return string.Join(line + line, StoryChapters().Select(part => part.Title.ToUpperInvariant() + line + part.Body));
+    }
+
+    internal static string ChronicleHtml()
+    {
+        var chapters = StoryChapters();
+#if !SQUAD_RECORD_ONLY
+        var rivals = RecordHost.AtlasPages.Where(page => page.Key.StartsWith("r:", StringComparison.Ordinal))
+            .OrderBy(page => page.Key, StringComparer.Ordinal).Select(page => page.Value);
+        string grudges = string.Join("\n\n", rivals);
+        if (grudges.Length > 0) chapters.Add(("Rivals", grudges));
+#endif
+        var html = new System.Text.StringBuilder("""
+            <!doctype html>
+            <html lang="en-GB">
+            <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+            <title>Squad chronicle</title>
+            <style>
+            body { margin: 0 auto; width: min(44rem, 90vw); color: #2d251d; background: #f6f0e4; font: 1rem/1.55 Georgia, serif; }
+            header { border-bottom: 0.2rem solid #7a3e2a; padding: 2rem 0 1rem; }
+            h1, h2 { line-height: 1.2; }
+            h2 { break-after: avoid; }
+            section { border-bottom: 1px solid #c5ad95; padding: 0.5rem 0 1rem; }
+            .lines { white-space: pre-wrap; overflow-wrap: anywhere; }
+            @media print { body { width: auto; color: #000; background: #fff; } }
+            </style>
+            </head>
+            <body>
+            <header><h1>Squad chronicle</h1></header>
+            <main>
+
+            """);
+        foreach (var (title, body) in chapters)
+        {
+            html.Append("<section><h2>").Append(System.Net.WebUtility.HtmlEncode(title))
+                .Append("</h2><div class=\"lines\">").Append(System.Net.WebUtility.HtmlEncode(body))
+                .AppendLine("</div></section>");
+        }
+        html.AppendLine("</main></body></html>");
+        return html.ToString();
     }
 
     // Meitou 0.19 image nodes, found by name so older versions (no faces) still load: UiNodeKind.Image and UiNode.Portrait.
@@ -657,13 +736,24 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
     public static bool CanShowFaces => ImageKind is not null && PortraitProp is not null;
 
     /// <summary>A portrait of a CHARACTER record, drawn as the squad bar draws portraits; null on a Meitou without image nodes.</summary>
-    UiNode? PortraitNode(float x, float y, float size, string record)
+    UiNode? PortraitNode(float x, float y, float size, string key)
     {
-        if (ImageKind is not { } kind || PortraitProp is null) return null;
+        if (ImageKind is not { } kind) return null;
+        string? record = RecordHost.AtlasPortraits.GetValueOrDefault(key);
+#if !SQUAD_RECORD_ONLY
+        CharacterId? live = AtlasLiveFaces.Find(key);
+        if (live is null && (record is null || PortraitProp is null)) return null;
+#else
+        if (record is null || PortraitProp is null) return null;
+#endif
         try
         {
             var node = new UiNode(reg!.Key($"n{ids++}"), kind) { Placement = new UiPlacement(size, size, x, y), Pickable = false };
-            PortraitProp.SetValue(node, record);
+#if !SQUAD_RECORD_ONLY
+            if (live is { } actor) AtlasLiveFaces.Set(node, actor);
+            else
+#endif
+                PortraitProp!.SetValue(node, record);
             return node;
         }
         catch { return null; }

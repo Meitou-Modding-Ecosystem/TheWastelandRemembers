@@ -15,6 +15,8 @@ internal static class PlaytestLog
     static readonly ConditionalWeakTable<World, Segment> segments = new();
     static readonly PlaytestJournal journal = new();
     static readonly Guid session = Guid.NewGuid();
+    static readonly bool dialogueReplies = typeof(Meitou.Game.Ui.UiRegistration).GetMethods().Any(m => m.Name == "AddDialogueReplies");
+    static readonly bool keyActions = typeof(Meitou.Modding.ModContext).GetMethods().Any(m => m.Name == "AddKeyAction");
     static int next;
     internal static Action<string>? EngineLog { get; set; }
     internal static bool Enabled => LwMod.Settings.PlaytestDiagnostics;
@@ -59,7 +61,8 @@ internal static class PlaytestLog
             $"outposts={set.RememberOutposts} couriers={set.OutpostCouriers} handovers={set.TownHandovers} " +
             $"cases={set.PrisonerCases} deals={set.PrisonerDeals} envoys={set.HiveEnvoys} escorts={set.PrisonerEscorts} " +
             $"recovery={set.PrisonerRecovery} siege={set.ShekGateRecovery} covert={set.CovertRecovery} " +
-            $"rivals={set.Rivals} recruitment={set.RecruitRivals} prices={set.ReputationPrices} recap={set.RecapMoments}");
+            $"rivals={set.Rivals} recruitment={set.RecruitRivals} prices={set.ReputationPrices} recap={set.RecapMoments} " +
+            $"kindness={set.KindnessRemembered} news={set.AskForNews} memorials={set.Memorials} lighter checks={set.LighterChecks}");
         return segment;
     }
 
@@ -122,6 +125,9 @@ internal static class PlaytestLog
             $"Meitou {VersionOf(typeof(Meitou.Modding.IMod).Assembly)}\nCapture enabled {Enabled}\n" +
             $"Hooks: world ready {WorldReady.Available}, couriers {Couriers.Available}, custody {PrisonerHandover.Available}, " +
             $"covert recovery {CovertRecovery.Available}, town handovers {TownSwitchWatch.Available}",
+            $"CLIENT CAPABILITIES\nLasting character IDs {LastingActors.Available}\n" +
+            $"Story task bars {StoryTaskBar.Available}\nDialogue replies {dialogueReplies}\nRebindable key actions {keyActions}\n" +
+            $"Trade receipts {TradeReputation.ReceiptHookAvailable}\nInterface catalogue {UiLanguage.Diagnostics}",
             "SETTINGS AT EXPORT\n" + settings, "LOADED COMPANION ASSEMBLIES\n" + (companions.Length > 0 ? companions : "(none detected)"),
             "SESSION TIMELINE\n" + PlaytestJournal.Format(Read()), "SQUAD STORY AT EXPORT\n" + story);
     }

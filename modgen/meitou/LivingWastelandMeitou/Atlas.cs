@@ -29,6 +29,9 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             .ToLookup(person => person.Value.Place!, StringComparer.Ordinal);
     readonly AtlasBook book = new();
     readonly Dictionary<string, (PersonPageInputs Inputs, string Text)> personPages = new(StringComparer.Ordinal);
+    KindnessBook? kindnessBook;
+    int kindnessRevision;
+    readonly List<(string Key, string Row, string Page)> kindnessRows = [];
     CultureInfo? pageCulture;
     readonly Dictionary<(CharacterId, string), double> lastSeen = [];
     static readonly IReadOnlyDictionary<string, string> EmptyPages = new Dictionary<string, string>();
@@ -44,6 +47,7 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             RecordHost.AtlasList = "The Atlas is off (this window's Settings tab).";
             lastPages = RecordHost.AtlasPages = EmptyPages;
             RecordHost.AtlasPortraits = EmptyPages;
+            AtlasLiveFaces.Publish(null);
             return;
         }
         try
@@ -170,6 +174,7 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
         var known = Known(world);
         var pages = new Dictionary<string, string>(StringComparer.Ordinal);
         var portraits = new Dictionary<string, string>(StringComparer.Ordinal);
+        Dictionary<string, CharacterId>? liveFaces = AtlasLiveFaces.Enabled ? new(StringComparer.Ordinal) : null;
         var list = new List<string>();
 
         bool ReusePage(string key)
@@ -230,7 +235,7 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
         var personRows = people.Select(p => (p.Key, p.Value, Level: book.Level(p.Key, p.Value, p.Value.Place is { } pl && known.ContainsKey(pl))))
             .Where(r => r.Level > 0).OrderBy(r => r.Value.Outlaw).ThenBy(r => r.Key, StringComparer.Ordinal).ToList();
         // rivals (Rivals.cs): the people who have a grudge against the squad, first
-        if (RivalsSystem.For(world)?.AtlasRows().ToList() is { Count: > 0 } rivalRows)
+        if (RivalsSystem.For(world) is { } rivals && rivals.AtlasRows().ToList() is { Count: > 0 } rivalRows)
         {
             list.Add("");
             list.Add("-- Rivals --");
@@ -239,6 +244,18 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
                 list.Add($"@@r:{rn}|{row}");
                 string pageKey = "r:" + rn;
                 if (!ReusePage(pageKey)) pages[pageKey] = string.Join("\n", page);
+                if (liveFaces is not null && rivals.AtlasPortrait(world, rn) is { } rivalActor)
+                    liveFaces[pageKey] = rivalActor;
+            }
+        }
+        if (KindnessWatch.Enabled && LwDeeds.For(world)?.Kindness is { People.Count: > 0 } kindness)
+        {
+            list.Add("");
+            list.Add("-- People who owe you --");
+            foreach (var (key, row, page) in KindnessPages(kindness))
+            {
+                list.Add(row);
+                pages[key] = page;
             }
         }
         // news from other mods (News.cs): what the squad has heard happen in the world
@@ -263,7 +280,13 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             list.Add($"@@w:{name}|{(level == 1 ? "? " : "")}{name}, {label}{fate}");
             string pageKey = "w:" + name;
             if (!ReusePage(pageKey)) pages[pageKey] = PersonText(world, name, p, level, known, fate);
-            if (level >= 2 && p.Id is { Length: > 0 } rid) portraits["w:" + name] = rid;
+            if (level >= 2 && p.Id is { Length: > 0 } rid)
+            {
+                portraits[pageKey] = rid;
+                if (liveFaces is not null && world.Uniques.Find(rid) is { Handle: var actor } &&
+                    AtlasLiveFaces.Living(world, actor, rid) is { } living)
+                    liveFaces[pageKey] = living;
+            }
         }
         // factions the player has met: how they stand with the squad, their wars, what they think of its titles, the towns that remember it
         if (data is not null && world.Player.Faction >= 0)
@@ -286,6 +309,27 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
         RecordHost.AtlasList = string.Join("\n", list);
         lastPages = RecordHost.AtlasPages = pages;
         RecordHost.AtlasPortraits = portraits;
+        AtlasLiveFaces.Publish(liveFaces);
+    }
+
+    List<(string Key, string Row, string Page)> KindnessPages(KindnessBook book)
+    {
+        if (ReferenceEquals(kindnessBook, book) && kindnessRevision == book.PresentationRevision) return kindnessRows;
+        kindnessBook = book;
+        kindnessRevision = book.PresentationRevision;
+        kindnessRows.Clear();
+        for (int i = 0; i < book.People.Count; i++)
+        {
+            var memory = book.People[i];
+            var home = book.Home(memory.Actor);
+            string key = FormattableString.Invariant($"kindness:{memory.Actor}");
+            string row = $"@@{key}|{memory.Name}{(home is null ? "" : $" ({home.Place})")}";
+            string status = home is null ? "You don't know where they settled."
+                : book.HasReunited(memory.Actor) ? $"You met again in {home.Place}."
+                : $"Last known around {home.Place}.";
+            kindnessRows.Add((key, row, $"-- {memory.Name} --\n{memory.Name}, {KindnessWatch.What(memory)}.\n{status}"));
+        }
+        return kindnessRows;
     }
 
     static string Cap(string s) => s.Length > 0 ? char.ToUpperInvariant(s[0]) + s[1..] : s;
@@ -397,6 +441,8 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
         {
             var hot = deeds.Heat.All().Where(h => h.Faction == name && deeds.Heat.Here(h.Town) >= 1).Select(h => h.Town).Distinct().ToList();
             if (hot.Count > 0) yield return "Towns of theirs that remember your squad's crimes: " + string.Join(", ", hot) + ".";
+            if (LwMod.Settings.FallenLeaderStories)
+                foreach (var line in LeaderStories.FactionLines(data, deeds.Record, name)) yield return line;
         }
         var leaders = peopleWithOwner.Where(person => person.Owner.Contains(name, StringComparison.Ordinal))
             .Select(person => person.Name).Take(6).ToList();

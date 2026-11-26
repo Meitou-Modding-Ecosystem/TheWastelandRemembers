@@ -71,7 +71,7 @@ should not be. Make it match this:
 | **LivingWastelandMeitou** (our code helper) | ✅ Yes |
 | LivingWastelandTest (only if left from an older install) | ❌ No (it is retired; you can delete its folder) |
 | SquadRecord (only if you see it) | ❌ No |
-| KenshiLua, BFrizz's Extra Extensions, CheatMenu, LivingWastelandLua, anything RE_Kenshi | ❌ No (Meitou cannot run these) |
+| KenshiLua, BFrizz's Extra Extensions, CheatMenu, anything RE_Kenshi | ❌ No (Meitou cannot run these) |
 | Your other data mods (Nice Map and so on) | Up to you. For the cleanest test, untick them. |
 
 Our five should sit **below** any other mods you keep. If the order looks wrong, press **Arrange**.
@@ -228,9 +228,6 @@ and screenshots: a notice, the Squads list open, an Atlas face, anything that lo
 1. Close Meitou.
 2. In `modgen`, double-click **`switch_to_kenshi.bat`**. ✅ It ends with **`Done: you are on the KENSHI setup.`**
    This puts back your Kenshi setup **exactly as it was** before Step 2.
-3. **To also get today's Kenshi fixes** (named outlaws now actually spawn): double-click **`install_all_with_lua.bat`** in `modgen`,
-   then start Kenshi from Steam and check your mod list as usual.
-
 You can switch back and forth any time. Do not delete the `LW_switch_backup` folder in your user folder.
 
 ---

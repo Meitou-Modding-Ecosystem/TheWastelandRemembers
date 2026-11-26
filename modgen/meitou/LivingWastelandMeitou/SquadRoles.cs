@@ -240,11 +240,12 @@ public static class SquadRoles
         if (command is SimCommand c && Context is { } ctx) ctx.Enqueue(c with { Tick = ctx.Tick });
     }
 
-    /// <summary>The choices for a squad's role: the seven roles, then escorting each of the player's other squads.</summary>
+    /// <summary>The choices for a squad's role. Nonnegative choices index Roles. Negative choices encode the target squad ID.</summary>
     public static List<(int Index, string Label)> Choices(int squadId)
     {
         var list = Roles.Select((r, i) => (i, r.Label)).ToList();
-        foreach (var (o, i) in Squads.Where(r => r.Id != squadId).Select((o, i) => (o, i))) list.Add((Roles.Length + i, $"Escort {o.Label}"));
+        foreach (var target in Squads)
+            if (target.Id >= 0 && target.Id != squadId) list.Add((~target.Id, $"Escort {target.Label}"));
         return list;
     }
 
@@ -267,18 +268,18 @@ public static class SquadRoles
     {
         var rows = Squads;
         if (!Available || rows.FirstOrDefault(r => r.Id == squadId) is not { } row) return;
-        var others = rows.Where(r => r.Id != squadId).ToList();
-        if (choice < 0 || choice >= Roles.Length + others.Count) return;
-        if (row.EscortOf >= 0 && choice < Roles.Length) Send(new SetEscort(squadId, -1) { Tick = 0 });
-        if (choice >= Roles.Length)
+        if (choice >= Roles.Length) return;
+        if (choice < 0)
         {
-            var target = others[choice - Roles.Length];
+            var target = rows.FirstOrDefault(r => r.Id != squadId && r.Id == ~choice);
+            if (target is null) return;
             picked[squadId] = ($"Escort {target.Label}", DateTime.UtcNow);
             Send(new SetEscort(squadId, target.Id) { Tick = 0 });
             Aim(squadId, target.Leader);
             if (LwMod.Settings.LogChanges) LwMod.Log($"squad roles: {row.Label} -> escort {target.Label}");
             return;
         }
+        if (row.EscortOf >= 0) Send(new SetEscort(squadId, -1) { Tick = 0 });
         var role = Roles[choice];
         picked[squadId] = (role.Label, DateTime.UtcNow);
         if (role.Package is null) { Send(AutonomyCommand(squadId, false)); return; }

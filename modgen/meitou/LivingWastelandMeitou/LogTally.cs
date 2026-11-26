@@ -34,11 +34,17 @@ public static class LogTally
 
     public static void Add(string label, int n = 1) => counts[label] = counts.GetValueOrDefault(label) + n;
 
+    internal static void BeginWorld(double gameHours)
+    {
+        day = (int)(gameHours / 24);
+        counts.Clear();
+    }
+
     /// <summary>The day's line when a new game day has begun (null otherwise); counting starts again for the new day.</summary>
     public static string? Day(double gameHours)
     {
         int now = (int)(gameHours / 24);
-        if (day < 0 || now < day) { day = now; counts.Clear(); return null; }   // first look, or an earlier save loaded
+        if (day < 0 || now < day) { BeginWorld(gameHours); return null; }
         if (now == day) return null;
         string line = $"summary of day {day}: " + (counts.Count == 0 ? "nothing logged"
             : string.Join(", ", Kinds.Select(k => k.Label).Concat(counts.Keys.Except(Kinds.Select(k => k.Label)))

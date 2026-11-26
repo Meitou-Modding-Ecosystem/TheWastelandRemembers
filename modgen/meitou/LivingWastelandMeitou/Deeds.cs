@@ -205,6 +205,8 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     /// <summary>Notes when a member was first seen (for "served N days"); the engine side calls it on every look.</summary>
     public void Seen(string name, double hours) => firstSeen.TryAdd(name, hours);
 
+    internal double? FirstService => firstSeen.Count == 0 ? null : firstSeen.Values.Min();
+
     /// <summary>A member died: kept with their deeds; the faction of whoever killed them becomes a feud. Once per name.</summary>
     public void Died(string name, double hours, string place, string? killer, string? killerFaction, string? killerRecord)
     {
@@ -215,7 +217,7 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
             cause = n.Cause;
             if (killer is null && n.Killer is not null) (killer, killerFaction, killerRecord) = (n.Killer, n.KillerFaction, n.KillerRecord);
         }
-        if (fight.Active) fight.Down.Add(name);              // the dead are not "still standing" when the fight is judged
+        MarkFightDown(name);                               // the dead are not "still standing" when the fight is judged
         var m = Member(name);
         double served = firstSeen.TryGetValue(name, out var since) ? Math.Max(0, (hours - since) / 24) : 0;
         var titles = m.Titles.Select(TitleName).Concat(crewTitles.Select(TitleName)).Distinct().ToList();
@@ -351,7 +353,7 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
         m.Kills++;
         if (m.Kills == 1) Note($"{D(killer)}'s first kill.");
         if (named is not null) Note($"{D(killer)} killed {named}.");
-        fight.EnemiesDown++;
+        OpponentDown();
         m.KillsBy[faction] = m.KillsOf(faction) + 1;
         if (leader) m.LeadersKilled++;
         if (named is not null)
@@ -370,7 +372,7 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     /// </summary>
     public List<string> CrewKill(string faction, bool leader, string? named, string by = "Your hired blades")
     {
-        fight.EnemiesDown++;
+        OpponentDown();
         if (named is not null)
         {
             Note($"{by} killed {named}.");
@@ -408,7 +410,7 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     public List<string> Knockout(string striker)
     {
         Member(striker).Knockouts++;
-        fight.EnemiesDown++;
+        OpponentDown();
         return Award(striker);
     }
 
@@ -427,7 +429,7 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     public void Downed(string name)
     {
         Member(name).TimesDowned++;
-        if (fight.Active) fight.Down.Add(name);
+        MarkFightDown(name);
     }
 
     public void UsedAid(string name, float charges, bool finished)
@@ -503,21 +505,9 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     public List<string> FightLook(IReadOnlyCollection<string> fighting, IReadOnlyCollection<string> downNow, int foesUp = 0)
     {
         var said = new List<string>();
-        if (fighting.Count > 0)
-        {
-            if (!fight.Active) fight.Start();
-            fight.Quiet = 0;
-            foreach (var n in fighting) fight.Fought.Add(n);
-            return said;
-        }
-        if (!fight.Active) return said;
-        ++fight.Quiet;
-        if (fight.Quiet < FightState.QuietLooks || foesUp > 0 && fight.Quiet < FightState.StandOffLooks) return said;
-
-        foreach (var n in downNow) if (fight.Fought.Contains(n)) fight.Down.Add(n);
-        // judged by who of those who fought still stands: Down also holds squadmates who died elsewhere during the fight, and comparing the
-        // counts turned a win into a loss when one did (from a review of the code)
-        var standing = fight.Fought.Where(n => !fight.Down.Contains(n)).ToList();
+        if (!fight.Look(fighting, downNow, foesUp)) return said;
+        // A squadmate who fell elsewhere must not turn a win into a loss.
+        var standing = fight.Standing().ToList();
         bool won = fight.EnemiesDown > 0 && standing.Count > 0;
         foreach (var n in fight.Fought)
         {
@@ -531,11 +521,16 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
             Note($"{D(standing[0])} was the last one standing.");
             OnMoment?.Invoke($"{D(standing[0])} was the last one standing.", 80);
         }
-        if (!won) Note($"A fight went badly: {string.Join(", ", fight.Fought.OrderBy(x => x).Select(D))} went down.");
+        if (!won)
+        {
+            var fallenInFight = fight.Fought.Where(fight.Down.Contains).OrderBy(x => x, StringComparer.Ordinal).Select(D).ToList();
+            Note(fallenInFight.Count > 0
+                ? $"A fight went badly: {Names(fallenInFight)} went down."
+                : "The squad traded blows and came away without a win.");
+        }
         else if (fight.EnemiesDown >= 4) Note($"A fight with {fight.EnemiesDown} down. {Names(standing.Select(D).ToList())} came through it.");
         foreach (var n in fight.Fought) said.AddRange(Award(n));
         LastFightEnd = (won, standing);
-        fight.Active = false;
         return said;
     }
 
@@ -562,6 +557,64 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
         return end;
     }
 
+    // Restored record credit can settle independently of the fights the rivalry system sees in this load.
+    FightState? sinceLoad;
+    internal bool HasResumedFight => sinceLoad is not null;
+    internal bool? FightLookSinceLoad(IReadOnlyCollection<string> fighting, IReadOnlyCollection<string> down, int foesUp) =>
+        sinceLoad?.Look(fighting, down, foesUp) == true ? sinceLoad.EnemiesDown > 0 && sinceLoad.Standing().Any() : null;
+    internal void FinishResumedFight() => sinceLoad = null;
+
+    void OpponentDown()
+    {
+        fight.EnemiesDown++;
+        if (sinceLoad is { Active: true } local) local.EnemiesDown++;
+    }
+
+    void MarkFightDown(string name)
+    {
+        if (fight.Active) fight.Down.Add(name);
+        if (sinceLoad is { Active: true } local) local.Down.Add(name);
+    }
+
+    internal void WriteFight(BinaryWriter writer)
+    {
+        writer.Write(fight.Quiet); writer.Write(fight.EnemiesDown);
+        WriteList(writer, fight.Fought.Order(StringComparer.Ordinal).ToList());
+        WriteList(writer, fight.Down.Order(StringComparer.Ordinal).ToList());
+    }
+
+    internal void ReadFight(BinaryReader reader)
+    {
+        int quiet = reader.ReadInt32(), downs = reader.ReadInt32();
+        if (quiet is < 0 or >= FightState.StandOffLooks || downs < 0) throw new InvalidDataException("Invalid fight progress.");
+        var fighters = ReadKeys(reader);
+        var down = ReadKeys(reader);
+        if (fighters.Count == 0) throw new InvalidDataException("The saved fight has no fighters.");
+        fight.Start();
+        fight.Quiet = quiet;
+        fight.EnemiesDown = downs;
+        fight.Fought.UnionWith(fighters);
+        fight.Down.UnionWith(down);
+        sinceLoad = new FightState();
+    }
+
+    static List<string> ReadKeys(BinaryReader reader)
+    {
+        int count = reader.ReadInt32();
+        if (count is < 0 or > 4096) throw new InvalidDataException("Invalid fight participant count.");
+        var keys = new List<string>(count);
+        for (int i = 0; i < count; i++) keys.Add(reader.ReadString());
+        return keys;
+    }
+
+    internal void ResetFight()
+    {
+        fight.Start();
+        fight.Active = false;
+        sinceLoad = null;
+        LastFightEnd = null;
+    }
+
     sealed class FightState
     {
         public const int QuietLooks = 5;
@@ -569,6 +622,26 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
         public bool Active;
         public int Quiet, EnemiesDown;
         public readonly HashSet<string> Fought = new(StringComparer.Ordinal), Down = new(StringComparer.Ordinal);
+
+        public IEnumerable<string> Standing() => Fought.Where(n => !Down.Contains(n));
+
+        public bool Look(IReadOnlyCollection<string> fighting, IReadOnlyCollection<string> downNow, int foesUp)
+        {
+            if (fighting.Count > 0)
+            {
+                if (!Active) Start();
+                Quiet = 0;
+                Fought.UnionWith(fighting);
+                return false;
+            }
+            if (!Active) return false;
+            ++Quiet;
+            if (Quiet < QuietLooks || foesUp > 0 && Quiet < StandOffLooks) return false;
+            foreach (var n in downNow)
+                if (Fought.Contains(n)) Down.Add(n);
+            Active = false;
+            return true;
+        }
 
         public void Start()
         {
@@ -692,7 +765,9 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     public bool Outgrown(string name, string titleId) => Higher(titleId) is var up && (name == "the squad"
         ? up.Any(crewTitles.Contains) : members.TryGetValue(name, out var m) && up.Any(m.Titles.Contains));
 
-    public string TitleName(string id) => rules.FirstOrDefault(r => r.Id == id)?.Name ?? id;
+    internal const string CompanionTitleId = "companion-battle-tested", CompanionTitleName = "Battle-tested Companion";
+
+    public string TitleName(string id) => id == CompanionTitleId ? CompanionTitleName : rules.FirstOrDefault(r => r.Id == id)?.Name ?? id;
 
     /// <summary>Who holds a title: "the squad", member names, or nobody.</summary>
     public List<string> Holders(TitleRule r) => r.Scope == "squad"
@@ -794,6 +869,7 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
     /// <summary>Reads a saved record; false (nothing read past the version) for a format this build does not know.</summary>
     public bool Read(BinaryReader r)
     {
+        ResetFight();
         int version = r.ReadInt32();
         if (version is not (4 or 5 or 6 or 7 or 8 or 9 or 10 or 11 or 12 or 13 or 14)) return false;
         members.Clear();

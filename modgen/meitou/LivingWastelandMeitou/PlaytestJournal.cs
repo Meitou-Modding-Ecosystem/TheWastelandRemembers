@@ -14,6 +14,10 @@ internal sealed class PlaytestJournal(int capacity = 4096)
     // Two queues of `capacity` each: the general mod log ("mod log" rows) and everything else (each feature's own rows, marks, settings).
     // One queue let a chatty system push out the whole session: in a play test of bf 36 outlaw-camp lines per refresh left 4,095 of
     // 4,096 rows to the camps and lost every custody, outpost and news row.
+    // Keep the first 1/16 of the feature lane for session context. A busy end of a session can no longer
+    // replace its world, settings and early events in the next automatic export.
+    readonly List<Event> start = [];
+    readonly int startCapacity = capacity / 16;
     readonly Queue<Event> events = new(), messages = new();
     readonly object gate = new();
     long sequence;
@@ -25,10 +29,16 @@ internal sealed class PlaytestJournal(int capacity = 4096)
         if (detail.Length > MaxDetail) detail = detail[..MaxDetail] + " [truncated]";
         lock (gate)
         {
-            var queue = phase == ModLog && world is null ? messages : events;
-            if (queue.Count == capacity) queue.Dequeue();
+            bool general = phase == ModLog && world is null;
             var row = new Event(++sequence, DateTimeOffset.UtcNow, world, tick, hours, system, key, phase, detail);
-            queue.Enqueue(row);
+            if (!general && start.Count < startCapacity) start.Add(row);
+            else
+            {
+                var queue = general ? messages : events;
+                int limit = general ? capacity : capacity - startCapacity;
+                if (queue.Count == limit) queue.Dequeue();
+                queue.Enqueue(row);
+            }
             return row;
         }
     }
@@ -37,7 +47,7 @@ internal sealed class PlaytestJournal(int capacity = 4096)
     {
         lock (gate)
         {
-            var all = events.Concat(messages).OrderBy(e => e.Number).ToArray();
+            var all = start.Concat(events).Concat(messages).OrderBy(e => e.Number).ToArray();
             return new(all, sequence - all.Length);
         }
     }
@@ -45,7 +55,7 @@ internal sealed class PlaytestJournal(int capacity = 4096)
     internal static string Format(Snapshot snapshot)
     {
         var text = new StringBuilder();
-        text.AppendLine(FormattableString.Invariant($"Events retained {snapshot.Events.Length} | Older events discarded {snapshot.Discarded}"));
+        text.AppendLine(FormattableString.Invariant($"Events retained {snapshot.Events.Length} | Events omitted {snapshot.Discarded}"));
         text.AppendLine("Sequence\tUTC\tWorld\tTick\tGame hours\tSystem\tKey\tPhase\tDetails");
         foreach (var row in snapshot.Events) text.AppendLine(FormatRow(row));
         return text.ToString();

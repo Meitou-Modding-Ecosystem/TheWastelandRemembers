@@ -48,13 +48,16 @@ public sealed class Lookout
             foreach (var (id, p) in squad)
             {
                 float d = Vector3.Distance(p, at);
-                if (d <= Range && (best is null || d < best.Value.D)) best = (table.IdOf(s), c.SquadId, id, d);
+                if (!(d <= Range && (best is null || d < best.Value.D))) continue;
+                if (BathhouseGuests.Contains(world, c.SquadId)) break;
+                best = (table.IdOf(s), c.SquadId, id, d);
             }
         }
         if (best is not { } b) return;
         called[b.Squad] = now;
         lastCall = world.Tick;
         bool said = TalkPacer.Exempt(() => talk.FireEvent(world, b.Caller, b.Enemy, AlarmEvent));
+        if (said) StorySounds.Lookout(world);
         if (LwMod.Settings.LogChanges) LwMod.Log($"lookout: {(said ? "called out" : "saw, said nothing about")} squad {b.Squad} at {b.D / 10:0} m");
         if (called.Count > 200)
             foreach (var k in called.Where(p => now - p.Value > SquadAgain).Select(p => p.Key).ToList()) called.Remove(k);

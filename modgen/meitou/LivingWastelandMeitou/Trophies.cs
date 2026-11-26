@@ -101,7 +101,14 @@ public static class Trophies
         string record = KeepsakeBook.For(world)?.Take(world, fallenKey, mournerName, out tag) ?? Keepsake;
         if (data.Items.Create(record) is not { } item) { LwMod.Log($"trophies: no item {record}"); return; }
         if (tag is not null) ItemUses.SetTag(item, tag);
-        if (!InventoryCompat.Add(bag, item)) world.GroundItems.Drop(item, table.Next[s].Position, 0);
+        if (InventoryCompat.Add(bag, item))
+        {
+            StoryStatuses.Grieve(world, mourner);
+            var at = table.Next[s].Position;
+            string place = LwDeeds.For(world)?.TownAt(at).Town ?? "the wilds";
+            RecapLink.Moment($"{mournerName} kept a keepsake of {fallen}.", place, 45, at);
+        }
+        else world.GroundItems.Drop(item, table.Next[s].Position, 0);
         world.Post($"{mournerName} keeps something of {fallen}'s.");
         if (LwMod.Settings.LogChanges) LwMod.Log($"trophies: {mournerName} keeps a keepsake of {fallen}");
     }

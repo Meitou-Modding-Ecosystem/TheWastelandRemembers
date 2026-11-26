@@ -17,7 +17,8 @@ public static class PanelLines
     static WeakReference<World>? squadWorld;  // The serial publisher owns the snapshot; UI reads only the immutable rows.
     static readonly IReadOnlyDictionary<CharacterId, IReadOnlyList<Row>> noMembers = new Dictionary<CharacterId, IReadOnlyList<Row>>();
     static volatile IReadOnlyDictionary<CharacterId, IReadOnlyList<Row>> squad = noMembers;
-    static volatile IReadOnlyDictionary<string, IReadOnlyList<Row>> fallen = new Dictionary<string, IReadOnlyList<Row>>(StringComparer.Ordinal);
+    static readonly IReadOnlyDictionary<string, IReadOnlyList<Row>> noFallen = new Dictionary<string, IReadOnlyList<Row>>(StringComparer.Ordinal);
+    static volatile IReadOnlyDictionary<string, IReadOnlyList<Row>> fallen = noFallen;
 
     // ---- what the panels show (pure: the squad record only) ----
 
@@ -85,6 +86,13 @@ public static class PanelLines
         }
         squad = next;
         fallen = dead;
+    }
+
+    internal static void Reset()
+    {
+        squadWorld = null;
+        squad = noMembers;
+        fallen = noFallen;
     }
 
     internal static void Forget(World world, CharacterId id)

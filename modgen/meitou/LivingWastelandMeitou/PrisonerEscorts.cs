@@ -29,7 +29,7 @@ internal sealed class PrisonerEscorts(PopulationData data) : ITickSystem, IModSa
     {
         if (!Couriers.Available) return;
         context.AddSystem("lw-prisoner-escorts", ctx => new PrisonerEscorts(ctx.Data), SystemAnchor.End);
-        context.AddDebugCommand("Wasteland Remembers: prisoner escorts", _ => Volatile.Read(ref summary), hasField: false);
+        context.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: prisoner escorts"), _ => Volatile.Read(ref summary), hasField: false);
     }
 
     internal static bool Begin(World world, Platoon party, PrisonerCases.Held held, string faction, Vector3 destination,

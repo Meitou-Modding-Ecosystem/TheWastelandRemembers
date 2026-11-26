@@ -97,12 +97,15 @@ public static class Notices
                 var rk = (key, i);
                 if (!rising.TryGetValue(rk, out var r) || r.Level != now) { rising[rk] = (now, world.Tick); continue; }
                 if (world.Tick - r.Since < Settle && world.Tick >= r.Since) continue;
-                Add($"{c.Name}   {name} {now}", Kind.Skill);
+                Add(SkillLine(c.Name, name, now), Kind.Skill);
                 was[i] = now;
                 rising.Remove(rk);
             }
         }
     }
+
+    internal static string SkillLine(string member, string skill, int level) =>
+        UiLanguage.Format("{0}   {1} {2}", member, UiLanguage.Text(skill), level);
 
     static readonly Dictionary<(string, int), (int Level, long Since)> rising = [];   // (character, skill) -> the level it is climbing to
     static readonly Dictionary<int, (float Value, long Since)> moving = [];   // faction -> the value last seen and the tick it last changed

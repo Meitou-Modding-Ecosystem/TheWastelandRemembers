@@ -98,6 +98,12 @@ public sealed class PlaytestLogWorldTests
             Assert.StartsWith("THE WASTELAND REMEMBERS", text);
             Assert.Contains("second row", text);
             Assert.Contains("SETTINGS AT EXPORT", text);
+            Assert.Contains("CLIENT CAPABILITIES", text);
+            Assert.Contains($"Story task bars {StoryTaskBar.Available}", text);
+            Assert.Contains("Trade receipts", text);
+            Assert.Contains("Interface catalogue", text);
+            Assert.Contains($"news={settings.AskForNews}", text);
+            Assert.Contains($"lighter checks={settings.LighterChecks}", text);
         }
         finally
         {

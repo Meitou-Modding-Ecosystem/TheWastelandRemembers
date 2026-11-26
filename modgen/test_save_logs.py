@@ -81,6 +81,9 @@ class SaveLogsTests(unittest.TestCase):
         output = self.home / "Release"
         source = self.home / "Fake checkout"
         self.write(source / "BUILD_ID", "fixture")
+        self.write(source / "WORKSHOP_ID", "123")
+        self.write(source / "CHANGELOG.md", "## Build fixture\n- Include both log collectors.\n")
+        self.write(source / "meitou/LivingWastelandMeitou/LivingWastelandMeitou.dll", "fixture")
         self.write(source / "The_Wasteland_Remembers_features.txt", "fixture")
         self.write(source / "MODDER_API.md", "fixture")
         (source / SCRIPT.name).write_bytes(SCRIPT.read_bytes())
@@ -88,9 +91,14 @@ class SaveLogsTests(unittest.TestCase):
         def fake_build(args):
             files = Path(args[-1]) / "LivingWasteland"
             self.write(files / "LivingWasteland.mod", "fixture")
+            self.write(files / "LivingWastelandMeitou.dll", "fixture")
             return subprocess.CompletedProcess(args, 0)
 
-        with patch.object(make_release, "HERE", str(source)), patch.object(make_release.subprocess, "run", side_effect=fake_build):
+        with (
+            patch.object(make_release, "HERE", str(source)),
+            patch.object(make_release, "read_build_stamp", return_value="fixture"),
+            patch.object(make_release.subprocess, "run", side_effect=fake_build),
+        ):
             make_release.main(["fake-data", "--out", str(output)])
 
         with ZipFile(next(output.glob("*.zip"))) as archive:

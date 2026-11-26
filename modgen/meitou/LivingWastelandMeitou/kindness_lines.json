@@ -1,0 +1,24 @@
+{
+  "deeds": {
+    "Saved": "{helper}? Your lot patched me up in {place}, {ago}. I'd have bled out without you.",
+    "Freed": "{helper}? You opened my cage in {place}, {ago}. I remember the sound of the lock.",
+    "EscapedTogether": "We got clear of Rebirth {ago}, you and I. I don't forget who ran beside me."
+  },
+  "factions": {
+    "Shek Kingdom": "You've a debt of honour from me.",
+    "The Holy Nation": "Okran saw what you did. So did I.",
+    "Western Hive": "This hive remembers the help.",
+    "United Cities": "That debt's still on my books.",
+    "Anti-Slavers": "I try to pass a kindness on, when I can.",
+    "Nomads": "The road's been kinder to me since.",
+    "Dust Bandits": "I don't usually thank people. You're due one."
+  },
+  "townTalk": {
+    "Saved": "Word round here is you patched up {name}. They speak well of you.",
+    "Freed": "{name} told us you got them out of a cage. Word gets about."
+  },
+  "twiceAsStrong": "I'm twice as strong as I was.",
+  "learntTheBlade": "I learnt to hold a blade since then.",
+  "word": "One other thing I heard.",
+  "gift": "Here, take a few cats for the road."
+}

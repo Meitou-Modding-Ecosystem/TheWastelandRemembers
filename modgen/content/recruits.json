@@ -838,6 +838,7 @@
  "outlaws": [
   {
    "name": "Orrin Vask",
+   "token": {"name": "Vask's Counting Bead", "description": "A counting bead darkened by handling. Vask used it to keep his place when the lots changed hands."},
    "template": "Slaver Boss",
    "squad_template": "slave hunters (S)",
    "faction": "Slave Traders",
@@ -867,6 +868,7 @@
    "weight": 2,
    "successor": {
     "name": "Delia Vask",
+    "token": {"name": "Delia's Route Counter", "id": 951124},
     "female": true,
     "relation": "his partner in the trade",
     "story": "Orrin's partner in the slave trade from the start, and the one who did the bargaining. She kept the buyers and the routes and changed nothing else."
@@ -875,6 +877,7 @@
   },
   {
    "name": "Aldric Roane",
+   "token": {"name": "Roane's Cut Seal", "description": "A seal cut from a piece of Holy Nation kit. Roane wore the blank reverse outwards."},
    "template": "Holy Sentinel",
    "squad_template": "Holy Army bandits (override) diaspora",
    "faction": "Holy Nation Outlaws",
@@ -904,6 +907,7 @@
    "weight": 2,
    "successor": {
     "name": "Brother Hale",
+    "token": {"name": "Hale's Mantle Clasp", "id": 951125},
     "female": false,
     "relation": "the man who ran with him",
     "story": "Deserted the Holy Nation the same night as Roane and has covered his back ever since. He still leads that frightened band through the Nation's hills."
@@ -912,6 +916,7 @@
   },
   {
    "name": "Karrash Red-Hand",
+   "token": {"name": "Red-Hand's Ochre Tooth", "description": "A tooth coloured with red ochre. Fresh pigment sits in the grain beneath the worn face."},
    "template": "Berserker",
    "squad_template": "Berserker squad",
    "faction": "Berserkers",
@@ -940,6 +945,7 @@
    "weight": 2,
    "successor": {
     "name": "Karrash the Younger",
+    "token": {"name": "Karrash's Red Finger Ring", "id": 951126},
     "female": false,
     "relation": "his son",
     "story": "Karrash Red-Hand's son, raised among berserkers and painted red before he could walk. He took his father's place at the next fight."
@@ -948,6 +954,7 @@
   },
   {
    "name": "Veth of the Closed Hand",
+   "token": {"name": "Veth's Spoils Counter", "description": "A flat counter polished on one side. Veth put it down before deciding what each fighter received."},
    "template": "Hive Bandit Leader",
    "squad_template": "hive diaspora bandits",
    "faction": "Outlaw",
@@ -977,6 +984,7 @@
    "weight": 2,
    "successor": {
     "name": "Veth of the Open Hand",
+    "token": {"name": "Veth's Open-Hand Counter", "id": 951127},
     "female": false,
     "relation": "the drone that broke with him",
     "story": "A drone that broke with Veth over how to share the spoils, then came back to take the band once Veth was gone. It shares more, and the band likes it better."
@@ -985,6 +993,7 @@
   },
   {
    "name": "Hollis Gantry",
+   "token": {"name": "Gantry's Salvage Tag", "description": "A salvage tag bent around an old screw. The original machine number is still legible."},
    "template": "Tech Hunter",
    "squad_template": "Treasure hunters aggressive",
    "faction": "Outlaw",
@@ -1014,6 +1023,7 @@
    "weight": 2,
    "successor": {
     "name": "Tam Gantry",
+    "token": {"name": "Tam's Salvage Caliper", "id": 951128},
     "female": false,
     "relation": "his nephew",
     "story": "Hollis's nephew, sent to learn the scavenging trade and good at it from the start. He sells the old world's junk to anyone who pays."
@@ -1022,6 +1032,7 @@
   },
   {
    "name": "Gaffer Marrowbone",
+   "token": {"name": "Marrowbone's Split Knuckle", "description": "A knuckle chipped open along the joint. The cord runs through a hole widened by long wear."},
    "template": "Cannibal Chief",
    "squad_template": "cannibal raid 1",
    "faction": "Cannibals",
@@ -1050,6 +1061,7 @@
    "weight": 2,
    "successor": {
     "name": "Old Gristlejaw",
+    "token": {"name": "Gristlejaw's Hunting Toggle", "id": 951129},
     "female": false,
     "relation": "the eldest of his hunters",
     "story": "The eldest of Marrowbone's hunters, who has outlived three chiefs already. The cannibals follow him because he always finds meat."
@@ -1058,6 +1070,7 @@
   },
   {
    "name": "Rennik Salt",
+   "token": {"name": "Rennik's Salt-Stiff Cord", "description": "A cord with salt caught between the strands. Rennik cut the knots to mark the road camps."},
    "template": "Dust Boss",
    "squad_template": "Dust Bandit squad",
    "faction": "Dust Bandits",
@@ -1087,6 +1100,7 @@
    "weight": 2,
    "successor": {
     "name": "Brin Salt",
+    "token": {"name": "Brin's Camp Marker", "id": 951130},
     "female": true,
     "relation": "his daughter",
     "story": "Rennik's daughter, born in a dust camp and raised on the road. She keeps her father's camps moving along the roads."
@@ -1095,6 +1109,7 @@
   },
   {
    "name": "Slate Fennick",
+   "token": {"name": "Fennick's Spare Strap Plate", "description": "A strap plate punched by hand. Fennick kept it for the next harness that tore on the road."},
    "template": "Outlaw Swordsman Captain",
    "squad_template": "Mercenary wanderers",
    "faction": "Outlaw",
@@ -1123,6 +1138,7 @@
    "weight": 2,
    "successor": {
     "name": "Corra Fennick",
+    "token": {"name": "Corra's Supply Tag", "id": 951131},
     "female": true,
     "relation": "his sister",
     "story": "Slate's sister, who ran the band's camps and supplies. She picked up his sword and found the men already used to taking her orders."
@@ -1131,6 +1147,7 @@
   },
   {
    "name": "Brannoch Teel",
+   "token": {"name": "Teel's Trail Peg", "description": "A hardwood peg sharpened again and again. Teel stuck it beside the tracks when a trail split."},
    "template": "Slave Hunter",
    "squad_template": "slave hunters (N)",
    "faction": "Slave Hunters",
@@ -1160,6 +1177,7 @@
    "weight": 2,
    "successor": {
     "name": "Wade Teel",
+    "token": {"name": "Wade's Forked Trail Peg", "id": 951132},
     "female": false,
     "relation": "his brother",
     "story": "Brannoch's brother and the better tracker of the two. Runaways who thought the hunt was over learned otherwise."
@@ -1168,6 +1186,7 @@
   },
   {
    "name": "Hob Lenner",
+   "token": {"name": "Lenner's Water Gauge", "description": "A marker scored with three water levels. Lenner blackened the highest line with a coal."},
    "template": "Mercenary Heavy",
    "squad_template": "reaver patrol",
    "faction": "Reavers",
@@ -1197,6 +1216,7 @@
    "weight": 2,
    "successor": {
     "name": "Ness Lenner",
+    "token": {"name": "Ness's Tide Rule", "id": 951133},
     "female": true,
     "relation": "his first mate",
     "story": "Hob's first mate, who knew the coast and the tides better than he ever did. The crew voted for her before his body was cold."
@@ -1205,6 +1225,7 @@
   },
   {
    "name": "Dolan Pike",
+   "token": {"name": "Pike's Patched Spoon", "description": "A spoon pinned together at the neck. Pike had worn it down to the metal on both sides."},
    "template": "Hungry bandit leader",
    "squad_template": "Starving bandit mob",
    "faction": "Starving Bandits",
@@ -1234,6 +1255,7 @@
    "weight": 2,
    "successor": {
     "name": "Scrag Pike",
+    "token": {"name": "Scrag's Portion Cup", "id": 951134},
     "female": false,
     "relation": "his cousin",
     "story": "Dolan's cousin, as hungry and as desperate as the rest of the band. He leads by finding food first and sharing it second."
@@ -1242,6 +1264,7 @@
   },
   {
    "name": "Isolde Marr",
+   "token": {"name": "Marr's Muster Clip", "description": "A clip from the company's muster roll. One corner is still caught under a bent tab."},
    "template": "Mercenary Captain",
    "squad_template": "Mercenary wanderers",
    "faction": "Outlaw",
@@ -1270,6 +1293,7 @@
    "weight": 2,
    "successor": {
     "name": "Bram Ostler",
+    "token": {"name": "Ostler's Sergeant Clip", "id": 951135},
     "female": false,
     "relation": "her sergeant",
     "story": "Isolde's sergeant for eight years, who kept the company in line while she found the work. Now he finds the work as well."

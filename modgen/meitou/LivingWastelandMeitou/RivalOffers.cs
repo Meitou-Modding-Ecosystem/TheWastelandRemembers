@@ -25,7 +25,7 @@ internal static class RivalOffers
 
     internal static void Register(ModContext c)
     {
-        c.AddDebugCommand("Wasteland Remembers: rival offers", _ => Volatile.Read(ref summary), hasField: false);
+        c.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: rival offers"), _ => Volatile.Read(ref summary), hasField: false);
         if (!CanJoin) c.Log("rival offers: this Meitou does not expose JoinPlayerSquad");
     }
 

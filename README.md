@@ -16,7 +16,6 @@ really happened, outlaws react, rivals come back for the squad, towns hire bount
 - `modgen/meitou/LivingWastelandMeitou`: the C# code mod (Meitou systems, settings, the squad record window). `LivingWastelandMeitou.Tests`:
   unit tests for the engine-free rules. `LivingWastelandMeitou.WorldTests`: the engine-side systems run in small synthetic worlds
   against the real Meitou DLLs. `SquadRecord`: the stand-alone squad record mod built from the same files.
-- `modgen/lua`: the older KenshiLua build of some features (not used by the Meitou release).
 - `server/tools`: the FCS file reader and writer the build uses (`fcs_reader.py`, `fcs_writer.py`, `derive_*.py`).
 
 ## Building

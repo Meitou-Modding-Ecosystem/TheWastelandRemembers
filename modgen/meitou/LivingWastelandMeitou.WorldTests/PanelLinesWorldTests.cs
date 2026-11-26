@@ -13,6 +13,35 @@ public sealed class PanelLinesWorldTests
     static readonly TitleRule[] Rules = [new("butcher", "the Butcher", "member", "kills", null, null, 1)];
 
     [Fact]
+    public void Loading_a_world_clears_the_previous_character_and_item_rows_before_the_first_panel_pass()
+    {
+        using var first = W.World();
+        var deeds = new LwDeeds(Rules, W.Data([]));
+        var leaf = W.Spawn(first, "Leaf", W.Player, Vector3.Zero);
+        deeds.Record.Kill("Leaf", "Dust Bandits", false, null);
+        deeds.Record.Died("Kite", 100, "Squin", null, null, null);
+        first.RunTicks(1);
+
+        var (slots, enabled) = (KeepsakeBook.Slots, LwMod.Settings.RecordInPanels);
+        try
+        {
+            KeepsakeBook.Slots = ["keepsake"];
+            LwMod.Settings.RecordInPanels = true;
+            PanelLines.Publish(first, deeds);
+            Assert.NotNull(PanelLines.ForCharacter(leaf));
+            Assert.NotNull(PanelLines.ForItem("keepsake", "Keepsake of Kite", null));
+
+            using var second = W.World();
+            var recruit = W.Spawn(second, "Ruka", W.Player, Vector3.Zero);
+            Assert.Equal(leaf, recruit);
+            WorldReady.Ready(second, true);
+            Assert.Null(PanelLines.ForCharacter(recruit));
+            Assert.Null(PanelLines.ForItem("keepsake", "Keepsake of Kite", null));
+        }
+        finally { (KeepsakeBook.Slots, LwMod.Settings.RecordInPanels) = (slots, enabled); }
+    }
+
+    [Fact]
     public void A_members_titles_and_record_and_a_keepsakes_story_are_shown()
     {
         var world = W.World();

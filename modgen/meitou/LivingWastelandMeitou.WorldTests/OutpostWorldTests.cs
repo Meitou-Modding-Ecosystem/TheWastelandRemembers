@@ -227,8 +227,9 @@ public sealed class OutpostWorldTests : IDisposable
         public readonly int Dust, Traders;
         public readonly CharacterId Leaf, Enemy;
         public readonly CampaignInstance Raid;
+        readonly WarManager war;
 
-        public RaidScene(PopulationData data, RaidScene? saved = null)
+        public RaidScene(PopulationData data, RaidScene? saved = null, bool start = true)
         {
             Dust = data.FactionIndex("60-t");
             Traders = data.FactionIndex("traders");
@@ -247,22 +248,98 @@ public sealed class OutpostWorldTests : IDisposable
             Town = World.Buildings.AddTown(At, W.Player, Camp);
             FinishShack(World, Town);
             Leaf = W.Spawn(World, "Leaf", W.Player, At);
-            Raid = new CampaignInstance { Faction = Dust, Enemy = W.Player, Id = 1, CampaignId = "dust-assault",
-                Target = CampaignTown.OfPlayer(Town.Number), Phase = 1, Reached = true };
-            var war = new WarManager { Faction = Dust };
-            war.Actives.Add(Raid);
+            war = new WarManager { Faction = Dust };
             typeof(PopulationSystem).GetField("_wars", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(pop, new[] { war });
+            (Raid, Enemy) = AddRaid(1);
+            if (start) World.RunTicks(150);
+        }
+
+        public (CampaignInstance Campaign, CharacterId Raider) AddRaid(int id)
+        {
+            var raid = new CampaignInstance { Faction = Dust, Enemy = W.Player, Id = id, CampaignId = "dust-assault",
+                Target = CampaignTown.OfPlayer(Town.Number), Phase = 1, Reached = true };
+            war.Actives.Add(raid);
             var squad = new Squad { Id = World.Squads.NextId(), TemplateId = "squad", Faction = Dust };
             World.Squads.Add(squad);
-            var platoon = new Platoon { Id = World.Platoons.NextId(), Origin = 0, TemplateId = "squad", Key = 1, State = PlatoonState.Loaded,
-                SquadId = squad.Id, Faction = Dust, Campaign = Raid, Position = new Vector2(At.X, At.Z) };
+            var platoon = new Platoon { Id = World.Platoons.NextId(), Origin = 0, TemplateId = "squad", Key = (ulong)id, State = PlatoonState.Loaded,
+                SquadId = squad.Id, Faction = Dust, Campaign = raid, Position = new Vector2(At.X, At.Z) };
             World.Platoons.Add(platoon);
             squad.PlatoonId = platoon.Id;
-            Enemy = W.Spawn(World, "Raider", Dust, At + Vector3.UnitX * 10, squad: squad.Id);
-            World.RunTicks(150);
+            var raider = W.Spawn(World, "Raider", Dust, At + Vector3.UnitX * 10, squad: squad.Id);
+            return (raid, raider);
         }
 
         public void Hit(CharacterId attacker, CharacterId victim) => Outposts.HitResolved(World, W.Hit(World, attacker, victim));
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void A_fiefdom_resident_cannot_start_or_add_a_casualty_to_a_squad_defence(bool squadAlsoFought)
+    {
+        if (!OutpostMemories.Available || typeof(Squad).GetProperty("ModTags") is not { } tags) return;
+        LwMod.Settings.RememberOutposts = true;
+        var scene = new RaidScene(Data());
+        using var world = scene.World;
+        var locals = new Squad { Id = world.Squads.NextId(), Name = "Residents", TemplateId = "locals", Faction = W.Player };
+        world.Squads.Add(locals);
+        Assert.IsAssignableFrom<IDictionary<string, string>>(tags.GetValue(locals))["fiefdom"] = "town";
+        var resident = W.Spawn(world, "Local Guard", W.Player, At, squad: locals.Id);
+
+        if (squadAlsoFought) scene.Hit(scene.Leaf, scene.Enemy);
+        typeof(MedicalState).GetProperty(nameof(MedicalState.Dead))!.SetValue(world.Characters.Cold(resident.Slot)!.Medical, true);
+        scene.Hit(scene.Enemy, resident);
+        scene.Raid.Phase = 2;
+        world.RunTicks(300);
+
+        Assert.Equal(squadAlsoFought ? 1 : 0, Notes(world).Count(line => line.StartsWith(Defence, StringComparison.Ordinal)));
+        Assert.DoesNotContain(Notes(world), line => line.Contains("Local Guard", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void The_outpost_record_keeps_simultaneous_further_raids_and_their_fallen_across_a_save()
+    {
+        if (!OutpostMemories.Available) return;
+        var enabled = typeof(LwSettings).GetProperty("OutpostDefenceRecord");
+        Assert.NotNull(enabled);
+        var before = enabled.GetValue(LwMod.Settings);
+        try
+        {
+            LwMod.Settings.RememberOutposts = true;
+            enabled.SetValue(LwMod.Settings, true);
+            var data = Data();
+            var scene = new RaidScene(data);
+            using var world = scene.World;
+            scene.Hit(scene.Leaf, scene.Enemy);
+            scene.Raid.Phase = 2;
+            world.RunTicks(150);
+            scene.Hit(scene.Leaf, scene.AddRaid(2).Raider);
+            var (_, lastRaider) = scene.AddRaid(3);
+            var kite = W.Spawn(world, "Kite", W.Player, At);
+            typeof(MedicalState).GetProperty(nameof(MedicalState.Dead))!.SetValue(world.Characters.Cold(kite.Slot)!.Medical, true);
+            scene.Hit(lastRaider, kite);
+            world.RunTicks(150);
+            Assert.Contains("Raids fought: 1.", Assert.Single(scene.Outposts.AtlasRows()).Page);
+
+            var next = new RaidScene(data, scene, start: false);
+            using var loaded = next.World;
+            var (second, raider) = next.AddRaid(2);
+            var (third, _) = next.AddRaid(3);
+            loaded.RunTicks(150);
+            next.Hit(next.Leaf, raider);
+            loaded.RunTicks(150);
+            Assert.Contains("Raids fought: 1.", Assert.Single(next.Outposts.AtlasRows()).Page);
+            second.Phase = third.Phase = 2;
+            loaded.RunTicks(450);
+
+            var page = Assert.Single(next.Outposts.AtlasRows()).Page;
+            Assert.Contains("Raids fought: 3.", page);
+            Assert.Single(page, line => line.Contains("Fallen in the fighting: Kite.", StringComparison.Ordinal));
+            Assert.Equal(2, Notes(loaded).Count(line => line.StartsWith("The squad fought raiders", StringComparison.Ordinal)));
+            Assert.Contains("Rivergate: 3 raids fought.", RecordHost.Panel);
+            Assert.DoesNotContain("raids repelled", RecordHost.Panel, StringComparison.OrdinalIgnoreCase);
+        }
+        finally { enabled.SetValue(LwMod.Settings, before); }
     }
 
     [Fact]
@@ -297,6 +374,34 @@ public sealed class OutpostWorldTests : IDisposable
         loaded.World.RunTicks(300);
         Assert.Single(loaded.News.AtlasRows());
         Assert.Single(Notes(loaded.World), line => line.StartsWith(Defence, StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void An_outpost_resident_cannot_hear_a_report_on_behalf_of_an_absent_squad()
+    {
+        if (!OutpostMemories.Available || typeof(Squad).GetProperty("ModTags") is not { } tags) return;
+        LwMod.Settings.RememberOutposts = true;
+        var scene = new RaidScene(Data());
+        using var world = scene.World;
+        scene.Hit(scene.Leaf, scene.Enemy);
+        scene.Raid.Phase = 2;
+        world.RunTicks(150);
+
+        world.Characters.Place(scene.Leaf.Slot, At + Vector3.UnitX * 7000, 0);
+        var residents = new Squad { Id = world.Squads.NextId(), Name = "Residents", TemplateId = "locals", Faction = W.Player };
+        world.Squads.Add(residents);
+        Assert.IsAssignableFrom<IDictionary<string, string>>(tags.GetValue(residents))["fiefdom"] = "town";
+        W.Spawn(world, "Resident", W.Player, At, squad: residents.Id);
+        var trader = W.Spawn(world, "Visitor", scene.Traders, At + Vector3.UnitX * 100);
+        world.RunTicks(151);
+
+        Assert.False(OutpostMemories.CanHearCourier(world, scene.Town, trader));
+        Assert.Empty(scene.News.AtlasRows());
+
+        world.Characters.Place(scene.Leaf.Slot, At, 0);
+        world.RunTicks(151);
+        Assert.True(OutpostMemories.CanHearCourier(world, scene.Town, trader));
+        Assert.Contains("There's been fighting at Rivergate.", Assert.Single(scene.News.AtlasRows()).Row);
     }
 
     [Fact]
@@ -486,9 +591,11 @@ public sealed class OutpostWorldTests : IDisposable
     [InlineData(false, false)]
     [InlineData(true, false)]
     [InlineData(false, true)]
-    public void A_courier_keeps_its_report_and_outpost_when_the_town_number_changes(bool close, bool hostileGuild)
+    [InlineData(false, false, true)]
+    public void A_courier_keeps_its_report_and_outpost_when_the_town_number_changes(bool close, bool hostileGuild, bool sharedTagChanged = false)
     {
-        if (!Couriers.Available) return;
+        var scopedTags = typeof(Platoon).GetProperty("ModTags");
+        if (!Couriers.Available || sharedTagChanged && scopedTags is null) return;
         LwMod.Settings.RememberOutposts = LwMod.Settings.OtherModsNews = LwMod.Settings.OutpostCouriers = true;
         var sourceAt = new Vector3(150000, 150, 10000);
         var origin = W.Rec("source", FcsRecordType.Town, "Squin");
@@ -554,7 +661,10 @@ public sealed class OutpostWorldTests : IDisposable
         _ = next.Platoons.NextId();
         var resumed = new Platoon { Id = next.Platoons.NextId(), TemplateId = party.TemplateId, Faction = party.Faction,
             Origin = party.Origin, Key = party.Key, Position = party.Position };
-        tag.SetValue(resumed, tag.GetValue(party));
+        var ownTag = (string)tag.GetValue(party)!;
+        tag.SetValue(resumed, sharedTagChanged ? "companion:route" : ownTag);
+        if (sharedTagChanged)
+            ((IDictionary<string, string>)scopedTags!.GetValue(resumed)!)["LivingWastelandMeitou"] = ownTag;
         next.Platoons.Add(resumed);
         next.RunTicks(60);
         if (close)
@@ -583,7 +693,9 @@ public sealed class OutpostWorldTests : IDisposable
         next.RunTicks(180);
         Assert.Single(Notes(next), line => line == text);
         Assert.Equal(text, Assert.Single(newNews.AtlasRows()).Row);
-        Assert.Equal("", tag.GetValue(resumed));
+        Assert.Equal(sharedTagChanged ? "companion:route" : "", tag.GetValue(resumed));
+        if (sharedTagChanged)
+            Assert.False(((IDictionary<string, string>)scopedTags!.GetValue(resumed)!).ContainsKey("LivingWastelandMeitou"));
     }
 
     [Theory]

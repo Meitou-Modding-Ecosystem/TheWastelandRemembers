@@ -12,6 +12,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../LivingWastelandMeitou/LivingWastelandMeitou.csproj" />
+    <None Include="../LivingWastelandMeitou/kindness_lines.json" Link="kindness_lines.json" CopyToOutputDirectory="PreserveNewest" />
     <Reference Include="Meitou.Modding" Condition="Exists('$(MeitouDir)/Meitou.Modding.dll')"><HintPath>$(MeitouDir)/Meitou.Modding.dll</HintPath></Reference>
     <Reference Include="MeitouClient" Condition="!Exists('$(MeitouDir)/Meitou.Modding.dll')"><HintPath>$(MeitouDir)/MeitouClient.dll</HintPath></Reference>
     <Reference Include="Meitou.Simulation"><HintPath>$(MeitouDir)/Meitou.Simulation.dll</HintPath></Reference>

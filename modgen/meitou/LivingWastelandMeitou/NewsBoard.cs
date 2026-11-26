@@ -26,6 +26,8 @@ public sealed class NewsItem
 /// </summary>
 public sealed class NewsBoard
 {
+    internal const string LeaderSource = "TWR fallen leaders";
+    internal const double LeaderLiveHours = 21 * 24;
     public const int Slots = 3, MaxItems = 40, Format = 2;
     public const double KeepDays = 10, LiveDays = 7, SameNewsHours = 12;
 
@@ -116,14 +118,19 @@ public sealed class NewsBoard
     }
 
     /// <summary>Forgets news older than <see cref="KeepDays"/> (and all of it if the clock went back: an earlier save).</summary>
-    public void Prune(double hours) => items.RemoveAll(i => hours - i.Hours > KeepDays * 24 || i.Hours > hours + 1);
+    internal static bool IsLive(NewsItem item, double hours) =>
+        hours - item.Hours <= (item.Source == LeaderSource ? LeaderLiveHours : LiveDays * 24) &&
+        item.Hours <= hours + 1;
+
+    public void Prune(double hours) => items.RemoveAll(i => hours - i.Hours >
+        (i.Source == LeaderSource ? LeaderLiveHours + 48 : KeepDays * 24) || i.Hours > hours + 1);
 
     /// <summary>What the towns talk about now: up to <see cref="Slots"/> pieces younger than <see cref="LiveDays"/>, weightiest first, then
     /// newest. Slot k is the k-th.</summary>
     public List<NewsItem> Talked(double hours) => Talked(hours, null);
 
     internal List<NewsItem> Talked(double hours, Func<NewsItem, bool>? enabled) =>
-        items.Where(i => (enabled is null || enabled(i)) && hours - i.Hours <= LiveDays * 24 && i.Hours <= hours + 1)
+        items.Where(i => (enabled is null || enabled(i)) && IsLive(i, hours))
             .OrderByDescending(i => i.Weight).ThenByDescending(i => i.Hours).ThenBy(i => i.Id).Take(Slots).ToList();
 
     public void Write(BinaryWriter w)

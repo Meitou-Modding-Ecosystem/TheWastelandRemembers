@@ -54,10 +54,18 @@ public static class DeathNotices
                 return;
             }
             var table = world.Characters;
-            if (!table.TryResolveNext(victim, out int v) || table.Cold(v) is not { Animal: null } cold
+            if (!table.TryResolveNext(victim, out int v) || table.Cold(v) is not { } cold
                 || OtherModsPeople.Runs(world, cold)) return;
+            if (cold.Animal is not null)
+            {
+                if (cold.IsPlayer && LwMod.Settings.AnimalCompanions)
+                    CompanionMemorials.Died(world, deeds.Record, cold, deeds.TownAt(table.Next[v].Position).Town);
+                return;
+            }
             if (!cold.IsPlayer)
             {
+                if (deeds.Kindness.People.Count > 0)
+                    KindnessWatch.Death(world, deeds, victim, cold, killerFactionOf!.GetValue(death) is int factionOfKiller ? factionOfKiller : -1);
                 if (killerOf!.GetValue(death) is CharacterId other && !other.IsNone && !ArenaLink.Sport(other, victim) &&
                     table.TryResolveNext(other, out int attackerSlot) && table.Cold(attackerSlot) is { IsPlayer: false } attacker &&
                     !LwDeedsSystem.IsHired(world, attacker))

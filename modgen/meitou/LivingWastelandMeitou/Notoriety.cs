@@ -6,6 +6,7 @@
 using System.Runtime.CompilerServices;
 using Meitou.Modding;
 using Meitou.Simulation;
+using Meitou.Simulation.Ai;
 using Meitou.Simulation.Bodies;
 using Meitou.Simulation.Combat;
 using Meitou.Simulation.Population;
@@ -21,6 +22,8 @@ public sealed class LwDeeds(IReadOnlyList<TitleRule> rules, PopulationData? data
 
 #if !SQUAD_RECORD_ONLY
     public HeatMap Heat { get; } = new();
+    internal KindnessBook Kindness { get; } = new();
+    internal KindnessHomes KindnessWhere { get; } = new();
     internal LwDeedsSystem? Tracker { get; set; }
 #endif
 
@@ -100,7 +103,7 @@ public sealed class LwDeeds(IReadOnlyList<TitleRule> rules, PopulationData? data
 }
 
 /// <summary>The record system: observes hits, samples the squad and the benches, fades heat (Living Wasteland), saves and hashes it all.</summary>
-public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData? data) : ICombatHitObserver, IModSaveData, IStateHashed
+public sealed partial class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData? data) : ICombatHitObserver, IModSaveData, IStateHashed
 {
     const int LookEvery = 30;                       // ticks between looks at the squad (1 game second)
     const int PanelEvery = 90;
@@ -110,7 +113,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     internal LwDeeds Deeds => deeds;
 
 #if !SQUAD_RECORD_ONLY
-    /// <summary>The dialogue system, for the "I defeated your squad" lines Meitou does not fire by itself (event 15). Set by the helper.</summary>
+    /// <summary>The dialogue system for fallback event 15 and memorial lines. Set by the helper.</summary>
     public Meitou.Simulation.Dialogue.DialogueSystem? Talk { get; init; }
 #endif
 
@@ -226,34 +229,36 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         RecordHost.Log($"the squad record stopped after an error in {where} (please send log.txt): {e}");
     }
 
-    readonly HashSet<CharacterId> foes = [];
+    readonly Dictionary<CharacterId, FightFoe> foes = [];
 #if !SQUAD_RECORD_ONLY
     readonly HashSet<CharacterId> wakingFoes = [];
 
     internal void FoeKnockout(CharacterId id, bool temporary)
     {
-        if (temporary && foes.Contains(id)) wakingFoes.Add(id);
+        if (temporary && (foes.ContainsKey(id) || restoredFoes.ContainsKey(id))) wakingFoes.Add(id);
         else wakingFoes.Remove(id);
     }
 #endif
 
     /// <summary>How many of the squad's foes in this fight are on their feet within 50 m of a standing squad member (the fight is not over
     /// while any are: Deeds.FightLook). The dead, the gone and the taken drop out.</summary>
-    int FoesUp(World world, List<(string Name, CharacterId Id, System.Numerics.Vector3 At, bool Down)> squad)
+    int FoesUp(World world, List<(string Name, CharacterId Id, System.Numerics.Vector3 At, bool Down)> squad,
+        Dictionary<CharacterId, FightFoe> opponents, bool restored = false)
     {
-        if (foes.Count == 0) return 0;
+        if (opponents.Count == 0) return 0;
         var table = world.Characters;
         int up = 0;
-        foreach (var id in foes.ToList())
+        foreach (var id in opponents.Keys.ToList())
         {
             if (!table.TryResolveNext(id, out int s) || !table.Next[s].Alive || table.Cold(s) is not { } c || c.Medical is not { Dead: false } med)
             {
-                foes.Remove(id);
+                opponents.Remove(id);
 #if !SQUAD_RECORD_ONLY
                 wakingFoes.Remove(id);
 #endif
                 continue;
             }
+            if (restored && foes.ContainsKey(id)) continue;
             if (c.IsImprisoned || !c.CarriedBy.IsNone) continue;
 #if !SQUAD_RECORD_ONLY
             bool temporarilyDown = wakingFoes.Contains(id) && med.Unconscious && !med.Coma && med.KoTimer > 0f;
@@ -286,11 +291,19 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         bool sport = ArenaLink.Sport(hit.Attacker, hit.Victim);
 #if !SQUAD_RECORD_ONLY
         if (sport) LogTally.Add("arena blows");
+        else if (striker is not null && !victim.IsPlayer && victim.Animal is null && !hit.VictimWasIncapacitated &&
+                 victim.Medical is { Incapacitated: true, Dead: false } && KindnessWatch.Enabled)
+            deeds.Kindness.NoteSquadDown(LastingActors.Grant(world, hit.Victim), world.GameHours);
 #endif
         // the squad's foes in this fight (FoesUp): whoever it struck, and whoever struck it
         if (sport) { }
-        else if (attacker is { IsPlayer: true } && !victim.IsPlayer) foes.Add(hit.Victim);
-        else if (victim.IsPlayer && attacker is { IsPlayer: false }) foes.Add(hit.Attacker);
+        else if (attacker is { IsPlayer: true } && !victim.IsPlayer) RememberFoe(world, hit.Victim, victim);
+        else if (victim.IsPlayer && attacker is { IsPlayer: false }) RememberFoe(world, hit.Attacker, attacker);
+#if !SQUAD_RECORD_ONLY
+        // A later knockdown of the same actor is a fresh defeat. Any new native event follows in Inputs.
+        if (nativeDefeats is not null && !hit.VictimWasIncapacitated && victim.Medical is { Incapacitated: true })
+            nativeDefeats.Remove(hit.Victim);
+#endif
         double amount = (hit.Damage.Cut + hit.Damage.Blunt + hit.Damage.Pierce) * hit.Damage.Scale;
 
         deeds.Record.Damage(striker, victim.IsPlayer ? deeds.Who(victim) : null, amount);
@@ -311,7 +324,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             if (hit.VictimWasAlive && m.Dead)
             {
                 struck.Remove(hit.Victim);
-                Killed(by);
+                Killed(world, by);
             }
             else struck[hit.Victim] = by;       // a later bleed-out after their blow is the squad's too
             return;
@@ -332,7 +345,10 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         if (killed)
         {
             struck.Remove(hit.Victim);
-            Killed(info);
+            Killed(world, info);
+#if !SQUAD_RECORD_ONLY
+            if (!sport) LeaderStories.Confirm(world, deeds, info.UniqueRecord, captured: false, info.At);
+#endif
             // a blow that kills someone already down: the Execution mod's blows, or finishing a downed enemy in a fight
             if (hit.VictimWasIncapacitated || hit.Source == CombatHitSource.Execution) Say(deeds.Record.Executed(striker));
         }
@@ -352,10 +368,39 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         }
     }
 
-    /// <summary>Whether a character belongs to a squad the player hired (AI contract signal 12: follow and fight for the player; 15: guard the
-    /// player's base), the same test Meitou's aggro uses for a squad's employer.</summary>
-    internal static bool IsHired(World world, CharacterCold c) =>
-        c.SquadId >= 0 && world.Squads.Find(c.SquadId)?.Ai?.Contract?.Signal is 12 or 15;
+    static readonly System.Reflection.PropertyInfo? missionEmployer = typeof(Blackboard).GetProperty("MissionEmployer");
+    static readonly System.Reflection.PropertyInfo? contractTown = typeof(Blackboard).GetProperty("ContractTown");
+
+    /// <summary>Checks who hired a bodyguard or owns the town they defend, as Meitou's aggro does.</summary>
+    internal static bool IsHired(World world, CharacterCold c)
+    {
+        if (world.Player.Faction < 0 || c.SquadId < 0 || world.Squads.Find(c.SquadId) is not { Ai: { Contract: { } job } board } squad)
+            return false;
+
+        if (job.Signal == 12)
+        {
+            // Older clients use the mission target for the employer. Newer clients can retain a separate employer.
+            var employer = missionEmployer?.GetValue(board) is CharacterId hirer ? hirer : board.MissionTarget;
+            return !employer.IsNone && world.Characters.TryResolveNext(employer, out int slot) &&
+                world.Characters.Cold(slot)?.Faction == world.Player.Faction;
+        }
+
+        if (job.Signal != 15) return false;
+        if (contractTown is not null)
+            return contractTown.GetValue(board) is CampaignTown town && world.Buildings.FindTown(town.PlayerTown)?.Owner == world.Player.Faction;
+
+        // The old engine infers the mission town from the squad's position.
+        float nearest = float.PositiveInfinity;
+        int owner = -1;
+        foreach (var town in world.Buildings.Towns)
+        {
+            float distance = System.Numerics.Vector3.DistanceSquared(town.Position, squad.Position);
+            if (distance >= nearest) continue;
+            nearest = distance;
+            owner = town.Owner;
+        }
+        return owner == world.Player.Faction;
+    }
 
     Struck Snapshot(World world, CharacterId id, int slot, CharacterCold victim, string striker)
     {
@@ -388,7 +433,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     /// <summary>The striker name used for blows by mercenaries the player hired (never a character's name: it starts with a control character).</summary>
     const string HiredBlades = "\u0001hired";
 
-    void Killed(Struck k)
+    void Killed(World world, Struck k)
     {
         deeds.Record.Hours = k.Hours;
         deeds.Record.Place = k.Town ?? "the wilds";
@@ -466,6 +511,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         last.Remove(id);
         stumpsBefore.Remove(id);
         foes.Remove(id);
+        restoredFoes.Remove(id);
         wakingFoes.Remove(id);
         if (struck.Remove(id, out var hit) && hit.UniqueRecord is { } record)
             pendingNamed[record] = hit;
@@ -498,7 +544,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             double since = world.GameHours - k.Hours;
             var entry = world.Uniques.Find(rec);
             var fate = world.Uniques.StateOf(rec);
-            if (fate == Meitou.Simulation.Factions.UniqueState.Dead) { pendingNamed.Remove(rec); Killed(k); }
+            if (fate == Meitou.Simulation.Factions.UniqueState.Dead) { pendingNamed.Remove(rec); Killed(world, k); }
             else if (fate != Meitou.Simulation.Factions.UniqueState.Alive || since > 24 || since < 0) pendingNamed.Remove(rec);
             else if (entry is not null && !entry.Handle.IsNone && table.TryResolveNext(entry.Handle, out _))
             {
@@ -518,7 +564,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
                 if (fate == Meitou.Simulation.Factions.UniqueState.Dead)
                 {
                     struck.Remove(id);
-                    Killed(k);
+                    Killed(world, k);
                 }
                 else if (fate != Meitou.Simulation.Factions.UniqueState.Alive || since > 24 || since < 0)
                 {
@@ -529,7 +575,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             if (med.Dead)
             {
                 struck.Remove(id);
-                Killed(k);
+                Killed(world, k);
             }
             else if (!med.Incapacitated && since > 2 || since > 24 || since < 0)
             {
@@ -598,9 +644,16 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         {
             PublishPanelPlayers(world, panelPlayers);
             RecordHost.Panel = StatsPanel.Text(deeds, occupied, presentInRecord);
-            RecordHost.CatalogText = string.Join("\n", deeds.Record.Catalog());
+            var catalog = deeds.Record.Catalog();
+            var fallen = deeds.Record.FallenLines();
+#if !SQUAD_RECORD_ONLY
+            if (LwMod.Settings.AnimalCompanions)
+                catalog.Add($"-- Animal companions --\n{SquadRecord.CompanionTitleName}: survive {CompanionMemorials.Battles} fights with the squad");
+            LwState.RegisteredIn(world)?.Companions?.AppendFallen(fallen, deeds.Record.FallenMembers.Count > 0);
+#endif
+            RecordHost.CatalogText = string.Join("\n", catalog);
             RecordHost.HistoryText = string.Join("\n", deeds.Record.HistoryLines());
-            RecordHost.FallenText = string.Join("\n", deeds.Record.FallenLines());
+            RecordHost.FallenText = string.Join("\n", fallen);
         }
         if (world.Tick % (LookEvery * 600) == 0) Prune(world);
     }
@@ -610,7 +663,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         presentInRecord.Clear();
 #if !SQUAD_RECORD_ONLY
         nativePanelMembers.Clear();
-        bool nativePanels = LwMod.Settings.RecordInPanels;
+        bool nativePanels = LwMod.Settings.RecordInPanels || CharacterTitleDisplay.Enabled;
 #endif
         var table = world.Characters;
         var hot = table.Previous;
@@ -631,13 +684,20 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         }
 #if !SQUAD_RECORD_ONLY
         PanelLines.Publish(deeds.Record, nativePanelMembers, world);
+        CharacterTitleDisplay.Publish(deeds.Record, nativePanelMembers, world);
 #endif
     }
 
     void RecordFallen(World world, CharacterId id, CharacterCold member, string? town,
         string? killer = null, string? faction = null, string? killerRecord = null)
     {
-        if (member.Animal is not null) return;
+        if (member.Animal is not null)
+        {
+#if !SQUAD_RECORD_ONLY
+            CompanionMemorials.Died(world, deeds.Record, member, town);
+#endif
+            return;
+        }
         string name = deeds.Who(member);
         if (deeds.Record.FallenMembers.Any(f => f.Name == name)) return;
         string place = town ?? "the wilds";
@@ -657,6 +717,8 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
 #if !SQUAD_RECORD_ONLY
         occupiedPriceNodes.Clear();
         bool trackNodes = deeds.Heat.HasOwnedHeat;
+        List<string>? survivingCompanions = null;
+        bool companions = LwMod.Settings.AnimalCompanions && deeds.Record.InFight;
 #endif
         var fighting = new List<string>();
         var downNow = new List<string>();
@@ -680,6 +742,10 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
                 continue;
             }
             if (cold.Animal is null) deeds.Record.Seen(me, world.GameHours);
+#if !SQUAD_RECORD_ONLY
+            else if (companions && cold.PortraitSerial is not null && cold.Medical is { Dead: false } && !hot[s].Dormant)
+                (survivingCompanions ??= []).Add(me);
+#endif
             if (townHere is not null)
             {
                 occupied.Add(townHere);
@@ -733,6 +799,7 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             }
             if (Activities.OfName(((Meitou.Simulation.Movement.CharacterTask)hot[s].Task).ToString(), moved > 1) is { } activity) Say(deeds.Record.Spend(me, activity, seconds, moved));
         }
+        bool resumedFight = deeds.Record.HasResumedFight;
         if (fighting.Count > 0 || deeds.Record.InFight)
         {
             deeds.Record.Hours = world.GameHours;
@@ -741,32 +808,64 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
 #if !SQUAD_RECORD_ONLY
             DefeatLines(world, squad);
 #endif
-            Say(deeds.Record.FightLook(fighting, downNow, FoesUp(world, squad)));
+            int freshFoesUp = FoesUp(world, squad, foes);
+            if (resumedFight) BindSavedFoes(world);
+            int savedFoesUp = resumedFight ? FoesUp(world, squad, restoredFoes, restored: true) : 0;
+            Say(deeds.Record.FightLook(fighting, downNow, freshFoesUp + savedFoesUp));
+#if !SQUAD_RECORD_ONLY
+            if (resumedFight && deeds.Record.FightLookSinceLoad(fighting, downNow, freshFoesUp) is { } wonAfterLoad)
+            {
+                RivalsSystem.For(world)?.FightEnded(world, wonAfterLoad);
+                // These opponents remain part of the saved record's fight if it is still open.
+                foreach (var (id, foe) in foes) restoredFoes[id] = foe;
+                foes.Clear();
+            }
+#endif
             if (!deeds.Record.InFight)
             {
+#if !SQUAD_RECORD_ONLY
+                if (survivingCompanions is not null)
+                    foreach (string key in survivingCompanions)
+                        if (deeds.Record.Fighters.Contains(key)) CompanionMemorials.Survived(world, deeds.Record, key);
+#endif
                 foes.Clear();
+                restoredFoes.Clear();
+                savedFoes = null;
+                deeds.Record.FinishResumedFight();
 #if !SQUAD_RECORD_ONLY
                 wakingFoes.Clear();
 #endif
             }
         }
 #if !SQUAD_RECORD_ONLY
-        VictoryLine(world, squad);
+        VictoryLine(world, squad, resumedFight);
         Mourn(world, squad);
+        if (world.Tick % 150 == 0 && deeds.Kindness.People.Count > 0 && KindnessWatch.Enabled)
+            deeds.KindnessWhere.Look(world, deeds, squad);
 #endif
         return occupied;
     }
 
 #if !SQUAD_RECORD_ONLY
+    StoryTaskBar? mourningBar;
+    (CharacterId Body, string Name, double Hours)? shownMourning;
+
+    void ClearMourningBar()
+    {
+        mourningBar?.Clear();
+        mourningBar = null;
+        shownMourning = null;
+    }
+
     const int SeeRagdollEvent = 4;          // EV_I_SEE_RAGDOLL: Meitou does not fire it; vanilla gives player characters no lines on it
 
     /// <summary>Once the fight is over, the nearest standing squadmate (within 250 m) says something over each new body, by name
     /// (/YOURNAME/ is the fallen: the target). A body no longer in the world, or nobody near it within a game hour, is let go.</summary>
     void Mourn(World world, List<(string Name, CharacterId Id, System.Numerics.Vector3 At, bool Down)> squad)
     {
-#if !SQUAD_RECORD_ONLY
+        var finishedBar = shownMourning;
+        ClearMourningBar();
         if (!LwMod.Settings.Memorials) { toMourn.Clear(); return; }
-#endif
         if (toMourn.Count == 0 || deeds.Record.InFight) return;
         var table = world.Characters;
         foreach (var (body, name, hours) in toMourn.ToList())
@@ -794,7 +893,17 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
             var at = table.Next[b].Position;
             var near = squad.Where(m => !m.Down).OrderBy(m => System.Numerics.Vector3.Distance(m.At, at)).FirstOrDefault();
             if (near.Name is null || System.Numerics.Vector3.Distance(near.At, at) > 2500) continue;
-            toMourn.Remove((body, name, hours));
+            var memorial = (body, name, hours);
+            if (mourningBar is null && finishedBar != memorial && StoryTaskBar.Available &&
+                Trophies.Keepsake is not null && LwMod.Settings.Trophies &&
+                table.TryResolveNext(near.Id, out int mourner) && table.Cold(mourner) is { Inventory: not null } actor &&
+                StoryTaskBar.TryShow(actor, $"Remembering {deeds.Record.Display(name)}...") is { } bar)
+            {
+                mourningBar = bar;
+                shownMourning = memorial;
+                continue;
+            }
+            toMourn.Remove(memorial);
 #if !SQUAD_RECORD_ONLY
             Trophies.GiveKeepsake(world, near.Id, deeds.Record.Display(near.Name), deeds.Record.Display(name), name);
 #endif
@@ -810,12 +919,13 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     /// The squad's victory line: when a fight the squad won ends, one of those still standing (a different one each time) gets event 15 with
     /// the last enemy struck as the target; only lines written for the player's characters can answer (squad banter, recruits, grudges).
     /// </summary>
-    void VictoryLine(World world, List<(string Name, CharacterId Id, System.Numerics.Vector3 At, bool Down)> squad)
+    void VictoryLine(World world, List<(string Name, CharacterId Id, System.Numerics.Vector3 At, bool Down)> squad, bool resumedFight)
     {
         if (deeds.Record.TakeFightEnd() is not { } end) return;
-        wipeTold = false;
-        RivalsSystem.For(world)?.FightEnded(world, end.Won);
-        if (Talk is null || !LwMod.Settings.VictoryLines || !end.Won || end.Standing.Count == 0) return;
+        bool covered = WasNativeDefeat(world, lastEnemy);
+        ResetDefeatDialogue();
+        if (!resumedFight) RivalsSystem.For(world)?.FightEnded(world, end.Won);
+        if (Talk is null || !LwMod.Settings.VictoryLines || !end.Won || end.Standing.Count == 0 || covered) return;
         var table = world.Characters;
         if (!table.TryResolveNext(lastEnemy, out _)) return;
         var standing = squad.Where(m => !m.Down && end.Standing.Contains(m.Name)).OrderBy(m => m.Name, StringComparer.Ordinal).ToList();
@@ -834,12 +944,23 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
     /// </summary>
     void DefeatLines(World world, List<(string Name, CharacterId Id, System.Numerics.Vector3 At, bool Down)> squad)
     {
+        if (Talk is null || !LwMod.Settings.EnemyVictoryLines)
+        {
+            wipeTold = wipePending = false;
+            return;
+        }
         var fought = deeds.Record.Fighters;
         var down = squad.Where(m => m.Down && fought.Contains(m.Name)).ToList();
         bool wiped = fought.Count > 0 && fought.All(n => squad.Any(m => m.Name == n && m.Down) || squad.All(m => m.Name != n));
-        if (!wiped || down.Count == 0) { if (!wiped) wipeTold = false; return; }
-        if (wipeTold || Talk is null || !LwMod.Settings.EnemyVictoryLines) return;
+        if (!wiped || down.Count == 0) { if (!wiped) wipeTold = wipePending = false; return; }
+        if (wipeTold) return;
+        if (nativeDefeat && !wipePending)
+        {
+            wipePending = true;
+            return;
+        }
         wipeTold = true;
+        if (nativeDefeat && down.Any(member => WasNativeDefeat(world, member.Id))) return;
 
         var table = world.Characters;
         var hot = table.Previous;
@@ -960,7 +1081,9 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
         foreach (var (_, name, hours) in toMourn) { w.Write(name); w.Write(hours); }
 #if !SQUAD_RECORD_ONLY
         deeds.Heat.WriteOwners(w);
+        deeds.Kindness.Write(w);
 #endif
+        WriteFightTrailer(w);
     }
 
     const int MournTag = 0x4C4D524E;   // "LMRN"
@@ -1014,6 +1137,12 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
 
     public void Read(Stream stream)
     {
+        ResetFightTrailer();
+#if !SQUAD_RECORD_ONLY
+        ClearMourningBar();
+        deeds.Kindness.Clear();
+        deeds.KindnessWhere.Clear();
+#endif
         using var r = new BinaryReader(stream, System.Text.Encoding.UTF8, leaveOpen: true);
         try
         {
@@ -1032,8 +1161,10 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
                 for (int n = r.ReadInt32(); n > 0; n--) toMourn.Add((CharacterId.None, r.ReadString(), r.ReadDouble()));
 #if !SQUAD_RECORD_ONLY
                 deeds.Heat.ReadOwners(r);
+                deeds.Kindness.Read(r);
 #endif
             }
+            ReadFightTrailer(r);
         }
         catch (Exception e) when (e is EndOfStreamException or IOException or InvalidDataException or FormatException)
         {
@@ -1047,6 +1178,8 @@ public sealed class LwDeedsSystem(IReadOnlyList<TitleRule> rules, PopulationData
 #if !SQUAD_RECORD_ONLY
         foreach (long v in deeds.Heat.HashParts()) hasher.Add(v);
         foreach (long v in deeds.Heat.OwnerHashParts()) hasher.Add(v);
+        foreach (long v in deeds.Kindness.HashParts()) hasher.Add(v);
+        deeds.KindnessWhere.Hash(ref hasher);
 #endif
     }
 

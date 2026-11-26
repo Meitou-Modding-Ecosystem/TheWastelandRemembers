@@ -34,7 +34,7 @@ internal sealed class TrophyLooks(IReadOnlyDictionary<string, object> resolved) 
             context.AddSystem("lw-neck-meshes", ctx =>
                 Latest = new TrophyLooks(Resolve(ctx.Data.Db, context.Folder, fits)), SystemAnchor.End);
             // the fit is a first guess until seen in game: this row moves every charm at once, live, so the right numbers can be found
-            context.AddDebugCommand("Wasteland Remembers: neck charm fit (x y z yaw pitch roll)", d => Latest?.Retune(d.Field) ?? "no world yet",
+            context.AddDebugCommand(UiLanguage.Text("Wasteland Remembers: neck charm fit (x y z yaw pitch roll)"), d => Latest?.Retune(d.Field) ?? "no world yet",
                 hasField: true);
             context.Log("trophies: neck meshes available in Squad record settings");
         }
