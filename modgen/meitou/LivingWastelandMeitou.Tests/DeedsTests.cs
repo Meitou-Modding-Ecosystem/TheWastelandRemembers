@@ -315,6 +315,18 @@ public class MemorialTests
     static SquadRecord Squad() => new([new TitleRule("avenger", "the Avenger", "member", "avenged", null, null, 1)]);
 
     [Fact]
+    public void A_newcomer_who_falls_is_not_told_twice_that_they_were_new()
+    {
+        // seen in bv: "served 0 days, 0 kills." then "Joined the squad only days before."
+        var r = Squad();
+        r.Seen("Kaishaku", 24);
+        r.Died("Kaishaku", 30, "The Hub", null, null, null);
+        var lines = r.FallenLines();
+        Assert.Contains(lines, l => l == "   served less than a day, 0 kills.");
+        Assert.DoesNotContain(lines, l => l.Contains("Joined the squad only days before"));
+    }
+
+    [Fact]
     public void The_fallen_are_kept_with_their_deeds_and_the_feud()
     {
         var r = Squad();

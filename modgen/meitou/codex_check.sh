@@ -20,7 +20,7 @@ DOTNET="${DOTNET:-dotnet}"
 export CACHE="${CACHE:-$(cd "$MODGEN/.." && pwd)/meitou-releases}"
 export DOTNET DOTNET_NOLOGO=1 DOTNET_CLI_TELEMETRY_OPTOUT=1
 tags=("$@")
-[ ${#tags[@]} -gt 0 ] || tags=(v0.22.1 v0.17.3)
+[ ${#tags[@]} -gt 0 ] || tags=(v0.24.0 v0.23.2 v0.17.3)
 fail=0
 
 # Each world-test run checks both directions against the actual previous Steam DLL when it is in the release cache.
@@ -58,7 +58,7 @@ for t in "${tags[@]}"; do
 done
 
 echo "== 2b. RefCheck's engine-version check on a real DLL (RefCheck/check_versions.sh)"
-"$HERE/RefCheck/check_versions.sh" || fail=1
+"$HERE/RefCheck/check_versions.sh" 0.24.0 0.23.2 || fail=1
 
 echo "== 3. data compiler, packaging and log collector tests (python, no game files needed)"
 if (cd "$MODGEN" && python3 -m unittest -q test_meitou_target test_meitou_check test_make_release test_save_logs >"$OUT/py.log" 2>&1); then echo "   passed"; else tail -15 "$OUT/py.log"; fail=1; fi

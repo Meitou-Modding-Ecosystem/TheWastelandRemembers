@@ -86,8 +86,10 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             lastSeen[(b.Speaker, b.Text)] = world.GameHours;
             if (matcher!.Match(b.Text) is not { } subject) continue;
 
-            string where = TownAt(at) ?? "on the road";
+            string? town = TownAt(at);
+            string where = town ?? "on the road";
             var heard = new Heard(b.Text.Trim(), where, world.GameHours);
+            GossipLink.For(world).Told(GossipLink.Key(world, b.Speaker), town, heard.Text, world.GameHours);   // the gossip cap, Ask for news
             bool any = false;
             if (subject.Length > 0) any |= book.Note(subject, heard);
             else foreach (var name in people.Keys.Where(n => b.Text.Contains(n, StringComparison.Ordinal))) any |= book.Note(name, heard);
@@ -537,4 +539,15 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
     }
 
     public void Hash(ref StateHasher h) => h.Add(book.HashCount);
+}
+
+/// <summary>The loaded game's gossip memory, keyed by a speaker's id and name (ids are reused when characters unload).</summary>
+public static class GossipLink
+{
+    static readonly System.Runtime.CompilerServices.ConditionalWeakTable<Meitou.Simulation.World, GossipMemory> memories = new();
+
+    public static GossipMemory For(Meitou.Simulation.World world) => memories.GetOrCreateValue(world);
+
+    public static string Key(Meitou.Simulation.World world, Meitou.Simulation.CharacterId who) =>
+        world.Characters.TryResolveNext(who, out int s) && world.Characters.Cold(s) is { } c ? $"{who}|{c.Name}" : who.ToString();
 }

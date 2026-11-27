@@ -5,7 +5,7 @@
 //   screen passes -1, -1). Read only; the argument is found by its type, so a reordered signature still works.
 // * Typing, for the Settings tab's search box: while the box is active, a Harmony prefix on PlayerInterface.UiKey takes letters, digits,
 //   space and backspace for the query before anything else sees them (so "i" does not open the inventory); Enter or Esc ends typing, Esc
-//   going no further. Camera keys the game reads as held (WASD, Q, E) may still nudge the camera while typing.
+//   going no further. The game's text-focus flag (UiEditing) reads true meanwhile, so photo mode (P), chords and camera keys stay still.
 // Anything not found switches that part off with one log line: no hover boxes (clicking a setting's name still shows its description), or
 // no typing (the search box then says so).
 using System.Numerics;
@@ -44,6 +44,12 @@ public static class UiInput
             {
                 harmony.Patch(ui, prefix: new HarmonyMethod(typeof(UiInput).GetMethod(nameof(KeyPrefix), BindingFlags.Static | BindingFlags.NonPublic)));
                 CanType = true;
+                // seen in play (bv, 0.24): P typed into the box opened photo mode, which the game checks before the UI gets the key. The game
+                // skips photo mode, hotkey chords and camera keys while one of its own text fields has focus (PlayerInterface.UiEditing,
+                // read in 0.24.0); a postfix says the same while our box takes typing. Absent on a Meitou without it: one log line.
+                if (ui.DeclaringType?.GetProperty("UiEditing", BindingFlags.Instance | BindingFlags.Public)?.GetGetMethod() is { } editing)
+                    harmony.Patch(editing, postfix: new HarmonyMethod(typeof(UiInput).GetMethod(nameof(EditingPostfix), BindingFlags.Static | BindingFlags.NonPublic)));
+                else log("settings search: this Meitou has no text-focus flag; P and camera keys may still act while typing");
             }
             else log("settings search: the key handler was not found; typing in the search box is off");
         }
@@ -77,6 +83,12 @@ public static class UiInput
                 if (v.X >= 0 && v.Y >= 0) { mx = v.X; my = v.Y; HasMouse = true; }
                 return;
             }
+    }
+
+    /// <summary>The game's "a text field has focus" flag, also true while the search box takes typing.</summary>
+    static void EditingPostfix(ref bool __result)
+    {
+        if (Typing && StatsUi.open) __result = true;
     }
 
     /// <summary>False (the key is ours, the game skips it) while the search box takes typing.</summary>

@@ -147,6 +147,8 @@ public sealed class LwSettings
     public bool Rivals { get; set; } = true;
     [Setting("Recruit beaten rivals (test)", Hint = "A rival you defeat three times may ask to join your squad. A rival who killed a squadmate stays an enemy.")]
     public bool RecruitRivals { get; set; } = PlayTest.On;
+    [Setting("Grudge title (test)", Hint = "Earn a squad title by killing three different known rivals in the field.")]
+    public bool RivalMilestones { get; set; } = PlayTest.On;
     [Setting("Outlaw successors", Hint = "A few days after a named outlaw dies or is jailed, one of their gang takes over the same ground under a new name, with a smaller bounty and a new contract.")]
     public bool OutlawSuccessors { get; set; } = true;
     [Setting("Towns hire bounty hunters", Hint = "A town that has you marked as hunted hires a crew of blades to track your squad down.")]
@@ -199,6 +201,12 @@ public sealed class LwSettings
     [Setting("Live Atlas portraits (test)", Hint = "Show the current face and clothing of known people nearby, when Meitou can draw them.")]
     public bool LiveAtlasPortraits { get; set; } = PlayTest.On;
 
+    [Setting("Saved character tags (test)", Hint = "Keep a saved marker for characters The Wasteland Remembers has verified. Needs a Meitou with character tags.")]
+    public bool SavedCharacterTags { get; set; } = PlayTest.On;
+
+    [Setting("Panel icons (test)", Hint = "Mark earned titles and active features with a small icon on newer Meitou builds.")]
+    public bool PanelIcons { get; set; } = PlayTest.On;
+
     [Setting("Titles in character names (test, restart)", Hint = "Show a squadmate's latest earned title beside their name in their own panels. Restart Meitou after turning this on.")]
     public bool TitlesInCharacterNames { get; set; } = PlayTest.On;
 
@@ -241,7 +249,7 @@ public sealed class LwMod : IMod
     internal static string JobVariable = "LW open jobs";
     /// <summary>The build this helper was made for (modgen/BUILD_ID); the data mods carry theirs in lw_codes.json.</summary>
     public static string DataBuild = "unknown";
-    public const string HelperBuild = "20261126bs";
+    public const string HelperBuild = "20261127bw";
     internal static List<RumourCode> Rumours = [];
     internal static List<(int Index, string Name)> Outlaws = [];
 
@@ -266,9 +274,11 @@ public sealed class LwMod : IMod
         RecapLink.Source = "LivingWasteland";
         Settings.JobCap = table.Jobs?.Cap ?? 5;
         UiLanguage.Register(c);
+        PanelLines.LoadArt(c.Folder);
         MoonscriptLink.Register(c);
         var settings = c.AddSettings(Settings);
         SettingsFile.Attach(settings, "LivingWastelandMeitou");
+        CharacterTitleDisplay.WatchSettings(settings);
         settings.Changed += setting =>
         {
             if (PlaytestLog.Enabled || setting.Key == nameof(LwSettings.PlaytestDiagnostics))
@@ -407,7 +417,9 @@ public sealed class LwMod : IMod
                 c.AddDialogueCondition(rv.Codes[k], check => check.Compare(RivalsSystem.For(check.World)?.SlotValue(check.World, slot, check.Speaker) ?? 0));
             }
         }
-        if (table.Gossip is { Code: > 0 } g) c.AddDialogueCondition(g.Code, check => check.Matches(GossipRoll(check) < Settings.Gossip / 200.0));
+        // and nobody runs through every rumour in town (seen in play, bv: one vagrant told them all): GossipMemory.MaxPerDay each
+        if (table.Gossip is { Code: > 0 } g) c.AddDialogueCondition(g.Code, check => check.Matches(GossipRoll(check) < Settings.Gossip / 200.0
+            && GossipLink.For(check.World).MayTell(GossipLink.Key(check.World, check.Speaker), check.World.GameHours)));
         if (table.Talk is { Code: > 0 } t)
         {
             c.AddDialogueCondition(t.Code, check => check.Matches(TalkPacer.Allow(check.World, check.Speaker)
@@ -516,6 +528,8 @@ public sealed class LwMod : IMod
                 && ids.Any(id => d.Holds(check.World, check.Subject, id));
             return check.Matches(Settings.TitleReactions && hated);
         });
+        if (t.Giver > 0)
+            c.AddDialogueCondition(t.Giver, check => check.Matches(GiverRules.MayOffer(RecordNameOf(check.World, check.Speaker))));
         foreach (var g in t.Gifts ?? [])
         {
             string item = g.Item;
@@ -595,6 +609,15 @@ public sealed class LwMod : IMod
             : $"{char.ToUpperInvariant(shown[0])}{shown[1..]} think a little better of you.");
         if (after >= cap && LwDeeds.For(world) is { } deeds) deeds.Record.Note($"Enough jobs done for {shown}: they count the squad as friends.");
         if (Settings.LogChanges) Log($"favour: {name} {before:0} -> {after:0}");
+    }
+
+    /// <summary>The name of the character's record ("Starving Vagrant"), or null if it can't be read.</summary>
+    static string? RecordNameOf(World world, CharacterId who)
+    {
+        var data = LwState.For(world).Data;
+        var table = world.Characters;
+        if (data is null || !table.TryResolveNext(who, out int s) || table.Cold(s) is not { RecordId: { } id }) return null;
+        return data.Db.Find(id)?.Name;
     }
 
     static string? FactionOf(World world, CharacterId who)
@@ -744,6 +767,7 @@ public sealed class LwMod : IMod
     {
         if (n is null) return;
         var rules = n.Titles.Select(t => new TitleRule(t.Id, t.Name, t.Scope, t.Stat, t.Faction, t.Targets, t.At, t.Legendary)).ToList();
+        rules.Add(RivalsSystem.GrudgeTitle);
         c.AddSystem("lw-deeds", ctx => new LwDeedsSystem(rules, ctx.Data) { Talk = ctx.Find<DialogueSystem>() }, SystemAnchor.End);
         foreach (var t in n.Titles.Where(t => t.Tale > 0))
         {
@@ -882,7 +906,7 @@ public sealed class LwMod : IMod
     sealed record MemorialTable(int Mourn, int LossDays, int LossTown, int Feud, int Scar = 0, int SquadNear = 0);
     sealed record HuntersTable(string Squad);
     sealed record TemperamentTable(int Once, int Mark, int Despised, List<string>? Titles, Dictionary<string, List<string>>? Despises, List<GiftCode>? Gifts,
-        Dictionary<string, Dictionary<string, List<string>>>? Views = null);
+        Dictionary<string, Dictionary<string, List<string>>>? Views = null, int Giver = 0);
 
     /// <summary>Faction -> "admires" / "despises" / "fears" -> title names (the Atlas's faction pages).</summary>
     internal static Dictionary<string, Dictionary<string, List<string>>> TitleViews = [];

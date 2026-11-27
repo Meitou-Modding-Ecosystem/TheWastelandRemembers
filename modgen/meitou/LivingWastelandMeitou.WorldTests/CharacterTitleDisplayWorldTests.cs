@@ -1,7 +1,9 @@
 using System.Numerics;
 using System.Reflection;
 using LivingWasteland.MeitouMod;
+using Meitou.Content;
 using Meitou.Game.Ui;
+using Meitou.Modding;
 using Meitou.Simulation;
 using Xunit;
 
@@ -58,8 +60,19 @@ public sealed class CharacterTitleDisplayWorldTests
             Assert.Equal("Leaf", Shown(LastingActors.Grant(world, other), "Panel"));
             Assert.Equal("Leaf", actor.Name);
 
-            setting.SetValue(settings, false);
-            world.RunTicks(95);
+            var data = W.Data([]);
+            var makeContext = Assert.Single(typeof(ModContext).GetConstructors(flags));
+            var args = makeContext.GetParameters();
+            var info = new ModInfo("title.test", "title-fixture.mod", default);
+            var manifest = new CodeModManifest("title.test", 2, ["LivingWastelandMeitou.dll"], typeof(LwMod).FullName!);
+            var mod = Assert.Single(args[0].ParameterType.GetConstructors(flags)).Invoke([info, manifest]);
+            var registry = Activator.CreateInstance(args[1].ParameterType, nonPublic: true);
+            var modContext = (ModContext)makeContext.Invoke([mod, registry, data.Db, data, (Func<World?>)(() => world), null]);
+            var group = modContext.AddSettings(settings);
+            display.GetMethod("WatchSettings", BindingFlags.Static | BindingFlags.NonPublic)?.Invoke(null, [group]);
+            long pausedTick = world.Tick;
+            Assert.Single(group.Settings, s => s.Key == setting.Name).Set(false);
+            Assert.Equal(pausedTick, world.Tick);
             Assert.Equal("Leaf", Shown(actorId, "Panel"));
         }
         finally

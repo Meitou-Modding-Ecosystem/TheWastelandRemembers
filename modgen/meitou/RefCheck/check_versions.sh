@@ -7,7 +7,7 @@ set -u
 HERE="$(cd "$(dirname "$0")/.." && pwd)"
 DOTNET="${DOTNET:-dotnet}"
 CACHE="${CACHE:-/tmp/meitou-releases}"
-NEW="${1:-0.22.1}" OLD="${2:-0.22.0}"
+NEW="${1:-0.24.0}" OLD="${2:-0.23.2}"
 for v in "$NEW" "$OLD"; do [ -f "$CACHE/$v/MeitouClient.dll" ] || { echo "SKIP: no Meitou $v DLLs in $CACHE"; exit 0; }; done
 OUT="$(mktemp -d)"
 TFM=net10.0; strings "$CACHE/$NEW/MeitouClient.dll" | grep -q "NETCoreApp,Version=v11" && TFM=net11.0

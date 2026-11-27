@@ -1,6 +1,41 @@
 # The Wasteland Remembers: changelog
 
-## Next build (not built yet)
+## Build 20261127bw (beta, not on Steam)
+- **Rivals no longer stand still off screen.** On Meitou 0.24 a hunting rival could be steered through a party that no longer held them (one
+  the game holds back until the squad leaves), so the hunt never moved and nobody was there. The rival is now found in the party that does
+  hold them, a held-back party is never walked into the squad's area, and the F10 row says "whereabouts unknown" when neither is found.
+- Outlaw camps log what is there when the squad comes near (people standing, or why not).
+- Typing in the Settings search no longer opens photo mode with P, and camera keys stay still while typing.
+- Ordinary people (vagrants, drifters, beggars, refugees, escapees, slaves) no longer offer contracts or errands.
+- One person tells at most two rumours a day; asked for news with nothing new, they repeat what they told you or what the town is saying,
+  instead of "Haven't heard a thing".
+- The saved chronicle reads as a story: History from day 1, repeats folded, earned titles only, a heading with the squad's name and days.
+  History now notes bounty hunters hired and beaten, rivals coming back, and people freed or kept from bleeding out.
+- A fallen squadmate of less than a day reads "served less than a day", without a repeated epitaph.
+- "Save logs for a bug report" also collects saved chronicles.
+- Prisoners flickering in and out of a cage no longer fill the log (Meitou 0.24 reported Rebirth's cages changing nearly every tick).
+- Grudge title (test) gives the squad a name for settling three known grudges in the field.
+
+- The compatibility check now places a bounty crew with the same helper DLL players receive on each supported test client.
+
+## Build 20261127bv (beta, not on Steam)
+- **Bounty crews, outlaw reprisals, successors, raids and outlaw camps work again on Meitou 0.23 and later.** Placing their squads failed
+  with "Method not found" (a Meitou property changed how it is set), so they quietly never appeared. Found from a player's log.
+
+- Switching off title suffixes restores ordinary character names even while the game is paused.
+
+- Panel icons (test) mark earned titles and the features that are on in What’s active.
+
+- Saved character tags (test) also mark verified outlaws, remembered people and the squadmates who receive a named keepsake.
+
+- Saved character tags (test) help the squad recognise a verified returning rival after a name change or a load.
+
+- Rivals and bounty crews can deliver their challenge once the speaker is back on their feet.
+
+- The performance check now compares Meitou 0.24.0, 0.23.2 and 0.17.3 with the same squad fixture.
+
+- Compatibility checks now cover Meitou 0.24.0 alongside 0.23.2 and 0.17.3.
+- Works on Meitou 0.24 (the version range now allows Meitou below 0.25).
 
 ## Build 20261126bs (beta, not on Steam)
 

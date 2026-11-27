@@ -42,6 +42,7 @@ static class Bench
 
     internal static int PartyRetention(Assembly mod)
     {
+#if NET11_0_OR_GREATER
         var hook = mod.GetType("LivingWasteland.MeitouMod.PlatoonRetention");
         if (hook is null) { Console.WriteLine("No TWR platoon retention in this helper."); return 0; }
         var type = (Type)hook.GetMethod("BuildWatch", Members)!.Invoke(null, null)!;
@@ -79,10 +80,15 @@ static class Bench
         if (use(world, crew.Id)) throw new InvalidOperationException("The expired job vetoed removal.");
         Measure("Engine orphan veto, expired party", () => _ = use(world, crew.Id), 100_000);
         return 0;
+#else
+        Console.Error.WriteLine("Party retention needs Meitou's removal-veto hook.");
+        return 2;
+#endif
     }
 
     internal static int RememberedPeople(Assembly mod)
     {
+#if NET11_0_OR_GREATER
         var homes = mod.GetType("LivingWasteland.MeitouMod.KindnessHomes");
         if (homes is null) { Console.WriteLine("No kindness home checks in this helper."); return 0; }
         var data = Data();
@@ -143,6 +149,10 @@ static class Bench
             Measure("Six ready reunions out of speaking range", () => call(world), 2000);
         }
         return 0;
+#else
+        Console.Error.WriteLine("Kindness needs Meitou's lasting character IDs.");
+        return 2;
+#endif
     }
 
     static PopulationData Data()

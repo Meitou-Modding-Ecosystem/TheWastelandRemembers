@@ -113,6 +113,20 @@ public static class NewsAskRules
         return (leads[(int)(roll % (ulong)leads.Length)] + (bestOurs ? live[best].Text : Uncap(live[best].Text)), best);
     }
 
+    static readonly string[] Again = ["Like I said, ", "As I told you, ", "Same as before: "];
+    static readonly string[] AboutTown = ["Folk round here say ", "What I keep hearing: ", "Talk in town is, "];
+
+    /// <summary>
+    /// The answer when the news board has nothing for the speaker (GossipMemory): what they told the squad themselves lately ("Like I said,
+    /// ..."), else what the town has been saying; null when neither (the board's "Haven't heard a thing" stands).
+    /// </summary>
+    public static string? Fallback(string? ownLine, string? townLine, ulong roll)
+    {
+        if (ownLine is { Length: > 0 } own) return Again[(int)(roll % (ulong)Again.Length)] + Uncap(own);
+        if (townLine is { Length: > 0 } town) return AboutTown[(int)(roll % (ulong)AboutTown.Length)] + Uncap(town);
+        return null;
+    }
+
     /// <summary>Whether a text names one of the squad (a whole word: "Knife" in "Knife defeated...", not in "Knifeman").</summary>
     public static bool Names(string text, IReadOnlyCollection<string>? squad)
     {

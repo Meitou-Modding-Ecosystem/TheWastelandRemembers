@@ -146,6 +146,8 @@ public static class LifecycleWatch
         WitnessMemories.Crime(world, crime);
     }
 
+    static readonly System.Runtime.CompilerServices.ConditionalWeakTable<World, Dictionary<CharacterId, (long Tick, int Run, int Skipped)>> heldSeen = new();
+
     /// <summary>A cage, bed or restraint entered or left: logged for cages (captives: Meitou#1271), with the fixture.</summary>
     public static void Held(World world, object change)
     {
@@ -161,9 +163,25 @@ public static class LifecycleWatch
             if (before == HeldState.Imprisoned && after == HeldState.None && fixtureId is not null)
                 KindnessReleases.Released(world, id, c, fixtureId);
             if (!LwMod.Settings.LogChanges && !LwMod.Settings.PlaytestDiagnostics) return;
+            // seen in play (bv, 0.24): prisoners in Rebirth's cages reported leaving and re-entering them nearly every tick (2,776 lines,
+            // 516 for one man). Two changes within 600 ticks log as ever (in, then out); more in that run are counted, and the count goes on
+            // the next line logged once the run ends.
+            var flips = heldSeen.GetOrCreateValue(world);
+            int skipped = 0;
+            if (flips.TryGetValue(id, out var last) && world.Tick - last.Tick < 600)
+            {
+                if (last.Run >= 2) { flips[id] = (world.Tick, last.Run + 1, last.Skipped + 1); return; }
+                flips[id] = (world.Tick, last.Run + 1, last.Skipped);
+            }
+            else
+            {
+                skipped = last.Skipped;
+                flips[id] = (world.Tick, 1, 0);
+            }
             var unique = world.Uniques.RecordOf(id);
             string fixture = fixtureId ?? "no fixture";
-            string detail = $"{NameOf(world, id, c)}{(unique is null ? "" : " (named)")}: {before} to {after} at {fixture}";
+            string detail = $"{NameOf(world, id, c)}{(unique is null ? "" : " (named)")}: {before} to {after} at {fixture}" +
+                (skipped > 0 ? $" (after {skipped} quick changes not logged)" : "");
             if (PlaytestLog.Enabled) PlaytestLog.Event(world, "custody", unique ?? id.ToString(), "held state changed", detail);
             else Log(detail, rare: true);
         }

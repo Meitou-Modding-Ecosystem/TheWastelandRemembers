@@ -7,6 +7,33 @@ using Xunit;
 [Collection("settings")]
 public sealed class SuccessorCharacterTagWorldTests
 {
+    [Fact]
+    public void A_named_outlaws_record_not_their_name_earns_the_optional_tag()
+    {
+        var tags = typeof(World).GetProperty("CharacterTags");
+        if (tags is null) return;
+        var settings = LwMod.Settings;
+        bool before = settings.SavedCharacterTags;
+        try
+        {
+            settings.SavedCharacterTags = true;
+            var data = W.Data([W.Rec("old", FcsRecordType.Character, "Hollin")]);
+            var camp = new CampCode(0, "Hollin", "old", "old-squad", []);
+            using var world = W.World(new LwSystem(null, null, data), new OutlawCampsSystem([camp], null, data));
+            var actor = W.Spawn(world, "Renamed Hollin", W.Bandits, Vector3.Zero);
+            var namesake = W.Spawn(world, "Hollin", W.Bandits, Vector3.UnitX);
+            world.Characters.Cold(actor.Slot)!.RecordId = "old";
+            world.Uniques.Bind("old", actor);
+            world.RunTicks(155);
+
+            var get = tags.PropertyType.GetMethod("Get", [typeof(CharacterId), typeof(string)])!;
+            var registry = tags.GetValue(world)!;
+            Assert.Equal("old", get.Invoke(registry, [actor, "LivingWastelandMeitou.outlaw"]));
+            Assert.Null(get.Invoke(registry, [namesake, "LivingWastelandMeitou.outlaw"]));
+        }
+        finally { settings.SavedCharacterTags = before; }
+    }
+
     [Theory]
     [InlineData(true)]
     [InlineData(false)]

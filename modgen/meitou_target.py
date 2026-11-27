@@ -43,6 +43,8 @@ CAMPTOWN_BASE, CAMPDIR_BASE, STRUCK_BASE = 26000, 26500, 27000   # outlaw k's ca
 TEMPER_ONCE, TEMPER_MARK, DESPISED_CODE = 19410, 19411, 19420   # faction temperaments (TITLES_BY_FACTION.md): condition "this faction has
                               # not yet done kind k for title i" (value = key), effect "mark it done" (value = key), condition "the target holds
                               # a title the speaker's faction despises" (who = target); key = title index * 2 + kind (0 bump, 1 gift) + 1
+GIVER_CODE = 19421            # condition: the speaker has the standing to offer work (not a vagrant, drifter, beggar, refugee, escapee or slave;
+                              # seen in play, bv: a Starving Vagrant offered a 4,400-cat contract). Value 1 = may offer.
 SQUAD_NEAR_CODE = 27918        # condition: how many other standing squad members are within 50 m of the speaker (solo victory lines)
 MOURN_CODE, LOSS_DAYS_CODE, LOSS_TOWN_CODE, FEUD_CODE, SCAR_CODE = 27910, 27911, 27912, 27913, 27914   # memorials: the target is a dead squadmate
                               # (who = target); days since the last loss; the last loss's town (1 + its place in campNews.towns); the
@@ -308,6 +310,8 @@ def convert(builders, recent_marks=(), lw_marks=(), titles=(), camps=(), lw_effe
             code = NEWSREACH_BASE + camp_outlaws.setdefault(key[10:], len(camp_outlaws))
         elif key == "despised":
             code = DESPISED_CODE
+        elif key == "giver":
+            code = GIVER_CODE
         elif key.startswith("camptownline:"):
             outlaw, town = key[13:].split("|", 1)
             code = CAMPTOWN_BASE + camp_outlaws.setdefault(outlaw, len(camp_outlaws))
@@ -385,7 +389,7 @@ def convert(builders, recent_marks=(), lw_marks=(), titles=(), camps=(), lw_effe
         "warTowns": {"factions": war_factions, "towns": [{"code": c, "town": t} for t, c in war_towns.items()]},
         "namedKills": [{"name": n, "killed": NAMED_BASE + i, "days": NAMED_DAYS_BASE + i} for n, i in named.items()],
         # faction temperaments (TITLES_BY_FACTION.md): the once-per-title memory, the job gate's despise table, the gift items
-        "temperaments": {"once": TEMPER_ONCE, "mark": TEMPER_MARK, "despised": DESPISED_CODE, "titles": title_order,
+        "temperaments": {"once": TEMPER_ONCE, "mark": TEMPER_MARK, "despised": DESPISED_CODE, "giver": GIVER_CODE, "titles": title_order,
                          "despises": (temperaments or {}), "views": title_views or {}, "gifts": [{"code": GIFT_BASE + g, "item": i} for i, g in gifts.items()]},
         # memorials (Notoriety.cs / Deeds.cs): the squad's fallen, the feuds they leave
         "marches": {"marching": MARCH_CODE},

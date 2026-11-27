@@ -152,6 +152,7 @@ static class DetailBench
 
     public static int HeldTransitions()
     {
+#if NET11_0_OR_GREATER
         var observer = new HeldObserver();
         using var world = WorldWith(observer);
         var cold = new CharacterCold { Medical = new MedicalState([]) };
@@ -171,12 +172,18 @@ static class DetailBench
         string[] expected = ["None→Imprisoned first cage", "Imprisoned→Imprisoned second cage", "Imprisoned→None second cage"];
         foreach (string row in observer.Rows) Console.WriteLine(row);
         return observer.Rows.SequenceEqual(expected) ? 0 : 1;
+#else
+        Console.Error.WriteLine("Held transitions need a Meitou release with held-state observers.");
+        return 2;
+#endif
     }
 
+#if NET11_0_OR_GREATER
     sealed class HeldObserver : ITickSystem, IHeldStateObserver
     {
         public List<string> Rows { get; } = [];
         public void HeldStateChanged(World world, in HeldStateChange change) => Rows.Add($"{change.Before}→{change.After} {change.Fixture}");
     }
+#endif
 
 }

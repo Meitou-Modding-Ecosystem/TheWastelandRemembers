@@ -22,7 +22,7 @@ import zipfile
 HERE = os.path.dirname(os.path.abspath(__file__))
 MODS = ["LivingWasteland"]
 TITLES = {"LivingWasteland": "[Meitou] The Wasteland Remembers"}
-CODE_KEEP = (".dll", ".mod", ".json", ".info")
+CODE_KEEP = (".dll", ".mod", ".json", ".info", ".png")
 
 README = """THE WASTELAND REMEMBERS  (early version {build})
 A Meitou mod for Kenshi. Early release: things will be rough in places, and feedback and bug reports are very welcome.
@@ -64,14 +64,14 @@ CREDITS
 """
 
 LOG_BAT = r"""@echo off
-rem Collects the Meitou game's logs, TWR's settings and its play-test logs (last 14 days) into ONE zip on your Desktop, for a bug report.
+rem Collects the Meitou game's logs, TWR's settings, its play-test logs and saved chronicles (last 14 days) into ONE zip on your Desktop, for a bug report.
 rem Run it after you quit Meitou.
 setlocal
 for /f %%i in ('powershell -NoProfile -Command "Get-Date -Format yyyyMMdd_HHmm"') do set STAMP=%%i
 set OUT=%USERPROFILE%\Desktop\WastelandRemembers_logs_%STAMP%
 mkdir "%OUT%" 2>nul
 powershell -NoProfile -Command "Get-ChildItem \"$env:LOCALAPPDATA\Meitou\versions\" -Directory -ErrorAction SilentlyContinue | ForEach-Object { $l = Join-Path $_.FullName 'log.txt'; if (Test-Path $l) { Copy-Item $l (Join-Path '%OUT%' ('log_' + $_.Name + '.txt')) } }"
-powershell -NoProfile -Command "$d = [Environment]::GetFolderPath('MyDocuments'); foreach ($f in @((Join-Path $d 'The Wasteland Remembers'), (Join-Path $env:LOCALAPPDATA 'The Wasteland Remembers'))) { Get-ChildItem $f -Filter 'TWR-playtest-*.txt' -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -gt (Get-Date).AddDays(-14) } | Copy-Item -Destination '%OUT%' }"
+powershell -NoProfile -Command "$d = [Environment]::GetFolderPath('MyDocuments'); foreach ($f in @((Join-Path $d 'The Wasteland Remembers'), (Join-Path $env:LOCALAPPDATA 'The Wasteland Remembers'))) { Get-ChildItem (Join-Path $f '*') -Include 'TWR-playtest-*.txt','Squad chronicle *.html' -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -gt (Get-Date).AddDays(-14) } | Copy-Item -Destination '%OUT%' }"
 copy "%LOCALAPPDATA%\Meitou\mods\*.settings.txt" "%OUT%\" >nul 2>&1
 copy "%LOCALAPPDATA%\Meitou\meitou.user.json" "%OUT%\" >nul 2>&1
 copy "%LOCALAPPDATA%\Meitou\launcher.json" "%OUT%\" >nul 2>&1

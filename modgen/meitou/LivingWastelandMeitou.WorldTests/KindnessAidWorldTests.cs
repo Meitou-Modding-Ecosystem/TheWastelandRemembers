@@ -11,6 +11,35 @@ public sealed class KindnessAidWorldTests
 {
     static readonly Type? itemUse = typeof(World).Assembly.GetType("Meitou.Simulation.Items.ItemUsed");
 
+    [Fact]
+    public void Each_charge_is_attributed_to_its_current_patient_in_a_medic_chain()
+    {
+        if (itemUse is null || !LastingActors.Available) return;
+        var deeds = new LwDeedsSystem([], W.Data([]));
+        using var world = W.World(deeds);
+        var medic = W.Spawn(world, "Leaf", W.Player, Vector3.Zero);
+        var first = W.Spawn(world, "Traveller", W.Bandits, Vector3.UnitX);
+        var second = W.Spawn(world, "Traveller", W.Bandits, Vector3.UnitZ);
+        var minor = W.Spawn(world, "Merchant", W.Bandits, -Vector3.UnitZ);
+        foreach (var critical in new[] { first, second })
+        {
+            var health = world.Characters.Cold(critical.Slot)!.Medical!;
+            health.Blood = 12;
+            typeof(MedicalState).GetProperty(nameof(MedicalState.Unconscious))!.SetValue(health, true);
+        }
+        world.Characters.Cold(minor.Slot)!.Medical!.Blood = 100;
+        world.RunTicks(2);
+        var kind = Enum.Parse(itemUse.GetProperty("Kind")!.PropertyType, "FirstAid");
+        foreach (var patient in new[] { first, first, minor, second, second })
+        {
+            world.Characters.Cold(medic.Slot)!.TreatTarget = patient;
+            AidUseWatch.Used(world, Activator.CreateInstance(itemUse, world.Tick, kind, "kit", medic, null, 0.25f, false)!);
+        }
+
+        Assert.Equal(new[] { LastingActors.Of(world.Characters.Cold(first.Slot)!),
+            LastingActors.Of(world.Characters.Cold(second.Slot)!) }, deeds.Deeds.Kindness.People.Select(row => row.Actor));
+    }
+
     [Theory]
     [InlineData(false)]
     [InlineData(true)]

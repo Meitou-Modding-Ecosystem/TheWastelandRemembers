@@ -18,6 +18,9 @@ if (args.Length < 2)
 AssemblyLoadContext.Default.Resolving += (_, name) =>
 {
     string file = Path.Combine(Path.GetFullPath(args[0]), name.Name + ".dll");
+    if (!File.Exists(file) && name.Name is "BepuPhysics" or "BepuUtilities" &&
+        Environment.GetEnvironmentVariable("TWR_TEST_MEITOU_PHYSICS") is { Length: > 0 } physics)
+        file = Path.Combine(Path.GetFullPath(physics), name.Name + ".dll");
     return File.Exists(file) ? AssemblyLoadContext.Default.LoadFromAssemblyPath(file) : null;
 };
 return RunReview(args[1..]);

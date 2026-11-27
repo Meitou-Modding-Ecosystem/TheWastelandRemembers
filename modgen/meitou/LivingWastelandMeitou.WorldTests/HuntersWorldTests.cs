@@ -1,4 +1,6 @@
 using System.Numerics;
+using System.Reflection;
+using System.Runtime.Loader;
 using LivingWasteland.MeitouMod;
 using Meitou.Data.Fcs;
 using Meitou.Data.World;
@@ -50,6 +52,37 @@ public class HuntersWorldTests
 
     static List<Meitou.Simulation.Factions.Platoon> Crews(SimWorld world) =>
         world.Platoons.All.Where(p => p is not null && p.TemplateId == Crew).ToList()!;
+
+    sealed class ShippedHelperContext() : AssemblyLoadContext("Shipped TWR helper")
+    {
+        protected override Assembly? Load(AssemblyName name) => null;
+    }
+
+    [Fact]
+    public void The_shipped_helper_can_place_a_manual_crew_on_this_client()
+    {
+        var helper = Environment.GetEnvironmentVariable("TWR_SHIPPED_HELPER_DLL");
+        if (string.IsNullOrWhiteSpace(helper)) return; // The release check always supplies the floor build.
+
+        var shipped = new ShippedHelperContext().LoadFromAssemblyPath(Path.GetFullPath(helper));
+        var target = shipped.GetCustomAttribute<System.Runtime.Versioning.TargetFrameworkAttribute>();
+        Assert.Equal(".NETCoreApp,Version=v10.0", target?.FrameworkName);
+
+        var data = Data();
+        var pop = new PopulationSystem(data);
+        using var world = W.World(pop);
+        var make = shipped.GetType(typeof(Pursuit).FullName!, throwOnError: true)!
+            .GetMethod(nameof(Pursuit.Make), BindingFlags.Static | BindingFlags.Public)!;
+        var at = (TownAt.X, TownAt.Z);
+        var towards = (TownAt.X + 250, TownAt.Z - 150);
+
+        var placed = Assert.IsType<Platoon>(make.Invoke(null, [world, pop, data, Crew, "ship-test", at, towards]));
+        Assert.Same(placed, Assert.Single(Crews(world)));
+        Assert.Equal(0, placed.Origin);
+        Assert.Equal(new Vector2(at.X, at.Z), placed.Position);
+        Assert.Equal(new Vector2(towards.Item1, towards.Item2), placed.Point);
+        Assert.True(placed.Persistent);
+    }
 
     [Fact]
     public void Matching_no_crews_reuses_the_empty_result()
