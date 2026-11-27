@@ -345,7 +345,7 @@ public sealed partial class LwDeedsSystem(IReadOnlyList<TitleRule> rules, Popula
         if (killed)
         {
             struck.Remove(hit.Victim);
-            Killed(world, info);
+            Killed(world, info, hit.Victim);
 #if !SQUAD_RECORD_ONLY
             if (!sport) LeaderStories.Confirm(world, deeds, info.UniqueRecord, captured: false, info.At);
 #endif
@@ -433,7 +433,7 @@ public sealed partial class LwDeedsSystem(IReadOnlyList<TitleRule> rules, Popula
     /// <summary>The striker name used for blows by mercenaries the player hired (never a character's name: it starts with a control character).</summary>
     const string HiredBlades = "\u0001hired";
 
-    void Killed(World world, Struck k)
+    void Killed(World world, Struck k, CharacterId? observedVictim = null)
     {
         deeds.Record.Hours = k.Hours;
         deeds.Record.Place = k.Town ?? "the wilds";
@@ -448,6 +448,7 @@ public sealed partial class LwDeedsSystem(IReadOnlyList<TitleRule> rules, Popula
         if (deeds.Record.Avenge(k.Striker, k.Name, k.Faction, k.UniqueRecord).Count > 0) Say(deeds.Record.Award(k.Striker));
 #if !SQUAD_RECORD_ONLY
         RivalsSystem.Latest?.SquadKilled(k.Name);
+        if (!k.Sport && observedVictim is { } id) RivalsSystem.For(world)?.RecordSettlement(world, id, deeds);
         if (k.UniqueRecord is { } killedUnique) OutlawCampsSystem.SquadKilled.Add(killedUnique);
 #endif
         if (RecordHost.LogChanges())
@@ -575,7 +576,7 @@ public sealed partial class LwDeedsSystem(IReadOnlyList<TitleRule> rules, Popula
             if (med.Dead)
             {
                 struck.Remove(id);
-                Killed(world, k);
+                Killed(world, k, id);
             }
             else if (!med.Incapacitated && since > 2 || since > 24 || since < 0)
             {

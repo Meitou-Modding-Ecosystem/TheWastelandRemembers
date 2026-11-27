@@ -54,7 +54,7 @@ collect_reports() {
   done
   report_sources+=("$root")
   target="$scratch/files/playtest-${#report_sources[@]}"
-  for file in "$root"/TWR-playtest-*.txt; do
+  for file in "$root"/TWR-playtest-*.txt "$root"/"Squad chronicle "*.html; do
     if [[ -f "$file" && ! -L "$file" && -n $(find "$file" -mtime -14 -print) ]]; then
       copy_file "$file" "$target/${file##*/}"
     fi

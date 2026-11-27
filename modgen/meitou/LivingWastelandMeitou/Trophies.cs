@@ -103,6 +103,7 @@ public static class Trophies
         if (tag is not null) ItemUses.SetTag(item, tag);
         if (InventoryCompat.Add(bag, item))
         {
+            if (tag is not null) OwnedCharacterTags.MarkRole(world, mourner, OwnedCharacterTags.Keepsake, fallenKey);
             StoryStatuses.Grieve(world, mourner);
             var at = table.Next[s].Position;
             string place = LwDeeds.For(world)?.TownAt(at).Town ?? "the wilds";

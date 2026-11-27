@@ -78,7 +78,9 @@ static class WorldProfile
             world.Platoons.Add(new Platoon { Id = world.Platoons.NextId(), SquadId = squad.Id, TemplateId = squad.TemplateId,
                 Origin = 0, Key = (ulong)i, Faction = faction, State = PlatoonState.Loaded, Position = new Vector2(at.X, at.Z) });
         }
+#if NET11_0_OR_GREATER
         world.TellReady(false);
+#endif
         world.RunTicks(1);
         var news = world.Systems.FirstOrDefault(s => SimulationExtensions.FactoryOf(s)?.Name == "lw-news");
         if (news is not null)

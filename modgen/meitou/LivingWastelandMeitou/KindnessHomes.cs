@@ -14,9 +14,12 @@ internal sealed class KindnessHomes
     internal void Look(World world, LwDeeds deeds, List<(string Name, CharacterId Id, Vector3 At, bool Down)> squad)
     {
         var book = deeds.Kindness;
+        bool tags = OwnedCharacterTags.Preview;
         for (int i = 0; i < book.People.Count; i++)
         {
             var memory = book.People[i];
+            if (tags && LastingActors.Find(world, memory.Actor) is { IsNone: false } actor)
+                OwnedCharacterTags.MarkRole(world, actor, OwnedCharacterTags.Kindness, "remembered");
             if (book.Home(memory.Actor) is { } home) MarkApproach(book, memory.Actor, home, squad);
             else Observe(world, deeds, memory);
         }

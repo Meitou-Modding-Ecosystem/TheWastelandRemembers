@@ -120,6 +120,25 @@ public static class PanelLines
 
     static readonly MethodInfo? addCharacter = typeof(UiRegistration).GetMethod("AddCharacterPanelLines");
     static readonly MethodInfo? addTooltip = typeof(UiRegistration).GetMethod("AddItemTooltipLines");
+    static readonly PropertyInfo? styleProperty = typeof(UiRegistration).Assembly.GetType("Meitou.Game.Ui.UiCharacterLine")?.GetProperty("Style");
+    static readonly ConstructorInfo? styleWithIcon = styleProperty?.PropertyType.GetConstructor([
+        typeof(System.Numerics.Vector4?), typeof(System.Numerics.Vector4?), typeof(string)]);
+    static object? titleStyle;
+    static string? statusIcon;
+
+    internal static bool IconsAvailable => styleWithIcon is not null && titleStyle is not null;
+    internal static string? StatusIcon => LwMod.Settings.PanelIcons ? statusIcon : null;
+
+    internal static void LoadArt(string folder)
+    {
+        titleStyle = null;
+        statusIcon = null;
+        if (styleWithIcon is null) return;
+        string title = Path.Combine(folder, "twr-title.png");
+        string status = Path.Combine(folder, "twr-active.png");
+        if (File.Exists(title)) titleStyle = styleWithIcon.Invoke([null, null, title]);
+        if (File.Exists(status)) statusIcon = status;
+    }
 
     /// <summary>Whether this client has both hooks.</summary>
     public static bool Available => addCharacter is not null && addTooltip is not null;
@@ -155,7 +174,14 @@ public static class PanelLines
     {
         if (context is null || ForCharacter(Prop<CharacterId>(context, "Id")) is not { } rows) return [];
         // UiCharacterLine(Label, Value, Bar, Tooltip, Press)
-        return rows.Select(r => (TLine)Make<TLine>(r.Label, r.Value, null, r.Tooltip, null)).ToList();
+        var result = new List<TLine>(rows.Count);
+        foreach (var row in rows)
+        {
+            var line = Make<TLine>(row.Label, row.Value, null, row.Tooltip, null);
+            if (LwMod.Settings.PanelIcons && titleStyle is not null && row.Label == "Known as") styleProperty!.SetValue(line, titleStyle);
+            result.Add((TLine)line);
+        }
+        return result;
     }
 
     static IEnumerable<TLine> TooltipLines<TContext, TLine>(TContext context)

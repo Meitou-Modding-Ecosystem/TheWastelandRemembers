@@ -88,7 +88,7 @@ def handlers(build):
     if mem := m.get("memorials"):
         conds |= set(mem.values())
     if t := m.get("temperaments"):
-        conds |= {t["once"], t["despised"]}
+        conds |= {t["once"], t["despised"]} | ({t["giver"]} if t.get("giver") else set())
         effects |= {t["mark"]} | {g["code"] for g in t.get("gifts", [])}
     return m, conds, effects
 

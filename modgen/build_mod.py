@@ -114,7 +114,7 @@ def main(argv=None):
             # the code beside the data in the one folder: DLL, manifest (its id stays LivingWastelandMeitou: settings and save data keep)
             os.makedirs(code_dir)
             for f in os.listdir(template):
-                if f.endswith((".dll", ".json")):
+                if f.endswith((".dll", ".json", ".png")):
                     shutil.copy2(os.path.join(template, f), code_dir)
         else:
             shutil.copytree(template, code_dir, ignore=shutil.ignore_patterns("bin", "obj"))

@@ -29,6 +29,9 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
     const int PassEvery = 300;
     const int Format = 3;
     const float TalkKm = 7;
+    const string SettledGrudges = "rivals_settled";
+    internal static readonly TitleRule GrudgeTitle =
+        new("lw_grudge_enders", "the Grudge-Enders", "squad", SettledGrudges, null, null, 3);
 
     public enum Phase { Recovering = 0, Hunting = 1, Dead = 2, Jailed = 3, Lost = 4, Recruited = 5 }
 
@@ -37,7 +40,9 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
         public int Slot;
         public string Name = "", OldName = "", Faction = "", Grudge = "", By = "";
         public double Made, Next;
-        internal ulong ActorId;
+        internal ulong ActorId, TaggedActorId;
+        internal bool CheckedCharacterTag;
+        internal bool SettlementCounted;
         internal string RecruitPortrait = "";
         internal int Defeats, LastOfferDefeats;
         internal double LastDefeat = double.MinValue, OfferUntil;
@@ -189,6 +194,19 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
     /// <summary>The squad killed someone (Notoriety's kill record): a rival of that name died at the squad's hands.</summary>
     public void SquadKilled(string name) { if (rivals.Any(r => r.Name == name)) killedBySquad.Add(name); }
 
+    /// <summary>Credit a kill observed by the squad record while the known rival is still verifiable.</summary>
+    internal void RecordSettlement(World world, CharacterId id, LwDeeds deeds)
+    {
+        if (!LwMod.Settings.Rivals || !LwMod.Settings.RivalMilestones || id.IsNone) return;
+        double count = deeds.Record.CrewStat(SettledGrudges);
+        if (count >= GrudgeTitle.At) return;
+        var rival = rivals.Find(r => r.Active && !r.SettlementCounted && r.Id == id && IsRival(world, r, id));
+        if (rival is null) return;
+        rival.SettlementCounted = true;
+        deeds.Pending.AddRange(deeds.Record.SetCrewStat(SettledGrudges, count + 1));
+        PlaytestLog.Event(world, "rival", TagOf(rival), "grudge settled", rival.Name);
+    }
+
     /// <summary>The rival-to-be died before they were told: the next survivor of the same fight still alive takes the grudge.</summary>
     bool Handover(World world, Rival r, CharacterCold dead)
     {
@@ -274,6 +292,7 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
         var at = table.Next[b.Slot].Position;
         (r.X, r.Z) = (at.X, at.Z);
         cold.Name = r.Name;
+        SaveCharacterTag(world, r);
         if (Platoon(world, cold) is { } pl) { pl.Persistent = true; r.PlatoonId = pl.Id; Tag(pl, r); }
         r.Told = false;
         rivals.Add(r);
@@ -356,7 +375,8 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
                 // one who lost a leg comes back on a prosthetic, never crawling after the squad for days; what kind, and whether a lost
                 // arm is restored too, depends on what their people can afford (ProstheticRules)
                 (bool Leg, bool Arm, ProstheticRules.Tier Tier) mended = cold is not null ? Mend(cold) : (false, false, ProstheticRules.Tier.Poor);
-                Tell(world, $"Word on the road: {r.Name} is hunting your squad{ProstheticRules.Arrival(mended.Tier, mended.Leg, mended.Arm)}.", null, 0);
+                Tell(world, $"Word on the road: {r.Name} is hunting your squad{ProstheticRules.Arrival(mended.Tier, mended.Leg, mended.Arm)}.",
+                    $"{r.Name} came looking for the squad{(r.Returns > 0 ? " again" : "")}.", 0);
                 LwMod.Log($"rivals: {r.Name} is hunting the squad (return {r.Returns + 1})");
             }
             else if (r.Phase == Phase.Hunting)
@@ -382,6 +402,24 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
                     r.PlatoonId = tagged.Id;
                     Pursuit.Mark(tagged, TagOf(r)); // Promote a legacy-only match.
                 }
+                // seen in play (bv, 0.24): the party steered was one that no longer held the rival (a stand-in left empty, which the game
+                // holds back until the squad leaves), so the hunt stood still and nobody was there; check it holds them, else find the one
+                // that does, else say their whereabouts are unknown
+                if (p is not null && Holding(world, p, r) is { } wrong)
+                {
+                    var right = FindHolding(world, r);
+                    Note(r, $"party {p.Id} {wrong}; {(right is null ? "no party holds them" : $"found them in party {right.Id}")}");
+                    p = right;
+                    r.PlatoonId = right?.Id ?? -1;
+                    if (right is not null) Tag(right, r);
+                }
+                else if (p is null && FindHolding(world, r) is { } holding)
+                {
+                    p = holding;
+                    r.PlatoonId = holding.Id;
+                    Tag(holding, r);
+                }
+                lost[r.Slot] = p is null && !table.TryResolveNext(r.Id, out _);
                 if (players.Count > 0 && p is { Dead: false })
                 {
                     PlatoonRetention.Track(world, p, TagOf(r), PlatoonRetention.Kind.Rival, double.NegativeInfinity, r.Next, r);
@@ -592,10 +630,17 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
     void Resolve(World world, Rival r)
     {
         var table = world.Characters;
+        if (r.ActorId == 0 && !r.CheckedCharacterTag && OwnedCharacterTags.Preview)
+        {
+            r.CheckedCharacterTag = true;
+            r.ActorId = OwnedCharacterTags.FindRole(world, OwnedCharacterTags.Rival, CharacterTag(r));
+            r.TaggedActorId = r.ActorId;
+        }
         if (r.ActorId != 0 && LastingActors.Available)
         {
             r.Id = LastingActors.Find(world, r.ActorId);
             if (!IsRival(world, r, r.Id)) r.Id = CharacterId.None;
+            else SaveCharacterTag(world, r);
             return;
         }
         if (IsRival(world, r, r.Id)) return;
@@ -612,6 +657,7 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
             {
                 r.Id = candidate;
                 r.ActorId = LastingActors.Grant(world, candidate);
+                SaveCharacterTag(world, r);
                 BindRecruitment(r, cold);
                 return;
             }
@@ -619,6 +665,15 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
             found = candidate;
         }
         r.Id = ambiguous ? CharacterId.None : found;
+    }
+
+    static string CharacterTag(Rival rival) => FormattableString.Invariant($"{rival.Slot}:{rival.Made:R}:{rival.Name}");
+
+    static void SaveCharacterTag(World world, Rival rival)
+    {
+        if (rival.ActorId != 0 && rival.TaggedActorId != rival.ActorId && OwnedCharacterTags.Preview &&
+            OwnedCharacterTags.MarkRole(world, rival.Id, OwnedCharacterTags.Rival, CharacterTag(rival)))
+            rival.TaggedActorId = rival.ActorId;
     }
 
     bool IsRival(World world, Rival r, CharacterId id) =>
@@ -731,8 +786,48 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
         if (r.Phase is not (Phase.Hunting or Phase.Recovering) || seen is not { } w || Pursuit.Players(w) is not { Count: > 0 } players) return "";
         var n = Pursuit.Nearest(players, r.X, r.Z);
         float m = MathF.Sqrt((n.X - r.X) * (n.X - r.X) + (n.Z - r.Z) * (n.Z - r.Z)) / 10;
+        if (r.Phase == Phase.Hunting && lost.TryGetValue(r.Slot, out bool gone) && gone) return $", whereabouts unknown (last about {m:0} m from you)";
         string where = r.Phase != Phase.Hunting ? "" : onScreen.TryGetValue(r.Slot, out bool on) && on ? ", in the world" : ", on the road (off screen)";
         return $", about {m:0} m from you{where}";
+    }
+
+    readonly Dictionary<int, bool> lost = [];
+    readonly Dictionary<int, string> noted = [];
+
+    /// <summary>Logs a line about a rival's party once until it changes (play logs, without one line a pass).</summary>
+    void Note(Rival r, string line)
+    {
+        if (noted.TryGetValue(r.Slot, out var was) && was == line) return;
+        noted[r.Slot] = line;
+        LwMod.Log($"rivals: {r.Name}: {line}");
+    }
+
+    /// <summary>Null when <paramref name="p"/> holds the rival (or can't be told: a party from a save, kept the save's way); else why not.</summary>
+    internal static string? Holding(World world, Platoon p, Rival r)
+    {
+        if (p.Dead) return "is gone";
+        if (p.Regenerate) return "is to be made afresh by the game (its people are gone)";
+        if (p.State == PlatoonState.Loaded)
+            return world.Squads.Find(p.SquadId) is { } squad && squad.Members.Any(m => IsRivalMember(world, r, m)) ? null : "is in the world without them";
+        if (p.Stored is { } stored) return stored.Members.Any(m => m.Cold.Name == r.Name) ? null : "is off screen without them";
+        return null;
+    }
+
+    static bool IsRivalMember(World world, Rival r, CharacterId m) =>
+        m == r.Id || (world.Characters.TryResolveNext(m, out int s) && world.Characters.Cold(s)?.Name == r.Name);
+
+    /// <summary>The living party that holds the rival, loaded or off screen; null if none (or two: never guess).</summary>
+    internal static Platoon? FindHolding(World world, Rival r)
+    {
+        Platoon? found = null;
+        foreach (var p in world.Platoons.All)
+        {
+            if (p is not { Dead: false, Regenerate: false } || Holding(world, p, r) is not null) continue;
+            if (p.State != PlatoonState.Loaded && p.Stored is null) continue;   // can't be told off screen: not a match
+            if (found is not null) return null;
+            found = p;
+        }
+        return found;
     }
 
     // ---- save ----

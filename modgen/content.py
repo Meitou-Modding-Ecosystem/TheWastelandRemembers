@@ -1098,6 +1098,8 @@ class Compiler:
             roots.append((refuse, 0))
             self.stats["lines"] += 1
         offer = self.b.dialogue(f"{c['id']} - offer", roots, monologue=True, refs=refs, chance=100.0, conditions=conds)
+        if getattr(self, "target", "kenshi") == "meitou":    # only someone with standing offers work (Meitou helper, GiverRules.cs)
+            self.lw_marks.append((offer, "giver", 0, 0, 1))
         if c.get("successor_of"):                  # a successor's contract: only once they have taken over (OutlawCamps.cs)
             self.lw_marks.append((offer, "successor:" + c["successor_of"], 0, 0, 1))
         for o in getattr(self, "pending_reach", []):
@@ -1356,6 +1358,7 @@ class Compiler:
             if not hasattr(self, "lw_marks"):
                 self.lw_marks = []
             self.lw_marks.append((od, "despised", 1, 0, 0))
+            self.lw_marks.append((od, "giver", 0, 0, 1))          # errands too: never from a vagrant (GiverRules.cs)
         for pkg in (self.not_trade(opk) if ev == "EV_PLAYER_TALK_TO_ME" else opk):    # offers never go to shop and bar staff
             self.b.attach(pkg, od, ev)
             self.stats["attached"] += 1

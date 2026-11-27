@@ -1,5 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net11.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <MeitouTfm Condition="'$(MeitouTfm)' == ''">net11.0</MeitouTfm>
+    <TargetFramework>$(MeitouTfm)</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MeitouClient" HintPath="$(Engine)/MeitouClient.dll" Private="false"/>
     <Reference Include="Meitou.Simulation" HintPath="$(Engine)/Meitou.Simulation.dll" Private="false"/>

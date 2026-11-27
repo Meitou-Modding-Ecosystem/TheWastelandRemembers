@@ -343,7 +343,21 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
             _ => RecordHost.Panel,
         }).Split('\n');
 #if !SQUAD_RECORD_ONLY
-        if (tab == 7) all = ActiveFeatures.Lines().SelectMany(line => Wrap(line, Math.Max(24, (int)((w - 20 * s) / (8.4f * s))), 3)).ToArray();
+        string? activeIcon = tab == 7 && ImageKind is not null && ImageProp is not null ? PanelLines.StatusIcon : null;
+        HashSet<int>? markedFeatures = activeIcon is null ? null : [];
+        if (tab == 7)
+        {
+            var lines = new List<string>();
+            float margin = (markedFeatures is null ? 20 : 38) * s;
+            int width = Math.Max(24, (int)((w - margin) / (8.4f * s)));
+            string on = " · " + UiLanguage.Text("On");
+            foreach (string feature in ActiveFeatures.Lines())
+            {
+                if (markedFeatures is not null && feature.EndsWith(on, StringComparison.Ordinal)) markedFeatures.Add(lines.Count);
+                lines.AddRange(Wrap(feature, width, 3));
+            }
+            all = lines.ToArray();
+        }
 #endif
         if (tab == 1)
         {
@@ -373,8 +387,9 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
         int pages = Math.Max(1, (all.Length + perPage - 1) / perPage);
         page = Math.Min(page, pages - 1);
         float y = top;
-        foreach (var line in all.Skip(page * perPage).Take(perPage))
+        for (int index = page * perPage; index < Math.Min(all.Length, (page + 1) * perPage); index++)
         {
+            string line = all[index];
             if (line.StartsWith("@@", StringComparison.Ordinal) && line.IndexOf('|') is > 2 and var bar)
             {
                 win.Children.Add(Node(10 * s, y + 1 * s, w - 20 * s, lineH - 2 * s, Style("row", s), UiNodeKind.Button, line[(bar + 1)..], pick, line[2..bar]));
@@ -385,7 +400,21 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
             bool welcome = line.StartsWith("!!", StringComparison.Ordinal);
             string shown = welcome ? line[(line.StartsWith("!!#", StringComparison.Ordinal) ? 3 : 2)..] : line;
             string role = welcome ? (line.StartsWith("!!#", StringComparison.Ordinal) ? "welcomeHead" : "welcome") : line.StartsWith("--", StringComparison.Ordinal) ? "section" : "text";
-            win.Children.Add(Node(10 * s, y, textW, lineH, Style(role, s), UiNodeKind.Label, shown));
+            float left = 10 * s, width = textW;
+#if !SQUAD_RECORD_ONLY
+            if (markedFeatures is not null)
+            {
+                if (markedFeatures.Contains(index))
+                {
+                    var marker = Node(left, y + 3 * s, 16 * s, 16 * s, "", ImageKind!.Value);
+                    ImageProp!.SetValue(marker, activeIcon);
+                    win.Children.Add(marker);
+                }
+                left += 18 * s;
+                width -= 18 * s;
+            }
+#endif
+            win.Children.Add(Node(left, y, width, lineH, Style(role, s), UiNodeKind.Label, shown));
             y += lineH;
         }
 
@@ -690,7 +719,15 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
 
     internal static string ChronicleHtml()
     {
-        var chapters = StoryChapters();
+        // a story, not the window's tabs (seen in bv): History from day 1 forwards, repeats folded; titles earned, not all 75; a heading
+        // with the squad's name and the days covered
+        var chapters = StoryChapters().Select(c => c.Title switch
+        {
+            "Titles" => (c.Title, ChronicleRules.EarnedTitles(c.Body)),
+            "History" => (c.Title, ChronicleRules.Forwards(c.Body)),
+            _ => c,
+        }).ToList();
+        string heading = ChronicleRules.Heading(RecordHost.Panel, RecordHost.HistoryText);
 #if !SQUAD_RECORD_ONLY
         var rivals = RecordHost.AtlasPages.Where(page => page.Key.StartsWith("r:", StringComparison.Ordinal))
             .OrderBy(page => page.Key, StringComparer.Ordinal).Select(page => page.Value);
@@ -704,7 +741,7 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
-            <title>Squad chronicle</title>
+            <title>{{TITLE}}</title>
             <style>
             body { margin: 0 auto; width: min(44rem, 90vw); color: #2d251d; background: #f6f0e4; font: 1rem/1.55 Georgia, serif; }
             header { border-bottom: 0.2rem solid #7a3e2a; padding: 2rem 0 1rem; }
@@ -716,7 +753,7 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
             </style>
             </head>
             <body>
-            <header><h1>Squad chronicle</h1></header>
+            <header><h1>{{TITLE}}</h1></header>
             <main>
 
             """);
@@ -727,11 +764,14 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
                 .AppendLine("</div></section>");
         }
         html.AppendLine("</main></body></html>");
-        return html.ToString();
+        return html.Replace("{{TITLE}}", System.Net.WebUtility.HtmlEncode(heading)).ToString();
     }
 
     // Meitou 0.19 image nodes, found by name so older versions (no faces) still load: UiNodeKind.Image and UiNode.Portrait.
     static readonly UiNodeKind? ImageKind = Enum.TryParse<UiNodeKind>("Image", out var k) ? k : null;
+#if !SQUAD_RECORD_ONLY
+    static readonly System.Reflection.PropertyInfo? ImageProp = typeof(UiNode).GetProperty("Image");
+#endif
     static readonly System.Reflection.PropertyInfo? PortraitProp = typeof(UiNode).GetProperty("Portrait");
     public static bool CanShowFaces => ImageKind is not null && PortraitProp is not null;
 

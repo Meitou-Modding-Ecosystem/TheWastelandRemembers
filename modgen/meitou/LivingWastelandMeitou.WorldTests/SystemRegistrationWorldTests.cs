@@ -34,10 +34,14 @@ public sealed class SystemRegistrationWorldTests
         }
     }
 
-    [Fact]
-    public void The_release_client_registers_and_creates_every_expected_twr_system()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void The_release_client_registers_and_creates_every_expected_twr_system(bool shipped)
     {
-        using var world = StartWorld();
+        var helper = shipped ? Environment.GetEnvironmentVariable("TWR_SHIPPED_HELPER_DLL") : typeof(LwMod).Assembly.Location;
+        if (string.IsNullOrWhiteSpace(helper)) return; // A standalone test run has no release artefact.
+        using var world = StartWorld(Path.GetFullPath(helper));
         var names = world.Systems.Select(SimulationExtensions.FactoryOf).OfType<SystemFactory>().Select(f => f.Name).ToArray();
         var version = typeof(World).Assembly.GetName().Version!;
         var expected = version is { Major: 0, Minor: >= 23 } ? Common.Concat(Modern).ToArray() : Common;
@@ -71,7 +75,7 @@ public sealed class SystemRegistrationWorldTests
         Assert.Contains("active", (string[])typeof(StatsUi).GetField("TabArgs", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!);
     }
 
-    static World StartWorld()
+    static World StartWorld(string helperPath)
     {
         var folder = Directory.CreateTempSubdirectory("twr-registration-");
         try
@@ -97,7 +101,7 @@ public sealed class SystemRegistrationWorldTests
             var registry = Activator.CreateInstance(args[1].ParameterType, nonPublic: true);
             var context = (ModContext)ctor.Invoke([mod, registry, data.Db, data, (Func<World?>)(() => null), null]);
 
-            new RegistrationContext(typeof(LwMod).Assembly.Location).Create().Initialize(context);
+            new RegistrationContext(helperPath).Create().Initialize(context);
             var pending = typeof(ModContext).GetProperty("Pending", Instance)!.GetValue(context)!;
             var factories = (IEnumerable<SystemFactory>)pending.GetType().GetProperty("Systems", Instance)!.GetValue(pending)!;
             // Use the real engine build context with the native population system. A physics/rendering

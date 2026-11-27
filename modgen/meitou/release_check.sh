@@ -31,6 +31,7 @@ if [ ! -f "$DIR/MeitouClient.dll" ]; then
   unzip -qjo "$DIR/m.zip" '*/MeitouClient.dll' '*/Meitou.Simulation.dll' '*/Meitou.Core.dll' '*/Meitou.Data.dll' '*/0Harmony.dll' -d "$DIR" || { echo "FAIL: unexpected zip layout"; exit 2; }
   # newer releases' simulation needs Silk.NET's core types (0.22.2 nightlies from 20261122.2); the world tests load it from here
   unzip -qjo "$DIR/m.zip" '*/Silk.NET.Core.dll' '*/Silk.NET.Maths.dll' -d "$DIR" 2>/dev/null || true
+  unzip -qjo "$DIR/m.zip" '*/BepuPhysics.dll' '*/BepuUtilities.dll' -d "$DIR" 2>/dev/null || true
   rm -f "$DIR/m.zip"
 fi
 
@@ -133,7 +134,8 @@ if [ "$TFM" = net11.0 ]; then
   fi
 fi
 # the world tests: the mod's engine-side systems in small synthetic worlds, against this release's own DLLs
-if "$DOTNET" test "$HERE/LivingWastelandMeitou.WorldTests/LivingWastelandMeitou.WorldTests.csproj" -c Release -p:MeitouDir="$DIR" -p:MeitouTfm="$TFM" >"$OUT/worldtests.log" 2>&1; then
+if TWR_SHIPPED_HELPER_DLL="$HERE/LivingWastelandMeitou/LivingWastelandMeitou.dll" \
+  "$DOTNET" test "$HERE/LivingWastelandMeitou.WorldTests/LivingWastelandMeitou.WorldTests.csproj" -c Release -p:MeitouDir="$DIR" -p:MeitouTfm="$TFM" >"$OUT/worldtests.log" 2>&1; then
   grep -oE "Passed: +[0-9]+" "$OUT/worldtests.log" | head -1 | sed 's/^/   world tests: /'
 else
   echo "   world tests FAILED"; grep -E "\[FAIL\]|Failed |error" "$OUT/worldtests.log" | head -5 | sed 's/^/      /'; fail=1

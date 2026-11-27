@@ -4,9 +4,22 @@ Written by Codex for roadmap item 1.0 (the performance hotfix, build bo). Headle
 Times are per pass or per tick, so they don't predict frames per second; compare builds against each other on the same machine.
 
 ## Run
+
+The compatibility matrix profiles the 1,500-character world on 0.24.0, 0.23.2 and 0.17.3. The busy outpost fixture also runs on the
+two newer clients. The 0.17.3 client lacks the hooks for outpost history, lasting identities and held-state observers.
+
+```bash
+CACHE=/tmp/meitou-releases bash modgen/meitou/PerfBench/run_matrix.sh /path/to/LivingWasteland
+```
+
+Prepare the release cache with `codex_check.sh` first. An older cache missing `BepuPhysics.dll` and `BepuUtilities.dll` can use
+`TWR_TEST_MEITOU_PHYSICS` pointing to a directory with the compatible DLLs, as with the world tests.
+
+For individual scenarios on a current client:
+
 ```bash
 export PATH=$HOME/.dotnet:$PATH DOTNET_ROOT=$HOME/.dotnet DOTNET_TieredCompilation=0
-ENGINE=/tmp/meitou-releases/0.23.2                       # a Meitou release folder (release_check.sh fills the cache)
+ENGINE=/tmp/meitou-releases/0.24.0                       # a Meitou release folder (release_check.sh fills the cache)
 TWR=modgen/release/stage/built/LivingWasteland          # a built mod folder (make_release.py), or one unzipped from a release
 dotnet build modgen/meitou/PerfBench/PerfBench.csproj -c Release -p:Engine="$ENGINE" -o /tmp/perfbench
 dotnet /tmp/perfbench/PerfBench.dll "$ENGINE" "$TWR" bench          # small isolated operations (criers, panels)

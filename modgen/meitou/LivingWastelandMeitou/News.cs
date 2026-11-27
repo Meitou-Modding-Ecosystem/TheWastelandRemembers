@@ -351,6 +351,11 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
             line = LeaderStories.Reply(data, cold, at, live[i], line);
         }
         else if (LocalKindness(world, cold, at) is { } local) line = local;
+        // the board has nothing: what they told the squad themselves lately, or what the town has been saying, never "Haven't heard a
+        // thing" from someone who just told a rumour (seen in play, bv)
+        else if (NewsAskRules.Fallback(GossipLink.For(world).LastBy(GossipLink.Key(world, who), world.GameHours),
+                     GossipLink.For(world).FromTown(data?.TownAt(at) is >= 0 and var site && site < data.Sites.Count ? data.Sites[site].Town.Name : null,
+                         world.GameHours, (ulong)world.Tick), (ulong)world.Tick ^ (ulong)s) is { } heard) line = heard;
         foreach (var gone in toldAt.Keys.Where(k => !board.Items.Contains(k)).ToList()) toldAt.Remove(gone);
         world.Bark(who, line);
         if (i >= 0 && !live[i].Heard) HearOne(world, live[i]);

@@ -562,6 +562,15 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
         }
     }
 
+    void MarkKnownOutlaws(World world)
+    {
+        var table = world.Characters;
+        foreach (var outlaw in outlaws)
+            if (world.Uniques.Find(outlaw.Character) is { Handle: var actor } && table.TryResolveNext(actor, out int slot) &&
+                table.Cold(slot) is { IsPlayer: false, Medical.Dead: false } cold && cold.RecordId == outlaw.Character)
+                OwnedCharacterTags.MarkRole(world, actor, OwnedCharacterTags.Outlaw, outlaw.Character);
+    }
+
     static void MarkSuccessor(World world, SuccessorCode successor)
     {
         if (!OwnedCharacterTags.Available) return;
@@ -636,6 +645,7 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
         if (world.Tick % 30 == 7 && world.GameHours < GraceHours) Grace(world);
         if (world.Tick % PassEvery == 150)
         {
+            if (OwnedCharacterTags.Preview) MarkKnownOutlaws(world);
             bool growBounties = LwMod.Settings.GrowingBounties;
             if (growBounties) RaiseBounties(world);
             if (growBounties || (LwMod.Settings.OutlawSuccessors && OwnedCharacterTags.Available))
@@ -710,6 +720,7 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
             }
 
             platoon.Persistent = true;
+            Visit(world, o, platoon, players);
             if (platoon.State == PlatoonState.Loaded)
             {
                 Pin(world, platoon, entry);
@@ -804,25 +815,48 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
         var template = SquadTemplate.From(record);
         var plan = SquadFactory.Plan(d.Db, template, pop.Settings.SquadSizeMultiplier, world.Seed, KeyOf(o), pop.States);
         var (package, job) = AiCompat.JobsFor(d.Ai, template);
-        var platoon = new Platoon
-        {
-            Id = world.Platoons.NextId(),
-            Origin = Pursuit.OriginFor(d, at.X, at.Z, template.Faction is { } f0 ? d.FactionIndex(f0) : -1),
-            TemplateId = template.Id,
-            Faction = template.Faction is { } f ? d.FactionIndex(f) : -1,
-            Key = KeyOf(o),
-            Size = CampRules.Size(plan.TotalMembers, doing),
-            Position = new Vector2(at.X, at.Z),
-            Package = package?.Id,
-            Job = job,
-            Persistent = true,
-            WaitLeft = HoldStill,
-        };
+        // built by property name: see Pursuit.NewPlatoon (Platoon.Origin's setter changed between Meitou 0.17.3 and 0.23)
+        var platoon = Pursuit.NewPlatoon(
+            ("Id", world.Platoons.NextId()),
+            ("Origin", Pursuit.OriginFor(d, at.X, at.Z, template.Faction is { } f0 ? d.FactionIndex(f0) : -1)),
+            ("TemplateId", template.Id),
+            ("Faction", template.Faction is { } f ? d.FactionIndex(f) : -1),
+            ("Key", KeyOf(o)),
+            ("Size", CampRules.Size(plan.TotalMembers, doing)),
+            ("Position", new Vector2(at.X, at.Z)),
+            ("Package", package?.Id),
+            ("Job", job),
+            ("Persistent", true),
+            ("WaitLeft", HoldStill));
         world.Platoons.Add(platoon);
         return platoon;
     }
 
     /// <summary>Once a camp is loaded, keep its people at the spot instead of letting them wander (as Guild & Quests does).</summary>
+    readonly Dictionary<int, string> visited = [];
+
+    /// <summary>
+    /// Seen in play (bv): two camps were empty when the squad got there, with nothing in the log to say why. When a player character is within
+    /// 300 m of a camp, its state goes to log.txt once until it changes: its people in the world (how many standing), or why not.
+    /// </summary>
+    void Visit(World world, CampCode o, Platoon p, List<(float X, float Z)> players)
+    {
+        bool near = players.Any(q => Vector2.Distance(new Vector2(q.X, q.Z), p.Position) < 3000f);
+        if (!near) { visited.Remove(o.Index); return; }
+        string state = p.State switch
+        {
+            PlatoonState.Loaded => world.Squads.Find(p.SquadId) is { } squad
+                ? $"in the world, {squad.Members.Count(m => world.Characters.TryResolveNext(m, out int s) && world.Characters.Next[s].Alive)} standing"
+                : "in the world, no squad",
+            PlatoonState.Activating => "being made by the game",
+            _ => Pursuit.AwaitsLeave(p) ? "held back by the game until the squad leaves (its people could not be made)"
+                : p.Regenerate ? "to be made afresh by the game" : "not loaded yet",
+        };
+        if (visited.TryGetValue(o.Index, out var was) && was == state) return;
+        visited[o.Index] = state;
+        LwMod.Log($"outlaw camps: {o.Name}'s camp, with the squad near: {state} (size {p.Size})");
+    }
+
     void Pin(World world, Platoon platoon, CampEntry? entry)
     {
         if (entry is null || world.Squads.Find(platoon.SquadId) is not { } squad) return;

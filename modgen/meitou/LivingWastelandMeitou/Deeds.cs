@@ -83,6 +83,7 @@ public sealed record TitleRule(string Id, string Name, string Scope, string Stat
         "guild_seals" => $"{At} guild seals on the charter (with Guild & Quests)",
         "raids_repelled" => $"{At} raids on your base beaten off (with Raid Commander)",
         "alms" => $"{At} cats given as alms or offerings",
+        "rivals_settled" => $"{At} known rivals killed by the squad",
         _ when Stat.StartsWith("hours:", StringComparison.Ordinal) => $"{At} hours {Stat[6..]}",
         _ => Stat,
     } + (Scope == "squad" ? " (whole squad)" : "");
@@ -310,11 +311,14 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
             lines.Add(f.Killer is null && f.Cause is { } how
                 ? $"{D(f.Name)}: {LowerFirst(how)} on day {(int)(f.Hours / 24)} at {f.Place}."
                 : $"{D(f.Name)}: fell on day {(int)(f.Hours / 24)} at {f.Place}{(f.Killer is null ? "" : $", killed by {f.Killer}{(string.IsNullOrEmpty(f.KillerFaction) ? "" : " of " + f.KillerFaction)}")}.");
-            lines.Add($"   served {f.DaysServed:0} days, {f.Kills} kills{(f.Titles.Count > 0 ? ", known as " + string.Join(", ", f.Titles) : "")}{(f.AvengedBy is null ? "" : $". Avenged by {D(f.AvengedBy)}")}.");
-            lines.Add($"   \"{Epitaph(f)}\"");
+            lines.Add($"   served {(f.DaysServed < 1 ? "less than a day" : $"{f.DaysServed:0} days")}, {f.Kills} kills{(f.Titles.Count > 0 ? ", known as " + string.Join(", ", f.Titles) : "")}{(f.AvengedBy is null ? "" : $". Avenged by {D(f.AvengedBy)}")}.");
+            // the epitaph only when it adds something (seen in bv: "served 0 days" then "Joined the squad only days before.")
+            if (Epitaph(f) is var epitaph && epitaph != JoinedLately) lines.Add($"   \"{epitaph}\"");
         }
         return lines;
     }
+
+    const string JoinedLately = "Joined the squad only days before.";
 
     /// <summary>A line for a fallen squadmate's grave, from how they lived and died (the same every time for the same record).</summary>
     public static string Epitaph(Fallen f)
@@ -322,7 +326,7 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
         if (f.AvengedBy is not null) return $"Avenged by {f.AvengedBy}.";
         if (f.Titles.Count > 0) return $"Known as {f.Titles[^1]}.";
         if (f.Kills >= 10) return $"{f.Kills} kills in {Math.Max(1, (int)f.DaysServed)} days with the squad.";
-        if (f.DaysServed < 3) return "Joined the squad only days before.";
+        if (f.DaysServed < 3) return JoinedLately;
         if (f.Killer is null) return f.Cause is { } how ? how + "." : "Cause of death unknown.";
         return $"With the squad for {Math.Max(1, (int)f.DaysServed)} days.";
     }

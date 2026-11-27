@@ -15,6 +15,7 @@ var resolver = new PathAssemblyResolver(Directory.GetFiles(engineDir, "*.dll").C
 using var mlc = new MetadataLoadContext(resolver);
 var have = new HashSet<string>();
 var types = new HashSet<string>();
+var initOnly = new HashSet<string>();   // engine methods (setters) whose signature carries the init-only marker
 foreach (var f in engine)
 {
     Assembly a; try { a = mlc.LoadFromAssemblyPath(f); } catch { continue; }
@@ -24,7 +25,12 @@ foreach (var f in engine)
         string tn = Clean(t.FullName ?? t.Name); types.Add(tn);
         const BindingFlags all = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
         try {
-            foreach (var m in t.GetMethods(all)) have.Add($"{tn}::{m.Name}({string.Join(",", m.GetParameters().Select(p => Name(p.ParameterType)))})");
+            foreach (var m in t.GetMethods(all))
+            {
+                string mk = $"{tn}::{m.Name}({string.Join(",", m.GetParameters().Select(p => Name(p.ParameterType)))})";
+                have.Add(mk);
+                if (m.ReturnParameter.GetRequiredCustomModifiers().Any(x => x.Name == "IsExternalInit")) initOnly.Add(mk);
+            }
             foreach (var c in t.GetConstructors(all)) have.Add($"{tn}::{c.Name}({string.Join(",", c.GetParameters().Select(p => Name(p.ParameterType)))})");
             foreach (var fl in t.GetFields(all)) have.Add($"{tn}::{fl.Name}");
         } catch { }
@@ -67,7 +73,16 @@ foreach (var h in md.MemberReferences)
     if (r.GetKind() == MemberReferenceKind.Method)
     {
         var sig = r.DecodeMethodSignature(prov, null);
-        key = $"{parent}::{name}({string.Join(",", sig.ParameterTypes)})";
+        key = $"{parent}::{name}({string.Join(",", sig.ParameterTypes.Select(t => t.Replace(Prov.InitMark, "")))})";
+        // an init-only setter and an ordinary one are different methods to the runtime: a DLL built against one fails on the other with
+        // "Method not found" (seen in play: Platoon.Origin, init-only in 0.17.3, plain from 0.23; outlaw camps switched off on 0.23.3)
+        bool modInit = sig.ReturnType.Contains(Prov.InitMark);
+        if (have.Contains(key) && modInit != initOnly.Contains(key))
+        {
+            checkedN++; bad++;
+            Console.WriteLine($"MISSING {key}: the mod calls it as {(modInit ? "an init-only" : "a plain")} setter, this release's is {(modInit ? "plain" : "init-only")}");
+            continue;
+        }
     }
     else key = $"{parent}::{name}";
     checkedN++;
@@ -90,7 +105,9 @@ sealed class Prov(MetadataReader md) : ISignatureTypeProvider<string, object?>
     public string GetGenericInstantiation(string g, ImmutableArray<string> a) => g + "<" + string.Join(",", a) + ">";
     public string GetGenericMethodParameter(object? c, int i) => "!!" + i;
     public string GetGenericTypeParameter(object? c, int i) => "!" + i;
-    public string GetModifiedType(string m, string u, bool r) => u;
+    // the init-only marker (IsExternalInit) is a required modifier the runtime binds on; it is flagged with a suffix and stripped from keys
+    public string GetModifiedType(string m, string u, bool r) => r && m.EndsWith("IsExternalInit") ? u + InitMark : u;
+    public const string InitMark = "§init";
     public string GetPinnedType(string e) => e;
     public string GetPointerType(string e) => e + "*";
     public string GetPrimitiveType(PrimitiveTypeCode c) => c switch {

@@ -6,7 +6,9 @@ using Meitou.Data.World;
 using Meitou.Simulation;
 using Meitou.Simulation.Bodies;
 using Meitou.Simulation.Construction;
+using Meitou.Simulation.Factions;
 using Meitou.Simulation.Locks;
+using Meitou.Simulation.Population;
 using Xunit;
 
 [Collection("settings")]
@@ -62,9 +64,15 @@ public sealed class LeaderStoryWorldTests
                 [new TownPlacement("town-instance", town.StringId, At, null)]);
             var tracker = new LwDeedsSystem([], data);
             var news = new NewsSystem(data);
-            using var world = W.World(tracker, news, new PrisonerCases(data, []));
+            using var world = W.World(tracker, news, new PrisonerCases(data, []), new PopulationSystem(data));
             var leaf = W.Spawn(world, "Leaf", W.Player, At);
-            var ruler = W.Spawn(world, "Holy Lord Phoenix", data.FactionIndex("holy"), At);
+            int holy = data.FactionIndex("holy");
+            var guard = new Squad { Id = world.Squads.NextId(), TemplateId = "holy-guard", Faction = holy };
+            world.Squads.Add(guard);
+            var ruler = W.Spawn(world, "Holy Lord Phoenix", holy, At, squad: guard.Id);
+            guard.Leader = ruler;
+            guard.Members.Add(ruler);
+            guard.Members.Add(W.Spawn(world, "Guard", holy, At + Vector3.UnitX, squad: guard.Id));
             world.Uniques.Bind(Phoenix, ruler);
             world.RunTicks(31);
             Assert.Empty(tracker.Deeds.Record.History);
@@ -72,13 +80,13 @@ public sealed class LeaderStoryWorldTests
             {
                 var site = new BuildSite { Id = "player-cage", Record = "cage-building", Position = At, Materials = [], Complete = true, Owner = W.Player };
                 world.Buildings.Add(site);
-                var cage = new Fixture { Id = "cage", Building = site.Id, Kind = FixtureKind.Cage, Position = At, Owner = W.Player, Occupant = ruler };
-                var cold = world.Characters.Cold(ruler.Slot)!;
-                cold.InWhat = cage.Id;
-                cold.InSomething = HeldState.Imprisoned;
+                var cage = new Fixture { Id = "cage", Building = site.Id, Kind = FixtureKind.Cage, Position = At, Owner = W.Player };
                 const BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic;
                 ((List<Fixture>)typeof(FixtureRegistry).GetField("_all", flags)!.GetValue(world.Fixtures)!).Add(cage);
                 ((Dictionary<string, Fixture>)typeof(FixtureRegistry).GetField("_byId", flags)!.GetValue(world.Fixtures)!).Add(cage.Id, cage);
+                Assert.True(world.Fixtures.Imprison(world, ruler, cage));
+                if (typeof(PopulationSystem).GetMethod("SplitOnImprisonment", flags) is not null)
+                    Assert.DoesNotContain(ruler, guard.Members);
             }
             else
             {

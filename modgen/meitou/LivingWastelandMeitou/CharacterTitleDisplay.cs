@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 using Meitou.Game.Ui;
+using Meitou.Modding;
 using Meitou.Simulation;
 
 namespace LivingWasteland.MeitouMod;
@@ -21,6 +22,11 @@ internal static class CharacterTitleDisplay
 
     internal static bool Available => source is not null && refresh is not null && LastingActors.Available;
     internal static bool Enabled => Registered && LwMod.Settings.TitlesInCharacterNames;
+
+    internal static void WatchSettings(ModSettingsGroup group) => group.Changed += setting =>
+    {
+        if (setting.Key == nameof(LwSettings.TitlesInCharacterNames) && !LwMod.Settings.TitlesInCharacterNames) Clear();
+    };
 
     static Delegate? BuildSource()
     {
@@ -52,7 +58,8 @@ internal static class CharacterTitleDisplay
     }
 
     static string? NameWithTitle(ulong id, string name) =>
-        shown.TryGetValue(id, out var title) && name.Length + 3 + title.Length <= 80 ? $"{name} · {title}" : null;
+        LwMod.Settings.TitlesInCharacterNames && shown.TryGetValue(id, out var title) && name.Length + 3 + title.Length <= 80
+            ? $"{name} · {title}" : null;
 
     internal static void Publish(SquadRecord record, List<(CharacterId Id, string Key)> members, World world)
     {

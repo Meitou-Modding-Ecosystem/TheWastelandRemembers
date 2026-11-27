@@ -154,6 +154,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
                 bool warrant = beaten && lost && Trophies.DropWarrant(world, p!.SquadId, crew.Town);
                 if (beaten) world.Post($"The bounty hunters {crew.Town} hired are finished.{(warrant ? " One of them carried a warrant with your squad's name on it." : "")}");
                 if (beaten) RecapLink.Moment($"The bounty hunters {crew.Town} hired were {(lost ? "beaten" : "wiped out")}.", crew.Town, 70);
+                if (beaten) LwDeeds.For(world)?.Record.Note($"The bounty hunters {crew.Town} hired were {(lost ? "beaten" : "wiped out")}.");
                 crews.Remove(crew);
                 LwMod.Log($"bounty hunters: the crew from {crew.Town} is {(beaten ? "gone (beaten)" : "giving up")}");
                 continue;
@@ -188,6 +189,7 @@ public sealed class HuntersSystem(string crewSquad, PopulationSystem? population
         lastSent[town] = now;
         world.Post($"Word on the road: {town} has hired blades to bring you in.");
         RecapLink.Moment($"{town} hired bounty hunters to bring your squad in.", town, 65);
+        LwDeeds.For(world)?.Record.Note($"{town} hired bounty hunters to bring the squad in.", now, town);   // the chronicle (seen in bv: missing)
         LwMod.Log($"bounty hunters: {town} ({why}) sent a crew from {at.X:0} {at.Z:0}, day {now / 24:0.0}");
         return true;
     }
@@ -399,6 +401,26 @@ public static class Pursuit
     public static Platoon? Make(World world, PopulationSystem pop, PopulationData d, string templateId, string keyText,
         (float X, float Z) at, (float X, float Z) toward) => Make(world, pop, d, templateId, keyText, at, toward, native: false);
 
+    // A Platoon built by property name. Meitou 0.17.3 (the build floor) declares Platoon.Origin `required` with an init-only setter, so an
+    // object initializer compiles a call to set_Origin with the init marker; from Meitou 0.23 the setter is ordinary and that call fails
+    // with MissingMethodException ("Method not found: set_Origin"), switching off outlaw camps, reprisals, successors and raids (seen on
+    // 0.23.3, Workshop build bt). Setting through reflection works with either setter. Spawning is rare, so the cost doesn't matter.
+    static readonly Dictionary<string, PropertyInfo> platoonProps = new(StringComparer.Ordinal);
+
+    internal static Platoon NewPlatoon(params (string Name, object? Value)[] values)
+    {
+        var platoon = (Platoon)Activator.CreateInstance(typeof(Platoon))!;
+        foreach (var (name, value) in values)
+        {
+            PropertyInfo? prop;
+            lock (platoonProps)
+                if (!platoonProps.TryGetValue(name, out prop))
+                    platoonProps[name] = prop = typeof(Platoon).GetProperty(name) ?? throw new MissingMemberException(nameof(Platoon), name);
+            prop.SetValue(platoon, value);
+        }
+        return platoon;
+    }
+
     internal static Platoon? MakeCrew(World world, PopulationSystem pop, PopulationData d, string templateId, string keyText,
         (float X, float Z) at, (float X, float Z) toward) => Make(world, pop, d, templateId, keyText, at, toward, native: true);
 
@@ -424,20 +446,18 @@ public static class Pursuit
         ulong key = Rng.StableHash(keyText);
         var plan = SquadFactory.Plan(d.Db, template, pop.Settings.SquadSizeMultiplier, world.Seed, key, pop.States);
         var (package, _) = AiCompat.JobsFor(d.Ai, template);
-        var platoon = new Platoon
-        {
-            Id = world.Platoons.NextId(),
-            Origin = origin,
-            TemplateId = template.Id,
-            Faction = faction,
-            Key = key,
-            Size = Math.Max(2, plan.TotalMembers),
-            Position = new Vector2(at.X, at.Z),
-            Package = package?.Id,
-            Job = PlatoonJob.PatrolShortRange,         // see Steer: the one job that walks a persistent stand-in to the point
-            Point = goal,
-            Persistent = true,
-        };
+        var platoon = NewPlatoon(
+            ("Id", world.Platoons.NextId()),
+            ("Origin", origin),
+            ("TemplateId", template.Id),
+            ("Faction", faction),
+            ("Key", key),
+            ("Size", Math.Max(2, plan.TotalMembers)),
+            ("Position", new Vector2(at.X, at.Z)),
+            ("Package", package?.Id),
+            ("Job", PlatoonJob.PatrolShortRange),         // see Steer: the one job that walks a persistent stand-in to the point
+            ("Point", goal),
+            ("Persistent", true));
         world.Platoons.Add(platoon);
         return platoon;
     }
@@ -518,7 +538,7 @@ public static class Pursuit
     }
 
     /// <summary>Points the stand-in (or, loaded, each able member) at the nearest player character.</summary>
-    sealed class RoadProgress { public Vector2? Last; }
+    sealed class RoadProgress { public Vector2? Last; public bool Held; }
     sealed class SquadProgress
     {
         public string? Package;
@@ -595,6 +615,16 @@ public static class Pursuit
             // two game hours (the engine moving the stand-in elsewhere, likely home), and a stand-in that moved at all was never walked on.
             // One that went the wrong way is walked on from where it was.
             var progress = roadProgress.GetOrCreateValue(p);
+            // Meitou 0.24 (PopulationSystem.HoldsDead, read in 0.24.0): a stand-in whose people could not be made again waits for the
+            // squad to leave before it loads; walked on into the squad's area it never loads (seen in play, bv: a rival 25 m off, nobody
+            // there). Not walked on; logged once. Reflection: the property is newer than the 0.17.3 build floor.
+            if (AwaitsLeave(p))
+            {
+                if (!progress.Held) LwMod.Log($"pursuit: party {p.Id} waits for the squad to leave before the game loads it; not walked on");
+                progress.Held = true;
+                progress.Last = null;
+                return;
+            }
             if (progress.Last is { } was)
             {
                 var aim = new Vector2(target.X, target.Z);
@@ -633,11 +663,17 @@ public static class Pursuit
                 if (d < 600f || stalled)
                 {
                     Assault(world, squad, prey);
-                    if (bark is not null && barked.GetOrCreateValue(world).Add(squad.Id) && Speaker(world, squad, speakerName) is { } who)
+                    // the line is claimed only once someone able to speak says it; with no line, the members below are still steered
+                    if (bark is not null)
                     {
-                        world.Bark(who, bark);
-                        if (rivalCue && d < 600f) StorySounds.Rival(world);
-                        LwMod.Log($"barks: \"{bark}\"");
+                        var told = barked.GetOrCreateValue(world);
+                        if (!told.Contains(squad.Id) && Speaker(world, squad, speakerName) is { } who)
+                        {
+                            told.Add(squad.Id);
+                            world.Bark(who, bark);
+                            if (rivalCue && d < 600f) StorySounds.Rival(world);
+                            LwMod.Log($"barks: \"{bark}\"");
+                        }
                     }
                 }
             }
@@ -652,7 +688,12 @@ public static class Pursuit
         }
     }
 
-    const int StallPasses = 12;                                     // two game minutes of passes without getting 10 m nearer
+    static readonly PropertyInfo? awaitsLeave = typeof(Platoon).GetProperty("AwaitsLeave");
+
+    /// <summary>Whether the game holds this stand-in back until the squad leaves (Meitou 0.24+; false where the property is absent).</summary>
+    internal static bool AwaitsLeave(Platoon p) => awaitsLeave?.GetValue(p) is true;
+
+    const int StallPasses = 12;                                    // two game minutes of passes without getting 10 m nearer
 
     /// <summary>Where a loaded squad is: its standing member nearest <paramref name="to"/> (any standing member without one); null when
     /// none stands.</summary>
@@ -693,7 +734,9 @@ public static class Pursuit
         CharacterId? first = null;
         foreach (var m in squad.Members)
         {
-            if (!table.TryResolveNext(m, out int s) || !table.Next[s].Alive || table.Cold(s) is not { } c || c.Medical is { Incapacitated: true }) continue;
+            if (!table.TryResolveNext(m, out int s) || table.Next[s] is not { Alive: true, Dormant: false } ||
+                table.Cold(s) is not { IsImprisoned: false, CarriedBy.IsNone: true } c ||
+                c.Medical is { Incapacitated: true } or { Dead: true }) continue;
             if (name is not null && c.Name == name) return m;
             if (m == squad.Leader) first = m;
             first ??= m;

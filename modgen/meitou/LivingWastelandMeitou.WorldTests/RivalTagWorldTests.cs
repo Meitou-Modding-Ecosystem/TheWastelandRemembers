@@ -1,6 +1,8 @@
 using System.Numerics;
+using System.Reflection;
 using LivingWasteland.MeitouMod;
 using Meitou.Data.Fcs;
+using Meitou.Simulation;
 using Meitou.Simulation.Factions;
 using Xunit;
 
@@ -9,6 +11,40 @@ public sealed class RivalTagWorldTests
 {
     const string Namespace = "LivingWastelandMeitou";
     const string RivalTag = "lw:rival:Hollin One-Arm";
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Only_the_twr_character_tag_can_rebind_a_legacy_rival_after_a_rename(bool ownTag)
+    {
+        var tags = typeof(World).GetProperty("CharacterTags");
+        if (tags is null) return;
+        var setting = typeof(LwSettings).GetProperty("SavedCharacterTags");
+        var original = setting?.GetValue(LwMod.Settings);
+        try
+        {
+            setting?.SetValue(LwMod.Settings, true);
+            var rivals = new RivalsSystem(null);
+            using var world = W.World(rivals);
+            var originalActor = W.Spawn(world, "Renamed", W.Bandits, Vector3.UnitX);
+            var namesake = W.Spawn(world, "Hollin One-Arm", W.Bandits, Vector3.UnitZ);
+            world.RunTicks(2);
+            var registry = tags.GetValue(world)!;
+            var set = tags.PropertyType.GetMethod("Set")!;
+            Assert.True(set.Invoke(registry, [originalActor, ownTag ? Namespace + ".rival" : "OtherMod", "0:0:Hollin One-Arm"]) is true);
+            Assert.True(set.Invoke(registry, [namesake, "OtherMod", "keep me"]) is true);
+            rivals.Read(W.SavedRival("Hollin One-Arm", "lost an arm to your squad", 1, 0, 0));
+            const BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic;
+            var rival = Assert.Single((List<RivalsSystem.Rival>)typeof(RivalsSystem).GetField("rivals", flags)!.GetValue(rivals)!);
+            typeof(RivalsSystem).GetMethod("Resolve", flags)!.Invoke(rivals, [world, rival]);
+
+            Assert.Equal(ownTag ? originalActor : namesake, rival.Id);
+            Assert.Equal(ownTag ? LastingActors.Of(world.Characters.Cold(originalActor.Slot)!) : 0UL, rival.ActorId);
+            Assert.Equal("keep me", tags.PropertyType.GetMethod("Get", [typeof(CharacterId), typeof(string)])!
+                .Invoke(registry, [namesake, "OtherMod"]));
+        }
+        finally { if (setting is not null) setting.SetValue(LwMod.Settings, original); }
+    }
 
     [Fact]
     public void A_rival_load_uses_the_saved_namespace_and_leaves_a_foreign_only_party_alone()

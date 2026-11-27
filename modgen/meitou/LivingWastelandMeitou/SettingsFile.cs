@@ -108,6 +108,7 @@ public static class SettingsFile
 #if !SQUAD_RECORD_ONLY
     static readonly HashSet<string> PreviewSwitches =
     [
+        nameof(LwSettings.SavedCharacterTags), nameof(LwSettings.PanelIcons),
         nameof(LwSettings.AnimalCompanions), nameof(LwSettings.WitnessesRememberFaces), nameof(LwSettings.SquadMemories), nameof(LwSettings.Anniversaries), nameof(LwSettings.FallenLeaderStories), nameof(LwSettings.OutlawCamps), nameof(LwSettings.RememberOutposts), nameof(LwSettings.OutpostDefenceRecord), nameof(LwSettings.OutpostCouriers),
         nameof(LwSettings.TownHandovers), nameof(LwSettings.MapMarks), nameof(LwSettings.RelationNews),
         nameof(LwSettings.ReputationPrices), nameof(LwSettings.RecruitRivals), nameof(LwSettings.HarassmentRaids),

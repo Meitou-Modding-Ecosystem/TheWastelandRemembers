@@ -1,6 +1,7 @@
 using System.Numerics;
 using LivingWasteland.MeitouMod;
 using Meitou.Data.Fcs;
+using Meitou.Simulation;
 using Meitou.Simulation.Items;
 using Meitou.Simulation.Saving;
 using Xunit;
@@ -15,12 +16,13 @@ public sealed class KeepsakeProvenanceWorldTests
         const string template = "keepsake-t";
         var slots = KeepsakeBook.Slots;
         var previousTemplate = Trophies.Keepsake;
-        bool enabled = LwMod.Settings.KeepsakeProvenance, trophies = LwMod.Settings.Trophies;
+        bool enabled = LwMod.Settings.KeepsakeProvenance, trophies = LwMod.Settings.Trophies, tags = LwMod.Settings.SavedCharacterTags;
         try
         {
             KeepsakeBook.Slots = [template];
             Trophies.Keepsake = template;
             LwMod.Settings.Trophies = LwMod.Settings.KeepsakeProvenance = true;
+            LwMod.Settings.SavedCharacterTags = true;
             var data = W.Data([W.Rec(template, FcsRecordType.Item, "Keepsake of the Fallen")]);
             var deeds = new LwDeedsSystem([], data);
             var book = new KeepsakeBook(data);
@@ -32,6 +34,9 @@ public sealed class KeepsakeProvenanceWorldTests
             record.Died("Hollin", 5, "Stack", null, null, null);
             Trophies.GiveKeepsake(world, heir, "Leaf", "Hollin", "Hollin");
             var hollin = Assert.Single(bag.Items);
+            if (typeof(World).GetProperty("CharacterTags") is { } registry)
+                Assert.Equal("Hollin", registry.PropertyType.GetMethod("Get", [typeof(CharacterId), typeof(string)])!
+                    .Invoke(registry.GetValue(world), [heir, "LivingWastelandMeitou.keepsake"]));
 
             world.GameHours += 2;
             record.Died("Kite", 7, "Squin", null, null, null);
@@ -85,6 +90,7 @@ public sealed class KeepsakeProvenanceWorldTests
             Trophies.Keepsake = previousTemplate;
             LwMod.Settings.Trophies = trophies;
             LwMod.Settings.KeepsakeProvenance = enabled;
+            LwMod.Settings.SavedCharacterTags = tags;
         }
     }
 }

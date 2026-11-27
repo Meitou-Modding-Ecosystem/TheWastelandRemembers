@@ -39,6 +39,14 @@ internal static class KindnessWatch
         var memory = new KindnessDeed(id, kind, actor.Name, named ?? actor.RecordId ?? "", deeds.FactionName(actor.Faction),
             place, helper, world.GameHours, skills, critical, named is not null, heldHours, alone, captor);
         if (!deeds.Kindness.Add(memory)) return;
+        // the chronicle (seen in bv: five people freed from Rebirth's cages, not one line in History)
+        string? story = kind switch
+        {
+            KindnessKind.Freed => $"{helper} freed {actor.Name}.",
+            KindnessKind.Saved => $"{helper} kept {actor.Name} from bleeding out.",
+            _ => null,
+        };
+        if (story is not null) deeds.Record.Note(story, world.GameHours, place);
         if (PlaytestLog.Enabled)
             PlaytestLog.Event(world, "kindness", FormattableString.Invariant($"person:{id}"), kind.ToString(), $"{helper} helped {actor.Name} at {place}");
         LogTally.Add("kindness deeds");
