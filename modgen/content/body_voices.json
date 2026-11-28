@@ -447,7 +447,7 @@
     {
      "say": [
       "Lost a leg. Fine. Bandage me.",
-      "Take it out of their hide.",
+      "I'll hold a grudge about that one.",
       "Patch me up. I'm not done.",
       "That one cost me."
      ]
@@ -472,8 +472,8 @@
    "lines": [
     {
      "say": [
-      "Lost a arm. Fine. Bandage me.",
-      "Take it out of their hide.",
+      "Lost an arm. Fine. Bandage me.",
+      "I'll hold a grudge about that one.",
       "Patch me up. I'm not done.",
       "That one cost me."
      ]

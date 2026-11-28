@@ -20,7 +20,7 @@ DOTNET="${DOTNET:-dotnet}"
 export CACHE="${CACHE:-$(cd "$MODGEN/.." && pwd)/meitou-releases}"
 export DOTNET DOTNET_NOLOGO=1 DOTNET_CLI_TELEMETRY_OPTOUT=1
 tags=("$@")
-[ ${#tags[@]} -gt 0 ] || tags=(v0.24.0 v0.23.2 v0.17.3)
+[ ${#tags[@]} -gt 0 ] || tags=(v0.24.1 v0.24.0 v0.23.2 v0.17.3)
 fail=0
 
 # Each world-test run checks both directions against the actual previous Steam DLL when it is in the release cache.

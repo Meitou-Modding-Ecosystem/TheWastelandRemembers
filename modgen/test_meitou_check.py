@@ -54,7 +54,7 @@ class CheckMatrixTest(unittest.TestCase):
                                     capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertEqual([line for line in result.stdout.splitlines() if line.startswith("client ")],
-                             ["client v0.24.0", "client v0.23.2", "client v0.17.3"])
+                             ["client v0.24.1", "client v0.24.0", "client v0.23.2", "client v0.17.3"])
             self.assertEqual([line for line in result.stdout.splitlines() if line.startswith("reference ")],
                              ["reference 0.24.0", "reference 0.23.2"])
 

@@ -133,9 +133,16 @@ if [ "$TFM" = net11.0 ]; then
     echo "   Rivalry Core: $RIVALRY_TAG not available (download or checksum failed); its world tests skipped"
   fi
 fi
-# the world tests: the mod's engine-side systems in small synthetic worlds, against this release's own DLLs
-if TWR_SHIPPED_HELPER_DLL="$HERE/LivingWastelandMeitou/LivingWastelandMeitou.dll" \
-  "$DOTNET" test "$HERE/LivingWastelandMeitou.WorldTests/LivingWastelandMeitou.WorldTests.csproj" -c Release -p:MeitouDir="$DIR" -p:MeitouTfm="$TFM" >"$OUT/worldtests.log" 2>&1; then
+# Compile the fixtures with the client's real types, then run them with the same floor-built helper we ship.
+# Building the helper against each client above still catches source incompatibilities.
+world_project="$HERE/LivingWastelandMeitou.WorldTests/LivingWastelandMeitou.WorldTests.csproj"
+world_args=(-c Release -p:MeitouDir="$DIR" -p:MeitouTfm="$TFM" -o "$OUT/world")
+shipped_helper="$HERE/LivingWastelandMeitou/LivingWastelandMeitou.dll"
+if "$DOTNET" build "$world_project" "${world_args[@]}" >"$OUT/worldtests.log" 2>&1 &&
+  cp "$shipped_helper" "$OUT/world/LivingWastelandMeitou.dll" >>"$OUT/worldtests.log" 2>&1 &&
+  TWR_SHIPPED_HELPER_DLL="$shipped_helper" \
+  "$DOTNET" test "$world_project" "${world_args[@]}" --no-build >>"$OUT/worldtests.log" 2>&1; then
+  echo "   world tests use the shipped floor-built helper"
   grep -oE "Passed: +[0-9]+" "$OUT/worldtests.log" | head -1 | sed 's/^/   world tests: /'
 else
   echo "   world tests FAILED"; grep -E "\[FAIL\]|Failed |error" "$OUT/worldtests.log" | head -5 | sed 's/^/      /'; fail=1

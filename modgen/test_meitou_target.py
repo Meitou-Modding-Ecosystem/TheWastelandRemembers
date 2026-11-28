@@ -11,6 +11,37 @@ import content
 import meitou_target
 
 
+class RumourDelivery(unittest.TestCase):
+    def test_spoken_lines_share_the_quota_path_and_ordinary_dialogue_stays_out(self):
+        b = builder.ModBuilder("fixture")
+        threat = b.line("The road's bad.")
+        remark = b.line("The road's bad.")
+        readout = b.line("Hear the news!")
+        civic = b.line("The trader has news.")
+        taunt = b.line("The road's bad.")
+        records = {name: b.dialogue(name, [(sid, 0)], chance=20)
+                   for name, sid in (("rv_0_sight", threat), ("banter", remark),
+                                     ("rm_news_cry", readout), ("rm_news", civic), ("on_quillon_ataunt", taunt))}
+        b.attach("npc-pack", records["on_quillon_ataunt"], "EV_I_SEE_ENEMY_PLAYER")
+        manifest = meitou_target.convert([b])
+        gossip = manifest["gossip"]
+        by_id = {r["sid"]: r for r in b.records}
+        effects = lambda sid: [by_id[target]["int"]["action name"] for target, *_ in by_id[sid]["ref"].get("effects", [])]
+        codes = lambda name: [by_id[target]["int"]["condition name"]
+                              for target, *_ in by_id[records[name]]["ref"].get("conditions", [])]
+        self.assertEqual([gossip["delivery"]], effects(threat))
+        self.assertEqual([gossip["delivery"]], effects(civic))
+        self.assertEqual([], effects(remark))
+        self.assertEqual([], effects(readout))
+        self.assertEqual([], effects(taunt))
+        self.assertEqual([gossip["rival"]], codes("rv_0_sight"))
+        self.assertEqual([gossip["civic"]], codes("rm_news"))
+        self.assertEqual([gossip["uncounted"]], codes("rm_news_cry"))
+        self.assertIn(gossip["uncounted"], codes("on_quillon_ataunt"))
+        self.assertEqual([], codes("banter"))
+        self.assertEqual(40, by_id[records["rm_news"]]["float"]["chance temporary"])
+
+
 class GivesAndTakes(unittest.TestCase):
     def test_multi_item_handover_checks_quantity_on_the_consuming_line(self):
         b = builder.ModBuilder("fixture")
@@ -72,6 +103,23 @@ class RecoveryCells(unittest.TestCase):
         self.assertEqual("1-fixture.mod", camp["character"])
         self.assertEqual("2-fixture.mod", camp["squad"])
         self.assertEqual("4-fixture.mod", camp["reprisal"])
+
+
+class CampReports(unittest.TestCase):
+    def test_only_a_camp_direction_line_records_a_report_for_the_correct_camp(self):
+        b = builder.ModBuilder("fixture")
+        report = b.line("Look /LWDIR_0/ /LWNEAR_0/.")
+        talk = b.line("Watch the roads.")
+        b.dialogue("on_bad_pete_where_sight", [(report, 0)])
+        b.dialogue("on_bad_pete_1_sight", [(talk, 0)])
+        manifest = meitou_target.convert([b], camps=[{"name": "Bad Pete", "character": "pete", "squad": "gang", "biomes": []}])
+        by_id = {r["sid"]: r for r in b.records}
+        code = manifest["campNews"]["report"]
+        def recorded(sid):
+            return [value for effect, value, *_ in by_id[sid]["ref"]["effects"]
+                    if by_id[effect]["int"]["action name"] == code]
+        self.assertEqual([manifest["camps"][0]["index"]], recorded(report))
+        self.assertEqual([], recorded(talk))
 
 
 class OutlawTokens(unittest.TestCase):
@@ -208,3 +256,19 @@ class RetiredPrototype(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class OfferTagTests(unittest.TestCase):
+    """The patch 102 census: Meitou's default personality pool leaves out Maniacal, so jobs spread onto it had almost no giver."""
+
+    def test_no_job_is_spread_onto_maniacal(self):
+        import content
+        keys = [f"job{i}" for i in range(300)]
+        self.assertFalse([k for k in keys if content.offer_tag(k) == content.PERSONALITY["Maniacal"]])
+
+    def test_other_jobs_keep_their_tag(self):
+        import content
+        for k in (f"job{i}" for i in range(300)):
+            before = content.OFFER_TAGS[sum(ord(c) for c in k) % len(content.OFFER_TAGS)]
+            if before != content.PERSONALITY["Maniacal"]:
+                self.assertEqual(before, content.offer_tag(k))

@@ -104,8 +104,15 @@ def rank_needed(reward):
     return 2 if reward >= 6500 else (1 if reward >= 5000 else 0)
 
 
+# Meitou's default personality pool leaves out Maniacal (the patch 102 census: six of eleven Maniacal offers had no giver), so a job
+# whose spread lands on it moves to another tag. Every other job keeps the tag it had, so its givers stay the same.
+MEITOU_OFFER_TAGS = [t for t in OFFER_TAGS if t != PERSONALITY["Maniacal"]]
+
+
 def offer_tag(key):
-    return OFFER_TAGS[sum(ord(c) for c in str(key)) % len(OFFER_TAGS)]
+    h = sum(ord(c) for c in str(key))
+    tag = OFFER_TAGS[h % len(OFFER_TAGS)]
+    return tag if tag in MEITOU_OFFER_TAGS else MEITOU_OFFER_TAGS[h % len(MEITOU_OFFER_TAGS)]
 
 
 class Compiler:

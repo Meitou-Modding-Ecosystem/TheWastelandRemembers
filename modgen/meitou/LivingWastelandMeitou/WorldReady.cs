@@ -55,6 +55,7 @@ public static class WorldReady
         CharacterTitleDisplay.Clear();
         PanelLines.Reset();
         RecordHost.Panel = RecordHost.CatalogText = RecordHost.HistoryText = RecordHost.FallenText = "No world yet.";
+        RecordHost.Chronicle = [];
         HuntersSystem.Latest = null;
         RivalsSystem.Latest = null;
         NewsSystem.Latest = null;

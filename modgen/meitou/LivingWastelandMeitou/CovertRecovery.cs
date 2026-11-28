@@ -14,7 +14,8 @@ namespace LivingWasteland.MeitouMod;
 internal static class CovertRecovery
 {
     internal const int Cadence = 10;
-    static readonly MethodInfo? workSpot = typeof(LockSystem).GetMethod("WorkSpot", BindingFlags.NonPublic | BindingFlags.Static,
+    // Internal on the build floor, public on newer clients.
+    static readonly MethodInfo? workSpot = typeof(LockSystem).GetMethod("WorkSpot", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static,
         null, [typeof(World), typeof(Fixture), typeof(Vector2)], null);
     static readonly MethodInfo? spotted = typeof(AggroSystem).GetMethod("Spotted", [typeof(int), typeof(CharacterId)]);
     internal static bool Available => workSpot?.ReturnType == typeof(ValueTuple<Vector2, float>);

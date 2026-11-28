@@ -50,7 +50,7 @@ public sealed class RivalPartyFateWorldTests
             Assert.True(Pursuit.Mark(party, "lw:rival:" + cold.Name));
             world.Platoons.Add(party);
             world.RunTicks(301);
-            Assert.NotNull(party.Point);
+            Assert.Equal(actorWasThere, party.Point.HasValue); // A namesake must not be steered either.
 
             var winner = new Platoon { Id = world.Platoons.NextId(), Key = 8, Origin = 0, TemplateId = "winner-party", Faction = W.Bandits };
             world.Platoons.Add(winner);

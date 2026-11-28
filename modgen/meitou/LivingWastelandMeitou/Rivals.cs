@@ -356,7 +356,18 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
                 continue;
             }
             var table = world.Characters;
-            if (table.TryResolveNext(r.Id, out int s)) { var at = table.Next[s].Position; (r.X, r.Z) = (at.X, at.Z); }
+            if (table.TryResolveNext(r.Id, out int s))
+            {
+                var at = table.Next[s].Position;
+                (r.X, r.Z) = (at.X, at.Z);
+                if (AtlasSystem.TrackPlaces && AtlasSystem.For(world) is { } atlas)
+                {
+                    var near = Pursuit.Nearest(players, at.X, at.Z);
+                    float dx = near.X - at.X, dz = near.Z - at.Z;
+                    if (dx * dx + dz * dz <= 900 * 900)
+                        atlas.Locate(world, LocationKey(r), LocationIdentity(r), at.X, at.Z);
+                }
+            }
             if (cold is not null)
             {
                 if (Platoon(world, cold) is { } own) { own.Persistent = true; r.PlatoonId = own.Id; Tag(own, r); }
@@ -396,12 +407,8 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
                 p ??= r.PlatoonId >= 0 ? world.Platoons.Find(r.PlatoonId) : null;
                 // after a load the saved platoon number means nothing (build ba drops it); the rival's own tag, which the engine saves
                 // finds it again. Older Meitou without tags waits until the rival loads near the squad.
-                if (p is null && TaggedPlatoon(world, r) is { } tagged)
-                {
-                    p = tagged;
-                    r.PlatoonId = tagged.Id;
-                    Pursuit.Mark(tagged, TagOf(r)); // Promote a legacy-only match.
-                }
+                p ??= TaggedPlatoon(world, r);
+                string tag = TagOf(r);
                 // seen in play (bv, 0.24): the party steered was one that no longer held the rival (a stand-in left empty, which the game
                 // holds back until the squad leaves), so the hunt stood still and nobody was there; check it holds them, else find the one
                 // that does, else say their whereabouts are unknown
@@ -409,20 +416,17 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
                 {
                     var right = FindHolding(world, r);
                     Note(r, $"party {p.Id} {wrong}; {(right is null ? "no party holds them" : $"found them in party {right.Id}")}");
+                    if (right is not null && Pursuit.ReadTag(p) == tag) Pursuit.Mark(p, "");
                     p = right;
-                    r.PlatoonId = right?.Id ?? -1;
-                    if (right is not null) Tag(right, r);
                 }
-                else if (p is null && FindHolding(world, r) is { } holding)
-                {
-                    p = holding;
-                    r.PlatoonId = holding.Id;
-                    Tag(holding, r);
-                }
+                else if (p is null) p = FindHolding(world, r);
+                r.PlatoonId = p?.Id ?? -1;
                 lost[r.Slot] = p is null && !table.TryResolveNext(r.Id, out _);
                 if (players.Count > 0 && p is { Dead: false })
                 {
-                    PlatoonRetention.Track(world, p, TagOf(r), PlatoonRetention.Kind.Rival, double.NegativeInfinity, r.Next, r);
+                    p.Persistent = true;
+                    Tag(p, r, tag);
+                    PlatoonRetention.Track(world, p, tag, PlatoonRetention.Kind.Rival, double.NegativeInfinity, r.Next, r);
                     var (faction, tier, arm, leg) = Fitted(cold);
                     Pursuit.Steer(world, p, players, BarkLines.Rival(r.Grudge, r.Returns, r.Wins, r.Slot + r.Returns, faction, tier, arm, leg), r.Name, rivalCue: true);
                     if (!table.TryResolveNext(r.Id, out _)) (r.X, r.Z) = (p.Position.X, p.Position.Y);   // off screen: where the stand-in is
@@ -596,11 +600,11 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
     }
 
     /// <summary>Marks the known actor's platoon, preserving other TWR roles and foreign marks.</summary>
-    static void Tag(Platoon p, Rival r)
+    static void Tag(Platoon p, Rival r, string? tag = null)
     {
         string? old = Pursuit.ReadTag(p);
         if (Pursuit.IsTwrTag(old) && !old!.StartsWith(RivalTagPrefix, StringComparison.Ordinal)) return;
-        Pursuit.Mark(p, TagOf(r));
+        Pursuit.Mark(p, tag ?? TagOf(r));
     }
 
     /// <summary>The rival's platoon found by its saved tag, or null if absent or ambiguous.</summary>
@@ -743,7 +747,9 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
     }
 
     /// <summary>The Atlas's rivals: (name, the list line, the page).</summary>
-    public IEnumerable<(string Name, string Row, List<string> Page)> AtlasRows()
+    public IEnumerable<(string Name, string Row, List<string> Page)> AtlasRows() => AtlasRows(null, 0);
+
+    internal IEnumerable<(string Name, string Row, List<string> Page)> AtlasRows(AtlasBook? locations, double now)
     {
         foreach (var r in rivals.Where(x => x.Told).OrderBy(x => x.Made))
         {
@@ -752,16 +758,38 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
                 Phase.Hunting => "out looking for your squad", Phase.Recovering => "licking their wounds", Phase.Dead => "dead",
                 Phase.Jailed => "in chains", Phase.Recruited => "joined your squad", _ => "not seen in a long while",
             };
+            if (locations is not null && WhereaboutsUnknown(r)) state = "whereabouts unknown";
             var page = new List<string>
             {
                 $"-- {r.Name}, a rival --",
                 $"{Once(r)} {char.ToUpperInvariant(r.Grudge[0])}{r.Grudge[1..]}{(r.By.Length > 0 ? $" ({r.By})" : "")}, day {Math.Floor(r.Made / 24):0}.",
                 $"{char.ToUpperInvariant(state[0])}{state[1..]}.",
             };
+            if (locations?.Position(LocationKey(r), LocationIdentity(r)) is { } place)
+                page.Add(place.Line(now));
             if (r.Returns > 0) page.Add(r.Returns == 1 ? "Has come back for your squad once and got away." : $"Has come back for your squad {r.Returns} times and got away each time.");
             if (r.Wins > 0) page.Add(r.Wins == 1 ? "Has beaten your squad once, and tells everyone." : $"Has beaten your squad {r.Wins} times, and tells everyone.");
             if (r.Active) page.Add("Stronger each time they come back.");
             yield return (r.Name, $"{r.Name} ({state})", page);
+        }
+    }
+
+    bool WhereaboutsUnknown(Rival r) => r.Phase == Phase.Lost ||
+        (r.Phase == Phase.Hunting && lost.GetValueOrDefault(r.Slot));
+
+    static string LocationKey(Rival r) => $"rival:{r.Slot}";
+    static string LocationIdentity(Rival r) => FormattableString.Invariant($"{r.Name}|{r.Made:R}");
+
+    internal IEnumerable<MapMark> ObservedMarks(AtlasBook locations, double now)
+    {
+        foreach (var r in rivals)
+        {
+            if (!r.Told || r.Phase is not (Phase.Hunting or Phase.Recovering or Phase.Lost) ||
+                locations.Position(LocationKey(r), LocationIdentity(r)) is not { } place) continue;
+            bool unknown = WhereaboutsUnknown(r);
+            yield return new MapMark(MarkKind.Rival, place.X, place.Z,
+                unknown ? $"{r.Name} (whereabouts unknown)" : r.Name,
+                (unknown ? "\tWhereabouts unknown.\n" : "") + $"\t{place.Line(now)}", 0);
         }
     }
 
@@ -802,19 +830,30 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
         LwMod.Log($"rivals: {r.Name}: {line}");
     }
 
-    /// <summary>Null when <paramref name="p"/> holds the rival (or can't be told: a party from a save, kept the save's way); else why not.</summary>
+    /// <summary>Null when the roster verifies a living rival, or an older unrostered save still has the exact rival tag.</summary>
     internal static string? Holding(World world, Platoon p, Rival r)
     {
         if (p.Dead) return "is gone";
         if (p.Regenerate) return "is to be made afresh by the game (its people are gone)";
         if (p.State == PlatoonState.Loaded)
-            return world.Squads.Find(p.SquadId) is { } squad && squad.Members.Any(m => IsRivalMember(world, r, m)) ? null : "is in the world without them";
-        if (p.Stored is { } stored) return stored.Members.Any(m => m.Cold.Name == r.Name) ? null : "is off screen without them";
-        return null;
+            return world.Squads.Find(p.SquadId) is { } squad &&
+                squad.Members.Any(m => world.Characters.TryResolveNext(m, out int s) && world.Characters.Next[s].Alive &&
+                    world.Characters.Cold(s) is { } cold && MatchesRoster(r, cold))
+                ? null : "is in the world without them";
+        if (p.Stored is { } stored)
+            return stored.Members.Any(m => MatchesRoster(r, m.Cold)) ? null : "is off screen without them";
+        if (p.Saved is { } saved)
+            return saved.Members.Any(m => !m.Gone && !m.Dead &&
+                (r.ActorId != 0 && LastingActors.Available ? LastingActors.OfSaved(world, m) == r.ActorId : m.Source.Name == r.Name))
+                ? null : "has no matching living rival in its saved party";
+        // Preserve tagged legacy saves which cannot give us an actor ID or a roster yet.
+        return r.ActorId == 0 && p.State == PlatoonState.Unloaded && Pursuit.ReadTag(p) == TagOf(r)
+            ? null : "has no known roster";
     }
 
-    static bool IsRivalMember(World world, Rival r, CharacterId m) =>
-        m == r.Id || (world.Characters.TryResolveNext(m, out int s) && world.Characters.Cold(s)?.Name == r.Name);
+    static bool MatchesRoster(Rival r, CharacterCold cold) =>
+        cold is { IsPlayer: false, Animal: null, DiedTick: < 0, Medical: not { Dead: true } } &&
+        (r.ActorId != 0 && LastingActors.Available ? LastingActors.Of(cold) == r.ActorId : cold.Name == r.Name);
 
     /// <summary>The living party that holds the rival, loaded or off screen; null if none (or two: never guess).</summary>
     internal static Platoon? FindHolding(World world, Rival r)
@@ -822,8 +861,9 @@ public sealed partial class RivalsSystem(PopulationData? data) : ITickSystem, IM
         Platoon? found = null;
         foreach (var p in world.Platoons.All)
         {
-            if (p is not { Dead: false, Regenerate: false } || Holding(world, p, r) is not null) continue;
-            if (p.State != PlatoonState.Loaded && p.Stored is null) continue;   // can't be told off screen: not a match
+            if (p is not { Dead: false, Regenerate: false }) continue;
+            if (p.State != PlatoonState.Loaded && p.Stored is null && p.Saved is null) continue;
+            if (Holding(world, p, r) is not null) continue;
             if (found is not null) return null;
             found = p;
         }

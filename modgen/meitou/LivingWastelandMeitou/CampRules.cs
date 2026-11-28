@@ -63,6 +63,9 @@ public static class CampRules
     /// zones around the player are loaded, and a camp must never appear or vanish in sight). World units are 0.1 m.</summary>
     public const float MoveClearance = 3 * CellSize;
 
+    /// <summary>How far a camp can relocate in one activity stretch (2 km).</summary>
+    public const float MoveLimit = 20000f;
+
     /// <summary>The camp's size for an activity: gathering men adds two, licking wounds takes one, never below two (leader and one).</summary>
     public static int Size(int planned, int doing) => doing switch
     {
@@ -78,11 +81,17 @@ public static class CampRules
     /// <summary>
     /// A spot for an outlaw's camp in one stretch: a point in one of the outlaw's region cells, on dry ground, at the activity's distance
     /// from the nearest town. The same seed, outlaw, stretch and activity always give the same spot (or none), so nothing but the last spot
-    /// needs saving. If no try fits the distance rule, the first dry spot anywhere in the regions is used; null if there is none.
+    /// needs saving. Relocations search around their existing spot. The fall-back is the first dry spot outside towns in that search.
     /// </summary>
     public static (float X, float Z)? Spot(ulong seed, int outlaw, long period, int doing, IReadOnlyList<(int X, int Z)> cells,
-        IReadOnlyList<(float X, float Z)> towns, Func<float, float, bool> dry)
+        IReadOnlyList<(float X, float Z)> towns, Func<float, float, bool> dry, (float X, float Z)? from = null)
     {
+        if (from is { } origin)
+        {
+            var lower = CellOf(origin.X - MoveLimit, origin.Z - MoveLimit);
+            var upper = CellOf(origin.X + MoveLimit, origin.Z + MoveLimit);
+            cells = cells.Where(c => c.X >= lower.X && c.X <= upper.X && c.Z >= lower.Z && c.Z <= upper.Z).ToList();
+        }
         if (cells.Count == 0) return null;
         var (min, max) = TownDistance(doing);
         (float X, float Z)? fallback = null;
@@ -94,6 +103,7 @@ public static class CampRules
             // keep a margin from the cell's edge so the spot is inside the region, not on its border
             float x = x0 + CellSize * (0.1f + 0.8f * Unit(h >> 8));
             float z = z0 + CellSize * (0.1f + 0.8f * Unit(h >> 32));
+            if (from is { } start && (x - start.X) * (x - start.X) + (z - start.Z) * (z - start.Z) > MoveLimit * MoveLimit) continue;
             if (!dry(x, z)) continue;
             float d = NearestTown(x, z, towns);
             if (d >= min && d <= max) return (x, z);

@@ -226,6 +226,29 @@ public sealed class SteamRollbackWorldTests
         Assert.Equal(Write(expected), Write(rollback));
     }
 
+    [Fact]
+    public void Atlas_locations_follow_the_old_atlas_book_and_bo_can_still_read_it()
+    {
+        const string name = nameof(AtlasSystem);
+        byte[] seed = SteamSaveSamples.For(name);
+        var atlas = (AtlasSystem)Create(Current, name);
+        Read(atlas, seed);
+        atlas.Locations.Locate("camp:Fixture", new LastKnownPlace("Fixture", 3000, 5000, "Squin", 24, true));
+        byte[] appended = Write(atlas);
+        Assert.True(appended.AsSpan().StartsWith(seed));
+        Assert.True(appended.Length > seed.Length);
+        var restored = (AtlasSystem)Create(Current, name);
+        Read(restored, appended);
+        Assert.Equal("Last reported near Squin, two days ago.", restored.Locations.Position("camp:Fixture", "Fixture")!.Line(74));
+
+        if (Previous.Value is not { } old) return;
+        var expected = Create(old, name);
+        Read(expected, seed);
+        var rollback = Create(old, name);
+        Read(rollback, appended);
+        Assert.Equal(Write(expected), Write(rollback));
+    }
+
     static IModSaveData Create(Assembly assembly, string name)
     {
         var type = assembly.GetType($"LivingWasteland.MeitouMod.{name}", throwOnError: true)!;

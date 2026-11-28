@@ -135,4 +135,12 @@ public sealed class PanelLinesWorldTests
         }
         finally { (KeepsakeBook.Slots, Trophies.Warrant) = (keepsakes, warrant); }
     }
+
+    [Fact]
+    public void Beside_Kill_Counter_the_row_says_whose_count_it_is()
+    {
+        // roadmap 2.32: dxseba's Kill Counter keeps its own kill tally on the character panel, counted its own way
+        Assert.Equal("Record", PanelLines.RecordLabel(killCounter: false));
+        Assert.Equal("Squad record", PanelLines.RecordLabel(killCounter: true));
+    }
 }

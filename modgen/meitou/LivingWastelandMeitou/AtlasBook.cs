@@ -12,6 +12,17 @@ public sealed record AtlasPerson(string? Id = null, string Epithet = "", string?
 /// <summary>A line heard: what was said, where, when (game hours).</summary>
 public sealed record Heard(string Text, string Place, double Hours);
 
+internal sealed record LastKnownPlace(string Identity, float X, float Z, string Town, double Hours, bool Reported)
+{
+    internal string Line(double now)
+    {
+        int days = (int)Math.Max(0, Math.Floor((now - Hours) / 24));
+        string age = days switch { 0 => "today", 1 => "a day ago", 2 => "two days ago", _ => $"{days} days ago" };
+        string where = Town.Length > 0 ? $"near {Town}" : "out in the wilds";
+        return $"{(Reported ? "Last reported" : "Last seen")} {where}, {age}.";
+    }
+}
+
 /// <summary>Tells which gossip template a said line is (a template's /TOKEN/ stands for any text), and whom it is about.</summary>
 public sealed class AtlasMatcher
 {
@@ -52,10 +63,16 @@ public sealed class AtlasMatcher
 public sealed class AtlasBook
 {
     public const int Keep = 5;
+    const int PlacesTag = 0x4C574B50;
     readonly SortedDictionary<string, List<Heard>> about = new(StringComparer.Ordinal);
     readonly SortedDictionary<string, int> heardCount = new(StringComparer.Ordinal);
     readonly SortedSet<string> met = new(StringComparer.Ordinal);
     readonly SortedDictionary<string, Heard> seen = new(StringComparer.Ordinal);    // person -> where and when the squad last saw them (Text unused)
+    readonly SortedDictionary<string, LastKnownPlace> knownPlaces = new(StringComparer.Ordinal);
+
+    internal void Locate(string key, LastKnownPlace place) => knownPlaces[key] = place;
+    internal LastKnownPlace? Position(string key, string identity) =>
+        knownPlaces.TryGetValue(key, out var place) && place.Identity == identity ? place : null;
 
     /// <summary>Notes that the squad saw a person at a place (the latest sighting is kept).</summary>
     public void Saw(string person, string place, double hours) => seen[person] = new Heard("", place, hours);
@@ -101,11 +118,19 @@ public sealed class AtlasBook
         foreach (var m in met) w.Write(m);
         w.Write(seen.Count);
         foreach (var (k, h) in seen) { w.Write(k); w.Write(h.Place); w.Write(h.Hours); }
+        if (knownPlaces.Count == 0) return;
+        w.Write(PlacesTag);
+        w.Write(knownPlaces.Count);
+        foreach (var (key, p) in knownPlaces)
+        {
+            w.Write(key); w.Write(p.Identity); w.Write(p.X); w.Write(p.Z);
+            w.Write(p.Town); w.Write(p.Hours); w.Write(p.Reported);
+        }
     }
 
     public void Read(BinaryReader r)
     {
-        about.Clear(); heardCount.Clear(); met.Clear(); seen.Clear();
+        about.Clear(); heardCount.Clear(); met.Clear(); seen.Clear(); knownPlaces.Clear();
         int format = r.BaseStream.Position >= r.BaseStream.Length ? 0 : r.ReadInt32();
         if (format is not (1 or 2)) return;
         for (int n = r.ReadInt32(); n > 0; n--)
@@ -117,6 +142,10 @@ public sealed class AtlasBook
         }
         for (int n = r.ReadInt32(); n > 0; n--) met.Add(r.ReadString());
         if (format >= 2) for (int n = r.ReadInt32(); n > 0; n--) { string k = r.ReadString(); seen[k] = new Heard("", r.ReadString(), r.ReadDouble()); }
+        if (r.BaseStream.Length - r.BaseStream.Position >= 8 && r.ReadInt32() == PlacesTag)
+            for (int n = r.ReadInt32(); n > 0; n--)
+                knownPlaces[r.ReadString()] = new LastKnownPlace(r.ReadString(), r.ReadSingle(), r.ReadSingle(),
+                    r.ReadString(), r.ReadDouble(), r.ReadBoolean());
     }
 
     public int HashCount => about.Count * 31 + met.Count;

@@ -17,6 +17,41 @@ public class GossipMemoryTests
     }
 
     [Fact]
+    public void A_repeated_rumour_counts_as_another_telling()
+    {
+        var g = new GossipMemory();
+        const string rumour = "Borun Vahl hit a caravan.";
+        g.Told("v", "Squin", rumour, 10);
+        g.Told("v", "Squin", rumour, 17);
+        Assert.False(g.MayTell("v", 18));
+        Assert.Equal(rumour, g.LastBy("v", 18));
+        Assert.Equal(rumour, g.FromTown("Squin", 18, 1));
+        Assert.True(g.MayTell("v", 34.1));
+    }
+
+    [Fact]
+    public void Dialogue_gossip_gate_checks_the_window_without_allocating()
+    {
+        var g = new GossipMemory();
+        g.Told("v", null, "Road's bad.", 10);
+        g.Told("v", null, "Hungry out here.", 11);
+        for (int i = 0; i < 1000; i++) g.MayTell("v", 34);
+
+        int allowed = 0;
+        long before = GC.GetAllocatedBytesForCurrentThread();
+        for (int i = 0; i < 10000; i++)
+        {
+            if (g.MayTell("v", 34)) allowed++;
+            if (g.MayTell("v", 34.01)) allowed++;
+            if (g.MayTell("v", 10)) allowed++;
+        }
+        long allocated = GC.GetAllocatedBytesForCurrentThread() - before;
+
+        Assert.Equal(20000, allowed);
+        Assert.Equal(0, allocated);
+    }
+
+    [Fact]
     public void Asked_for_news_they_repeat_what_they_told_or_what_the_town_says()
     {
         var g = new GossipMemory();

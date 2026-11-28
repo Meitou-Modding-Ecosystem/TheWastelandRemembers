@@ -1,6 +1,8 @@
 using System.Reflection;
 using System.Linq.Expressions;
+using Meitou.Data.Save;
 using Meitou.Simulation;
+using Meitou.Simulation.Saving;
 
 namespace LivingWasteland.MeitouMod;
 
@@ -13,6 +15,8 @@ internal static class LastingActors
     static readonly PropertyInfo? value = id?.GetProperty("Value");
     static readonly ConstructorInfo? wrap = id?.GetConstructor([typeof(ulong)]);
     static readonly MethodInfo? find = id is null ? null : registry?.PropertyType.GetMethod("Find", [id]);
+    static readonly MethodInfo? forSaved = registry?.PropertyType.GetMethod("ForSaved",
+        BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, null, [typeof(SaveCharacter)], null);
     static readonly PropertyInfo? savedCold = typeof(Meitou.Simulation.Saving.SavedMember).GetProperty("Cold");
     static readonly PropertyInfo? actorId = typeof(CharacterCold).GetProperty("LastingId");
 
@@ -47,7 +51,17 @@ internal static class LastingActors
         return Expression.Lambda<Func<Meitou.Simulation.Saving.SavedMember, CharacterCold?>>(Expression.Property(member, savedCold!), member).Compile();
     });
 
-    static T? Bind<T>(Func<T> compile) where T : Delegate
+    // An unmaterialised saved platoon has no Cold yet. Use the engine's save-handle-to-lasting-ID lookup.
+    static readonly Func<World, SaveCharacter, ulong>? resolveSaved = Bind(static () =>
+    {
+        if (forSaved is null || forSaved.ReturnType != id) return null;
+        var world = Expression.Parameter(typeof(World));
+        var actor = Expression.Parameter(typeof(SaveCharacter));
+        var call = Expression.Call(Expression.Property(world, registry!), forSaved, actor);
+        return Expression.Lambda<Func<World, SaveCharacter, ulong>>(Expression.Property(call, value!), world, actor).Compile();
+    });
+
+    static T? Bind<T>(Func<T?> compile) where T : Delegate
     {
         if (!Available) return null;
         try { return compile(); }
@@ -73,6 +87,12 @@ internal static class LastingActors
         if (!Available) return 0;
         var actor = readSaved is not null ? readSaved(member) : savedCold?.GetValue(member) as CharacterCold;
         return actor is not null ? Of(actor) : 0;
+    }
+
+    internal static ulong OfSaved(World world, SavedMember member)
+    {
+        ulong identity = OfSaved(member);
+        return identity != 0 ? identity : resolveSaved?.Invoke(world, member.Source) ?? 0;
     }
 
     internal static CharacterId Find(World world, ulong assigned)
