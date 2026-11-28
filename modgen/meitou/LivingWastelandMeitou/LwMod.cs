@@ -39,6 +39,8 @@ public sealed class LwSettings
     [Setting("Rumour and gossip amount (%)", Hint = "How often people pass on rumours, outlaw news, war talk and talk about titles. 100 is as written, 0 is none.",
         Min = 0, Max = 200, Step = 10)]
     public int Gossip { get; set; } = 40;
+    [Setting("Rumours fit their speaker (test)", Hint = "Travellers speak of the roads. Guards and traders pass on town news. Only rumours the squad hears use a speaker's allowance.")]
+    public bool RumoursFitSpeaker { get; set; } = PlayTest.On;
 
     [Setting("Bar patrons chat", Hint = "Bar patrons talk among themselves when you are in the bar (Meitou does not do this by itself yet).")]
     public bool BarTalk { get; set; } = true;
@@ -134,6 +136,10 @@ public sealed class LwSettings
     public bool TownHandovers { get; set; } = PlayTest.On;
     [Setting("Marks on the world map (test)", Hint = "Meitou v0.20.2-nightly.20261117 and later: the world map marks rivals still about, outlaw camps the Atlas knows and places of news your squad heard this week.")]
     public bool MapMarks { get; set; } = PlayTest.On;
+    [Setting("Last known whereabouts (test)", Hint = "Keep the last place a rival or camp was seen or reported. Seen locations and rumours can go stale.")]
+    public bool LastKnownPlaces { get; set; } = PlayTest.On;
+    [Setting("Squadmate chronicle chapters (test)", Hint = "The saved chronicle gives each squadmate a chapter and shows titles within reach.")]
+    public bool ChronicleChapters { get; set; } = PlayTest.On;
     [Setting("Ask townsfolk for news", Hint = "Meitou 0.20.2 and later: right-click someone in a town and ask for news. They tell you the biggest news that has reached them, and your squad has heard it.")]
     public bool AskForNews { get; set; } = true;
     [Setting("Factions' change of heart in History (test)", Hint = "Meitou v0.20.2-nightly.20261117 and later: when a faction turns against your squad or warms to it, History says why (a killing, a crime they saw, a war).")]
@@ -418,8 +424,16 @@ public sealed class LwMod : IMod
             }
         }
         // and nobody runs through every rumour in town (seen in play, bv: one vagrant told them all): GossipMemory.MaxPerDay each
-        if (table.Gossip is { Code: > 0 } g) c.AddDialogueCondition(g.Code, check => check.Matches(GossipRoll(check) < Settings.Gossip / 200.0
-            && GossipLink.For(check.World).MayTell(GossipLink.Key(check.World, check.Speaker), check.World.GameHours)));
+        GossipLink.DeliveryAvailable = table.Gossip is { Delivery: > 0 };
+        if (table.Gossip is { Code: > 0 } g)
+        {
+            c.AddDialogueCondition(g.Code, check => check.Matches(GossipAllowed(check)));
+            if (g.Road > 0) c.AddDialogueCondition(g.Road, check => check.Matches(GossipAllowed(check, RumourTopic.Road)));
+            if (g.Civic > 0) c.AddDialogueCondition(g.Civic, check => check.Matches(GossipAllowed(check, RumourTopic.Civic)));
+            if (g.Uncounted > 0) c.AddDialogueCondition(g.Uncounted, check => check.Matches(GossipAllowed(check, uncounted: true)));
+            if (g.Rival > 0) c.AddDialogueCondition(g.Rival, check => check.Matches(!GossipLink.Preview || GossipAllowed(check, RumourTopic.Road, undoubled: true)));
+            if (g.Delivery > 0) c.AddDialogueEffect(g.Delivery, GossipLink.Queue);
+        }
         if (table.Talk is { Code: > 0 } t)
         {
             c.AddDialogueCondition(t.Code, check => check.Matches(TalkPacer.Allow(check.World, check.Speaker)
@@ -479,6 +493,18 @@ public sealed class LwMod : IMod
         h = (h ^ (h >> 31)) * 0xBF58476D1CE4E5B9UL;
         h ^= h >> 29;
         return (h >> 11) / (double)(1UL << 53);
+    }
+
+    static bool GossipAllowed(DialogueCheck check, RumourTopic topic = RumourTopic.Any, bool uncounted = false, bool undoubled = false)
+    {
+        if (GossipRoll(check) >= Settings.Gossip / (undoubled ? 100.0 : 200.0)) return false;
+        if (GossipLink.Preview)
+        {
+            if (uncounted) return true;
+            if (topic != RumourTopic.Any && GiverRules.SpeakerTopic(RecordNameOf(check.World, check.Speaker)) is var role
+                && role != RumourTopic.Any && role != topic) return false;
+        }
+        return GossipLink.For(check.World).MayTell(GossipLink.Key(check.World, check.Speaker), check.World.GameHours);
     }
 
     /// <summary>
@@ -612,7 +638,7 @@ public sealed class LwMod : IMod
     }
 
     /// <summary>The name of the character's record ("Starving Vagrant"), or null if it can't be read.</summary>
-    static string? RecordNameOf(World world, CharacterId who)
+    internal static string? RecordNameOf(World world, CharacterId who)
     {
         var data = LwState.For(world).Data;
         var table = world.Characters;
@@ -686,6 +712,11 @@ public sealed class LwMod : IMod
         if (camps.Count == 0) return;
         if (news is not null)
         {
+            if (news.Report > 0) c.AddDialogueEffect(news.Report, act =>
+            {
+                if (AtlasSystem.TrackPlaces)
+                    OutlawCampsSystem.For(act.World)?.HeardCamp(act.World, act.Effect.Value, act.Speaker);
+            });
             // gossip that points (where a camp is) and outlaws who react (days since the squad struck them); the outlaw is found by name
             OutlawCampsSystem.NewsTowns = news.Towns;
             foreach (var n in news.Outlaws)
@@ -914,7 +945,7 @@ public sealed class LwMod : IMod
     sealed record WarTownTable(List<string> Factions, List<WarTownCode> Towns);
     sealed record WarTownCode(int Code, string Town);
     sealed record NamedKillCode(string Name, int Killed, int Days);
-    sealed record GossipTable(int Code, int Dialogues);
+    sealed record GossipTable(int Code, int Dialogues, int Road = 0, int Civic = 0, int Uncounted = 0, int Delivery = 0, int Rival = 0);
     sealed record OutlawCode(int Code, int Index, string Name);
     sealed record WarCode(int Code, string Faction, bool Player);
     sealed record NotorietyTable(int HeatCondition, int HeatEffect, List<TitleCode> Titles);
@@ -1013,6 +1044,8 @@ public sealed class LwState
 
 /// <summary>"Give up a job", queued from the F10 row and applied in the tick (the row itself must not touch the world).</summary>
 public sealed record GiveUpJob(string Which) : SimCommand;
+
+internal sealed record HearRumour(CharacterId Speaker, RumourTopic Topic) : SimCommand;
 
 /// <summary>Squad roles: squad <paramref name="SquadId"/> escorts squad <paramref name="Target"/> (-1: escorts nobody). Saved in LwCore.</summary>
 public sealed record SetEscort(int SquadId, int Target) : SimCommand;
@@ -1148,6 +1181,8 @@ public sealed class LwSystem(PopulationSystem? population, DialogueSystem? talk,
         }
         foreach (var c in commands)
         {
+            if (c is HearRumour heard && GossipLink.Preview)
+                GossipLink.Delivered(world, talk, data, heard.Speaker, heard.Topic);
             if (c is SetEscort e) { SquadRoles.SetEscortPreference(world, state.Core, e.SquadId, e.Target); continue; }
             if (c is not GiveUpJob g) continue;
             string? gone = state.Core.GiveUp(g.Which, LwMod.JobVariable);

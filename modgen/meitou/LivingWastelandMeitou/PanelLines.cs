@@ -22,6 +22,16 @@ public static class PanelLines
 
     // ---- what the panels show (pure: the squad record only) ----
 
+    /// <summary>
+    /// "Record", or "Squad record" beside dxseba's Kill Counter (roadmap 2.32, from the 88-90 companion review): that mod keeps its own kill
+    /// tally on the character panel, counted its own way, so two kill figures must not read as one counter. Detected by its assembly name
+    /// once a load has finished (mods load in any order); nothing of its data is read.
+    /// </summary>
+    public static string RecordLabel(bool killCounter) => killCounter ? "Squad record" : "Record";
+
+    static bool? killCounter;
+    static bool KillCounterLoaded => killCounter ??= AppDomain.CurrentDomain.GetAssemblies().Any(a => a.GetName().Name == "KillCounter");
+
     /// <summary>A squad member's rows: their titles, and their record once they have one.</summary>
     public static List<Row> MemberRows(SquadRecord record, string key)
     {
@@ -33,7 +43,7 @@ public static class PanelLines
             rows.Add(new Row("Known as", names[^1], names.Count > 1 ? "Titles: " + string.Join(", ", names) + "." : null));
         }
         if (m.Kills > 0 || m.Fights > 0)
-            rows.Add(new Row("Record", $"{m.Kills} {(m.Kills == 1 ? "kill" : "kills")}, {m.FightsWon} of {m.Fights} fights won"));
+            rows.Add(new Row(RecordLabel(KillCounterLoaded), $"{m.Kills} {(m.Kills == 1 ? "kill" : "kills")}, {m.FightsWon} of {m.Fights} fights won"));
         return rows;
     }
 

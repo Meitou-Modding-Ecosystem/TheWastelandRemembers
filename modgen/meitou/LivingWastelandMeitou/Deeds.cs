@@ -710,6 +710,54 @@ public sealed class SquadRecord(IReadOnlyList<TitleRule> rules)
 
     static bool AllDead(IReadOnlyList<string> targets, List<string> dead) => targets.All(t => dead.Any(d => TitleRule.Matches(t, d)));
 
+    internal List<(string Title, string Body)> ChronicleChapters(IReadOnlySet<string> present)
+    {
+        var chapters = new List<(string, string)>();
+        var next = NextTitles(null, 3);
+        if (next.Length > 0) chapters.Add(("Titles within reach", next));
+
+        var dead = fallen.Select(f => f.Name).ToHashSet(StringComparer.Ordinal);
+        foreach (var (key, member) in members)
+        {
+            if (dead.Contains(key)) continue;
+            string body = present.Contains(key) ? "With the squad." : "In the squad's record.";
+            body += $"\n{member.Kills} confirmed kills, {member.FightsWon} fights won.";
+            if (member.Titles.Count > 0) body += "\nKnown as " + string.Join(", ", member.Titles.Select(TitleName)) + ".";
+            if (present.Contains(key) && NextTitles(member, 1) is { Length: > 0 } close)
+                body += "\nWithin reach: " + close + ".";
+            chapters.Add((D(key), body));
+        }
+        foreach (var f in fallen)
+        {
+            string cause = f.Killer is null ? f.Cause ?? "Fell" : "Fell";
+            string when = $"{cause} {(f.Place == "the wilds" ? "in" : "at")} {f.Place} on day {(int)(f.Hours / 24)}";
+            if (f.Killer is { Length: > 0 } killer)
+                when += $", killed by {killer}{(string.IsNullOrEmpty(f.KillerFaction) ? "" : $" of {f.KillerFaction}")}";
+            string served = f.DaysServed < 1 ? "less than a day" : $"{f.DaysServed:0} days";
+            string body = $"{when}.\nServed {served}, with {f.Kills} confirmed kills.";
+            if (f.Titles.Count > 0) body += "\nKnown as " + string.Join(", ", f.Titles) + ".";
+            if (f.AvengedBy is { } avenger) body += $"\nAvenged by {D(avenger)}.";
+            chapters.Add((D(f.Name), body));
+        }
+        return chapters;
+    }
+
+    string NextTitles(MemberRecord? member, int count)
+    {
+        var held = member?.Titles ?? crewTitles;
+        var progress = new List<(TitleRule Rule, double Current, int Required)>();
+        foreach (var rule in rules)
+        {
+            if (rule.Scope != (member is null ? "squad" : "member") || held.Contains(rule.Id)) continue;
+            var (current, required) = rule is { Stat: "named", Targets: { Count: > 0 } targets }
+                ? ((double)targets.Count(target => (member?.Named ?? namedDead).Any(name => TitleRule.Matches(target, name))), targets.Count)
+                : (member is null ? CrewValue(rule) : Value(rule, member), rule.At);
+            if (current > 0 && current < required) progress.Add((rule, current, required));
+        }
+        return string.Join("\n", progress.OrderByDescending(p => p.Current / p.Required).ThenBy(p => p.Rule.Id, StringComparer.Ordinal)
+            .Take(count).Select(p => $"{p.Rule.Name} ({p.Current:0.##} of {p.Required})"));
+    }
+
     public static double Value(TitleRule r, MemberRecord m) => r.Stat switch
     {
         "kills" => r.Faction is null ? m.Kills : m.KillsOf(r.Faction),
@@ -1016,6 +1064,7 @@ public static class RecordHost
 
     /// <summary>The Fallen page's text (newest first), rebuilt with <see cref="Panel"/>.</summary>
     public static volatile string FallenText = "No world yet.";
+    internal static volatile IReadOnlyList<(string Title, string Body)> Chronicle = [];
 
     /// <summary>Set by the stand-alone Squad Record when it finds the Living Wasteland helper loaded after all: it records nothing and its
     /// button is hidden (the helper has the record built in).</summary>

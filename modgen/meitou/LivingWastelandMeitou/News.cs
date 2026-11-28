@@ -353,15 +353,22 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
         else if (LocalKindness(world, cold, at) is { } local) line = local;
         // the board has nothing: what they told the squad themselves lately, or what the town has been saying, never "Haven't heard a
         // thing" from someone who just told a rumour (seen in play, bv)
-        else if (NewsAskRules.Fallback(GossipLink.For(world).LastBy(GossipLink.Key(world, who), world.GameHours),
-                     GossipLink.For(world).FromTown(data?.TownAt(at) is >= 0 and var site && site < data.Sites.Count ? data.Sites[site].Town.Name : null,
-                         world.GameHours, (ulong)world.Tick), (ulong)world.Tick ^ (ulong)s) is { } heard) line = heard;
+        else if (RumourReply(world, who, at, s) is { } heard) line = heard;
         foreach (var gone in toldAt.Keys.Where(k => !board.Items.Contains(k)).ToList()) toldAt.Remove(gone);
         world.Bark(who, line);
         if (i >= 0 && !live[i].Heard) HearOne(world, live[i]);
         if (PlaytestLog.Enabled)
             PlaytestLog.Event(world, "news", i >= 0 ? $"report:{live[i].Id}" : "", "asked", $"{cold.Name}: {line}");
         LwMod.Log($"ask for news: {cold.Name} said \"{line}\"");
+    }
+
+    string? RumourReply(World world, CharacterId who, Vector3 at, int slot)
+    {
+        var gossip = GossipLink.For(world);
+        var topic = GossipLink.Preview ? GiverRules.SpeakerTopic(LwMod.RecordNameOf(world, who)) : RumourTopic.Any;
+        string? town = data?.TownAt(at) is >= 0 and var site && site < data.Sites.Count ? data.Sites[site].Town.Name : null;
+        return NewsAskRules.Fallback(gossip.LastBy(GossipLink.Key(world, who), world.GameHours),
+            gossip.FromTown(town, world.GameHours, (ulong)world.Tick, topic), (ulong)world.Tick ^ (ulong)slot);
     }
 
     // The squad already knows the deed. Keep this as a local answer, outside the report board and its History.
@@ -395,10 +402,23 @@ public sealed class NewsSystem(PopulationData? data) : ITickSystem, IModSaveData
     readonly Dictionary<NewsItem, double> toldAt = [];
 
     /// <summary>The map marks (NightlyHooks): rivals about, known outlaw camps, news heard this week.</summary>
-    List<MapMark> Marks(World world) => MapMarkRules.Build(
-        RivalsSystem.For(world)?.Told().Select(r => (r.Name, r.Phase, r.X, r.Z, r.Grudge)) ?? [],
-        OutlawCampsSystem.For(world)?.KnownCamps(world) ?? [],
-        board.Items.Where(n => n.Heard && (n.Source is not (OutpostSource or NewsBoard.TownSource or PrisonerSource or NewsBoard.LeaderSource) || Enabled(n))).Select(n => (n.Text, n.Place, n.X, n.Z, n.HeardHours)), world.GameHours);
+    List<MapMark> Marks(World world)
+    {
+        var rivals = RivalsSystem.For(world);
+        var outlaws = OutlawCampsSystem.For(world);
+        var locations = AtlasSystem.TrackPlaces ? AtlasSystem.For(world)?.Locations : null;
+        var marks = MapMarkRules.Build(
+            locations is null ? rivals?.Told().Select(r => (r.Name, r.Phase, r.X, r.Z, r.Grudge)) ?? [] : [],
+            locations is null ? outlaws?.KnownCamps(world) ?? [] : [],
+            board.Items.Where(n => n.Heard && (n.Source is not (OutpostSource or NewsBoard.TownSource or PrisonerSource or NewsBoard.LeaderSource) || Enabled(n)))
+                .Select(n => (n.Text, n.Place, n.X, n.Z, n.HeardHours)), world.GameHours);
+        if (locations is not null)
+        {
+            if (outlaws is not null) marks.InsertRange(0, outlaws.ObservedMarks(world, locations).Take(MapMarkRules.MaxOutlaws));
+            if (rivals is not null) marks.InsertRange(0, rivals.ObservedMarks(locations, world.GameHours));
+        }
+        return marks;
+    }
 
     /// <summary>What a speaker's news condition sees for slot k: 1 when that news is live and the speaker is within reach of its place.</summary>
     public int SlotValue(World world, int slot, CharacterId speaker)

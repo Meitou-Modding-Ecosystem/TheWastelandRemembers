@@ -67,6 +67,8 @@ DISTPAY_BASE, REACH_BASE = 19600, 19700   # outlaw k (campNews order): effect "p
 GIFT_BASE = 19500             # effect GIFT_BASE + g: give `value` of gift item g to the target
 GOSSIP_CODE = 19102           # condition: passes with the chance set by the helper's "Gossip amount" slider (value 1 = must pass)
 GOSSIP_PREFIXES = ("rm_", "on_", "wn_", "nt_")
+GOSSIP_ROAD, GOSSIP_CIVIC, GOSSIP_UNCOUNTED, GOSSIP_DELIVERY, GOSSIP_RIVAL = range(19104, 19109)
+CAMP_REPORT = 19109
 TALK_CODE = 19103             # condition: passes with the chance set by the helper's "Living Wasteland talk" slider (every dialogue of ours that is
                               # only ever said unprompted: not one the player starts by talking to someone)
 FEATURE_CODES = {"jobs": 19110, "titles": 19111, "memorials": 19112, "alms": 19113}   # condition: the helper's switch for that feature is on
@@ -342,25 +344,76 @@ def convert(builders, recent_marks=(), lw_marks=(), titles=(), camps=(), lw_effe
         csid = _condition_record(b, code, compare_by, who)
         rec["ref"]["conditions"] = list(rec["ref"].get("conditions", [])) + [(csid, int(value), 0, 0)]
         stats["helper_conditions"] = stats.get("helper_conditions", 0) + 1
-    gossip = 0
-    for b in builders:
-        for r in b.records:
-            if r["type"] != B.T_DIALOGUE or not r["name"].startswith(GOSSIP_PREFIXES):
-                continue
-            r["float"]["chance temporary"] = min(100.0, 2 * float(r["float"].get("chance temporary", 100.0)))
-            r["ref"]["conditions"] = list(r["ref"].get("conditions", [])) + [(_condition_record(b, GOSSIP_CODE, 0), 1, 0, 0)]
-            gossip += 1
-    stats["gossip_dialogues"] = gossip
-    # which events each dialogue of ours is said on (EV_PLAYER_TALK_TO_ME: a conversation the player starts)
+    def camp_index(index, spec):
+        return outlaws[spec["name"]] - OUTLAW_BASE if spec["name"] in outlaws else len(outlaws) + index
+
+    camp_reports = {}
+    for i, spec in enumerate(camps):
+        slug = "".join(c.lower() if c.isalnum() else "_" for c in spec["name"]).strip("_")
+        for event in ("bar", "sight"):
+            camp_reports[f"on_{slug}_where_{event}"] = camp_index(i, spec)
+
+    # Which events actually use each root. A hostile reaction can belong to the same
+    # content pack as a sit-down rumour without being a rumour the speaker tells.
     talk_to_me = B._enum(B.EV, "EV_PLAYER_TALK_TO_ME", "event")
+    rumour_events = {B._enum(B.EV, ev, "event") for ev in ("EV_BAR_TALK", "EV_I_SEE_NEUTRAL_SQUAD")}
     events = {}
     for b in builders:
-        for _pkg, adds in getattr(b, "_package_adds", {}).items():
+        for _pkg, adds in b._package_adds.items():
             for dsid, ev in adds:
                 events.setdefault(dsid, set()).add(ev)
-        for _zone, adds in getattr(b, "_zone_adds", {}).items():
+        for _zone, adds in b._zone_adds.items():
             for dsid in adds:
                 events.setdefault(dsid, set()).add(-1)
+
+    gossip = 0
+    for b in builders:
+        records = {r["sid"]: r for r in b.records}
+        gates = {}
+        delivery = None
+        report = None
+        tagged = set()
+        for r in records.values():
+            if r["type"] != B.T_DIALOGUE:
+                continue
+            name = r["name"]
+            if name.startswith(GOSSIP_PREFIXES):
+                r["float"]["chance temporary"] = min(100.0, 2 * float(r["float"].get("chance temporary", 100.0)))
+                if name.endswith("_cry") or events.get(r["sid"], set()) - rumour_events:
+                    gate = GOSSIP_UNCOUNTED
+                else:
+                    gate = GOSSIP_ROAD if name.startswith("on_") else GOSSIP_CIVIC
+            elif name.startswith("rv_") and name.endswith(("_bar", "_sight", "_boast")):
+                gate = GOSSIP_RIVAL
+            else:
+                continue
+            if gate not in gates:
+                gates[gate] = _condition_record(b, gate, 0)
+            r["ref"].setdefault("conditions", []).append((gates[gate], 1, 0, 0))
+            gossip += 1
+            if gate == GOSSIP_UNCOUNTED:
+                continue
+            # Mark the first voiced NPC line along a branch. The effect runs on delivery,
+            # so an identical sentence in an unrelated dialogue cannot spend a rumour.
+            pending = list(r["ref"].get("lines", []))
+            while pending:
+                sid = pending.pop()[0]
+                if sid not in records or sid in tagged:
+                    continue
+                tagged.add(sid)
+                line = records[sid]
+                if line["type"] == B.T_LINE and line["int"].get("speaker") == B.TK["T_ME"] and any(line["str"].values()):
+                    if delivery is None:
+                        delivery = _action_record(b, GOSSIP_DELIVERY)
+                    topic = 2 if gate == GOSSIP_CIVIC else 1
+                    line["ref"].setdefault("effects", []).insert(0, (delivery, topic, 0, 0))
+                    if name in camp_reports:
+                        if report is None:
+                            report = _action_record(b, CAMP_REPORT)
+                        line["ref"]["effects"].append((report, camp_reports[name], 0, 0))
+                else:
+                    pending.extend(line["ref"].get("lines", []))
+    stats["gossip_dialogues"] = gossip
     talk = gated = 0
     for b in builders:
         for r in b.records:
@@ -418,16 +471,17 @@ def convert(builders, recent_marks=(), lw_marks=(), titles=(), camps=(), lw_effe
                                                         for n, p in atlas["people"].items()},
                   "lines": atlas["lines"]} if atlas else None,
         # where outlaw camps are and who the squad has struck (OutlawCamps.cs): codes CAMPTOWN/CAMPDIR/STRUCK + k
-        "campNews": {"towns": camp_towns, "outlaws": [{"name": n, "town": CAMPTOWN_BASE + k, "dir": CAMPDIR_BASE + k, "struck": STRUCK_BASE + k,
+        "campNews": {"towns": camp_towns, "report": CAMP_REPORT if camp_reports else 0, "outlaws": [{"name": n, "town": CAMPTOWN_BASE + k, "dir": CAMPDIR_BASE + k, "struck": STRUCK_BASE + k,
                                                        "pay": DISTPAY_BASE + k, "reach": REACH_BASE + k, "newsReach": NEWSREACH_BASE + k, "successor": SUCCESSOR_BASE + k, "tier": TIER_BASE + k, "reprisal": REPRISAL_BASE + k}
                                                       for n, k in camp_outlaws.items()]},
         # moving outlaw camps (OutlawCamps.cs): the index is the outlaw-news index when the outlaw has news lines, so the camp and the
         # gossip agree on what the outlaw is doing; outlaws without news lines get indexes after those
-        "camps": [{"index": outlaws[c["name"]] - OUTLAW_BASE if c["name"] in outlaws else len(outlaws) + i,
+        "camps": [{"index": camp_index(i, c),
                    "name": c["name"], "character": c["character"], "squad": c["squad"], "reprisal": c.get("reprisal"), "biomes": c["biomes"], "successor": c.get("successor"),
                    **({"infiltrators": c["infiltrators"]} if "infiltrators" in c else {})}
                   for i, c in enumerate(camps)],
-        "gossip": {"code": GOSSIP_CODE, "dialogues": gossip},
+        "gossip": {"code": GOSSIP_CODE, "dialogues": gossip, "road": GOSSIP_ROAD, "civic": GOSSIP_CIVIC,
+                   "uncounted": GOSSIP_UNCOUNTED, "delivery": GOSSIP_DELIVERY, "rival": GOSSIP_RIVAL},
         "notoriety": {"heatCondition": HEAT_CONDITION, "heatEffect": HEAT_EFFECT,
                       "titles": [{"code": title_codes[t["id"]], "id": t["id"], "name": t["name"], "scope": t["scope"], "stat": t["stat"],
                                   "faction": t.get("faction") or t.get("kind"), "targets": t.get("targets") or ([t["target"]] if t.get("target") else None),

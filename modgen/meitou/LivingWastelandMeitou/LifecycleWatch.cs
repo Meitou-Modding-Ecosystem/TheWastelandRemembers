@@ -208,6 +208,7 @@ public static class LifecycleWatch
         try
         {
             if (removedCharacter?.GetValue(removed) is not CharacterId id || id.IsNone) return;
+            if (heldSeen.TryGetValue(world, out var flips)) flips.Remove(id);
             LwDeeds.For(world)?.Tracker?.ForgetCharacter(id);
             PanelLines.Forget(world, id);
             RivalsSystem.For(world)?.ForgetCharacter(id);

@@ -2,6 +2,8 @@ using System.Reflection;
 using System.Runtime.Loader;
 using LivingWasteland.MeitouMod;
 using Meitou.Content;
+using Meitou.Data.Fcs;
+using Meitou.Data.Gameplay.Dialogue;
 using Meitou.Modding;
 using Meitou.Simulation;
 using Meitou.Simulation.Population;
@@ -11,6 +13,7 @@ using Xunit;
 public sealed class SystemRegistrationWorldTests
 {
     const BindingFlags Instance = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+    const int ContractGiver = 19421;
     static readonly string[] Common =
     [
         "lw-atlas", "lw-camps", "lw-deeds", "lw-hunters", "lw-keepsakes", "lw-news",
@@ -41,7 +44,7 @@ public sealed class SystemRegistrationWorldTests
     {
         var helper = shipped ? Environment.GetEnvironmentVariable("TWR_SHIPPED_HELPER_DLL") : typeof(LwMod).Assembly.Location;
         if (string.IsNullOrWhiteSpace(helper)) return; // A standalone test run has no release artefact.
-        using var world = StartWorld(Path.GetFullPath(helper));
+        using var world = StartWorld(Path.GetFullPath(helper), out var conditions);
         var names = world.Systems.Select(SimulationExtensions.FactoryOf).OfType<SystemFactory>().Select(f => f.Name).ToArray();
         var version = typeof(World).Assembly.GetName().Version!;
         var expected = version is { Major: 0, Minor: >= 23 } ? Common.Concat(Modern).ToArray() : Common;
@@ -54,6 +57,15 @@ public sealed class SystemRegistrationWorldTests
         var features = state.GetType().Assembly.GetType("LivingWasteland.MeitouMod.ActiveFeatures")!;
         var lines = (string[])features.GetMethod("Lines", BindingFlags.NonPublic | BindingFlags.Static)!.Invoke(null, [])!;
         Assert.Contains("Squad Record, titles and History · On", lines);
+
+        // Exercise a registered dialogue condition using the speaker's data record, not their display name.
+        var vagrant = W.Spawn(world, "Fixture speaker one", W.Bandits, default);
+        var townsperson = W.Spawn(world, "Fixture speaker two", W.Bandits, default);
+        var player = W.Spawn(world, "Leaf", W.Player, default);
+        var check = new DialogueCondition(ContractGiver, 0, 0, 1);
+        Assert.True(conditions.TryGetValue(ContractGiver, out var giver));
+        Assert.False(giver(new DialogueCheck(world, vagrant, player, check)));
+        Assert.True(giver(new DialogueCheck(world, townsperson, player, check)));
     }
 
     [Fact]
@@ -75,7 +87,7 @@ public sealed class SystemRegistrationWorldTests
         Assert.Contains("active", (string[])typeof(StatsUi).GetField("TabArgs", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!);
     }
 
-    static World StartWorld(string helperPath)
+    static World StartWorld(string helperPath, out IReadOnlyDictionary<int, DialogueConditionHandler> conditions)
     {
         var folder = Directory.CreateTempSubdirectory("twr-registration-");
         try
@@ -87,12 +99,16 @@ public sealed class SystemRegistrationWorldTests
                   "camps": [{ "index": 0, "name": "Fixture outlaw", "character": "camp-leader", "squad": "camp-squad", "biomes": [] }],
                   "atlas": {}, "hunters": { "squad": "hunt-fixture" },
                   "notoriety": { "titles": [], "heatCondition": 19100, "heatEffect": 19101 },
+                  "temperaments": { "once": 19400, "mark": 19401, "despised": 19402, "giver": 19421 },
                   "raids": [ { "name": "Fixture", "squad": "raid-fixture", "target": "Fixture", "state": 19102, "town": 19103 } ],
                   "trophies": { "keepsake": "neck-fixture", "keepsakes": ["neck-fixture"] }
                 }
                 """);
             File.WriteAllText(Path.Combine(folder.FullName, "lw_neck_meshes.json"), "[]");
-            var data = W.Data([]);
+            var data = W.Data([
+                W.Rec("r-Fixture speaker one", FcsRecordType.Character, "Starving Vagrant"),
+                W.Rec("r-Fixture speaker two", FcsRecordType.Character, "Town Trader"),
+            ]);
             var ctor = Assert.Single(typeof(ModContext).GetConstructors(Instance));
             var args = ctor.GetParameters();
             var info = new ModInfo("LivingWasteland", Path.Combine(folder.FullName, "LivingWasteland.mod"), default);
@@ -103,6 +119,7 @@ public sealed class SystemRegistrationWorldTests
 
             new RegistrationContext(helperPath).Create().Initialize(context);
             var pending = typeof(ModContext).GetProperty("Pending", Instance)!.GetValue(context)!;
+            conditions = (IReadOnlyDictionary<int, DialogueConditionHandler>)pending.GetType().GetProperty("Conditions", Instance)!.GetValue(pending)!;
             var factories = (IEnumerable<SystemFactory>)pending.GetType().GetProperty("Systems", Instance)!.GetValue(pending)!;
             // Use the real engine build context with the native population system. A physics/rendering
             // installation is unnecessary here. Match the engine's behaviour of leaving out null factories.

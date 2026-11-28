@@ -729,6 +729,11 @@ public sealed class StatsUi(string id = "livingwasteland") : IUiExtension
         }).ToList();
         string heading = ChronicleRules.Heading(RecordHost.Panel, RecordHost.HistoryText);
 #if !SQUAD_RECORD_ONLY
+        if (LwMod.Settings.ChronicleChapters && RecordHost.Chronicle is { Count: > 0 } individual)
+        {
+            chapters.RemoveAll(c => c.Title == "The fallen");
+            chapters.InsertRange(2, individual);
+        }
         var rivals = RecordHost.AtlasPages.Where(page => page.Key.StartsWith("r:", StringComparison.Ordinal))
             .OrderBy(page => page.Key, StringComparer.Ordinal).Select(page => page.Value);
         string grudges = string.Join("\n\n", rivals);

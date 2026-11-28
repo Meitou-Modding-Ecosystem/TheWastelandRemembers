@@ -28,6 +28,30 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
         (table.People ?? []).Where(person => person.Value.Place is not null)
             .ToLookup(person => person.Value.Place!, StringComparer.Ordinal);
     readonly AtlasBook book = new();
+    static readonly System.Runtime.CompilerServices.ConditionalWeakTable<World, AtlasSystem> byWorld = new();
+    internal static AtlasSystem? For(World world) => byWorld.TryGetValue(world, out var atlas) ? atlas : null;
+    bool registered;
+    internal AtlasBook Locations => book;
+    internal static bool TrackPlaces => LwMod.Settings.Atlas && LwMod.Settings.LastKnownPlaces;
+
+    internal void Locate(World world, string key, string identity, float x, float z, string? reportedTown = null)
+    {
+        var at = new Vector3(x, 0, z);
+        string town = reportedTown ?? TownAt(at) ?? "";
+        if (town.Length == 0 && data is not null)
+        {
+            float nearest = 20_000 * 20_000; // Beyond two kilometres, call it the wilds.
+            foreach (var site in data.Sites)
+            {
+                float dx = site.Position.X - x, dz = site.Position.Z - z;
+                float distance = dx * dx + dz * dz;
+                if (distance >= nearest) continue;
+                nearest = distance;
+                town = site.Town.Name;
+            }
+        }
+        book.Locate(key, new LastKnownPlace(identity, x, z, town, world.GameHours, reportedTown is not null));
+    }
     readonly Dictionary<string, (PersonPageInputs Inputs, string Text)> personPages = new(StringComparer.Ordinal);
     KindnessBook? kindnessBook;
     int kindnessRevision;
@@ -41,6 +65,7 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
 
     public void SlowWorld(World world)
     {
+        if (!registered) { byWorld.AddOrUpdate(world, this); registered = true; }
         if (failed || world.Tick % 30 != 7) return;
         if (!LwMod.Settings.Atlas)
         {
@@ -89,7 +114,7 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             string? town = TownAt(at);
             string where = town ?? "on the road";
             var heard = new Heard(b.Text.Trim(), where, world.GameHours);
-            GossipLink.For(world).Told(GossipLink.Key(world, b.Speaker), town, heard.Text, world.GameHours);   // the gossip cap, Ask for news
+            if (!GossipLink.Preview) GossipLink.Remember(world, b.Speaker, cold, town, heard.Text);
             bool any = false;
             if (subject.Length > 0) any |= book.Note(subject, heard);
             else foreach (var name in people.Keys.Where(n => b.Text.Contains(n, StringComparison.Ordinal))) any |= book.Note(name, heard);
@@ -234,10 +259,13 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             }
         }
 
-        var personRows = people.Select(p => (p.Key, p.Value, Level: book.Level(p.Key, p.Value, p.Value.Place is { } pl && known.ContainsKey(pl))))
+        bool trackPlaces = TrackPlaces;
+        var personRows = people.Select(p => (p.Key, p.Value, Level: book.Level(p.Key, p.Value,
+                p.Value.Place is { } pl && known.ContainsKey(pl) ||
+                trackPlaces && p.Value.Outlaw && book.Position("camp:" + p.Key, p.Key) is not null)))
             .Where(r => r.Level > 0).OrderBy(r => r.Value.Outlaw).ThenBy(r => r.Key, StringComparer.Ordinal).ToList();
         // rivals (Rivals.cs): the people who have a grudge against the squad, first
-        if (RivalsSystem.For(world) is { } rivals && rivals.AtlasRows().ToList() is { Count: > 0 } rivalRows)
+        if (RivalsSystem.For(world) is { } rivals && rivals.AtlasRows(trackPlaces ? book : null, world.GameHours).ToList() is { Count: > 0 } rivalRows)
         {
             list.Add("");
             list.Add("-- Rivals --");
@@ -245,7 +273,7 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             {
                 list.Add($"@@r:{rn}|{row}");
                 string pageKey = "r:" + rn;
-                if (!ReusePage(pageKey)) pages[pageKey] = string.Join("\n", page);
+                if (trackPlaces || !ReusePage(pageKey)) pages[pageKey] = string.Join("\n", page);
                 if (liveFaces is not null && rivals.AtlasPortrait(world, rn) is { } rivalActor)
                     liveFaces[pageKey] = rivalActor;
             }
@@ -281,7 +309,8 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             string fate = Fate(world, name, p, level);
             list.Add($"@@w:{name}|{(level == 1 ? "? " : "")}{name}, {label}{fate}");
             string pageKey = "w:" + name;
-            if (!ReusePage(pageKey)) pages[pageKey] = PersonText(world, name, p, level, known, fate);
+            var camp = trackPlaces && p.Outlaw ? book.Position("camp:" + name, name) : null;
+            if (camp is not null || !ReusePage(pageKey)) pages[pageKey] = PersonText(world, name, p, level, known, fate, camp?.Line(world.GameHours));
             if (level >= 2 && p.Id is { Length: > 0 } rid)
             {
                 portraits[pageKey] = rid;
@@ -453,13 +482,13 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
     }
 
     readonly record struct PersonPageInputs(int Level, bool KnowsPlace, string Fate, string? Bounty,
-        string? SeenPlace, double SeenDay, int HeardCount);
+        string? SeenPlace, double SeenDay, int HeardCount, string? Camp);
 
-    string PersonText(World world, string name, AtlasPerson person, int level, Dictionary<string, int> known, string fate)
+    string PersonText(World world, string name, AtlasPerson person, int level, Dictionary<string, int> known, string fate, string? camp)
     {
         var sighting = level == 3 ? book.LastSeen(name) : null;
         var inputs = new PersonPageInputs(level, person.Place is { } place && known.ContainsKey(place), fate,
-            level > 1 ? Bounty(world, person) : null, sighting?.Place, Math.Floor((sighting?.Hours ?? 0) / 24), book.CountOf(name));
+            level > 1 ? Bounty(world, person) : null, sighting?.Place, Math.Floor((sighting?.Hours ?? 0) / 24), book.CountOf(name), camp);
         if (personPages.TryGetValue(name, out var cached) && cached.Inputs == inputs) return cached.Text;
         string text = string.Join("\n", PersonPage(name, person, inputs, sighting));
         personPages[name] = (inputs, text);
@@ -483,6 +512,7 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
             : $"Seen in {p.Region ?? "the wastes"}.";
         if (p.Outlaw) where = $"Roams {p.Region}.";
         yield return where;
+        if (inputs.Camp is not null) yield return inputs.Camp;
         if (inputs.Fate.Length > 0) yield return "Now:" + inputs.Fate.TrimStart(',') + ".";
         if (inputs.Bounty is { } b) yield return b;
         if (p.WantedFor is { Length: > 0 } w) yield return w;
@@ -541,13 +571,69 @@ public sealed class AtlasSystem(AtlasTable table, Meitou.Simulation.Dialogue.Dia
     public void Hash(ref StateHasher h) => h.Add(book.HashCount);
 }
 
-/// <summary>The loaded game's gossip memory, keyed by a speaker's id and name (ids are reused when characters unload).</summary>
+/// <summary>The loaded game's gossip memory, keyed by lasting identity when available.</summary>
 public static class GossipLink
 {
     static readonly System.Runtime.CompilerServices.ConditionalWeakTable<Meitou.Simulation.World, GossipMemory> memories = new();
 
+    internal static bool DeliveryAvailable { get; set; }
+    internal static bool Preview => DeliveryAvailable && LwMod.Settings.RumoursFitSpeaker;
+
+    internal static void Queue(DialogueAct act)
+    {
+        if (!Preview || act.Effect.Value is not ((int)RumourTopic.Road or (int)RumourTopic.Civic)) return;
+        act.World.Defer(new HearRumour(act.Speaker, (RumourTopic)act.Effect.Value) { Tick = act.World.Tick + 1 });
+    }
+
     public static GossipMemory For(Meitou.Simulation.World world) => memories.GetOrCreateValue(world);
 
-    public static string Key(Meitou.Simulation.World world, Meitou.Simulation.CharacterId who) =>
-        world.Characters.TryResolveNext(who, out int s) && world.Characters.Cold(s) is { } c ? $"{who}|{c.Name}" : who.ToString();
+    public static string Key(World world, CharacterId who) =>
+        world.Characters.TryResolveNext(who, out int s) && world.Characters.Cold(s) is { } cold
+            ? Key(who, cold.Name, LastingActors.Of(cold)) : who.ToString();
+
+    internal static void Remember(World world, CharacterId who, CharacterCold cold, string? town, string text, RumourTopic topic = RumourTopic.Any)
+    {
+        ulong lasting = LastingActors.Of(cold);
+        // Give a lasting ID only to a speaker the squad actually heard. Dialogue checks only read it.
+        if (lasting == 0) lasting = LastingActors.Grant(world, who);
+        For(world).Told(Key(who, cold.Name, lasting), town, text, world.GameHours, topic);
+    }
+
+    internal static void Delivered(World world, Meitou.Simulation.Dialogue.DialogueSystem? dialogue, PopulationData? data,
+        CharacterId speaker, RumourTopic topic)
+    {
+        if (dialogue is null) return;
+        var characters = world.Characters;
+        if (!characters.TryResolveNext(speaker, out int slot) || characters.Cold(slot) is not { IsPlayer: false, Animal: null } cold)
+            return;
+        var at = characters.Next[slot].Position;
+        if (!InEarshot(world, at)) return;
+        // 0.17 applies the effect before showing the bubble. Read it on the next tick.
+        foreach (var bubble in dialogue.PublishSpeech())
+        {
+            if (bubble.Speaker != speaker || string.IsNullOrWhiteSpace(bubble.Text)) continue;
+            string? town = data is not null && data.TownAt(at) is >= 0 and var site && site < data.Sites.Count
+                ? data.Sites[site].Town.Name : null;
+            Remember(world, speaker, cold, town, bubble.Text.Trim(), topic);
+            return;
+        }
+    }
+
+    internal static bool InEarshot(World world, Vector3 at)
+    {
+        var characters = world.Characters;
+        var hot = characters.Next;
+        for (int i = 0; i < hot.Length; i++)
+        {
+            if (!hot[i].Alive || characters.Cold(i) is not { IsPlayer: true, Animal: null, Medical: not { Dead: true } }) continue;
+            const float range = 500;  // the same 50 m as the Atlas's earshot
+            float dx = hot[i].Position.X - at.X, dz = hot[i].Position.Z - at.Z;
+            if (dx * dx + dz * dz <= range * range) return true;
+        }
+        return false;
+    }
+
+    static string Key(CharacterId who, string name, ulong lasting) => lasting == 0
+        ? $"{who}|{name}"
+        : string.Create(System.Globalization.CultureInfo.InvariantCulture, $"actor:{lasting}");
 }

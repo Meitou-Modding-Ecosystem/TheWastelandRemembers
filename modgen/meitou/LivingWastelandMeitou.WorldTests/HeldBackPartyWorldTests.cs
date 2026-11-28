@@ -1,7 +1,10 @@
 using System.Numerics;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using LivingWasteland.MeitouMod;
 using Meitou.Simulation;
 using Meitou.Simulation.Bodies;
+using Meitou.Simulation.Construction;
 using Meitou.Simulation.Factions;
 using Meitou.Simulation.Locks;
 using Meitou.Simulation.Population;
@@ -12,6 +15,60 @@ using Xunit;
 [Collection("settings")]
 public sealed class HeldBackPartyWorldTests
 {
+    [Fact]
+    public void A_native_cage_stays_held_and_departed_prisoners_leave_no_live_diagnostic_entry()
+    {
+        var watches = LifecycleWatch.BuildWatches();
+        if (!watches.TryGetValue("Held", out var held) || !watches.TryGetValue("Removed", out var removed)) return;
+        var data = W.Data([]);
+        var deeds = new LwDeedsSystem([], data);
+        var cases = new PrisonerCases(data, []);
+        using var world = W.World(deeds, cases, (ITickSystem)Activator.CreateInstance(held)!, (ITickSystem)Activator.CreateInstance(removed)!);
+        var at = new Vector3(2000, 150, 2000);
+        var id = W.Spawn(world, "Fixture prisoner", W.Bandits, at);
+        var site = new BuildSite { Id = "fixture-building", Record = "cage", Position = at, Materials = [], Complete = true, Owner = W.Bandits };
+        world.Buildings.Add(site);
+        var cage = new Fixture { Id = "fixture-cell", Building = site.Id, Kind = FixtureKind.Cage, Position = at, Owner = site.Owner };
+        const BindingFlags fields = BindingFlags.Instance | BindingFlags.NonPublic;
+        ((List<Fixture>)typeof(FixtureRegistry).GetField("_all", fields)!.GetValue(world.Fixtures)!).Add(cage);
+        ((Dictionary<string, Fixture>)typeof(FixtureRegistry).GetField("_byId", fields)!.GetValue(world.Fixtures)!).Add(cage.Id, cage);
+
+        var log = LwMod.Log;
+        var settings = LwMod.Settings;
+        var old = (settings.LogChanges, settings.PlaytestDiagnostics, settings.KindnessRemembered, settings.PrisonerCases);
+        var lines = new List<string>();
+        try
+        {
+            LwMod.Log = lines.Add;
+            (settings.LogChanges, settings.PlaytestDiagnostics, settings.KindnessRemembered, settings.PrisonerCases) = (true, false, true, true);
+            world.RunTicks(2);
+            Assert.True(world.Fixtures.Imprison(world, id, cage));
+            world.RunTicks(180);
+            Assert.True(world.Characters.Cold(id.Slot)!.IsImprisoned);
+            Assert.Equal(id, cage.Occupant);
+            Assert.Single(lines, line => line.Contains("Fixture prisoner: None to Imprisoned"));
+
+            world.Fixtures.ReleaseHeld(world, id);
+            world.RunTicks(2);
+            Assert.Single(lines, line => line.Contains("Fixture prisoner: Imprisoned to None"));
+            Assert.Empty(deeds.Deeds.Kindness.People);
+            Assert.Empty(cases.AtlasRows());
+
+            var cache = (ConditionalWeakTable<World, Dictionary<CharacterId, (long, int, int)>>)
+                typeof(LifecycleWatch).GetField("heldSeen", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
+            Assert.True(cache.TryGetValue(world, out var active));
+            Assert.Contains(id, active.Keys);
+            Assert.True(world.Characters.Remove(id));
+            world.RunTicks(2);
+            Assert.DoesNotContain(id, active.Keys);
+        }
+        finally
+        {
+            LwMod.Log = log;
+            (settings.LogChanges, settings.PlaytestDiagnostics, settings.KindnessRemembered, settings.PrisonerCases) = old;
+        }
+    }
+
     [Fact]
     public void A_stand_in_the_game_holds_back_until_the_squad_leaves_is_not_walked_on()
     {

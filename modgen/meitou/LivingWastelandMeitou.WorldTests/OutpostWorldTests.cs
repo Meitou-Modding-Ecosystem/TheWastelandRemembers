@@ -1246,7 +1246,8 @@ public sealed class OutpostWorldTests : IDisposable
     [InlineData(false, true)]
     public void The_scouts_pick_the_gate_or_search_an_old_cage_and_follow_a_witness_report(bool caught, bool moved)
     {
-        if (!Couriers.Available || !PrisonerHandover.Available || !CovertRecovery.Available) return;
+        if (!Couriers.Available || !PrisonerHandover.Available) return;
+        Assert.True(CovertRecovery.Available, "Meitou's lock work spot must bind before the scout scenarios run.");
         bool oldCases = LwMod.Settings.PrisonerCases, oldRecovery = LwMod.Settings.PrisonerRecovery;
         bool oldQuiet = LwMod.Settings.CovertRecovery;
         LwMod.Settings.RememberOutposts = LwMod.Settings.PrisonerCases = LwMod.Settings.PrisonerRecovery = LwMod.Settings.CovertRecovery = true;

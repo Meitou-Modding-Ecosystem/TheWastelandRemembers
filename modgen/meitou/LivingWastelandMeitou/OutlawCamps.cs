@@ -28,7 +28,7 @@ public sealed record CampCode(int Index, string Name, string Character, string S
 public sealed record SuccessorCode(string Name, string Character, string Squad, int Bounty = 0);
 
 /// <summary>The outlaws the camp gossip names (lw_codes.json "campNews"): the towns its word swaps list, and each outlaw's three codes.</summary>
-public sealed record CampNewsTable(List<string> Towns, List<CampNewsCode> Outlaws);
+public sealed record CampNewsTable(List<string> Towns, List<CampNewsCode> Outlaws, int Report = 0);
 public sealed record CampNewsCode(string Name, int Town, int Dir, int Struck, int Pay = 0, int Reach = 0, int Tier = 0, int Reprisal = 0, int NewsReach = 0,
     int Successor = 0);
 
@@ -130,6 +130,27 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
         foreach (var o in outlaws)
             if (book.Get(o.Index) is { } e && world.Uniques.StateOf(o.Character) == UniqueState.Alive && atlas.Contains($"@@w:{o.Name}|", StringComparison.Ordinal))
                 yield return (o.Name, MapMarkRules.Doing(DoingOf(world, o.Index)), e.X, e.Z);
+    }
+
+    internal IEnumerable<MapMark> ObservedMarks(World world, AtlasBook locations)
+    {
+        foreach (var o in outlaws)
+            if (locations.Position("camp:" + o.Name, o.Name) is { } place && world.Uniques.StateOf(o.Character) == UniqueState.Alive &&
+                !JoinedPlayer(world, o))
+                yield return new MapMark(MarkKind.Outlaw, place.X, place.Z, o.Name, $"\tOutlaw's camp\n\t{place.Line(world.GameHours)}", 1);
+    }
+
+    internal void HeardCamp(World world, int index, CharacterId speaker)
+    {
+        var table = world.Characters;
+        if (!LwMod.Settings.OutlawCamps || AtlasSystem.For(world) is not { } atlas ||
+            !table.TryResolveNext(speaker, out int slot) || table.Cold(slot) is not { IsPlayer: false } ||
+            !GossipLink.InEarshot(world, table.Next[slot].Position) ||
+            outlaws.FirstOrDefault(c => c.Index == index) is not { } camp || book.Get(index) is not { } entry ||
+            CampTown(index) is not (> 0 and var town) || town > NewsTowns.Count) return;
+        var cell = CampRules.CellOf(entry.X, entry.Z);
+        var area = CampRules.CellCentre(cell.X, cell.Z);
+        atlas.Locate(world, "camp:" + camp.Name, camp.Name, area.X, area.Z, NewsTowns[town - 1]);
     }
 
     /// <summary>The town names the camp word swaps list, in code order (set from lw_codes.json).</summary>
@@ -727,15 +748,21 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
                 continue;
             }
             if (platoon.State != PlatoonState.Unloaded) continue;
+            // A camp's template can give it a mission destination. That job runs before the wait timer on 0.24.
+            // Restore our stand-in's camp job after unload without changing a native roam's job.
+            if (platoon.Key == KeyOf(o)) platoon.Job = PlatoonJob.None;
             platoon.WaitLeft = HoldStill;
             if (entry is not null && entry.Period == period) continue;
 
             // a new stretch: move the stand-in if nobody can see either end
             var from = (platoon.Position.X, platoon.Position.Y);
-            if (SpotFor(world, d, o, period, doing) is not { } to || !CampRules.MayMove(from, to, players)) continue;
+            if (!CampRules.MayMove(from, from, players)) continue;
+            var to = SpotFor(world, d, o, period, doing, from) ?? from;
+            if (!CampRules.MayMove(from, to, players)) continue;
             platoon.Position = new Vector2(to.X, to.Z);
             if (platoon.Stored is null) platoon.Size = CampRules.Size(Planned(world, pop, d, o), doing);
             book.Set(o.Index, new CampEntry(to.X, to.Z, period, doing));
+            if (to == from) continue;
             moved++;
             LwMod.Log($"outlaw camps: {o.Name} moved {Vector2.Distance(new Vector2(from.X, from.Y), new Vector2(to.X, to.Z)):0} to {to.X:0} {to.Z:0} ({DoingNames[doing]}, size {platoon.Size}, day {world.GameHours / 24:0.0})");
         }
@@ -770,11 +797,11 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
         return table.TryResolveNext(entry.Handle, out int slot) && table.Cold(slot) is { IsPlayer: true };
     }
 
-    (float X, float Z)? SpotFor(World world, PopulationData d, CampCode o, long period, int doing)
+    (float X, float Z)? SpotFor(World world, PopulationData d, CampCode o, long period, int doing, (float X, float Z)? from = null)
     {
         var walk = world.Walkability;
         return CampRules.Spot(world.Seed, o.Index, period, doing, CellsOf(d, o), towns!,
-            (x, z) => walk.IsWalkable(x, z) && walk.GroundHeight(x, z) - walk.TerrainHeight(x, z) < 5f);
+            (x, z) => walk.IsWalkable(x, z) && walk.GroundHeight(x, z) - walk.TerrainHeight(x, z) < 5f, from);
     }
 
     /// <summary>The region-map cells of the outlaw's regions (worked out once).</summary>
@@ -814,7 +841,7 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
         }
         var template = SquadTemplate.From(record);
         var plan = SquadFactory.Plan(d.Db, template, pop.Settings.SquadSizeMultiplier, world.Seed, KeyOf(o), pop.States);
-        var (package, job) = AiCompat.JobsFor(d.Ai, template);
+        var (package, _) = AiCompat.JobsFor(d.Ai, template);
         // built by property name: see Pursuit.NewPlatoon (Platoon.Origin's setter changed between Meitou 0.17.3 and 0.23)
         var platoon = Pursuit.NewPlatoon(
             ("Id", world.Platoons.NextId()),
@@ -825,7 +852,7 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
             ("Size", CampRules.Size(plan.TotalMembers, doing)),
             ("Position", new Vector2(at.X, at.Z)),
             ("Package", package?.Id),
-            ("Job", job),
+            ("Job", PlatoonJob.None),
             ("Persistent", true),
             ("WaitLeft", HoldStill));
         world.Platoons.Add(platoon);
@@ -843,6 +870,10 @@ public sealed class OutlawCampsSystem(IReadOnlyList<CampCode> outlaws, Populatio
     {
         bool near = players.Any(q => Vector2.Distance(new Vector2(q.X, q.Z), p.Position) < 3000f);
         if (!near) { visited.Remove(o.Index); return; }
+        if (AtlasSystem.TrackPlaces && p.State == PlatoonState.Loaded && world.Squads.Find(p.SquadId) is { Members.Count: > 0 }
+            && AtlasSystem.For(world) is { } atlas &&
+            players.Any(q => Vector2.DistanceSquared(new Vector2(q.X, q.Z), p.Position) <= 900 * 900))
+            atlas.Locate(world, "camp:" + o.Name, o.Name, p.Position.X, p.Position.Y);
         string state = p.State switch
         {
             PlatoonState.Loaded => world.Squads.Find(p.SquadId) is { } squad

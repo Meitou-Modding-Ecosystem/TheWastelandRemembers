@@ -1,5 +1,25 @@
 # The Wasteland Remembers: changelog
 
+## Next build (not built yet)
+- With dxseba's Kill Counter installed, TWR's row on the character panel reads "Squad record", so its kill count isn't mistaken for Kill
+  Counter's (the two count differently).
+- Lost-limb lines no longer assume a fight: on Meitou 0.24.1 the game's cry also plays for bites, the rack and festering wounds.
+- "Lost a arm" reads "Lost an arm".
+- Slavers (Slaver Guards, Slave Masters, Slave Traders) can offer work again: the vagrant rule caught "slave" inside their names.
+- About one contract or errand in seven was spread onto a personality Meitou never gives townsfolk, so almost no one offered it. Those
+  jobs now go to people of the other personalities.
+- The chronicle preview gives squadmates their own chapters, remembers the fallen and shows progress towards the nearest titles.
+- Atlas whereabouts preview keeps the last witnessed or reported place when rivals and camps move out of sight.
+- Rumour preview gives travellers road talk and guards and traders town news. Ordinary talk, crier calls and fight reactions leave the rumour allowance free.
+- On clients with lasting identities, a returning traveller remembers the rumours they told your squad earlier in the session.
+- Checking whether a speaker can tell another rumour uses less memory.
+- Cage diagnostics drop their temporary records when a captive leaves the loaded world.
+- The compatibility check runs the whole world-test suite with the same helper DLL players receive.
+- Covert recovery scouts can find a place to work on a lock again on newer Meitou clients.
+- A rival's hunt follows the living rival when their old party leaves them behind, even if someone else shares their name.
+- Outlaw camps stay at their marked spot while waiting for you to arrive. They move at most two kilometres when their plans change.
+- Repeating the same rumour counts towards a speaker's daily limit.
+
 ## Build 20261127bw (beta, not on Steam)
 - **Rivals no longer stand still off screen.** On Meitou 0.24 a hunting rival could be steered through a party that no longer held them (one
   the game holds back until the squad leaves), so the hunt never moved and nobody was there. The rival is now found in the party that does

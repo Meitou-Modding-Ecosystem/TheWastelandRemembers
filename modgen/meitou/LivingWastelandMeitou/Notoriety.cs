@@ -151,6 +151,9 @@ public sealed partial class LwDeedsSystem(IReadOnlyList<TitleRule> rules, Popula
     readonly List<int> panelSlots = [];
     readonly HashSet<string> presentInRecord = new(StringComparer.Ordinal);
 #if !SQUAD_RECORD_ONLY
+    long nextChronicle;
+#endif
+#if !SQUAD_RECORD_ONLY
     readonly List<(CharacterId Id, string Key)> nativePanelMembers = [];
     bool observeLimbs;
 #endif
@@ -650,7 +653,23 @@ public sealed partial class LwDeedsSystem(IReadOnlyList<TitleRule> rules, Popula
 #if !SQUAD_RECORD_ONLY
             if (LwMod.Settings.AnimalCompanions)
                 catalog.Add($"-- Animal companions --\n{SquadRecord.CompanionTitleName}: survive {CompanionMemorials.Battles} fights with the squad");
-            LwState.RegisteredIn(world)?.Companions?.AppendFallen(fallen, deeds.Record.FallenMembers.Count > 0);
+            var companions = LwState.RegisteredIn(world)?.Companions;
+            companions?.AppendFallen(fallen, deeds.Record.FallenMembers.Count > 0);
+            if (LwMod.Settings.ChronicleChapters && world.Tick >= nextChronicle)
+            {
+                nextChronicle = world.Tick + 450;
+                var chapters = deeds.Record.ChronicleChapters(presentInRecord);
+                var animalMemorials = new List<string>();
+                companions?.AppendFallen(animalMemorials, humans: false);
+                if (animalMemorials.Count > 1)
+                    chapters.Add(("Animal companions", string.Join("\n", animalMemorials.Skip(1))));
+                RecordHost.Chronicle = chapters;
+            }
+            else if (!LwMod.Settings.ChronicleChapters && nextChronicle > 0)
+            {
+                nextChronicle = 0;
+                RecordHost.Chronicle = [];
+            }
 #endif
             RecordHost.CatalogText = string.Join("\n", catalog);
             RecordHost.HistoryText = string.Join("\n", deeds.Record.HistoryLines());
